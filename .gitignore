@@ -1,0 +1,23 @@
+# MacOS files
+.DS_Store
+.idea
+
+# Fastlane files
+fastlane/build
+fastlane/logs
+fastlane/report.xml
+
+# Build files
+Build/*
+
+# CocoaPods files
+Pods/*
+
+# User files
+xcuserdata/*
+xcuserdatat
+*/xcuserdata
+*.xcscmblueprint
+
+# Versioning files
+Version.h

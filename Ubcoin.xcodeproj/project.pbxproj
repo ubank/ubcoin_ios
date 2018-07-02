@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30A0668C891003DF59D2BECC /* libPods-Ubcoin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DD3B2DB73F06ACB93DC3B9 /* libPods-Ubcoin.a */; };
 		899E217C20E68D8A004D891B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 899E217B20E68D8A004D891B /* AppDelegate.m */; };
 		899E217F20E68D8A004D891B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 899E217E20E68D8A004D891B /* ViewController.m */; };
 		899E218220E68D8A004D891B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 899E218020E68D8A004D891B /* Main.storyboard */; };
@@ -16,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8133FFCED3512BADEB40D574 /* Pods-Ubcoin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ubcoin.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ubcoin/Pods-Ubcoin.release.xcconfig"; sourceTree = "<group>"; };
+		82DD3B2DB73F06ACB93DC3B9 /* libPods-Ubcoin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Ubcoin.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		899E217720E68D8A004D891B /* Ubcoin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ubcoin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		899E217A20E68D8A004D891B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		899E217B20E68D8A004D891B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -26,6 +29,7 @@
 		899E218620E68D8C004D891B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		899E218820E68D8C004D891B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		899E218920E68D8C004D891B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8F66F2801638A68DF9CA576B /* Pods-Ubcoin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ubcoin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ubcoin/Pods-Ubcoin.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +37,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30A0668C891003DF59D2BECC /* libPods-Ubcoin.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0217AC41E30A3A5536DCBE89 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				82DD3B2DB73F06ACB93DC3B9 /* libPods-Ubcoin.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2CC015D4581DA6B90D45AD31 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8F66F2801638A68DF9CA576B /* Pods-Ubcoin.debug.xcconfig */,
+				8133FFCED3512BADEB40D574 /* Pods-Ubcoin.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		899E216E20E68D8A004D891B = {
 			isa = PBXGroup;
 			children = (
 				899E217920E68D8A004D891B /* Ubcoin */,
 				899E217820E68D8A004D891B /* Products */,
+				2CC015D4581DA6B90D45AD31 /* Pods */,
+				0217AC41E30A3A5536DCBE89 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,6 +102,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 899E218D20E68D8C004D891B /* Build configuration list for PBXNativeTarget "Ubcoin" */;
 			buildPhases = (
+				F9136AB4A7CDD4439AB8F29C /* [CP] Check Pods Manifest.lock */,
 				899E217320E68D8A004D891B /* Sources */,
 				899E217420E68D8A004D891B /* Frameworks */,
 				899E217520E68D8A004D891B /* Resources */,
@@ -136,6 +161,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F9136AB4A7CDD4439AB8F29C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Ubcoin-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		899E217320E68D8A004D891B /* Sources */ = {
@@ -282,15 +328,13 @@
 		};
 		899E218E20E68D8C004D891B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8F66F2801638A68DF9CA576B /* Pods-Ubcoin.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SWEX2R635A;
 				INFOPLIST_FILE = Ubcoin/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ubcoin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -299,15 +343,13 @@
 		};
 		899E218F20E68D8C004D891B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8133FFCED3512BADEB40D574 /* Pods-Ubcoin.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SWEX2R635A;
 				INFOPLIST_FILE = Ubcoin/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ubcoin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
