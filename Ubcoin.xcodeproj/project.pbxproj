@@ -43,9 +43,13 @@
 		8987519120EE119F00E2B615 /* UBKeyChain.m in Sources */ = {isa = PBXBuildFile; fileRef = 8987516020EE119F00E2B615 /* UBKeyChain.m */; };
 		8987519920EE23A100E2B615 /* UBWaitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8987519720EE23A100E2B615 /* UBWaitCell.m */; };
 		8987519A20EE23A100E2B615 /* UBWaitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8987519820EE23A100E2B615 /* UBWaitCell.xib */; };
+		8987519F20EE2A8B00E2B615 /* UBCTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8987519E20EE2A8B00E2B615 /* UBCTabBarController.m */; };
+		898751A720EE2BBD00E2B615 /* UBCChatController.m in Sources */ = {isa = PBXBuildFile; fileRef = 898751A620EE2BBD00E2B615 /* UBCChatController.m */; };
+		898751AA20EE2BDD00E2B615 /* UBCFavouritesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 898751A920EE2BDD00E2B615 /* UBCFavouritesController.m */; };
+		898751AD20EE2BF900E2B615 /* UBCMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 898751AC20EE2BF900E2B615 /* UBCMainController.m */; };
+		898751B020EE2C1200E2B615 /* UBCSellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 898751AF20EE2C1200E2B615 /* UBCSellController.m */; };
+		898751B320EE2C4100E2B615 /* UBCLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 898751B220EE2C4100E2B615 /* UBCLoginController.m */; };
 		899E217C20E68D8A004D891B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 899E217B20E68D8A004D891B /* AppDelegate.m */; };
-		899E217F20E68D8A004D891B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 899E217E20E68D8A004D891B /* ViewController.m */; };
-		899E218220E68D8A004D891B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 899E218020E68D8A004D891B /* Main.storyboard */; };
 		899E218420E68D8C004D891B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 899E218320E68D8C004D891B /* Assets.xcassets */; };
 		899E218720E68D8C004D891B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 899E218520E68D8C004D891B /* LaunchScreen.storyboard */; };
 		899E218A20E68D8C004D891B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 899E218920E68D8C004D891B /* main.m */; };
@@ -118,12 +122,21 @@
 		8987519620EE23A100E2B615 /* UBWaitCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBWaitCell.h; sourceTree = "<group>"; };
 		8987519720EE23A100E2B615 /* UBWaitCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBWaitCell.m; sourceTree = "<group>"; };
 		8987519820EE23A100E2B615 /* UBWaitCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UBWaitCell.xib; sourceTree = "<group>"; };
+		8987519D20EE2A8B00E2B615 /* UBCTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCTabBarController.h; sourceTree = "<group>"; };
+		8987519E20EE2A8B00E2B615 /* UBCTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCTabBarController.m; sourceTree = "<group>"; };
+		898751A520EE2BBD00E2B615 /* UBCChatController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCChatController.h; sourceTree = "<group>"; };
+		898751A620EE2BBD00E2B615 /* UBCChatController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCChatController.m; sourceTree = "<group>"; };
+		898751A820EE2BDD00E2B615 /* UBCFavouritesController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCFavouritesController.h; sourceTree = "<group>"; };
+		898751A920EE2BDD00E2B615 /* UBCFavouritesController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCFavouritesController.m; sourceTree = "<group>"; };
+		898751AB20EE2BF900E2B615 /* UBCMainController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCMainController.h; sourceTree = "<group>"; };
+		898751AC20EE2BF900E2B615 /* UBCMainController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCMainController.m; sourceTree = "<group>"; };
+		898751AE20EE2C1200E2B615 /* UBCSellController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCSellController.h; sourceTree = "<group>"; };
+		898751AF20EE2C1200E2B615 /* UBCSellController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCSellController.m; sourceTree = "<group>"; };
+		898751B120EE2C4100E2B615 /* UBCLoginController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCLoginController.h; sourceTree = "<group>"; };
+		898751B220EE2C4100E2B615 /* UBCLoginController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCLoginController.m; sourceTree = "<group>"; };
 		899E217720E68D8A004D891B /* Ubcoin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ubcoin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		899E217A20E68D8A004D891B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		899E217B20E68D8A004D891B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		899E217D20E68D8A004D891B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		899E217E20E68D8A004D891B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		899E218120E68D8A004D891B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		899E218320E68D8C004D891B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		899E218620E68D8C004D891B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		899E218820E68D8C004D891B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -414,6 +427,73 @@
 			path = KeyChain;
 			sourceTree = "<group>";
 		};
+		8987519B20EE2A4E00E2B615 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				898751A120EE2B4F00E2B615 /* Chat */,
+				898751A320EE2B5000E2B615 /* Favourites */,
+				898751A020EE2B1400E2B615 /* Market */,
+				898751A420EE2B5000E2B615 /* Sell */,
+				898751A220EE2B5000E2B615 /* Login */,
+				8987519C20EE2A6100E2B615 /* Tab bar */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		8987519C20EE2A6100E2B615 /* Tab bar */ = {
+			isa = PBXGroup;
+			children = (
+				8987519D20EE2A8B00E2B615 /* UBCTabBarController.h */,
+				8987519E20EE2A8B00E2B615 /* UBCTabBarController.m */,
+			);
+			path = "Tab bar";
+			sourceTree = "<group>";
+		};
+		898751A020EE2B1400E2B615 /* Market */ = {
+			isa = PBXGroup;
+			children = (
+				898751AB20EE2BF900E2B615 /* UBCMainController.h */,
+				898751AC20EE2BF900E2B615 /* UBCMainController.m */,
+			);
+			path = Market;
+			sourceTree = "<group>";
+		};
+		898751A120EE2B4F00E2B615 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				898751A520EE2BBD00E2B615 /* UBCChatController.h */,
+				898751A620EE2BBD00E2B615 /* UBCChatController.m */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		898751A220EE2B5000E2B615 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				898751B120EE2C4100E2B615 /* UBCLoginController.h */,
+				898751B220EE2C4100E2B615 /* UBCLoginController.m */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		898751A320EE2B5000E2B615 /* Favourites */ = {
+			isa = PBXGroup;
+			children = (
+				898751A820EE2BDD00E2B615 /* UBCFavouritesController.h */,
+				898751A920EE2BDD00E2B615 /* UBCFavouritesController.m */,
+			);
+			path = Favourites;
+			sourceTree = "<group>";
+		};
+		898751A420EE2B5000E2B615 /* Sell */ = {
+			isa = PBXGroup;
+			children = (
+				898751AE20EE2C1200E2B615 /* UBCSellController.h */,
+				898751AF20EE2C1200E2B615 /* UBCSellController.m */,
+			);
+			path = Sell;
+			sourceTree = "<group>";
+		};
 		899E216E20E68D8A004D891B = {
 			isa = PBXGroup;
 			children = (
@@ -436,13 +516,11 @@
 			isa = PBXGroup;
 			children = (
 				898750FA20EE119F00E2B615 /* Class */,
+				8987519B20EE2A4E00E2B615 /* View Controllers */,
 				899E217A20E68D8A004D891B /* AppDelegate.h */,
 				899E217B20E68D8A004D891B /* AppDelegate.m */,
-				899E217D20E68D8A004D891B /* ViewController.h */,
-				899E217E20E68D8A004D891B /* ViewController.m */,
-				8987519520EE1E8600E2B615 /* Ubcoin-Prefix.pch */,
-				899E218020E68D8A004D891B /* Main.storyboard */,
 				899E218320E68D8C004D891B /* Assets.xcassets */,
+				8987519520EE1E8600E2B615 /* Ubcoin-Prefix.pch */,
 				899E218520E68D8C004D891B /* LaunchScreen.storyboard */,
 				899E218820E68D8C004D891B /* Info.plist */,
 				899E218920E68D8C004D891B /* main.m */,
@@ -520,7 +598,6 @@
 				899E218720E68D8C004D891B /* LaunchScreen.storyboard in Resources */,
 				899E218420E68D8C004D891B /* Assets.xcassets in Resources */,
 				8987517620EE119F00E2B615 /* UBExpandableTableViewSectionHeader.xib in Resources */,
-				899E218220E68D8A004D891B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,6 +650,8 @@
 				8987518420EE119F00E2B615 /* UBPickerView.m in Sources */,
 				8987517920EE119F00E2B615 /* UBSectionHeaderView.m in Sources */,
 				8987519920EE23A100E2B615 /* UBWaitCell.m in Sources */,
+				898751B320EE2C4100E2B615 /* UBCLoginController.m in Sources */,
+				898751AD20EE2BF900E2B615 /* UBCMainController.m in Sources */,
 				8987517720EE119F00E2B615 /* UBTableHeaderView.m in Sources */,
 				8987517A20EE119F00E2B615 /* HUBTextView.m in Sources */,
 				8987518820EE119F00E2B615 /* UBAlertWindow.m in Sources */,
@@ -581,7 +660,7 @@
 				8987517020EE119F00E2B615 /* UBSwitchTableViewCell.m in Sources */,
 				8987516E20EE119F00E2B615 /* UBDefaultTableViewCell.m in Sources */,
 				8987517B20EE119F00E2B615 /* HUBGeneralButton.m in Sources */,
-				899E217F20E68D8A004D891B /* ViewController.m in Sources */,
+				898751A720EE2BBD00E2B615 /* UBCChatController.m in Sources */,
 				8987518920EE119F00E2B615 /* HUBEmptyView.m in Sources */,
 				8987518020EE119F00E2B615 /* HUBLabel.m in Sources */,
 				8987517320EE119F00E2B615 /* UBTableView.m in Sources */,
@@ -589,6 +668,7 @@
 				8987518B20EE119F00E2B615 /* UBAlertTableView.m in Sources */,
 				8987518320EE119F00E2B615 /* UBCollectionViewSwitchContent.m in Sources */,
 				8987519120EE119F00E2B615 /* UBKeyChain.m in Sources */,
+				8987519F20EE2A8B00E2B615 /* UBCTabBarController.m in Sources */,
 				8987516F20EE119F00E2B615 /* HUBSystemAlertCell.m in Sources */,
 				8987518520EE119F00E2B615 /* HUBBaseMapView.m in Sources */,
 				899E218A20E68D8C004D891B /* main.m in Sources */,
@@ -599,21 +679,15 @@
 				8987518F20EE119F00E2B615 /* UBLocationManager.m in Sources */,
 				8987517220EE119F00E2B615 /* UBDefaultTableView.m in Sources */,
 				899E217C20E68D8A004D891B /* AppDelegate.m in Sources */,
+				898751AA20EE2BDD00E2B615 /* UBCFavouritesController.m in Sources */,
 				8987517520EE119F00E2B615 /* UBExpandableTableViewSectionHeader.m in Sources */,
+				898751B020EE2C1200E2B615 /* UBCSellController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		899E218020E68D8A004D891B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				899E218120E68D8A004D891B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		899E218520E68D8C004D891B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -750,7 +824,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ubcoin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -769,7 +843,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ubcoin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

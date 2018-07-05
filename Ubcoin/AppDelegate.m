@@ -7,16 +7,25 @@
 //
 
 #import "AppDelegate.h"
+#import "UBCTabBarController.h"
 
 @interface AppDelegate ()
+
+@property (strong, nonatomic) UBCTabBarController *tabBar;
 
 @end
 
 @implementation AppDelegate
 
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+
+    [self setupColors];
+    [self setupFonts];
+    
+    [self setupStack];
+    
     return YES;
 }
 
@@ -47,5 +56,28 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+#pragma mark -
+
+- (void)setupStack
+{
+    self.tabBar = UBCTabBarController.new;
+    self.navigationController = [UBNavigationController.alloc initWithRootViewController:self.tabBar];
+    
+    self.window = [UIWindow.alloc initWithFrame:UIScreen.mainScreen.bounds];
+    self.window.backgroundColor = UIColor.whiteColor;
+    self.window.rootViewController = self.navigationController;
+    [self.window makeKeyAndVisible];
+}
+
+- (void)setupColors
+{
+    UBColor.navigationTitleColor = [UIColor colorWithHexString:@"403d45"];
+}
+
+- (void)setupFonts
+{
+    UBFont.navigationFont = [UIFont systemFontOfSize:17 weight:UIFontWeightSemibold];
+    UBFont.tabBarFont = [UIFont systemFontOfSize:10 weight:UIFontWeightMedium];
+}
 
 @end

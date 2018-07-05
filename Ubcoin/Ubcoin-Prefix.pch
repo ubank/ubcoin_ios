@@ -27,7 +27,6 @@
 #import "HUBConstants.h"
 #import "HUBLabel.h"
 #import "UBLocationManager.h"
-//#import "UBResponseCodes.h"
 #import "UBDefaultTableViewCell.h"
 #import "UBKeyChain.h"
 #import "HUBGeneralButton.h"

@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+#define mainAppDelegate ((AppDelegate *)UIApplication.sharedApplication.delegate)
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
+@property (strong, nonatomic) UBNavigationController *navigationController;
 
 @end
 
