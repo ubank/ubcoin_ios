@@ -40,7 +40,6 @@
 		8987518B20EE119F00E2B615 /* UBAlertTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8987514A20EE119F00E2B615 /* UBAlertTableView.m */; };
 		8987518F20EE119F00E2B615 /* UBLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8987515720EE119F00E2B615 /* UBLocationManager.m */; };
 		8987519020EE119F00E2B615 /* HUBPermissions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8987515C20EE119F00E2B615 /* HUBPermissions.m */; };
-		8987519120EE119F00E2B615 /* UBKeyChain.m in Sources */ = {isa = PBXBuildFile; fileRef = 8987516020EE119F00E2B615 /* UBKeyChain.m */; };
 		8987519920EE23A100E2B615 /* UBWaitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8987519720EE23A100E2B615 /* UBWaitCell.m */; };
 		8987519A20EE23A100E2B615 /* UBWaitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8987519820EE23A100E2B615 /* UBWaitCell.xib */; };
 		8987519F20EE2A8B00E2B615 /* UBCTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8987519E20EE2A8B00E2B615 /* UBCTabBarController.m */; };
@@ -49,6 +48,11 @@
 		898751AD20EE2BF900E2B615 /* UBCMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 898751AC20EE2BF900E2B615 /* UBCMainController.m */; };
 		898751B020EE2C1200E2B615 /* UBCSellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 898751AF20EE2C1200E2B615 /* UBCSellController.m */; };
 		898751B320EE2C4100E2B615 /* UBCLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 898751B220EE2C4100E2B615 /* UBCLoginController.m */; };
+		898751C020EE618B00E2B615 /* UBConnectionProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 898751B820EE618B00E2B615 /* UBConnectionProvider.m */; };
+		898751C520EE64EB00E2B615 /* UBCRequestProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 898751C420EE64EB00E2B615 /* UBCRequestProvider.m */; };
+		898751C820EE65C000E2B615 /* UBCKeyChain.m in Sources */ = {isa = PBXBuildFile; fileRef = 898751C720EE65C000E2B615 /* UBCKeyChain.m */; };
+		898751CB20EE6AEA00E2B615 /* UBCURLProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 898751CA20EE6AEA00E2B615 /* UBCURLProvider.m */; };
+		898751CE20EE6D7600E2B615 /* UBCDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 898751CD20EE6D7600E2B615 /* UBCDataProvider.m */; };
 		899E217C20E68D8A004D891B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 899E217B20E68D8A004D891B /* AppDelegate.m */; };
 		899E218420E68D8C004D891B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 899E218320E68D8C004D891B /* Assets.xcassets */; };
 		899E218720E68D8C004D891B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 899E218520E68D8C004D891B /* LaunchScreen.storyboard */; };
@@ -116,8 +120,6 @@
 		8987515A20EE119F00E2B615 /* HUBConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUBConstants.h; sourceTree = "<group>"; };
 		8987515C20EE119F00E2B615 /* HUBPermissions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUBPermissions.m; sourceTree = "<group>"; };
 		8987515D20EE119F00E2B615 /* HUBPermissions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUBPermissions.h; sourceTree = "<group>"; };
-		8987515F20EE119F00E2B615 /* UBKeyChain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBKeyChain.h; sourceTree = "<group>"; };
-		8987516020EE119F00E2B615 /* UBKeyChain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBKeyChain.m; sourceTree = "<group>"; };
 		8987519520EE1E8600E2B615 /* Ubcoin-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ubcoin-Prefix.pch"; sourceTree = "<group>"; };
 		8987519620EE23A100E2B615 /* UBWaitCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBWaitCell.h; sourceTree = "<group>"; };
 		8987519720EE23A100E2B615 /* UBWaitCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBWaitCell.m; sourceTree = "<group>"; };
@@ -134,6 +136,16 @@
 		898751AF20EE2C1200E2B615 /* UBCSellController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCSellController.m; sourceTree = "<group>"; };
 		898751B120EE2C4100E2B615 /* UBCLoginController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCLoginController.h; sourceTree = "<group>"; };
 		898751B220EE2C4100E2B615 /* UBCLoginController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCLoginController.m; sourceTree = "<group>"; };
+		898751B620EE618B00E2B615 /* UBConnectionProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBConnectionProvider.h; sourceTree = "<group>"; };
+		898751B820EE618B00E2B615 /* UBConnectionProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBConnectionProvider.m; sourceTree = "<group>"; };
+		898751C320EE64EB00E2B615 /* UBCRequestProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCRequestProvider.h; sourceTree = "<group>"; };
+		898751C420EE64EB00E2B615 /* UBCRequestProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCRequestProvider.m; sourceTree = "<group>"; };
+		898751C620EE65C000E2B615 /* UBCKeyChain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCKeyChain.h; sourceTree = "<group>"; };
+		898751C720EE65C000E2B615 /* UBCKeyChain.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCKeyChain.m; sourceTree = "<group>"; };
+		898751C920EE6AEA00E2B615 /* UBCURLProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCURLProvider.h; sourceTree = "<group>"; };
+		898751CA20EE6AEA00E2B615 /* UBCURLProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCURLProvider.m; sourceTree = "<group>"; };
+		898751CC20EE6D7600E2B615 /* UBCDataProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCDataProvider.h; sourceTree = "<group>"; };
+		898751CD20EE6D7600E2B615 /* UBCDataProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCDataProvider.m; sourceTree = "<group>"; };
 		899E217720E68D8A004D891B /* Ubcoin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ubcoin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		899E217A20E68D8A004D891B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		899E217B20E68D8A004D891B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -421,8 +433,8 @@
 		8987515E20EE119F00E2B615 /* KeyChain */ = {
 			isa = PBXGroup;
 			children = (
-				8987515F20EE119F00E2B615 /* UBKeyChain.h */,
-				8987516020EE119F00E2B615 /* UBKeyChain.m */,
+				898751C620EE65C000E2B615 /* UBCKeyChain.h */,
+				898751C720EE65C000E2B615 /* UBCKeyChain.m */,
 			);
 			path = KeyChain;
 			sourceTree = "<group>";
@@ -494,6 +506,37 @@
 			path = Sell;
 			sourceTree = "<group>";
 		};
+		898751B420EE618B00E2B615 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				898751B520EE618B00E2B615 /* Connection */,
+				898751BA20EE618B00E2B615 /* Request */,
+				898751CC20EE6D7600E2B615 /* UBCDataProvider.h */,
+				898751CD20EE6D7600E2B615 /* UBCDataProvider.m */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		898751B520EE618B00E2B615 /* Connection */ = {
+			isa = PBXGroup;
+			children = (
+				898751B620EE618B00E2B615 /* UBConnectionProvider.h */,
+				898751B820EE618B00E2B615 /* UBConnectionProvider.m */,
+			);
+			path = Connection;
+			sourceTree = "<group>";
+		};
+		898751BA20EE618B00E2B615 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				898751C320EE64EB00E2B615 /* UBCRequestProvider.h */,
+				898751C420EE64EB00E2B615 /* UBCRequestProvider.m */,
+				898751C920EE6AEA00E2B615 /* UBCURLProvider.h */,
+				898751CA20EE6AEA00E2B615 /* UBCURLProvider.m */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
 		899E216E20E68D8A004D891B = {
 			isa = PBXGroup;
 			children = (
@@ -517,6 +560,7 @@
 			children = (
 				898750FA20EE119F00E2B615 /* Class */,
 				8987519B20EE2A4E00E2B615 /* View Controllers */,
+				898751B420EE618B00E2B615 /* Network */,
 				899E217A20E68D8A004D891B /* AppDelegate.h */,
 				899E217B20E68D8A004D891B /* AppDelegate.m */,
 				899E218320E68D8C004D891B /* Assets.xcassets */,
@@ -647,6 +691,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				898751C520EE64EB00E2B615 /* UBCRequestProvider.m in Sources */,
 				8987518420EE119F00E2B615 /* UBPickerView.m in Sources */,
 				8987517920EE119F00E2B615 /* UBSectionHeaderView.m in Sources */,
 				8987519920EE23A100E2B615 /* UBWaitCell.m in Sources */,
@@ -663,11 +708,11 @@
 				898751A720EE2BBD00E2B615 /* UBCChatController.m in Sources */,
 				8987518920EE119F00E2B615 /* HUBEmptyView.m in Sources */,
 				8987518020EE119F00E2B615 /* HUBLabel.m in Sources */,
+				898751CB20EE6AEA00E2B615 /* UBCURLProvider.m in Sources */,
 				8987517320EE119F00E2B615 /* UBTableView.m in Sources */,
 				8987518620EE119F00E2B615 /* HUBAttributedLabel.m in Sources */,
 				8987518B20EE119F00E2B615 /* UBAlertTableView.m in Sources */,
 				8987518320EE119F00E2B615 /* UBCollectionViewSwitchContent.m in Sources */,
-				8987519120EE119F00E2B615 /* UBKeyChain.m in Sources */,
 				8987519F20EE2A8B00E2B615 /* UBCTabBarController.m in Sources */,
 				8987516F20EE119F00E2B615 /* HUBSystemAlertCell.m in Sources */,
 				8987518520EE119F00E2B615 /* HUBBaseMapView.m in Sources */,
@@ -680,8 +725,11 @@
 				8987517220EE119F00E2B615 /* UBDefaultTableView.m in Sources */,
 				899E217C20E68D8A004D891B /* AppDelegate.m in Sources */,
 				898751AA20EE2BDD00E2B615 /* UBCFavouritesController.m in Sources */,
+				898751C020EE618B00E2B615 /* UBConnectionProvider.m in Sources */,
 				8987517520EE119F00E2B615 /* UBExpandableTableViewSectionHeader.m in Sources */,
+				898751C820EE65C000E2B615 /* UBCKeyChain.m in Sources */,
 				898751B020EE2C1200E2B615 /* UBCSellController.m in Sources */,
+				898751CE20EE6D7600E2B615 /* UBCDataProvider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

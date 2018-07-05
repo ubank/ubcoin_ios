@@ -51,18 +51,10 @@
 static NSString * const kNotificationQuitFromApplication = @"kNotificationQuitFromApp";
 static NSString * const kNotificationSignatureNotValid = @"kNotificationSignatureNotValid";
 static NSString * const kNotificationUserBlocked = @"kNotificationUserBlochedByHWID";
-static NSString * const kNotificationCVVEntered = @"kNotificationCVVEntered";
-static NSString * const kNotificationCardsUpdated = @"kNotificationCardsUpdated";
 static NSString * const kNotificationTidWasUpdated = @"User tid was updated";
-static NSString * const kNotificationFakeTidWasUpdated = @"User fake tid was updated";
-static NSString * const kNotificationStoresRegionUpdated = @"Stores region updated";
+
 static NSString * const kNotificationPullToMiddleState = @"pullInfoViewToMiddle";
 static NSString * const kNotificationHideToBottomState = @"pullInfoViewToHideInBottom";
 static NSString * const kNotificationPullToNearestState = @"pullInfoViewToNearest";
 static NSString * const kNotificationPullUpdateSize = @"pullInfoViewUpdateSize";
 static NSString * const kNotificationImmediatelyPushCalled = @"kNotificationImmediatelyPushCalled";
-
-// Ключ по которому определяем, успешно добавленна карта или нет
-static NSString * const kAddNewCardNotificationKey = @"success";
-
-static NSString * const SUGGESTION_CARD_CELL_STATE = @"SUGGESTION_CARD_CELL_STATE_OPEN_OR_CLOSED";

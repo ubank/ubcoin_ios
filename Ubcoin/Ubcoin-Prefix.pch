@@ -28,7 +28,6 @@
 #import "HUBLabel.h"
 #import "UBLocationManager.h"
 #import "UBDefaultTableViewCell.h"
-#import "UBKeyChain.h"
 #import "HUBGeneralButton.h"
 #import "HUBAttributedLabel.h"
 #import "HUBEmptyView.h"
