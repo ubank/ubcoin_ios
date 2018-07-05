@@ -14,17 +14,21 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
-  - Branch (0.25.0):
-    - Branch/Core (= 0.25.0)
-  - Branch/Core (0.25.0)
   - Crashlytics (3.10.3):
     - Fabric (~> 1.7.8)
   - DGActivityIndicatorView (2.1.1)
   - Fabric (1.7.8)
   - GoogleAnalytics (3.17.0)
+  - GoogleMaps (2.6.0):
+    - GoogleMaps/Maps (= 2.6.0)
+  - GoogleMaps/Base (2.6.0)
+  - GoogleMaps/Maps (2.6.0):
+    - GoogleMaps/Base
+  - INTULocationManager (4.3.0)
   - SDWebImage (4.4.1):
     - SDWebImage/Core (= 4.4.1)
   - SDWebImage/Core (4.4.1)
+  - TTTAttributedLabel (2.0.0)
   - UBGeneralClasses (1.0.2):
     - GoogleAnalytics
     - SDWebImage
@@ -55,21 +59,25 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
-  - Branch
   - Crashlytics
   - DGActivityIndicatorView
   - Fabric
+  - GoogleMaps (= 2.6)
+  - INTULocationManager
+  - TTTAttributedLabel
   - UBGeneralClasses (from `https://github.com/ubank/ub_general_classes_iOS.git`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
-    - Branch
     - Crashlytics
     - DGActivityIndicatorView
     - Fabric
     - GoogleAnalytics
+    - GoogleMaps
+    - INTULocationManager
     - SDWebImage
+    - TTTAttributedLabel
 
 EXTERNAL SOURCES:
   UBGeneralClasses:
@@ -82,14 +90,16 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
-  Branch: 127d29ab0a8866025eece1cf9e950ddb6f7d4070
   Crashlytics: 2aea305161a2122492698c75af27f2b98aa49a25
   DGActivityIndicatorView: ff2c76073d79692f724863c8dd38685866a03cb6
   Fabric: fba4684a95df789565b0b27fc5b6e68f1755af32
   GoogleAnalytics: f42cc53a87a51fe94334821868d9c8481ff47a7b
+  GoogleMaps: 42f91c68b7fa2f84d5c86597b18ceb99f5414c7f
+  INTULocationManager: 0ca5c76eacc029ba15938fc699520bc333ed6435
   SDWebImage: 47e9b5b925cbce75946c23f0c42dd19464189af4
+  TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
   UBGeneralClasses: a5485a99a05a01e5c17321117caf26d2507eed87
 
-PODFILE CHECKSUM: 5e368aa145a9489f6843d3bd205ac5be31680515
+PODFILE CHECKSUM: 04789c57960b8c04ed58baba765c5eda8d1cbff6
 
 COCOAPODS: 1.5.3

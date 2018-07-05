@@ -17,14 +17,11 @@
 @property (class, strong, nonatomic) NSString *login;
 @property (class, strong, nonatomic) NSString *tid;
 @property (class, strong, nonatomic) NSString *pin;
-@property (class, strong, nonatomic) NSString *publicKey;
-@property (class, strong, nonatomic) NSString *privateKey;
 
 + (void)saveHWID;
 + (NSString *)getHWID;
 
 + (void)removeAuthorization;
 + (void)resetKeyChain;
-+ (void)transferKeychain;
 
 @end

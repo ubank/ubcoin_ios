@@ -262,7 +262,7 @@
     {
         UBTableViewSectionData *sectionData = self.sections[section];
         
-        return [UBCDHdbkLocalization getLocalizationWithKey:sectionData.headerTitle];
+        return sectionData.headerTitle;
     }
     
     return nil;
@@ -318,7 +318,7 @@
     {
         UBTableViewSectionData *sectionData = self.sections[section];
         
-        return [UBCDHdbkLocalization getLocalizationWithKey:sectionData.footerTitle];
+        return sectionData.footerTitle;
     }
     
     return nil;

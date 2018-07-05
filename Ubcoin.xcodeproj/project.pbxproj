@@ -26,10 +26,6 @@
 		8987517920EE119F00E2B615 /* UBSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8987511B20EE119F00E2B615 /* UBSectionHeaderView.m */; };
 		8987517A20EE119F00E2B615 /* HUBTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8987511E20EE119F00E2B615 /* HUBTextView.m */; };
 		8987517B20EE119F00E2B615 /* HUBGeneralButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8987512120EE119F00E2B615 /* HUBGeneralButton.m */; };
-		8987517C20EE119F00E2B615 /* ISHPullUpHandleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8987512520EE119F00E2B615 /* ISHPullUpHandleView.m */; };
-		8987517D20EE119F00E2B615 /* ISHPullUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8987512720EE119F00E2B615 /* ISHPullUpViewController.m */; };
-		8987517E20EE119F00E2B615 /* ISHPullUpRoundedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8987512820EE119F00E2B615 /* ISHPullUpRoundedView.m */; };
-		8987517F20EE119F00E2B615 /* UBWebViewInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8987512C20EE119F00E2B615 /* UBWebViewInfoViewController.m */; };
 		8987518020EE119F00E2B615 /* HUBLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8987512E20EE119F00E2B615 /* HUBLabel.m */; };
 		8987518120EE119F00E2B615 /* HUBSpringyCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8987513220EE119F00E2B615 /* HUBSpringyCollectionViewFlowLayout.m */; };
 		8987518220EE119F00E2B615 /* UBCollectionViewSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 8987513420EE119F00E2B615 /* UBCollectionViewSwitch.m */; };
@@ -42,10 +38,11 @@
 		8987518920EE119F00E2B615 /* HUBEmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8987514720EE119F00E2B615 /* HUBEmptyView.m */; };
 		8987518A20EE119F00E2B615 /* HUBEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8987514820EE119F00E2B615 /* HUBEmptyView.xib */; };
 		8987518B20EE119F00E2B615 /* UBAlertTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8987514A20EE119F00E2B615 /* UBAlertTableView.m */; };
-		8987518D20EE119F00E2B615 /* UBTimeIntervalGeneration.m in Sources */ = {isa = PBXBuildFile; fileRef = 8987515220EE119F00E2B615 /* UBTimeIntervalGeneration.m */; };
 		8987518F20EE119F00E2B615 /* UBLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8987515720EE119F00E2B615 /* UBLocationManager.m */; };
 		8987519020EE119F00E2B615 /* HUBPermissions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8987515C20EE119F00E2B615 /* HUBPermissions.m */; };
 		8987519120EE119F00E2B615 /* UBKeyChain.m in Sources */ = {isa = PBXBuildFile; fileRef = 8987516020EE119F00E2B615 /* UBKeyChain.m */; };
+		8987519920EE23A100E2B615 /* UBWaitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8987519720EE23A100E2B615 /* UBWaitCell.m */; };
+		8987519A20EE23A100E2B615 /* UBWaitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8987519820EE23A100E2B615 /* UBWaitCell.xib */; };
 		899E217C20E68D8A004D891B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 899E217B20E68D8A004D891B /* AppDelegate.m */; };
 		899E217F20E68D8A004D891B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 899E217E20E68D8A004D891B /* ViewController.m */; };
 		899E218220E68D8A004D891B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 899E218020E68D8A004D891B /* Main.storyboard */; };
@@ -88,14 +85,6 @@
 		8987511F20EE119F00E2B615 /* HUBTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUBTextView.h; sourceTree = "<group>"; };
 		8987512120EE119F00E2B615 /* HUBGeneralButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUBGeneralButton.m; sourceTree = "<group>"; };
 		8987512220EE119F00E2B615 /* HUBGeneralButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUBGeneralButton.h; sourceTree = "<group>"; };
-		8987512420EE119F00E2B615 /* ISHPullUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISHPullUpViewController.h; sourceTree = "<group>"; };
-		8987512520EE119F00E2B615 /* ISHPullUpHandleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISHPullUpHandleView.m; sourceTree = "<group>"; };
-		8987512620EE119F00E2B615 /* ISHPullUpRoundedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISHPullUpRoundedView.h; sourceTree = "<group>"; };
-		8987512720EE119F00E2B615 /* ISHPullUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISHPullUpViewController.m; sourceTree = "<group>"; };
-		8987512820EE119F00E2B615 /* ISHPullUpRoundedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISHPullUpRoundedView.m; sourceTree = "<group>"; };
-		8987512920EE119F00E2B615 /* ISHPullUpHandleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISHPullUpHandleView.h; sourceTree = "<group>"; };
-		8987512B20EE119F00E2B615 /* UBWebViewInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBWebViewInfoViewController.h; sourceTree = "<group>"; };
-		8987512C20EE119F00E2B615 /* UBWebViewInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBWebViewInfoViewController.m; sourceTree = "<group>"; };
 		8987512E20EE119F00E2B615 /* HUBLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUBLabel.m; sourceTree = "<group>"; };
 		8987512F20EE119F00E2B615 /* HUBLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUBLabel.h; sourceTree = "<group>"; };
 		8987513120EE119F00E2B615 /* HUBSpringyCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUBSpringyCollectionViewFlowLayout.h; sourceTree = "<group>"; };
@@ -118,8 +107,6 @@
 		8987514820EE119F00E2B615 /* HUBEmptyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HUBEmptyView.xib; sourceTree = "<group>"; };
 		8987514A20EE119F00E2B615 /* UBAlertTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBAlertTableView.m; sourceTree = "<group>"; };
 		8987514B20EE119F00E2B615 /* UBAlertTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBAlertTableView.h; sourceTree = "<group>"; };
-		8987515120EE119F00E2B615 /* UBTimeIntervalGeneration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBTimeIntervalGeneration.h; sourceTree = "<group>"; };
-		8987515220EE119F00E2B615 /* UBTimeIntervalGeneration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBTimeIntervalGeneration.m; sourceTree = "<group>"; };
 		8987515720EE119F00E2B615 /* UBLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBLocationManager.m; sourceTree = "<group>"; };
 		8987515820EE119F00E2B615 /* UBLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBLocationManager.h; sourceTree = "<group>"; };
 		8987515A20EE119F00E2B615 /* HUBConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUBConstants.h; sourceTree = "<group>"; };
@@ -127,6 +114,10 @@
 		8987515D20EE119F00E2B615 /* HUBPermissions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUBPermissions.h; sourceTree = "<group>"; };
 		8987515F20EE119F00E2B615 /* UBKeyChain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBKeyChain.h; sourceTree = "<group>"; };
 		8987516020EE119F00E2B615 /* UBKeyChain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBKeyChain.m; sourceTree = "<group>"; };
+		8987519520EE1E8600E2B615 /* Ubcoin-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ubcoin-Prefix.pch"; sourceTree = "<group>"; };
+		8987519620EE23A100E2B615 /* UBWaitCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBWaitCell.h; sourceTree = "<group>"; };
+		8987519720EE23A100E2B615 /* UBWaitCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBWaitCell.m; sourceTree = "<group>"; };
+		8987519820EE23A100E2B615 /* UBWaitCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UBWaitCell.xib; sourceTree = "<group>"; };
 		899E217720E68D8A004D891B /* Ubcoin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ubcoin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		899E217A20E68D8A004D891B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		899E217B20E68D8A004D891B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -181,23 +172,21 @@
 		898750FB20EE119F00E2B615 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				8987514920EE119F00E2B615 /* Alert Table */,
+				8987514120EE119F00E2B615 /* AlertWindow */,
+				8987512020EE119F00E2B615 /* Buttons */,
+				8987513020EE119F00E2B615 /* CollectionViewFlow */,
+				8987514520EE119F00E2B615 /* Empty View */,
+				8987513E20EE119F00E2B615 /* HUBAttributedLabel */,
+				8987512D20EE119F00E2B615 /* HUBLabel */,
+				8987513B20EE119F00E2B615 /* MapView */,
 				898750FC20EE119F00E2B615 /* MigrationView */,
 				898750FF20EE119F00E2B615 /* NavigationBarView */,
+				8987513820EE119F00E2B615 /* Picker View */,
 				8987510320EE119F00E2B615 /* ScrollView */,
+				8987513320EE119F00E2B615 /* SwitchCollectionView */,
 				8987510620EE119F00E2B615 /* TableView */,
 				8987511D20EE119F00E2B615 /* TextView */,
-				8987512020EE119F00E2B615 /* Buttons */,
-				8987512320EE119F00E2B615 /* PullUpView */,
-				8987512A20EE119F00E2B615 /* Web View */,
-				8987512D20EE119F00E2B615 /* HUBLabel */,
-				8987513020EE119F00E2B615 /* CollectionViewFlow */,
-				8987513320EE119F00E2B615 /* SwitchCollectionView */,
-				8987513820EE119F00E2B615 /* Picker View */,
-				8987513B20EE119F00E2B615 /* MapView */,
-				8987513E20EE119F00E2B615 /* HUBAttributedLabel */,
-				8987514120EE119F00E2B615 /* AlertWindow */,
-				8987514520EE119F00E2B615 /* Empty View */,
-				8987514920EE119F00E2B615 /* Alert Table */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -205,8 +194,8 @@
 		898750FC20EE119F00E2B615 /* MigrationView */ = {
 			isa = PBXGroup;
 			children = (
-				898750FD20EE119F00E2B615 /* UBMigrationView.m */,
 				898750FE20EE119F00E2B615 /* UBMigrationView.h */,
+				898750FD20EE119F00E2B615 /* UBMigrationView.m */,
 			);
 			path = MigrationView;
 			sourceTree = "<group>";
@@ -214,9 +203,9 @@
 		898750FF20EE119F00E2B615 /* NavigationBarView */ = {
 			isa = PBXGroup;
 			children = (
-				8987510020EE119F00E2B615 /* HUBNavigationBarView.xib */,
 				8987510120EE119F00E2B615 /* HUBNavigationBarView.h */,
 				8987510220EE119F00E2B615 /* HUBNavigationBarView.m */,
+				8987510020EE119F00E2B615 /* HUBNavigationBarView.xib */,
 			);
 			path = NavigationBarView;
 			sourceTree = "<group>";
@@ -224,8 +213,8 @@
 		8987510320EE119F00E2B615 /* ScrollView */ = {
 			isa = PBXGroup;
 			children = (
-				8987510420EE119F00E2B615 /* HUBScrollView.m */,
 				8987510520EE119F00E2B615 /* HUBScrollView.h */,
+				8987510420EE119F00E2B615 /* HUBScrollView.m */,
 			);
 			path = ScrollView;
 			sourceTree = "<group>";
@@ -234,11 +223,11 @@
 			isa = PBXGroup;
 			children = (
 				8987510720EE119F00E2B615 /* Cells */,
-				8987510F20EE119F00E2B615 /* UBDefaultTableView.h */,
-				8987511020EE119F00E2B615 /* UBTableView.h */,
-				8987511120EE119F00E2B615 /* UBDefaultTableView.m */,
-				8987511220EE119F00E2B615 /* UBTableView.m */,
 				8987511320EE119F00E2B615 /* Header */,
+				8987510F20EE119F00E2B615 /* UBDefaultTableView.h */,
+				8987511120EE119F00E2B615 /* UBDefaultTableView.m */,
+				8987511020EE119F00E2B615 /* UBTableView.h */,
+				8987511220EE119F00E2B615 /* UBTableView.m */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -246,13 +235,16 @@
 		8987510720EE119F00E2B615 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				8987510C20EE119F00E2B615 /* HUBSystemAlertCell.h */,
+				8987510A20EE119F00E2B615 /* HUBSystemAlertCell.m */,
+				8987510E20EE119F00E2B615 /* HUBSystemAlertCell.xib */,
+				8987510B20EE119F00E2B615 /* UBDefaultTableViewCell.h */,
 				8987510820EE119F00E2B615 /* UBDefaultTableViewCell.m */,
 				8987510920EE119F00E2B615 /* UBSwitchTableViewCell.h */,
-				8987510A20EE119F00E2B615 /* HUBSystemAlertCell.m */,
-				8987510B20EE119F00E2B615 /* UBDefaultTableViewCell.h */,
-				8987510C20EE119F00E2B615 /* HUBSystemAlertCell.h */,
 				8987510D20EE119F00E2B615 /* UBSwitchTableViewCell.m */,
-				8987510E20EE119F00E2B615 /* HUBSystemAlertCell.xib */,
+				8987519620EE23A100E2B615 /* UBWaitCell.h */,
+				8987519720EE23A100E2B615 /* UBWaitCell.m */,
+				8987519820EE23A100E2B615 /* UBWaitCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -260,15 +252,15 @@
 		8987511320EE119F00E2B615 /* Header */ = {
 			isa = PBXGroup;
 			children = (
-				8987511420EE119F00E2B615 /* UBSectionHeaderView.xib */,
+				8987511A20EE119F00E2B615 /* UBExpandableTableViewSectionHeader.h */,
 				8987511520EE119F00E2B615 /* UBExpandableTableViewSectionHeader.m */,
 				8987511620EE119F00E2B615 /* UBExpandableTableViewSectionHeader.xib */,
-				8987511720EE119F00E2B615 /* UBTableHeaderView.m */,
 				8987511820EE119F00E2B615 /* UBSectionHeaderView.h */,
-				8987511920EE119F00E2B615 /* UBTableHeaderView.xib */,
-				8987511A20EE119F00E2B615 /* UBExpandableTableViewSectionHeader.h */,
 				8987511B20EE119F00E2B615 /* UBSectionHeaderView.m */,
+				8987511420EE119F00E2B615 /* UBSectionHeaderView.xib */,
 				8987511C20EE119F00E2B615 /* UBTableHeaderView.h */,
+				8987511720EE119F00E2B615 /* UBTableHeaderView.m */,
+				8987511920EE119F00E2B615 /* UBTableHeaderView.xib */,
 			);
 			path = Header;
 			sourceTree = "<group>";
@@ -276,8 +268,8 @@
 		8987511D20EE119F00E2B615 /* TextView */ = {
 			isa = PBXGroup;
 			children = (
-				8987511E20EE119F00E2B615 /* HUBTextView.m */,
 				8987511F20EE119F00E2B615 /* HUBTextView.h */,
+				8987511E20EE119F00E2B615 /* HUBTextView.m */,
 			);
 			path = TextView;
 			sourceTree = "<group>";
@@ -285,39 +277,17 @@
 		8987512020EE119F00E2B615 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
-				8987512120EE119F00E2B615 /* HUBGeneralButton.m */,
 				8987512220EE119F00E2B615 /* HUBGeneralButton.h */,
+				8987512120EE119F00E2B615 /* HUBGeneralButton.m */,
 			);
 			path = Buttons;
-			sourceTree = "<group>";
-		};
-		8987512320EE119F00E2B615 /* PullUpView */ = {
-			isa = PBXGroup;
-			children = (
-				8987512420EE119F00E2B615 /* ISHPullUpViewController.h */,
-				8987512520EE119F00E2B615 /* ISHPullUpHandleView.m */,
-				8987512620EE119F00E2B615 /* ISHPullUpRoundedView.h */,
-				8987512720EE119F00E2B615 /* ISHPullUpViewController.m */,
-				8987512820EE119F00E2B615 /* ISHPullUpRoundedView.m */,
-				8987512920EE119F00E2B615 /* ISHPullUpHandleView.h */,
-			);
-			path = PullUpView;
-			sourceTree = "<group>";
-		};
-		8987512A20EE119F00E2B615 /* Web View */ = {
-			isa = PBXGroup;
-			children = (
-				8987512B20EE119F00E2B615 /* UBWebViewInfoViewController.h */,
-				8987512C20EE119F00E2B615 /* UBWebViewInfoViewController.m */,
-			);
-			path = "Web View";
 			sourceTree = "<group>";
 		};
 		8987512D20EE119F00E2B615 /* HUBLabel */ = {
 			isa = PBXGroup;
 			children = (
-				8987512E20EE119F00E2B615 /* HUBLabel.m */,
 				8987512F20EE119F00E2B615 /* HUBLabel.h */,
+				8987512E20EE119F00E2B615 /* HUBLabel.m */,
 			);
 			path = HUBLabel;
 			sourceTree = "<group>";
@@ -334,9 +304,9 @@
 		8987513320EE119F00E2B615 /* SwitchCollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				8987513620EE119F00E2B615 /* UBCollectionViewSwitch.h */,
 				8987513420EE119F00E2B615 /* UBCollectionViewSwitch.m */,
 				8987513520EE119F00E2B615 /* UBCollectionViewSwitchContent.h */,
-				8987513620EE119F00E2B615 /* UBCollectionViewSwitch.h */,
 				8987513720EE119F00E2B615 /* UBCollectionViewSwitchContent.m */,
 			);
 			path = SwitchCollectionView;
@@ -345,8 +315,8 @@
 		8987513820EE119F00E2B615 /* Picker View */ = {
 			isa = PBXGroup;
 			children = (
-				8987513920EE119F00E2B615 /* UBPickerView.m */,
 				8987513A20EE119F00E2B615 /* UBPickerView.h */,
+				8987513920EE119F00E2B615 /* UBPickerView.m */,
 			);
 			path = "Picker View";
 			sourceTree = "<group>";
@@ -354,8 +324,8 @@
 		8987513B20EE119F00E2B615 /* MapView */ = {
 			isa = PBXGroup;
 			children = (
-				8987513C20EE119F00E2B615 /* HUBBaseMapView.m */,
 				8987513D20EE119F00E2B615 /* HUBBaseMapView.h */,
+				8987513C20EE119F00E2B615 /* HUBBaseMapView.m */,
 			);
 			path = MapView;
 			sourceTree = "<group>";
@@ -363,8 +333,8 @@
 		8987513E20EE119F00E2B615 /* HUBAttributedLabel */ = {
 			isa = PBXGroup;
 			children = (
-				8987513F20EE119F00E2B615 /* HUBAttributedLabel.m */,
 				8987514020EE119F00E2B615 /* HUBAttributedLabel.h */,
+				8987513F20EE119F00E2B615 /* HUBAttributedLabel.m */,
 			);
 			path = HUBAttributedLabel;
 			sourceTree = "<group>";
@@ -372,9 +342,9 @@
 		8987514120EE119F00E2B615 /* AlertWindow */ = {
 			isa = PBXGroup;
 			children = (
-				8987514220EE119F00E2B615 /* UBAlertWindow.xib */,
-				8987514320EE119F00E2B615 /* UBAlertWindow.m */,
 				8987514420EE119F00E2B615 /* UBAlertWindow.h */,
+				8987514320EE119F00E2B615 /* UBAlertWindow.m */,
+				8987514220EE119F00E2B615 /* UBAlertWindow.xib */,
 			);
 			path = AlertWindow;
 			sourceTree = "<group>";
@@ -392,8 +362,8 @@
 		8987514920EE119F00E2B615 /* Alert Table */ = {
 			isa = PBXGroup;
 			children = (
-				8987514A20EE119F00E2B615 /* UBAlertTableView.m */,
 				8987514B20EE119F00E2B615 /* UBAlertTableView.h */,
+				8987514A20EE119F00E2B615 /* UBAlertTableView.m */,
 			);
 			path = "Alert Table";
 			sourceTree = "<group>";
@@ -401,7 +371,6 @@
 		8987514C20EE119F00E2B615 /* HelpersClass */ = {
 			isa = PBXGroup;
 			children = (
-				8987515020EE119F00E2B615 /* TimeInterval */,
 				8987515620EE119F00E2B615 /* Location */,
 				8987515920EE119F00E2B615 /* Constants */,
 				8987515B20EE119F00E2B615 /* Permissions */,
@@ -410,20 +379,11 @@
 			path = HelpersClass;
 			sourceTree = "<group>";
 		};
-		8987515020EE119F00E2B615 /* TimeInterval */ = {
-			isa = PBXGroup;
-			children = (
-				8987515120EE119F00E2B615 /* UBTimeIntervalGeneration.h */,
-				8987515220EE119F00E2B615 /* UBTimeIntervalGeneration.m */,
-			);
-			path = TimeInterval;
-			sourceTree = "<group>";
-		};
 		8987515620EE119F00E2B615 /* Location */ = {
 			isa = PBXGroup;
 			children = (
-				8987515720EE119F00E2B615 /* UBLocationManager.m */,
 				8987515820EE119F00E2B615 /* UBLocationManager.h */,
+				8987515720EE119F00E2B615 /* UBLocationManager.m */,
 			);
 			path = Location;
 			sourceTree = "<group>";
@@ -439,8 +399,8 @@
 		8987515B20EE119F00E2B615 /* Permissions */ = {
 			isa = PBXGroup;
 			children = (
-				8987515C20EE119F00E2B615 /* HUBPermissions.m */,
 				8987515D20EE119F00E2B615 /* HUBPermissions.h */,
+				8987515C20EE119F00E2B615 /* HUBPermissions.m */,
 			);
 			path = Permissions;
 			sourceTree = "<group>";
@@ -480,6 +440,7 @@
 				899E217B20E68D8A004D891B /* AppDelegate.m */,
 				899E217D20E68D8A004D891B /* ViewController.h */,
 				899E217E20E68D8A004D891B /* ViewController.m */,
+				8987519520EE1E8600E2B615 /* Ubcoin-Prefix.pch */,
 				899E218020E68D8A004D891B /* Main.storyboard */,
 				899E218320E68D8C004D891B /* Assets.xcassets */,
 				899E218520E68D8C004D891B /* LaunchScreen.storyboard */,
@@ -500,6 +461,7 @@
 				899E217320E68D8A004D891B /* Sources */,
 				899E217420E68D8A004D891B /* Frameworks */,
 				899E217520E68D8A004D891B /* Resources */,
+				D7FBA2A30FBED1FB60A62674 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -553,6 +515,7 @@
 				8987517820EE119F00E2B615 /* UBTableHeaderView.xib in Resources */,
 				8987516B20EE119F00E2B615 /* HUBNavigationBarView.xib in Resources */,
 				8987518A20EE119F00E2B615 /* HUBEmptyView.xib in Resources */,
+				8987519A20EE23A100E2B615 /* UBWaitCell.xib in Resources */,
 				8987517420EE119F00E2B615 /* UBSectionHeaderView.xib in Resources */,
 				899E218720E68D8C004D891B /* LaunchScreen.storyboard in Resources */,
 				899E218420E68D8C004D891B /* Assets.xcassets in Resources */,
@@ -564,6 +527,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		D7FBA2A30FBED1FB60A62674 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Ubcoin/Pods-Ubcoin-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Ubcoin/Pods-Ubcoin-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		F9136AB4A7CDD4439AB8F29C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -591,7 +572,7 @@
 			files = (
 				8987518420EE119F00E2B615 /* UBPickerView.m in Sources */,
 				8987517920EE119F00E2B615 /* UBSectionHeaderView.m in Sources */,
-				8987517D20EE119F00E2B615 /* ISHPullUpViewController.m in Sources */,
+				8987519920EE23A100E2B615 /* UBWaitCell.m in Sources */,
 				8987517720EE119F00E2B615 /* UBTableHeaderView.m in Sources */,
 				8987517A20EE119F00E2B615 /* HUBTextView.m in Sources */,
 				8987518820EE119F00E2B615 /* UBAlertWindow.m in Sources */,
@@ -601,13 +582,10 @@
 				8987516E20EE119F00E2B615 /* UBDefaultTableViewCell.m in Sources */,
 				8987517B20EE119F00E2B615 /* HUBGeneralButton.m in Sources */,
 				899E217F20E68D8A004D891B /* ViewController.m in Sources */,
-				8987518D20EE119F00E2B615 /* UBTimeIntervalGeneration.m in Sources */,
 				8987518920EE119F00E2B615 /* HUBEmptyView.m in Sources */,
-				8987517C20EE119F00E2B615 /* ISHPullUpHandleView.m in Sources */,
 				8987518020EE119F00E2B615 /* HUBLabel.m in Sources */,
 				8987517320EE119F00E2B615 /* UBTableView.m in Sources */,
 				8987518620EE119F00E2B615 /* HUBAttributedLabel.m in Sources */,
-				8987517F20EE119F00E2B615 /* UBWebViewInfoViewController.m in Sources */,
 				8987518B20EE119F00E2B615 /* UBAlertTableView.m in Sources */,
 				8987518320EE119F00E2B615 /* UBCollectionViewSwitchContent.m in Sources */,
 				8987519120EE119F00E2B615 /* UBKeyChain.m in Sources */,
@@ -617,7 +595,6 @@
 				8987518120EE119F00E2B615 /* HUBSpringyCollectionViewFlowLayout.m in Sources */,
 				8987518220EE119F00E2B615 /* UBCollectionViewSwitch.m in Sources */,
 				8987516D20EE119F00E2B615 /* HUBScrollView.m in Sources */,
-				8987517E20EE119F00E2B615 /* ISHPullUpRoundedView.m in Sources */,
 				8987516C20EE119F00E2B615 /* HUBNavigationBarView.m in Sources */,
 				8987518F20EE119F00E2B615 /* UBLocationManager.m in Sources */,
 				8987517220EE119F00E2B615 /* UBDefaultTableView.m in Sources */,
@@ -765,6 +742,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SWEX2R635A;
+				GCC_PREFIX_HEADER = "Ubcoin/Ubcoin-Prefix.pch";
 				INFOPLIST_FILE = Ubcoin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -783,6 +761,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SWEX2R635A;
+				GCC_PREFIX_HEADER = "Ubcoin/Ubcoin-Prefix.pch";
 				INFOPLIST_FILE = Ubcoin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
