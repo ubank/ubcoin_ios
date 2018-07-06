@@ -10,4 +10,8 @@
 
 @interface UBCDataProvider : NSObject
 
+@property (class, nonatomic, readonly) UBCDataProvider *sharedProvider;
+
+- (void)goodsListWithPageNumber:(NSUInteger)page withCompletionBlock:(void (^)(BOOL success, NSArray *goods, BOOL canLoadMore))completionBlock;
+
 @end
