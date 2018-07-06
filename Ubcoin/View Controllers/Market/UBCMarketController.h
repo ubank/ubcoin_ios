@@ -8,6 +8,6 @@
 
 #import "UBViewController.h"
 
-@interface UBCMainController : UBViewController
+@interface UBCMarketController : UBViewController
 
 @end

@@ -9,7 +9,7 @@
 #import "UBCTabBarController.h"
 #import "UBCChatController.h"
 #import "UBCFavouritesController.h"
-#import "UBCMainController.h"
+#import "UBCMarketController.h"
 #import "UBCSellController.h"
 #import "UBCLoginController.h"
 #import "AppDelegate.h"
@@ -41,7 +41,7 @@
 
 - (NSArray *)nonAuthorizedViewControllers
 {
-    UBCMainController *viewController1 = UBCMainController.new;
+    UBCMarketController *viewController1 = UBCMarketController.new;
     viewController1.tabBarItem.title = @"Market";
     viewController1.tabBarItem.image = [UIImage imageNamed:@"tab_bar_market"];
     
