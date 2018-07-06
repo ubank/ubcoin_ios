@@ -8,11 +8,12 @@
 
 #import "UBCMarketController.h"
 #import "UBCFiltersListController.h"
+#import "UBCGoodsCollectionView.h"
 
-@interface UBCMarketController () <UISearchControllerDelegate, UISearchBarDelegate>
+@interface UBCMarketController () <UISearchControllerDelegate, UISearchBarDelegate, UBCGoodsCollectionViewDelegate>
 
 @property (strong, nonatomic) UISearchController *searchController;
-@property (strong, nonatomic) UICollectionView *collectionView;
+@property (strong, nonatomic) UBCGoodsCollectionView *collectionView;
 
 @end
 
@@ -30,7 +31,10 @@
 
 - (void)setupCollectionView
 {
-    
+    self.collectionView = UBCGoodsCollectionView.new;
+    self.collectionView.actionsDelegate = self;
+    [self.view addSubview:self.collectionView];
+    [self.view addConstraintsToFillSubview:self.collectionView];
 }
 
 - (void)setupSearch
@@ -45,7 +49,7 @@
     self.searchController.searchBar.layer.borderColor = UIColor.whiteColor.CGColor;
     self.searchController.searchBar.placeholder = UBLocalizedString(@"str_find_store", nil);
     self.searchController.searchBar.returnKeyType = UIReturnKeyDone;
-//    [self.scroll addSubview:self.searchController.searchBar];
+    [self.collectionView addSubview:self.searchController.searchBar];
     
     [self.searchController.searchBar sizeToFit];
     
@@ -104,6 +108,13 @@
 }
 
 - (void)didDismissSearchController:(UISearchController *)searchController
+{
+    
+}
+
+#pragma mark - UBCGoodsCollectionViewDelegate
+
+- (void)didSelectItem:(UBCGoodDM *)item
 {
     
 }

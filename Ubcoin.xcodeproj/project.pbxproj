@@ -54,6 +54,10 @@
 		898751CB20EE6AEA00E2B615 /* UBCURLProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 898751CA20EE6AEA00E2B615 /* UBCURLProvider.m */; };
 		898751CE20EE6D7600E2B615 /* UBCDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 898751CD20EE6D7600E2B615 /* UBCDataProvider.m */; };
 		898751D220EF9B1200E2B615 /* UBCFiltersListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 898751D120EF9B1200E2B615 /* UBCFiltersListController.m */; };
+		898751D620EFBE4900E2B615 /* UBCGoodsCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 898751D520EFBE4900E2B615 /* UBCGoodsCollectionView.m */; };
+		898751DB20EFC1AD00E2B615 /* UBCGoodDM.m in Sources */ = {isa = PBXBuildFile; fileRef = 898751DA20EFC1AD00E2B615 /* UBCGoodDM.m */; };
+		898751DF20EFC70100E2B615 /* UBCGoodCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 898751DD20EFC70100E2B615 /* UBCGoodCell.m */; };
+		898751E020EFC70100E2B615 /* UBCGoodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 898751DE20EFC70100E2B615 /* UBCGoodCell.xib */; };
 		899E217C20E68D8A004D891B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 899E217B20E68D8A004D891B /* AppDelegate.m */; };
 		899E218420E68D8C004D891B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 899E218320E68D8C004D891B /* Assets.xcassets */; };
 		899E218720E68D8C004D891B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 899E218520E68D8C004D891B /* LaunchScreen.storyboard */; };
@@ -149,6 +153,13 @@
 		898751CD20EE6D7600E2B615 /* UBCDataProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCDataProvider.m; sourceTree = "<group>"; };
 		898751D020EF9B1200E2B615 /* UBCFiltersListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCFiltersListController.h; sourceTree = "<group>"; };
 		898751D120EF9B1200E2B615 /* UBCFiltersListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCFiltersListController.m; sourceTree = "<group>"; };
+		898751D420EFBE4900E2B615 /* UBCGoodsCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCGoodsCollectionView.h; sourceTree = "<group>"; };
+		898751D520EFBE4900E2B615 /* UBCGoodsCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCGoodsCollectionView.m; sourceTree = "<group>"; };
+		898751D920EFC1AD00E2B615 /* UBCGoodDM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCGoodDM.h; sourceTree = "<group>"; };
+		898751DA20EFC1AD00E2B615 /* UBCGoodDM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCGoodDM.m; sourceTree = "<group>"; };
+		898751DC20EFC70100E2B615 /* UBCGoodCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCGoodCell.h; sourceTree = "<group>"; };
+		898751DD20EFC70100E2B615 /* UBCGoodCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCGoodCell.m; sourceTree = "<group>"; };
+		898751DE20EFC70100E2B615 /* UBCGoodCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCGoodCell.xib; sourceTree = "<group>"; };
 		899E217720E68D8A004D891B /* Ubcoin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ubcoin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		899E217A20E68D8A004D891B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		899E217B20E68D8A004D891B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -467,6 +478,8 @@
 		898751A020EE2B1400E2B615 /* Market */ = {
 			isa = PBXGroup;
 			children = (
+				898751D820EFC19600E2B615 /* DM */,
+				898751D320EFBE1C00E2B615 /* View */,
 				898751CF20EF9AEE00E2B615 /* Filters */,
 				898751AB20EE2BF900E2B615 /* UBCMarketController.h */,
 				898751AC20EE2BF900E2B615 /* UBCMarketController.m */,
@@ -548,6 +561,35 @@
 				898751D120EF9B1200E2B615 /* UBCFiltersListController.m */,
 			);
 			path = Filters;
+			sourceTree = "<group>";
+		};
+		898751D320EFBE1C00E2B615 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				898751D720EFC07B00E2B615 /* Cell */,
+				898751D420EFBE4900E2B615 /* UBCGoodsCollectionView.h */,
+				898751D520EFBE4900E2B615 /* UBCGoodsCollectionView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		898751D720EFC07B00E2B615 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				898751DC20EFC70100E2B615 /* UBCGoodCell.h */,
+				898751DD20EFC70100E2B615 /* UBCGoodCell.m */,
+				898751DE20EFC70100E2B615 /* UBCGoodCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		898751D820EFC19600E2B615 /* DM */ = {
+			isa = PBXGroup;
+			children = (
+				898751D920EFC1AD00E2B615 /* UBCGoodDM.h */,
+				898751DA20EFC1AD00E2B615 /* UBCGoodDM.m */,
+			);
+			path = DM;
 			sourceTree = "<group>";
 		};
 		899E216E20E68D8A004D891B = {
@@ -654,6 +696,7 @@
 				8987517420EE119F00E2B615 /* UBSectionHeaderView.xib in Resources */,
 				899E218720E68D8C004D891B /* LaunchScreen.storyboard in Resources */,
 				899E218420E68D8C004D891B /* Assets.xcassets in Resources */,
+				898751E020EFC70100E2B615 /* UBCGoodCell.xib in Resources */,
 				8987517620EE119F00E2B615 /* UBExpandableTableViewSectionHeader.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -724,9 +767,11 @@
 				898751CB20EE6AEA00E2B615 /* UBCURLProvider.m in Sources */,
 				8987517320EE119F00E2B615 /* UBTableView.m in Sources */,
 				8987518620EE119F00E2B615 /* HUBAttributedLabel.m in Sources */,
+				898751D620EFBE4900E2B615 /* UBCGoodsCollectionView.m in Sources */,
 				8987518B20EE119F00E2B615 /* UBAlertTableView.m in Sources */,
 				8987518320EE119F00E2B615 /* UBCollectionViewSwitchContent.m in Sources */,
 				8987519F20EE2A8B00E2B615 /* UBCTabBarController.m in Sources */,
+				898751DB20EFC1AD00E2B615 /* UBCGoodDM.m in Sources */,
 				8987516F20EE119F00E2B615 /* HUBSystemAlertCell.m in Sources */,
 				898751D220EF9B1200E2B615 /* UBCFiltersListController.m in Sources */,
 				8987518520EE119F00E2B615 /* HUBBaseMapView.m in Sources */,
@@ -740,6 +785,7 @@
 				899E217C20E68D8A004D891B /* AppDelegate.m in Sources */,
 				898751AA20EE2BDD00E2B615 /* UBCFavouritesController.m in Sources */,
 				898751C020EE618B00E2B615 /* UBConnectionProvider.m in Sources */,
+				898751DF20EFC70100E2B615 /* UBCGoodCell.m in Sources */,
 				8987517520EE119F00E2B615 /* UBExpandableTableViewSectionHeader.m in Sources */,
 				898751C820EE65C000E2B615 /* UBCKeyChain.m in Sources */,
 				898751B020EE2C1200E2B615 /* UBCSellController.m in Sources */,
