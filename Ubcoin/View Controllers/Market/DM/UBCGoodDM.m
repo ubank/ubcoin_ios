@@ -20,6 +20,7 @@
         _desc = dict[@"description"];
         _locationText = dict[@"locationText"];
         _price = dict[@"price"];
+        _isFavorite = dict[@"is_favorite"];
         _creationDate = [NSDate dateFromISO8601String:dict[@"createdDate"]];
         _images = dict[@"images"];
     }

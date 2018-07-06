@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#define COLLECTION_CELL_HEIGHT 220
+
 @class UBCGoodDM;
 @interface UBCGoodCell : UICollectionViewCell
 

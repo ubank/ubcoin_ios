@@ -12,11 +12,15 @@
 @protocol UBCGoodsCollectionViewDelegate
 
 - (void)didSelectItem:(UBCGoodDM *)item;
+- (void)refreshControlUpdate;
+- (void)updatePagination;
 
 @end
 
-@interface UBCGoodsCollectionView : UICollectionView
+@interface UBCGoodsCollectionView : UICollectionView <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
-@property (weak, nonatomic) id<UBCGoodsCollectionViewDelegate> actionsDelegate;
+@property (weak, nonatomic) IBOutlet id<UBCGoodsCollectionViewDelegate> actionsDelegate;
+@property (strong, nonatomic) NSArray<UBCGoodDM *> *items;
+@property (assign, nonatomic) BOOL canLoadMore;
 
 @end

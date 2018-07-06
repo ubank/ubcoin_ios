@@ -16,6 +16,7 @@
 @property (readonly, nonatomic) NSString *locationText;
 @property (readonly, nonatomic) NSNumber *price;
 @property (readonly, nonatomic) NSDate *creationDate;
+@property (readonly, nonatomic) BOOL isFavorite;
 @property (readonly, nonatomic) NSArray *images;
 
 //@property (readonly, nonatomic) UBCUserDM *seller;

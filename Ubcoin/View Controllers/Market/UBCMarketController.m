@@ -47,7 +47,7 @@
     self.searchController.searchBar.barTintColor = UIColor.whiteColor;
     self.searchController.searchBar.layer.borderWidth = 1;
     self.searchController.searchBar.layer.borderColor = UIColor.whiteColor.CGColor;
-    self.searchController.searchBar.placeholder = UBLocalizedString(@"str_find_store", nil);
+    self.searchController.searchBar.placeholder = @"I'm looking for...";
     self.searchController.searchBar.returnKeyType = UIReturnKeyDone;
     [self.collectionView addSubview:self.searchController.searchBar];
     
@@ -115,6 +115,16 @@
 #pragma mark - UBCGoodsCollectionViewDelegate
 
 - (void)didSelectItem:(UBCGoodDM *)item
+{
+    
+}
+
+- (void)updatePagination
+{
+    
+}
+
+- (void)refreshControlUpdate
 {
     
 }

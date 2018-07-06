@@ -62,6 +62,8 @@
 		899E218420E68D8C004D891B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 899E218320E68D8C004D891B /* Assets.xcassets */; };
 		899E218720E68D8C004D891B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 899E218520E68D8C004D891B /* LaunchScreen.storyboard */; };
 		899E218A20E68D8C004D891B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 899E218920E68D8C004D891B /* main.m */; };
+		89CB110E20EFCDA500729C95 /* HUBCollectionViewWaitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89CB110C20EFCDA500729C95 /* HUBCollectionViewWaitCell.xib */; };
+		89CB110F20EFCDA500729C95 /* HUBCollectionViewWaitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CB110D20EFCDA500729C95 /* HUBCollectionViewWaitCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -167,6 +169,9 @@
 		899E218620E68D8C004D891B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		899E218820E68D8C004D891B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		899E218920E68D8C004D891B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		89CB110B20EFCDA500729C95 /* HUBCollectionViewWaitCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUBCollectionViewWaitCell.h; sourceTree = "<group>"; };
+		89CB110C20EFCDA500729C95 /* HUBCollectionViewWaitCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HUBCollectionViewWaitCell.xib; sourceTree = "<group>"; };
+		89CB110D20EFCDA500729C95 /* HUBCollectionViewWaitCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUBCollectionViewWaitCell.m; sourceTree = "<group>"; };
 		8F66F2801638A68DF9CA576B /* Pods-Ubcoin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ubcoin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ubcoin/Pods-Ubcoin.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -214,8 +219,9 @@
 				8987514920EE119F00E2B615 /* Alert Table */,
 				8987514120EE119F00E2B615 /* AlertWindow */,
 				8987512020EE119F00E2B615 /* Buttons */,
+				8987514520EE119F00E2B615 /* Collection View */,
 				8987513020EE119F00E2B615 /* CollectionViewFlow */,
-				8987514520EE119F00E2B615 /* Empty View */,
+				898751E220EFCB6B00E2B615 /* Empty View */,
 				8987513E20EE119F00E2B615 /* HUBAttributedLabel */,
 				8987512D20EE119F00E2B615 /* HUBLabel */,
 				8987513B20EE119F00E2B615 /* MapView */,
@@ -388,14 +394,12 @@
 			path = AlertWindow;
 			sourceTree = "<group>";
 		};
-		8987514520EE119F00E2B615 /* Empty View */ = {
+		8987514520EE119F00E2B615 /* Collection View */ = {
 			isa = PBXGroup;
 			children = (
-				8987514620EE119F00E2B615 /* HUBEmptyView.h */,
-				8987514720EE119F00E2B615 /* HUBEmptyView.m */,
-				8987514820EE119F00E2B615 /* HUBEmptyView.xib */,
+				898751E320EFCB7A00E2B615 /* Wait cell */,
 			);
-			path = "Empty View";
+			path = "Collection View";
 			sourceTree = "<group>";
 		};
 		8987514920EE119F00E2B615 /* Alert Table */ = {
@@ -592,6 +596,26 @@
 			path = DM;
 			sourceTree = "<group>";
 		};
+		898751E220EFCB6B00E2B615 /* Empty View */ = {
+			isa = PBXGroup;
+			children = (
+				8987514620EE119F00E2B615 /* HUBEmptyView.h */,
+				8987514720EE119F00E2B615 /* HUBEmptyView.m */,
+				8987514820EE119F00E2B615 /* HUBEmptyView.xib */,
+			);
+			path = "Empty View";
+			sourceTree = "<group>";
+		};
+		898751E320EFCB7A00E2B615 /* Wait cell */ = {
+			isa = PBXGroup;
+			children = (
+				89CB110B20EFCDA500729C95 /* HUBCollectionViewWaitCell.h */,
+				89CB110D20EFCDA500729C95 /* HUBCollectionViewWaitCell.m */,
+				89CB110C20EFCDA500729C95 /* HUBCollectionViewWaitCell.xib */,
+			);
+			path = "Wait cell";
+			sourceTree = "<group>";
+		};
 		899E216E20E68D8A004D891B = {
 			isa = PBXGroup;
 			children = (
@@ -692,6 +716,7 @@
 				8987517820EE119F00E2B615 /* UBTableHeaderView.xib in Resources */,
 				8987516B20EE119F00E2B615 /* HUBNavigationBarView.xib in Resources */,
 				8987518A20EE119F00E2B615 /* HUBEmptyView.xib in Resources */,
+				89CB110E20EFCDA500729C95 /* HUBCollectionViewWaitCell.xib in Resources */,
 				8987519A20EE23A100E2B615 /* UBWaitCell.xib in Resources */,
 				8987517420EE119F00E2B615 /* UBSectionHeaderView.xib in Resources */,
 				899E218720E68D8C004D891B /* LaunchScreen.storyboard in Resources */,
@@ -776,6 +801,7 @@
 				898751D220EF9B1200E2B615 /* UBCFiltersListController.m in Sources */,
 				8987518520EE119F00E2B615 /* HUBBaseMapView.m in Sources */,
 				899E218A20E68D8C004D891B /* main.m in Sources */,
+				89CB110F20EFCDA500729C95 /* HUBCollectionViewWaitCell.m in Sources */,
 				8987518120EE119F00E2B615 /* HUBSpringyCollectionViewFlowLayout.m in Sources */,
 				8987518220EE119F00E2B615 /* UBCollectionViewSwitch.m in Sources */,
 				8987516D20EE119F00E2B615 /* HUBScrollView.m in Sources */,
