@@ -8,15 +8,20 @@
 
 import UIKit
 
-class UBCSellController: UIViewController {
+class UBCSellController: UBViewController {
     
     var content = [UBTableViewSectionData]()
     
     private(set) lazy var tableView: UBTableView = { [unowned self] in
-        let tableView = UBTableView()
+        let tableView = UBTableView(frame: .zero, style: .grouped)
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.separatorStyle = .none
+        
+        tableView.register(UBCSPhotoTableViewCell.self, forCellReuseIdentifier: UBCSPhotoTableViewCell.className)
+        tableView.register(UBCSTextFieldTableViewCell.self, forCellReuseIdentifier: UBCSTextFieldTableViewCell.className)
+        tableView.register(UBCSSelectionTableViewCell.self, forCellReuseIdentifier: UBCSSelectionTableViewCell.className)
         
         return tableView
     }()
@@ -24,9 +29,9 @@ class UBCSellController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.setupViews()
-        
         self.content = UBCSellDM.sellActions()
+
+        self.setupViews()
     }
 
     func setupViews() {
@@ -48,7 +53,45 @@ extension UBCSellController: UITableViewDataSource, UITableViewDelegate {
         return section.rows.count
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        let section = content[section]
+        
+        return section.headerHeight
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let section = content[section]
+        
+        return section.headerTitle
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return ZERO_HEIGHT
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let section = content[indexPath.section]
+        guard let row = section.rows[indexPath.row] as? UBCSellCellDM else { return ZERO_HEIGHT }
+        
+        return row.height
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let section = content[indexPath.section]
+        guard let row = section.rows[indexPath.row] as? UBCSellCellDM else { return UITableViewCell() }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: row.className) as? UBTableViewCell
+        
+        cell?.showBottomSeparator = !self.tableView.isLast(indexPath)
+        
+        return cell != nil ? cell! : UBTableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print()
     }
 }

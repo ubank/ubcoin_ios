@@ -13,6 +13,8 @@
 		1CFFFE6A20F0CD3F003B5AD9 /* UBCSellDM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFFFE6920F0CD3F003B5AD9 /* UBCSellDM.swift */; };
 		1CFFFE7E20F230A9003B5AD9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFFFE7A20F230A9003B5AD9 /* main.m */; };
 		1CFFFE6C20F0D0F8003B5AD9 /* UBCSellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFFFE6B20F0D0F8003B5AD9 /* UBCSellController.swift */; };
+		1CFFFE6E20F0DD28003B5AD9 /* UBCSTextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFFFE6D20F0DD28003B5AD9 /* UBCSTextFieldTableViewCell.swift */; };
+		1CFFFE7020F0E204003B5AD9 /* UBCSSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFFFE6F20F0E204003B5AD9 /* UBCSSelectionTableViewCell.swift */; };
 		30A0668C891003DF59D2BECC /* libPods-Ubcoin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DD3B2DB73F06ACB93DC3B9 /* libPods-Ubcoin.a */; };
 		8987516A20EE119F00E2B615 /* UBMigrationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 898750FD20EE119F00E2B615 /* UBMigrationView.m */; };
 		8987516B20EE119F00E2B615 /* HUBNavigationBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8987510020EE119F00E2B615 /* HUBNavigationBarView.xib */; };
@@ -84,6 +86,8 @@
 		1CFFFE7A20F230A9003B5AD9 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1CFFFE6B20F0D0F8003B5AD9 /* UBCSellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCSellController.swift; sourceTree = "<group>"; };
 		1CFFFE7B20F230A9003B5AD9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1CFFFE6D20F0DD28003B5AD9 /* UBCSTextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCSTextFieldTableViewCell.swift; sourceTree = "<group>"; };
+		1CFFFE6F20F0E204003B5AD9 /* UBCSSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCSSelectionTableViewCell.swift; sourceTree = "<group>"; };
 		8133FFCED3512BADEB40D574 /* Pods-Ubcoin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ubcoin.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ubcoin/Pods-Ubcoin.release.xcconfig"; sourceTree = "<group>"; };
 		82DD3B2DB73F06ACB93DC3B9 /* libPods-Ubcoin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Ubcoin.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		898750FD20EE119F00E2B615 /* UBMigrationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBMigrationView.m; sourceTree = "<group>"; };
@@ -232,6 +236,8 @@
 			isa = PBXGroup;
 			children = (
 				1CFFFE6320F0CB3E003B5AD9 /* UBCSPhotoTableViewCell.swift */,
+				1CFFFE6D20F0DD28003B5AD9 /* UBCSTextFieldTableViewCell.swift */,
+				1CFFFE6F20F0E204003B5AD9 /* UBCSSelectionTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -891,11 +897,13 @@
 				89CB110F20EFCDA500729C95 /* HUBCollectionViewWaitCell.m in Sources */,
 				1CFFFE6420F0CB3E003B5AD9 /* UBCSPhotoTableViewCell.swift in Sources */,
 				8987518120EE119F00E2B615 /* HUBSpringyCollectionViewFlowLayout.m in Sources */,
+				1CFFFE7020F0E204003B5AD9 /* UBCSSelectionTableViewCell.swift in Sources */,
 				8987518220EE119F00E2B615 /* UBCollectionViewSwitch.m in Sources */,
 				8987516D20EE119F00E2B615 /* HUBScrollView.m in Sources */,
 				89F16A7520F2C65D001AA440 /* UBCMarketController.m in Sources */,
 				8987516C20EE119F00E2B615 /* HUBNavigationBarView.m in Sources */,
 				8987518F20EE119F00E2B615 /* UBLocationManager.m in Sources */,
+				1CFFFE6E20F0DD28003B5AD9 /* UBCSTextFieldTableViewCell.swift in Sources */,
 				8987517220EE119F00E2B615 /* UBDefaultTableView.m in Sources */,
 				899E217C20E68D8A004D891B /* UBCAppDelegate.m in Sources */,
 				89F16A6F20F2C65D001AA440 /* UBCDiscountCollectionViewCell.m in Sources */,

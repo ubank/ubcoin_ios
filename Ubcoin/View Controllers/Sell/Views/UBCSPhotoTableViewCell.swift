@@ -8,6 +8,7 @@
 
 import UIKit
 
-class UBCSPhotoTableViewCell: UITableViewCell {
+class UBCSPhotoTableViewCell: UBTableViewCell {
     
+    static let className = String(describing: UBCSPhotoTableViewCell.self)
 }

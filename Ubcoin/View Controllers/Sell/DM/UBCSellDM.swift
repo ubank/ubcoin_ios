@@ -18,7 +18,9 @@ class UBCSellDM: NSObject {
         
         let photoSection = UBTableViewSectionData()
         photoSection.headerHeight = SEPARATOR_HEIGHT
-        let photos = UBCSellCellDM(type: .photo)
+        photoSection.headerTitle = " "
+        var photos = UBCSellCellDM(type: .photo)
+        photos.height = 95
         photoSection.rows = [photos]
         sections.append(photoSection)
         
@@ -51,6 +53,21 @@ class UBCSellDM: NSObject {
 
 struct UBCSellCellDM {
     var type: UBCSellCellType
+    var height: CGFloat
+    var className: String
+    
+    init(type: UBCSellCellType) {
+        self.type = type
+        self.height = type == .photo ? 95 : 65
+        
+        if type == .photo {
+            self.className = UBCSPhotoTableViewCell.className
+        } else if type == .category || type == .location {
+            self.className = UBCSSelectionTableViewCell.className
+        } else {
+            self.className = UBCSTextFieldTableViewCell.className
+        }
+    }
 }
 
 enum UBCSellCellType {
