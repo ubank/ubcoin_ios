@@ -56,6 +56,8 @@ struct UBCSellCellDM {
     var height: CGFloat
     var className: String
     
+    var data: Any?
+    
     init(type: UBCSellCellType) {
         self.type = type
         self.height = type == .photo ? 95 : 65
@@ -77,4 +79,8 @@ enum UBCSellCellType {
     case price
     case desc
     case location
+}
+
+protocol UBCSellCellProtocol {
+    func setContent(content: UBCSellCellDM)
 }

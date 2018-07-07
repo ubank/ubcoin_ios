@@ -12,3 +12,11 @@ class UBCSSelectionTableViewCell: UBTableViewCell {
 
     static let className = String(describing: UBCSSelectionTableViewCell.self)
 }
+
+
+extension UBCSSelectionTableViewCell: UBCSellCellProtocol {
+    
+    func setContent(content: UBCSellCellDM) {
+        
+    }
+}

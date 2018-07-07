@@ -12,3 +12,11 @@ class UBCSTextFieldTableViewCell: UBTableViewCell {
 
     static let className = String(describing: UBCSTextFieldTableViewCell.self)
 }
+
+
+extension UBCSTextFieldTableViewCell: UBCSellCellProtocol {
+    
+    func setContent(content: UBCSellCellDM) {
+        
+    }
+}
