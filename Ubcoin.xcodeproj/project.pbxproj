@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1CFFFE7C20F230A9003B5AD9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CFFFE7820F230A9003B5AD9 /* LaunchScreen.storyboard */; };
 		1CFFFE7D20F230A9003B5AD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CFFFE7920F230A9003B5AD9 /* Assets.xcassets */; };
+		1CFFFE6420F0CB3E003B5AD9 /* UBCSPhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFFFE6320F0CB3E003B5AD9 /* UBCSPhotoTableViewCell.swift */; };
+		1CFFFE6A20F0CD3F003B5AD9 /* UBCSellDM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFFFE6920F0CD3F003B5AD9 /* UBCSellDM.swift */; };
 		1CFFFE7E20F230A9003B5AD9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFFFE7A20F230A9003B5AD9 /* main.m */; };
 		30A0668C891003DF59D2BECC /* libPods-Ubcoin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DD3B2DB73F06ACB93DC3B9 /* libPods-Ubcoin.a */; };
 		8987516A20EE119F00E2B615 /* UBMigrationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 898750FD20EE119F00E2B615 /* UBMigrationView.m */; };
@@ -76,6 +78,9 @@
 		1CFFFE7720F230A9003B5AD9 /* Ubcoin-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Ubcoin-Prefix.pch"; sourceTree = "<group>"; };
 		1CFFFE7820F230A9003B5AD9 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1CFFFE7920F230A9003B5AD9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1CFFFE6320F0CB3E003B5AD9 /* UBCSPhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCSPhotoTableViewCell.swift; sourceTree = "<group>"; };
+		1CFFFE6520F0CB65003B5AD9 /* Ubcoin-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Ubcoin-Bridging-Header.h"; sourceTree = "<group>"; };
+		1CFFFE6920F0CD3F003B5AD9 /* UBCSellDM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UBCSellDM.swift; sourceTree = "<group>"; };
 		1CFFFE7A20F230A9003B5AD9 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1CFFFE7B20F230A9003B5AD9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8133FFCED3512BADEB40D574 /* Pods-Ubcoin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ubcoin.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ubcoin/Pods-Ubcoin.release.xcconfig"; sourceTree = "<group>"; };
@@ -221,6 +226,23 @@
 				1CFFFE7720F230A9003B5AD9 /* Ubcoin-Prefix.pch */,
 			);
 			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+
+		1CFFFE6120F0CB12003B5AD9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1CFFFE6320F0CB3E003B5AD9 /* UBCSPhotoTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1CFFFE6820F0CD3F003B5AD9 /* DM */ = {
+			isa = PBXGroup;
+			children = (
+				1CFFFE6920F0CD3F003B5AD9 /* UBCSellDM.swift */,
+			);
+			path = DM;
 			sourceTree = "<group>";
 		};
 		2CC015D4581DA6B90D45AD31 /* Pods */ = {
@@ -537,6 +559,8 @@
 		898751A420EE2B5000E2B615 /* Sell */ = {
 			isa = PBXGroup;
 			children = (
+				1CFFFE6820F0CD3F003B5AD9 /* DM */,
+				1CFFFE6120F0CB12003B5AD9 /* Views */,
 				898751AE20EE2C1200E2B615 /* UBCSellController.h */,
 				898751AF20EE2C1200E2B615 /* UBCSellController.m */,
 			);
@@ -621,6 +645,7 @@
 				899E217A20E68D8A004D891B /* UBCAppDelegate.h */,
 				899E217B20E68D8A004D891B /* UBCAppDelegate.m */,
 				1CFFFE7620F230A9003B5AD9 /* SupportingFiles */,
+				1CFFFE6520F0CB65003B5AD9 /* Ubcoin-Bridging-Header.h */,
 			);
 			path = Ubcoin;
 			sourceTree = "<group>";
@@ -743,6 +768,7 @@
 				TargetAttributes = {
 					899E217620E68D8A004D891B = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -861,8 +887,10 @@
 				1CFFFE7E20F230A9003B5AD9 /* main.m in Sources */,
 				8987516F20EE119F00E2B615 /* HUBSystemAlertCell.m in Sources */,
 				89F16A6A20F2C65D001AA440 /* UBCFiltersListController.m in Sources */,
+				1CFFFE6A20F0CD3F003B5AD9 /* UBCSellDM.swift in Sources */,
 				8987518520EE119F00E2B615 /* HUBBaseMapView.m in Sources */,
 				89CB110F20EFCDA500729C95 /* HUBCollectionViewWaitCell.m in Sources */,
+				1CFFFE6420F0CB3E003B5AD9 /* UBCSPhotoTableViewCell.swift in Sources */,
 				8987518120EE119F00E2B615 /* HUBSpringyCollectionViewFlowLayout.m in Sources */,
 				8987518220EE119F00E2B615 /* UBCollectionViewSwitch.m in Sources */,
 				8987516D20EE119F00E2B615 /* HUBScrollView.m in Sources */,
@@ -1001,6 +1029,7 @@
 			baseConfigurationReference = 8F66F2801638A68DF9CA576B /* Pods-Ubcoin.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SWEX2R635A;
 				GCC_PREFIX_HEADER = "Ubcoin/SupportingFiles/Ubcoin-Prefix.pch";
@@ -1011,6 +1040,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ubcoin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Ubcoin/View Controllers/Sell/Views/Ubcoin-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1020,6 +1052,7 @@
 			baseConfigurationReference = 8133FFCED3512BADEB40D574 /* Pods-Ubcoin.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SWEX2R635A;
 				GCC_PREFIX_HEADER = "Ubcoin/SupportingFiles/Ubcoin-Prefix.pch";
@@ -1030,6 +1063,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ubcoin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Ubcoin/View Controllers/Sell/Views/Ubcoin-Bridging-Header.h";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

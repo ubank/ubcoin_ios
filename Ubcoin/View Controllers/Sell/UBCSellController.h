@@ -6,8 +6,6 @@
 //  Copyright © 2018 UBANK. All rights reserved.
 //
 
-#import "UBViewController.h"
-
 @interface UBCSellController : UBViewController
 
 @end

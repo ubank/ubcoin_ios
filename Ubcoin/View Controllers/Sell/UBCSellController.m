@@ -8,30 +8,53 @@
 
 #import "UBCSellController.h"
 
-@interface UBCSellController ()
+@interface UBCSellController () <UITableViewDataSource, UITableViewDelegate>
+
+@property (strong, nonatomic) UBTableView *tableView;
 
 @end
 
+
 @implementation UBCSellController
 
-- (void)viewDidLoad {
+#pragma mark - View Init
+
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)setupViews
+{
+    self.tableView = UBTableView.new;
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    [self.view addSubview:self.tableView];
+    [self.view addConstraintsToFillSubview:self.tableView];
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - UITableViewDataSource/UITableViewDelegate
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
 }
-*/
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 0;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return nil;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
 
 @end
