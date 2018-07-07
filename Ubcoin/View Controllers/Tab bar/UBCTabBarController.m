@@ -10,9 +10,10 @@
 #import "UBCChatController.h"
 #import "UBCFavouritesController.h"
 #import "UBCMarketController.h"
-#import "UBCSellController.h"
 #import "UBCLoginController.h"
 #import "UBCAppDelegate.h"
+
+#import "Ubcoin-Swift.h"
 
 @interface UBCTabBarController () <UITabBarControllerDelegate>
 

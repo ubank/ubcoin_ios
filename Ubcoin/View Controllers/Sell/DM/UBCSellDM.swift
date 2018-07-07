@@ -9,5 +9,55 @@
 import UIKit
 
 class UBCSellDM: NSObject {
+    
+    private static let headerHeight: CGFloat = 40
 
+    class func sellActions() -> [UBTableViewSectionData] {
+        
+        var sections = [UBTableViewSectionData]()
+        
+        let photoSection = UBTableViewSectionData()
+        photoSection.headerHeight = SEPARATOR_HEIGHT
+        let photos = UBCSellCellDM(type: .photo)
+        photoSection.rows = [photos]
+        sections.append(photoSection)
+        
+        let aboutSection = UBTableViewSectionData()
+        aboutSection.headerHeight = headerHeight
+        aboutSection.headerTitle = "About"
+        let title = UBCSellCellDM(type: .title)
+        let category = UBCSellCellDM(type: .category)
+        let price = UBCSellCellDM(type: .price)
+        aboutSection.rows = [title, category, price]
+        sections.append(aboutSection)
+        
+        let descSection = UBTableViewSectionData()
+        descSection.headerHeight = headerHeight
+        descSection.headerTitle = "Description"
+        let desc = UBCSellCellDM(type: .desc)
+        descSection.rows = [desc]
+        sections.append(descSection)
+
+        let locationSection = UBTableViewSectionData()
+        locationSection.headerHeight = headerHeight
+        locationSection.headerTitle = "Location"
+        let location = UBCSellCellDM(type: .location)
+        locationSection.rows = [location]
+        sections.append(locationSection)
+        
+        return sections
+    }
+}
+
+struct UBCSellCellDM {
+    var type: UBCSellCellType
+}
+
+enum UBCSellCellType {
+    case photo
+    case title
+    case category
+    case price
+    case desc
+    case location
 }
