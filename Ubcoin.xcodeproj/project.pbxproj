@@ -48,7 +48,6 @@
 		8987519F20EE2A8B00E2B615 /* UBCTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8987519E20EE2A8B00E2B615 /* UBCTabBarController.m */; };
 		898751A720EE2BBD00E2B615 /* UBCChatController.m in Sources */ = {isa = PBXBuildFile; fileRef = 898751A620EE2BBD00E2B615 /* UBCChatController.m */; };
 		898751AA20EE2BDD00E2B615 /* UBCFavouritesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 898751A920EE2BDD00E2B615 /* UBCFavouritesController.m */; };
-		898751AD20EE2BF900E2B615 /* UBCMarketController.m in Sources */ = {isa = PBXBuildFile; fileRef = 898751AC20EE2BF900E2B615 /* UBCMarketController.m */; };
 		898751B020EE2C1200E2B615 /* UBCSellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 898751AF20EE2C1200E2B615 /* UBCSellController.m */; };
 		898751B320EE2C4100E2B615 /* UBCLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 898751B220EE2C4100E2B615 /* UBCLoginController.m */; };
 		898751C020EE618B00E2B615 /* UBConnectionProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 898751B820EE618B00E2B615 /* UBConnectionProvider.m */; };
@@ -56,14 +55,21 @@
 		898751C820EE65C000E2B615 /* UBCKeyChain.m in Sources */ = {isa = PBXBuildFile; fileRef = 898751C720EE65C000E2B615 /* UBCKeyChain.m */; };
 		898751CB20EE6AEA00E2B615 /* UBCURLProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 898751CA20EE6AEA00E2B615 /* UBCURLProvider.m */; };
 		898751CE20EE6D7600E2B615 /* UBCDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 898751CD20EE6D7600E2B615 /* UBCDataProvider.m */; };
-		898751D220EF9B1200E2B615 /* UBCFiltersListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 898751D120EF9B1200E2B615 /* UBCFiltersListController.m */; };
-		898751D620EFBE4900E2B615 /* UBCGoodsCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 898751D520EFBE4900E2B615 /* UBCGoodsCollectionView.m */; };
-		898751DB20EFC1AD00E2B615 /* UBCGoodDM.m in Sources */ = {isa = PBXBuildFile; fileRef = 898751DA20EFC1AD00E2B615 /* UBCGoodDM.m */; };
-		898751DF20EFC70100E2B615 /* UBCGoodCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 898751DD20EFC70100E2B615 /* UBCGoodCell.m */; };
-		898751E020EFC70100E2B615 /* UBCGoodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 898751DE20EFC70100E2B615 /* UBCGoodCell.xib */; };
 		899E217C20E68D8A004D891B /* UBCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 899E217B20E68D8A004D891B /* UBCAppDelegate.m */; };
 		89CB110E20EFCDA500729C95 /* HUBCollectionViewWaitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89CB110C20EFCDA500729C95 /* HUBCollectionViewWaitCell.xib */; };
 		89CB110F20EFCDA500729C95 /* HUBCollectionViewWaitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CB110D20EFCDA500729C95 /* HUBCollectionViewWaitCell.m */; };
+		89F16A6A20F2C65D001AA440 /* UBCFiltersListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F16A4F20F2C65D001AA440 /* UBCFiltersListController.m */; };
+		89F16A6B20F2C65D001AA440 /* UBCGoodDM.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F16A5420F2C65D001AA440 /* UBCGoodDM.m */; };
+		89F16A6C20F2C65D001AA440 /* UBCAuthorDM.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F16A5620F2C65D001AA440 /* UBCAuthorDM.m */; };
+		89F16A6D20F2C65D001AA440 /* UBCGoodsCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F16A5820F2C65D001AA440 /* UBCGoodsCollectionView.m */; };
+		89F16A6E20F2C65D001AA440 /* UBCDiscountsCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89F16A5B20F2C65D001AA440 /* UBCDiscountsCollectionView.xib */; };
+		89F16A6F20F2C65D001AA440 /* UBCDiscountCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F16A5D20F2C65D001AA440 /* UBCDiscountCollectionViewCell.m */; };
+		89F16A7020F2C65D001AA440 /* UBCDiscountCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89F16A5E20F2C65D001AA440 /* UBCDiscountCollectionViewCell.xib */; };
+		89F16A7120F2C65D001AA440 /* UBCDiscountsCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F16A6020F2C65D001AA440 /* UBCDiscountsCollectionView.m */; };
+		89F16A7220F2C65D001AA440 /* UBCDiscountDM.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F16A6220F2C65D001AA440 /* UBCDiscountDM.m */; };
+		89F16A7320F2C65D001AA440 /* UBCGoodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89F16A6520F2C65D001AA440 /* UBCGoodCell.xib */; };
+		89F16A7420F2C65D001AA440 /* UBCGoodCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F16A6620F2C65D001AA440 /* UBCGoodCell.m */; };
+		89F16A7520F2C65D001AA440 /* UBCMarketController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F16A6920F2C65D001AA440 /* UBCMarketController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -141,8 +147,6 @@
 		898751A620EE2BBD00E2B615 /* UBCChatController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCChatController.m; sourceTree = "<group>"; };
 		898751A820EE2BDD00E2B615 /* UBCFavouritesController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCFavouritesController.h; sourceTree = "<group>"; };
 		898751A920EE2BDD00E2B615 /* UBCFavouritesController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCFavouritesController.m; sourceTree = "<group>"; };
-		898751AB20EE2BF900E2B615 /* UBCMarketController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCMarketController.h; sourceTree = "<group>"; };
-		898751AC20EE2BF900E2B615 /* UBCMarketController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCMarketController.m; sourceTree = "<group>"; };
 		898751AE20EE2C1200E2B615 /* UBCSellController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCSellController.h; sourceTree = "<group>"; };
 		898751AF20EE2C1200E2B615 /* UBCSellController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCSellController.m; sourceTree = "<group>"; };
 		898751B120EE2C4100E2B615 /* UBCLoginController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCLoginController.h; sourceTree = "<group>"; };
@@ -157,21 +161,33 @@
 		898751CA20EE6AEA00E2B615 /* UBCURLProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCURLProvider.m; sourceTree = "<group>"; };
 		898751CC20EE6D7600E2B615 /* UBCDataProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCDataProvider.h; sourceTree = "<group>"; };
 		898751CD20EE6D7600E2B615 /* UBCDataProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCDataProvider.m; sourceTree = "<group>"; };
-		898751D020EF9B1200E2B615 /* UBCFiltersListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCFiltersListController.h; sourceTree = "<group>"; };
-		898751D120EF9B1200E2B615 /* UBCFiltersListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCFiltersListController.m; sourceTree = "<group>"; };
-		898751D420EFBE4900E2B615 /* UBCGoodsCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCGoodsCollectionView.h; sourceTree = "<group>"; };
-		898751D520EFBE4900E2B615 /* UBCGoodsCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCGoodsCollectionView.m; sourceTree = "<group>"; };
-		898751D920EFC1AD00E2B615 /* UBCGoodDM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCGoodDM.h; sourceTree = "<group>"; };
-		898751DA20EFC1AD00E2B615 /* UBCGoodDM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCGoodDM.m; sourceTree = "<group>"; };
-		898751DC20EFC70100E2B615 /* UBCGoodCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCGoodCell.h; sourceTree = "<group>"; };
-		898751DD20EFC70100E2B615 /* UBCGoodCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCGoodCell.m; sourceTree = "<group>"; };
-		898751DE20EFC70100E2B615 /* UBCGoodCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCGoodCell.xib; sourceTree = "<group>"; };
 		899E217720E68D8A004D891B /* Ubcoin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ubcoin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		899E217A20E68D8A004D891B /* UBCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCAppDelegate.h; sourceTree = "<group>"; };
 		899E217B20E68D8A004D891B /* UBCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCAppDelegate.m; sourceTree = "<group>"; };
 		89CB110B20EFCDA500729C95 /* HUBCollectionViewWaitCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUBCollectionViewWaitCell.h; sourceTree = "<group>"; };
 		89CB110C20EFCDA500729C95 /* HUBCollectionViewWaitCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HUBCollectionViewWaitCell.xib; sourceTree = "<group>"; };
 		89CB110D20EFCDA500729C95 /* HUBCollectionViewWaitCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUBCollectionViewWaitCell.m; sourceTree = "<group>"; };
+		89F16A4F20F2C65D001AA440 /* UBCFiltersListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBCFiltersListController.m; sourceTree = "<group>"; };
+		89F16A5020F2C65D001AA440 /* UBCFiltersListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBCFiltersListController.h; sourceTree = "<group>"; };
+		89F16A5120F2C65D001AA440 /* UBCMarketController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBCMarketController.h; sourceTree = "<group>"; };
+		89F16A5320F2C65D001AA440 /* UBCAuthorDM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBCAuthorDM.h; sourceTree = "<group>"; };
+		89F16A5420F2C65D001AA440 /* UBCGoodDM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBCGoodDM.m; sourceTree = "<group>"; };
+		89F16A5520F2C65D001AA440 /* UBCGoodDM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBCGoodDM.h; sourceTree = "<group>"; };
+		89F16A5620F2C65D001AA440 /* UBCAuthorDM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBCAuthorDM.m; sourceTree = "<group>"; };
+		89F16A5820F2C65D001AA440 /* UBCGoodsCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBCGoodsCollectionView.m; sourceTree = "<group>"; };
+		89F16A5A20F2C65D001AA440 /* UBCDiscountsCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBCDiscountsCollectionView.h; sourceTree = "<group>"; };
+		89F16A5B20F2C65D001AA440 /* UBCDiscountsCollectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UBCDiscountsCollectionView.xib; sourceTree = "<group>"; };
+		89F16A5D20F2C65D001AA440 /* UBCDiscountCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBCDiscountCollectionViewCell.m; sourceTree = "<group>"; };
+		89F16A5E20F2C65D001AA440 /* UBCDiscountCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UBCDiscountCollectionViewCell.xib; sourceTree = "<group>"; };
+		89F16A5F20F2C65D001AA440 /* UBCDiscountCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBCDiscountCollectionViewCell.h; sourceTree = "<group>"; };
+		89F16A6020F2C65D001AA440 /* UBCDiscountsCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBCDiscountsCollectionView.m; sourceTree = "<group>"; };
+		89F16A6220F2C65D001AA440 /* UBCDiscountDM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBCDiscountDM.m; sourceTree = "<group>"; };
+		89F16A6320F2C65D001AA440 /* UBCDiscountDM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBCDiscountDM.h; sourceTree = "<group>"; };
+		89F16A6520F2C65D001AA440 /* UBCGoodCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UBCGoodCell.xib; sourceTree = "<group>"; };
+		89F16A6620F2C65D001AA440 /* UBCGoodCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBCGoodCell.m; sourceTree = "<group>"; };
+		89F16A6720F2C65D001AA440 /* UBCGoodCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBCGoodCell.h; sourceTree = "<group>"; };
+		89F16A6820F2C65D001AA440 /* UBCGoodsCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBCGoodsCollectionView.h; sourceTree = "<group>"; };
+		89F16A6920F2C65D001AA440 /* UBCMarketController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBCMarketController.m; sourceTree = "<group>"; };
 		8F66F2801638A68DF9CA576B /* Pods-Ubcoin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ubcoin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ubcoin/Pods-Ubcoin.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -474,7 +490,7 @@
 			children = (
 				898751A120EE2B4F00E2B615 /* Chat */,
 				898751A320EE2B5000E2B615 /* Favourites */,
-				898751A020EE2B1400E2B615 /* Market */,
+				89F16A4D20F2C65D001AA440 /* Market */,
 				898751A420EE2B5000E2B615 /* Sell */,
 				898751A220EE2B5000E2B615 /* Login */,
 				8987519C20EE2A6100E2B615 /* Tab bar */,
@@ -489,18 +505,6 @@
 				8987519E20EE2A8B00E2B615 /* UBCTabBarController.m */,
 			);
 			path = "Tab bar";
-			sourceTree = "<group>";
-		};
-		898751A020EE2B1400E2B615 /* Market */ = {
-			isa = PBXGroup;
-			children = (
-				898751D820EFC19600E2B615 /* DM */,
-				898751D320EFBE1C00E2B615 /* View */,
-				898751CF20EF9AEE00E2B615 /* Filters */,
-				898751AB20EE2BF900E2B615 /* UBCMarketController.h */,
-				898751AC20EE2BF900E2B615 /* UBCMarketController.m */,
-			);
-			path = Market;
 			sourceTree = "<group>";
 		};
 		898751A120EE2B4F00E2B615 /* Chat */ = {
@@ -570,44 +574,6 @@
 			path = Request;
 			sourceTree = "<group>";
 		};
-		898751CF20EF9AEE00E2B615 /* Filters */ = {
-			isa = PBXGroup;
-			children = (
-				898751D020EF9B1200E2B615 /* UBCFiltersListController.h */,
-				898751D120EF9B1200E2B615 /* UBCFiltersListController.m */,
-			);
-			path = Filters;
-			sourceTree = "<group>";
-		};
-		898751D320EFBE1C00E2B615 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				898751D720EFC07B00E2B615 /* Cell */,
-				898751D420EFBE4900E2B615 /* UBCGoodsCollectionView.h */,
-				898751D520EFBE4900E2B615 /* UBCGoodsCollectionView.m */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		898751D720EFC07B00E2B615 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				898751DC20EFC70100E2B615 /* UBCGoodCell.h */,
-				898751DD20EFC70100E2B615 /* UBCGoodCell.m */,
-				898751DE20EFC70100E2B615 /* UBCGoodCell.xib */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
-		898751D820EFC19600E2B615 /* DM */ = {
-			isa = PBXGroup;
-			children = (
-				898751D920EFC1AD00E2B615 /* UBCGoodDM.h */,
-				898751DA20EFC1AD00E2B615 /* UBCGoodDM.m */,
-			);
-			path = DM;
-			sourceTree = "<group>";
-		};
 		898751E220EFCB6B00E2B615 /* Empty View */ = {
 			isa = PBXGroup;
 			children = (
@@ -657,6 +623,90 @@
 				1CFFFE7620F230A9003B5AD9 /* SupportingFiles */,
 			);
 			path = Ubcoin;
+			sourceTree = "<group>";
+		};
+		89F16A4D20F2C65D001AA440 /* Market */ = {
+			isa = PBXGroup;
+			children = (
+				89F16A5220F2C65D001AA440 /* DM */,
+				89F16A4E20F2C65D001AA440 /* Filters */,
+				89F16A5720F2C65D001AA440 /* View */,
+				89F16A5120F2C65D001AA440 /* UBCMarketController.h */,
+				89F16A6920F2C65D001AA440 /* UBCMarketController.m */,
+			);
+			path = Market;
+			sourceTree = "<group>";
+		};
+		89F16A4E20F2C65D001AA440 /* Filters */ = {
+			isa = PBXGroup;
+			children = (
+				89F16A5020F2C65D001AA440 /* UBCFiltersListController.h */,
+				89F16A4F20F2C65D001AA440 /* UBCFiltersListController.m */,
+			);
+			path = Filters;
+			sourceTree = "<group>";
+		};
+		89F16A5220F2C65D001AA440 /* DM */ = {
+			isa = PBXGroup;
+			children = (
+				89F16A5320F2C65D001AA440 /* UBCAuthorDM.h */,
+				89F16A5620F2C65D001AA440 /* UBCAuthorDM.m */,
+				89F16A5520F2C65D001AA440 /* UBCGoodDM.h */,
+				89F16A5420F2C65D001AA440 /* UBCGoodDM.m */,
+			);
+			path = DM;
+			sourceTree = "<group>";
+		};
+		89F16A5720F2C65D001AA440 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				89F16A6420F2C65D001AA440 /* Cell */,
+				89F16A5920F2C65D001AA440 /* Discounts */,
+				89F16A6820F2C65D001AA440 /* UBCGoodsCollectionView.h */,
+				89F16A5820F2C65D001AA440 /* UBCGoodsCollectionView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		89F16A5920F2C65D001AA440 /* Discounts */ = {
+			isa = PBXGroup;
+			children = (
+				89F16A5C20F2C65D001AA440 /* Cell */,
+				89F16A6120F2C65D001AA440 /* DM */,
+				89F16A5A20F2C65D001AA440 /* UBCDiscountsCollectionView.h */,
+				89F16A6020F2C65D001AA440 /* UBCDiscountsCollectionView.m */,
+				89F16A5B20F2C65D001AA440 /* UBCDiscountsCollectionView.xib */,
+			);
+			path = Discounts;
+			sourceTree = "<group>";
+		};
+		89F16A5C20F2C65D001AA440 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				89F16A5F20F2C65D001AA440 /* UBCDiscountCollectionViewCell.h */,
+				89F16A5D20F2C65D001AA440 /* UBCDiscountCollectionViewCell.m */,
+				89F16A5E20F2C65D001AA440 /* UBCDiscountCollectionViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		89F16A6120F2C65D001AA440 /* DM */ = {
+			isa = PBXGroup;
+			children = (
+				89F16A6320F2C65D001AA440 /* UBCDiscountDM.h */,
+				89F16A6220F2C65D001AA440 /* UBCDiscountDM.m */,
+			);
+			path = DM;
+			sourceTree = "<group>";
+		};
+		89F16A6420F2C65D001AA440 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				89F16A6720F2C65D001AA440 /* UBCGoodCell.h */,
+				89F16A6620F2C65D001AA440 /* UBCGoodCell.m */,
+				89F16A6520F2C65D001AA440 /* UBCGoodCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -721,15 +771,17 @@
 			files = (
 				8987518720EE119F00E2B615 /* UBAlertWindow.xib in Resources */,
 				8987517120EE119F00E2B615 /* HUBSystemAlertCell.xib in Resources */,
+				89F16A7020F2C65D001AA440 /* UBCDiscountCollectionViewCell.xib in Resources */,
 				8987517820EE119F00E2B615 /* UBTableHeaderView.xib in Resources */,
 				8987516B20EE119F00E2B615 /* HUBNavigationBarView.xib in Resources */,
+				89F16A6E20F2C65D001AA440 /* UBCDiscountsCollectionView.xib in Resources */,
 				1CFFFE7D20F230A9003B5AD9 /* Assets.xcassets in Resources */,
 				8987518A20EE119F00E2B615 /* HUBEmptyView.xib in Resources */,
 				89CB110E20EFCDA500729C95 /* HUBCollectionViewWaitCell.xib in Resources */,
+				89F16A7320F2C65D001AA440 /* UBCGoodCell.xib in Resources */,
 				8987519A20EE23A100E2B615 /* UBWaitCell.xib in Resources */,
 				1CFFFE7C20F230A9003B5AD9 /* LaunchScreen.storyboard in Resources */,
 				8987517420EE119F00E2B615 /* UBSectionHeaderView.xib in Resources */,
-				898751E020EFC70100E2B615 /* UBCGoodCell.xib in Resources */,
 				8987517620EE119F00E2B615 /* UBExpandableTableViewSectionHeader.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -780,19 +832,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89F16A7220F2C65D001AA440 /* UBCDiscountDM.m in Sources */,
 				898751C520EE64EB00E2B615 /* UBCRequestProvider.m in Sources */,
 				8987518420EE119F00E2B615 /* UBPickerView.m in Sources */,
 				8987517920EE119F00E2B615 /* UBSectionHeaderView.m in Sources */,
+				89F16A7120F2C65D001AA440 /* UBCDiscountsCollectionView.m in Sources */,
 				8987519920EE23A100E2B615 /* UBWaitCell.m in Sources */,
 				898751B320EE2C4100E2B615 /* UBCLoginController.m in Sources */,
-				898751AD20EE2BF900E2B615 /* UBCMarketController.m in Sources */,
 				8987517720EE119F00E2B615 /* UBTableHeaderView.m in Sources */,
 				8987517A20EE119F00E2B615 /* HUBTextView.m in Sources */,
 				8987518820EE119F00E2B615 /* UBAlertWindow.m in Sources */,
 				8987516A20EE119F00E2B615 /* UBMigrationView.m in Sources */,
 				8987519020EE119F00E2B615 /* HUBPermissions.m in Sources */,
 				8987517020EE119F00E2B615 /* UBSwitchTableViewCell.m in Sources */,
+				89F16A6D20F2C65D001AA440 /* UBCGoodsCollectionView.m in Sources */,
 				8987516E20EE119F00E2B615 /* UBDefaultTableViewCell.m in Sources */,
+				89F16A6C20F2C65D001AA440 /* UBCAuthorDM.m in Sources */,
 				8987517B20EE119F00E2B615 /* HUBGeneralButton.m in Sources */,
 				898751A720EE2BBD00E2B615 /* UBCChatController.m in Sources */,
 				8987518920EE119F00E2B615 /* HUBEmptyView.m in Sources */,
@@ -800,30 +855,31 @@
 				898751CB20EE6AEA00E2B615 /* UBCURLProvider.m in Sources */,
 				8987517320EE119F00E2B615 /* UBTableView.m in Sources */,
 				8987518620EE119F00E2B615 /* HUBAttributedLabel.m in Sources */,
-				898751D620EFBE4900E2B615 /* UBCGoodsCollectionView.m in Sources */,
 				8987518B20EE119F00E2B615 /* UBAlertTableView.m in Sources */,
 				8987518320EE119F00E2B615 /* UBCollectionViewSwitchContent.m in Sources */,
 				8987519F20EE2A8B00E2B615 /* UBCTabBarController.m in Sources */,
-				898751DB20EFC1AD00E2B615 /* UBCGoodDM.m in Sources */,
 				1CFFFE7E20F230A9003B5AD9 /* main.m in Sources */,
 				8987516F20EE119F00E2B615 /* HUBSystemAlertCell.m in Sources */,
-				898751D220EF9B1200E2B615 /* UBCFiltersListController.m in Sources */,
+				89F16A6A20F2C65D001AA440 /* UBCFiltersListController.m in Sources */,
 				8987518520EE119F00E2B615 /* HUBBaseMapView.m in Sources */,
 				89CB110F20EFCDA500729C95 /* HUBCollectionViewWaitCell.m in Sources */,
 				8987518120EE119F00E2B615 /* HUBSpringyCollectionViewFlowLayout.m in Sources */,
 				8987518220EE119F00E2B615 /* UBCollectionViewSwitch.m in Sources */,
 				8987516D20EE119F00E2B615 /* HUBScrollView.m in Sources */,
+				89F16A7520F2C65D001AA440 /* UBCMarketController.m in Sources */,
 				8987516C20EE119F00E2B615 /* HUBNavigationBarView.m in Sources */,
 				8987518F20EE119F00E2B615 /* UBLocationManager.m in Sources */,
 				8987517220EE119F00E2B615 /* UBDefaultTableView.m in Sources */,
 				899E217C20E68D8A004D891B /* UBCAppDelegate.m in Sources */,
+				89F16A6F20F2C65D001AA440 /* UBCDiscountCollectionViewCell.m in Sources */,
 				898751AA20EE2BDD00E2B615 /* UBCFavouritesController.m in Sources */,
 				898751C020EE618B00E2B615 /* UBConnectionProvider.m in Sources */,
-				898751DF20EFC70100E2B615 /* UBCGoodCell.m in Sources */,
 				8987517520EE119F00E2B615 /* UBExpandableTableViewSectionHeader.m in Sources */,
 				898751C820EE65C000E2B615 /* UBCKeyChain.m in Sources */,
 				898751B020EE2C1200E2B615 /* UBCSellController.m in Sources */,
 				898751CE20EE6D7600E2B615 /* UBCDataProvider.m in Sources */,
+				89F16A7420F2C65D001AA440 /* UBCGoodCell.m in Sources */,
+				89F16A6B20F2C65D001AA440 /* UBCGoodDM.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

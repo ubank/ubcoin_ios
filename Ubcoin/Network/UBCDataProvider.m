@@ -11,6 +11,8 @@
 #import "UBCRequestProvider.h"
 #import "UBCURLProvider.h"
 
+#import "UBCGoodDM.h"
+
 @interface UBCDataProvider ()
 
 @property (strong, nonatomic) UBConnectionProvider *connection;
@@ -41,9 +43,30 @@
      {
          if (success)
          {
+             NSArray *items = [responseObject[@"data"] removeNulls];
+             items = [items map:^id(id item) {
+                 return [[UBCGoodDM alloc] initWithDictionary:item];
+             }];
              
+             if (completionBlock)
+             {
+                 NSNumber *totalPages = [responseObject valueForKeyPath:@"pageData.totalPages"];
+                 completionBlock(YES, items, totalPages.integerValue > page);
+             }
+         }
+         else if (completionBlock)
+         {
+             completionBlock(NO, nil, YES);
          }
      }];
+}
+
+- (void)discountsWithCompletionBlock:(void (^)(BOOL, NSArray *))completionBlock
+{
+    if (completionBlock)
+    {
+        completionBlock(YES, @[]);
+    }
 }
 
 @end

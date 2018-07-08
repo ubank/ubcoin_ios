@@ -15,6 +15,10 @@
 @property (strong, nonatomic) UISearchController *searchController;
 @property (strong, nonatomic) UBCGoodsCollectionView *collectionView;
 
+@property (strong, nonatomic) NSArray *discounts;
+@property (strong, nonatomic) NSMutableArray *items;
+@property (assign, nonatomic) NSUInteger pageNumber;
+
 @end
 
 @implementation UBCMarketController
@@ -65,6 +69,49 @@
     }
     
     self.definesPresentationContext = !self.tabBarController;
+}
+
+#pragma mark -
+
+- (void)updateInfo
+{
+    dispatch_group_t serviceGroup = dispatch_group_create();
+    
+    __weak typeof(self) weakSelf = self;
+    
+    dispatch_group_enter(serviceGroup);
+    [UBCDataProvider.sharedProvider discountsWithCompletionBlock:^(BOOL success, NSArray *discounts) {
+        if (discounts)
+        {
+            weakSelf.discounts = discounts;
+        }
+        
+        dispatch_group_leave(serviceGroup);
+    }];
+    
+    dispatch_group_enter(serviceGroup);
+    [UBCDataProvider.sharedProvider goodsListWithPageNumber:self.pageNumber
+                                        withCompletionBlock:^(BOOL success, NSArray *goods, BOOL canLoadMore) {
+        if (goods)
+        {
+            [weakSelf.items addObjectsFromArray:goods];
+            weakSelf.collectionView.canLoadMore = canLoadMore;
+            weakSelf.pageNumber++;
+        }
+        
+        dispatch_group_leave(serviceGroup);
+    }];
+    
+    dispatch_group_notify(serviceGroup, dispatch_get_main_queue(), ^{
+        [weakSelf handleResponse];
+    });
+}
+
+- (void)handleResponse
+{
+    [self stopActivityIndicator];
+    [self.collectionView.refreshControl endRefreshing];
+    [self.collectionView setupWithItems:self.items discounts:self.discounts];
 }
 
 #pragma mark - Actions
@@ -126,7 +173,8 @@
 
 - (void)refreshControlUpdate
 {
-    
+    self.pageNumber = 0;
+    [self updateInfo];
 }
 
 @end

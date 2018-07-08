@@ -8,20 +8,22 @@
 
 #import <Foundation/Foundation.h>
 
+@class UBCAuthorDM;
 @interface UBCGoodDM : NSObject
 
-@property (readonly, nonatomic) NSString *itemID;
+@property (readonly, nonatomic) NSString *ID;
 @property (readonly, nonatomic) NSString *title;
 @property (readonly, nonatomic) NSString *desc;
 @property (readonly, nonatomic) NSString *locationText;
 @property (readonly, nonatomic) NSNumber *price;
 @property (readonly, nonatomic) NSDate *creationDate;
-@property (readonly, nonatomic) BOOL isFavorite;
 @property (readonly, nonatomic) NSArray *images;
+@property (readonly, nonatomic) BOOL isFavorite;
 
-//@property (readonly, nonatomic) UBCUserDM *seller;
+@property (readonly, nonatomic) UBCAuthorDM *seller;
 //@property (readonly, nonatomic) UBCCategoryDM *category;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
+- (void)toggleFavorite;
 
 @end

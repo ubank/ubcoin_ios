@@ -13,5 +13,6 @@
 @property (class, nonatomic, readonly) UBCDataProvider *sharedProvider;
 
 - (void)goodsListWithPageNumber:(NSUInteger)page withCompletionBlock:(void (^)(BOOL success, NSArray *goods, BOOL canLoadMore))completionBlock;
+- (void)discountsWithCompletionBlock:(void (^)(BOOL success, NSArray *discounts))completionBlock;
 
 @end

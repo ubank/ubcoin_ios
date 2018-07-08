@@ -55,6 +55,11 @@
     [self reloadData];
 }
 
+- (void)setupWithItems:(NSArray<UBCGoodDM *> *)items discounts:(NSArray *)discounts
+{
+    
+}
+
 #pragma mark - UICollectionView
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section

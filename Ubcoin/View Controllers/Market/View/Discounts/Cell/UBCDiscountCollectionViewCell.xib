@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="UBCDiscountCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="295" height="160"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="295" height="160"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZfZ-WS-BXk">
+                        <rect key="frame" x="0.0" y="0.0" width="295" height="160"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbC-MG-pkf" customClass="HUBLabel">
+                        <rect key="frame" x="15" y="78" width="265" height="29"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="labelStyle">
+                                <integer key="value" value="3"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l7s-UB-hAd" customClass="HUBLabel">
+                        <rect key="frame" x="15" y="117" width="265" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="labelStyle">
+                                <integer key="value" value="4"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="ZfZ-WS-BXk" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Cgc-4P-R32"/>
+                <constraint firstAttribute="trailing" secondItem="l7s-UB-hAd" secondAttribute="trailing" constant="15" id="GuI-bW-Bg3"/>
+                <constraint firstAttribute="bottom" secondItem="ZfZ-WS-BXk" secondAttribute="bottom" id="KwY-gt-xOS"/>
+                <constraint firstAttribute="trailing" secondItem="ZfZ-WS-BXk" secondAttribute="trailing" id="MI1-Wi-7cX"/>
+                <constraint firstAttribute="bottom" secondItem="l7s-UB-hAd" secondAttribute="bottom" constant="25" id="Noe-bM-qiD"/>
+                <constraint firstItem="hbC-MG-pkf" firstAttribute="leading" secondItem="l7s-UB-hAd" secondAttribute="leading" id="OS6-Xo-BWO"/>
+                <constraint firstItem="ZfZ-WS-BXk" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="US3-PI-f8e"/>
+                <constraint firstItem="l7s-UB-hAd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="dXX-cX-Xnf"/>
+                <constraint firstItem="l7s-UB-hAd" firstAttribute="top" secondItem="hbC-MG-pkf" secondAttribute="bottom" constant="10" id="idD-Mg-OnH"/>
+                <constraint firstItem="hbC-MG-pkf" firstAttribute="trailing" secondItem="l7s-UB-hAd" secondAttribute="trailing" id="tzL-k2-ge9"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
+            <size key="customSize" width="266" height="99"/>
+            <connections>
+                <outlet property="desc" destination="l7s-UB-hAd" id="ErB-dh-oUB"/>
+                <outlet property="icon" destination="ZfZ-WS-BXk" id="IOp-FZ-hg2"/>
+                <outlet property="title" destination="hbC-MG-pkf" id="8Xf-TZ-Z0w"/>
+            </connections>
+            <point key="canvasLocation" x="-48" y="-14"/>
+        </collectionViewCell>
+    </objects>
+</document>

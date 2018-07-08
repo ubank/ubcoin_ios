@@ -23,4 +23,6 @@
 @property (strong, nonatomic) NSArray<UBCGoodDM *> *items;
 @property (assign, nonatomic) BOOL canLoadMore;
 
+- (void)setupWithItems:(NSArray<UBCGoodDM *> *)items discounts:(NSArray *)discounts;
+
 @end

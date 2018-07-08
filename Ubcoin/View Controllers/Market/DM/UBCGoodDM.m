@@ -7,6 +7,7 @@
 //
 
 #import "UBCGoodDM.h"
+#import "UBCAuthorDM.h"
 
 @implementation UBCGoodDM
 
@@ -15,7 +16,7 @@
     self = [super init];
     if (self)
     {
-        _itemID = dict[@"id"];
+        _ID = dict[@"id"];
         _title = dict[@"title"];
         _desc = dict[@"description"];
         _locationText = dict[@"locationText"];
@@ -23,8 +24,14 @@
         _isFavorite = dict[@"is_favorite"];
         _creationDate = [NSDate dateFromISO8601String:dict[@"createdDate"]];
         _images = dict[@"images"];
+        _seller = [[UBCAuthorDM alloc] initWithDictionary:dict[@"user"]];
     }
     return self;
+}
+
+- (void)toggleFavorite
+{
+    _isFavorite = !self.isFavorite;
 }
 
 @end
