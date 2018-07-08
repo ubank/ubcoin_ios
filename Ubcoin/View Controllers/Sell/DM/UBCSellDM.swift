@@ -9,7 +9,7 @@
 import UIKit
 
 class UBCSellDM: NSObject {
-    
+
     private static let headerHeight: CGFloat = 40
 
     class func sellActions() -> [UBTableViewSectionData] {
@@ -57,17 +57,18 @@ struct UBCSellCellDM {
     var className: String
     
     var data: Any?
+    var placeholder: String
+    var selectContent: [String]?
     
     init(type: UBCSellCellType) {
         self.type = type
         self.height = type == .photo ? 95 : 65
         
-        if type == .photo {
-            self.className = UBCSPhotoTableViewCell.className
-        } else if type == .category || type == .location {
-            self.className = UBCSSelectionTableViewCell.className
-        } else {
-            self.className = UBCSTextFieldTableViewCell.className
+        self.className = type.className
+        self.placeholder = type.placeholder
+        
+        if type == .category {
+            self.selectContent = ["Accessories", "Clothes", "Transport", "Home", "Animals", "Gifts"]
         }
     }
 }
@@ -79,6 +80,30 @@ enum UBCSellCellType {
     case price
     case desc
     case location
+    
+    var className: String {
+        get {
+            if self == .photo {
+                return UBCSPhotoTableViewCell.className
+            } else if self == .category || self == .location {
+                return UBCSSelectionTableViewCell.className
+            } else {
+                return UBCSTextFieldTableViewCell.className
+            }
+        }
+    }
+    
+    var placeholder: String {
+        get {
+            if self == .category {
+                return "Select category"
+            } else if self == .location {
+                return "Select location"
+            } else {
+                return ""
+            }
+        }
+    }
 }
 
 protocol UBCSellCellProtocol {

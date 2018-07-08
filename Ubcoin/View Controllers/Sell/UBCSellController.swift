@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Photos
 
 class UBCSellController: UBViewController {
     
@@ -103,7 +104,27 @@ extension UBCSellController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print()
+        let section = content[indexPath.section]
+        guard var row = section.rows[indexPath.row] as? UBCSellCellDM else { return }
+        
+        if row.type == .category, let content = row.selectContent {
+            var selected: Int?
+            if let selectedString = row.data as? String {
+                selected = content.index(of: selectedString)
+            }
+            
+            let controller = UBCSelectionController(title: row.placeholder, content: content, selected: selected)
+            controller.completion = { (index) in
+                row.data = content[index]
+                section.rows[indexPath.row] = row
+                self.tableView.reloadData()
+                self.navigationController?.popViewController(animated: true)
+            }
+            
+            self.navigationController?.pushViewController(controller, animated: true)
+        } else if row.type == .location {
+            
+        }
     }
 }
 
@@ -111,10 +132,38 @@ extension UBCSellController: UITableViewDataSource, UITableViewDelegate {
 extension UBCSellController: UBCSPhotoTableViewCellDelegate {
     
     func addPhotoPressed(_ index: Int) {
+        let action1 = UIAlertAction(title: "Camera", style: .default) { (action) in
+            self.showImagePicker(sourceType: .camera)
+        }
+        
+        let action2 = UIAlertAction(title: "Photo Library", style: .default) { (action) in
+            self.showImagePicker(sourceType: .photoLibrary)
+        }
+        
+        UBAlert.showActionSheet(withTitle: "Choose action", message: nil, actions: [action1, action2], sourceView: nil)
+    }
+    
+    private func showImagePicker(sourceType: UIImagePickerController.SourceType) {
+        if sourceType == .camera {
+            let status = AVCaptureDevice.authorizationStatus(for: .video)
+            if status == .denied || status == .restricted || UIImagePickerController.isSourceTypeAvailable(.camera) {
+                UBAlert.showToEnablePermissions(withMessage: "No access to camera")
+                
+                return
+            }
+        } else {
+            if PHPhotoLibrary.authorizationStatus() == .denied {
+                UBAlert.showToEnablePermissions(withMessage: "No access to library")
+                
+                return
+            }
+        }
+        
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
-        imagePicker.sourceType = .photoLibrary
+        imagePicker.sourceType = sourceType
         self.present(imagePicker, animated: true, completion: nil)
+
     }
 }
 

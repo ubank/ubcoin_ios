@@ -31,7 +31,7 @@ class UBCSPhotoTableViewCell: UBTableViewCell {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        fatalError("init(coder:) has not been implemented")
     }
     
     private func setupViews() {
@@ -92,7 +92,7 @@ private class UBCSPhotoAddView: UBButton {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func setBackgroundImage(_ image: UIImage?, for state: UIControl.State) {
