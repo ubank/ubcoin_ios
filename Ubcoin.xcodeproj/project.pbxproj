@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1CFFFE7C20F230A9003B5AD9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CFFFE7820F230A9003B5AD9 /* LaunchScreen.storyboard */; };
+		1CFFFE7D20F230A9003B5AD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CFFFE7920F230A9003B5AD9 /* Assets.xcassets */; };
+		1CFFFE7E20F230A9003B5AD9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFFFE7A20F230A9003B5AD9 /* main.m */; };
 		30A0668C891003DF59D2BECC /* libPods-Ubcoin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DD3B2DB73F06ACB93DC3B9 /* libPods-Ubcoin.a */; };
 		8987516A20EE119F00E2B615 /* UBMigrationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 898750FD20EE119F00E2B615 /* UBMigrationView.m */; };
 		8987516B20EE119F00E2B615 /* HUBNavigationBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8987510020EE119F00E2B615 /* HUBNavigationBarView.xib */; };
@@ -58,15 +61,17 @@
 		898751DB20EFC1AD00E2B615 /* UBCGoodDM.m in Sources */ = {isa = PBXBuildFile; fileRef = 898751DA20EFC1AD00E2B615 /* UBCGoodDM.m */; };
 		898751DF20EFC70100E2B615 /* UBCGoodCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 898751DD20EFC70100E2B615 /* UBCGoodCell.m */; };
 		898751E020EFC70100E2B615 /* UBCGoodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 898751DE20EFC70100E2B615 /* UBCGoodCell.xib */; };
-		899E217C20E68D8A004D891B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 899E217B20E68D8A004D891B /* AppDelegate.m */; };
-		899E218420E68D8C004D891B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 899E218320E68D8C004D891B /* Assets.xcassets */; };
-		899E218720E68D8C004D891B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 899E218520E68D8C004D891B /* LaunchScreen.storyboard */; };
-		899E218A20E68D8C004D891B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 899E218920E68D8C004D891B /* main.m */; };
+		899E217C20E68D8A004D891B /* UBCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 899E217B20E68D8A004D891B /* UBCAppDelegate.m */; };
 		89CB110E20EFCDA500729C95 /* HUBCollectionViewWaitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89CB110C20EFCDA500729C95 /* HUBCollectionViewWaitCell.xib */; };
 		89CB110F20EFCDA500729C95 /* HUBCollectionViewWaitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CB110D20EFCDA500729C95 /* HUBCollectionViewWaitCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1CFFFE7720F230A9003B5AD9 /* Ubcoin-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Ubcoin-Prefix.pch"; sourceTree = "<group>"; };
+		1CFFFE7820F230A9003B5AD9 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1CFFFE7920F230A9003B5AD9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1CFFFE7A20F230A9003B5AD9 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1CFFFE7B20F230A9003B5AD9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8133FFCED3512BADEB40D574 /* Pods-Ubcoin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ubcoin.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ubcoin/Pods-Ubcoin.release.xcconfig"; sourceTree = "<group>"; };
 		82DD3B2DB73F06ACB93DC3B9 /* libPods-Ubcoin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Ubcoin.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		898750FD20EE119F00E2B615 /* UBMigrationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBMigrationView.m; sourceTree = "<group>"; };
@@ -127,7 +132,6 @@
 		8987515A20EE119F00E2B615 /* HUBConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUBConstants.h; sourceTree = "<group>"; };
 		8987515C20EE119F00E2B615 /* HUBPermissions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUBPermissions.m; sourceTree = "<group>"; };
 		8987515D20EE119F00E2B615 /* HUBPermissions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUBPermissions.h; sourceTree = "<group>"; };
-		8987519520EE1E8600E2B615 /* Ubcoin-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ubcoin-Prefix.pch"; sourceTree = "<group>"; };
 		8987519620EE23A100E2B615 /* UBWaitCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBWaitCell.h; sourceTree = "<group>"; };
 		8987519720EE23A100E2B615 /* UBWaitCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBWaitCell.m; sourceTree = "<group>"; };
 		8987519820EE23A100E2B615 /* UBWaitCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UBWaitCell.xib; sourceTree = "<group>"; };
@@ -163,12 +167,8 @@
 		898751DD20EFC70100E2B615 /* UBCGoodCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCGoodCell.m; sourceTree = "<group>"; };
 		898751DE20EFC70100E2B615 /* UBCGoodCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCGoodCell.xib; sourceTree = "<group>"; };
 		899E217720E68D8A004D891B /* Ubcoin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ubcoin.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		899E217A20E68D8A004D891B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		899E217B20E68D8A004D891B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		899E218320E68D8C004D891B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		899E218620E68D8C004D891B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		899E218820E68D8C004D891B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		899E218920E68D8C004D891B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		899E217A20E68D8A004D891B /* UBCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCAppDelegate.h; sourceTree = "<group>"; };
+		899E217B20E68D8A004D891B /* UBCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCAppDelegate.m; sourceTree = "<group>"; };
 		89CB110B20EFCDA500729C95 /* HUBCollectionViewWaitCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUBCollectionViewWaitCell.h; sourceTree = "<group>"; };
 		89CB110C20EFCDA500729C95 /* HUBCollectionViewWaitCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HUBCollectionViewWaitCell.xib; sourceTree = "<group>"; };
 		89CB110D20EFCDA500729C95 /* HUBCollectionViewWaitCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUBCollectionViewWaitCell.m; sourceTree = "<group>"; };
@@ -193,6 +193,18 @@
 				82DD3B2DB73F06ACB93DC3B9 /* libPods-Ubcoin.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1CFFFE7620F230A9003B5AD9 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				1CFFFE7920F230A9003B5AD9 /* Assets.xcassets */,
+				1CFFFE7B20F230A9003B5AD9 /* Info.plist */,
+				1CFFFE7820F230A9003B5AD9 /* LaunchScreen.storyboard */,
+				1CFFFE7A20F230A9003B5AD9 /* main.m */,
+				1CFFFE7720F230A9003B5AD9 /* Ubcoin-Prefix.pch */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 		2CC015D4581DA6B90D45AD31 /* Pods */ = {
@@ -620,9 +632,9 @@
 			isa = PBXGroup;
 			children = (
 				899E217920E68D8A004D891B /* Ubcoin */,
-				899E217820E68D8A004D891B /* Products */,
-				2CC015D4581DA6B90D45AD31 /* Pods */,
 				0217AC41E30A3A5536DCBE89 /* Frameworks */,
+				2CC015D4581DA6B90D45AD31 /* Pods */,
+				899E217820E68D8A004D891B /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -638,15 +650,11 @@
 			isa = PBXGroup;
 			children = (
 				898750FA20EE119F00E2B615 /* Class */,
-				8987519B20EE2A4E00E2B615 /* View Controllers */,
 				898751B420EE618B00E2B615 /* Network */,
-				899E217A20E68D8A004D891B /* AppDelegate.h */,
-				899E217B20E68D8A004D891B /* AppDelegate.m */,
-				899E218320E68D8C004D891B /* Assets.xcassets */,
-				8987519520EE1E8600E2B615 /* Ubcoin-Prefix.pch */,
-				899E218520E68D8C004D891B /* LaunchScreen.storyboard */,
-				899E218820E68D8C004D891B /* Info.plist */,
-				899E218920E68D8C004D891B /* main.m */,
+				8987519B20EE2A4E00E2B615 /* View Controllers */,
+				899E217A20E68D8A004D891B /* UBCAppDelegate.h */,
+				899E217B20E68D8A004D891B /* UBCAppDelegate.m */,
+				1CFFFE7620F230A9003B5AD9 /* SupportingFiles */,
 			);
 			path = Ubcoin;
 			sourceTree = "<group>";
@@ -715,12 +723,12 @@
 				8987517120EE119F00E2B615 /* HUBSystemAlertCell.xib in Resources */,
 				8987517820EE119F00E2B615 /* UBTableHeaderView.xib in Resources */,
 				8987516B20EE119F00E2B615 /* HUBNavigationBarView.xib in Resources */,
+				1CFFFE7D20F230A9003B5AD9 /* Assets.xcassets in Resources */,
 				8987518A20EE119F00E2B615 /* HUBEmptyView.xib in Resources */,
 				89CB110E20EFCDA500729C95 /* HUBCollectionViewWaitCell.xib in Resources */,
 				8987519A20EE23A100E2B615 /* UBWaitCell.xib in Resources */,
+				1CFFFE7C20F230A9003B5AD9 /* LaunchScreen.storyboard in Resources */,
 				8987517420EE119F00E2B615 /* UBSectionHeaderView.xib in Resources */,
-				899E218720E68D8C004D891B /* LaunchScreen.storyboard in Resources */,
-				899E218420E68D8C004D891B /* Assets.xcassets in Resources */,
 				898751E020EFC70100E2B615 /* UBCGoodCell.xib in Resources */,
 				8987517620EE119F00E2B615 /* UBExpandableTableViewSectionHeader.xib in Resources */,
 			);
@@ -797,10 +805,10 @@
 				8987518320EE119F00E2B615 /* UBCollectionViewSwitchContent.m in Sources */,
 				8987519F20EE2A8B00E2B615 /* UBCTabBarController.m in Sources */,
 				898751DB20EFC1AD00E2B615 /* UBCGoodDM.m in Sources */,
+				1CFFFE7E20F230A9003B5AD9 /* main.m in Sources */,
 				8987516F20EE119F00E2B615 /* HUBSystemAlertCell.m in Sources */,
 				898751D220EF9B1200E2B615 /* UBCFiltersListController.m in Sources */,
 				8987518520EE119F00E2B615 /* HUBBaseMapView.m in Sources */,
-				899E218A20E68D8C004D891B /* main.m in Sources */,
 				89CB110F20EFCDA500729C95 /* HUBCollectionViewWaitCell.m in Sources */,
 				8987518120EE119F00E2B615 /* HUBSpringyCollectionViewFlowLayout.m in Sources */,
 				8987518220EE119F00E2B615 /* UBCollectionViewSwitch.m in Sources */,
@@ -808,7 +816,7 @@
 				8987516C20EE119F00E2B615 /* HUBNavigationBarView.m in Sources */,
 				8987518F20EE119F00E2B615 /* UBLocationManager.m in Sources */,
 				8987517220EE119F00E2B615 /* UBDefaultTableView.m in Sources */,
-				899E217C20E68D8A004D891B /* AppDelegate.m in Sources */,
+				899E217C20E68D8A004D891B /* UBCAppDelegate.m in Sources */,
 				898751AA20EE2BDD00E2B615 /* UBCFavouritesController.m in Sources */,
 				898751C020EE618B00E2B615 /* UBConnectionProvider.m in Sources */,
 				898751DF20EFC70100E2B615 /* UBCGoodCell.m in Sources */,
@@ -820,17 +828,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		899E218520E68D8C004D891B /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				899E218620E68D8C004D891B /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		899E218B20E68D8C004D891B /* Debug */ = {
@@ -950,8 +947,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SWEX2R635A;
-				GCC_PREFIX_HEADER = "Ubcoin/Ubcoin-Prefix.pch";
-				INFOPLIST_FILE = Ubcoin/Info.plist;
+				GCC_PREFIX_HEADER = "Ubcoin/SupportingFiles/Ubcoin-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/Ubcoin/SupportingFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -969,8 +966,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SWEX2R635A;
-				GCC_PREFIX_HEADER = "Ubcoin/Ubcoin-Prefix.pch";
-				INFOPLIST_FILE = Ubcoin/Info.plist;
+				GCC_PREFIX_HEADER = "Ubcoin/SupportingFiles/Ubcoin-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/Ubcoin/SupportingFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

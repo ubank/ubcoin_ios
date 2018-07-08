@@ -23,7 +23,7 @@
 {
     [super viewDidLoad];
     
-    self.navigationContainer.rightImageTitle = @"icFilter";
+    self.navigationContainer.rightImageTitle = @"general_filter";
     
     [self setupCollectionView];
     [self setupSearch];

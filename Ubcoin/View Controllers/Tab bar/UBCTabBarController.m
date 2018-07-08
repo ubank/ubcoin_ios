@@ -12,7 +12,7 @@
 #import "UBCMarketController.h"
 #import "UBCSellController.h"
 #import "UBCLoginController.h"
-#import "AppDelegate.h"
+#import "UBCAppDelegate.h"
 
 @interface UBCTabBarController () <UITabBarControllerDelegate>
 
