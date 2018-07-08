@@ -85,10 +85,13 @@ private class UBCSPhotoAddView: UBButton {
         super.init(frame: frame)
         
         self.cornerRadius = 10
-        self.backgroundColor = UIColor(red: 248/255.0, green: 248/255.0, blue: 248/255.0, alpha: 1)
+        self.backgroundColor = UIColor(red: 248 / 255.0, green: 248 / 255.0, blue: 248 / 255.0, alpha: 1)
         
-        self.setHeightConstraintWithValue(70)
-        self.setWidthConstraintWithValue(70)
+        let constraint1 = self.setHeightConstraintWithValue(70)
+        constraint1?.priority = UILayoutPriority.init(999)
+        
+        let constraint2 = self.setWidthConstraintWithValue(70)
+        constraint2?.priority = UILayoutPriority.init(999)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -98,7 +101,7 @@ private class UBCSPhotoAddView: UBButton {
     override func setBackgroundImage(_ image: UIImage?, for state: UIControl.State) {
         super.setBackgroundImage(image, for: state)
         
-        self.image = image == nil ? UIImage(named: "icFilter") : nil
+        self.image = image == nil ? UIImage(named: "general_filter") : nil
         self.isUserInteractionEnabled = image == nil
     }
 }

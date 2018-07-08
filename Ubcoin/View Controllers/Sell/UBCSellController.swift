@@ -120,10 +120,16 @@ extension UBCSellController: UITableViewDataSource, UITableViewDelegate {
                 self.tableView.reloadData()
                 self.navigationController?.popViewController(animated: true)
             }
-            
             self.navigationController?.pushViewController(controller, animated: true)
         } else if row.type == .location {
-            
+            let controller = UBCMapSelectController(title: row.placeholder)
+            controller.completion = { (selectedLocation) in
+                row.data = selectedLocation
+                section.rows[indexPath.row] = row
+                self.tableView.reloadData()
+                self.navigationController?.popViewController(animated: true)
+            }
+            self.navigationController?.pushViewController(controller, animated: true)
         }
     }
 }
@@ -146,7 +152,7 @@ extension UBCSellController: UBCSPhotoTableViewCellDelegate {
     private func showImagePicker(sourceType: UIImagePickerController.SourceType) {
         if sourceType == .camera {
             let status = AVCaptureDevice.authorizationStatus(for: .video)
-            if status == .denied || status == .restricted || UIImagePickerController.isSourceTypeAvailable(.camera) {
+            if status == .denied || status == .restricted || status == .notDetermined || UIImagePickerController.isSourceTypeAvailable(.camera) {
                 UBAlert.showToEnablePermissions(withMessage: "No access to camera")
                 
                 return
@@ -163,7 +169,6 @@ extension UBCSellController: UBCSPhotoTableViewCellDelegate {
         imagePicker.delegate = self
         imagePicker.sourceType = sourceType
         self.present(imagePicker, animated: true, completion: nil)
-
     }
 }
 

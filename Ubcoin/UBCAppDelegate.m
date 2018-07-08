@@ -20,7 +20,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-
     [self setupColors];
     [self setupFonts];
     
@@ -44,13 +43,16 @@
 
 - (void)setupColors
 {
-    UBColor.navigationTitleColor = [UIColor colorWithHexString:@"403d45"];
+    UBColor.navigationTitleColor = [UIColor colorWithRed:64 / 255.0 green:61 / 255.0 blue:69 / 255.0 alpha:1];
+    UBColor.navigationTintColor = [UIColor colorWithRed:91 / 255.0 green:103 / 255.0 blue:109 / 255.0 alpha:1];
+    UBColor.titleColor = [UIColor colorWithRed:42 / 255.0 green:42 / 255.0 blue:42 / 255.0 alpha:1];
 }
 
 - (void)setupFonts
 {
     UBFont.navigationFont = [UIFont systemFontOfSize:17 weight:UIFontWeightSemibold];
     UBFont.tabBarFont = [UIFont systemFontOfSize:10 weight:UIFontWeightMedium];
+    UBFont.titleFont = [UIFont systemFontOfSize:17 weight:UIFontWeightRegular];
 }
 
 @end

@@ -12,7 +12,6 @@
 #define CATALOG_FILE_NAME @"Catalog"
 
 #define DEFAULT_HEADER_FONT [UIFont systemFontOfSize:18 weight:UIFontWeightSemibold]
-#define HUGE_TITLE_FONT [UIFont systemFontOfSize:20 weight:UIFontWeightSemibold]
 
 #define BROWN_COLOR [UIColor colorWithHexString:@"D6584D"]
 #define RED_COLOR [UIColor colorWithHexString:@"FF4E50"]
