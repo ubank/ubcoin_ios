@@ -8,6 +8,8 @@
 
 #import "UBAlertTableView.h"
 
+#import "Ubcoin-Swift.h"
+
 @interface UBAlertTableView () <UBDefaultTableViewDelegate>
 
 @property (strong, nonatomic) UIView *contentView;
@@ -83,7 +85,7 @@
 - (void)showAlertTableView
 {
     CGFloat maxHeight = self.tableView.contentHeight;
-    CGFloat contentHeight = DEFAULT_CELL_HEIGHT * 4.5;
+    CGFloat contentHeight = UBCConstant.cellHeight * 4.5;
 
     [self.contentView setHeightConstraintWithValue:MIN(maxHeight, contentHeight)];
     

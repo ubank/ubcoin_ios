@@ -8,6 +8,8 @@
 
 #import "HUBSystemAlertCell.h"
 
+#import "Ubcoin-Swift.h"
+
 @interface HUBSystemAlertCell()
 
 @property (weak, nonatomic) IBOutlet UILabel *title;
@@ -50,7 +52,7 @@
 
     self.closeButton.tintColor = UBGRAY_COLOR;
     
-    self.container.layer.cornerRadius = DEFAULT_CORNER_RADIUS;
+    self.container.layer.cornerRadius = UBCConstant.cornerRadius;
     self.container.layer.borderColor = [RED_COLOR colorWithAlphaComponent:0.2].CGColor;
     self.container.layer.borderWidth = 1;
     

@@ -10,6 +10,8 @@
 #import "UBWaitCell.h"
 #import "UBSwitchTableViewCell.h"
 
+#import "Ubcoin-Swift.h"
+
 @interface UBDefaultTableView () <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) NSArray *sections;
@@ -47,7 +49,7 @@
     self.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     self.backgroundColor = UBColor.backgroundColor;
-    self.rowHeight = DEFAULT_CELL_HEIGHT;
+    self.rowHeight = UBCConstant.cellHeight;
     
     [self registerNib:[UINib nibWithNibName:NSStringFromClass(UBSectionHeaderView.class) bundle:nil] forHeaderFooterViewReuseIdentifier:NSStringFromClass(UBSectionHeaderView.class)];
     [self registerNib:[UINib nibWithNibName:NSStringFromClass(UBWaitCell.class) bundle:nil] forCellReuseIdentifier:NSStringFromClass(UBWaitCell.class)];

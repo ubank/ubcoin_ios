@@ -99,8 +99,6 @@
 + (void)setAuthorization:(NSString *)authorization
 {
     [self saveString:authorization forKey:kPathAuthorization];
-    
-    [NSNotificationCenter.defaultCenter postNotificationName:kNotificationTidWasUpdated object:nil];
 }
 
 + (NSString *)authorization

@@ -73,7 +73,7 @@ class UBCMapSelectController: UBViewController {
         self.mapView.addAnnotation(annotation)
         
         let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
-        self.geocode.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) in
+        self.geocode.reverseGeocodeLocation(location, completionHandler: { [weak self] placemarks, error in
             if error == nil, let selectedLocation = placemarks?.first {
                 var title = ""
                 if let country = selectedLocation.country {
@@ -89,8 +89,8 @@ class UBCMapSelectController: UBViewController {
                     title += subThoroughfare + ", "
                 }
                 
-                self.locationString = String(title.dropLast(2))
-                annotation.title = self.locationString
+                self?.locationString = String(title.dropLast(2))
+                annotation.title = self?.locationString
             }
         })
     }

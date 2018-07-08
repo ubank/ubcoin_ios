@@ -39,11 +39,6 @@
         
         self.connectionAvailable = YES;
         [self startCheckingReachability];
-        
-        [NSNotificationCenter.defaultCenter addObserver:self
-                                               selector:@selector(cancelAllTasks)
-                                                   name:kNotificationQuitFromApplication
-                                                 object:nil];
     }
     
     return self;

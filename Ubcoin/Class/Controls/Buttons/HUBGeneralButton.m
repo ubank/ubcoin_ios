@@ -8,6 +8,8 @@
 
 #import "HUBGeneralButton.h"
 
+#import "Ubcoin-Swift.h"
+
 @interface HUBGeneralButton ()
 
 @property (strong, nonatomic) UIColor *defaultBackgroundColor;
@@ -69,7 +71,7 @@
 
 - (void)setRoundCorners:(BOOL)roundCorners
 {
-    self.layer.cornerRadius = roundCorners ? BIG_CORNER_RADIUS : 0;
+    self.layer.cornerRadius = roundCorners ? UBCConstant.cornerRadius : 0;
 }
 
 - (void)setType:(HUBGeneralButtonType)type
@@ -83,9 +85,9 @@
             self.backgroundColor = UIColor.whiteColor;
             break;
             
-        case HUBGeneralButtonTypeBrown:
+        case HUBGeneralButtonTypeGreen:
             self.titleColor = UIColor.whiteColor;
-            self.backgroundColor = BROWN_COLOR;
+            self.backgroundColor = UBCColor.green;
             break;
             
         case HUBGeneralButtonTypeSemitransparent:
@@ -98,11 +100,6 @@
             self.backgroundColor = UIColor.whiteColor;
             self.layer.borderColor = BROWN_COLOR.CGColor;
             self.layer.borderWidth = 1;
-            break;
-            
-        case HUBGeneralButtonTypeBlue:
-            self.titleColor = UIColor.whiteColor;
-            self.backgroundColor = CHATBANK_COLOR;
             break;
             
         default:
@@ -136,11 +133,6 @@
     UIColor *backgroundColor = self.highlighted ? self.highlightedBackgroundColor : self.defaultBackgroundColor;
     
     [super setBackgroundColor:backgroundColor];
-}
-
-- (void)setTitle:(NSString *)title forState:(UIControlState)state
-{
-    [super setTitle:title.uppercaseString forState:state];
 }
 
 - (void)setEnabled:(BOOL)enabled

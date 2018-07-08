@@ -8,6 +8,8 @@
 
 #import "UBAlertWindow.h"
 
+#import "Ubcoin-Swift.h"
+
 @interface UBAlertWindow ()
 
 @property (weak, nonatomic) IBOutlet HUBLabel *title;
@@ -47,7 +49,7 @@
 {
     UBAlertWindow *alert = [self showAlertWindowWithTitle:title desc:desc image:image];
     
-    alert.buttonsStackViewHeightConstant.constant = ACTION_BUTTON_HEIGHT;
+    alert.buttonsStackViewHeightConstant.constant = UBCConstant.actionButtonHeight;
     [alert.buttonsStackView addTopSeparator];
     
     if (buttonApplyTitle.isNotEmpty)

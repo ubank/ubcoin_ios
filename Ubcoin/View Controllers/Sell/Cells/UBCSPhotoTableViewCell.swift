@@ -9,7 +9,7 @@
 import UIKit
 
 protocol UBCSPhotoTableViewCellDelegate {
-    func addPhotoPressed(_ index: Int)
+    func addPhotoPressed(_ index: Int, sender: UIView)
 }
 
 
@@ -55,7 +55,7 @@ class UBCSPhotoTableViewCell: UBTableViewCell {
     
     @objc private func photoPressed(sender: UBCSPhotoAddView) {
         if let delegate = self.delegate {
-            delegate.addPhotoPressed(sender.tag)
+            delegate.addPhotoPressed(sender.tag, sender: sender)
         }
     }
 }
@@ -84,7 +84,7 @@ private class UBCSPhotoAddView: UBButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.cornerRadius = 10
+        self.cornerRadius = UBCConstant.cornerRadius
         self.backgroundColor = UIColor(red: 248 / 255.0, green: 248 / 255.0, blue: 248 / 255.0, alpha: 1)
         
         let constraint1 = self.setHeightConstraintWithValue(70)

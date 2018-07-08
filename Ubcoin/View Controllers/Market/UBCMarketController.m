@@ -54,7 +54,7 @@
     self.searchController.delegate = self;
     self.searchController.dimsBackgroundDuringPresentation = NO;
     self.searchController.searchBar.delegate = self;
-    self.searchController.searchBar.tintColor = BROWN_COLOR;
+//    self.searchController.searchBar.tintColor = BROWN_COLOR;
     self.searchController.searchBar.barTintColor = UIColor.whiteColor;
     self.searchController.searchBar.layer.borderWidth = 1;
     self.searchController.searchBar.layer.borderColor = UIColor.whiteColor.CGColor;

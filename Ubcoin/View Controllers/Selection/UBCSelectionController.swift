@@ -53,7 +53,7 @@ class UBCSelectionController: UBViewController {
             let string = self.content[i]
             
             let row = UBTableViewRowData()
-            row.height = 65
+            row.height = UBCConstant.cellHeight
             row.title = string
             rows.append(row)
         }
@@ -67,12 +67,11 @@ extension UBCSelectionController: UBDefaultTableViewDelegate {
     
     func layoutCell(_ cell: UBDefaultTableViewCell!, for data: UBTableViewRowData!, indexPath: IndexPath!) {
         cell.accessoryType = .none
-        cell.tintColor = UIColor(red: 42 / 255.0, green: 42 / 255.0, blue: 42 / 255.0, alpha: 1)
         cell.title.textColor = UBColor.titleColor
         if let selected = self.selected, selected == indexPath.row {
             cell.accessoryType = .checkmark
-            cell.tintColor = UIColor(red: 50 / 255.0, green: 187 / 255.0, blue: 143 / 255.0, alpha: 1)
-            cell.title.textColor = UIColor(red: 50 / 255.0, green: 187 / 255.0, blue: 143 / 255.0, alpha: 1)
+            cell.tintColor = UBCColor.green
+            cell.title.textColor = UBCColor.green
         }
     }
     

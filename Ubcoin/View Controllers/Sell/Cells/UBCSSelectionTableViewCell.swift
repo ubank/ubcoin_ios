@@ -33,8 +33,8 @@ class UBCSSelectionTableViewCell: UBTableViewCell {
         self.title.font = UBFont.titleFont
         self.title.numberOfLines = 2
         self.contentView.addSubview(self.title)
-        self.contentView.setLeadingConstraintToSubview(self.title, withValue: 15)
-        self.contentView.setTrailingConstraintToSubview(self.title, withValue: -15)
+        self.contentView.setLeadingConstraintToSubview(self.title, withValue: UBCConstant.inset)
+        self.contentView.setTrailingConstraintToSubview(self.title, withValue: -UBCConstant.inset)
         self.contentView.setCenterYConstraintToSubview(self.title)
     }
 }

@@ -8,13 +8,15 @@
 
 #import "HUBCollectionViewWaitCell.h"
 
+#import "Ubcoin-Swift.h"
+
 @implementation HUBCollectionViewWaitCell
 
 - (void)awakeFromNib
 {
     [super awakeFromNib];
     
-    self.layer.cornerRadius = DEFAULT_CORNER_RADIUS;
+    self.layer.cornerRadius = UBCConstant.cornerRadius;
     self.backgroundColor = UIColor.whiteColor;
 }
 

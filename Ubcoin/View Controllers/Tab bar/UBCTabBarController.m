@@ -27,7 +27,7 @@
     
     self.delegate = self;
     
-    self.tabBar.tintColor = [UIColor colorWithHexString:@"5b676d"];
+    self.tabBar.tintColor = UBCColor.tabBar;
     self.tabBar.backgroundColor = UIColor.whiteColor;
     
     [self updateControllers];

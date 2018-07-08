@@ -13,11 +13,15 @@ class UBCSellController: UBViewController {
     
     var content = [UBTableViewSectionData]()
     
+    private var buttonView: UIView!
+    private var button: HUBGeneralButton!
+    
     private(set) lazy var tableView: UBTableView = { [unowned self] in
         let tableView = UBTableView(frame: .zero, style: .grouped)
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
         
         tableView.register(UBCSPhotoTableViewCell.self, forCellReuseIdentifier: UBCSPhotoTableViewCell.className)
@@ -37,9 +41,30 @@ class UBCSellController: UBViewController {
         self.setupViews()
     }
 
-    func setupViews() {
+    private func setupViews() {
+        let viewHeight = UBCConstant.actionButtonHeight + 30
+        
         self.view.addSubview(self.tableView)
-        self.view.addConstraints(toFillSubview: self.tableView)
+        self.view.setAllConstraintToSubview(self.tableView, with: UIEdgeInsets(top: 0, left: 0, bottom: -viewHeight, right: 0))
+        
+        self.buttonView = UIView()
+        self.buttonView.backgroundColor = .white
+        self.view.addSubview(self.buttonView)
+        self.view.setLeadingConstraintToSubview(self.buttonView, withValue: 0)
+        self.view.setTrailingConstraintToSubview(self.buttonView, withValue: 0)
+        self.view.setBottomConstraintToSubview(self.buttonView, withValue: 0)
+        self.buttonView.setHeightConstraintWithValue(UBCConstant.actionButtonHeight + 30)
+        
+        self.button = HUBGeneralButton()
+        self.button.type = HUBGeneralButtonTypeGreen
+        self.button.title = "Done"
+        self.button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        self.buttonView.addSubview(self.button)
+        self.buttonView.setAllConstraintToSubview(self.button, with: UIEdgeInsets(top: 15, left: UBCConstant.inset, bottom: -15, right: -UBCConstant.inset))
+    }
+    
+    @objc private func buttonPressed() {
+        
     }
 }
 
@@ -114,20 +139,20 @@ extension UBCSellController: UITableViewDataSource, UITableViewDelegate {
             }
             
             let controller = UBCSelectionController(title: row.placeholder, content: content, selected: selected)
-            controller.completion = { (index) in
+            controller.completion = { [weak self] index in
                 row.data = content[index]
                 section.rows[indexPath.row] = row
-                self.tableView.reloadData()
-                self.navigationController?.popViewController(animated: true)
+                self?.tableView.reloadData()
+                self?.navigationController?.popViewController(animated: true)
             }
             self.navigationController?.pushViewController(controller, animated: true)
         } else if row.type == .location {
             let controller = UBCMapSelectController(title: row.placeholder)
-            controller.completion = { (selectedLocation) in
+            controller.completion = { [weak self] selectedLocation in
                 row.data = selectedLocation
                 section.rows[indexPath.row] = row
-                self.tableView.reloadData()
-                self.navigationController?.popViewController(animated: true)
+                self?.tableView.reloadData()
+                self?.navigationController?.popViewController(animated: true)
             }
             self.navigationController?.pushViewController(controller, animated: true)
         }
@@ -137,16 +162,16 @@ extension UBCSellController: UITableViewDataSource, UITableViewDelegate {
 
 extension UBCSellController: UBCSPhotoTableViewCellDelegate {
     
-    func addPhotoPressed(_ index: Int) {
-        let action1 = UIAlertAction(title: "Camera", style: .default) { (action) in
-            self.showImagePicker(sourceType: .camera)
+    func addPhotoPressed(_ index: Int, sender: UIView) {
+        let action1 = UIAlertAction(title: "Camera", style: .default) { [weak self] action in
+            self?.showImagePicker(sourceType: .camera)
         }
         
-        let action2 = UIAlertAction(title: "Photo Library", style: .default) { (action) in
-            self.showImagePicker(sourceType: .photoLibrary)
+        let action2 = UIAlertAction(title: "Photo Library", style: .default) { [weak self] action in
+            self?.showImagePicker(sourceType: .photoLibrary)
         }
         
-        UBAlert.showActionSheet(withTitle: "Choose action", message: nil, actions: [action1, action2], sourceView: nil)
+        UBAlert.showActionSheet(withTitle: "Choose action", message: nil, actions: [action1, action2], sourceView: sender)
     }
     
     private func showImagePicker(sourceType: UIImagePickerController.SourceType) {

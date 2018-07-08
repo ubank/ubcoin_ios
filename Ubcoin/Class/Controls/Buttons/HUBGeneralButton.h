@@ -10,10 +10,9 @@ typedef enum
 {
     HUBGeneralButtonTypeCustom,
     HUBGeneralButtonTypeWhite,
-    HUBGeneralButtonTypeBrown,
+    HUBGeneralButtonTypeGreen,
     HUBGeneralButtonTypeSemitransparent,
-    HUBGeneralButtonTypeWhiteWithBrownBorder,
-    HUBGeneralButtonTypeBlue
+    HUBGeneralButtonTypeWhiteWithBrownBorder
 } HUBGeneralButtonType;
 
 IB_DESIGNABLE

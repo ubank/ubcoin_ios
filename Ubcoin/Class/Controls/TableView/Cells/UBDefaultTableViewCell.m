@@ -8,6 +8,8 @@
 
 #import "UBDefaultTableViewCell.h"
 
+#import "Ubcoin-Swift.h"
+
 #define default_horizontal_spacing 10
 #define default_vertical_spacing 5
 #define default_vertical_offset 10
@@ -47,8 +49,8 @@
         
         self.iconWidth = default_icon_width;
         self.iconHeight = default_icon_width;
-        self.leftIndent = DEFAULT_INSET;
-        self.rightIndent = DEFAULT_INSET;
+        self.leftIndent = UBCConstant.inset;
+        self.rightIndent = UBCConstant.inset;
         
         self.separatorAlignmentView = self.title;
     }
@@ -240,7 +242,7 @@
 - (CGFloat)cellHeight
 {
     //Костыль над iOS rightIndent (который равен 8) и исправляется на 15 очень поздно
-    self.rightIndent = DEFAULT_INSET + (self.accessoryView ? 7 : 0);
+    self.rightIndent = UBCConstant.inset + (self.accessoryView ? 7 : 0);
     
     [self forceLayout];
     
@@ -248,7 +250,7 @@
     
     CGFloat height = self.horizontalStackView.height + default_vertical_offset * 2;
     
-    return MAX(DEFAULT_CELL_HEIGHT, height);
+    return MAX(UBCConstant.cellHeight, height);
 }
 
 @end

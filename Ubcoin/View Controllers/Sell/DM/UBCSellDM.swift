@@ -10,8 +10,6 @@ import UIKit
 
 class UBCSellDM: NSObject {
 
-    private static let headerHeight: CGFloat = 40
-
     class func sellActions() -> [UBTableViewSectionData] {
         
         var sections = [UBTableViewSectionData]()
@@ -19,13 +17,12 @@ class UBCSellDM: NSObject {
         let photoSection = UBTableViewSectionData()
         photoSection.headerHeight = SEPARATOR_HEIGHT
         photoSection.headerTitle = " "
-        var photos = UBCSellCellDM(type: .photo)
-        photos.height = 95
+        let photos = UBCSellCellDM(type: .photo)
         photoSection.rows = [photos]
         sections.append(photoSection)
         
         let aboutSection = UBTableViewSectionData()
-        aboutSection.headerHeight = headerHeight
+        aboutSection.headerHeight = UBCConstant.headerHeight
         aboutSection.headerTitle = "About"
         let title = UBCSellCellDM(type: .title)
         let category = UBCSellCellDM(type: .category)
@@ -34,14 +31,14 @@ class UBCSellDM: NSObject {
         sections.append(aboutSection)
         
         let descSection = UBTableViewSectionData()
-        descSection.headerHeight = headerHeight
+        descSection.headerHeight = UBCConstant.headerHeight
         descSection.headerTitle = "Description"
         let desc = UBCSellCellDM(type: .desc)
         descSection.rows = [desc]
         sections.append(descSection)
 
         let locationSection = UBTableViewSectionData()
-        locationSection.headerHeight = headerHeight
+        locationSection.headerHeight = UBCConstant.headerHeight
         locationSection.headerTitle = "Location"
         let location = UBCSellCellDM(type: .location)
         locationSection.rows = [location]
@@ -62,7 +59,7 @@ struct UBCSellCellDM {
     
     init(type: UBCSellCellType) {
         self.type = type
-        self.height = type == .photo ? 95 : 65
+        self.height = type == .photo ? 95 : UBCConstant.cellHeight
         
         self.className = type.className
         self.placeholder = type.placeholder
