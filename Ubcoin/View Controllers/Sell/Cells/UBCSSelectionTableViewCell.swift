@@ -48,7 +48,7 @@ extension UBCSSelectionTableViewCell: UBCSellCellProtocol {
             self.title.textColor = UBColor.titleColor
         } else {
             self.title.text = content.placeholder
-            self.title.textColor = UIColor(red: 64 / 255.0, green: 61 / 255.0, blue: 69 / 255.0, alpha: 1).withAlphaComponent(0.6)
+            self.title.textColor = UBColor.titleColor.withAlphaComponent(0.5)
         }
     }
 }
