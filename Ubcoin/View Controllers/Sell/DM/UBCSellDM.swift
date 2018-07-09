@@ -9,9 +9,10 @@
 import UIKit
 
 class UBCSellDM: NSObject {
+    
+    var sections = UBCSellDM.sellActions()
 
     class func sellActions() -> [UBTableViewSectionData] {
-        
         var sections = [UBTableViewSectionData]()
         
         let photoSection = UBTableViewSectionData()
@@ -45,6 +46,47 @@ class UBCSellDM: NSObject {
         sections.append(locationSection)
         
         return sections
+    }
+    
+    func updateRow(_ row: UBCSellCellDM) {
+        for section in sections {
+            for i in 0..<section.rows.count {
+                if let oldRow = section.rows[i] as? UBCSellCellDM, oldRow.type == row.type {
+                    section.rows[i] = row
+                }
+            }
+        }
+    }
+    
+    func updatePhotoRow(image: UIImage) {
+        for section in sections {
+            for i in 0..<section.rows.count {
+                if var row = section.rows[i] as? UBCSellCellDM, row.type == .photo {
+                    if row.data as? [UIImage] == nil {
+                        row.data = [UIImage]()
+                    }
+                    
+                    if var data = row.data as? [UIImage] {
+                        data.append(image)
+                        row.data = data
+                    }
+                    
+                    section.rows[i] = row
+                }
+            }
+        }
+    }
+    
+    func isAllParamsNotEmpty() -> Bool {
+        for section in sections {
+            for row in section.rows {
+                if let row = row as? UBCSellCellDM, row.data == nil {
+                    return false
+                }
+            }
+        }
+        
+        return true
     }
 }
 
@@ -116,4 +158,9 @@ enum UBCSellCellType {
 
 protocol UBCSellCellProtocol {
     func setContent(content: UBCSellCellDM)
+}
+
+protocol UBCSTextCellDelegate {
+    func updateTableView()
+    func updatedRow(_ row: UBCSellCellDM)
 }

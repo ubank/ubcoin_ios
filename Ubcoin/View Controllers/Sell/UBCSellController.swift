@@ -11,7 +11,7 @@ import Photos
 
 class UBCSellController: UBViewController {
     
-    var content = [UBTableViewSectionData]()
+    var model = UBCSellDM()
     
     private var buttonView: UIView!
     private var button: HUBGeneralButton!
@@ -37,8 +37,6 @@ class UBCSellController: UBViewController {
         super.viewDidLoad()
         
         self.title = "Sell"
-
-        self.content = UBCSellDM.sellActions()
 
         self.setupViews()
     }
@@ -66,7 +64,11 @@ class UBCSellController: UBViewController {
     }
     
     @objc private func buttonPressed() {
-        
+        if self.model.isAllParamsNotEmpty() {
+            UBAlert.show(withTitle: "Success", andMessage: nil)
+        } else {
+            UBAlert.show(withTitle: "Error", andMessage: "You have one or more empty fields")
+        }
     }
 }
 
@@ -74,24 +76,23 @@ class UBCSellController: UBViewController {
 extension UBCSellController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return content.count
+        return self.model.sections.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let section = content[section]
+        let section = self.model.sections[section]
         
         return section.rows.count
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        let section = content[section]
-        
+        let section = self.model.sections[section]
         
         return section.headerHeight
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let section = content[section]
+        let section = self.model.sections[section]
         
         return section.headerTitle
     }
@@ -105,7 +106,7 @@ extension UBCSellController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let section = content[indexPath.section]
+        let section = self.model.sections[indexPath.section]
         guard let row = section.rows[indexPath.row] as? UBCSellCellDM else { return ZERO_HEIGHT }
         
         if row.className == UBCSTextViewTableViewCell.className {
@@ -116,31 +117,25 @@ extension UBCSellController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let section = content[indexPath.section]
-        guard let row = section.rows[indexPath.row] as? UBCSellCellDM else { return UBTableViewCell() }
+        let section = self.model.sections[indexPath.section]
+        guard let row = section.rows[indexPath.row] as? UBCSellCellDM, let cell = tableView.dequeueReusableCell(withIdentifier: row.className) as? UBTableViewCell & UBCSellCellProtocol else { return UBTableViewCell() }
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: row.className) as? UBTableViewCell & UBCSellCellProtocol
+        cell.setContent(content: row)
+        cell.showBottomSeparator = !self.tableView.isLast(indexPath)
         
-        if let cell = cell {
-            cell.setContent(content: row)
-            cell.showBottomSeparator = !self.tableView.isLast(indexPath)
-            
-            if let cell = cell as? UBCSPhotoTableViewCell {
-                cell.delegate = self
-            }
-            
-            if let cell = cell as? UBCSTextViewTableViewCell {
-                cell.delegate = self
-            }
-            
-            return cell
+        if let cell = cell as? UBCSPhotoTableViewCell {
+            cell.delegate = self
+        } else if let cell = cell as? UBCSTextViewTableViewCell {
+            cell.delegate = self
+        } else if let cell = cell as? UBCSTextFieldTableViewCell {
+            cell.delegate = self
         }
         
-        return UBTableViewCell()
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let section = content[indexPath.section]
+        let section = self.model.sections[indexPath.section]
         guard var row = section.rows[indexPath.row] as? UBCSellCellDM else { return }
         
         if row.type == .category, let content = row.selectContent {
@@ -166,7 +161,7 @@ extension UBCSellController: UITableViewDataSource, UITableViewDelegate {
                 self?.navigationController?.popViewController(animated: true)
             }
             self.navigationController?.pushViewController(controller, animated: true)
-        }
+        }31
     }
 }
 
@@ -209,11 +204,15 @@ extension UBCSellController: UBCSPhotoTableViewCellDelegate {
 }
 
 
-extension UBCSellController: UBCSTextViewTableViewCellDelegate {
+extension UBCSellController: UBCSTextCellDelegate {
     
     func updateTableView() {
         self.tableView.beginUpdates()
         self.tableView.endUpdates()
+    }
+    
+    func updatedRow(_ row: UBCSellCellDM) {
+        self.model.updateRow(row)
     }
 }
 
@@ -221,20 +220,8 @@ extension UBCSellController: UBCSTextViewTableViewCellDelegate {
 extension UBCSellController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        let section = content[0]
-        
-        if var row = section.rows.first as? UBCSellCellDM {
-            if row.data as? [UIImage] == nil {
-                row.data = [UIImage]()
-            }
-            
-            if var data = row.data as? [UIImage], let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-                data.append(image)
-                row.data = data
-            }
-            
-            section.rows = [row]
-            
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            self.model.updatePhotoRow(image: image)
             self.tableView.reloadData()
         }
 

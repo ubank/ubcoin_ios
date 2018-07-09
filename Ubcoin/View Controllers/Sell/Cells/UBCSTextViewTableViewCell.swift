@@ -8,16 +8,13 @@
 
 import UIKit
 
-protocol UBCSTextViewTableViewCellDelegate {
-    func updateTableView()
-}
-
-
 class UBCSTextViewTableViewCell: UBTableViewCell {
 
     static let className = String(describing: UBCSTextViewTableViewCell.self)
     
-    var delegate: UBCSTextViewTableViewCellDelegate?
+    var delegate: UBCSTextCellDelegate?
+    
+    private var content: UBCSellCellDM?
     
     private var textView: UITextView!
     
@@ -55,6 +52,11 @@ class UBCSTextViewTableViewCell: UBTableViewCell {
 extension UBCSTextViewTableViewCell: UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
+        if let delegate = self.delegate, var content = self.content {
+            content.data = textView.text
+            delegate.updatedRow(content)
+        }
+        
         let startHeight = textView.frame.size.height
         let calcHeight = textView.sizeThatFits(textView.frame.size).height
         
@@ -76,6 +78,8 @@ extension UBCSTextViewTableViewCell: UITextViewDelegate {
 extension UBCSTextViewTableViewCell: UBCSellCellProtocol {
     
     func setContent(content: UBCSellCellDM) {
+        self.content = content
+        
         if let text = content.data as? String {
             self.textView.text = text
         }

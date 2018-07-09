@@ -12,16 +12,10 @@ class UBCSelectionController: UBViewController {
     
     var completion: ((Int) -> Void)?
     
+    private var tableView: UBDefaultTableView!
+    
     private var content: [String]!
     private var selected: Int?
-    
-    private(set) lazy var tableView: UBDefaultTableView = { [unowned self] in
-        let tableView = UBDefaultTableView()
-        
-        tableView.actionDelegate = self
-        
-        return tableView
-    }()
     
     init(title: String, content: [String], selected: Int?) {
         super.init(nibName: nil, bundle: nil)
@@ -44,6 +38,8 @@ class UBCSelectionController: UBViewController {
     }
     
     private func setupViews() {
+        self.tableView = UBDefaultTableView()
+        self.tableView.actionDelegate = self
         self.view.addSubview(self.tableView)
         self.view.addConstraints(toFillSubview: self.tableView)
     }

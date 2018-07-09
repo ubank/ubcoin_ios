@@ -8,16 +8,13 @@
 
 import UIKit
 
-protocol UBCSTextFieldTableViewCellDelegate {
-    func updateTableView()
-}
-
-
 class UBCSTextFieldTableViewCell: UBTableViewCell {
     
     static let className = String(describing: UBCSTextFieldTableViewCell.self)
     
-    var delegate: UBCSTextFieldTableViewCellDelegate?
+    var delegate: UBCSTextCellDelegate?
+    
+    private var content: UBCSellCellDM?
     
     private var stackView: UIStackView!
     private var title: UILabel!
@@ -86,6 +83,11 @@ extension UBCSTextFieldTableViewCell: UITextFieldDelegate {
             }
             
             textField.text = newString
+            
+            if let delegate = self.delegate, var content = self.content {
+                content.data = textField.text
+                delegate.updatedRow(content)
+            }
         }
         
         return false
@@ -96,6 +98,8 @@ extension UBCSTextFieldTableViewCell: UITextFieldDelegate {
 extension UBCSTextFieldTableViewCell: UBCSellCellProtocol {
     
     func setContent(content: UBCSellCellDM) {
+        self.content = content
+        
         self.title.text = content.placeholder
         
         let width = self.title.sizeThatFits(CGSize(width: self.width, height: self.title.font.lineHeight)).width

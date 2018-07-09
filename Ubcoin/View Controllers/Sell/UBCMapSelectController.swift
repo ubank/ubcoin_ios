@@ -19,7 +19,15 @@ class UBCMapSelectController: UBViewController {
     private var locationString: String?
     private var geocode = CLGeocoder()
     private var currentLocation: CLLocation?
-    private var locationManager = CLLocationManager()
+    
+    private(set) lazy var locationManager: CLLocationManager = { [unowned self] in
+        let locationManager = CLLocationManager()
+        
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        
+        return locationManager
+    }()
     
     init(title: String) {
         super.init(nibName: nil, bundle: nil)
@@ -37,10 +45,7 @@ class UBCMapSelectController: UBViewController {
         self.navigationContainer.rightTitle = "Save"
         
         self.setupViews()
-        
-        self.locationManager.delegate = self
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        
+    
         if CLLocationManager.locationServicesEnabled() {
             self.locationManager.requestWhenInUseAuthorization()
             self.locationManager.startUpdatingLocation()
@@ -106,15 +111,11 @@ class UBCMapSelectController: UBViewController {
 extension UBCMapSelectController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        defer {
-            self.currentLocation = locations.last
+        if self.currentLocation == nil, let userLocation = locations.last  {
+            let viewRegion = MKCoordinateRegion(center: userLocation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+            self.mapView.setRegion(viewRegion, animated: false)
         }
         
-        if self.currentLocation == nil {
-            if let userLocation = locations.last {
-                let viewRegion = MKCoordinateRegion(center: userLocation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-                self.mapView.setRegion(viewRegion, animated: false)
-            }
-        }
+        self.currentLocation = locations.last
     }
 }
