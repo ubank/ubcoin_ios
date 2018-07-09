@@ -22,7 +22,7 @@ class UBCSPhotoTableViewCell: UBTableViewCell {
     private var stackView: UIStackView!
     private var photoViews = [UBCSPhotoAddView]()
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         self.showHighlighted = false
@@ -98,7 +98,7 @@ private class UBCSPhotoAddView: UBButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func setBackgroundImage(_ image: UIImage?, for state: UIControl.State) {
+    override func setBackgroundImage(_ image: UIImage?, for state: UIControlState) {
         super.setBackgroundImage(image, for: state)
         
         self.image = image == nil ? UIImage(named: "general_photo") : nil

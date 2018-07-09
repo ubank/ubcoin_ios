@@ -174,7 +174,7 @@ extension UBCSellController: UBCSPhotoTableViewCellDelegate {
         UBAlert.showActionSheet(withTitle: "Choose action", message: nil, actions: [action1, action2], sourceView: sender)
     }
     
-    private func showImagePicker(sourceType: UIImagePickerController.SourceType) {
+    private func showImagePicker(sourceType: UIImagePickerControllerSourceType) {
         if sourceType == .camera {
             let status = AVCaptureDevice.authorizationStatus(for: .video)
             if status == .denied || status == .restricted || status == .notDetermined || UIImagePickerController.isSourceTypeAvailable(.camera) {
@@ -200,7 +200,7 @@ extension UBCSellController: UBCSPhotoTableViewCellDelegate {
 
 extension UBCSellController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let section = content[0]
         
         if var row = section.rows.first as? UBCSellCellDM {
@@ -208,7 +208,7 @@ extension UBCSellController: UIImagePickerControllerDelegate, UINavigationContro
                 row.data = [UIImage]()
             }
             
-            if var data = row.data as? [UIImage], let image = info[.originalImage] as? UIImage {
+            if var data = row.data as? [UIImage], let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
                 data.append(image)
                 row.data = data
             }

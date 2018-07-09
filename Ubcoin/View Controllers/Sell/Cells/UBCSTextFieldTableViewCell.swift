@@ -12,7 +12,7 @@ class UBCSTextFieldTableViewCell: UBTableViewCell {
 
     static let className = String(describing: UBCSTextFieldTableViewCell.self)
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         self.showHighlighted = false
