@@ -38,6 +38,8 @@
 
 - (void)setContent:(UBCGoodDM *)content
 {
+    _content = content;
+    
     self.title.text = content.title;
     self.desc.text = content.desc;
     self.favoriteButton.image = [UIImage imageNamed:[NSString stringWithFormat:@"icFav%@", self.content.isFavorite ? @"B" : @"A"]];
