@@ -27,6 +27,7 @@
 {
     [super viewDidLoad];
     
+    self.navigationContainer.image = [UIImage imageNamed:@"general_logo_black"];
     self.navigationContainer.rightImageTitle = @"general_filter";
     
     [self setupCollectionView];

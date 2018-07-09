@@ -32,3 +32,4 @@
 #import "UBDefaultTableView.h"
 #import "UBTableHeaderView.h"
 #import "HUBPermissions.h"
+#import "UBCDataProvider.h"

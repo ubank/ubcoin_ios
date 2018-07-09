@@ -18,6 +18,7 @@
 {
     [super viewDidLoad];
 
+    self.title = @"Filter";
 }
 
 @end

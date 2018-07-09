@@ -51,7 +51,7 @@
     
     UBCSellController *viewController3 = UBCSellController.new;
     viewController3.tabBarItem.title = @"Sell";
-    viewController3.tabBarItem.image = [UIImage imageNamed:@"tab_bar_sell"];
+    viewController3.tabBarItem.image = [[UIImage imageNamed:@"tab_bar_sell"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     UBCChatController *viewController4 = UBCChatController.new;
     viewController4.tabBarItem.title = @"Chat";
