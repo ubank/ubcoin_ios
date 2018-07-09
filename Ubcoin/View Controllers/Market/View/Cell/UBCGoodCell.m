@@ -9,6 +9,8 @@
 #import "UBCGoodCell.h"
 #import "UBCGoodDM.h"
 
+#import "Ubcoin-Swift.h"
+
 @interface UBCGoodCell ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *icon;
@@ -26,7 +28,7 @@
 
     self.title.numberOfLines = 1;
     self.desc.numberOfLines = 1;
-    self.cornerRadius = DEFAULT_CORNER_RADIUS;
+    self.cornerRadius = UBCConstant.defaultCornerRadius;
 }
 
 - (void)layoutSubviews

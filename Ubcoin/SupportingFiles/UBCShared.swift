@@ -23,6 +23,7 @@ class UBCConstant: NSObject {
     @objc static let actionButtonHeight: CGFloat = 59
     @objc static let inset: CGFloat = 15
     @objc static let cellHeight: CGFloat = 65
+    @objc static let defaultCornerRadius: CGFloat = 15
     @objc static let cornerRadius: CGFloat = 10
     @objc static let headerHeight: CGFloat = 40
 }

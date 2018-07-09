@@ -9,6 +9,8 @@
 #import "UBCDiscountCollectionViewCell.h"
 #import "UBCDiscountDM.h"
 
+#import "Ubcoin-Swift.h"
+
 @interface UBCDiscountCollectionViewCell ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *icon;
@@ -23,7 +25,7 @@
 {
     [super awakeFromNib];
 
-    self.cornerRadius = DEFAULT_CORNER_RADIUS;
+    self.cornerRadius = UBCConstant.defaultCornerRadius;
 }
 
 - (void)layoutSubviews
