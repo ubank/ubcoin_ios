@@ -8,7 +8,7 @@
 
 #import "UBCURLProvider.h"
 
-#define SERVER_URL @"https://private-anon-c5ab7ff20b-ubcoinapi.apiary-mock.com/api/"
+#define SERVER_URL @"https://my.ubcoin.io/api/"
 
 @implementation UBCURLProvider
 

@@ -8,21 +8,22 @@
 
 #import <UIKit/UIKit.h>
 #import "UBCGoodDM.h"
+#import "UBCDiscountsCollectionView.h"
 
 @protocol UBCGoodsCollectionViewDelegate
 
+- (void)didSelectDiscount:(UBCDiscountDM *)discount;
 - (void)didSelectItem:(UBCGoodDM *)item;
 - (void)refreshControlUpdate;
 - (void)updatePagination;
 
 @end
 
-@interface UBCGoodsCollectionView : UICollectionView <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface UBCGoodsCollectionView : UICollectionView <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UBCDiscountsCollectionViewDelegate>
 
 @property (weak, nonatomic) IBOutlet id<UBCGoodsCollectionViewDelegate> actionsDelegate;
 @property (strong, nonatomic) NSArray<UBCGoodDM *> *items;
+@property (strong, nonatomic) NSArray<UBCDiscountDM *> *discounts;
 @property (assign, nonatomic) BOOL canLoadMore;
-
-- (void)setupWithItems:(NSArray<UBCGoodDM *> *)items discounts:(NSArray *)discounts;
 
 @end

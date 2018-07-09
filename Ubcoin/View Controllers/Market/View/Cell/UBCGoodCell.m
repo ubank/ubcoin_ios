@@ -24,7 +24,16 @@
 {
     [super awakeFromNib];
 
+    self.title.numberOfLines = 1;
+    self.desc.numberOfLines = 1;
     self.cornerRadius = DEFAULT_CORNER_RADIUS;
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    [self.icon setupContentModeFill];
 }
 
 - (void)setContent:(UBCGoodDM *)content

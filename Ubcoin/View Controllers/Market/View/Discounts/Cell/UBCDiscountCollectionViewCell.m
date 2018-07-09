@@ -26,11 +26,18 @@
     self.cornerRadius = DEFAULT_CORNER_RADIUS;
 }
 
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    [self.icon setupContentModeFill];
+}
+
 - (void)setContent:(UBCDiscountDM *)content
 {
     self.title.text = content.title;
     self.desc.text = content.desc;
-    [self loadImageWithURL:content.imageURL withDefaultImage:nil forImageView:self.icon];
+    [self loadImageWithURL:content.imageURL withDefaultImage:content.image forImageView:self.icon];
 }
 
 @end

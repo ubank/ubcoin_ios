@@ -8,6 +8,7 @@
 
 #import "UBCGoodsCollectionView.h"
 #import "HUBSpringyCollectionViewFlowLayout.h"
+#import "UBCDiscountsCollectionView.h"
 #import "HUBCollectionViewWaitCell.h"
 #import "UBCGoodCell.h"
 
@@ -47,6 +48,14 @@
     
     [self registerNib:[UINib nibWithNibName:NSStringFromClass(UBCGoodCell.class) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass(UBCGoodCell.class)];
     [self registerNib:[UINib nibWithNibName:NSStringFromClass(HUBCollectionViewWaitCell.class) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass(HUBCollectionViewWaitCell.class)];
+    
+    [self registerNib:[UINib nibWithNibName:NSStringFromClass(UBCDiscountsCollectionView.class) bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass(UBCDiscountsCollectionView.class)];
+}
+
+- (void)setDiscounts:(NSArray<UBCDiscountDM *> *)discounts
+{
+    _discounts = discounts;
+    [self reloadData];
 }
 
 - (void)setItems:(NSArray<UBCGoodDM *> *)items
@@ -55,12 +64,29 @@
     [self reloadData];
 }
 
-- (void)setupWithItems:(NSArray<UBCGoodDM *> *)items discounts:(NSArray *)discounts
+#pragma mark - UICollectionView
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
-    
+    if (self.discounts.count > 0)
+    {
+        UBCDiscountsCollectionView *view = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:NSStringFromClass(UBCDiscountsCollectionView.class) forIndexPath:indexPath];
+        view.delegate = self;
+        view.discounts = self.discounts;
+        return view;
+    }
+    return nil;
 }
 
-#pragma mark - UICollectionView
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
+{
+    if (self.discounts.count > 0)
+    {
+        return CGSizeMake(collectionView.width, DISCOUNTS_HEIGHT);
+    }
+    
+    return CGSizeZero;
+}
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
@@ -69,7 +95,7 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGFloat cellWidth = (SCREEN_WIDTH - ((UICollectionViewFlowLayout *)collectionViewLayout).sectionInset.left * 2 - 10) / 2;
+    CGFloat cellWidth = (SCREEN_WIDTH - ((UICollectionViewFlowLayout *)collectionViewLayout).sectionInset.left * 2 - DEFAULT_INSET) / 2;
     
     return CGSizeMake(cellWidth, COLLECTION_CELL_HEIGHT);
 }
@@ -109,6 +135,13 @@
 - (BOOL)isWaitCellIndexPath:(NSIndexPath *)indexPath
 {
     return indexPath.row >= self.items.count;
+}
+
+#pragma mark - UBCDiscountsCollectionViewDelegate
+
+- (void)showDiscountInfo:(UBCDiscountDM *)discount
+{
+    [self.actionsDelegate didSelectDiscount:discount];
 }
 
 @end

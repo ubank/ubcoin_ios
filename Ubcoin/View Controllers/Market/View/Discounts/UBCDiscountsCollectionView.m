@@ -22,6 +22,9 @@
 {
     [super awakeFromNib];
     
+    self.pageControl.hidesForSinglePage = YES;
+    self.pageControl.tintColor = RED_COLOR;
+    
     [self.collectionView registerNib:[UINib nibWithNibName:@"UBCDiscountCollectionViewCell" bundle:nil]
           forCellWithReuseIdentifier:@"UBCDiscountCollectionViewCell"];
 }
@@ -41,23 +44,14 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSUInteger rowsCount = [self collectionView:collectionView numberOfItemsInSection:indexPath.section];
-    CGFloat cellWidth = SCREEN_WIDTH - ((UICollectionViewFlowLayout *)collectionViewLayout).sectionInset.left * 2;
+    CGFloat cellWidth = SCREEN_WIDTH - ((UICollectionViewFlowLayout *)collectionViewLayout).sectionInset.left * 2 - DEFAULT_INSET;
     
-    if (rowsCount == 1)
-    {
-        return CGSizeMake(cellWidth, DISCOUNT_CELL_HEIGHT);
-    }
-    else if (rowsCount == 2)
-    {
-        return CGSizeMake(cellWidth / 2, DISCOUNT_CELL_HEIGHT);
-    }
-    else
-    {
-        CGFloat smallCellWidth = (cellWidth - 10) / 2;
-        
-        return CGSizeMake(roundf(smallCellWidth), DISCOUNT_CELL_HEIGHT);
-    }
+    return CGSizeMake(MIN(295, cellWidth), DISCOUNT_CELL_HEIGHT);
+}
+
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.pageControl.currentPage = indexPath.row;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -71,7 +65,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-//    [self.delegate showDiscountInfo:self.discounts[indexPath.row]];
+    [self.delegate showDiscountInfo:self.discounts[indexPath.row]];
 }
 
 @end

@@ -22,7 +22,7 @@
     NSString *token = UBCKeyChain.authorization;
     if ([token isNotEmpty])
     {
-        [request setValue:token forHTTPHeaderField:@"Authorization"];
+        [request setValue:token forHTTPHeaderField:@"X-Authentication"];
     }
     
     [request setTimeoutInterval:10.0];

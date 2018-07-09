@@ -7,9 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UBCDiscountDM.h"
+
+#define DISCOUNTS_HEIGHT 190
+
+@protocol UBCDiscountsCollectionViewDelegate
+
+- (void)showDiscountInfo:(UBCDiscountDM *)discount;
+
+@end
 
 @interface UBCDiscountsCollectionView : UICollectionReusableView
 
+@property (weak, nonatomic) id<UBCDiscountsCollectionViewDelegate> delegate;
 @property (strong, nonatomic) NSArray *discounts;
 
 @end

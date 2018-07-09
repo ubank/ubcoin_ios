@@ -30,8 +30,14 @@
     self.navigationContainer.image = [UIImage imageNamed:@"general_logo_black"];
     self.navigationContainer.rightImageTitle = @"general_filter";
     
+    self.pageNumber = 0;
+    self.items = [NSMutableArray array];
+    
     [self setupCollectionView];
     [self setupSearch];
+    
+    [self startActivityIndicatorImmediately];
+    [self updateInfo];
 }
 
 - (void)setupCollectionView
@@ -112,7 +118,8 @@
 {
     [self stopActivityIndicator];
     [self.collectionView.refreshControl endRefreshing];
-    [self.collectionView setupWithItems:self.items discounts:self.discounts];
+    self.collectionView.discounts = self.discounts;
+    self.collectionView.items = self.items;
 }
 
 #pragma mark - Actions
@@ -162,6 +169,11 @@
 
 #pragma mark - UBCGoodsCollectionViewDelegate
 
+- (void)didSelectDiscount:(UBCDiscountDM *)discount
+{
+    
+}
+
 - (void)didSelectItem:(UBCGoodDM *)item
 {
     
@@ -169,12 +181,13 @@
 
 - (void)updatePagination
 {
-    
+    [self updateInfo];
 }
 
 - (void)refreshControlUpdate
 {
     self.pageNumber = 0;
+    self.items = [NSMutableArray array];
     [self updateInfo];
 }
 

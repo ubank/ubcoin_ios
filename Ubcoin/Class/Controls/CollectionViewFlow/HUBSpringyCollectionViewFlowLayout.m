@@ -35,6 +35,8 @@
     if (self)
     {
         self.dynamicAnimator = [[UIDynamicAnimator alloc] initWithCollectionViewLayout:self];
+        self.sectionInset = UIEdgeInsetsMake(DEFAULT_INSET, DEFAULT_INSET, DEFAULT_INSET, DEFAULT_INSET);
+        self.minimumLineSpacing = DEFAULT_INSET;
     }
 
     return self;

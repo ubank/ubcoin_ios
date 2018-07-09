@@ -14,6 +14,7 @@
 @property (readonly, nonatomic) NSString *title;
 @property (readonly, nonatomic) NSString *desc;
 @property (readonly, nonatomic) NSString *imageURL;
+@property (readonly, nonatomic) UIImage *image;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
 

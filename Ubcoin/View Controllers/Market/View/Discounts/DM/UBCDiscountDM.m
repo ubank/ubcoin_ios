@@ -19,6 +19,7 @@
         _title = dict[@"title"];
         _desc = dict[@"description"];
         _imageURL = dict[@"image_url"];
+        _image = [UIImage imageNamed:dict[@"image"]];
     }
     return self;
 }
