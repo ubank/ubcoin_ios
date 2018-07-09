@@ -51,11 +51,16 @@ class UBCSelectionController: UBViewController {
     private func setupContent() {
         var rows = [UBTableViewRowData]()
         for i in 0..<self.content.count {
-            let string = self.content[i]
-            
             let row = UBTableViewRowData()
             row.height = UBCConstant.cellHeight
-            row.title = string
+            
+            var color = UBColor.titleColor
+            if let selected = self.selected, selected == i {
+                row.accessoryType = .checkmark
+                color = UBCColor.green
+            }
+            
+            row.attributedTitle = NSAttributedString(string: self.content[i], attributes: [.foregroundColor: color!])
             rows.append(row)
         }
         self.tableView.update(withRowsData: rows)
@@ -65,15 +70,8 @@ class UBCSelectionController: UBViewController {
 
 extension UBCSelectionController: UBDefaultTableViewDelegate {
     
-    func layoutCell(_ cell: UBDefaultTableViewCell!, for data: UBTableViewRowData!, indexPath: IndexPath!) {
-        if let selected = self.selected, selected == indexPath.row {
-            cell.accessoryType = .checkmark
-            cell.tintColor = UBCColor.green
-            cell.title.textColor = UBCColor.green
-        } else {
-            cell.accessoryType = .none
-            cell.title.textColor = UBColor.titleColor
-        }
+    func prepare(_ cell: UBDefaultTableViewCell!, for data: UBTableViewRowData!) {
+        cell.tintColor = UBCColor.green
     }
     
     func didSelect(_ data: UBTableViewRowData!, indexPath: IndexPath!) {

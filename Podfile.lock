@@ -14,10 +14,10 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
-  - Crashlytics (3.10.3):
-    - Fabric (~> 1.7.8)
+  - Crashlytics (3.10.4):
+    - Fabric (~> 1.7.9)
   - DGActivityIndicatorView (2.1.1)
-  - Fabric (1.7.8)
+  - Fabric (1.7.9)
   - GoogleAnalytics (3.17.0)
   - GoogleMaps (2.7.0):
     - GoogleMaps/Maps (= 2.7.0)
@@ -85,14 +85,14 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   UBGeneralClasses:
-    :commit: e79c7122eb3e417bd3e8b8aeb48a4f76d63a9fbe
+    :commit: 5f4c8a8d60a236b935be3fb14a309e457150ef04
     :git: https://github.com/ubank/ub_general_classes_iOS.git
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
-  Crashlytics: 2aea305161a2122492698c75af27f2b98aa49a25
+  Crashlytics: 915a7787b84f635fb2a81f92a90e265c2c413f76
   DGActivityIndicatorView: ff2c76073d79692f724863c8dd38685866a03cb6
-  Fabric: fba4684a95df789565b0b27fc5b6e68f1755af32
+  Fabric: a2917d3895e4c1569b9c3170de7320ea1b1e6661
   GoogleAnalytics: f42cc53a87a51fe94334821868d9c8481ff47a7b
   GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
   INTULocationManager: 0ca5c76eacc029ba15938fc699520bc333ed6435
