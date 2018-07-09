@@ -27,6 +27,7 @@ class UBCSelectionController: UBViewController {
         super.init(nibName: nil, bundle: nil)
         
         self.title = title
+        
         self.content = content
         self.selected = selected
     }
@@ -57,7 +58,6 @@ class UBCSelectionController: UBViewController {
             row.title = string
             rows.append(row)
         }
-        
         self.tableView.update(withRowsData: rows)
     }
 }
@@ -66,12 +66,13 @@ class UBCSelectionController: UBViewController {
 extension UBCSelectionController: UBDefaultTableViewDelegate {
     
     func layoutCell(_ cell: UBDefaultTableViewCell!, for data: UBTableViewRowData!, indexPath: IndexPath!) {
-        cell.accessoryType = .none
-        cell.title.textColor = UBColor.titleColor
         if let selected = self.selected, selected == indexPath.row {
             cell.accessoryType = .checkmark
             cell.tintColor = UBCColor.green
             cell.title.textColor = UBCColor.green
+        } else {
+            cell.accessoryType = .none
+            cell.title.textColor = UBColor.titleColor
         }
     }
     

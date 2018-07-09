@@ -18,7 +18,7 @@ class UBCSSelectionTableViewCell: UBTableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         self.accessoryType = .disclosureIndicator
-        self.tintColor = UIColor(red: 170 / 255.0, green: 170 / 255.0, blue: 170 / 255.0, alpha: 1)
+        self.tintColor = UBColor.titleColor.withAlphaComponent(0.5)
         
         self.setupViews()
     }
@@ -29,7 +29,6 @@ class UBCSSelectionTableViewCell: UBTableViewCell {
     
     private func setupViews() {
         self.title = UILabel()
-        
         self.title.font = UBFont.titleFont
         self.title.numberOfLines = 2
         self.contentView.addSubview(self.title)

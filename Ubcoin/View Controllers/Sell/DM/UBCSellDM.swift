@@ -56,6 +56,7 @@ struct UBCSellCellDM {
     var data: Any?
     var placeholder: String
     var selectContent: [String]?
+    var fieldInfo: String?
     
     init(type: UBCSellCellType) {
         self.type = type
@@ -66,6 +67,10 @@ struct UBCSellCellDM {
         
         if type == .category {
             self.selectContent = ["Accessories", "Clothes", "Transport", "Home", "Animals", "Gifts"]
+        }
+        
+        if type == .price {
+            self.fieldInfo = "$"
         }
     }
 }
@@ -84,8 +89,10 @@ enum UBCSellCellType {
                 return UBCSPhotoTableViewCell.className
             } else if self == .category || self == .location {
                 return UBCSSelectionTableViewCell.className
-            } else {
+            } else if self == .price || self == .title {
                 return UBCSTextFieldTableViewCell.className
+            } else {
+                return UBCSTextViewTableViewCell.className
             }
         }
     }
@@ -96,6 +103,10 @@ enum UBCSellCellType {
                 return "Select category"
             } else if self == .location {
                 return "Select location"
+            } else if self == .price {
+                return "Price"
+            } else if self == .title {
+                return "Title"
             } else {
                 return ""
             }

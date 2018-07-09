@@ -23,10 +23,12 @@ class UBCSellController: UBViewController {
         tableView.dataSource = self
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
+        tableView.estimatedRowHeight = UBCConstant.cellHeight
         
         tableView.register(UBCSPhotoTableViewCell.self, forCellReuseIdentifier: UBCSPhotoTableViewCell.className)
-        tableView.register(UBCSTextFieldTableViewCell.self, forCellReuseIdentifier: UBCSTextFieldTableViewCell.className)
+        tableView.register(UBCSTextViewTableViewCell.self, forCellReuseIdentifier: UBCSTextViewTableViewCell.className)
         tableView.register(UBCSSelectionTableViewCell.self, forCellReuseIdentifier: UBCSSelectionTableViewCell.className)
+        tableView.register(UBCSTextFieldTableViewCell.self, forCellReuseIdentifier: UBCSTextFieldTableViewCell.className)
         
         return tableView
     }()
@@ -84,6 +86,7 @@ extension UBCSellController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         let section = content[section]
         
+        
         return section.headerHeight
     }
     
@@ -105,6 +108,10 @@ extension UBCSellController: UITableViewDataSource, UITableViewDelegate {
         let section = content[indexPath.section]
         guard let row = section.rows[indexPath.row] as? UBCSellCellDM else { return ZERO_HEIGHT }
         
+        if row.className == UBCSTextViewTableViewCell.className {
+            return UITableViewAutomaticDimension
+        }
+        
         return row.height
     }
     
@@ -119,6 +126,10 @@ extension UBCSellController: UITableViewDataSource, UITableViewDelegate {
             cell.showBottomSeparator = !self.tableView.isLast(indexPath)
             
             if let cell = cell as? UBCSPhotoTableViewCell {
+                cell.delegate = self
+            }
+            
+            if let cell = cell as? UBCSTextViewTableViewCell {
                 cell.delegate = self
             }
             
@@ -194,6 +205,15 @@ extension UBCSellController: UBCSPhotoTableViewCellDelegate {
         imagePicker.delegate = self
         imagePicker.sourceType = sourceType
         self.present(imagePicker, animated: true, completion: nil)
+    }
+}
+
+
+extension UBCSellController: UBCSTextViewTableViewCellDelegate {
+    
+    func updateTableView() {
+        self.tableView.beginUpdates()
+        self.tableView.endUpdates()
     }
 }
 

@@ -19,6 +19,8 @@ class UBCSPhotoTableViewCell: UBTableViewCell {
     
     var delegate: UBCSPhotoTableViewCellDelegate?
     
+    private static let photosCount = 4
+    
     private var stackView: UIStackView!
     private var photoViews = [UBCSPhotoAddView]()
     
@@ -37,20 +39,26 @@ class UBCSPhotoTableViewCell: UBTableViewCell {
     private func setupViews() {
         self.stackView = UIStackView()
         self.stackView.axis = .horizontal
-        self.stackView.spacing = 10
         self.stackView.distribution = .equalSpacing
         self.contentView.addSubview(self.stackView)
         self.contentView.setTopConstraintToSubview(self.stackView, withValue: 10)
         self.contentView.setBottomConstraintToSubview(self.stackView, withValue: -10)
         self.contentView.setCenterXConstraintToSubview(self.stackView)
         
-        for i in 0..<4 {
+        for i in 0..<UBCSPhotoTableViewCell.photosCount {
             let photoView = UBCSPhotoAddView(frame: .zero)
             photoView.tag = i
             photoView.addTarget(self, action: #selector(photoPressed(sender:)), for: .touchUpInside)
             photoViews.append(photoView)
             self.stackView.addArrangedSubview(photoView)
         }
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        let freeSpacing = self.width - 2 * UBCConstant.inset - UBCSPhotoAddView.photosSize * CGFloat(UBCSPhotoTableViewCell.photosCount)
+        self.stackView.spacing = freeSpacing / (CGFloat(UBCSPhotoTableViewCell.photosCount) - 1)
     }
     
     @objc private func photoPressed(sender: UBCSPhotoAddView) {
@@ -81,16 +89,18 @@ extension UBCSPhotoTableViewCell: UBCSellCellProtocol {
 
 private class UBCSPhotoAddView: UBButton {
     
+    static let photosSize: CGFloat = 70
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         self.cornerRadius = UBCConstant.cornerRadius
         self.backgroundColor = UIColor(red: 248 / 255.0, green: 248 / 255.0, blue: 248 / 255.0, alpha: 1)
         
-        let constraint1 = self.setHeightConstraintWithValue(70)
+        let constraint1 = self.setHeightConstraintWithValue(UBCSPhotoAddView.photosSize)
         constraint1?.priority = UILayoutPriority.init(999)
         
-        let constraint2 = self.setWidthConstraintWithValue(70)
+        let constraint2 = self.setWidthConstraintWithValue(UBCSPhotoAddView.photosSize)
         constraint2?.priority = UILayoutPriority.init(999)
     }
     
