@@ -8,6 +8,8 @@
 
 #import "UBCGoodCell.h"
 #import "UBCGoodDM.h"
+#import "UBCAuthorDM.h"
+#import "UBCStarsView.h"
 
 #import "Ubcoin-Swift.h"
 
@@ -17,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet HUBLabel *title;
 @property (weak, nonatomic) IBOutlet HUBLabel *desc;
 @property (weak, nonatomic) IBOutlet UBButton *favoriteButton;
+@property (weak, nonatomic) IBOutlet UBCStarsView *stars;
 
 @end
 
@@ -47,6 +50,7 @@
     self.favoriteButton.image = [UIImage imageNamed:[NSString stringWithFormat:@"icFav%@", self.content.isFavorite ? @"B" : @"A"]];
     NSString *imageURL = [content.images firstObject];
     [self loadImageWithURL:imageURL withDefaultImage:nil forImageView:self.icon];
+    [self.stars showStars:content.seller.rating.unsignedIntegerValue];
 }
 
 #pragma mark - Actions

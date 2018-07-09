@@ -63,6 +63,10 @@
     [self.collectionView addSubview:self.searchController.searchBar];
     
     [self.searchController.searchBar sizeToFit];
+    self.searchController.searchBar.showsBookmarkButton = YES;
+    [self.searchController.searchBar setImage:[UIImage imageNamed:@"market_voice"]
+                             forSearchBarIcon:UISearchBarIconBookmark
+                                        state:UIControlStateNormal];
     
     for (UIView *subView in self.searchController.searchBar.subviews)
     {
@@ -163,6 +167,11 @@
 }
 
 - (void)didDismissSearchController:(UISearchController *)searchController
+{
+    
+}
+
+- (void)searchBarBookmarkButtonClicked:(UISearchBar *)searchBar
 {
     
 }

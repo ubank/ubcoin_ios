@@ -19,6 +19,7 @@
 		1CFFFE7D20F230A9003B5AD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CFFFE7920F230A9003B5AD9 /* Assets.xcassets */; };
 		1CFFFE7E20F230A9003B5AD9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFFFE7A20F230A9003B5AD9 /* main.m */; };
 		30A0668C891003DF59D2BECC /* libPods-Ubcoin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DD3B2DB73F06ACB93DC3B9 /* libPods-Ubcoin.a */; };
+		8980F22A20F3FB800066CF99 /* UBCStarsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980F22920F3FB800066CF99 /* UBCStarsView.m */; };
 		8987516A20EE119F00E2B615 /* UBMigrationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 898750FD20EE119F00E2B615 /* UBMigrationView.m */; };
 		8987516B20EE119F00E2B615 /* HUBNavigationBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8987510020EE119F00E2B615 /* HUBNavigationBarView.xib */; };
 		8987516C20EE119F00E2B615 /* HUBNavigationBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8987510220EE119F00E2B615 /* HUBNavigationBarView.m */; };
@@ -96,6 +97,8 @@
 		1CFFFE7B20F230A9003B5AD9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8133FFCED3512BADEB40D574 /* Pods-Ubcoin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ubcoin.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ubcoin/Pods-Ubcoin.release.xcconfig"; sourceTree = "<group>"; };
 		82DD3B2DB73F06ACB93DC3B9 /* libPods-Ubcoin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Ubcoin.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8980F22820F3FB800066CF99 /* UBCStarsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCStarsView.h; sourceTree = "<group>"; };
+		8980F22920F3FB800066CF99 /* UBCStarsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCStarsView.m; sourceTree = "<group>"; };
 		898750FD20EE119F00E2B615 /* UBMigrationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBMigrationView.m; sourceTree = "<group>"; };
 		898750FE20EE119F00E2B615 /* UBMigrationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBMigrationView.h; sourceTree = "<group>"; };
 		8987510020EE119F00E2B615 /* HUBNavigationBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HUBNavigationBarView.xib; sourceTree = "<group>"; };
@@ -274,6 +277,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		8980F22720F3FB4B0066CF99 /* Stars view */ = {
+			isa = PBXGroup;
+			children = (
+				8980F22820F3FB800066CF99 /* UBCStarsView.h */,
+				8980F22920F3FB800066CF99 /* UBCStarsView.m */,
+			);
+			path = "Stars view";
+			sourceTree = "<group>";
+		};
 		898750FA20EE119F00E2B615 /* Class */ = {
 			isa = PBXGroup;
 			children = (
@@ -299,6 +311,7 @@
 				898750FF20EE119F00E2B615 /* NavigationBarView */,
 				8987513820EE119F00E2B615 /* Picker View */,
 				8987510320EE119F00E2B615 /* ScrollView */,
+				8980F22720F3FB4B0066CF99 /* Stars view */,
 				8987513320EE119F00E2B615 /* SwitchCollectionView */,
 				8987510620EE119F00E2B615 /* TableView */,
 				8987511D20EE119F00E2B615 /* TextView */,
@@ -905,6 +918,7 @@
 				8987518B20EE119F00E2B615 /* UBAlertTableView.m in Sources */,
 				8987518320EE119F00E2B615 /* UBCollectionViewSwitchContent.m in Sources */,
 				8987519F20EE2A8B00E2B615 /* UBCTabBarController.m in Sources */,
+				8980F22A20F3FB800066CF99 /* UBCStarsView.m in Sources */,
 				1CFFFE7E20F230A9003B5AD9 /* main.m in Sources */,
 				8987516F20EE119F00E2B615 /* HUBSystemAlertCell.m in Sources */,
 				89F16A6A20F2C65D001AA440 /* UBCFiltersListController.m in Sources */,

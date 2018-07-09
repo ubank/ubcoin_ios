@@ -17,7 +17,8 @@
     {
         _ID = dict[@"id"];
         _name = dict[@"name"];
-        _rating = dict[@"rating"];
+        _rating = @(rand() % 4 + 2);
+//        _rating = dict[@"rating"];
     }
     return self;
 }
