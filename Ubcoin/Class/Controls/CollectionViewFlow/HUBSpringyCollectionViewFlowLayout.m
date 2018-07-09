@@ -15,6 +15,8 @@
 
 #import "HUBSpringyCollectionViewFlowLayout.h"
 
+#import "Ubcoin-Swift.h"
+
 #define SCROLL_RESISTANCE_DIVIDE_VALUE 1700
 
 @interface HUBSpringyCollectionViewFlowLayout ()
@@ -35,8 +37,8 @@
     if (self)
     {
         self.dynamicAnimator = [[UIDynamicAnimator alloc] initWithCollectionViewLayout:self];
-        self.sectionInset = UIEdgeInsetsMake(DEFAULT_INSET, DEFAULT_INSET, DEFAULT_INSET, DEFAULT_INSET);
-        self.minimumLineSpacing = DEFAULT_INSET;
+        self.sectionInset = UIEdgeInsetsMake(UBCConstant.collectionInset, UBCConstant.collectionInset, UBCConstant.collectionInset, UBCConstant.collectionInset);
+        self.minimumLineSpacing = UBCConstant.collectionInset;
     }
 
     return self;

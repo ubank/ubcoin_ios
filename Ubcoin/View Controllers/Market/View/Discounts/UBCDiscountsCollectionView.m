@@ -9,6 +9,8 @@
 #import "UBCDiscountsCollectionView.h"
 #import "UBCDiscountCollectionViewCell.h"
 
+#import "Ubcoin-Swift.h"
+
 @interface UBCDiscountsCollectionView () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
@@ -44,7 +46,7 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGFloat cellWidth = SCREEN_WIDTH - ((UICollectionViewFlowLayout *)collectionViewLayout).sectionInset.left * 2 - DEFAULT_INSET;
+    CGFloat cellWidth = SCREEN_WIDTH - ((UICollectionViewFlowLayout *)collectionViewLayout).sectionInset.left * 2 - UBCConstant.inset;
     
     return CGSizeMake(MIN(295, cellWidth), DISCOUNT_CELL_HEIGHT);
 }

@@ -12,6 +12,8 @@
 #import "HUBCollectionViewWaitCell.h"
 #import "UBCGoodCell.h"
 
+#import "Ubcoin-Swift.h"
+
 @implementation UBCGoodsCollectionView
 
 - (void)awakeFromNib
@@ -95,7 +97,7 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGFloat cellWidth = (SCREEN_WIDTH - ((UICollectionViewFlowLayout *)collectionViewLayout).sectionInset.left * 2 - DEFAULT_INSET) / 2;
+    CGFloat cellWidth = (SCREEN_WIDTH - ((UICollectionViewFlowLayout *)collectionViewLayout).sectionInset.left * 2 - UBCConstant.inset) / 2;
     
     return CGSizeMake(cellWidth, COLLECTION_CELL_HEIGHT);
 }

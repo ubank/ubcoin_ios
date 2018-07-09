@@ -26,4 +26,5 @@ class UBCConstant: NSObject {
     @objc static let defaultCornerRadius: CGFloat = 15
     @objc static let cornerRadius: CGFloat = 10
     @objc static let headerHeight: CGFloat = 40
+    @objc static let collectionInset: CGFloat = 15
 }
