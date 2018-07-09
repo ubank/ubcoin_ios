@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
+@property (assign, nonatomic) CGFloat cellWidth;
+
 @end
 
 @implementation UBCDiscountsCollectionView
@@ -25,7 +27,8 @@
     [super awakeFromNib];
     
     self.pageControl.hidesForSinglePage = YES;
-    self.pageControl.tintColor = RED_COLOR;
+    self.pageControl.pageIndicatorTintColor = UBColor.descColor;
+    self.pageControl.currentPageIndicatorTintColor = UBCColor.green;
     
     [self.collectionView registerNib:[UINib nibWithNibName:@"UBCDiscountCollectionViewCell" bundle:nil]
           forCellWithReuseIdentifier:@"UBCDiscountCollectionViewCell"];
@@ -34,6 +37,7 @@
 - (void)setDiscounts:(NSArray *)discounts
 {
     _discounts = discounts;
+    self.pageControl.numberOfPages = discounts.count;
     [self.collectionView reloadData];
 }
 
@@ -47,13 +51,9 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     CGFloat cellWidth = SCREEN_WIDTH - ((UICollectionViewFlowLayout *)collectionViewLayout).sectionInset.left * 2 - UBCConstant.inset;
+    self.cellWidth = MIN(295, cellWidth);
     
-    return CGSizeMake(MIN(295, cellWidth), DISCOUNT_CELL_HEIGHT);
-}
-
-- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    self.pageControl.currentPage = indexPath.row;
+    return CGSizeMake(self.cellWidth, DISCOUNT_CELL_HEIGHT);
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -68,6 +68,11 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.delegate showDiscountInfo:self.discounts[indexPath.row]];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    self.pageControl.currentPage = self.collectionView.contentOffset.x / self.cellWidth;
 }
 
 @end

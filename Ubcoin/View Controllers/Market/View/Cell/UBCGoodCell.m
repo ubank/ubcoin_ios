@@ -34,13 +34,6 @@
     self.cornerRadius = UBCConstant.defaultCornerRadius;
 }
 
-- (void)layoutSubviews
-{
-    [super layoutSubviews];
-    
-    [self.icon setupContentModeFill];
-}
-
 - (void)setContent:(UBCGoodDM *)content
 {
     _content = content;
@@ -49,7 +42,7 @@
     self.desc.text = content.desc;
     self.favoriteButton.image = [UIImage imageNamed:[NSString stringWithFormat:@"icFav%@", self.content.isFavorite ? @"B" : @"A"]];
     NSString *imageURL = [content.images firstObject];
-    [self loadImageWithURL:imageURL withDefaultImage:nil forImageView:self.icon];
+    [self loadImageToFillWithURL:imageURL withDefaultImage:nil forImageView:self.icon];
     [self.stars showStars:content.seller.rating.unsignedIntegerValue];
 }
 

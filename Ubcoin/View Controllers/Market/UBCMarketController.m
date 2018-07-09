@@ -60,9 +60,11 @@
     self.searchController.searchBar.layer.borderColor = UIColor.whiteColor.CGColor;
     self.searchController.searchBar.placeholder = @"I'm looking for...";
     self.searchController.searchBar.returnKeyType = UIReturnKeyDone;
-    [self.collectionView addSubview:self.searchController.searchBar];
+    [self.view addSubview:self.searchController.searchBar];
     
     [self.searchController.searchBar sizeToFit];
+    [self.view setTopConstraintToSubview:self.collectionView withValue:self.searchController.searchBar.height];
+    
     self.searchController.searchBar.showsBookmarkButton = YES;
     [self.searchController.searchBar setImage:[UIImage imageNamed:@"market_voice"]
                              forSearchBarIcon:UISearchBarIconBookmark
