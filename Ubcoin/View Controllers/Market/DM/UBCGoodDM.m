@@ -7,7 +7,6 @@
 //
 
 #import "UBCGoodDM.h"
-#import "UBCAuthorDM.h"
 
 #define FAVORITE_KEY @"favourite goods"
 
@@ -27,6 +26,7 @@
         _creationDate = [NSDate dateFromISO8601String:dict[@"createdDate"]];
         _images = dict[@"images"];
         _seller = [[UBCAuthorDM alloc] initWithDictionary:dict[@"user"]];
+        _category = [[UBCCategoryDM alloc] initWithDictionary:dict[@"category"]];
         
         _dict = dict;
     }

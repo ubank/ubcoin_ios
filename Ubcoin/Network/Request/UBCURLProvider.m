@@ -18,4 +18,10 @@
     return [NSURL URLWithString:url];
 }
 
++ (NSURL *)categories
+{
+    NSString* url = [SERVER_URL stringByAppendingFormat:@"items/categories"];
+    return [NSURL URLWithString:url];
+}
+
 @end

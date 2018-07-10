@@ -13,6 +13,7 @@
 
 #import "UBCGoodDM.h"
 #import "UBCDiscountDM.h"
+#import "UBCCategoryDM.h"
 
 @interface UBCDataProvider ()
 
@@ -77,6 +78,29 @@
                                                                                @"image": @"ad_banner_3"}];
         completionBlock(YES, @[discount1, discount2, discount3]);
     }
+}
+
+- (void)categoriesWithCompletionBlock:(void (^)(BOOL, NSArray *))completionBlock
+{
+    NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:[UBCURLProvider categories]];
+    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (success)
+         {
+             NSArray *items = [[responseObject removeNulls] map:^id(id item) {
+                 return [[UBCCategoryDM alloc] initWithDictionary:item];
+             }];
+             
+             if (completionBlock)
+             {
+                 completionBlock(YES, items);
+             }
+         }
+         else if (completionBlock)
+         {
+             completionBlock(NO, nil);
+         }
+     }];
 }
 
 @end

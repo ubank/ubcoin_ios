@@ -59,7 +59,7 @@
             break;
         case HUBLabelStylePromoDescription:
             self.textColor = UBColor.titleColor;
-            self.font = UBFont.titleFont;
+            self.font = [UIFont systemFontOfSize:19 weight:UIFontWeightRegular];
             break;
         case HUBLabelStyleHeader:
             self.textColor = UBColor.titleColor;

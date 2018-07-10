@@ -14,5 +14,6 @@
 
 - (void)goodsListWithPageNumber:(NSUInteger)page withCompletionBlock:(void (^)(BOOL success, NSArray *goods, BOOL canLoadMore))completionBlock;
 - (void)discountsWithCompletionBlock:(void (^)(BOOL success, NSArray *discounts))completionBlock;
+- (void)categoriesWithCompletionBlock:(void (^)(BOOL success, NSArray *categories))completionBlock;
 
 @end

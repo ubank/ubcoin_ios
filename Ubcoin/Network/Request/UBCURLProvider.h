@@ -11,5 +11,6 @@
 @interface UBCURLProvider : NSObject
 
 + (NSURL *)goodsListWithPageNumber:(NSUInteger)page;
++ (NSURL *)categories;
 
 @end

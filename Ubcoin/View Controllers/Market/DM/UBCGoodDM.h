@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "UBCAuthorDM.h"
+#import "UBCCategoryDM.h"
 
 static NSString * const kNotificationFavoritesChanged = @"kNotificationFavoritesChanged";
 
-@class UBCAuthorDM;
 @interface UBCGoodDM : NSObject
 
 @property (readonly, nonatomic) NSString *ID;
@@ -24,7 +25,7 @@ static NSString * const kNotificationFavoritesChanged = @"kNotificationFavorites
 @property (readonly, nonatomic) NSDictionary *dict;
 
 @property (readonly, nonatomic) UBCAuthorDM *seller;
-//@property (readonly, nonatomic) UBCCategoryDM *category;
+@property (readonly, nonatomic) UBCCategoryDM *category;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
 - (void)toggleFavorite;
