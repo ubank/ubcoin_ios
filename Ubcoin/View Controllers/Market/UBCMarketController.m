@@ -41,6 +41,15 @@
     [self updateInfo];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self.collectionView reloadData];
+}
+
+#pragma mark -
+
 - (void)setupCollectionView
 {
     self.collectionView = UBCGoodsCollectionView.new;
