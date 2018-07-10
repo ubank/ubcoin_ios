@@ -161,7 +161,7 @@ extension UBCSellController: UITableViewDataSource, UITableViewDelegate {
                 self?.navigationController?.popViewController(animated: true)
             }
             self.navigationController?.pushViewController(controller, animated: true)
-        }31
+        }
     }
 }
 

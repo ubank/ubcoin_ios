@@ -22,6 +22,8 @@
 		30A0668C891003DF59D2BECC /* libPods-Ubcoin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DD3B2DB73F06ACB93DC3B9 /* libPods-Ubcoin.a */; };
 		8980F22A20F3FB800066CF99 /* UBCStarsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980F22920F3FB800066CF99 /* UBCStarsView.m */; };
 		8980F23620F481BA0066CF99 /* UBCInfoLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980F23520F481BA0066CF99 /* UBCInfoLabel.m */; };
+		8980F23B20F486990066CF99 /* UBCGoodDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980F23920F486990066CF99 /* UBCGoodDetailsController.m */; };
+		8980F23C20F486990066CF99 /* UBCGoodDetailsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8980F23A20F486990066CF99 /* UBCGoodDetailsController.xib */; };
 		8987516A20EE119F00E2B615 /* UBMigrationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 898750FD20EE119F00E2B615 /* UBMigrationView.m */; };
 		8987516B20EE119F00E2B615 /* HUBNavigationBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8987510020EE119F00E2B615 /* HUBNavigationBarView.xib */; };
 		8987516C20EE119F00E2B615 /* HUBNavigationBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8987510220EE119F00E2B615 /* HUBNavigationBarView.m */; };
@@ -104,6 +106,9 @@
 		8980F22920F3FB800066CF99 /* UBCStarsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCStarsView.m; sourceTree = "<group>"; };
 		8980F23420F481BA0066CF99 /* UBCInfoLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCInfoLabel.h; sourceTree = "<group>"; };
 		8980F23520F481BA0066CF99 /* UBCInfoLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCInfoLabel.m; sourceTree = "<group>"; };
+		8980F23820F486990066CF99 /* UBCGoodDetailsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCGoodDetailsController.h; sourceTree = "<group>"; };
+		8980F23920F486990066CF99 /* UBCGoodDetailsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCGoodDetailsController.m; sourceTree = "<group>"; };
+		8980F23A20F486990066CF99 /* UBCGoodDetailsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCGoodDetailsController.xib; sourceTree = "<group>"; };
 		898750FD20EE119F00E2B615 /* UBMigrationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBMigrationView.m; sourceTree = "<group>"; };
 		898750FE20EE119F00E2B615 /* UBMigrationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBMigrationView.h; sourceTree = "<group>"; };
 		8987510020EE119F00E2B615 /* HUBNavigationBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HUBNavigationBarView.xib; sourceTree = "<group>"; };
@@ -299,6 +304,16 @@
 				8980F23520F481BA0066CF99 /* UBCInfoLabel.m */,
 			);
 			path = "Info Label";
+			sourceTree = "<group>";
+		};
+		8980F23720F4865F0066CF99 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				8980F23820F486990066CF99 /* UBCGoodDetailsController.h */,
+				8980F23920F486990066CF99 /* UBCGoodDetailsController.m */,
+				8980F23A20F486990066CF99 /* UBCGoodDetailsController.xib */,
+			);
+			path = Details;
 			sourceTree = "<group>";
 		};
 		898750FA20EE119F00E2B615 /* Class */ = {
@@ -702,6 +717,7 @@
 		89F16A4D20F2C65D001AA440 /* Market */ = {
 			isa = PBXGroup;
 			children = (
+				8980F23720F4865F0066CF99 /* Details */,
 				89F16A5220F2C65D001AA440 /* DM */,
 				89F16A4E20F2C65D001AA440 /* Filters */,
 				89F16A5720F2C65D001AA440 /* View */,
@@ -845,6 +861,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8987518720EE119F00E2B615 /* UBAlertWindow.xib in Resources */,
+				8980F23C20F486990066CF99 /* UBCGoodDetailsController.xib in Resources */,
 				8987517120EE119F00E2B615 /* HUBSystemAlertCell.xib in Resources */,
 				89F16A7020F2C65D001AA440 /* UBCDiscountCollectionViewCell.xib in Resources */,
 				8987517820EE119F00E2B615 /* UBTableHeaderView.xib in Resources */,
@@ -913,6 +930,7 @@
 				8987517920EE119F00E2B615 /* UBSectionHeaderView.m in Sources */,
 				1C4034B220F2958100E51247 /* UBCShared.swift in Sources */,
 				89F16A7120F2C65D001AA440 /* UBCDiscountsCollectionView.m in Sources */,
+				8980F23B20F486990066CF99 /* UBCGoodDetailsController.m in Sources */,
 				8987519920EE23A100E2B615 /* UBWaitCell.m in Sources */,
 				898751B320EE2C4100E2B615 /* UBCLoginController.m in Sources */,
 				8987517720EE119F00E2B615 /* UBTableHeaderView.m in Sources */,
