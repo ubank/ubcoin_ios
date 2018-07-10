@@ -39,6 +39,18 @@ class UBCSellController: UBViewController {
         self.title = "Sell"
 
         self.setupViews()
+        
+        self.updateInfo()
+        self.startActivityIndicatorImmediately()
+    }
+    
+    override func updateInfo() {
+        UBCDataProvider.shared.categories { [weak self] (success, categories) in
+            self?.stopActivityIndicator()
+            
+            self?.model.setup(categories: categories)
+            self?.tableView.reloadData()
+        }
     }
 
     private func setupViews() {
@@ -138,7 +150,7 @@ extension UBCSellController: UITableViewDataSource, UITableViewDelegate {
         let section = self.model.sections[indexPath.section]
         guard var row = section.rows[indexPath.row] as? UBCSellCellDM else { return }
         
-        if row.type == .category, let content = row.selectContent {
+        if row.type == .category, let content = row.selectContent, content.count > 0 {
             var selected: Int?
             if let selectedString = row.data as? String {
                 selected = content.index(of: selectedString)

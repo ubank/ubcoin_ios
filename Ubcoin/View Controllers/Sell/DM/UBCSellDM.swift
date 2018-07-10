@@ -48,6 +48,21 @@ class UBCSellDM: NSObject {
         return sections
     }
     
+    func setup(categories: [Any]?) {
+        guard let categoriesArray = categories as? [UBCCategoryDM] else { return }
+        
+        let array = categoriesArray.map( {$0.name} ) as! [String]
+        
+        for section in sections {
+            for i in 0..<section.rows.count {
+                if var row = section.rows[i] as? UBCSellCellDM, row.type == .category {
+                    row.selectContent = array
+                    section.rows[i] = row
+                }
+            }
+        }
+    }
+    
     func updateRow(_ row: UBCSellCellDM) {
         for section in sections {
             for i in 0..<section.rows.count {
@@ -108,7 +123,7 @@ struct UBCSellCellDM {
         self.placeholder = type.placeholder
         
         if type == .category {
-            self.selectContent = ["Accessories", "Clothes", "Transport", "Home", "Animals", "Gifts"]
+            self.selectContent = []
         }
         
         if type == .price {
