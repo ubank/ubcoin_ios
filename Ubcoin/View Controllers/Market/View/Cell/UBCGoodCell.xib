@@ -108,6 +108,7 @@
                             <constraint firstItem="Hwl-WE-kR5" firstAttribute="top" secondItem="Hfj-8M-XLp" secondAttribute="bottom" constant="7" id="aHU-b3-TGA"/>
                             <constraint firstAttribute="trailing" secondItem="Hwl-WE-kR5" secondAttribute="trailing" constant="10" id="meo-cS-RvH"/>
                             <constraint firstItem="hgM-RG-O9h" firstAttribute="leading" secondItem="U10-Rw-0DC" secondAttribute="leading" constant="10" id="ubc-KC-TG5"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="70" id="xnT-6F-mQ8"/>
                             <constraint firstAttribute="trailing" secondItem="hgM-RG-O9h" secondAttribute="trailing" constant="10" id="zrC-Jp-u9u"/>
                         </constraints>
                     </view>
