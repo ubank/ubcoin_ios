@@ -32,7 +32,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qbR-7S-QUP">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="700"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="708"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9M1-bB-Yuh">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
@@ -203,10 +203,10 @@
                                 <constraint firstItem="aT0-ld-BqV" firstAttribute="leading" secondItem="qbR-7S-QUP" secondAttribute="leading" id="fI3-EA-7Sy"/>
                                 <constraint firstItem="gTw-sN-qPV" firstAttribute="top" secondItem="S5O-0B-R5g" secondAttribute="bottom" id="fz1-2V-9Ee"/>
                                 <constraint firstAttribute="trailing" secondItem="9M1-bB-Yuh" secondAttribute="trailing" id="mgX-PG-I1L"/>
+                                <constraint firstAttribute="bottom" secondItem="aT0-ld-BqV" secondAttribute="bottom" constant="20" id="p3r-ke-dxO"/>
                                 <constraint firstItem="YfI-fd-tUa" firstAttribute="leading" secondItem="qbR-7S-QUP" secondAttribute="leading" id="pk7-Bv-Tls"/>
                                 <constraint firstItem="S5O-0B-R5g" firstAttribute="top" secondItem="9M1-bB-Yuh" secondAttribute="bottom" id="unM-qZ-pgL"/>
                                 <constraint firstItem="gTw-sN-qPV" firstAttribute="leading" secondItem="qbR-7S-QUP" secondAttribute="leading" id="vbm-rV-pew"/>
-                                <constraint firstAttribute="height" constant="700" id="zM4-mm-FiO"/>
                             </constraints>
                         </view>
                     </subviews>
