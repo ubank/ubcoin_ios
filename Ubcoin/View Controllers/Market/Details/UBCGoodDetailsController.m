@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet HUBLabel *price;
 @property (weak, nonatomic) IBOutlet HUBLabel *category;
 @property (weak, nonatomic) IBOutlet HUBLabel *itemTitle;
+@property (weak, nonatomic) IBOutlet HUBLabel *desc;
 
 @property (strong, nonatomic) UBCGoodDM *good;
 
@@ -67,6 +68,7 @@
 - (void)setupViews
 {
     self.category.textColor = UBCColor.green;
+    self.desc.textColor = UBColor.titleColor;
 }
 
 - (void)setupContent
@@ -74,6 +76,7 @@
     self.title = self.good.title;
     self.itemTitle.text = self.good.title;
     self.category.text = self.good.category.name;
+    self.desc.text = self.good.desc;
     self.price.text = [NSString stringWithFormat:@"%@ UBC", self.good.price.priceStringWithoutCoins];
     
     self.favoriteButton.image = [UIImage imageNamed:[NSString stringWithFormat:@"icFav%@", self.good.isFavorite ? @"B" : @"A"]];

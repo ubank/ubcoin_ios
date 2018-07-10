@@ -27,6 +27,7 @@
 		8980F24120F4954C0066CF99 /* UBCPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980F23F20F4954C0066CF99 /* UBCPhotoCollectionViewCell.m */; };
 		8980F24220F4954C0066CF99 /* UBCPhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8980F24020F4954C0066CF99 /* UBCPhotoCollectionViewCell.xib */; };
 		8980F24720F505550066CF99 /* UBCCategoryDM.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980F24620F505550066CF99 /* UBCCategoryDM.m */; };
+		8981369B20F5678D00DF6B7F /* UBCChatController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8981369A20F5678D00DF6B7F /* UBCChatController.xib */; };
 		8987516A20EE119F00E2B615 /* UBMigrationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 898750FD20EE119F00E2B615 /* UBMigrationView.m */; };
 		8987516B20EE119F00E2B615 /* HUBNavigationBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8987510020EE119F00E2B615 /* HUBNavigationBarView.xib */; };
 		8987516C20EE119F00E2B615 /* HUBNavigationBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8987510220EE119F00E2B615 /* HUBNavigationBarView.m */; };
@@ -117,6 +118,7 @@
 		8980F24020F4954C0066CF99 /* UBCPhotoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCPhotoCollectionViewCell.xib; sourceTree = "<group>"; };
 		8980F24520F505550066CF99 /* UBCCategoryDM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCCategoryDM.h; sourceTree = "<group>"; };
 		8980F24620F505550066CF99 /* UBCCategoryDM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCCategoryDM.m; sourceTree = "<group>"; };
+		8981369A20F5678D00DF6B7F /* UBCChatController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCChatController.xib; sourceTree = "<group>"; };
 		898750FD20EE119F00E2B615 /* UBMigrationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBMigrationView.m; sourceTree = "<group>"; };
 		898750FE20EE119F00E2B615 /* UBMigrationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBMigrationView.h; sourceTree = "<group>"; };
 		8987510020EE119F00E2B615 /* HUBNavigationBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HUBNavigationBarView.xib; sourceTree = "<group>"; };
@@ -635,6 +637,7 @@
 			children = (
 				898751A520EE2BBD00E2B615 /* UBCChatController.h */,
 				898751A620EE2BBD00E2B615 /* UBCChatController.m */,
+				8981369A20F5678D00DF6B7F /* UBCChatController.xib */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -898,6 +901,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8987518720EE119F00E2B615 /* UBAlertWindow.xib in Resources */,
+				8981369B20F5678D00DF6B7F /* UBCChatController.xib in Resources */,
 				8980F23C20F486990066CF99 /* UBCGoodDetailsController.xib in Resources */,
 				8987517120EE119F00E2B615 /* HUBSystemAlertCell.xib in Resources */,
 				89F16A7020F2C65D001AA440 /* UBCDiscountCollectionViewCell.xib in Resources */,

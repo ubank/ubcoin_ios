@@ -55,7 +55,7 @@
     viewController3.tabBarItem.image = [[UIImage imageNamed:@"tab_bar_sell"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     UBCChatController *viewController4 = UBCChatController.new;
-    viewController4.tabBarItem.title = @"Chat";
+    viewController4.tabBarItem.title = @"Messages";
     viewController4.tabBarItem.image = [UIImage imageNamed:@"tab_bar_chat"];
     
     UBCLoginController *viewController5 = UBCLoginController.new;
