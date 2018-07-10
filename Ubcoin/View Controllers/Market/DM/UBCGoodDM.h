@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+static NSString * const kNotificationFavoritesChanged = @"kNotificationFavoritesChanged";
+
 @class UBCAuthorDM;
 @interface UBCGoodDM : NSObject
 
@@ -19,11 +21,14 @@
 @property (readonly, nonatomic) NSDate *creationDate;
 @property (readonly, nonatomic) NSArray *images;
 @property (readonly, nonatomic) BOOL isFavorite;
+@property (readonly, nonatomic) NSDictionary *dict;
 
 @property (readonly, nonatomic) UBCAuthorDM *seller;
 //@property (readonly, nonatomic) UBCCategoryDM *category;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
 - (void)toggleFavorite;
+
++ (NSArray *)favorites;
 
 @end

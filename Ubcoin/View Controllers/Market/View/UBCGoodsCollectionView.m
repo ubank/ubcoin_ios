@@ -74,7 +74,10 @@
 
 - (void)refreshControlUpdate
 {
-    [self.actionsDelegate refreshControlUpdate];
+    if ([self.actionsDelegate respondsToSelector:@selector(refreshControlUpdate)])
+    {
+        [self.actionsDelegate refreshControlUpdate];
+    }
 }
 
 #pragma mark - UICollectionView
@@ -117,7 +120,10 @@
 {
     if ([self isWaitCellIndexPath:indexPath])
     {
-        [self.actionsDelegate updatePagination];
+        if ([self.actionsDelegate respondsToSelector:@selector(updatePagination)])
+        {
+            [self.actionsDelegate updatePagination];
+        }
         
         HUBCollectionViewWaitCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(HUBCollectionViewWaitCell.class) forIndexPath:indexPath];
 
@@ -140,7 +146,10 @@
         return;
     }
     
-    [self.actionsDelegate didSelectItem:self.items[indexPath.row]];
+    if ([self.actionsDelegate respondsToSelector:@selector(didSelectItem:)])
+    {
+        [self.actionsDelegate didSelectItem:self.items[indexPath.row]];
+    }
 }
 
 #pragma mark - Wait Methods
@@ -154,7 +163,10 @@
 
 - (void)showDiscountInfo:(UBCDiscountDM *)discount
 {
-    [self.actionsDelegate didSelectDiscount:discount];
+    if ([self.actionsDelegate respondsToSelector:@selector(didSelectDiscount:)])
+    {    
+        [self.actionsDelegate didSelectDiscount:discount];
+    }
 }
 
 @end

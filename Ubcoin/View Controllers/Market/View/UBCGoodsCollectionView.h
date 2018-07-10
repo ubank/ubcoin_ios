@@ -10,8 +10,9 @@
 #import "UBCGoodDM.h"
 #import "UBCDiscountsCollectionView.h"
 
-@protocol UBCGoodsCollectionViewDelegate
+@protocol UBCGoodsCollectionViewDelegate <NSObject>
 
+@optional
 - (void)didSelectDiscount:(UBCDiscountDM *)discount;
 - (void)didSelectItem:(UBCGoodDM *)item;
 - (void)refreshControlUpdate;

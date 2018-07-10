@@ -7,8 +7,13 @@
 //
 
 #import "UBCFavouritesController.h"
+#import "UBCGoodsCollectionView.h"
+#import "UBCGoodDetailsController.h"
+#import "UBCGoodDM.h"
 
-@interface UBCFavouritesController ()
+@interface UBCFavouritesController () <UBCGoodsCollectionViewDelegate>
+
+@property (strong, nonatomic) UBCGoodsCollectionView *collectionView;
 
 @end
 
@@ -19,6 +24,41 @@
     [super viewDidLoad];
     
     self.title = @"Favorites";
+    
+    [self setupCollectionView];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateInfo)
+                                                 name:kNotificationFavoritesChanged
+                                               object:nil];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self updateInfo];
+}
+
+- (void)setupCollectionView
+{
+    self.collectionView = UBCGoodsCollectionView.new;
+    self.collectionView.actionsDelegate = self;
+    [self.view addSubview:self.collectionView];
+    [self.view addConstraintsToFillSubview:self.collectionView];
+}
+
+- (void)updateInfo
+{
+    self.collectionView.items = [UBCGoodDM favorites];
+}
+
+#pragma mark - UBCGoodsCollectionViewDelegate
+
+- (void)didSelectItem:(UBCGoodDM *)item
+{
+    UBCGoodDetailsController *controller = [UBCGoodDetailsController.alloc initWithGood:item];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 @end
