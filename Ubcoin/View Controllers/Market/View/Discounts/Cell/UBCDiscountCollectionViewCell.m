@@ -39,7 +39,7 @@
 {
     self.title.text = content.title;
     self.desc.text = content.desc;
-    [self loadImageWithURL:content.imageURL withDefaultImage:content.image forImageView:self.icon];
+    [self loadImageToFillWithURL:content.imageURL withDefaultImage:content.image forImageView:self.icon];
 }
 
 @end

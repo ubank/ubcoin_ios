@@ -48,6 +48,10 @@
     self.alwaysBounceVertical = YES;
     self.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     
+    self.refreshControl = UIRefreshControl.new;
+    self.refreshControl.tintColor = UBCColor.green;
+    [self.refreshControl addTarget:self action:@selector(refreshControlUpdate) forControlEvents:UIControlEventValueChanged];
+    
     [self registerNib:[UINib nibWithNibName:NSStringFromClass(UBCGoodCell.class) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass(UBCGoodCell.class)];
     [self registerNib:[UINib nibWithNibName:NSStringFromClass(HUBCollectionViewWaitCell.class) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass(HUBCollectionViewWaitCell.class)];
     
@@ -64,6 +68,13 @@
 {
     _items = items;
     [self reloadData];
+}
+
+#pragma mark - Actions
+
+- (void)refreshControlUpdate
+{
+    [self.actionsDelegate refreshControlUpdate];
 }
 
 #pragma mark - UICollectionView

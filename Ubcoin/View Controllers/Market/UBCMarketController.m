@@ -115,8 +115,12 @@
     dispatch_group_enter(serviceGroup);
     [UBCDataProvider.sharedProvider goodsListWithPageNumber:self.pageNumber
                                         withCompletionBlock:^(BOOL success, NSArray *goods, BOOL canLoadMore) {
-        if (goods)
+        if (success)
         {
+            if (weakSelf.pageNumber == 0)
+            {
+                weakSelf.items = [NSMutableArray array];
+            }
             [weakSelf.items addObjectsFromArray:goods];
             weakSelf.collectionView.canLoadMore = canLoadMore;
             weakSelf.pageNumber++;
@@ -209,7 +213,6 @@
 - (void)refreshControlUpdate
 {
     self.pageNumber = 0;
-    self.items = [NSMutableArray array];
     [self updateInfo];
 }
 
