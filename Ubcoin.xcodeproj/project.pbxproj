@@ -21,6 +21,7 @@
 		1CFFFE7E20F230A9003B5AD9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFFFE7A20F230A9003B5AD9 /* main.m */; };
 		30A0668C891003DF59D2BECC /* libPods-Ubcoin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DD3B2DB73F06ACB93DC3B9 /* libPods-Ubcoin.a */; };
 		8980F22A20F3FB800066CF99 /* UBCStarsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980F22920F3FB800066CF99 /* UBCStarsView.m */; };
+		8980F23620F481BA0066CF99 /* UBCInfoLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980F23520F481BA0066CF99 /* UBCInfoLabel.m */; };
 		8987516A20EE119F00E2B615 /* UBMigrationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 898750FD20EE119F00E2B615 /* UBMigrationView.m */; };
 		8987516B20EE119F00E2B615 /* HUBNavigationBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8987510020EE119F00E2B615 /* HUBNavigationBarView.xib */; };
 		8987516C20EE119F00E2B615 /* HUBNavigationBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8987510220EE119F00E2B615 /* HUBNavigationBarView.m */; };
@@ -101,6 +102,8 @@
 		82DD3B2DB73F06ACB93DC3B9 /* libPods-Ubcoin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Ubcoin.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8980F22820F3FB800066CF99 /* UBCStarsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCStarsView.h; sourceTree = "<group>"; };
 		8980F22920F3FB800066CF99 /* UBCStarsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCStarsView.m; sourceTree = "<group>"; };
+		8980F23420F481BA0066CF99 /* UBCInfoLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCInfoLabel.h; sourceTree = "<group>"; };
+		8980F23520F481BA0066CF99 /* UBCInfoLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCInfoLabel.m; sourceTree = "<group>"; };
 		898750FD20EE119F00E2B615 /* UBMigrationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBMigrationView.m; sourceTree = "<group>"; };
 		898750FE20EE119F00E2B615 /* UBMigrationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBMigrationView.h; sourceTree = "<group>"; };
 		8987510020EE119F00E2B615 /* HUBNavigationBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HUBNavigationBarView.xib; sourceTree = "<group>"; };
@@ -289,6 +292,15 @@
 			path = "Stars view";
 			sourceTree = "<group>";
 		};
+		8980F23020F416CA0066CF99 /* Info Label */ = {
+			isa = PBXGroup;
+			children = (
+				8980F23420F481BA0066CF99 /* UBCInfoLabel.h */,
+				8980F23520F481BA0066CF99 /* UBCInfoLabel.m */,
+			);
+			path = "Info Label";
+			sourceTree = "<group>";
+		};
 		898750FA20EE119F00E2B615 /* Class */ = {
 			isa = PBXGroup;
 			children = (
@@ -309,6 +321,7 @@
 				898751E220EFCB6B00E2B615 /* Empty View */,
 				8987513E20EE119F00E2B615 /* HUBAttributedLabel */,
 				8987512D20EE119F00E2B615 /* HUBLabel */,
+				8980F23020F416CA0066CF99 /* Info Label */,
 				8987513B20EE119F00E2B615 /* MapView */,
 				898750FC20EE119F00E2B615 /* MigrationView */,
 				898750FF20EE119F00E2B615 /* NavigationBarView */,
@@ -935,6 +948,7 @@
 				8987518120EE119F00E2B615 /* HUBSpringyCollectionViewFlowLayout.m in Sources */,
 				1CFFFE7020F0E204003B5AD9 /* UBCSSelectionTableViewCell.swift in Sources */,
 				8987518220EE119F00E2B615 /* UBCollectionViewSwitch.m in Sources */,
+				8980F23620F481BA0066CF99 /* UBCInfoLabel.m in Sources */,
 				8987516D20EE119F00E2B615 /* HUBScrollView.m in Sources */,
 				89F16A7520F2C65D001AA440 /* UBCMarketController.m in Sources */,
 				8987516C20EE119F00E2B615 /* HUBNavigationBarView.m in Sources */,

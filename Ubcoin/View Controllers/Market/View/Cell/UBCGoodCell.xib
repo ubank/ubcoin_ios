@@ -41,14 +41,22 @@
                                     <action selector="toggleFavorite" destination="gTV-IL-0wX" eventType="touchUpInside" id="iC4-wT-KsO"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="52u-sh-H9e" customClass="UBCInfoLabel">
+                                <rect key="frame" x="10" y="10" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="vF8-9a-uo3" firstAttribute="top" secondItem="5rL-nz-cxb" secondAttribute="top" id="1bz-pT-pvC"/>
                             <constraint firstItem="NTE-g4-ohv" firstAttribute="leading" secondItem="5rL-nz-cxb" secondAttribute="leading" id="8GT-zC-h21"/>
+                            <constraint firstItem="52u-sh-H9e" firstAttribute="leading" secondItem="5rL-nz-cxb" secondAttribute="leading" constant="10" id="KoI-Pm-0Nd"/>
                             <constraint firstItem="NTE-g4-ohv" firstAttribute="top" secondItem="5rL-nz-cxb" secondAttribute="top" id="LR3-gj-EQB"/>
                             <constraint firstAttribute="trailing" secondItem="vF8-9a-uo3" secondAttribute="trailing" id="VUW-Qs-7nq"/>
                             <constraint firstAttribute="bottom" secondItem="Dsj-sm-fQP" secondAttribute="bottom" id="b5u-Xi-WjN"/>
+                            <constraint firstItem="52u-sh-H9e" firstAttribute="top" secondItem="5rL-nz-cxb" secondAttribute="top" constant="10" id="cwD-zA-lYg"/>
                             <constraint firstItem="Dsj-sm-fQP" firstAttribute="leading" secondItem="5rL-nz-cxb" secondAttribute="leading" id="iNC-3v-YYg"/>
                             <constraint firstItem="Dsj-sm-fQP" firstAttribute="top" secondItem="5rL-nz-cxb" secondAttribute="top" id="ib4-kg-d2b"/>
                             <constraint firstAttribute="bottom" secondItem="NTE-g4-ohv" secondAttribute="bottom" id="kEv-m2-wUd"/>
@@ -119,6 +127,7 @@
                 <outlet property="desc" destination="Hfj-8M-XLp" id="yjM-w4-mTb"/>
                 <outlet property="favoriteButton" destination="vF8-9a-uo3" id="5RQ-La-ppN"/>
                 <outlet property="icon" destination="Dsj-sm-fQP" id="pg1-Q2-iw6"/>
+                <outlet property="photoCount" destination="52u-sh-H9e" id="Q9o-9K-5Ch"/>
                 <outlet property="stars" destination="Hwl-WE-kR5" id="7br-kU-915"/>
                 <outlet property="title" destination="hgM-RG-O9h" id="pDm-tw-8W5"/>
             </connections>

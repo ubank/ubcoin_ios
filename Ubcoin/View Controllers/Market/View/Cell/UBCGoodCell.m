@@ -10,6 +10,7 @@
 #import "UBCGoodDM.h"
 #import "UBCAuthorDM.h"
 #import "UBCStarsView.h"
+#import "UBCInfoLabel.h"
 
 #import "Ubcoin-Swift.h"
 
@@ -18,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *icon;
 @property (weak, nonatomic) IBOutlet HUBLabel *title;
 @property (weak, nonatomic) IBOutlet HUBLabel *desc;
+@property (weak, nonatomic) IBOutlet UBCInfoLabel *photoCount;
 @property (weak, nonatomic) IBOutlet UBButton *favoriteButton;
 @property (weak, nonatomic) IBOutlet UBCStarsView *stars;
 
@@ -44,6 +46,8 @@
     NSString *imageURL = [content.images firstObject];
     [self loadImageToFillWithURL:imageURL withDefaultImage:nil forImageView:self.icon];
     [self.stars showStars:content.seller.rating.unsignedIntegerValue];
+    [self.photoCount setupWithImage:[UIImage imageNamed:@"market_photo"]
+                            andText:[NSString stringWithFormat:@"1/%d", (int)content.images.count]];
 }
 
 #pragma mark - Actions
