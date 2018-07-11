@@ -106,6 +106,16 @@
     [self.favoriteButton animateScaleWithAlphaWithTransform:0.4 withCompletion:nil];
 }
 
+- (IBAction)reportPost
+{
+     
+}
+
+- (IBAction)connectToSeller
+{
+    
+}
+
 #pragma mark - UICollectionView
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
