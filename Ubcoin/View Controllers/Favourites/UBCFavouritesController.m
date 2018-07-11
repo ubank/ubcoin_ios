@@ -61,4 +61,9 @@
     [self.navigationController pushViewController:controller animated:YES];
 }
 
+- (void)refreshControlUpdate
+{
+    [self.collectionView.refreshControl endRefreshing];
+}
+
 @end

@@ -17,13 +17,13 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>2</string>
+	<string>3</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>To find your location</string>
 	<key>NSCameraUsageDescription</key>
 	<string>To make photo of your good</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>To find your location</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>To add photo of your good from library</string>
 	<key>UILaunchStoryboardName</key>
