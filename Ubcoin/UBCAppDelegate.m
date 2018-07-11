@@ -53,7 +53,7 @@
 {
     UBFont.navigationFont = [UIFont systemFontOfSize:17 weight:UIFontWeightSemibold];
     UBFont.tabBarFont = [UIFont systemFontOfSize:10 weight:UIFontWeightMedium];
-    UBFont.titleFont = [UIFont systemFontOfSize:17 weight:UIFontWeightRegular];
+    UBFont.titleFont = [UIFont systemFontOfSize:17 weight:UIFontWeightMedium];
     UBFont.descFont = [UIFont systemFontOfSize:13 weight:UIFontWeightRegular];
     UBFont.buttonFont = [UIFont systemFontOfSize:18 weight:UIFontWeightMedium];
 }

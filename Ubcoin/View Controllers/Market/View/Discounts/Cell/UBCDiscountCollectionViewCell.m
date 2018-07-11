@@ -14,6 +14,7 @@
 @interface UBCDiscountCollectionViewCell ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *icon;
+@property (weak, nonatomic) IBOutlet UIView *background;
 @property (weak, nonatomic) IBOutlet HUBLabel *title;
 @property (weak, nonatomic) IBOutlet HUBLabel *desc;
 
@@ -26,6 +27,8 @@
     [super awakeFromNib];
 
     self.cornerRadius = UBCConstant.defaultCornerRadius;
+    [self.background addVerticalGradientWithColors:@[(id)[UIColor clearColor].CGColor,
+                                                     (id)[UIColor colorWithWhite:0 alpha:0.4].CGColor]];
 }
 
 - (void)layoutSubviews

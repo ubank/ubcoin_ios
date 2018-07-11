@@ -17,6 +17,7 @@
 @interface UBCGoodCell ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *icon;
+@property (weak, nonatomic) IBOutlet UIView *background;
 @property (weak, nonatomic) IBOutlet HUBLabel *title;
 @property (weak, nonatomic) IBOutlet HUBLabel *desc;
 @property (weak, nonatomic) IBOutlet UBCInfoLabel *photoCount;
@@ -34,6 +35,8 @@
     self.title.numberOfLines = 1;
     self.desc.numberOfLines = 1;
     self.cornerRadius = UBCConstant.defaultCornerRadius;
+    [self.background addVerticalGradientWithColors:@[(id)[UIColor clearColor].CGColor,
+                                                     (id)[UIColor colorWithWhite:0 alpha:0.4].CGColor]];
 }
 
 - (void)setContent:(UBCGoodDM *)content

@@ -25,10 +25,10 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Dsj-sm-fQP">
                                 <rect key="frame" x="0.0" y="0.0" width="165" height="141"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NTE-g4-ohv" userLabel="Background">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tgf-u8-OoQ">
                                 <rect key="frame" x="0.0" y="0.0" width="165" height="141"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </imageView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vF8-9a-uo3" customClass="UBButton">
                                 <rect key="frame" x="121" y="0.0" width="44" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -51,16 +51,16 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="vF8-9a-uo3" firstAttribute="top" secondItem="5rL-nz-cxb" secondAttribute="top" id="1bz-pT-pvC"/>
-                            <constraint firstItem="NTE-g4-ohv" firstAttribute="leading" secondItem="5rL-nz-cxb" secondAttribute="leading" id="8GT-zC-h21"/>
+                            <constraint firstItem="Tgf-u8-OoQ" firstAttribute="top" secondItem="5rL-nz-cxb" secondAttribute="top" id="E4u-Sa-COJ"/>
                             <constraint firstItem="52u-sh-H9e" firstAttribute="leading" secondItem="5rL-nz-cxb" secondAttribute="leading" constant="10" id="KoI-Pm-0Nd"/>
-                            <constraint firstItem="NTE-g4-ohv" firstAttribute="top" secondItem="5rL-nz-cxb" secondAttribute="top" id="LR3-gj-EQB"/>
                             <constraint firstAttribute="trailing" secondItem="vF8-9a-uo3" secondAttribute="trailing" id="VUW-Qs-7nq"/>
+                            <constraint firstAttribute="bottom" secondItem="Tgf-u8-OoQ" secondAttribute="bottom" id="WCv-tG-yTH"/>
                             <constraint firstAttribute="bottom" secondItem="Dsj-sm-fQP" secondAttribute="bottom" id="b5u-Xi-WjN"/>
                             <constraint firstItem="52u-sh-H9e" firstAttribute="top" secondItem="5rL-nz-cxb" secondAttribute="top" constant="10" id="cwD-zA-lYg"/>
+                            <constraint firstItem="Tgf-u8-OoQ" firstAttribute="leading" secondItem="5rL-nz-cxb" secondAttribute="leading" id="eva-NM-waN"/>
                             <constraint firstItem="Dsj-sm-fQP" firstAttribute="leading" secondItem="5rL-nz-cxb" secondAttribute="leading" id="iNC-3v-YYg"/>
                             <constraint firstItem="Dsj-sm-fQP" firstAttribute="top" secondItem="5rL-nz-cxb" secondAttribute="top" id="ib4-kg-d2b"/>
-                            <constraint firstAttribute="bottom" secondItem="NTE-g4-ohv" secondAttribute="bottom" id="kEv-m2-wUd"/>
-                            <constraint firstAttribute="trailing" secondItem="NTE-g4-ohv" secondAttribute="trailing" id="n9W-xL-WoX"/>
+                            <constraint firstAttribute="trailing" secondItem="Tgf-u8-OoQ" secondAttribute="trailing" id="w5e-6k-gcX"/>
                             <constraint firstAttribute="trailing" secondItem="Dsj-sm-fQP" secondAttribute="trailing" id="zom-mt-ZfA"/>
                         </constraints>
                     </view>
@@ -125,6 +125,7 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
             <connections>
+                <outlet property="background" destination="Tgf-u8-OoQ" id="B6S-uT-NCd"/>
                 <outlet property="desc" destination="Hfj-8M-XLp" id="yjM-w4-mTb"/>
                 <outlet property="favoriteButton" destination="vF8-9a-uo3" id="5RQ-La-ppN"/>
                 <outlet property="icon" destination="Dsj-sm-fQP" id="pg1-Q2-iw6"/>

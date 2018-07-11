@@ -17,6 +17,7 @@
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scroll;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UIView *background;
 @property (weak, nonatomic) IBOutlet UBCInfoLabel *photoCount;
 @property (weak, nonatomic) IBOutlet UBButton *favoriteButton;
 @property (weak, nonatomic) IBOutlet HUBLabel *price;
@@ -45,6 +46,7 @@
     [super viewDidLoad];
 
     [self setupNavBar];
+    [self setupViews];
     [self setupContent];
     
     self.scroll.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
@@ -69,6 +71,8 @@
 {
     self.category.textColor = UBCColor.green;
     self.desc.textColor = UBColor.titleColor;
+    [self.background addVerticalGradientWithColors:@[(id)[UIColor clearColor].CGColor,
+                                                     (id)[UIColor colorWithWhite:0 alpha:0.4].CGColor]];
 }
 
 - (void)setupContent

@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UBCGoodDetailsController">
             <connections>
+                <outlet property="background" destination="Q6l-Bt-ygF" id="xsO-B8-B2H"/>
                 <outlet property="category" destination="sLA-ZZ-xSa" id="MlD-BK-rPb"/>
                 <outlet property="collectionView" destination="uA0-yc-f7K" id="gmT-Ag-LSX"/>
                 <outlet property="desc" destination="Urf-EA-x8e" id="F6U-QP-B9j"/>
@@ -51,6 +52,10 @@
                                                 <outlet property="delegate" destination="-1" id="XsZ-r6-ppR"/>
                                             </connections>
                                         </collectionView>
+                                        <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q6l-Bt-ygF">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m7a-DO-gsQ" customClass="UBCInfoLabel">
                                             <rect key="frame" x="15" y="214" width="42" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -74,13 +79,17 @@
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="uA0-yc-f7K" secondAttribute="trailing" id="1wU-fk-QgE"/>
                                         <constraint firstItem="uA0-yc-f7K" firstAttribute="top" secondItem="9M1-bB-Yuh" secondAttribute="top" id="2ED-p9-qab"/>
+                                        <constraint firstAttribute="bottom" secondItem="Q6l-Bt-ygF" secondAttribute="bottom" id="4Po-JC-vmt"/>
                                         <constraint firstItem="uA0-yc-f7K" firstAttribute="leading" secondItem="9M1-bB-Yuh" secondAttribute="leading" id="56m-EO-JdI"/>
                                         <constraint firstAttribute="bottom" secondItem="uA0-yc-f7K" secondAttribute="bottom" id="6yM-Gs-qcx"/>
+                                        <constraint firstAttribute="trailing" secondItem="Q6l-Bt-ygF" secondAttribute="trailing" id="Fqi-ug-jDG"/>
+                                        <constraint firstItem="Q6l-Bt-ygF" firstAttribute="leading" secondItem="9M1-bB-Yuh" secondAttribute="leading" id="HFg-Pl-3wq"/>
                                         <constraint firstAttribute="bottom" secondItem="m7a-DO-gsQ" secondAttribute="bottom" constant="15" id="T7g-Bh-6y9"/>
                                         <constraint firstAttribute="height" constant="250" id="fWh-xh-TbC"/>
                                         <constraint firstAttribute="trailing" secondItem="ZJb-hq-NUP" secondAttribute="trailing" id="lgQ-UH-hPb"/>
                                         <constraint firstAttribute="bottom" secondItem="ZJb-hq-NUP" secondAttribute="bottom" id="p2Y-AP-86D"/>
                                         <constraint firstItem="m7a-DO-gsQ" firstAttribute="leading" secondItem="9M1-bB-Yuh" secondAttribute="leading" constant="15" id="qTx-CB-qpC"/>
+                                        <constraint firstItem="Q6l-Bt-ygF" firstAttribute="top" secondItem="9M1-bB-Yuh" secondAttribute="top" id="wNH-oc-2oJ"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S5O-0B-R5g">
