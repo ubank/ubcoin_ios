@@ -26,5 +26,6 @@
 @property (strong, nonatomic) NSArray<UBCGoodDM *> *items;
 @property (strong, nonatomic) NSArray<UBCDiscountDM *> *discounts;
 @property (assign, nonatomic) BOOL canLoadMore;
+@property (readonly, nonatomic) CGFloat contentHeight;
 
 @end

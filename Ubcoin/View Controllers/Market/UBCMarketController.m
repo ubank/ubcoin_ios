@@ -86,7 +86,7 @@
         {
             if ([subSubView isKindOfClass:UITextField.class])
             {
-                subSubView.backgroundColor = LIGHT_GRAY_COLOR2;
+                subSubView.backgroundColor = [UIColor colorWithHexString:@"F1F1F2"];
             }
         }
     }
@@ -122,6 +122,7 @@
                 weakSelf.items = [NSMutableArray array];
             }
             [weakSelf.items addObjectsFromArray:goods];
+            [UBCGoodDM saveGoods:weakSelf.items];
             weakSelf.collectionView.canLoadMore = canLoadMore;
             weakSelf.pageNumber++;
         }

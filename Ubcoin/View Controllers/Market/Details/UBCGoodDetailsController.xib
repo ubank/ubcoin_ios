@@ -14,12 +14,13 @@
             <connections>
                 <outlet property="background" destination="Q6l-Bt-ygF" id="xsO-B8-B2H"/>
                 <outlet property="category" destination="sLA-ZZ-xSa" id="MlD-BK-rPb"/>
-                <outlet property="collectionView" destination="uA0-yc-f7K" id="gmT-Ag-LSX"/>
+                <outlet property="collectionView" destination="uA0-yc-f7K" id="pSi-qb-Rom"/>
                 <outlet property="desc" destination="Urf-EA-x8e" id="F6U-QP-B9j"/>
                 <outlet property="favoriteButton" destination="ZJb-hq-NUP" id="55p-sP-Bh5"/>
                 <outlet property="itemTitle" destination="Gti-R0-jnL" id="7wh-w0-zau"/>
                 <outlet property="photoCount" destination="m7a-DO-gsQ" id="A95-If-n56"/>
                 <outlet property="price" destination="bhf-vo-Ont" id="Rbu-gc-fFf"/>
+                <outlet property="relatedItemsView" destination="Uhe-TQ-cOU" id="r5i-9c-SET"/>
                 <outlet property="scroll" destination="p5e-oR-mgC" id="aOW-PK-gLL"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -33,7 +34,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qbR-7S-QUP">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="1028"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="1429"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9M1-bB-Yuh">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
@@ -215,7 +216,7 @@
                                     </connections>
                                 </button>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Br6-IK-hfa" userLabel="Related Items">
-                                    <rect key="frame" x="0.0" y="788" width="375" height="150"/>
+                                    <rect key="frame" x="0.0" y="788" width="375" height="551"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RELATED ITEMS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zem-eS-gxP" customClass="HUBLabel">
                                             <rect key="frame" x="15" y="15" width="345" height="21"/>
@@ -228,17 +229,36 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </label>
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Uhe-TQ-cOU" customClass="UBCGoodsCollectionView">
+                                            <rect key="frame" x="0.0" y="46" width="375" height="495"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="495" id="XP9-P3-bzx"/>
+                                            </constraints>
+                                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ybb-3t-dNX">
+                                                <size key="itemSize" width="50" height="50"/>
+                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                            </collectionViewFlowLayout>
+                                            <connections>
+                                                <outlet property="actionsDelegate" destination="-1" id="Om9-ti-BVS"/>
+                                            </connections>
+                                        </collectionView>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="150" id="7A2-EU-58h"/>
                                         <constraint firstItem="zem-eS-gxP" firstAttribute="top" secondItem="Br6-IK-hfa" secondAttribute="top" constant="15" id="IFO-Bc-YgS"/>
                                         <constraint firstAttribute="trailing" secondItem="zem-eS-gxP" secondAttribute="trailing" constant="15" id="R96-LI-Lez"/>
+                                        <constraint firstItem="Uhe-TQ-cOU" firstAttribute="top" secondItem="zem-eS-gxP" secondAttribute="bottom" constant="10" id="cJV-Kr-018"/>
+                                        <constraint firstItem="Uhe-TQ-cOU" firstAttribute="leading" secondItem="Br6-IK-hfa" secondAttribute="leading" id="fv7-KC-usG"/>
+                                        <constraint firstAttribute="trailing" secondItem="Uhe-TQ-cOU" secondAttribute="trailing" id="xQ7-Zc-SKF"/>
+                                        <constraint firstAttribute="bottom" secondItem="Uhe-TQ-cOU" secondAttribute="bottom" constant="10" id="yST-4i-ot8"/>
                                         <constraint firstItem="zem-eS-gxP" firstAttribute="leading" secondItem="Br6-IK-hfa" secondAttribute="leading" constant="15" id="yxk-0I-NEj"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dYb-9Z-BGQ">
-                                    <rect key="frame" x="0.0" y="938" width="375" height="90"/>
+                                    <rect key="frame" x="0.0" y="1339" width="375" height="90"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZW-YT-6xm" customClass="HUBGeneralButton">
                                             <rect key="frame" x="15" y="15" width="345" height="60"/>

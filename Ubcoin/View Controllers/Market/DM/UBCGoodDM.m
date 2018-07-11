@@ -9,6 +9,7 @@
 #import "UBCGoodDM.h"
 
 #define FAVORITE_KEY @"favourite goods"
+#define ALL_GOODS_KEY @"all goods"
 
 @implementation UBCGoodDM
 
@@ -61,10 +62,38 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationFavoritesChanged object:nil];
 }
 
+#pragma mark -
+
 + (NSArray *)favorites
 {
     NSArray *favorites = [[NSUserDefaults standardUserDefaults] objectForKey:FAVORITE_KEY];
     return [favorites map:^id(id item) {
+        return [[UBCGoodDM alloc] initWithDictionary:item];
+    }];
+}
+
++ (void)saveGoods:(NSArray *)goods
+{
+    if (goods)
+    {
+        NSArray *dicts = [goods valueForKey:@"dict"];
+        [[NSUserDefaults standardUserDefaults] setObject:dicts forKey:ALL_GOODS_KEY];
+    }
+}
+
++ (NSArray *)relatedGoods
+{
+    NSArray *goods = [[NSUserDefaults standardUserDefaults] objectForKey:ALL_GOODS_KEY];
+    
+    NSMutableSet *set = [NSMutableSet set];
+    if (goods.count > 1)
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            [set addObject:goods[arc4random() % [goods count]]];
+        }
+    }
+    return [[set allObjects] map:^id(id item) {
         return [[UBCGoodDM alloc] initWithDictionary:item];
     }];
 }

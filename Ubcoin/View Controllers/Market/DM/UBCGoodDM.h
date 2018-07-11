@@ -32,4 +32,7 @@ static NSString * const kNotificationFavoritesChanged = @"kNotificationFavorites
 
 + (NSArray *)favorites;
 
++ (void)saveGoods:(NSArray *)goods;
++ (NSArray *)relatedGoods;
+
 @end

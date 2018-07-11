@@ -42,7 +42,7 @@
 - (void)setup
 {
     self.showsVerticalScrollIndicator = NO;
-    self.backgroundColor = UBColor.backgroundColor;
+    self.backgroundColor = UIColor.clearColor;
     self.delegate = self;
     self.dataSource = self;
     self.alwaysBounceVertical = YES;

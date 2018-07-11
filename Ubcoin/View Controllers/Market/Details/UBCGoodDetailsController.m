@@ -7,13 +7,15 @@
 //
 
 #import "UBCGoodDetailsController.h"
+#import "UBCGoodDetailsController.h"
 #import "UBCPhotoCollectionViewCell.h"
+#import "UBCGoodsCollectionView.h"
 #import "UBCInfoLabel.h"
 #import "UBCGoodDM.h"
 
 #import "Ubcoin-Swift.h"
 
-@interface UBCGoodDetailsController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface UBCGoodDetailsController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UBCGoodsCollectionViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scroll;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -24,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet HUBLabel *category;
 @property (weak, nonatomic) IBOutlet HUBLabel *itemTitle;
 @property (weak, nonatomic) IBOutlet HUBLabel *desc;
+@property (weak, nonatomic) IBOutlet UBCGoodsCollectionView *relatedItemsView;
 
 @property (strong, nonatomic) UBCGoodDM *good;
 
@@ -48,10 +51,6 @@
     [self setupNavBar];
     [self setupViews];
     [self setupContent];
-    
-    self.scroll.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-    self.collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-    [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass(UBCPhotoCollectionViewCell.class) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass(UBCPhotoCollectionViewCell.class)];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle
@@ -73,6 +72,9 @@
     self.desc.textColor = UBColor.titleColor;
     [self.background addVerticalGradientWithColors:@[(id)[UIColor clearColor].CGColor,
                                                      (id)[UIColor colorWithWhite:0 alpha:0.4].CGColor]];
+    self.scroll.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    self.collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass(UBCPhotoCollectionViewCell.class) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass(UBCPhotoCollectionViewCell.class)];
 }
 
 - (void)setupContent
@@ -86,6 +88,8 @@
     self.favoriteButton.image = [UIImage imageNamed:[NSString stringWithFormat:@"icFav%@", self.good.isFavorite ? @"B" : @"A"]];
     [self.photoCount setupWithImage:[UIImage imageNamed:@"market_photo"]
                             andText:[NSString stringWithFormat:@"1/%d", (int)self.good.images.count]];
+    
+    self.relatedItemsView.items = [UBCGoodDM relatedGoods];
 }
 
 #pragma mark - Actions
@@ -143,6 +147,14 @@
     int currentPhoto = self.collectionView.contentOffset.x / self.collectionView.width;
     [self.photoCount setupWithImage:[UIImage imageNamed:@"market_photo"]
                             andText:[NSString stringWithFormat:@"%d/%d", (currentPhoto + 1), (int)self.good.images.count]];
+}
+
+#pragma mark - UBCGoodsCollectionViewDelegate
+
+- (void)didSelectItem:(UBCGoodDM *)item
+{
+    UBCGoodDetailsController *controller = [UBCGoodDetailsController.alloc initWithGood:item];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 @end
