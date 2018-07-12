@@ -37,8 +37,9 @@
     if (self)
     {
         self.dynamicAnimator = [[UIDynamicAnimator alloc] initWithCollectionViewLayout:self];
-        self.sectionInset = UIEdgeInsetsMake(UBCConstant.collectionInset, UBCConstant.collectionInset, UBCConstant.collectionInset, UBCConstant.collectionInset);
-        self.minimumLineSpacing = UBCConstant.collectionInset;
+        self.sectionInset = UIEdgeInsetsMake(UBCConstant.collectionInset, UBCConstant.collectionInset - 5, UBCConstant.collectionInset, UBCConstant.collectionInset - 5);
+        self.minimumLineSpacing = UBCConstant.collectionInset - 5;
+        self.minimumInteritemSpacing = UBCConstant.collectionInset - 10;
     }
 
     return self;

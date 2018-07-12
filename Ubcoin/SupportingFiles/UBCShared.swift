@@ -31,13 +31,13 @@ class UBCConstant: NSObject {
     
     @objc static let shadowOffset = CGSize(width: 0, height: 1)
     @objc static let shadowOpacity: Float = 0.15
-    @objc static let shadowRadius: CGFloat = 5
+    @objc static let shadowRadius: CGFloat = 2
 }
 
+@objc
 extension UIView {
     
     func defaultShadow() {
-        self.layer.cornerRadius = UBCConstant.cornerRadius
         self.layer.shadowColor = UBCColor.shadowColor.cgColor
         self.layer.shadowOpacity = UBCConstant.shadowOpacity
         self.layer.shadowRadius = UBCConstant.shadowRadius
