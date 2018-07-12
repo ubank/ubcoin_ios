@@ -10,6 +10,7 @@
 #import "UBCGoodDetailsController.h"
 #import "UBCPhotoCollectionViewCell.h"
 #import "UBCGoodsCollectionView.h"
+#import "HUBNavigationBarView.h"
 #import "UBCInfoLabel.h"
 #import "UBCGoodDM.h"
 
@@ -27,6 +28,8 @@
 @property (weak, nonatomic) IBOutlet HUBLabel *itemTitle;
 @property (weak, nonatomic) IBOutlet HUBLabel *desc;
 @property (weak, nonatomic) IBOutlet UBCGoodsCollectionView *relatedItemsView;
+
+@property (strong, nonatomic) HUBNavigationBarView *navBarView;
 
 @property (strong, nonatomic) UBCGoodDM *good;
 
@@ -48,26 +51,39 @@
 {
     [super viewDidLoad];
 
-    [self setupNavBar];
     [self setupViews];
+    [self setupNavBar];
     [self setupContent];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
-    return UIStatusBarStyleLightContent;
+    return self.navBarView.isTransparent ? UIStatusBarStyleLightContent : UIStatusBarStyleDefault;
 }
 
 - (void)setupNavBar
 {
     self.navigationContainer.rightImageTitle = @"general_export";
-    self.navigationContainer.titleTextColor = UIColor.whiteColor;
-    self.navigationContainer.buttonsImageColor = UIColor.whiteColor;
+    self.navigationContainer.titleTextColor = self.navBarView.isTransparent ? UIColor.whiteColor : UBColor.navigationTitleColor;
+    self.navigationContainer.buttonsImageColor = self.navBarView.isTransparent ? UIColor.whiteColor : UBColor.navigationTitleColor;;
     self.navigationContainer.clearColorNavigation = YES;
 }
 
 - (void)setupViews
 {
+    self.navBarView = [HUBNavigationBarView loadFromXib];
+    self.navBarView.backgroundColor = [UIColor clearColor];
+    self.navBarView.isTransparent = YES;
+    [self.view addSubview:self.navBarView];
+    [self.view setTopConstraintToSubview:self.navBarView withValue:0];
+    [self.view setLeadingConstraintToSubview:self.navBarView withValue:0];
+    [self.view setTrailingConstraintToSubview:self.navBarView withValue:0];
+    
+    __weak typeof(self) weakSelf = self;
+    self.navBarView.exitActionBlock = ^{
+        [weakSelf.navigationController popViewControllerAnimated:YES];
+    };
+    
     self.category.textColor = UBCColor.green;
     self.desc.textColor = UBColor.titleColor;
     [self.background addVerticalGradientWithColors:@[(id)[UIColor clearColor].CGColor,
@@ -142,6 +158,15 @@
     return cell;
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [self.navBarView handleScrollOffset:scrollView.contentOffset.y + scrollView.contentInset.top];
+    [self setupNavBar];
+    [self updateBarButtons];
+    [(UBNavigationBar *)((UBNavigationController *)self.navigationController).navigationBar updateCurrentNavigationItem];
+    [self setNeedsStatusBarAppearanceUpdate];
+}
+    
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     int currentPhoto = self.collectionView.contentOffset.x / self.collectionView.width;

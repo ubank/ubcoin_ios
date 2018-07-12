@@ -7,13 +7,15 @@
 //
 
 #import "UBCFavouritesController.h"
-#import "UBCGoodsCollectionView.h"
 #import "UBCGoodDetailsController.h"
+#import "UBCFavouriteCell.h"
 #import "UBCGoodDM.h"
 
-@interface UBCFavouritesController () <UBCGoodsCollectionViewDelegate>
+@interface UBCFavouritesController () <UITableViewDelegate, UITableViewDataSource>
 
-@property (strong, nonatomic) UBCGoodsCollectionView *collectionView;
+@property (strong, nonatomic) UITableView *tableView;
+
+@property (strong, nonatomic) NSArray *items;
 
 @end
 
@@ -25,12 +27,7 @@
     
     self.title = @"Favorites";
     
-    [self setupCollectionView];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(updateInfo)
-                                                 name:kNotificationFavoritesChanged
-                                               object:nil];
+    [self setupTableView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -40,30 +37,52 @@
     [self updateInfo];
 }
 
-- (void)setupCollectionView
+- (void)setupTableView
 {
-    self.collectionView = UBCGoodsCollectionView.new;
-    self.collectionView.actionsDelegate = self;
-    [self.view addSubview:self.collectionView];
-    [self.view addConstraintsToFillSubview:self.collectionView];
+    self.tableView = UITableView.new;
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.rowHeight = 95;
+    self.tableView.sectionHeaderHeight = 10;
+    self.tableView.backgroundColor = UBColor.backgroundColor;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass(UBCFavouriteCell.class) bundle:nil] forCellReuseIdentifier:NSStringFromClass(UBCFavouriteCell.class)];
+    
+    [self.view addSubview:self.tableView];
+    [self.view addConstraintsToFillSubview:self.tableView];
 }
 
 - (void)updateInfo
 {
-    self.collectionView.items = [UBCGoodDM favorites];
+    self.items = [UBCGoodDM favorites];
+    [self.tableView reloadData];
 }
 
-#pragma mark - UBCGoodsCollectionViewDelegate
+#pragma mark - UITableView
 
-- (void)didSelectItem:(UBCGoodDM *)item
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    UBCGoodDetailsController *controller = [UBCGoodDetailsController.alloc initWithGood:item];
+    return self.items.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UBCFavouriteCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(UBCFavouriteCell.class)];
+    cell.content = self.items[indexPath.row];
+    
+    return cell;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    return UIView.new;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UBCGoodDetailsController *controller = [UBCGoodDetailsController.alloc initWithGood:self.items[indexPath.row]];
     [self.navigationController pushViewController:controller animated:YES];
-}
-
-- (void)refreshControlUpdate
-{
-    [self.collectionView.refreshControl endRefreshing];
 }
 
 @end

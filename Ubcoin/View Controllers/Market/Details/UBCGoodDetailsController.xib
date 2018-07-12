@@ -321,6 +321,9 @@
                         <constraint firstItem="qbR-7S-QUP" firstAttribute="top" secondItem="p5e-oR-mgC" secondAttribute="top" id="hjC-Hc-j6n"/>
                         <constraint firstAttribute="bottom" secondItem="qbR-7S-QUP" secondAttribute="bottom" id="o9r-xw-ffy"/>
                     </constraints>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="b4c-GT-0Qr"/>
+                    </connections>
                 </scrollView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
