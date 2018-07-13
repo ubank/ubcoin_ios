@@ -120,7 +120,7 @@
 - (void)setupSellerView:(UBCAuthorDM *)seller
 {
     [self.sellerAvatar sd_setImageWithURL:[NSURL URLWithString:seller.avatarURL]
-                         placeholderImage:[UIImage imageNamed:@""]];
+                         placeholderImage:[UIImage imageNamed:@"def_prof"]];
     
     self.sellerName.text = seller.name;
     [self.sellerRating showStars:seller.rating.unsignedIntegerValue];
