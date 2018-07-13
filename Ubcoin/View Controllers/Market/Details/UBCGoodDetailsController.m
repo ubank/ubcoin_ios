@@ -60,6 +60,14 @@
     [self setupViews];
     [self setupNavBar];
     [self setupContent];
+}    
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+
+    [self.background addVerticalGradientWithColors:@[(id)[UIColor clearColor].CGColor,
+                                                     (id)[UIColor colorWithWhite:0 alpha:0.4].CGColor]];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle
@@ -94,8 +102,7 @@
     
     self.category.textColor = UBCColor.green;
     self.desc.textColor = UBColor.titleColor;
-    [self.background addVerticalGradientWithColors:@[(id)[UIColor clearColor].CGColor,
-                                                     (id)[UIColor colorWithWhite:0 alpha:0.4].CGColor]];
+    
     self.scroll.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     self.collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass(UBCPhotoCollectionViewCell.class) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass(UBCPhotoCollectionViewCell.class)];

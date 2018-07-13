@@ -27,8 +27,6 @@
     [super awakeFromNib];
 
     self.cornerRadius = UBCConstant.defaultCornerRadius;
-    [self.background addVerticalGradientWithColors:@[(id)[UIColor clearColor].CGColor,
-                                                     (id)[UIColor colorWithWhite:0 alpha:0.4].CGColor]];
 }
 
 - (void)layoutSubviews
@@ -36,6 +34,8 @@
     [super layoutSubviews];
     
     [self.icon setupContentModeFill];
+    [self.background addVerticalGradientWithColors:@[(id)[UIColor clearColor].CGColor,
+                                                    (id)[UIColor colorWithWhite:0 alpha:0.4].CGColor]];
 }
 
 - (void)setContent:(UBCDiscountDM *)content
