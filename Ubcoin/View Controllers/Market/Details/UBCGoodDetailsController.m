@@ -13,6 +13,8 @@
 #import "HUBNavigationBarView.h"
 #import "UBCInfoLabel.h"
 #import "UBCGoodDM.h"
+#import "UBCStarsView.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 #import "Ubcoin-Swift.h"
 
@@ -28,6 +30,10 @@
 @property (weak, nonatomic) IBOutlet HUBLabel *itemTitle;
 @property (weak, nonatomic) IBOutlet HUBLabel *desc;
 @property (weak, nonatomic) IBOutlet UBCGoodsCollectionView *relatedItemsView;
+@property (weak, nonatomic) IBOutlet UIImageView *sellerAvatar;
+@property (weak, nonatomic) IBOutlet HUBLabel *sellerName;
+@property (weak, nonatomic) IBOutlet UBCStarsView *sellerRating;
+@property (weak, nonatomic) IBOutlet HUBLabel *sellerDesc;
 
 @property (strong, nonatomic) HUBNavigationBarView *navBarView;
 
@@ -84,6 +90,8 @@
         [weakSelf.navigationController popViewControllerAnimated:YES];
     };
     
+    self.sellerAvatar.cornerRadius = self.sellerAvatar.height / 2;
+    
     self.category.textColor = UBCColor.green;
     self.desc.textColor = UBColor.titleColor;
     [self.background addVerticalGradientWithColors:@[(id)[UIColor clearColor].CGColor,
@@ -106,8 +114,20 @@
                             andText:[NSString stringWithFormat:@"1/%d", (int)self.good.images.count]];
     
     self.relatedItemsView.items = [UBCGoodDM relatedGoods];
+    [self setupSellerView:self.good.seller];
 }
 
+- (void)setupSellerView:(UBCAuthorDM *)seller
+{
+    [self.sellerAvatar sd_setImageWithURL:[NSURL URLWithString:seller.avatarURL]
+                         placeholderImage:[UIImage imageNamed:@""]];
+    
+    self.sellerName.text = seller.name;
+    [self.sellerRating showStars:seller.rating.unsignedIntegerValue];
+    
+    self.sellerDesc.text = [NSString stringWithFormat:@"%lu items     Reviews(%lu)", (unsigned long)seller.itemsCount, (unsigned long)seller.reviewsCount];
+}
+     
 #pragma mark - Actions
 
 - (void)rightBarButtonClick:(id)sender
