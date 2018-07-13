@@ -56,6 +56,7 @@
 - (void)updateInfo
 {
     self.items = [UBCGoodDM favorites];
+    self.tableView.hidden = self.items.count == 0;
     [self.tableView reloadData];
 }
 

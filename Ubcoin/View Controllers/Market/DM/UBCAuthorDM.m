@@ -17,8 +17,10 @@
     {
         _ID = dict[@"id"];
         _name = dict[@"name"];
-        _rating = @(rand() % 4 + 2);
-//        _rating = dict[@"rating"];
+        _rating = dict[@"rating"];
+        _avatarURL = dict[@"avatarUrl"];
+        _itemsCount = [dict[@"itemsCount"] unsignedLongValue];
+        _reviewsCount = [dict[@"reviewsCount"] unsignedIntegerValue];
     }
     return self;
 }

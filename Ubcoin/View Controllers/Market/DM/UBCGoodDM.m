@@ -21,9 +21,10 @@
         _ID = dict[@"id"];
         _title = dict[@"title"];
         _desc = dict[@"description"];
-        _locationText = dict[@"locationText"];
+        _locationText = [dict valueForKeyPath:@"location.text"];
         _price = dict[@"price"];
-        _isFavorite = dict[@"is_favorite"];
+//        _isFavorite = dict[@"is_favorite"];
+        _isFavorite = [UBCGoodDM isFavorite:self.ID];
         _creationDate = [NSDate dateFromISO8601String:dict[@"createdDate"]];
         _images = dict[@"images"];
         _seller = [[UBCAuthorDM alloc] initWithDictionary:dict[@"user"]];
@@ -70,6 +71,17 @@
     return [favorites map:^id(id item) {
         return [[UBCGoodDM alloc] initWithDictionary:item];
     }];
+}
+
++ (BOOL)isFavorite:(NSString *)itemID
+{
+    if (itemID)
+    {
+        NSArray *favorites = [[NSUserDefaults standardUserDefaults] objectForKey:FAVORITE_KEY];
+        NSArray *favIDs = [favorites valueForKey:@"id"];
+        return [favIDs containsObject:itemID];
+    }
+    return NO;
 }
 
 + (void)saveGoods:(NSArray *)goods
