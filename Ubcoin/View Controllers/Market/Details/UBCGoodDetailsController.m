@@ -124,7 +124,7 @@
     [self setupSellerView:self.good.seller];
 }
 
-- (void)setupSellerView:(UBCAuthorDM *)seller
+- (void)setupSellerView:(UBCSellerDM *)seller
 {
     [self.sellerAvatar sd_setImageWithURL:[NSURL URLWithString:seller.avatarURL]
                          placeholderImage:[UIImage imageNamed:@"def_prof"]];

@@ -6,9 +6,9 @@
 //  Copyright © 2018 UBANK. All rights reserved.
 //
 
-#import "UBCAuthorDM.h"
+#import "UBCSellerDM.h"
 
-@implementation UBCAuthorDM
+@implementation UBCSellerDM
 
 - (instancetype)initWithDictionary:(NSDictionary *)dict
 {

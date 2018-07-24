@@ -79,7 +79,7 @@
 		89CB110F20EFCDA500729C95 /* HUBCollectionViewWaitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CB110D20EFCDA500729C95 /* HUBCollectionViewWaitCell.m */; };
 		89F16A6A20F2C65D001AA440 /* UBCFiltersListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F16A4F20F2C65D001AA440 /* UBCFiltersListController.m */; };
 		89F16A6B20F2C65D001AA440 /* UBCGoodDM.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F16A5420F2C65D001AA440 /* UBCGoodDM.m */; };
-		89F16A6C20F2C65D001AA440 /* UBCAuthorDM.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F16A5620F2C65D001AA440 /* UBCAuthorDM.m */; };
+		89F16A6C20F2C65D001AA440 /* UBCSellerDM.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F16A5620F2C65D001AA440 /* UBCSellerDM.m */; };
 		89F16A6D20F2C65D001AA440 /* UBCGoodsCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F16A5820F2C65D001AA440 /* UBCGoodsCollectionView.m */; };
 		89F16A6E20F2C65D001AA440 /* UBCDiscountsCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89F16A5B20F2C65D001AA440 /* UBCDiscountsCollectionView.xib */; };
 		89F16A6F20F2C65D001AA440 /* UBCDiscountCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F16A5D20F2C65D001AA440 /* UBCDiscountCollectionViewCell.m */; };
@@ -214,10 +214,10 @@
 		89F16A4F20F2C65D001AA440 /* UBCFiltersListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBCFiltersListController.m; sourceTree = "<group>"; };
 		89F16A5020F2C65D001AA440 /* UBCFiltersListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBCFiltersListController.h; sourceTree = "<group>"; };
 		89F16A5120F2C65D001AA440 /* UBCMarketController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBCMarketController.h; sourceTree = "<group>"; };
-		89F16A5320F2C65D001AA440 /* UBCAuthorDM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBCAuthorDM.h; sourceTree = "<group>"; };
+		89F16A5320F2C65D001AA440 /* UBCSellerDM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBCSellerDM.h; sourceTree = "<group>"; };
 		89F16A5420F2C65D001AA440 /* UBCGoodDM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBCGoodDM.m; sourceTree = "<group>"; };
 		89F16A5520F2C65D001AA440 /* UBCGoodDM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBCGoodDM.h; sourceTree = "<group>"; };
-		89F16A5620F2C65D001AA440 /* UBCAuthorDM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBCAuthorDM.m; sourceTree = "<group>"; };
+		89F16A5620F2C65D001AA440 /* UBCSellerDM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBCSellerDM.m; sourceTree = "<group>"; };
 		89F16A5820F2C65D001AA440 /* UBCGoodsCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBCGoodsCollectionView.m; sourceTree = "<group>"; };
 		89F16A5A20F2C65D001AA440 /* UBCDiscountsCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBCDiscountsCollectionView.h; sourceTree = "<group>"; };
 		89F16A5B20F2C65D001AA440 /* UBCDiscountsCollectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UBCDiscountsCollectionView.xib; sourceTree = "<group>"; };
@@ -798,10 +798,10 @@
 		89F16A5220F2C65D001AA440 /* DM */ = {
 			isa = PBXGroup;
 			children = (
-				89F16A5320F2C65D001AA440 /* UBCAuthorDM.h */,
-				89F16A5620F2C65D001AA440 /* UBCAuthorDM.m */,
 				89F16A5520F2C65D001AA440 /* UBCGoodDM.h */,
 				89F16A5420F2C65D001AA440 /* UBCGoodDM.m */,
+				89F16A5320F2C65D001AA440 /* UBCSellerDM.h */,
+				89F16A5620F2C65D001AA440 /* UBCSellerDM.m */,
 			);
 			path = DM;
 			sourceTree = "<group>";
@@ -1004,7 +1004,7 @@
 				8987517020EE119F00E2B615 /* UBSwitchTableViewCell.m in Sources */,
 				89F16A6D20F2C65D001AA440 /* UBCGoodsCollectionView.m in Sources */,
 				8987516E20EE119F00E2B615 /* UBDefaultTableViewCell.m in Sources */,
-				89F16A6C20F2C65D001AA440 /* UBCAuthorDM.m in Sources */,
+				89F16A6C20F2C65D001AA440 /* UBCSellerDM.m in Sources */,
 				8987517B20EE119F00E2B615 /* HUBGeneralButton.m in Sources */,
 				898751A720EE2BBD00E2B615 /* UBCChatController.m in Sources */,
 				8987518920EE119F00E2B615 /* HUBEmptyView.m in Sources */,

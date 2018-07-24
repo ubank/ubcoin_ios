@@ -8,7 +8,7 @@
 
 #import "UBCGoodCell.h"
 #import "UBCGoodDM.h"
-#import "UBCAuthorDM.h"
+#import "UBCSellerDM.h"
 #import "UBCStarsView.h"
 #import "UBCInfoLabel.h"
 

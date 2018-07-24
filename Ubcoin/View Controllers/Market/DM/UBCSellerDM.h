@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface UBCAuthorDM : NSObject
+@interface UBCSellerDM : NSObject
 
 @property (readonly, nonatomic) NSString *ID;
 @property (readonly, nonatomic) NSString *name;
