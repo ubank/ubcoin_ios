@@ -77,6 +77,7 @@
 - (void)setType:(HUBGeneralButtonType)type
 {
     self.layer.borderWidth = 0;
+    self.clipsToBounds = YES;
     
     switch (type)
     {
@@ -86,6 +87,12 @@
             break;
             
         case HUBGeneralButtonTypeGreen:
+            self.layer.shadowColor = UBCColor.green.CGColor;
+            self.layer.shadowOpacity = 0.4;
+            self.layer.shadowRadius = 5;
+            self.layer.shadowOffset =  CGSizeMake(0, 5);
+            
+            self.clipsToBounds = NO;
             self.titleColor = UIColor.whiteColor;
             self.backgroundColor = UBCColor.green;
             break;

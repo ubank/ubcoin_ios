@@ -10,7 +10,6 @@
 #import "UBCChatController.h"
 #import "UBCFavouritesController.h"
 #import "UBCMarketController.h"
-#import "UBCLoginController.h"
 #import "UBCAppDelegate.h"
 
 #import "Ubcoin-Swift.h"
@@ -58,7 +57,8 @@
     viewController4.tabBarItem.title = @"Messages";
     viewController4.tabBarItem.image = [UIImage imageNamed:@"tab_bar_chat"];
     
-    UBCLoginController *viewController5 = UBCLoginController.new;
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+    UIViewController *viewController5 = storyboard.instantiateInitialViewController;
     viewController5.tabBarItem.title = @"Sign In";
     viewController5.tabBarItem.image = [UIImage imageNamed:@"tab_bar_login"];
     

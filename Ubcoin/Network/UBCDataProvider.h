@@ -14,6 +14,17 @@
 
 - (void)goodsListWithPageNumber:(NSUInteger)page withCompletionBlock:(void (^)(BOOL success, NSArray *goods, BOOL canLoadMore))completionBlock;
 - (void)discountsWithCompletionBlock:(void (^)(BOOL success, NSArray *discounts))completionBlock;
+
 - (void)categoriesWithCompletionBlock:(void (^)(BOOL success, NSArray *categories))completionBlock;
+
+- (void)loginWithEmail:(NSString *)email password:(NSString *)password withCompletionBlock:(void (^)(BOOL success))completionBlock;
+- (void)registerUserWithFields:(NSDictionary *)fields withCompletionBlock:(void (^)(BOOL success))completionBlock;
+- (void)logoutWithCompletionBlock:(void (^)(BOOL success))completionBlock;
+
+- (void)userInfoWithCompletionBlock:(void (^)(BOOL success))completionBlock;
+- (void)userBalanceWithCompletionBlock:(void (^)(BOOL success))completionBlock;
+
+- (void)favoritesListWithPageNumber:(NSUInteger)page withCompletionBlock:(void (^)(BOOL success, NSArray *goods, BOOL canLoadMore))completionBlock;
+- (void)toggleFavoriteWithID:(NSString *)favoriteID isFavorite:(BOOL)isFavorite;
 
 @end

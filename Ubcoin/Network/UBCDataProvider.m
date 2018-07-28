@@ -103,4 +103,125 @@
      }];
 }
 
+#pragma mark - LOGIN
+
+- (void)loginWithEmail:(NSString *)email password:(NSString *)password withCompletionBlock:(void (^)(BOOL))completionBlock
+{
+    NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider login]
+                                                                andParams:@{@"login" : email,
+                                                                            @"password" : password}];
+    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (completionBlock)
+         {
+             completionBlock(success);
+         }
+     }];
+}
+
+- (void)registerUserWithFields:(NSDictionary *)fields withCompletionBlock:(void (^)(BOOL))completionBlock
+{
+    NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider registration]
+                                                                andParams:fields];
+    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (completionBlock)
+         {
+             completionBlock(success);
+         }
+     }];
+}
+
+- (void)logoutWithCompletionBlock:(void (^)(BOOL))completionBlock
+{
+    NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider logout] andParams:nil];
+    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (completionBlock)
+         {
+             completionBlock(success);
+         }
+     }];
+}
+
+#pragma mark - USER
+
+- (void)userInfoWithCompletionBlock:(void (^)(BOOL))completionBlock
+{
+    NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:[UBCURLProvider user]];
+    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (success)
+         {
+             
+         }
+         else if (completionBlock)
+         {
+             
+         }
+     }];
+}
+
+- (void)userBalanceWithCompletionBlock:(void (^)(BOOL))completionBlock
+{
+    NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:[UBCURLProvider userBalance]];
+    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (success)
+         {
+             
+         }
+         else if (completionBlock)
+         {
+             
+         }
+     }];
+}
+
+#pragma mark - FAVORITES
+
+- (void)favoritesListWithPageNumber:(NSUInteger)page withCompletionBlock:(void (^)(BOOL, NSArray *, BOOL))completionBlock
+{
+    NSURL *url = [UBCURLProvider favoritesListWithPageNumber:page];
+    NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:url];
+    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (success)
+         {
+             NSArray *items = [responseObject[@"data"] removeNulls];
+             items = [items map:^id(id item) {
+                 return [[UBCGoodDM alloc] initWithDictionary:item];
+             }];
+             
+             if (completionBlock)
+             {
+                 NSNumber *totalPages = [responseObject valueForKeyPath:@"pageData.totalPages"];
+                 completionBlock(YES, items, totalPages.integerValue > page);
+             }
+         }
+         else if (completionBlock)
+         {
+             completionBlock(NO, nil, YES);
+         }
+     }];
+}
+
+- (void)toggleFavoriteWithID:(NSString *)favoriteID isFavorite:(BOOL)isFavorite
+{
+    NSURL *url = [UBCURLProvider favoriteWithID:favoriteID];
+    
+    NSMutableURLRequest *request;
+    if (isFavorite)
+    {
+        request = [UBCRequestProvider postRequestWithURL:url andParams:nil];
+    }
+    else
+    {
+        request = [UBCRequestProvider deleteRequestWithURL:url];
+    }
+    
+    [self.connection sendRequest:request isBackground:YES withCompletionBlock:nil];
+}
+
 @end
+

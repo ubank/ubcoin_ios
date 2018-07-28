@@ -9,18 +9,61 @@
 #import "UBCURLProvider.h"
 
 #define SERVER_URL @"https://my.ubcoin.io/api/"
+#define ITEMS_PAGE_SIZE 15
 
 @implementation UBCURLProvider
 
 + (NSURL *)goodsListWithPageNumber:(NSUInteger)page
 {
-    NSString* url = [SERVER_URL stringByAppendingFormat:@"items?page=%d&size=15", (int)page];
+    NSString* url = [SERVER_URL stringByAppendingFormat:@"items?page=%d&size=%d", (int)page, ITEMS_PAGE_SIZE];
     return [NSURL URLWithString:url];
 }
 
 + (NSURL *)categories
 {
     NSString* url = [SERVER_URL stringByAppendingFormat:@"items/categories"];
+    return [NSURL URLWithString:url];
+}
+
++ (NSURL *)login
+{
+    NSString* url = [SERVER_URL stringByAppendingFormat:@"auth"];
+    return [NSURL URLWithString:url];
+}
+
++ (NSURL *)logout
+{
+    NSString* url = [SERVER_URL stringByAppendingFormat:@"auth/logout"];
+    return [NSURL URLWithString:url];
+}
+
++ (NSURL *)registration
+{
+    NSString* url = [SERVER_URL stringByAppendingFormat:@"users/registration"];
+    return [NSURL URLWithString:url];
+}
+
++ (NSURL *)user
+{
+    NSString* url = [SERVER_URL stringByAppendingFormat:@"users/me"];
+    return [NSURL URLWithString:url];
+}
+
++ (NSURL *)userBalance
+{
+    NSString* url = [SERVER_URL stringByAppendingFormat:@"balance"];
+    return [NSURL URLWithString:url];
+}
+
++ (NSURL *)favoriteWithID:(NSString *)favoriteID
+{
+    NSString* url = [SERVER_URL stringByAppendingFormat:@"favorites/%@", favoriteID];
+    return [NSURL URLWithString:url];
+}
+
++ (NSURL *)favoritesListWithPageNumber:(NSUInteger)page
+{
+    NSString* url = [SERVER_URL stringByAppendingFormat:@"favorites?page=%d&size=%d", (int)page, ITEMS_PAGE_SIZE];
     return [NSURL URLWithString:url];
 }
 

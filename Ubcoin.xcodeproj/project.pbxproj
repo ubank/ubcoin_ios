@@ -20,6 +20,10 @@
 		1CFFFE7D20F230A9003B5AD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CFFFE7920F230A9003B5AD9 /* Assets.xcassets */; };
 		1CFFFE7E20F230A9003B5AD9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFFFE7A20F230A9003B5AD9 /* main.m */; };
 		30A0668C891003DF59D2BECC /* libPods-Ubcoin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DD3B2DB73F06ACB93DC3B9 /* libPods-Ubcoin.a */; };
+		89678D9721071FF900EB715E /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89678D9621071FF800EB715E /* Login.storyboard */; };
+		89678D9E210CED2900EB715E /* UBCStartLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89678D9D210CED2900EB715E /* UBCStartLoginController.swift */; };
+		89678DA1210CF12600EB715E /* UBCSignUpController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89678DA0210CF12600EB715E /* UBCSignUpController.m */; };
+		89678DA5210CF75500EB715E /* UBCUserDM.m in Sources */ = {isa = PBXBuildFile; fileRef = 89678DA4210CF75500EB715E /* UBCUserDM.m */; };
 		8980F22A20F3FB800066CF99 /* UBCStarsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980F22920F3FB800066CF99 /* UBCStarsView.m */; };
 		8980F23620F481BA0066CF99 /* UBCInfoLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980F23520F481BA0066CF99 /* UBCInfoLabel.m */; };
 		8980F23B20F486990066CF99 /* UBCGoodDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980F23920F486990066CF99 /* UBCGoodDetailsController.m */; };
@@ -109,6 +113,12 @@
 		1CFFFE7B20F230A9003B5AD9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8133FFCED3512BADEB40D574 /* Pods-Ubcoin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ubcoin.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ubcoin/Pods-Ubcoin.release.xcconfig"; sourceTree = "<group>"; };
 		82DD3B2DB73F06ACB93DC3B9 /* libPods-Ubcoin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Ubcoin.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		89678D9621071FF800EB715E /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		89678D9D210CED2900EB715E /* UBCStartLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCStartLoginController.swift; sourceTree = "<group>"; };
+		89678D9F210CF12600EB715E /* UBCSignUpController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCSignUpController.h; sourceTree = "<group>"; };
+		89678DA0210CF12600EB715E /* UBCSignUpController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCSignUpController.m; sourceTree = "<group>"; };
+		89678DA3210CF75500EB715E /* UBCUserDM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCUserDM.h; sourceTree = "<group>"; };
+		89678DA4210CF75500EB715E /* UBCUserDM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCUserDM.m; sourceTree = "<group>"; };
 		8980F22820F3FB800066CF99 /* UBCStarsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCStarsView.h; sourceTree = "<group>"; };
 		8980F22920F3FB800066CF99 /* UBCStarsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCStarsView.m; sourceTree = "<group>"; };
 		8980F23420F481BA0066CF99 /* UBCInfoLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCInfoLabel.h; sourceTree = "<group>"; };
@@ -303,6 +313,15 @@
 				8133FFCED3512BADEB40D574 /* Pods-Ubcoin.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		89678DA2210CF73E00EB715E /* DM */ = {
+			isa = PBXGroup;
+			children = (
+				89678DA3210CF75500EB715E /* UBCUserDM.h */,
+				89678DA4210CF75500EB715E /* UBCUserDM.m */,
+			);
+			path = DM;
 			sourceTree = "<group>";
 		};
 		8980F22720F3FB4B0066CF99 /* Stars view */ = {
@@ -652,8 +671,13 @@
 		898751A220EE2B5000E2B615 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				89678DA2210CF73E00EB715E /* DM */,
+				89678D9621071FF800EB715E /* Login.storyboard */,
 				898751B120EE2C4100E2B615 /* UBCLoginController.h */,
 				898751B220EE2C4100E2B615 /* UBCLoginController.m */,
+				89678D9D210CED2900EB715E /* UBCStartLoginController.swift */,
+				89678D9F210CF12600EB715E /* UBCSignUpController.h */,
+				89678DA0210CF12600EB715E /* UBCSignUpController.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -927,6 +951,7 @@
 				89F16A7020F2C65D001AA440 /* UBCDiscountCollectionViewCell.xib in Resources */,
 				8987517820EE119F00E2B615 /* UBTableHeaderView.xib in Resources */,
 				8987516B20EE119F00E2B615 /* HUBNavigationBarView.xib in Resources */,
+				89678D9721071FF900EB715E /* Login.storyboard in Resources */,
 				89F16A6E20F2C65D001AA440 /* UBCDiscountsCollectionView.xib in Resources */,
 				1CFFFE7D20F230A9003B5AD9 /* Assets.xcassets in Resources */,
 				8987518A20EE119F00E2B615 /* HUBEmptyView.xib in Resources */,
@@ -987,9 +1012,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89678D9E210CED2900EB715E /* UBCStartLoginController.swift in Sources */,
 				89F16A7220F2C65D001AA440 /* UBCDiscountDM.m in Sources */,
 				898751C520EE64EB00E2B615 /* UBCRequestProvider.m in Sources */,
 				8987518420EE119F00E2B615 /* UBPickerView.m in Sources */,
+				89678DA1210CF12600EB715E /* UBCSignUpController.m in Sources */,
 				8987517920EE119F00E2B615 /* UBSectionHeaderView.m in Sources */,
 				1C4034B220F2958100E51247 /* UBCShared.swift in Sources */,
 				89F16A7120F2C65D001AA440 /* UBCDiscountsCollectionView.m in Sources */,
@@ -1033,6 +1060,7 @@
 				8987518220EE119F00E2B615 /* UBCollectionViewSwitch.m in Sources */,
 				8980F23620F481BA0066CF99 /* UBCInfoLabel.m in Sources */,
 				8987516D20EE119F00E2B615 /* HUBScrollView.m in Sources */,
+				89678DA5210CF75500EB715E /* UBCUserDM.m in Sources */,
 				89F16A7520F2C65D001AA440 /* UBCMarketController.m in Sources */,
 				8987516C20EE119F00E2B615 /* HUBNavigationBarView.m in Sources */,
 				8987518F20EE119F00E2B615 /* UBLocationManager.m in Sources */,

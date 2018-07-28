@@ -13,4 +13,14 @@
 + (NSURL *)goodsListWithPageNumber:(NSUInteger)page;
 + (NSURL *)categories;
 
++ (NSURL *)login;
++ (NSURL *)logout;
++ (NSURL *)registration;
+
++ (NSURL *)user;
++ (NSURL *)userBalance;
+
++ (NSURL *)favoriteWithID:(NSString *)favoriteID;
++ (NSURL *)favoritesListWithPageNumber:(NSUInteger)page;
+
 @end
