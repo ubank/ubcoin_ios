@@ -17,6 +17,6 @@ class UBCStartLoginController: UBViewController {
         self.infoButton.titleColor = UBCColor.green;
         self.infoButton.titleLabel?.font = UBFont.descFont;
         
-        self.navigationContainer?.hiddenNavigation = false
+        self.navigationContainer?.hiddenNavigation = true
     }
 }
