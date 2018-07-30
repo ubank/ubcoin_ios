@@ -56,6 +56,7 @@ PODS:
   - UBGeneralClasses/TableView (1.0.2):
     - GoogleAnalytics
     - SDWebImage
+  - UnderLineTextField (2.0.7)
 
 DEPENDENCIES:
   - AFNetworking
@@ -66,6 +67,7 @@ DEPENDENCIES:
   - INTULocationManager
   - TTTAttributedLabel
   - UBGeneralClasses (from `https://github.com/ubank/ub_general_classes_iOS.git`)
+  - UnderLineTextField
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -78,6 +80,7 @@ SPEC REPOS:
     - INTULocationManager
     - SDWebImage
     - TTTAttributedLabel
+    - UnderLineTextField
 
 EXTERNAL SOURCES:
   UBGeneralClasses:
@@ -99,7 +102,8 @@ SPEC CHECKSUMS:
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
   UBGeneralClasses: a5485a99a05a01e5c17321117caf26d2507eed87
+  UnderLineTextField: e3c9640e3a3fe529a617ee217f5d8386b8e8440c
 
-PODFILE CHECKSUM: 45f9cfb1a6a34519a0e82c0ebf4b405b044e6c75
+PODFILE CHECKSUM: d5d03e86a32ab88a1141d5246d5abcc04cad3cf6
 
 COCOAPODS: 1.5.3

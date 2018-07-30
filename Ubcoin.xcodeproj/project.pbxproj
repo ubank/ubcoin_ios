@@ -25,6 +25,7 @@
 		89678DA1210CF12600EB715E /* UBCSignUpController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89678DA0210CF12600EB715E /* UBCSignUpController.m */; };
 		89678DA5210CF75500EB715E /* UBCUserDM.m in Sources */ = {isa = PBXBuildFile; fileRef = 89678DA4210CF75500EB715E /* UBCUserDM.m */; };
 		89678DA9210DE28600EB715E /* UBCToast.m in Sources */ = {isa = PBXBuildFile; fileRef = 89678DA8210DE28600EB715E /* UBCToast.m */; };
+		89678DB7210F801200EB715E /* UBCTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89678DB6210F801200EB715E /* UBCTextField.swift */; };
 		8980F22A20F3FB800066CF99 /* UBCStarsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980F22920F3FB800066CF99 /* UBCStarsView.m */; };
 		8980F23620F481BA0066CF99 /* UBCInfoLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980F23520F481BA0066CF99 /* UBCInfoLabel.m */; };
 		8980F23B20F486990066CF99 /* UBCGoodDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980F23920F486990066CF99 /* UBCGoodDetailsController.m */; };
@@ -122,6 +123,7 @@
 		89678DA4210CF75500EB715E /* UBCUserDM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCUserDM.m; sourceTree = "<group>"; };
 		89678DA7210DE28600EB715E /* UBCToast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCToast.h; sourceTree = "<group>"; };
 		89678DA8210DE28600EB715E /* UBCToast.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCToast.m; sourceTree = "<group>"; };
+		89678DB6210F801200EB715E /* UBCTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCTextField.swift; sourceTree = "<group>"; };
 		8980F22820F3FB800066CF99 /* UBCStarsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCStarsView.h; sourceTree = "<group>"; };
 		8980F22920F3FB800066CF99 /* UBCStarsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCStarsView.m; sourceTree = "<group>"; };
 		8980F23420F481BA0066CF99 /* UBCInfoLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCInfoLabel.h; sourceTree = "<group>"; };
@@ -336,6 +338,14 @@
 			path = Toast;
 			sourceTree = "<group>";
 		};
+		89678DB2210F7F8900EB715E /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				89678DB6210F801200EB715E /* UBCTextField.swift */,
+			);
+			path = TextField;
+			sourceTree = "<group>";
+		};
 		8980F22720F3FB4B0066CF99 /* Stars view */ = {
 			isa = PBXGroup;
 			children = (
@@ -404,7 +414,6 @@
 		898750FB20EE119F00E2B615 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
-				89678DA6210DE1E600EB715E /* Toast */,
 				8987514920EE119F00E2B615 /* Alert Table */,
 				8987514120EE119F00E2B615 /* AlertWindow */,
 				8987512020EE119F00E2B615 /* Buttons */,
@@ -422,7 +431,9 @@
 				8980F22720F3FB4B0066CF99 /* Stars view */,
 				8987513320EE119F00E2B615 /* SwitchCollectionView */,
 				8987510620EE119F00E2B615 /* TableView */,
+				89678DB2210F7F8900EB715E /* TextField */,
 				8987511D20EE119F00E2B615 /* TextView */,
+				89678DA6210DE1E600EB715E /* Toast */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -990,10 +1001,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Ubcoin/Pods-Ubcoin-resources.sh",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/UnderLineTextField/Source/UnderLineTextField/Supporting Files/Extera.xcassets",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Assets.car",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1054,6 +1067,7 @@
 				8987518620EE119F00E2B615 /* HUBAttributedLabel.m in Sources */,
 				8987518B20EE119F00E2B615 /* UBAlertTableView.m in Sources */,
 				8987518320EE119F00E2B615 /* UBCollectionViewSwitchContent.m in Sources */,
+				89678DB7210F801200EB715E /* UBCTextField.swift in Sources */,
 				8987519F20EE2A8B00E2B615 /* UBCTabBarController.m in Sources */,
 				8980F22A20F3FB800066CF99 /* UBCStarsView.m in Sources */,
 				1CFFFE7E20F230A9003B5AD9 /* main.m in Sources */,

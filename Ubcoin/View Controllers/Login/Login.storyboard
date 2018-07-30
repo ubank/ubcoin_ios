@@ -122,11 +122,90 @@
                     <view key="view" contentMode="scaleToFill" id="pOe-ye-wmq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LMk-89-lWo">
+                                <rect key="frame" x="0.0" y="467" width="375" height="200"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n2N-rB-udA" customClass="HUBGeneralButton">
+                                        <rect key="frame" x="15" y="0.0" width="345" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="R34-L5-T9W"/>
+                                        </constraints>
+                                        <state key="normal" title="Log In"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="type">
+                                                <integer key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cLj-c8-euL">
+                                        <rect key="frame" x="64" y="80" width="247" height="40"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don’t have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Gq-PL-j40" customClass="HUBLabel">
+                                                <rect key="frame" x="5" y="0.0" width="180" height="40"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="labelStyle">
+                                                        <integer key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jpr-Zd-QvI">
+                                                <rect key="frame" x="190" y="0.0" width="52" height="40"/>
+                                                <state key="normal" title="Sign up"/>
+                                                <connections>
+                                                    <segue destination="2Q6-B2-GRw" kind="show" id="2SC-Vo-Moc"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="jpr-Zd-QvI" secondAttribute="trailing" constant="5" id="AwC-MF-dQD"/>
+                                            <constraint firstItem="jpr-Zd-QvI" firstAttribute="top" secondItem="cLj-c8-euL" secondAttribute="top" id="BeU-uA-ulY"/>
+                                            <constraint firstAttribute="bottom" secondItem="1Gq-PL-j40" secondAttribute="bottom" id="HfP-U4-Q2K"/>
+                                            <constraint firstAttribute="height" constant="40" id="VLs-rZ-iZj"/>
+                                            <constraint firstItem="1Gq-PL-j40" firstAttribute="top" secondItem="cLj-c8-euL" secondAttribute="top" id="XJw-pl-meY"/>
+                                            <constraint firstItem="1Gq-PL-j40" firstAttribute="leading" secondItem="cLj-c8-euL" secondAttribute="leading" constant="5" id="nuh-HF-GbL"/>
+                                            <constraint firstItem="jpr-Zd-QvI" firstAttribute="leading" secondItem="1Gq-PL-j40" secondAttribute="trailing" constant="5" id="tac-bj-ddV"/>
+                                            <constraint firstAttribute="bottom" secondItem="jpr-Zd-QvI" secondAttribute="bottom" id="xSZ-Yg-z0I"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="cLj-c8-euL" firstAttribute="top" secondItem="n2N-rB-udA" secondAttribute="bottom" constant="20" id="AtH-qT-1p5"/>
+                                    <constraint firstAttribute="trailing" secondItem="n2N-rB-udA" secondAttribute="trailing" constant="15" id="AyW-ia-N6X"/>
+                                    <constraint firstItem="cLj-c8-euL" firstAttribute="centerX" secondItem="LMk-89-lWo" secondAttribute="centerX" id="NpQ-xv-WhY"/>
+                                    <constraint firstAttribute="height" constant="200" id="P4Z-AW-Fhb"/>
+                                    <constraint firstItem="n2N-rB-udA" firstAttribute="leading" secondItem="LMk-89-lWo" secondAttribute="leading" constant="15" id="fwc-5y-3Xm"/>
+                                    <constraint firstItem="n2N-rB-udA" firstAttribute="top" secondItem="LMk-89-lWo" secondAttribute="top" id="kOY-dI-nbU"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="J5f-zS-pdf" firstAttribute="bottom" secondItem="LMk-89-lWo" secondAttribute="bottom" id="BPH-Lh-r3M"/>
+                            <constraint firstItem="J5f-zS-pdf" firstAttribute="trailing" secondItem="LMk-89-lWo" secondAttribute="trailing" id="kxo-qs-MpP"/>
+                            <constraint firstItem="LMk-89-lWo" firstAttribute="leading" secondItem="pOe-ye-wmq" secondAttribute="leading" id="vq2-y3-Py9"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="J5f-zS-pdf"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="ZpC-d8-xg2" appends="YES" id="XU5-2i-GxI"/>
+                        </connections>
                     </view>
+                    <connections>
+                        <outlet property="infoButton" destination="jpr-Zd-QvI" id="h5i-zE-6dw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eHg-IB-NFd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="ZpC-d8-xg2">
+                    <connections>
+                        <action selector="didTapped:" destination="1df-OE-RTB" id="dmH-Zm-qW5"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="887" y="337"/>
         </scene>
@@ -143,10 +222,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1XZ-5j-ums" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="812" y="-591"/>
+            <point key="canvasLocation" x="1662" y="-475"/>
         </scene>
     </scenes>
     <resources>
         <image name="general_icon" width="158" height="157"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="2SC-Vo-Moc"/>
+    </inferredMetricsTieBreakers>
 </document>

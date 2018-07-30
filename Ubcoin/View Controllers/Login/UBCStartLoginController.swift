@@ -14,8 +14,8 @@ class UBCStartLoginController: UBViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.infoButton.titleColor = UBCColor.green;
-        self.infoButton.titleLabel?.font = UBFont.descFont;
+        self.infoButton.titleColor = UBCColor.green
+        self.infoButton.titleLabel?.font = UBFont.descFont
         
         self.navigationContainer?.hiddenNavigation = true
     }
