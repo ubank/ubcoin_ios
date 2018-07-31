@@ -132,6 +132,11 @@
      }];
 }
 
+- (void)resendPasswordForEmail:(NSString *)email withCompletionBlock:(void (^)(BOOL))completionBlock
+{
+    
+}
+
 - (void)logoutWithCompletionBlock:(void (^)(BOOL))completionBlock
 {
     NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider logout] andParams:nil];

@@ -49,7 +49,7 @@
     [self.view setLeadingConstraintToSubview:forgotButton withValue:15];
     [self.view setVerticalSpacingBeweenSubview:self.passwordField
                                     andSubview:forgotButton
-                                     withValue:-20];
+                                     withValue:0];
 }
 
 - (void)setupFields
@@ -78,7 +78,7 @@
     [self.view setTrailingConstraintToSubview:self.passwordField withValue:-15];
     [self.view setVerticalSpacingBeweenSubview:self.loginField
                                     andSubview:self.passwordField
-                                     withValue:-20];
+                                     withValue:10];
 }
 
 #pragma mark - Actions

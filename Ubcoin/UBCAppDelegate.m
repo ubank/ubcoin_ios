@@ -48,6 +48,7 @@
     UBColor.navigationTintColor = [UIColor colorWithRed:91 / 255.0 green:103 / 255.0 blue:109 / 255.0 alpha:1];
     UBColor.titleColor = [UIColor colorWithRed:32 / 255.0 green:32 / 255.0 blue:32 / 255.0 alpha:1];
     UBColor.descColor = [UIColor colorWithRed:142 / 255.0 green:142 / 255.0 blue:142 / 255.0 alpha:1];
+    UBColor.separatorColor = [UIColor colorWithRed:195 / 255.0 green:208 / 255.0 blue:212 / 255.0 alpha:1];
 }
 
 - (void)setupFonts

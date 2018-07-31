@@ -22,6 +22,13 @@
     [NSNotificationCenter.defaultCenter removeObserver:self];
 }
 
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    
+    [self defaultSetup];
+}
+
 - (instancetype)init
 {
     self = super.init;
@@ -39,6 +46,15 @@
     self.backgroundColor = UIColor.clearColor;
     self.font = UBFont.fieldFont;
     self.textColor = UBColor.textFieldColor;
+    
+    UIView *separator = UIView.new;
+    separator.backgroundColor = UBColor.separatorColor;
+    [self addSubview:separator];
+
+    [separator setHeightConstraintWithValue:1.5];
+    [self setLeadingConstraintToSubview:separator withValue:0];
+    [self setTrailingConstraintToSubview:separator withValue:0];
+    [self setBottomConstraintToSubview:separator withValue:0];
     
     self.placeholderLabel = UILabel.new;
     self.placeholderLabel.backgroundColor = UIColor.clearColor;
@@ -84,7 +100,7 @@
     
     self.placeholderLabel.font = active ? UBFont.descFont : self.font;
     
-    [self setTopConstraintToSubview:self.placeholderLabel withValue:active ? 10 : (self.height - self.font.lineHeight) / 2];
+    [self setTopConstraintToSubview:self.placeholderLabel withValue:active ? 5 : (self.height - self.font.lineHeight) / 2];
     
     [UIView animateWithDuration:animated ? 0.2 : 0 animations:^{
         [self layoutIfNeeded];
