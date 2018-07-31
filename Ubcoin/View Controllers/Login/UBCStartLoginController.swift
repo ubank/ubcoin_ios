@@ -21,7 +21,11 @@ class UBCStartLoginController: UBViewController {
         self.navigationContainer?.hiddenNavigation = true
     }
     
-    @IBAction func infoButtonAction() {
+    @IBAction func showLogin() {
         self.navigationController?.pushViewController(UBCSignUpController(), animated: true)
+    }
+    
+    @IBAction func showRegistration() {
+        self.navigationController?.pushViewController(UBCLoginController(), animated: true)
     }
 }

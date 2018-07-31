@@ -57,8 +57,7 @@
     viewController4.tabBarItem.title = @"Messages";
     viewController4.tabBarItem.image = [UIImage imageNamed:@"tab_bar_chat"];
     
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
-    UIViewController *viewController5 = storyboard.instantiateInitialViewController;
+    UBCStartLoginController *viewController5 = UBCStartLoginController.new;
     viewController5.tabBarItem.title = @"Sign In";
     viewController5.tabBarItem.image = [UIImage imageNamed:@"tab_bar_login"];
     

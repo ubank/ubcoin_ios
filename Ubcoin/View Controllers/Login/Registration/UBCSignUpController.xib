@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UBCSignUpController">
+            <connections>
+                <outlet property="view" destination="3oR-0b-WcM" id="pY3-3k-e6d"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="3oR-0b-WcM">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8MG-M0-yga">
+                    <rect key="frame" x="0.0" y="467" width="375" height="200"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rLM-Fb-vs0" customClass="HUBGeneralButton">
+                            <rect key="frame" x="15" y="0.0" width="345" height="60"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="60" id="PlU-0e-I2r"/>
+                            </constraints>
+                            <state key="normal" title="Sign Up"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="type">
+                                    <integer key="value" value="2"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xtV-SB-vhT">
+                            <rect key="frame" x="61" y="80" width="253" height="40"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r6P-wi-AEw" customClass="HUBLabel">
+                                    <rect key="frame" x="5" y="0.0" width="196" height="40"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="labelStyle">
+                                            <integer key="value" value="2"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zqA-dC-VUP">
+                                    <rect key="frame" x="206" y="0.0" width="42" height="40"/>
+                                    <state key="normal" title="Log in"/>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="r6P-wi-AEw" firstAttribute="top" secondItem="xtV-SB-vhT" secondAttribute="top" id="A0S-Jd-wYr"/>
+                                <constraint firstAttribute="bottom" secondItem="zqA-dC-VUP" secondAttribute="bottom" id="G1R-MV-w2x"/>
+                                <constraint firstAttribute="height" constant="40" id="Jbw-PT-xFL"/>
+                                <constraint firstItem="zqA-dC-VUP" firstAttribute="leading" secondItem="r6P-wi-AEw" secondAttribute="trailing" constant="5" id="Wtj-n1-MzB"/>
+                                <constraint firstItem="zqA-dC-VUP" firstAttribute="top" secondItem="xtV-SB-vhT" secondAttribute="top" id="gfA-gn-UYK"/>
+                                <constraint firstAttribute="trailing" secondItem="zqA-dC-VUP" secondAttribute="trailing" constant="5" id="htT-u6-MA7"/>
+                                <constraint firstItem="r6P-wi-AEw" firstAttribute="leading" secondItem="xtV-SB-vhT" secondAttribute="leading" constant="5" id="jww-Lh-cMy"/>
+                                <constraint firstAttribute="bottom" secondItem="r6P-wi-AEw" secondAttribute="bottom" id="qxD-aX-6P5"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="200" id="4rB-tW-mPR"/>
+                        <constraint firstItem="rLM-Fb-vs0" firstAttribute="top" secondItem="8MG-M0-yga" secondAttribute="top" id="4wz-32-Xza"/>
+                        <constraint firstItem="rLM-Fb-vs0" firstAttribute="leading" secondItem="8MG-M0-yga" secondAttribute="leading" constant="15" id="7zq-r7-kvD"/>
+                        <constraint firstItem="xtV-SB-vhT" firstAttribute="top" secondItem="rLM-Fb-vs0" secondAttribute="bottom" constant="20" id="9Dp-NL-K8w"/>
+                        <constraint firstItem="xtV-SB-vhT" firstAttribute="centerX" secondItem="8MG-M0-yga" secondAttribute="centerX" id="JfK-Zl-6Kq"/>
+                        <constraint firstAttribute="trailing" secondItem="rLM-Fb-vs0" secondAttribute="trailing" constant="15" id="KTF-Ih-x4M"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="8MG-M0-yga" firstAttribute="trailing" secondItem="4s8-S0-AG3" secondAttribute="trailing" id="2fh-cn-g7h"/>
+                <constraint firstItem="8MG-M0-yga" firstAttribute="leading" secondItem="4s8-S0-AG3" secondAttribute="leading" id="RI8-pL-QuP"/>
+                <constraint firstItem="4s8-S0-AG3" firstAttribute="bottom" secondItem="8MG-M0-yga" secondAttribute="bottom" id="g1m-kg-y9C"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="4s8-S0-AG3"/>
+        </view>
+    </objects>
+</document>

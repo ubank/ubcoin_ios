@@ -63,4 +63,14 @@
     [self.view endEditing:YES];
 }
 
+- (IBAction)showRegistration
+{
+    
+}
+
+- (IBAction)login
+{
+    
+}
+
 @end

@@ -20,12 +20,14 @@
 		1CFFFE7D20F230A9003B5AD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CFFFE7920F230A9003B5AD9 /* Assets.xcassets */; };
 		1CFFFE7E20F230A9003B5AD9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFFFE7A20F230A9003B5AD9 /* main.m */; };
 		30A0668C891003DF59D2BECC /* libPods-Ubcoin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DD3B2DB73F06ACB93DC3B9 /* libPods-Ubcoin.a */; };
-		89678D9721071FF900EB715E /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89678D9621071FF800EB715E /* Login.storyboard */; };
 		89678D9E210CED2900EB715E /* UBCStartLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89678D9D210CED2900EB715E /* UBCStartLoginController.swift */; };
 		89678DA1210CF12600EB715E /* UBCSignUpController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89678DA0210CF12600EB715E /* UBCSignUpController.m */; };
 		89678DA5210CF75500EB715E /* UBCUserDM.m in Sources */ = {isa = PBXBuildFile; fileRef = 89678DA4210CF75500EB715E /* UBCUserDM.m */; };
 		89678DA9210DE28600EB715E /* UBCToast.m in Sources */ = {isa = PBXBuildFile; fileRef = 89678DA8210DE28600EB715E /* UBCToast.m */; };
 		89678DB7210F801200EB715E /* UBCTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89678DB6210F801200EB715E /* UBCTextField.swift */; };
+		89678DB9211088C600EB715E /* UBCStartLoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89678DB8211088C600EB715E /* UBCStartLoginController.xib */; };
+		89678DBB21108A6C00EB715E /* UBCLoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89678DBA21108A6C00EB715E /* UBCLoginController.xib */; };
+		89678DBD21108B5600EB715E /* UBCSignUpController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89678DBC21108B5600EB715E /* UBCSignUpController.xib */; };
 		8980F22A20F3FB800066CF99 /* UBCStarsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980F22920F3FB800066CF99 /* UBCStarsView.m */; };
 		8980F23620F481BA0066CF99 /* UBCInfoLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980F23520F481BA0066CF99 /* UBCInfoLabel.m */; };
 		8980F23B20F486990066CF99 /* UBCGoodDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980F23920F486990066CF99 /* UBCGoodDetailsController.m */; };
@@ -115,7 +117,6 @@
 		1CFFFE7B20F230A9003B5AD9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8133FFCED3512BADEB40D574 /* Pods-Ubcoin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ubcoin.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ubcoin/Pods-Ubcoin.release.xcconfig"; sourceTree = "<group>"; };
 		82DD3B2DB73F06ACB93DC3B9 /* libPods-Ubcoin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Ubcoin.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		89678D9621071FF800EB715E /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		89678D9D210CED2900EB715E /* UBCStartLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCStartLoginController.swift; sourceTree = "<group>"; };
 		89678D9F210CF12600EB715E /* UBCSignUpController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCSignUpController.h; sourceTree = "<group>"; };
 		89678DA0210CF12600EB715E /* UBCSignUpController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCSignUpController.m; sourceTree = "<group>"; };
@@ -124,6 +125,9 @@
 		89678DA7210DE28600EB715E /* UBCToast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCToast.h; sourceTree = "<group>"; };
 		89678DA8210DE28600EB715E /* UBCToast.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCToast.m; sourceTree = "<group>"; };
 		89678DB6210F801200EB715E /* UBCTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCTextField.swift; sourceTree = "<group>"; };
+		89678DB8211088C600EB715E /* UBCStartLoginController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCStartLoginController.xib; sourceTree = "<group>"; };
+		89678DBA21108A6C00EB715E /* UBCLoginController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCLoginController.xib; sourceTree = "<group>"; };
+		89678DBC21108B5600EB715E /* UBCSignUpController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCSignUpController.xib; sourceTree = "<group>"; };
 		8980F22820F3FB800066CF99 /* UBCStarsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCStarsView.h; sourceTree = "<group>"; };
 		8980F22920F3FB800066CF99 /* UBCStarsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCStarsView.m; sourceTree = "<group>"; };
 		8980F23420F481BA0066CF99 /* UBCInfoLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCInfoLabel.h; sourceTree = "<group>"; };
@@ -344,6 +348,26 @@
 				89678DB6210F801200EB715E /* UBCTextField.swift */,
 			);
 			path = TextField;
+			sourceTree = "<group>";
+		};
+		89678DBE21108D0000EB715E /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				89678D9F210CF12600EB715E /* UBCSignUpController.h */,
+				89678DA0210CF12600EB715E /* UBCSignUpController.m */,
+				89678DBC21108B5600EB715E /* UBCSignUpController.xib */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		89678DBF21108D1100EB715E /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				898751B120EE2C4100E2B615 /* UBCLoginController.h */,
+				898751B220EE2C4100E2B615 /* UBCLoginController.m */,
+				89678DBA21108A6C00EB715E /* UBCLoginController.xib */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		8980F22720F3FB4B0066CF99 /* Stars view */ = {
@@ -696,12 +720,10 @@
 			isa = PBXGroup;
 			children = (
 				89678DA2210CF73E00EB715E /* DM */,
-				89678D9621071FF800EB715E /* Login.storyboard */,
-				898751B120EE2C4100E2B615 /* UBCLoginController.h */,
-				898751B220EE2C4100E2B615 /* UBCLoginController.m */,
+				89678DBF21108D1100EB715E /* Login */,
+				89678DBE21108D0000EB715E /* Registration */,
 				89678D9D210CED2900EB715E /* UBCStartLoginController.swift */,
-				89678D9F210CF12600EB715E /* UBCSignUpController.h */,
-				89678DA0210CF12600EB715E /* UBCSignUpController.m */,
+				89678DB8211088C600EB715E /* UBCStartLoginController.xib */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -969,16 +991,18 @@
 			files = (
 				89AE1A7420F7FDF3000662E8 /* UBCFavouriteCell.xib in Resources */,
 				8987518720EE119F00E2B615 /* UBAlertWindow.xib in Resources */,
+				89678DBB21108A6C00EB715E /* UBCLoginController.xib in Resources */,
 				8981369B20F5678D00DF6B7F /* UBCChatController.xib in Resources */,
 				8980F23C20F486990066CF99 /* UBCGoodDetailsController.xib in Resources */,
 				8987517120EE119F00E2B615 /* HUBSystemAlertCell.xib in Resources */,
 				89F16A7020F2C65D001AA440 /* UBCDiscountCollectionViewCell.xib in Resources */,
 				8987517820EE119F00E2B615 /* UBTableHeaderView.xib in Resources */,
 				8987516B20EE119F00E2B615 /* HUBNavigationBarView.xib in Resources */,
-				89678D9721071FF900EB715E /* Login.storyboard in Resources */,
 				89F16A6E20F2C65D001AA440 /* UBCDiscountsCollectionView.xib in Resources */,
 				1CFFFE7D20F230A9003B5AD9 /* Assets.xcassets in Resources */,
 				8987518A20EE119F00E2B615 /* HUBEmptyView.xib in Resources */,
+				89678DB9211088C600EB715E /* UBCStartLoginController.xib in Resources */,
+				89678DBD21108B5600EB715E /* UBCSignUpController.xib in Resources */,
 				89CB110E20EFCDA500729C95 /* HUBCollectionViewWaitCell.xib in Resources */,
 				8980F24220F4954C0066CF99 /* UBCPhotoCollectionViewCell.xib in Resources */,
 				89F16A7320F2C65D001AA440 /* UBCGoodCell.xib in Resources */,
