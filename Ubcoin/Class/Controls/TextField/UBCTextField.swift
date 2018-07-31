@@ -9,21 +9,14 @@
 import UIKit
 import UnderLineTextField
 
-class UBCTextField: UnderLineTextField {
+@objc
+extension UnderLineTextField {
     
-    private var firstInit = true
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-
-        if self.firstInit {
-            self.firstInit = false
-            
-            self.inactivePlaceholderTextColor = UBColor.descColor
-            self.inactiveLineColor = UIColor.init(hexString: "c3d0d4")
-            self.activeLineColor = UBColor.titleColor;
-            self.font = UIFont.systemFont(ofSize: 18)
-            self.textColor = UBColor.titleColor;
-        }
+    func setup() {
+        self.inactivePlaceholderTextColor = UBColor.descColor
+        self.inactiveLineColor = UIColor(hexString: "c3d0d4")
+        self.activeLineColor = UBColor.titleColor
+        self.font = UIFont.systemFont(ofSize: 18)
+        self.textColor = UBColor.titleColor
     }
 }
