@@ -9,6 +9,7 @@
 import UIKit
 
 class UBCStartLoginController: UBViewController {
+    
     @IBOutlet weak var infoButton: UIButton!
     
     override func viewDidLoad() {
@@ -18,5 +19,9 @@ class UBCStartLoginController: UBViewController {
         self.infoButton.titleLabel?.font = UBFont.descFont
         
         self.navigationContainer?.hiddenNavigation = true
+    }
+    
+    @IBAction func infoButtonAction() {
+        self.navigationController?.pushViewController(UBCSignUpController(), animated: true)
     }
 }
