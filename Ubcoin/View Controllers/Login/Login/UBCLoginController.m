@@ -8,14 +8,15 @@
 
 #import "UBCLoginController.h"
 #import "UBCSignUpController.h"
+#import "UBFloatingPlaceholderTextField.h"
 
 #import "Ubcoin-Swift.h"
 
 @interface UBCLoginController () <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *infoButton;
-@property (strong, nonatomic) UnderLineTextField *loginField;
-@property (strong, nonatomic) UnderLineTextField *passwordField;
+@property (strong, nonatomic) UBFloatingPlaceholderTextField *loginField;
+@property (strong, nonatomic) UBFloatingPlaceholderTextField *passwordField;
 
 @end
 
@@ -53,24 +54,26 @@
 
 - (void)setupFields
 {
-    self.loginField = UnderLineTextField.new;
+    self.loginField = UBFloatingPlaceholderTextField.new;
     [self.loginField setup];
     self.loginField.delegate = self;
     self.loginField.placeholder = @"Email";
     self.loginField.keyboardType = UIKeyboardTypeEmailAddress;
     [self.view addSubview:self.loginField];
     
+    [self.loginField setHeightConstraintWithValue:50];
     [self.view setTopConstraintToSubview:self.loginField withValue:80];
     [self.view setLeadingConstraintToSubview:self.loginField withValue:15];
     [self.view setTrailingConstraintToSubview:self.loginField withValue:-15];
     
-    self.passwordField = UnderLineTextField.new;
+    self.passwordField = UBFloatingPlaceholderTextField.new;
     [self.passwordField setup];
     self.passwordField.delegate = self;
     self.passwordField.placeholder = @"Password";
     self.passwordField.secureTextEntry = YES;
     [self.view addSubview:self.passwordField];
     
+    [self.passwordField setHeightConstraintWithValue:50];
     [self.view setLeadingConstraintToSubview:self.passwordField withValue:15];
     [self.view setTrailingConstraintToSubview:self.passwordField withValue:-15];
     [self.view setVerticalSpacingBeweenSubview:self.loginField

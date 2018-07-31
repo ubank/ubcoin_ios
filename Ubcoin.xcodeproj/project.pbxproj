@@ -24,12 +24,12 @@
 		89678DA1210CF12600EB715E /* UBCSignUpController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89678DA0210CF12600EB715E /* UBCSignUpController.m */; };
 		89678DA5210CF75500EB715E /* UBCUserDM.m in Sources */ = {isa = PBXBuildFile; fileRef = 89678DA4210CF75500EB715E /* UBCUserDM.m */; };
 		89678DA9210DE28600EB715E /* UBCToast.m in Sources */ = {isa = PBXBuildFile; fileRef = 89678DA8210DE28600EB715E /* UBCToast.m */; };
-		89678DB7210F801200EB715E /* UBCTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89678DB6210F801200EB715E /* UBCTextField.swift */; };
 		89678DB9211088C600EB715E /* UBCStartLoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89678DB8211088C600EB715E /* UBCStartLoginController.xib */; };
 		89678DBB21108A6C00EB715E /* UBCLoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89678DBA21108A6C00EB715E /* UBCLoginController.xib */; };
 		89678DBD21108B5600EB715E /* UBCSignUpController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89678DBC21108B5600EB715E /* UBCSignUpController.xib */; };
 		89678DC32110C0AD00EB715E /* UBCForgotPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89678DC12110C0AD00EB715E /* UBCForgotPasswordController.swift */; };
 		89678DC42110C0AD00EB715E /* UBCForgotPasswordController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89678DC22110C0AD00EB715E /* UBCForgotPasswordController.xib */; };
+		89678DC72110C5F700EB715E /* UBFloatingPlaceholderTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 89678DC62110C5F700EB715E /* UBFloatingPlaceholderTextField.m */; };
 		8980F22A20F3FB800066CF99 /* UBCStarsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980F22920F3FB800066CF99 /* UBCStarsView.m */; };
 		8980F23620F481BA0066CF99 /* UBCInfoLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980F23520F481BA0066CF99 /* UBCInfoLabel.m */; };
 		8980F23B20F486990066CF99 /* UBCGoodDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980F23920F486990066CF99 /* UBCGoodDetailsController.m */; };
@@ -126,12 +126,13 @@
 		89678DA4210CF75500EB715E /* UBCUserDM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCUserDM.m; sourceTree = "<group>"; };
 		89678DA7210DE28600EB715E /* UBCToast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCToast.h; sourceTree = "<group>"; };
 		89678DA8210DE28600EB715E /* UBCToast.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCToast.m; sourceTree = "<group>"; };
-		89678DB6210F801200EB715E /* UBCTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCTextField.swift; sourceTree = "<group>"; };
 		89678DB8211088C600EB715E /* UBCStartLoginController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCStartLoginController.xib; sourceTree = "<group>"; };
 		89678DBA21108A6C00EB715E /* UBCLoginController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCLoginController.xib; sourceTree = "<group>"; };
 		89678DBC21108B5600EB715E /* UBCSignUpController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCSignUpController.xib; sourceTree = "<group>"; };
 		89678DC12110C0AD00EB715E /* UBCForgotPasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCForgotPasswordController.swift; sourceTree = "<group>"; };
 		89678DC22110C0AD00EB715E /* UBCForgotPasswordController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCForgotPasswordController.xib; sourceTree = "<group>"; };
+		89678DC52110C5F700EB715E /* UBFloatingPlaceholderTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBFloatingPlaceholderTextField.h; sourceTree = "<group>"; };
+		89678DC62110C5F700EB715E /* UBFloatingPlaceholderTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBFloatingPlaceholderTextField.m; sourceTree = "<group>"; };
 		8980F22820F3FB800066CF99 /* UBCStarsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCStarsView.h; sourceTree = "<group>"; };
 		8980F22920F3FB800066CF99 /* UBCStarsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCStarsView.m; sourceTree = "<group>"; };
 		8980F23420F481BA0066CF99 /* UBCInfoLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCInfoLabel.h; sourceTree = "<group>"; };
@@ -349,7 +350,8 @@
 		89678DB2210F7F8900EB715E /* TextField */ = {
 			isa = PBXGroup;
 			children = (
-				89678DB6210F801200EB715E /* UBCTextField.swift */,
+				89678DC52110C5F700EB715E /* UBFloatingPlaceholderTextField.h */,
+				89678DC62110C5F700EB715E /* UBFloatingPlaceholderTextField.m */,
 			);
 			path = TextField;
 			sourceTree = "<group>";
@@ -1040,12 +1042,10 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Ubcoin/Pods-Ubcoin-resources.sh",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
-				"${PODS_ROOT}/UnderLineTextField/Source/UnderLineTextField/Supporting Files/Extera.xcassets",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Assets.car",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1106,7 +1106,6 @@
 				8987518620EE119F00E2B615 /* HUBAttributedLabel.m in Sources */,
 				8987518B20EE119F00E2B615 /* UBAlertTableView.m in Sources */,
 				8987518320EE119F00E2B615 /* UBCollectionViewSwitchContent.m in Sources */,
-				89678DB7210F801200EB715E /* UBCTextField.swift in Sources */,
 				8987519F20EE2A8B00E2B615 /* UBCTabBarController.m in Sources */,
 				8980F22A20F3FB800066CF99 /* UBCStarsView.m in Sources */,
 				1CFFFE7E20F230A9003B5AD9 /* main.m in Sources */,
@@ -1140,6 +1139,7 @@
 				8987517520EE119F00E2B615 /* UBExpandableTableViewSectionHeader.m in Sources */,
 				1C14F19F20F2655800B835AC /* UBCMapSelectController.swift in Sources */,
 				89678DA9210DE28600EB715E /* UBCToast.m in Sources */,
+				89678DC72110C5F700EB715E /* UBFloatingPlaceholderTextField.m in Sources */,
 				898751C820EE65C000E2B615 /* UBCKeyChain.m in Sources */,
 				898751CE20EE6D7600E2B615 /* UBCDataProvider.m in Sources */,
 				89F16A7420F2C65D001AA440 /* UBCGoodCell.m in Sources */,

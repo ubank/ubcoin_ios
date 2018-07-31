@@ -53,10 +53,10 @@
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LMN-Bo-b7o">
-                            <rect key="frame" x="61" y="80" width="253" height="40"/>
+                            <rect key="frame" x="78" y="80" width="219" height="40"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Caz-Pt-U6h" customClass="HUBLabel">
-                                    <rect key="frame" x="5" y="0.0" width="196" height="40"/>
+                                    <rect key="frame" x="5" y="0.0" width="162" height="40"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -67,7 +67,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SWc-c4-pul">
-                                    <rect key="frame" x="206" y="0.0" width="42" height="40"/>
+                                    <rect key="frame" x="172" y="0.0" width="42" height="40"/>
                                     <state key="normal" title="Log in"/>
                                     <connections>
                                         <action selector="showLogin" destination="-1" eventType="touchUpInside" id="fZD-C6-v3P"/>
