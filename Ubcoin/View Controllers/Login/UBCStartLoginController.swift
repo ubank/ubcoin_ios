@@ -22,10 +22,10 @@ class UBCStartLoginController: UBViewController {
     }
     
     @IBAction func showLogin() {
-        self.navigationController?.pushViewController(UBCSignUpController(), animated: true)
+        self.navigationController?.pushViewController(UBCLoginController(), animated: true)
     }
     
     @IBAction func showRegistration() {
-        self.navigationController?.pushViewController(UBCLoginController(), animated: true)
+        self.navigationController?.pushViewController(UBCSignUpController(), animated: true)
     }
 }

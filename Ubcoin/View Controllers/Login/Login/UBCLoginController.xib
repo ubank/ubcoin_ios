@@ -90,7 +90,7 @@
             <constraints>
                 <constraint firstItem="ESS-at-hqY" firstAttribute="bottom" secondItem="2Im-RR-u5L" secondAttribute="bottom" id="3fx-2c-suO"/>
                 <constraint firstItem="ESS-at-hqY" firstAttribute="trailing" secondItem="2Im-RR-u5L" secondAttribute="trailing" id="DuG-qT-wez"/>
-                <constraint firstItem="2Im-RR-u5L" firstAttribute="leading" secondItem="Q3A-Sb-NS7" secondAttribute="leading" id="fTF-MW-uzd"/>
+                <constraint firstItem="2Im-RR-u5L" firstAttribute="leading" secondItem="ESS-at-hqY" secondAttribute="leading" id="fTF-MW-uzd"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ESS-at-hqY"/>
         </view>

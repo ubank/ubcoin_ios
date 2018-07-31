@@ -7,14 +7,15 @@
 //
 
 #import "UBCLoginController.h"
+#import "UBCSignUpController.h"
 
 #import "Ubcoin-Swift.h"
 
-@interface UBCLoginController ()
+@interface UBCLoginController () <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *infoButton;
-@property (strong, nonatomic) UBCTextField *loginField;
-@property (strong, nonatomic) UBCTextField *passwordField;
+@property (strong, nonatomic) UnderLineTextField *loginField;
+@property (strong, nonatomic) UnderLineTextField *passwordField;
 
 @end
 
@@ -39,21 +40,29 @@
 
 - (void)setupFields
 {
-    self.loginField = UBCTextField.new;
+    self.loginField = UnderLineTextField.new;
+    [self.loginField setup];
+    self.loginField.delegate = self;
     self.loginField.placeholder = @"Email";
+    self.loginField.keyboardType = UIKeyboardTypeEmailAddress;
     [self.view addSubview:self.loginField];
     
-    [self.view setTopConstraintToSubview:self.loginField withValue:50];
+    [self.view setTopConstraintToSubview:self.loginField withValue:80];
     [self.view setLeadingConstraintToSubview:self.loginField withValue:15];
     [self.view setTrailingConstraintToSubview:self.loginField withValue:-15];
     
-    self.passwordField = UBCTextField.new;
+    self.passwordField = UnderLineTextField.new;
+    [self.passwordField setup];
+    self.passwordField.delegate = self;
     self.passwordField.placeholder = @"Password";
+    self.passwordField.secureTextEntry = YES;
     [self.view addSubview:self.passwordField];
     
-    [self.loginField setTopConstraintToSubview:self.passwordField withValue:20];
     [self.view setLeadingConstraintToSubview:self.passwordField withValue:15];
     [self.view setTrailingConstraintToSubview:self.passwordField withValue:-15];
+    [self.view setVerticalSpacingBeweenSubview:self.loginField
+                                    andSubview:self.passwordField
+                                     withValue:-20];
 }
 
 #pragma mark - Actions
@@ -65,12 +74,54 @@
 
 - (IBAction)showRegistration
 {
-    
+    [self.navigationController pushViewController:UBCSignUpController.new animated:YES];
 }
 
 - (IBAction)login
 {
-    
+    if ([self isValidData])
+    {
+        [UBCDataProvider.sharedProvider loginWithEmail:self.loginField.text
+                                              password:self.passwordField.text
+                                   withCompletionBlock:^(BOOL success) {
+                                       if (success)
+                                       {
+                                           
+                                       }
+                                       else
+                                       {
+                                           [UBCToast showErrorToastWithMessage:@"Incorrect Email or Password"];
+                                       }
+                                   }];
+    }
+    else
+    {
+        [UBCToast showErrorToastWithMessage:@"Incorrect Data"];
+    }
+}
+
+#pragma mark -
+
+- (BOOL)isValidData
+{
+    return self.loginField.text.isEmail &&
+    self.passwordField.text.isNotEmpty;
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if ([textField isEqual:self.loginField])
+    {
+        return [self.passwordField becomeFirstResponder];
+    }
+    else
+    {
+        [textField resignFirstResponder];
+    }
+        
+    return YES;
 }
 
 @end
