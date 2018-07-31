@@ -36,6 +36,19 @@
     self.infoButton.titleLabel.font = UBFont.descFont;
     
     [self setupFields];
+    
+    UIButton *forgotButton = UIButton.new;
+    [forgotButton setTitle:@"Forgot password?" forState:UIControlStateNormal];
+    forgotButton.titleColor = UBCColor.green;
+    forgotButton.titleLabel.font = [UIFont systemFontOfSize:15 weight:UIFontWeightMedium];
+    [forgotButton addTarget:self action:@selector(showForgotPassword) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:forgotButton];
+    
+    [forgotButton setHeightConstraintWithValue:40];
+    [self.view setLeadingConstraintToSubview:forgotButton withValue:15];
+    [self.view setVerticalSpacingBeweenSubview:self.passwordField
+                                    andSubview:forgotButton
+                                     withValue:-20];
 }
 
 - (void)setupFields
@@ -70,6 +83,11 @@
 - (IBAction)didTapped:(id)sender
 {
     [self.view endEditing:YES];
+}
+
+- (IBAction)showForgotPassword
+{
+    [self.navigationController pushViewController:UBCForgotPasswordController.new animated:YES];
 }
 
 - (IBAction)showRegistration

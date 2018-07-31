@@ -28,6 +28,8 @@
 		89678DB9211088C600EB715E /* UBCStartLoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89678DB8211088C600EB715E /* UBCStartLoginController.xib */; };
 		89678DBB21108A6C00EB715E /* UBCLoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89678DBA21108A6C00EB715E /* UBCLoginController.xib */; };
 		89678DBD21108B5600EB715E /* UBCSignUpController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89678DBC21108B5600EB715E /* UBCSignUpController.xib */; };
+		89678DC32110C0AD00EB715E /* UBCForgotPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89678DC12110C0AD00EB715E /* UBCForgotPasswordController.swift */; };
+		89678DC42110C0AD00EB715E /* UBCForgotPasswordController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89678DC22110C0AD00EB715E /* UBCForgotPasswordController.xib */; };
 		8980F22A20F3FB800066CF99 /* UBCStarsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980F22920F3FB800066CF99 /* UBCStarsView.m */; };
 		8980F23620F481BA0066CF99 /* UBCInfoLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980F23520F481BA0066CF99 /* UBCInfoLabel.m */; };
 		8980F23B20F486990066CF99 /* UBCGoodDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980F23920F486990066CF99 /* UBCGoodDetailsController.m */; };
@@ -128,6 +130,8 @@
 		89678DB8211088C600EB715E /* UBCStartLoginController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCStartLoginController.xib; sourceTree = "<group>"; };
 		89678DBA21108A6C00EB715E /* UBCLoginController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCLoginController.xib; sourceTree = "<group>"; };
 		89678DBC21108B5600EB715E /* UBCSignUpController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCSignUpController.xib; sourceTree = "<group>"; };
+		89678DC12110C0AD00EB715E /* UBCForgotPasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCForgotPasswordController.swift; sourceTree = "<group>"; };
+		89678DC22110C0AD00EB715E /* UBCForgotPasswordController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCForgotPasswordController.xib; sourceTree = "<group>"; };
 		8980F22820F3FB800066CF99 /* UBCStarsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCStarsView.h; sourceTree = "<group>"; };
 		8980F22920F3FB800066CF99 /* UBCStarsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCStarsView.m; sourceTree = "<group>"; };
 		8980F23420F481BA0066CF99 /* UBCInfoLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCInfoLabel.h; sourceTree = "<group>"; };
@@ -368,6 +372,15 @@
 				89678DBA21108A6C00EB715E /* UBCLoginController.xib */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		89678DC02110BD7F00EB715E /* Forgot password */ = {
+			isa = PBXGroup;
+			children = (
+				89678DC12110C0AD00EB715E /* UBCForgotPasswordController.swift */,
+				89678DC22110C0AD00EB715E /* UBCForgotPasswordController.xib */,
+			);
+			path = "Forgot password";
 			sourceTree = "<group>";
 		};
 		8980F22720F3FB4B0066CF99 /* Stars view */ = {
@@ -719,6 +732,7 @@
 		898751A220EE2B5000E2B615 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				89678DC02110BD7F00EB715E /* Forgot password */,
 				89678DA2210CF73E00EB715E /* DM */,
 				89678DBF21108D1100EB715E /* Login */,
 				89678DBE21108D0000EB715E /* Registration */,
@@ -1008,6 +1022,7 @@
 				89F16A7320F2C65D001AA440 /* UBCGoodCell.xib in Resources */,
 				8987519A20EE23A100E2B615 /* UBWaitCell.xib in Resources */,
 				1CFFFE7C20F230A9003B5AD9 /* LaunchScreen.storyboard in Resources */,
+				89678DC42110C0AD00EB715E /* UBCForgotPasswordController.xib in Resources */,
 				8987517420EE119F00E2B615 /* UBSectionHeaderView.xib in Resources */,
 				89AE1A6E20F7B8F1000662E8 /* UBCFavouritesController.xib in Resources */,
 				8987517620EE119F00E2B615 /* UBExpandableTableViewSectionHeader.xib in Resources */,
@@ -1112,6 +1127,7 @@
 				8980F23620F481BA0066CF99 /* UBCInfoLabel.m in Sources */,
 				8987516D20EE119F00E2B615 /* HUBScrollView.m in Sources */,
 				89678DA5210CF75500EB715E /* UBCUserDM.m in Sources */,
+				89678DC32110C0AD00EB715E /* UBCForgotPasswordController.swift in Sources */,
 				89F16A7520F2C65D001AA440 /* UBCMarketController.m in Sources */,
 				8987516C20EE119F00E2B615 /* HUBNavigationBarView.m in Sources */,
 				8987518F20EE119F00E2B615 /* UBLocationManager.m in Sources */,
