@@ -9,6 +9,7 @@
 #import "UBCLoginController.h"
 #import "UBCSignUpController.h"
 #import "UBFloatingPlaceholderTextField.h"
+#import "UBCAppDelegate.h"
 
 #import "Ubcoin-Swift.h"
 
@@ -111,7 +112,7 @@
          {
              if (success)
              {
-                 
+                 [mainAppDelegate setupStack];
              }
              else
              {

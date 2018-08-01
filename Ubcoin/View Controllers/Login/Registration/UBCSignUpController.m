@@ -10,6 +10,7 @@
 #import "UBCLoginController.h"
 #import "UBFloatingPlaceholderTextField.h"
 #import "UBCSuccessRegistrationView.h"
+#import "UBCAppDelegate.h"
 
 #import "Ubcoin-Swift.h"
 
@@ -57,8 +58,6 @@
 
 - (IBAction)requestRegistration
 {
-    [UBCSuccessRegistrationView showWithEmail:self.emailField.text];
-    return;
     if ([self isValidData])
     {
         [self startActivityIndicator];
@@ -72,8 +71,8 @@
              [weakSelf stopActivityIndicator];
              if (success)
              {
+                 [mainAppDelegate setupStack];
                  [UBCSuccessRegistrationView showWithEmail:weakSelf.emailField.text];
-                 [weakSelf updateTabBar];
              }
          }];
     }
@@ -81,11 +80,6 @@
     {
         [UBCToast showErrorToastWithMessage:@"Incorrect Data"];
     }
-}
-
-- (void)updateTabBar
-{
-    
 }
 
 #pragma mark -
