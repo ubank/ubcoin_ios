@@ -10,6 +10,7 @@
 #import "UBCLoginController.h"
 #import "UBFloatingPlaceholderTextField.h"
 #import "UBCSuccessRegistrationView.h"
+#import "UBCPasswordView.h"
 #import "UBCAppDelegate.h"
 
 #import "Ubcoin-Swift.h"
@@ -20,8 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIStackView *fieldsStackView;
 @property (weak, nonatomic) IBOutlet UBFloatingPlaceholderTextField *nameField;
 @property (weak, nonatomic) IBOutlet UBFloatingPlaceholderTextField *emailField;
-@property (weak, nonatomic) IBOutlet UBFloatingPlaceholderTextField *passwordField;
-
+@property (strong, nonatomic) UBCPasswordView *passwordView;
 @end
 
 @implementation UBCSignUpController
@@ -43,7 +43,9 @@
 {
     self.nameField.placeholder = @"Name";
     self.emailField.placeholder = @"Email";
-    self.passwordField.placeholder = @"Password";
+    
+    self.passwordView = [UBCPasswordView loadFromXib];
+    [self.fieldsStackView addArrangedSubview:self.passwordView];
 }
 
 - (IBAction)didTapped:(id)sender
@@ -64,7 +66,7 @@
         __weak typeof(self) weakSelf = self;
         [UBCDataProvider.sharedProvider registerUserWithFields:@{@"name": self.nameField.text,
                                                                  @"email": self.emailField.text,
-                                                                 @"password": self.passwordField.text
+                                                                 @"password": self.passwordView.text
                                                                  }
                                            withCompletionBlock:^(BOOL success)
          {
@@ -88,7 +90,7 @@
 {
     return self.nameField.text.isNotEmpty &&
     self.emailField.text.isEmail &&
-    self.passwordField.text.isNotEmpty;
+    self.passwordView.isValid;
 }
 
 #pragma mark - UITextFieldDelegate

@@ -16,7 +16,6 @@
                 <outlet property="fieldsStackView" destination="7Nt-er-Uf8" id="rZY-Jl-Ykc"/>
                 <outlet property="infoButton" destination="zqA-dC-VUP" id="wmj-vo-dYp"/>
                 <outlet property="nameField" destination="C8M-Ax-Kl5" id="ekK-q4-FDp"/>
-                <outlet property="passwordField" destination="bgi-8T-KY1" id="WUf-e3-gQn"/>
                 <outlet property="view" destination="3oR-0b-WcM" id="pY3-3k-e6d"/>
             </connections>
         </placeholder>
@@ -29,10 +28,10 @@
                     <rect key="frame" x="0.0" y="20" width="375" height="447"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2lC-xh-bxg">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="190"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="130"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7Nt-er-Uf8">
-                                    <rect key="frame" x="15" y="20" width="345" height="170"/>
+                                    <rect key="frame" x="15" y="20" width="345" height="110"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C8M-Ax-Kl5" customClass="UBFloatingPlaceholderTextField">
                                             <rect key="frame" x="0.0" y="0.0" width="345" height="50"/>
@@ -56,18 +55,6 @@
                                             <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                             <connections>
                                                 <outlet property="delegate" destination="-1" id="l0h-hg-GCo"/>
-                                            </connections>
-                                        </textField>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bgi-8T-KY1" customClass="UBFloatingPlaceholderTextField">
-                                            <rect key="frame" x="0.0" y="120" width="345" height="50"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="50" id="YPr-E7-p5o"/>
-                                            </constraints>
-                                            <nil key="textColor"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                            <connections>
-                                                <outlet property="delegate" destination="-1" id="sXK-L1-8mo"/>
                                             </connections>
                                         </textField>
                                     </subviews>

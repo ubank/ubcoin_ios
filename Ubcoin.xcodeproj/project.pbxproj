@@ -34,6 +34,15 @@
 		89678DCD2111B02800EB715E /* UBCProfileController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89678DCB2111B02800EB715E /* UBCProfileController.xib */; };
 		89678DD221120F1A00EB715E /* UBCSuccessRegistrationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89678DD021120F1A00EB715E /* UBCSuccessRegistrationView.m */; };
 		89678DD321120F1A00EB715E /* UBCSuccessRegistrationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89678DD121120F1A00EB715E /* UBCSuccessRegistrationView.xib */; };
+		89678DD72112420300EB715E /* UBCPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89678DD62112420300EB715E /* UBCPasswordView.m */; };
+		89678DE62112424E00EB715E /* adjacency_graphs.json in Resources */ = {isa = PBXBuildFile; fileRef = 89678DDA2112424E00EB715E /* adjacency_graphs.json */; };
+		89678DE72112424E00EB715E /* frequency_lists.json in Resources */ = {isa = PBXBuildFile; fileRef = 89678DDB2112424E00EB715E /* frequency_lists.json */; };
+		89678DE82112424E00EB715E /* DBScorer.m in Sources */ = {isa = PBXBuildFile; fileRef = 89678DDC2112424E00EB715E /* DBScorer.m */; };
+		89678DE92112424E00EB715E /* DBZxcvbn.m in Sources */ = {isa = PBXBuildFile; fileRef = 89678DDD2112424E00EB715E /* DBZxcvbn.m */; };
+		89678DEA2112424E00EB715E /* DBMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 89678DE12112424E00EB715E /* DBMatcher.m */; };
+		89678DEB2112424E00EB715E /* DBPasswordStrengthMeterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89678DE42112424E00EB715E /* DBPasswordStrengthMeterView.m */; };
+		89678DEC2112424E00EB715E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 89678DE52112424E00EB715E /* Info.plist */; };
+		89678DEE2112430300EB715E /* UBCPasswordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89678DED2112430300EB715E /* UBCPasswordView.xib */; };
 		8980F22A20F3FB800066CF99 /* UBCStarsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980F22920F3FB800066CF99 /* UBCStarsView.m */; };
 		8980F23620F481BA0066CF99 /* UBCInfoLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980F23520F481BA0066CF99 /* UBCInfoLabel.m */; };
 		8980F23B20F486990066CF99 /* UBCGoodDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980F23920F486990066CF99 /* UBCGoodDetailsController.m */; };
@@ -143,6 +152,21 @@
 		89678DCF21120F1A00EB715E /* UBCSuccessRegistrationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCSuccessRegistrationView.h; sourceTree = "<group>"; };
 		89678DD021120F1A00EB715E /* UBCSuccessRegistrationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCSuccessRegistrationView.m; sourceTree = "<group>"; };
 		89678DD121120F1A00EB715E /* UBCSuccessRegistrationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCSuccessRegistrationView.xib; sourceTree = "<group>"; };
+		89678DD52112420300EB715E /* UBCPasswordView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCPasswordView.h; sourceTree = "<group>"; };
+		89678DD62112420300EB715E /* UBCPasswordView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCPasswordView.m; sourceTree = "<group>"; };
+		89678DDA2112424E00EB715E /* adjacency_graphs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = adjacency_graphs.json; sourceTree = "<group>"; };
+		89678DDB2112424E00EB715E /* frequency_lists.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = frequency_lists.json; sourceTree = "<group>"; };
+		89678DDC2112424E00EB715E /* DBScorer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBScorer.m; sourceTree = "<group>"; };
+		89678DDD2112424E00EB715E /* DBZxcvbn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBZxcvbn.m; sourceTree = "<group>"; };
+		89678DDE2112424E00EB715E /* DBMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBMatcher.h; sourceTree = "<group>"; };
+		89678DDF2112424E00EB715E /* DBPasswordStrengthMeterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBPasswordStrengthMeterView.h; sourceTree = "<group>"; };
+		89678DE02112424E00EB715E /* Zxcvbn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Zxcvbn.h; sourceTree = "<group>"; };
+		89678DE12112424E00EB715E /* DBMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBMatcher.m; sourceTree = "<group>"; };
+		89678DE22112424E00EB715E /* DBZxcvbn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBZxcvbn.h; sourceTree = "<group>"; };
+		89678DE32112424E00EB715E /* DBScorer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBScorer.h; sourceTree = "<group>"; };
+		89678DE42112424E00EB715E /* DBPasswordStrengthMeterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBPasswordStrengthMeterView.m; sourceTree = "<group>"; };
+		89678DE52112424E00EB715E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		89678DED2112430300EB715E /* UBCPasswordView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCPasswordView.xib; sourceTree = "<group>"; };
 		8980F22820F3FB800066CF99 /* UBCStarsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCStarsView.h; sourceTree = "<group>"; };
 		8980F22920F3FB800066CF99 /* UBCStarsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCStarsView.m; sourceTree = "<group>"; };
 		8980F23420F481BA0066CF99 /* UBCInfoLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCInfoLabel.h; sourceTree = "<group>"; };
@@ -362,6 +386,9 @@
 			children = (
 				89678DC52110C5F700EB715E /* UBFloatingPlaceholderTextField.h */,
 				89678DC62110C5F700EB715E /* UBFloatingPlaceholderTextField.m */,
+				89678DD52112420300EB715E /* UBCPasswordView.h */,
+				89678DD62112420300EB715E /* UBCPasswordView.m */,
+				89678DED2112430300EB715E /* UBCPasswordView.xib */,
 			);
 			path = TextField;
 			sourceTree = "<group>";
@@ -414,6 +441,33 @@
 				89678DD121120F1A00EB715E /* UBCSuccessRegistrationView.xib */,
 			);
 			path = "Success View";
+			sourceTree = "<group>";
+		};
+		89678DD82112424E00EB715E /* Password scoring */ = {
+			isa = PBXGroup;
+			children = (
+				89678DD92112424E00EB715E /* generated */,
+				89678DDC2112424E00EB715E /* DBScorer.m */,
+				89678DDD2112424E00EB715E /* DBZxcvbn.m */,
+				89678DDE2112424E00EB715E /* DBMatcher.h */,
+				89678DDF2112424E00EB715E /* DBPasswordStrengthMeterView.h */,
+				89678DE02112424E00EB715E /* Zxcvbn.h */,
+				89678DE12112424E00EB715E /* DBMatcher.m */,
+				89678DE22112424E00EB715E /* DBZxcvbn.h */,
+				89678DE32112424E00EB715E /* DBScorer.h */,
+				89678DE42112424E00EB715E /* DBPasswordStrengthMeterView.m */,
+				89678DE52112424E00EB715E /* Info.plist */,
+			);
+			path = "Password scoring";
+			sourceTree = "<group>";
+		};
+		89678DD92112424E00EB715E /* generated */ = {
+			isa = PBXGroup;
+			children = (
+				89678DDA2112424E00EB715E /* adjacency_graphs.json */,
+				89678DDB2112424E00EB715E /* frequency_lists.json */,
+			);
+			path = generated;
 			sourceTree = "<group>";
 		};
 		8980F22720F3FB4B0066CF99 /* Stars view */ = {
@@ -689,6 +743,7 @@
 				8987515920EE119F00E2B615 /* Constants */,
 				8987515E20EE119F00E2B615 /* KeyChain */,
 				8987515620EE119F00E2B615 /* Location */,
+				89678DD82112424E00EB715E /* Password scoring */,
 				8987515B20EE119F00E2B615 /* Permissions */,
 			);
 			path = HelpersClass;
@@ -1039,9 +1094,11 @@
 			files = (
 				89AE1A7420F7FDF3000662E8 /* UBCFavouriteCell.xib in Resources */,
 				8987518720EE119F00E2B615 /* UBAlertWindow.xib in Resources */,
+				89678DEE2112430300EB715E /* UBCPasswordView.xib in Resources */,
 				89678DBB21108A6C00EB715E /* UBCLoginController.xib in Resources */,
 				8981369B20F5678D00DF6B7F /* UBCChatController.xib in Resources */,
 				8980F23C20F486990066CF99 /* UBCGoodDetailsController.xib in Resources */,
+				89678DE72112424E00EB715E /* frequency_lists.json in Resources */,
 				8987517120EE119F00E2B615 /* HUBSystemAlertCell.xib in Resources */,
 				89F16A7020F2C65D001AA440 /* UBCDiscountCollectionViewCell.xib in Resources */,
 				89678DD321120F1A00EB715E /* UBCSuccessRegistrationView.xib in Resources */,
@@ -1056,10 +1113,12 @@
 				8980F24220F4954C0066CF99 /* UBCPhotoCollectionViewCell.xib in Resources */,
 				89678DCD2111B02800EB715E /* UBCProfileController.xib in Resources */,
 				89F16A7320F2C65D001AA440 /* UBCGoodCell.xib in Resources */,
+				89678DEC2112424E00EB715E /* Info.plist in Resources */,
 				8987519A20EE23A100E2B615 /* UBWaitCell.xib in Resources */,
 				1CFFFE7C20F230A9003B5AD9 /* LaunchScreen.storyboard in Resources */,
 				89678DC42110C0AD00EB715E /* UBCForgotPasswordController.xib in Resources */,
 				8987517420EE119F00E2B615 /* UBSectionHeaderView.xib in Resources */,
+				89678DE62112424E00EB715E /* adjacency_graphs.json in Resources */,
 				89AE1A6E20F7B8F1000662E8 /* UBCFavouritesController.xib in Resources */,
 				8987517620EE119F00E2B615 /* UBExpandableTableViewSectionHeader.xib in Resources */,
 			);
@@ -1147,6 +1206,7 @@
 				8987516F20EE119F00E2B615 /* HUBSystemAlertCell.m in Sources */,
 				1CEFAA4520F3FCBE005719B3 /* UBCSTextFieldTableViewCell.swift in Sources */,
 				89F16A6A20F2C65D001AA440 /* UBCFiltersListController.m in Sources */,
+				89678DEA2112424E00EB715E /* DBMatcher.m in Sources */,
 				1CFFFE6A20F0CD3F003B5AD9 /* UBCSellDM.swift in Sources */,
 				1CFFFE6C20F0D0F8003B5AD9 /* UBCSellController.swift in Sources */,
 				1CFFFE7320F22599003B5AD9 /* UBCSelectionController.swift in Sources */,
@@ -1160,7 +1220,9 @@
 				89678DCC2111B02800EB715E /* UBCProfileController.m in Sources */,
 				8987518220EE119F00E2B615 /* UBCollectionViewSwitch.m in Sources */,
 				8980F23620F481BA0066CF99 /* UBCInfoLabel.m in Sources */,
+				89678DEB2112424E00EB715E /* DBPasswordStrengthMeterView.m in Sources */,
 				8987516D20EE119F00E2B615 /* HUBScrollView.m in Sources */,
+				89678DE92112424E00EB715E /* DBZxcvbn.m in Sources */,
 				89678DA5210CF75500EB715E /* UBCUserDM.m in Sources */,
 				89678DC32110C0AD00EB715E /* UBCForgotPasswordController.swift in Sources */,
 				89F16A7520F2C65D001AA440 /* UBCMarketController.m in Sources */,
@@ -1168,6 +1230,7 @@
 				8987518F20EE119F00E2B615 /* UBLocationManager.m in Sources */,
 				1CFFFE6E20F0DD28003B5AD9 /* UBCSTextViewTableViewCell.swift in Sources */,
 				8987517220EE119F00E2B615 /* UBDefaultTableView.m in Sources */,
+				89678DE82112424E00EB715E /* DBScorer.m in Sources */,
 				899E217C20E68D8A004D891B /* UBCAppDelegate.m in Sources */,
 				89F16A6F20F2C65D001AA440 /* UBCDiscountCollectionViewCell.m in Sources */,
 				898751AA20EE2BDD00E2B615 /* UBCFavouritesController.m in Sources */,
@@ -1177,6 +1240,7 @@
 				89678DA9210DE28600EB715E /* UBCToast.m in Sources */,
 				89678DC72110C5F700EB715E /* UBFloatingPlaceholderTextField.m in Sources */,
 				898751C820EE65C000E2B615 /* UBCKeyChain.m in Sources */,
+				89678DD72112420300EB715E /* UBCPasswordView.m in Sources */,
 				898751CE20EE6D7600E2B615 /* UBCDataProvider.m in Sources */,
 				89F16A7420F2C65D001AA440 /* UBCGoodCell.m in Sources */,
 				8980F24120F4954C0066CF99 /* UBCPhotoCollectionViewCell.m in Sources */,

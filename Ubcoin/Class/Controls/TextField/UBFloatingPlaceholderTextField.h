@@ -8,4 +8,6 @@
 
 @interface UBFloatingPlaceholderTextField : UBTextField
 
+@property (strong, nonatomic) UIView *line;
+
 @end
