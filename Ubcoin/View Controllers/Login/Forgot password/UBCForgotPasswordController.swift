@@ -17,6 +17,7 @@ class UBCForgotPasswordController: UBViewController {
         super.viewDidLoad()
 
         self.title = "Forgot password"
+        self.view.backgroundColor = UIColor.white
         self.info.textColor = UBColor.titleColor
         self.email.placeholder = "Email"
     }

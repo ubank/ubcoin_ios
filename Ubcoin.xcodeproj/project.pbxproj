@@ -32,6 +32,8 @@
 		89678DC72110C5F700EB715E /* UBFloatingPlaceholderTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 89678DC62110C5F700EB715E /* UBFloatingPlaceholderTextField.m */; };
 		89678DCC2111B02800EB715E /* UBCProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89678DCA2111B02800EB715E /* UBCProfileController.m */; };
 		89678DCD2111B02800EB715E /* UBCProfileController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89678DCB2111B02800EB715E /* UBCProfileController.xib */; };
+		89678DD221120F1A00EB715E /* UBCSuccessRegistrationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89678DD021120F1A00EB715E /* UBCSuccessRegistrationView.m */; };
+		89678DD321120F1A00EB715E /* UBCSuccessRegistrationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89678DD121120F1A00EB715E /* UBCSuccessRegistrationView.xib */; };
 		8980F22A20F3FB800066CF99 /* UBCStarsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980F22920F3FB800066CF99 /* UBCStarsView.m */; };
 		8980F23620F481BA0066CF99 /* UBCInfoLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980F23520F481BA0066CF99 /* UBCInfoLabel.m */; };
 		8980F23B20F486990066CF99 /* UBCGoodDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980F23920F486990066CF99 /* UBCGoodDetailsController.m */; };
@@ -138,6 +140,9 @@
 		89678DC92111B02800EB715E /* UBCProfileController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCProfileController.h; sourceTree = "<group>"; };
 		89678DCA2111B02800EB715E /* UBCProfileController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCProfileController.m; sourceTree = "<group>"; };
 		89678DCB2111B02800EB715E /* UBCProfileController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCProfileController.xib; sourceTree = "<group>"; };
+		89678DCF21120F1A00EB715E /* UBCSuccessRegistrationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCSuccessRegistrationView.h; sourceTree = "<group>"; };
+		89678DD021120F1A00EB715E /* UBCSuccessRegistrationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCSuccessRegistrationView.m; sourceTree = "<group>"; };
+		89678DD121120F1A00EB715E /* UBCSuccessRegistrationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCSuccessRegistrationView.xib; sourceTree = "<group>"; };
 		8980F22820F3FB800066CF99 /* UBCStarsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCStarsView.h; sourceTree = "<group>"; };
 		8980F22920F3FB800066CF99 /* UBCStarsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCStarsView.m; sourceTree = "<group>"; };
 		8980F23420F481BA0066CF99 /* UBCInfoLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCInfoLabel.h; sourceTree = "<group>"; };
@@ -364,6 +369,7 @@
 		89678DBE21108D0000EB715E /* Registration */ = {
 			isa = PBXGroup;
 			children = (
+				89678DCE21120EC600EB715E /* Success View */,
 				89678D9F210CF12600EB715E /* UBCSignUpController.h */,
 				89678DA0210CF12600EB715E /* UBCSignUpController.m */,
 				89678DBC21108B5600EB715E /* UBCSignUpController.xib */,
@@ -398,6 +404,16 @@
 				89678DCB2111B02800EB715E /* UBCProfileController.xib */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		89678DCE21120EC600EB715E /* Success View */ = {
+			isa = PBXGroup;
+			children = (
+				89678DCF21120F1A00EB715E /* UBCSuccessRegistrationView.h */,
+				89678DD021120F1A00EB715E /* UBCSuccessRegistrationView.m */,
+				89678DD121120F1A00EB715E /* UBCSuccessRegistrationView.xib */,
+			);
+			path = "Success View";
 			sourceTree = "<group>";
 		};
 		8980F22720F3FB4B0066CF99 /* Stars view */ = {
@@ -1028,6 +1044,7 @@
 				8980F23C20F486990066CF99 /* UBCGoodDetailsController.xib in Resources */,
 				8987517120EE119F00E2B615 /* HUBSystemAlertCell.xib in Resources */,
 				89F16A7020F2C65D001AA440 /* UBCDiscountCollectionViewCell.xib in Resources */,
+				89678DD321120F1A00EB715E /* UBCSuccessRegistrationView.xib in Resources */,
 				8987517820EE119F00E2B615 /* UBTableHeaderView.xib in Resources */,
 				8987516B20EE119F00E2B615 /* HUBNavigationBarView.xib in Resources */,
 				89F16A6E20F2C65D001AA440 /* UBCDiscountsCollectionView.xib in Resources */,
@@ -1094,6 +1111,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89678DD221120F1A00EB715E /* UBCSuccessRegistrationView.m in Sources */,
 				89678D9E210CED2900EB715E /* UBCStartLoginController.swift in Sources */,
 				89F16A7220F2C65D001AA440 /* UBCDiscountDM.m in Sources */,
 				898751C520EE64EB00E2B615 /* UBCRequestProvider.m in Sources */,

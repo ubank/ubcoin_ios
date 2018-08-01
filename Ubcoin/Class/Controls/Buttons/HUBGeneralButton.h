@@ -11,6 +11,7 @@ typedef enum
     HUBGeneralButtonTypeCustom,
     HUBGeneralButtonTypeWhite,
     HUBGeneralButtonTypeGreen,
+    HUBGeneralButtonTypeGreenTitle,
     HUBGeneralButtonTypeSemitransparent,
     HUBGeneralButtonTypeWhiteWithBrownBorder
 } HUBGeneralButtonType;

@@ -25,7 +25,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     self.title = @"Log In";
     
     [self setupViews];
@@ -33,6 +33,8 @@
 
 - (void)setupViews
 {
+    self.view.backgroundColor = UIColor.whiteColor;
+    
     self.infoButton.titleColor = UBCColor.green;
     self.infoButton.titleLabel.font = UBFont.descFont;
     
@@ -102,18 +104,20 @@
 {
     if ([self isValidData])
     {
+        [self startActivityIndicator];
         [UBCDataProvider.sharedProvider loginWithEmail:self.loginField.text
                                               password:self.passwordField.text
-                                   withCompletionBlock:^(BOOL success) {
-                                       if (success)
-                                       {
-                                           
-                                       }
-                                       else
-                                       {
-                                           [UBCToast showErrorToastWithMessage:@"Incorrect Email or Password"];
-                                       }
-                                   }];
+                                   withCompletionBlock:^(BOOL success)
+         {
+             if (success)
+             {
+                 
+             }
+             else
+             {
+                 [UBCToast showErrorToastWithMessage:@"Incorrect Email or Password"];
+             }
+         }];
     }
     else
     {
@@ -135,13 +139,13 @@
 {
     if ([textField isEqual:self.loginField])
     {
-        return [self.passwordField becomeFirstResponder];
+        [self.passwordField becomeFirstResponder];
     }
     else
     {
         [textField resignFirstResponder];
     }
-        
+    
     return YES;
 }
 

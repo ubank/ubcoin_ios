@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,10 +22,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C1U-tc-CrP">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="467"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="513"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="general_icon" translatesAutoresizingMaskIntoConstraints="NO" id="2Eq-kf-uyY">
-                            <rect key="frame" x="108.5" y="155" width="158" height="157"/>
+                            <rect key="frame" x="108.5" y="178" width="158" height="157"/>
                         </imageView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -35,7 +35,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FeU-sb-hR9">
-                    <rect key="frame" x="0.0" y="467" width="375" height="200"/>
+                    <rect key="frame" x="0.0" y="513" width="375" height="154"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gP9-aB-hMA" customClass="HUBGeneralButton">
                             <rect key="frame" x="15" y="0.0" width="345" height="60"/>
@@ -94,7 +94,7 @@
                         <constraint firstItem="gP9-aB-hMA" firstAttribute="top" secondItem="FeU-sb-hR9" secondAttribute="top" id="U9n-FO-r3Y"/>
                         <constraint firstItem="LMN-Bo-b7o" firstAttribute="top" secondItem="gP9-aB-hMA" secondAttribute="bottom" constant="20" id="VNu-m1-Z8k"/>
                         <constraint firstAttribute="trailing" secondItem="gP9-aB-hMA" secondAttribute="trailing" constant="15" id="Zk7-j5-pzy"/>
-                        <constraint firstAttribute="height" constant="200" id="hZE-FX-W7c"/>
+                        <constraint firstAttribute="height" constant="154" id="hZE-FX-W7c"/>
                     </constraints>
                 </view>
             </subviews>

@@ -102,6 +102,11 @@
             self.backgroundColor = [UIColor colorWithWhite:1 alpha:0.2];
             break;
             
+        case HUBGeneralButtonTypeGreenTitle:
+            self.titleColor = UBCColor.green;
+            self.backgroundColor = UIColor.clearColor;
+            break;
+            
         case HUBGeneralButtonTypeWhiteWithBrownBorder:
             self.titleColor = BROWN_COLOR;
             self.backgroundColor = UIColor.whiteColor;
