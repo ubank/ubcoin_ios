@@ -7,8 +7,8 @@
 //
 
 #import "UBCGoodDM.h"
+#import "UBCKeyChain.h"
 
-#define FAVORITE_KEY @"favourite goods"
 #define ALL_GOODS_KEY @"all goods"
 
 @implementation UBCGoodDM
@@ -23,8 +23,7 @@
         _desc = dict[@"description"];
         _locationText = [dict valueForKeyPath:@"location.text"];
         _price = dict[@"price"];
-//        _isFavorite = dict[@"is_favorite"];
-        _isFavorite = [UBCGoodDM isFavorite:self.ID];
+        _isFavorite = dict[@"is_favorite"];
         _creationDate = [NSDate dateFromISO8601String:dict[@"createdDate"]];
         _images = dict[@"images"];
         _seller = [[UBCSellerDM alloc] initWithDictionary:dict[@"user"]];
@@ -37,52 +36,21 @@
 
 - (void)toggleFavorite
 {
-    _isFavorite = !self.isFavorite;
-    
-    NSMutableDictionary *dict = [self.dict mutableCopy];
-    [dict setObject:@(self.isFavorite) forKey:@"is_favorite"];
-
-    NSMutableArray *favorites = [[[NSUserDefaults standardUserDefaults] objectForKey:FAVORITE_KEY] mutableCopy];
-    if (!favorites)
+    if (UBCKeyChain.authorization)
     {
-        favorites = [NSMutableArray array];
-    }
-    
-    if (self.isFavorite)
-    {
-        [favorites addObject:dict];
+        _isFavorite = !self.isFavorite;
+        
+        [UBCDataProvider.sharedProvider toggleFavoriteWithID:self.ID isFavorite:self.isFavorite];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationFavoritesChanged object:nil];
     }
     else
     {
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id != %@", dict[@"id"]];
-        [favorites filterUsingPredicate:predicate];
+        [UBAlert showAlertWithTitle:nil andMessage:@"You need to be logged in"];
     }
-    
-    [[NSUserDefaults standardUserDefaults] setObject:favorites forKey:FAVORITE_KEY];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationFavoritesChanged object:nil];
 }
 
 #pragma mark -
-
-+ (NSArray *)favorites
-{
-    NSArray *favorites = [[NSUserDefaults standardUserDefaults] objectForKey:FAVORITE_KEY];
-    return [favorites map:^id(id item) {
-        return [[UBCGoodDM alloc] initWithDictionary:item];
-    }];
-}
-
-+ (BOOL)isFavorite:(NSString *)itemID
-{
-    if (itemID)
-    {
-        NSArray *favorites = [[NSUserDefaults standardUserDefaults] objectForKey:FAVORITE_KEY];
-        NSArray *favIDs = [favorites valueForKey:@"id"];
-        return [favIDs containsObject:itemID];
-    }
-    return NO;
-}
 
 + (void)saveGoods:(NSArray *)goods
 {

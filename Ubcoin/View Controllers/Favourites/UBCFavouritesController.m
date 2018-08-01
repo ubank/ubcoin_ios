@@ -15,7 +15,7 @@
 
 @property (strong, nonatomic) UITableView *tableView;
 
-@property (strong, nonatomic) NSArray *items;
+@property (strong, nonatomic) NSMutableArray *items;
 
 @end
 
@@ -27,13 +27,9 @@
     
     self.title = @"Favorites";
     
-    [self setupTableView];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
+    self.items = [NSMutableArray array];
     
+    [self setupTableView];
     [self updateInfo];
 }
 
@@ -55,9 +51,17 @@
 
 - (void)updateInfo
 {
-    self.items = [UBCGoodDM favorites];
-    self.tableView.hidden = self.items.count == 0;
-    [self.tableView reloadData];
+    __weak typeof(self) weakSelf = self;
+    [UBCDataProvider.sharedProvider favoritesListWithPageNumber:0
+                                            withCompletionBlock:^(BOOL success, NSArray *goods, BOOL canLoadMore)
+     {
+         if (goods)
+         {
+             [weakSelf.items addObjectsFromArray:goods];
+         }
+         weakSelf.tableView.hidden = weakSelf.items.count == 0;
+         [weakSelf.tableView reloadData];
+     }];
 }
 
 #pragma mark - UITableView

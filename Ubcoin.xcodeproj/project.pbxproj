@@ -30,6 +30,8 @@
 		89678DC32110C0AD00EB715E /* UBCForgotPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89678DC12110C0AD00EB715E /* UBCForgotPasswordController.swift */; };
 		89678DC42110C0AD00EB715E /* UBCForgotPasswordController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89678DC22110C0AD00EB715E /* UBCForgotPasswordController.xib */; };
 		89678DC72110C5F700EB715E /* UBFloatingPlaceholderTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 89678DC62110C5F700EB715E /* UBFloatingPlaceholderTextField.m */; };
+		89678DCC2111B02800EB715E /* UBCProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89678DCA2111B02800EB715E /* UBCProfileController.m */; };
+		89678DCD2111B02800EB715E /* UBCProfileController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89678DCB2111B02800EB715E /* UBCProfileController.xib */; };
 		8980F22A20F3FB800066CF99 /* UBCStarsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980F22920F3FB800066CF99 /* UBCStarsView.m */; };
 		8980F23620F481BA0066CF99 /* UBCInfoLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980F23520F481BA0066CF99 /* UBCInfoLabel.m */; };
 		8980F23B20F486990066CF99 /* UBCGoodDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980F23920F486990066CF99 /* UBCGoodDetailsController.m */; };
@@ -133,6 +135,9 @@
 		89678DC22110C0AD00EB715E /* UBCForgotPasswordController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCForgotPasswordController.xib; sourceTree = "<group>"; };
 		89678DC52110C5F700EB715E /* UBFloatingPlaceholderTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBFloatingPlaceholderTextField.h; sourceTree = "<group>"; };
 		89678DC62110C5F700EB715E /* UBFloatingPlaceholderTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBFloatingPlaceholderTextField.m; sourceTree = "<group>"; };
+		89678DC92111B02800EB715E /* UBCProfileController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCProfileController.h; sourceTree = "<group>"; };
+		89678DCA2111B02800EB715E /* UBCProfileController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCProfileController.m; sourceTree = "<group>"; };
+		89678DCB2111B02800EB715E /* UBCProfileController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCProfileController.xib; sourceTree = "<group>"; };
 		8980F22820F3FB800066CF99 /* UBCStarsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCStarsView.h; sourceTree = "<group>"; };
 		8980F22920F3FB800066CF99 /* UBCStarsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCStarsView.m; sourceTree = "<group>"; };
 		8980F23420F481BA0066CF99 /* UBCInfoLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCInfoLabel.h; sourceTree = "<group>"; };
@@ -383,6 +388,16 @@
 				89678DC22110C0AD00EB715E /* UBCForgotPasswordController.xib */,
 			);
 			path = "Forgot password";
+			sourceTree = "<group>";
+		};
+		89678DC82111AFF800EB715E /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				89678DC92111B02800EB715E /* UBCProfileController.h */,
+				89678DCA2111B02800EB715E /* UBCProfileController.m */,
+				89678DCB2111B02800EB715E /* UBCProfileController.xib */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		8980F22720F3FB4B0066CF99 /* Stars view */ = {
@@ -701,6 +716,7 @@
 		8987519B20EE2A4E00E2B615 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				89678DC82111AFF800EB715E /* Profile */,
 				898751A120EE2B4F00E2B615 /* Chat */,
 				898751A320EE2B5000E2B615 /* Favourites */,
 				898751A220EE2B5000E2B615 /* Login */,
@@ -1021,6 +1037,7 @@
 				89678DBD21108B5600EB715E /* UBCSignUpController.xib in Resources */,
 				89CB110E20EFCDA500729C95 /* HUBCollectionViewWaitCell.xib in Resources */,
 				8980F24220F4954C0066CF99 /* UBCPhotoCollectionViewCell.xib in Resources */,
+				89678DCD2111B02800EB715E /* UBCProfileController.xib in Resources */,
 				89F16A7320F2C65D001AA440 /* UBCGoodCell.xib in Resources */,
 				8987519A20EE23A100E2B615 /* UBWaitCell.xib in Resources */,
 				1CFFFE7C20F230A9003B5AD9 /* LaunchScreen.storyboard in Resources */,
@@ -1122,6 +1139,7 @@
 				8980F24720F505550066CF99 /* UBCCategoryDM.m in Sources */,
 				8987518120EE119F00E2B615 /* HUBSpringyCollectionViewFlowLayout.m in Sources */,
 				1CFFFE7020F0E204003B5AD9 /* UBCSSelectionTableViewCell.swift in Sources */,
+				89678DCC2111B02800EB715E /* UBCProfileController.m in Sources */,
 				8987518220EE119F00E2B615 /* UBCollectionViewSwitch.m in Sources */,
 				8980F23620F481BA0066CF99 /* UBCInfoLabel.m in Sources */,
 				8987516D20EE119F00E2B615 /* HUBScrollView.m in Sources */,
