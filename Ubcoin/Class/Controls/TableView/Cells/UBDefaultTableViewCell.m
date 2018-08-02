@@ -20,7 +20,6 @@
 
 @property (strong, nonatomic, readwrite) UIImageView *icon;
 
-@property (strong, nonatomic) UIStackView *leftStackView;
 @property (strong, nonatomic, readwrite) HUBLabel *title;
 @property (strong, nonatomic, readwrite) HUBLabel *desc;
 

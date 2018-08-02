@@ -13,6 +13,7 @@
 @property (readonly, nonatomic) NSString *text;
 
 - (BOOL)becomeFirstResponder;
+- (BOOL)resignFirstResponder;
 - (BOOL)isValid;
 
 @end

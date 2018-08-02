@@ -50,6 +50,17 @@
     }
 }
 
+- (UBTableViewRowData *)rowData
+{
+    UBTableViewRowData *data = UBTableViewRowData.new;
+    data.data = self;
+    data.title = self.title;
+    data.desc = self.desc;
+    data.iconURL = [self.images firstObject];
+    data.height = 95;
+    return data;
+}
+
 #pragma mark -
 
 + (void)saveGoods:(NSArray *)goods

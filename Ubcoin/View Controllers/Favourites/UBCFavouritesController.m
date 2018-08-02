@@ -9,13 +9,15 @@
 #import "UBCFavouritesController.h"
 #import "UBCGoodDetailsController.h"
 #import "UBCFavouriteCell.h"
+#import "UBCKeyChain.h"
 #import "UBCGoodDM.h"
 
-@interface UBCFavouritesController () <UITableViewDelegate, UITableViewDataSource>
+@interface UBCFavouritesController () <UBDefaultTableViewDelegate>
 
-@property (strong, nonatomic) UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UBDefaultTableView *tableView;
 
 @property (strong, nonatomic) NSMutableArray *items;
+@property (assign, nonatomic) NSUInteger pageNumber;
 
 @end
 
@@ -27,67 +29,59 @@
     
     self.title = @"Favorites";
     
+    self.pageNumber = 0;
     self.items = [NSMutableArray array];
     
-    [self setupTableView];
-    [self updateInfo];
-}
-
-- (void)setupTableView
-{
-    self.tableView = UITableView.new;
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    self.tableView.rowHeight = 95;
-    self.tableView.sectionHeaderHeight = 10;
     self.tableView.backgroundColor = UBColor.backgroundColor;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    __weak typeof(self) weakSelf = self;
+    [self.tableView setupRefreshControllWithActionBlock:^{
+        weakSelf.pageNumber = 0;
+        [weakSelf updateInfo];
+    }];
     
-    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass(UBCFavouriteCell.class) bundle:nil] forCellReuseIdentifier:NSStringFromClass(UBCFavouriteCell.class)];
-    
-    [self.view addSubview:self.tableView];
-    [self.view addConstraintsToFillSubview:self.tableView];
+    if (UBCKeyChain.authorization)
+    {
+        [self startActivityIndicatorImmediately];
+        [self updateInfo];
+    }
+    else
+    {
+        self.tableView.hidden = YES;
+    }
 }
 
 - (void)updateInfo
 {
     __weak typeof(self) weakSelf = self;
-    [UBCDataProvider.sharedProvider favoritesListWithPageNumber:0
+    [UBCDataProvider.sharedProvider favoritesListWithPageNumber:self.pageNumber
                                             withCompletionBlock:^(BOOL success, NSArray *goods, BOOL canLoadMore)
      {
+         [weakSelf stopActivityIndicator];
          if (goods)
          {
+             if (weakSelf.pageNumber == 0)
+             {
+                 weakSelf.items = [NSMutableArray array];
+             }
              [weakSelf.items addObjectsFromArray:goods];
+             weakSelf.pageNumber++;
          }
          weakSelf.tableView.hidden = weakSelf.items.count == 0;
          [weakSelf.tableView reloadData];
      }];
 }
 
-#pragma mark - UITableView
+#pragma mark - UBDefaultTableViewDelegate
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (void)didSelectData:(UBTableViewRowData *)data indexPath:(NSIndexPath *)indexPath
 {
-    return self.items.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UBCFavouriteCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(UBCFavouriteCell.class)];
-    cell.content = self.items[indexPath.row];
-    
-    return cell;
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    return UIView.new;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UBCGoodDetailsController *controller = [UBCGoodDetailsController.alloc initWithGood:self.items[indexPath.row]];
+    UBCGoodDetailsController *controller = [UBCGoodDetailsController.alloc initWithGood:data.data];
     [self.navigationController pushViewController:controller animated:YES];
+}
+
+- (void)updatePagination
+{
+    [self updateInfo];
 }
 
 @end

@@ -8,9 +8,6 @@
 
 #import "UBDefaultTableViewCell.h"
 
-@class UBCGoodDM;
-@interface UBCFavouriteCell : UBTableViewCell
-
-@property (strong, nonatomic) UBCGoodDM *content;
+@interface UBCFavouriteCell : UBDefaultTableViewCell
 
 @end

@@ -12,6 +12,8 @@
 
 @property (strong, nonatomic, readonly) UIImageView *icon;
 
+@property (strong, nonatomic) UIStackView *leftStackView;
+
 @property (strong, nonatomic, readonly) HUBLabel *title;
 @property (strong, nonatomic, readonly) HUBLabel *desc;
 

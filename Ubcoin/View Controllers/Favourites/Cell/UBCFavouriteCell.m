@@ -12,33 +12,38 @@
 
 @interface UBCFavouriteCell ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *icon;
-@property (weak, nonatomic) IBOutlet HUBLabel *title;
-@property (weak, nonatomic) IBOutlet HUBLabel *desc;
-@property (weak, nonatomic) IBOutlet UBCStarsView *stars;
+@property (strong, nonatomic) UBCStarsView *stars;
 
 @end
 
 @implementation UBCFavouriteCell
 
-- (void)awakeFromNib
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
-    [super awakeFromNib];
-
-    self.icon.cornerRadius = 10;
-    self.title.numberOfLines = 1;
-    self.desc.numberOfLines = 1;
-    self.desc.font = [UIFont systemFontOfSize:16 weight:UIFontWeightRegular];
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    
+    if (self)
+    {
+        self.icon.cornerRadius = 10;
+        self.iconWidth = 75;
+        self.iconHeight = 75;
+        
+        self.title.numberOfLines = 1;
+        self.desc.numberOfLines = 1;
+        self.desc.font = [UIFont systemFontOfSize:16 weight:UIFontWeightRegular];
+        
+        self.stars = UBCStarsView.new;
+        [self.leftStackView addArrangedSubview:self.stars];
+    }
+    
+    return self;
 }
 
-- (void)setContent:(UBCGoodDM *)content
+- (void)setRowData:(UBTableViewRowData *)rowData
 {
-    _content = content;
+    [super setRowData:rowData];
     
-    self.title.text = content.title;
-    self.desc.text = content.desc;
-    NSString *imageURL = [content.images firstObject];
-    [self loadImageWithURL:imageURL withDefaultImage:nil forImageView:self.icon];
+    UBCGoodDM *content = rowData.data;
     [self.stars showStars:content.seller.rating.unsignedIntegerValue];
 }
 

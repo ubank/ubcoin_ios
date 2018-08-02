@@ -94,6 +94,11 @@
     return [self.field becomeFirstResponder];
 }
 
+- (BOOL)resignFirstResponder
+{
+    return [self.field resignFirstResponder];
+}
+
 - (BOOL)isValid
 {
     return self.field.text.isNotEmpty;

@@ -195,7 +195,8 @@
          {
              NSArray *items = [responseObject[@"data"] removeNulls];
              items = [items map:^id(id item) {
-                 return [[UBCGoodDM alloc] initWithDictionary:item];
+                 UBCGoodDM *good = [[UBCGoodDM alloc] initWithDictionary:item];
+                 return good.rowData;
              }];
              
              if (completionBlock)

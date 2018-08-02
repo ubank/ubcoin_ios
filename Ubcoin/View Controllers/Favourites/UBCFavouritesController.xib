@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UBCFavouritesController">
             <connections>
+                <outlet property="tableView" destination="NsC-Op-Z8T" id="wBx-TR-3ZA"/>
                 <outlet property="view" destination="iN0-l3-epB" id="usA-TO-a4q"/>
             </connections>
         </placeholder>
@@ -63,14 +64,26 @@
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="xUI-29-RqB"/>
                 </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NsC-Op-Z8T" customClass="UBDefaultTableView">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <outlet property="actionDelegate" destination="-1" id="tr6-rU-ESK"/>
+                    </connections>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="OUZ-nU-ycI" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="dwZ-kj-X8r"/>
                 <constraint firstItem="OUZ-nU-ycI" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="ha2-xz-sxq"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="NsC-Op-Z8T" secondAttribute="bottom" id="lOF-NH-K4j"/>
+                <constraint firstItem="NsC-Op-Z8T" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="-20" id="qaw-kD-wvb"/>
                 <constraint firstItem="OUZ-nU-ycI" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="rD6-sk-smz"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="NsC-Op-Z8T" secondAttribute="trailing" id="smJ-5T-6xA"/>
+                <constraint firstItem="NsC-Op-Z8T" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="yuM-ke-fAI"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="33.5" y="53.5"/>
         </view>
     </objects>
     <resources>
