@@ -7,7 +7,7 @@
 //
 
 #import "UBCTabBarController.h"
-#import "UBCChatController.h"
+#import "UBCDealsController.h"
 #import "UBCFavouritesController.h"
 #import "UBCMarketController.h"
 #import "UBCProfileController.h"
@@ -55,9 +55,9 @@
     viewController3.tabBarItem.title = @"Sell";
     viewController3.tabBarItem.image = [[UIImage imageNamed:@"tab_bar_sell"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
-    UBCChatController *viewController4 = UBCChatController.new;
-    viewController4.tabBarItem.title = @"Messages";
-    viewController4.tabBarItem.image = [UIImage imageNamed:@"tab_bar_chat"];
+    UBCDealsController *viewController4 = UBCDealsController.new;
+    viewController4.tabBarItem.title = @"Deals";
+    viewController4.tabBarItem.image = [UIImage imageNamed:@"tab_bar_deals"];
     
     UBCStartLoginController *viewController5 = UBCStartLoginController.new;
     viewController5.tabBarItem.title = @"Sign In";
@@ -80,9 +80,9 @@
     viewController3.tabBarItem.title = @"Sell";
     viewController3.tabBarItem.image = [[UIImage imageNamed:@"tab_bar_sell"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
-    UBCChatController *viewController4 = UBCChatController.new;
-    viewController4.tabBarItem.title = @"Messages";
-    viewController4.tabBarItem.image = [UIImage imageNamed:@"tab_bar_chat"];
+    UBCDealsController *viewController4 = UBCDealsController.new;
+    viewController4.tabBarItem.title = @"Deals";
+    viewController4.tabBarItem.image = [UIImage imageNamed:@"tab_bar_deals"];
     
     UBCProfileController *viewController5 = UBCProfileController.new;
     viewController5.tabBarItem.title = @"Profile";
