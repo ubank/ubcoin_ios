@@ -68,7 +68,7 @@
 
 - (void)showNoConnectionAlert
 {
-//    [UBAlert showAlertWithTitle:@"ui_alert_title_attention" andMessage:@"error_network_unknown"];
+    [UBAlert showAlertWithTitle:@"ui_alert_title_attention" andMessage:@"error_network_unknown"];
 }
 
 #pragma mark - Request Tasks
