@@ -16,10 +16,10 @@ class UBCForgotPasswordController: UBViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "Forgot password"
+        self.title = "str_forgot_password"
         self.view.backgroundColor = UIColor.white
         self.info.textColor = UBColor.titleColor
-        self.email.placeholder = "Email"
+        self.email.placeholder = "str_email".localizedString()
     }
     
     @IBAction func hideKeyboard(_ sender: Any) {
@@ -31,13 +31,13 @@ class UBCForgotPasswordController: UBViewController {
         if (self.email.text?.isEmail)! {
             UBCDataProvider.shared.resendPassword(forEmail: self.email.text) { [weak self] success  in
                 if (success) {
-                    UBCToast.showErrorToast(withMessage: "An email with your new password has been successfully sent")
+                    UBCToast.showErrorToast(withMessage: "str_email_successfully_sent".localizedString())
                     self?.navigationController?.popViewController(animated: true)
                 }
             }
         }
         else {
-            UBCToast.showErrorToast(withMessage: "Wrong email")
+            UBCToast.showErrorToast(withMessage: "str_wrong_email".localizedString())
         }
     }
 }

@@ -44,23 +44,23 @@
 - (NSArray *)nonAuthorizedViewControllers
 {
     UBCMarketController *viewController1 = UBCMarketController.new;
-    viewController1.tabBarItem.title = @"Market";
+    viewController1.tabBarItem.title = UBLocalizedString(@"str_market", nil);
     viewController1.tabBarItem.image = [UIImage imageNamed:@"tab_bar_market"];
     
     UBCFavouritesController *viewController2 = UBCFavouritesController.new;
-    viewController2.tabBarItem.title = @"Favorites";
+    viewController2.tabBarItem.title = UBLocalizedString(@"str_favorites", nil);
     viewController2.tabBarItem.image = [UIImage imageNamed:@"tab_bar_favorites"];
     
     UBCSellController *viewController3 = UBCSellController.new;
-    viewController3.tabBarItem.title = @"Sell";
+    viewController3.tabBarItem.title = UBLocalizedString(@"str_sell", nil);
     viewController3.tabBarItem.image = [[UIImage imageNamed:@"tab_bar_sell"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     UBCDealsController *viewController4 = UBCDealsController.new;
-    viewController4.tabBarItem.title = @"Deals";
+    viewController4.tabBarItem.title = UBLocalizedString(@"str_deals", nil);
     viewController4.tabBarItem.image = [UIImage imageNamed:@"tab_bar_deals"];
     
     UBCStartLoginController *viewController5 = UBCStartLoginController.new;
-    viewController5.tabBarItem.title = @"Sign In";
+    viewController5.tabBarItem.title = UBLocalizedString(@"str_sign_in", nil);
     viewController5.tabBarItem.image = [UIImage imageNamed:@"tab_bar_login"];
     
     return @[viewController1, viewController2, viewController3, viewController4, viewController5];
@@ -69,23 +69,23 @@
 - (NSArray *)authorizedViewControllers
 {
     UBCMarketController *viewController1 = UBCMarketController.new;
-    viewController1.tabBarItem.title = @"Market";
+    viewController1.tabBarItem.title = UBLocalizedString(@"str_market", nil);
     viewController1.tabBarItem.image = [UIImage imageNamed:@"tab_bar_market"];
     
     UBCFavouritesController *viewController2 = UBCFavouritesController.new;
-    viewController2.tabBarItem.title = @"Favorites";
+    viewController2.tabBarItem.title = UBLocalizedString(@"str_favorites", nil);
     viewController2.tabBarItem.image = [UIImage imageNamed:@"tab_bar_favorites"];
     
     UBCSellController *viewController3 = UBCSellController.new;
-    viewController3.tabBarItem.title = @"Sell";
+    viewController3.tabBarItem.title = UBLocalizedString(@"str_sell", nil);
     viewController3.tabBarItem.image = [[UIImage imageNamed:@"tab_bar_sell"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     UBCDealsController *viewController4 = UBCDealsController.new;
-    viewController4.tabBarItem.title = @"Deals";
+    viewController4.tabBarItem.title = UBLocalizedString(@"str_deals", nil);
     viewController4.tabBarItem.image = [UIImage imageNamed:@"tab_bar_deals"];
     
     UBCProfileController *viewController5 = UBCProfileController.new;
-    viewController5.tabBarItem.title = @"Profile";
+    viewController5.tabBarItem.title = UBLocalizedString(@"str_profile", nil);
     viewController5.tabBarItem.image = [UIImage imageNamed:@"tab_bar_profile"];
     
     return @[viewController1, viewController2, viewController3, viewController4, viewController5];

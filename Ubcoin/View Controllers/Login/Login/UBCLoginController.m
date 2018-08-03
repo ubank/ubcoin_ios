@@ -27,7 +27,7 @@
 {
     [super viewDidLoad];
     
-    self.title = @"Log In";
+    self.title = @"str_log_in";
     
     [self setupViews];
 }
@@ -42,7 +42,7 @@
     [self setupFields];
     
     UIButton *forgotButton = UIButton.new;
-    [forgotButton setTitle:@"Forgot password?" forState:UIControlStateNormal];
+    [forgotButton setTitle:UBLocalizedString(@"str_forgot_password?", nil) forState:UIControlStateNormal];
     forgotButton.titleColor = UBCColor.green;
     forgotButton.titleLabel.font = [UIFont systemFontOfSize:15 weight:UIFontWeightMedium];
     [forgotButton addTarget:self action:@selector(showForgotPassword) forControlEvents:UIControlEventTouchUpInside];
@@ -60,7 +60,7 @@
     self.loginField = UBFloatingPlaceholderTextField.new;
     [self.loginField setup];
     self.loginField.delegate = self;
-    self.loginField.placeholder = @"Email";
+    self.loginField.placeholder = UBLocalizedString(@"str_email", nil);
     self.loginField.keyboardType = UIKeyboardTypeEmailAddress;
     [self.view addSubview:self.loginField];
     
@@ -72,7 +72,7 @@
     self.passwordField = UBFloatingPlaceholderTextField.new;
     [self.passwordField setup];
     self.passwordField.delegate = self;
-    self.passwordField.placeholder = @"Password";
+    self.passwordField.placeholder = UBLocalizedString(@"str_password", nil);
     self.passwordField.secureTextEntry = YES;
     [self.view addSubview:self.passwordField];
     
@@ -116,13 +116,13 @@
              }
              else
              {
-                 [UBCToast showErrorToastWithMessage:@"Incorrect Email or Password"];
+                 [UBCToast showErrorToastWithMessage:@"str_incorrect_email_password"];
              }
          }];
     }
     else
     {
-        [UBCToast showErrorToastWithMessage:@"Incorrect Data"];
+        [UBCToast showErrorToastWithMessage:@"str_incorrect_data"];
     }
 }
 

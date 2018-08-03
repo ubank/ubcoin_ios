@@ -44,6 +44,8 @@
 		89678DEC2112424E00EB715E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 89678DE52112424E00EB715E /* Info.plist */; };
 		89678DEE2112430300EB715E /* UBCPasswordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89678DED2112430300EB715E /* UBCPasswordView.xib */; };
 		8979E81221134EEB004B2473 /* UBCDealsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8979E81121134EEB004B2473 /* UBCDealsController.m */; };
+		8979E81521135EEB004B2473 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8979E81721135EEB004B2473 /* Localizable.strings */; };
+		8979E81D21146DCB004B2473 /* HUBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8979E81C21146DCA004B2473 /* HUBHelper.swift */; };
 		8980F22A20F3FB800066CF99 /* UBCStarsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980F22920F3FB800066CF99 /* UBCStarsView.m */; };
 		8980F23620F481BA0066CF99 /* UBCInfoLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980F23520F481BA0066CF99 /* UBCInfoLabel.m */; };
 		8980F23B20F486990066CF99 /* UBCGoodDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980F23920F486990066CF99 /* UBCGoodDetailsController.m */; };
@@ -167,6 +169,10 @@
 		89678DED2112430300EB715E /* UBCPasswordView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCPasswordView.xib; sourceTree = "<group>"; };
 		8979E81021134EEB004B2473 /* UBCDealsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCDealsController.h; sourceTree = "<group>"; };
 		8979E81121134EEB004B2473 /* UBCDealsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCDealsController.m; sourceTree = "<group>"; };
+		8979E81621135EEB004B2473 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8979E81821135EFC004B2473 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8979E81921135F07004B2473 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8979E81C21146DCA004B2473 /* HUBHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUBHelper.swift; sourceTree = "<group>"; };
 		8980F22820F3FB800066CF99 /* UBCStarsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCStarsView.h; sourceTree = "<group>"; };
 		8980F22920F3FB800066CF99 /* UBCStarsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCStarsView.m; sourceTree = "<group>"; };
 		8980F23420F481BA0066CF99 /* UBCInfoLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCInfoLabel.h; sourceTree = "<group>"; };
@@ -346,6 +352,7 @@
 				1C14F19D20F2366900B835AC /* Ubcoin-Bridging-Header.h */,
 				1CFFFE7720F230A9003B5AD9 /* Ubcoin-Prefix.pch */,
 				1C4034B120F2958100E51247 /* UBCShared.swift */,
+				8979E81721135EEB004B2473 /* Localizable.strings */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -473,6 +480,14 @@
 				8979E81121134EEB004B2473 /* UBCDealsController.m */,
 			);
 			path = Deals;
+			sourceTree = "<group>";
+		};
+		8979E81B21146DCA004B2473 /* Swift */ = {
+			isa = PBXGroup;
+			children = (
+				8979E81C21146DCA004B2473 /* HUBHelper.swift */,
+			);
+			path = Swift;
 			sourceTree = "<group>";
 		};
 		8980F22720F3FB4B0066CF99 /* Stars view */ = {
@@ -750,6 +765,7 @@
 				8987515620EE119F00E2B615 /* Location */,
 				89678DD82112424E00EB715E /* Password scoring */,
 				8987515B20EE119F00E2B615 /* Permissions */,
+				8979E81B21146DCA004B2473 /* Swift */,
 			);
 			path = HelpersClass;
 			sourceTree = "<group>";
@@ -1070,6 +1086,8 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
+				id,
 			);
 			mainGroup = 899E216E20E68D8A004D891B;
 			productRefGroup = 899E217820E68D8A004D891B /* Products */;
@@ -1095,6 +1113,7 @@
 				89F16A7020F2C65D001AA440 /* UBCDiscountCollectionViewCell.xib in Resources */,
 				89678DD321120F1A00EB715E /* UBCSuccessRegistrationView.xib in Resources */,
 				8987517820EE119F00E2B615 /* UBTableHeaderView.xib in Resources */,
+				8979E81521135EEB004B2473 /* Localizable.strings in Resources */,
 				8987516B20EE119F00E2B615 /* HUBNavigationBarView.xib in Resources */,
 				89F16A6E20F2C65D001AA440 /* UBCDiscountsCollectionView.xib in Resources */,
 				1CFFFE7D20F230A9003B5AD9 /* Assets.xcassets in Resources */,
@@ -1219,6 +1238,7 @@
 				89678DC32110C0AD00EB715E /* UBCForgotPasswordController.swift in Sources */,
 				89F16A7520F2C65D001AA440 /* UBCMarketController.m in Sources */,
 				8987516C20EE119F00E2B615 /* HUBNavigationBarView.m in Sources */,
+				8979E81D21146DCB004B2473 /* HUBHelper.swift in Sources */,
 				8987518F20EE119F00E2B615 /* UBLocationManager.m in Sources */,
 				1CFFFE6E20F0DD28003B5AD9 /* UBCSTextViewTableViewCell.swift in Sources */,
 				8987517220EE119F00E2B615 /* UBDefaultTableView.m in Sources */,
@@ -1242,11 +1262,25 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		8979E81721135EEB004B2473 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8979E81621135EEB004B2473 /* en */,
+				8979E81821135EFC004B2473 /* ko */,
+				8979E81921135F07004B2473 /* id */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		899E218B20E68D8C004D891B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1305,6 +1339,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

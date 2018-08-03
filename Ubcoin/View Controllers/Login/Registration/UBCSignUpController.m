@@ -30,7 +30,7 @@
 {
     [super viewDidLoad];
 
-    self.title = @"Sign Up";
+    self.title = @"str_sign_up";
     
     self.view.backgroundColor = UIColor.whiteColor;
     self.infoButton.titleColor = UBCColor.green;
@@ -41,8 +41,8 @@
 
 - (void)setupFields
 {
-    self.nameField.placeholder = @"Name";
-    self.emailField.placeholder = @"Email";
+    self.nameField.placeholder = UBLocalizedString(@"str_name", nil);
+    self.emailField.placeholder = UBLocalizedString(@"str_email", nil);
     
     self.passwordView = [UBCPasswordView loadFromXib];
     [self.fieldsStackView addArrangedSubview:self.passwordView];
@@ -80,7 +80,7 @@
     }
     else
     {
-        [UBCToast showErrorToastWithMessage:@"Incorrect Data"];
+        [UBCToast showErrorToastWithMessage:@"str_incorrect_data"];
     }
 }
 

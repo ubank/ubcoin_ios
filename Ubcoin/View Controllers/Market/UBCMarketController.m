@@ -29,13 +29,13 @@
     [super viewDidLoad];
     
     self.navigationContainer.image = [UIImage imageNamed:@"general_logo_black"];
-    self.navigationContainer.rightImageTitle = @"general_filter";
+//    self.navigationContainer.rightImageTitle = @"general_filter";
     
     self.pageNumber = 0;
     self.items = [NSMutableArray array];
     
     [self setupCollectionView];
-    [self setupSearch];
+//    [self setupSearch];
     
     [self startActivityIndicatorImmediately];
     [self updateInfo];
@@ -68,7 +68,7 @@
     self.searchController.searchBar.barTintColor = UIColor.whiteColor;
     self.searchController.searchBar.layer.borderWidth = 1;
     self.searchController.searchBar.layer.borderColor = UIColor.whiteColor.CGColor;
-    self.searchController.searchBar.placeholder = @"I'm looking for...";
+    self.searchController.searchBar.placeholder = UBLocalizedString(@"str_market_search", nil);
     self.searchController.searchBar.returnKeyType = UIReturnKeyDone;
     [self.view addSubview:self.searchController.searchBar];
     

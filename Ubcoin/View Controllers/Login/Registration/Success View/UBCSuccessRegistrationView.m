@@ -27,9 +27,9 @@
 {
     if (email)
     {
-        NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:@"We sent a verification letter to "];
+        NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:UBLocalizedString(@"str_we_sent_verification_letter", nil)];
         [text appendAttributedString:[[NSAttributedString alloc] initWithString:email attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13 weight:UIFontWeightSemibold]}]];
-        [text appendAttributedString:[[NSAttributedString alloc] initWithString:@"\nClick the link in the Email to get started!"]];
+        [text appendAttributedString:[[NSAttributedString alloc] initWithString:UBLocalizedString(@"str_click_link_to_get_started", nil)]];
         self.infoDesc.attributedText = text;
     }
 }

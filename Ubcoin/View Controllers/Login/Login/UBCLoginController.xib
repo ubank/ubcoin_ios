@@ -29,7 +29,7 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="60" id="ibC-gc-2sv"/>
                             </constraints>
-                            <state key="normal" title="Log In"/>
+                            <state key="normal" title="str_log_in"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="type">
                                     <integer key="value" value="2"/>
@@ -40,7 +40,7 @@
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EIO-Gj-a7Z">
-                            <rect key="frame" x="64.5" y="80" width="247" height="40"/>
+                            <rect key="frame" x="52" y="80" width="272" height="40"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don’t have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n1H-bf-KiY" customClass="HUBLabel">
                                     <rect key="frame" x="5" y="0.0" width="180" height="40"/>
@@ -54,8 +54,8 @@
                                     </userDefinedRuntimeAttributes>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N1P-py-nZo" customClass="UBButton">
-                                    <rect key="frame" x="190" y="0.0" width="52" height="40"/>
-                                    <state key="normal" title="Sign up"/>
+                                    <rect key="frame" x="190" y="0.0" width="77" height="40"/>
+                                    <state key="normal" title="str_sign_up"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="type">
                                             <integer key="value" value="1"/>

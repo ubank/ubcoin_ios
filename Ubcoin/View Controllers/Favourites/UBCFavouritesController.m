@@ -27,7 +27,7 @@
 {
     [super viewDidLoad];
     
-    self.title = @"Favorites";
+    self.title = @"str_favorites";
     
     self.pageNumber = 0;
     self.items = [NSMutableArray array];

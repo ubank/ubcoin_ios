@@ -67,16 +67,17 @@
 {
     if (completionBlock)
     {
-        UBCDiscountDM *discount1 = [[UBCDiscountDM alloc] initWithDictionary:@{@"title": @"Apple stuff",
-                                                                               @"description": @"Celebrate 10 years of iPhone",
-                                                                               @"image": @"ad_banner_1"}];
-        UBCDiscountDM *discount2 = [[UBCDiscountDM alloc] initWithDictionary:@{@"title": @"New bicycle",
-                                                                               @"description": @"Just take a ride",
-                                                                               @"image": @"ad_banner_2"}];
-        UBCDiscountDM *discount3 = [[UBCDiscountDM alloc] initWithDictionary:@{@"title": @"Interior",
-                                                                               @"description": @"Bright and modern details",
-                                                                               @"image": @"ad_banner_3"}];
-        completionBlock(YES, @[discount1, discount2, discount3]);
+//        UBCDiscountDM *discount1 = [[UBCDiscountDM alloc] initWithDictionary:@{@"title": @"Apple stuff",
+//                                                                               @"description": @"Celebrate 10 years of iPhone",
+//                                                                               @"image": @"ad_banner_1"}];
+//        UBCDiscountDM *discount2 = [[UBCDiscountDM alloc] initWithDictionary:@{@"title": @"New bicycle",
+//                                                                               @"description": @"Just take a ride",
+//                                                                               @"image": @"ad_banner_2"}];
+//        UBCDiscountDM *discount3 = [[UBCDiscountDM alloc] initWithDictionary:@{@"title": @"Interior",
+//                                                                               @"description": @"Bright and modern details",
+//                                                                               @"image": @"ad_banner_3"}];
+//        completionBlock(YES, @[discount1, discount2, discount3]);
+        completionBlock(YES, @[]);
     }
 }
 

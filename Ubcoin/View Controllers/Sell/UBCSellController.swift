@@ -36,7 +36,7 @@ class UBCSellController: UBViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Sell"
+        self.title = "str_sell"
 
         self.setupViews()
         

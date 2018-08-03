@@ -54,7 +54,7 @@
             UIColor *color = [UIColor colorWithHexString:@"e33f5e"];
             self.field.textColor = color;
             self.info.textColor = color;
-            self.info.text = @"Weak";
+            self.info.text = UBLocalizedString(@"str_weak", nil);
         }
             break;
         
@@ -63,7 +63,7 @@
             UIColor *color = [UIColor colorWithHexString:@"3f98e3"];
             self.field.textColor = color;
             self.info.textColor = color;
-            self.info.text = @"Normal";
+            self.info.text = UBLocalizedString(@"str_normal", nil);
         }
             break;
         
@@ -73,7 +73,7 @@
             UIColor *color = [UIColor colorWithHexString:@"32bb8f"];
             self.field.textColor = color;
             self.info.textColor = color;
-            self.info.text = @"Strong";
+            self.info.text = UBLocalizedString(@"str_strong", nil);
         }
             break;
         

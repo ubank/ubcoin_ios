@@ -1,0 +1,80 @@
+/* 
+  Localization.strings
+  Ubcoin
+
+  Created by Alex Ostroushko on 02.08.2018.
+  Copyright © 2018 UBANK. All rights reserved.
+*/
+
+"ui_button_save"     = "Save";
+"ui_button_done"     = "Done";
+"ui_button_next"     = "Next";
+"ui_button_point"    = ".";
+"ui_button_send"     = "Send";
+"ui_button_move"     = "Move";
+"ui_button_continue" = "Continue";
+"ui_button_minus"    = "—";
+"ui_button_cancel"   = "Cancel";
+"ui_button_enable"   = "Enable";
+"ui_button_details"  = "Details";
+"ui_button_complete" = "Complete";
+"ui_button_skip"     = "Skip";
+"ui_button_search"   = "Search";
+"ui_button_sign_up"  = "Sign up";
+"ui_button_copy"     = "Copy";
+"ui_button_get"      = "Get";
+"ui_button_hide"     = "Hide";
+
+"ui_alert_button_ok"                              = "OK";
+"ui_alert_button_cancel"                          = "Cancel";
+"ui_alert_button_please"                          = "Please";
+"ui_alert_button_move"                            = "Move";
+"ui_alert_button_info"                            = "Info";
+"ui_alert_button_close"                           = "Close";
+"ui_alert_button_save"                            = "Save";
+"ui_alert_button_yes"                             = "Yes";
+"ui_alert_button_no"                              = "No";
+"ui_alert_title_error"                            = "Error";
+"ui_alert_title_thank_you"                        = "Thank you";
+"ui_alert_title_notification"                     = "Notification";
+"ui_alert_title_information"                      = "Information";
+"ui_alert_title_attention"                        = "Attention";
+"ui_alert_message_error_connection"               = "Error connecting to the server";
+"ui_alert_message_error_unknown"                  = "Unknown error";
+"ui_alert_message_error_has_occured"              = "An error has occurred";
+"ui_alert_message_error_has_occured_while_saving" = "An error has occurred while saving";
+"ui_alert_message_error_no_access"                = "Enable access to photos to attach images";
+"ui_alert_message_error_no_camera_access"         = "Ubcoin has no access to your Camera\nYou can enable access in settings";
+"ui_alert_message_addressbook_error"              = "Enable access to contacts";
+"ui_alert_message_geo_error"                      = "Enable access to geolocation to see points on the map near you";
+
+"str_market" = "Market";
+"str_favorites" = "Favorites";
+"str_sell" = "Sell";
+"str_deals" = "Deals";
+"str_sign_in" = "Sign In";
+"str_sign_up" = "Sign Up";
+"str_log_in" = "Log In";
+"str_profile" = "Profile";
+
+"str_market_search" = "I'm looking for...";
+
+"str_no_favorite_title" = "No favorite items";
+"str_no_favorite_desc" = "Your favorite items will be here";
+
+"str_name" = "Name";
+"str_email" = "Email";
+"str_password" = "Password";
+"str_weak" = "Weak";
+"str_normal" = "Normal";
+"str_strong" = "Strong";
+"str_forgot_password" = "Forgot password";
+"str_forgot_password?" = "Forgot password?";
+"str_incorrect_data" = "Incorrect Data";
+"str_incorrect_email_password" = "Incorrect Email or Password";
+"str_already_have_account" = "Already have an account?";
+"str_wrong_email" = "Wrong email";
+"str_email_successfully_sent" = "An email with your new password has been successfully sent";
+"str_please_verify_email" = "Please verify your Email address";
+"str_we_sent_verification_letter" = "We sent a verification letter to ";
+"str_click_link_to_get_started" = "\nClick the link in the Email to get started!";
