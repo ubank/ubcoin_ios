@@ -25,3 +25,5 @@
 #define LIGHT_GRAY_COLOR2 [UIColor colorWithHexString:@"DCDCDC"]
 
 #define DEFAULT_HEADER_FONT [UIFont systemFontOfSize:18 weight:UIFontWeightSemibold]
+
+static NSString *const USER_AGREEMENT_LINK = @"https://ubcoin.io/user-agreement";

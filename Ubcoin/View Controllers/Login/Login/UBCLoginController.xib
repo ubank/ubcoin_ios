@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UBCLoginController">
             <connections>
+                <outlet property="agreementButton" destination="c4y-89-Z4s" id="jCR-Ny-Oqk"/>
                 <outlet property="infoButton" destination="N1P-py-nZo" id="RLP-16-MOq"/>
                 <outlet property="view" destination="Q3A-Sb-NS7" id="w2d-T6-RNe"/>
             </connections>
@@ -78,11 +79,29 @@
                                 <constraint firstItem="N1P-py-nZo" firstAttribute="top" secondItem="EIO-Gj-a7Z" secondAttribute="top" id="x22-fm-wuW"/>
                             </constraints>
                         </view>
+                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c4y-89-Z4s" customClass="HUBGeneralButton">
+                            <rect key="frame" x="98" y="153" width="178" height="32"/>
+                            <inset key="contentEdgeInsets" minX="10" minY="5" maxX="10" maxY="5"/>
+                            <state key="normal" title="str_user_agreement">
+                                <color key="titleColor" red="0.50588235290000005" green="0.50588235290000005" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="type">
+                                    <integer key="value" value="0"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="roundCorners" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="showAgreement" destination="-1" eventType="touchUpInside" id="5KT-l5-GEd"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="c4y-89-Z4s" firstAttribute="centerX" secondItem="2Im-RR-u5L" secondAttribute="centerX" id="BiS-Ho-3zh"/>
                         <constraint firstItem="iVY-lU-msw" firstAttribute="top" secondItem="2Im-RR-u5L" secondAttribute="top" id="Lr7-Fb-Jjd"/>
                         <constraint firstAttribute="height" constant="200" id="WtA-Ej-0aV"/>
+                        <constraint firstAttribute="bottom" secondItem="c4y-89-Z4s" secondAttribute="bottom" constant="15" id="aYy-6o-qRS"/>
                         <constraint firstItem="iVY-lU-msw" firstAttribute="leading" secondItem="2Im-RR-u5L" secondAttribute="leading" constant="15" id="df9-uC-M2u"/>
                         <constraint firstItem="EIO-Gj-a7Z" firstAttribute="centerX" secondItem="2Im-RR-u5L" secondAttribute="centerX" id="edc-p9-Ptx"/>
                         <constraint firstItem="EIO-Gj-a7Z" firstAttribute="top" secondItem="iVY-lU-msw" secondAttribute="bottom" constant="20" id="wRM-rk-mhl"/>

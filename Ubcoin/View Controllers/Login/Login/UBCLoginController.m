@@ -16,6 +16,7 @@
 @interface UBCLoginController () <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *infoButton;
+@property (weak, nonatomic) IBOutlet HUBGeneralButton *agreementButton;
 @property (strong, nonatomic) UBFloatingPlaceholderTextField *loginField;
 @property (strong, nonatomic) UBFloatingPlaceholderTextField *passwordField;
 
@@ -38,6 +39,10 @@
     
     self.infoButton.titleColor = UBCColor.green;
     self.infoButton.titleLabel.font = UBFont.descFont;
+    
+    self.agreementButton.titleColor = [UIColor colorWithRed:129 / 255.0 green:129 / 255.0 blue:129 / 255.0 alpha:0.7];;
+    self.agreementButton.titleLabel.font = [UIFont systemFontOfSize:12 weight:UIFontWeightMedium];
+    self.agreementButton.backgroundColor = [UIColor colorWithRed:182 / 255.0 green:182 / 255.0 blue:182 / 255.0 alpha:0.2];
     
     [self setupFields];
     
@@ -99,6 +104,13 @@
 - (IBAction)showRegistration
 {
     [self.navigationController pushViewController:UBCSignUpController.new animated:YES];
+}
+
+- (IBAction)showAgreement
+{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:USER_AGREEMENT_LINK]
+                                       options:@{}
+                             completionHandler:nil];
 }
 
 - (IBAction)login

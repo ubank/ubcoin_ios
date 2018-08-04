@@ -80,3 +80,4 @@
 "str_we_sent_verification_letter" = "We sent a verification letter to ";
 "str_click_link_to_get_started" = "\nClick the link in the Email to get started!";
 "str_forgot_password_description" = "Forgot your password? No worries.\nJust enter your Email to reset the password.";
+"str_user_agreement" = "User Agreement";
