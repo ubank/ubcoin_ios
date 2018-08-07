@@ -47,8 +47,17 @@
 
 - (void)applyScore:(NSUInteger)score
 {
+    if (!self.field.text.isNotEmpty)
+    {
+        UIColor *color = UBColor.titleColor;
+        self.field.textColor = color;
+        self.info.text = @"";
+        return;
+    }
+    
     switch (score)
     {
+        case 0:
         case 1:
         {
             UIColor *color = [UIColor colorWithHexString:@"e33f5e"];
