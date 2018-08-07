@@ -77,7 +77,15 @@
 "str_wrong_email" = "Wrong email";
 "str_email_successfully_sent" = "An email with your new password has been successfully sent";
 "str_please_verify_email" = "Please verify your Email address";
-"str_we_sent_verification_letter" = "We sent a verification letter to ";
-"str_click_link_to_get_started" = "\nClick the link in the Email to get started!";
+"str_we_sent_verification_letter" = "We sent a confirmation code to ";
+"str_enter_code_to_confirm_your_email" = ". Enter it below to confirm your email address:";
 "str_forgot_password_description" = "Forgot your password? No worries.\nJust enter your Email to reset the password.";
 "str_user_agreement" = "User Agreement";
+"str_successfully_confirmed" = "Successfully confirmed";
+"str_let_get_it_started" = "Let get it started!";
+"str_close" = "Close";
+"str_code" = "Code";
+"str_confirmation" = "Confirmation";
+"str_didnt_get_email" = "Didn’t get the email?";
+"str_resend_it" = "Resend it";
+"str_email_resended" = "An email has been successfully sent"";

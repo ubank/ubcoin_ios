@@ -31,13 +31,13 @@ class UBCForgotPasswordController: UBViewController {
         if (self.email.text?.isEmail)! {
             UBCDataProvider.shared.resendPassword(forEmail: self.email.text) { [weak self] success  in
                 if (success) {
-                    UBCToast.showErrorToast(withMessage: "str_email_successfully_sent".localizedString())
+                    UBCToast.showErrorToast(withMessage: "str_email_successfully_sent")
                     self?.navigationController?.popViewController(animated: true)
                 }
             }
         }
         else {
-            UBCToast.showErrorToast(withMessage: "str_wrong_email".localizedString())
+            UBCToast.showErrorToast(withMessage: "str_wrong_email")
         }
     }
 }

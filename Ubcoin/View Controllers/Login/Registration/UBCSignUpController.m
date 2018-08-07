@@ -8,10 +8,9 @@
 
 #import "UBCSignUpController.h"
 #import "UBCLoginController.h"
+#import "UBCVerifyEmailController.h"
 #import "UBFloatingPlaceholderTextField.h"
-#import "UBCSuccessRegistrationView.h"
 #import "UBCPasswordView.h"
-#import "UBCAppDelegate.h"
 
 #import "Ubcoin-Swift.h"
 
@@ -80,17 +79,18 @@
     {
         [self startActivityIndicator];
         __weak typeof(self) weakSelf = self;
-        [UBCDataProvider.sharedProvider registerUserWithFields:@{@"name": self.nameField.text,
-                                                                 @"email": self.emailField.text,
-                                                                 @"password": self.passwordView.text
-                                                                 }
+        NSDictionary *fields = @{@"name": self.nameField.text,
+                                 @"email": self.emailField.text,
+                                 @"password": self.passwordView.text
+                                 };
+        [UBCDataProvider.sharedProvider registerUserWithFields:fields
                                            withCompletionBlock:^(BOOL success)
          {
              [weakSelf stopActivityIndicator];
              if (success)
              {
-                 [mainAppDelegate setupStack];
-                 [UBCSuccessRegistrationView showWithEmail:weakSelf.emailField.text];
+                 UBCVerifyEmailController *controller = [[UBCVerifyEmailController alloc] initWithFields:fields];
+                 [weakSelf.navigationController pushViewController:controller animated:YES];
              }
          }];
     }

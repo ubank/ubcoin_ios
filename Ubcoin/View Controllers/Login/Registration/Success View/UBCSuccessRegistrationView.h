@@ -10,6 +10,6 @@
 
 @interface UBCSuccessRegistrationView : UIView
 
-+ (void)showWithEmail:(NSString *)email;
++ (void)show;
 
 @end

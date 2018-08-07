@@ -20,6 +20,8 @@
 		1CFFFE7D20F230A9003B5AD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CFFFE7920F230A9003B5AD9 /* Assets.xcassets */; };
 		1CFFFE7E20F230A9003B5AD9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFFFE7A20F230A9003B5AD9 /* main.m */; };
 		30A0668C891003DF59D2BECC /* libPods-Ubcoin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DD3B2DB73F06ACB93DC3B9 /* libPods-Ubcoin.a */; };
+		890077412119A4E400B6C1C5 /* UBCVerifyEmailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8900773F2119A4E400B6C1C5 /* UBCVerifyEmailController.m */; };
+		890077422119A4E400B6C1C5 /* UBCVerifyEmailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 890077402119A4E400B6C1C5 /* UBCVerifyEmailController.xib */; };
 		89678D9E210CED2900EB715E /* UBCStartLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89678D9D210CED2900EB715E /* UBCStartLoginController.swift */; };
 		89678DA1210CF12600EB715E /* UBCSignUpController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89678DA0210CF12600EB715E /* UBCSignUpController.m */; };
 		89678DA5210CF75500EB715E /* UBCUserDM.m in Sources */ = {isa = PBXBuildFile; fileRef = 89678DA4210CF75500EB715E /* UBCUserDM.m */; };
@@ -132,6 +134,9 @@
 		1CFFFE7B20F230A9003B5AD9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8133FFCED3512BADEB40D574 /* Pods-Ubcoin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ubcoin.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ubcoin/Pods-Ubcoin.release.xcconfig"; sourceTree = "<group>"; };
 		82DD3B2DB73F06ACB93DC3B9 /* libPods-Ubcoin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Ubcoin.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8900773E2119A4E400B6C1C5 /* UBCVerifyEmailController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCVerifyEmailController.h; sourceTree = "<group>"; };
+		8900773F2119A4E400B6C1C5 /* UBCVerifyEmailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCVerifyEmailController.m; sourceTree = "<group>"; };
+		890077402119A4E400B6C1C5 /* UBCVerifyEmailController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCVerifyEmailController.xib; sourceTree = "<group>"; };
 		89678D9D210CED2900EB715E /* UBCStartLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCStartLoginController.swift; sourceTree = "<group>"; };
 		89678D9F210CF12600EB715E /* UBCSignUpController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCSignUpController.h; sourceTree = "<group>"; };
 		89678DA0210CF12600EB715E /* UBCSignUpController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCSignUpController.m; sourceTree = "<group>"; };
@@ -403,6 +408,9 @@
 				89678D9F210CF12600EB715E /* UBCSignUpController.h */,
 				89678DA0210CF12600EB715E /* UBCSignUpController.m */,
 				89678DBC21108B5600EB715E /* UBCSignUpController.xib */,
+				8900773E2119A4E400B6C1C5 /* UBCVerifyEmailController.h */,
+				8900773F2119A4E400B6C1C5 /* UBCVerifyEmailController.m */,
+				890077402119A4E400B6C1C5 /* UBCVerifyEmailController.xib */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
@@ -1123,6 +1131,7 @@
 				89CB110E20EFCDA500729C95 /* HUBCollectionViewWaitCell.xib in Resources */,
 				8980F24220F4954C0066CF99 /* UBCPhotoCollectionViewCell.xib in Resources */,
 				89678DCD2111B02800EB715E /* UBCProfileController.xib in Resources */,
+				890077422119A4E400B6C1C5 /* UBCVerifyEmailController.xib in Resources */,
 				89F16A7320F2C65D001AA440 /* UBCGoodCell.xib in Resources */,
 				89678DEC2112424E00EB715E /* Info.plist in Resources */,
 				8987519A20EE23A100E2B615 /* UBWaitCell.xib in Resources */,
@@ -1192,6 +1201,7 @@
 				89F16A7120F2C65D001AA440 /* UBCDiscountsCollectionView.m in Sources */,
 				8980F23B20F486990066CF99 /* UBCGoodDetailsController.m in Sources */,
 				8987519920EE23A100E2B615 /* UBWaitCell.m in Sources */,
+				890077412119A4E400B6C1C5 /* UBCVerifyEmailController.m in Sources */,
 				898751B320EE2C4100E2B615 /* UBCLoginController.m in Sources */,
 				8987517720EE119F00E2B615 /* UBTableHeaderView.m in Sources */,
 				8987517A20EE119F00E2B615 /* HUBTextView.m in Sources */,

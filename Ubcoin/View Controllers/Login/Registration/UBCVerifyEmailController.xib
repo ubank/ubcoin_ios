@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UBCVerifyEmailController">
+            <connections>
+                <outlet property="code" destination="SNy-uU-NSJ" id="bgX-dE-zCI"/>
+                <outlet property="info" destination="btY-9a-CN2" id="TGA-Oj-E7q"/>
+                <outlet property="sendButton" destination="g7P-p5-93I" id="qfq-4t-lqb"/>
+                <outlet property="view" destination="X8h-bd-Beh" id="kj6-9y-viS"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="X8h-bd-Beh">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="btY-9a-CN2" customClass="HUBLabel">
+                    <rect key="frame" x="15" y="80" width="345" height="0.0"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="labelStyle">
+                            <integer key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SNy-uU-NSJ" customClass="UBFloatingPlaceholderTextField">
+                    <rect key="frame" x="15" y="130" width="345" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="Nh4-Br-rPL"/>
+                    </constraints>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="wcM-Ps-M0u"/>
+                    </connections>
+                </textField>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DEu-46-x8A">
+                    <rect key="frame" x="15" y="190" width="247.5" height="40"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="str_didnt_get_email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Et3-pv-YHp" customClass="HUBLabel">
+                            <rect key="frame" x="5" y="0.0" width="145.5" height="40"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="labelStyle">
+                                    <integer key="value" value="2"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CNB-jL-daV">
+                            <rect key="frame" x="155.5" y="0.0" width="87" height="40"/>
+                            <state key="normal" title="str_resend_it"/>
+                            <connections>
+                                <action selector="resendEmail" destination="-1" eventType="touchUpInside" id="5rc-mm-soI"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="Et3-pv-YHp" secondAttribute="bottom" id="Ayp-3R-sgW"/>
+                        <constraint firstAttribute="bottom" secondItem="CNB-jL-daV" secondAttribute="bottom" id="SFQ-9K-M3P"/>
+                        <constraint firstItem="Et3-pv-YHp" firstAttribute="top" secondItem="DEu-46-x8A" secondAttribute="top" id="Te4-sT-Snw"/>
+                        <constraint firstItem="CNB-jL-daV" firstAttribute="leading" secondItem="Et3-pv-YHp" secondAttribute="trailing" constant="5" id="Ufo-KG-Dtb"/>
+                        <constraint firstAttribute="trailing" secondItem="CNB-jL-daV" secondAttribute="trailing" constant="5" id="VsS-vQ-aZu"/>
+                        <constraint firstItem="Et3-pv-YHp" firstAttribute="leading" secondItem="DEu-46-x8A" secondAttribute="leading" constant="5" id="Z08-FY-5ph"/>
+                        <constraint firstItem="CNB-jL-daV" firstAttribute="top" secondItem="DEu-46-x8A" secondAttribute="top" id="Zbq-TY-b2r"/>
+                        <constraint firstAttribute="height" constant="40" id="dhF-bR-0h7"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PgA-ny-WMv">
+                    <rect key="frame" x="0.0" y="467" width="375" height="200"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g7P-p5-93I" customClass="HUBGeneralButton">
+                            <rect key="frame" x="15" y="0.0" width="345" height="60"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="60" id="twd-oZ-dUf"/>
+                            </constraints>
+                            <state key="normal" title="ui_button_send"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="type">
+                                    <integer key="value" value="2"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="verifyEmail" destination="-1" eventType="touchUpInside" id="UIY-Pg-dst"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="g7P-p5-93I" secondAttribute="trailing" constant="15" id="1NX-iv-onF"/>
+                        <constraint firstAttribute="height" constant="200" id="Da2-Kp-hap"/>
+                        <constraint firstItem="g7P-p5-93I" firstAttribute="top" secondItem="PgA-ny-WMv" secondAttribute="top" id="mYK-Yq-GVW"/>
+                        <constraint firstItem="g7P-p5-93I" firstAttribute="leading" secondItem="PgA-ny-WMv" secondAttribute="leading" constant="15" id="y3P-k5-FAE"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <gestureRecognizers/>
+            <constraints>
+                <constraint firstItem="gwS-g6-HWp" firstAttribute="trailing" secondItem="btY-9a-CN2" secondAttribute="trailing" constant="15" id="3u2-sp-kaV"/>
+                <constraint firstItem="gwS-g6-HWp" firstAttribute="bottom" secondItem="PgA-ny-WMv" secondAttribute="bottom" id="5dc-ro-hb3"/>
+                <constraint firstItem="PgA-ny-WMv" firstAttribute="leading" secondItem="gwS-g6-HWp" secondAttribute="leading" id="8sp-u4-HYb"/>
+                <constraint firstItem="SNy-uU-NSJ" firstAttribute="leading" secondItem="gwS-g6-HWp" secondAttribute="leading" constant="15" id="9CN-yF-Ixd"/>
+                <constraint firstItem="DEu-46-x8A" firstAttribute="top" secondItem="SNy-uU-NSJ" secondAttribute="bottom" constant="10" id="CXH-7j-Vlj"/>
+                <constraint firstItem="SNy-uU-NSJ" firstAttribute="top" secondItem="btY-9a-CN2" secondAttribute="bottom" constant="50" id="LeH-ti-9Uo"/>
+                <constraint firstAttribute="trailing" secondItem="PgA-ny-WMv" secondAttribute="trailing" id="MyO-jf-IWl"/>
+                <constraint firstItem="btY-9a-CN2" firstAttribute="top" secondItem="gwS-g6-HWp" secondAttribute="top" constant="60" id="QxO-4b-Yt5"/>
+                <constraint firstItem="gwS-g6-HWp" firstAttribute="trailing" secondItem="SNy-uU-NSJ" secondAttribute="trailing" constant="15" id="hG1-c4-jcW"/>
+                <constraint firstItem="btY-9a-CN2" firstAttribute="leading" secondItem="gwS-g6-HWp" secondAttribute="leading" constant="15" id="u11-Rj-CIf"/>
+                <constraint firstItem="DEu-46-x8A" firstAttribute="leading" secondItem="SNy-uU-NSJ" secondAttribute="leading" id="xQD-Bh-p6e"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="gwS-g6-HWp"/>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="Vjw-NR-yo8" appends="YES" id="fc5-cA-vi3"/>
+            </connections>
+        </view>
+        <tapGestureRecognizer id="Vjw-NR-yo8">
+            <connections>
+                <action selector="didTapped:" destination="-1" id="P5c-1l-PKn"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+</document>

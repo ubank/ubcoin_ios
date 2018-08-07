@@ -17,12 +17,12 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gM3-tM-Lnx">
-                    <rect key="frame" x="0.0" y="50" width="375" height="261"/>
+                    <rect key="frame" x="0.0" y="50" width="375" height="281.5"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="email_sent" translatesAutoresizingMaskIntoConstraints="NO" id="dIU-lC-SZE">
                             <rect key="frame" x="131.5" y="50" width="112" height="115"/>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="str_please_verify_email" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Uf-A4-gTt" customClass="HUBLabel">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="str_successfully_confirmed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Uf-A4-gTt" customClass="HUBLabel">
                             <rect key="frame" x="15" y="180" width="345" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
@@ -33,8 +33,8 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HiN-HB-U3E" customClass="HUBLabel">
-                            <rect key="frame" x="40" y="211" width="295" height="0.0"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="str_let_get_it_started" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HiN-HB-U3E" customClass="HUBLabel">
+                            <rect key="frame" x="40" y="211" width="295" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -61,11 +61,11 @@
                     <viewLayoutGuide key="safeArea" id="3t1-Ti-HHG"/>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KLl-VD-Jh6" customClass="HUBGeneralButton">
-                    <rect key="frame" x="164" y="361" width="46" height="50"/>
+                    <rect key="frame" x="151" y="457" width="72" height="50"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="BDJ-5K-8QB"/>
                     </constraints>
-                    <state key="normal" title="Close"/>
+                    <state key="normal" title="str_close"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="type">
                             <integer key="value" value="3"/>
@@ -79,16 +79,13 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="KLl-VD-Jh6" firstAttribute="top" secondItem="gM3-tM-Lnx" secondAttribute="bottom" constant="50" id="18i-UP-ntO"/>
                 <constraint firstItem="gM3-tM-Lnx" firstAttribute="trailing" secondItem="TMB-yf-8qO" secondAttribute="trailing" id="Lf5-Ld-Rc2"/>
                 <constraint firstItem="gM3-tM-Lnx" firstAttribute="leading" secondItem="TMB-yf-8qO" secondAttribute="leading" id="SID-s3-QXy"/>
                 <constraint firstItem="gM3-tM-Lnx" firstAttribute="top" secondItem="Q5p-Th-dxi" secondAttribute="top" constant="50" id="WMI-oF-cHr"/>
+                <constraint firstItem="TMB-yf-8qO" firstAttribute="bottom" secondItem="KLl-VD-Jh6" secondAttribute="bottom" constant="160" id="Xwj-Ps-drF"/>
                 <constraint firstItem="KLl-VD-Jh6" firstAttribute="centerX" secondItem="TMB-yf-8qO" secondAttribute="centerX" id="bc6-kR-Raf"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="TMB-yf-8qO"/>
-            <connections>
-                <outlet property="infoDesc" destination="HiN-HB-U3E" id="Sct-fI-5BK"/>
-            </connections>
         </view>
     </objects>
     <resources>

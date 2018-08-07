@@ -133,6 +133,11 @@
      }];
 }
 
+- (void)verifyEmailWithCode:(NSString *)code withCompletionBlock:(void (^)(BOOL))completionBlock
+{
+    
+}
+
 - (void)resendPasswordForEmail:(NSString *)email withCompletionBlock:(void (^)(BOOL))completionBlock
 {
     
