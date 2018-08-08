@@ -53,6 +53,7 @@
 - (UBTableViewRowData *)rowData
 {
     UBTableViewRowData *data = UBTableViewRowData.new;
+    data.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     data.data = self;
     data.title = self.title;
     data.desc = self.desc;

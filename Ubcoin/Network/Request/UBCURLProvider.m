@@ -67,4 +67,16 @@
     return [NSURL URLWithString:url];
 }
 
++ (NSURL *)dealsToSellListWithPageNumber:(NSUInteger)page
+{
+    NSString* url = [SERVER_URL stringByAppendingFormat:@"purchases/seller?page=%d&size=%d", (int)page, ITEMS_PAGE_SIZE];
+    return [NSURL URLWithString:url];
+}
+
++ (NSURL *)dealsToBuyListWithPageNumber:(NSUInteger)page
+{
+    NSString* url = [SERVER_URL stringByAppendingFormat:@"purchases/buyer?page=%d&size=%d", (int)page, ITEMS_PAGE_SIZE];
+    return [NSURL URLWithString:url];
+}
+
 @end

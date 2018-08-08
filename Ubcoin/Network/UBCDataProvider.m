@@ -12,6 +12,7 @@
 #import "UBCURLProvider.h"
 
 #import "UBCGoodDM.h"
+#import "UBCDealDM.h"
 #import "UBCDiscountDM.h"
 #import "UBCCategoryDM.h"
 
@@ -233,6 +234,62 @@
     }
     
     [self.connection sendRequest:request isBackground:YES withCompletionBlock:nil];
+}
+
+#pragma mark - DEALS
+
+- (void)dealsToSellListWithPageNumber:(NSUInteger)page withCompletionBlock:(void (^)(BOOL, NSArray *, BOOL))completionBlock
+{
+    NSURL *url = [UBCURLProvider dealsToSellListWithPageNumber:page];
+    NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:url];
+    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (success)
+         {
+             NSArray *items = [responseObject[@"data"] removeNulls];
+             items = [items map:^id(id item) {
+                 UBCDealDM *deal = [[UBCDealDM alloc] initWithDictionary:item];
+                 return deal.rowData;
+             }];
+             
+             if (completionBlock)
+             {
+                 NSNumber *totalPages = [responseObject valueForKeyPath:@"pageData.totalPages"];
+                 completionBlock(YES, items, totalPages.integerValue > page);
+             }
+         }
+         else if (completionBlock)
+         {
+             completionBlock(NO, nil, YES);
+         }
+     }];
+}
+
+- (void)dealsToBuyListWithPageNumber:(NSUInteger)page withCompletionBlock:(void (^)(BOOL, NSArray *, BOOL))completionBlock
+{
+    NSURL *url = [UBCURLProvider dealsToBuyListWithPageNumber:page];
+    NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:url];
+    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (success)
+         {
+             NSArray *items = [responseObject[@"data"] removeNulls];
+             items = [items map:^id(id item) {
+                 UBCDealDM *deal = [[UBCDealDM alloc] initWithDictionary:item];
+                 return deal.rowData;
+             }];
+             
+             if (completionBlock)
+             {
+                 NSNumber *totalPages = [responseObject valueForKeyPath:@"pageData.totalPages"];
+                 completionBlock(YES, items, totalPages.integerValue > page);
+             }
+         }
+         else if (completionBlock)
+         {
+             completionBlock(NO, nil, YES);
+         }
+     }];
 }
 
 @end

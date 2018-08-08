@@ -27,6 +27,8 @@
 		8900774D211AFF1C00B6C1C5 /* UBCBalanceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8900774B211AFF1C00B6C1C5 /* UBCBalanceController.m */; };
 		8900774E211AFF1C00B6C1C5 /* UBCBalanceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8900774C211AFF1C00B6C1C5 /* UBCBalanceController.xib */; };
 		89007752211B049900B6C1C5 /* UBCBaseDealsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89007751211B049900B6C1C5 /* UBCBaseDealsView.m */; };
+		89007756211B5B8600B6C1C5 /* UBCDealDM.m in Sources */ = {isa = PBXBuildFile; fileRef = 89007755211B5B8600B6C1C5 /* UBCDealDM.m */; };
+		8900775A211B688200B6C1C5 /* UBCDealCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89007759211B688200B6C1C5 /* UBCDealCell.m */; };
 		89678D9E210CED2900EB715E /* UBCStartLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89678D9D210CED2900EB715E /* UBCStartLoginController.swift */; };
 		89678DA1210CF12600EB715E /* UBCSignUpController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89678DA0210CF12600EB715E /* UBCSignUpController.m */; };
 		89678DA5210CF75500EB715E /* UBCUserDM.m in Sources */ = {isa = PBXBuildFile; fileRef = 89678DA4210CF75500EB715E /* UBCUserDM.m */; };
@@ -149,6 +151,10 @@
 		8900774C211AFF1C00B6C1C5 /* UBCBalanceController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCBalanceController.xib; sourceTree = "<group>"; };
 		89007750211B049900B6C1C5 /* UBCBaseDealsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCBaseDealsView.h; sourceTree = "<group>"; };
 		89007751211B049900B6C1C5 /* UBCBaseDealsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCBaseDealsView.m; sourceTree = "<group>"; };
+		89007754211B5B8600B6C1C5 /* UBCDealDM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCDealDM.h; sourceTree = "<group>"; };
+		89007755211B5B8600B6C1C5 /* UBCDealDM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCDealDM.m; sourceTree = "<group>"; };
+		89007758211B688200B6C1C5 /* UBCDealCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCDealCell.h; sourceTree = "<group>"; };
+		89007759211B688200B6C1C5 /* UBCDealCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCDealCell.m; sourceTree = "<group>"; };
 		89678D9D210CED2900EB715E /* UBCStartLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCStartLoginController.swift; sourceTree = "<group>"; };
 		89678D9F210CF12600EB715E /* UBCSignUpController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCSignUpController.h; sourceTree = "<group>"; };
 		89678DA0210CF12600EB715E /* UBCSignUpController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCSignUpController.m; sourceTree = "<group>"; };
@@ -411,6 +417,24 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		89007753211B5B7200B6C1C5 /* DM */ = {
+			isa = PBXGroup;
+			children = (
+				89007754211B5B8600B6C1C5 /* UBCDealDM.h */,
+				89007755211B5B8600B6C1C5 /* UBCDealDM.m */,
+			);
+			path = DM;
+			sourceTree = "<group>";
+		};
+		89007757211B683300B6C1C5 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				89007758211B688200B6C1C5 /* UBCDealCell.h */,
+				89007759211B688200B6C1C5 /* UBCDealCell.m */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		89678DA2210CF73E00EB715E /* DM */ = {
 			isa = PBXGroup;
 			children = (
@@ -525,6 +549,8 @@
 		8979E80F21134EC5004B2473 /* Deals */ = {
 			isa = PBXGroup;
 			children = (
+				89007757211B683300B6C1C5 /* Cell */,
+				89007753211B5B7200B6C1C5 /* DM */,
 				8900774F211B02A800B6C1C5 /* Views */,
 				8979E81021134EEB004B2473 /* UBCDealsController.h */,
 				8979E81121134EEB004B2473 /* UBCDealsController.m */,
@@ -1260,6 +1286,7 @@
 				8987518920EE119F00E2B615 /* HUBEmptyView.m in Sources */,
 				8987518020EE119F00E2B615 /* HUBLabel.m in Sources */,
 				898751CB20EE6AEA00E2B615 /* UBCURLProvider.m in Sources */,
+				89007756211B5B8600B6C1C5 /* UBCDealDM.m in Sources */,
 				8987517320EE119F00E2B615 /* UBTableView.m in Sources */,
 				8987518620EE119F00E2B615 /* HUBAttributedLabel.m in Sources */,
 				8987518B20EE119F00E2B615 /* UBAlertTableView.m in Sources */,
@@ -1272,6 +1299,7 @@
 				1CEFAA4520F3FCBE005719B3 /* UBCSTextFieldTableViewCell.swift in Sources */,
 				89F16A6A20F2C65D001AA440 /* UBCFiltersListController.m in Sources */,
 				89678DEA2112424E00EB715E /* DBMatcher.m in Sources */,
+				8900775A211B688200B6C1C5 /* UBCDealCell.m in Sources */,
 				1CFFFE6A20F0CD3F003B5AD9 /* UBCSellDM.swift in Sources */,
 				1CFFFE6C20F0D0F8003B5AD9 /* UBCSellController.swift in Sources */,
 				1CFFFE7320F22599003B5AD9 /* UBCSelectionController.swift in Sources */,

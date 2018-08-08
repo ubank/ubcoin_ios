@@ -92,3 +92,4 @@
 "str_my_balance" = "My balance";
 "str_to_sell" = "To sell";
 "str_to_buy" = "To buy";
+"str_requires_external_app" = "Requires external App";
