@@ -45,9 +45,9 @@
     [self setBottomConstraintToSubview:separator withValue:0];
 }
 
-- (void)applyScore:(NSUInteger)score
+- (void)applyScore:(NSUInteger)score isEmptyString:(BOOL)isEmpty
 {
-    if (!self.field.text.isNotEmpty)
+    if (isEmpty)
     {
         UIColor *color = UBColor.titleColor;
         self.field.textColor = color;
@@ -125,7 +125,7 @@
     NSString *password = [textField.text stringByReplacingCharactersInRange:range withString:string];
     
     DBResult *score = [self.scoring passwordStrength:password];
-    [self applyScore:score.score];
+    [self applyScore:score.score isEmptyString:!password.isNotEmpty];
     
     return YES;
 }
