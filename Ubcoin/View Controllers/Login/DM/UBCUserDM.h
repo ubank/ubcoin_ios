@@ -15,4 +15,6 @@
 @property (readonly, nonatomic) NSString *phone;
 @property (readonly, nonatomic) NSNumber *walletNumber;
 
++ (UBCUserDM *)loadProfile;
+
 @end

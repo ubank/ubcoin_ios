@@ -10,4 +10,9 @@
 
 @implementation UBCUserDM
 
++ (UBCUserDM *)loadProfile
+{
+    return nil;
+}
+
 @end

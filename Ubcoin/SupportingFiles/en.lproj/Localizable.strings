@@ -88,4 +88,7 @@
 "str_confirmation" = "Confirmation";
 "str_didnt_get_email" = "Didn’t get the email?";
 "str_resend_it" = "Resend it";
-"str_email_resended" = "An email has been successfully sent"";
+"str_email_resended" = "An email has been successfully sent";
+"str_my_balance" = "My balance";
+"str_to_sell" = "To sell";
+"str_to_buy" = "To buy";

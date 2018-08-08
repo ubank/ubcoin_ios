@@ -15,7 +15,7 @@
 #   define DebugLog(...)
 #endif
 
-#define CELL_HEIGHT 45
+#define CELL_HEIGHT 65
 
 #define BROWN_COLOR [UIColor colorWithHexString:@"D6584D"]
 #define RED_COLOR [UIColor colorWithHexString:@"FF4E50"]
