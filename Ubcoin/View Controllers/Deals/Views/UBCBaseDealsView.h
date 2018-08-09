@@ -14,6 +14,8 @@
 @property (strong, nonatomic) NSMutableArray *items;
 @property (assign, nonatomic) NSUInteger pageNumber;
 
+- (void)setupEmptyView;
 - (void)updateInfo;
+- (void)handleResponse:(NSArray *)deals;
 
 @end

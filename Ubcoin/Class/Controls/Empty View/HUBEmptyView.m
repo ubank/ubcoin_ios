@@ -14,13 +14,6 @@
 {
     [super awakeFromNib];
     
-    self.backgroundColor = UBColor.backgroundColor;
-    
-    self.title.textColor = BROWN_COLOR;
-    self.title.font = DEFAULT_HEADER_FONT;
-    
-    self.desc.hidden = YES;
-    
     self.firstButton.hidden = YES;
     self.secondButton.hidden = YES;
 }

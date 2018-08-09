@@ -8,7 +8,9 @@
 
 #import "UBCollectionViewSwitch.h"
 
-#define HEIGHT_OF_INDICATOR 3
+#import "Ubcoin-Swift.h"
+
+#define HEIGHT_OF_INDICATOR 2
 
 @interface UBCollectionViewSwitch () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
@@ -250,7 +252,7 @@ static NSString * const identifier = @"collectionCellIdentifier";
         self.buttonsScrollView.contentSize = CGSizeMake((int)(buttonX), self.buttonsScrollView.height);
         
         CGFloat indicatorWitdh = self.buttonWidth;
-        UIImage *image = [UIImage imageWithColor:BROWN_COLOR size:CGSizeMake(indicatorWitdh, self.heightOfIndicator)];
+        UIImage *image = [UIImage imageWithColor:UBCColor.green size:CGSizeMake(indicatorWitdh, self.heightOfIndicator)];
         self.indicatorView.image = image;
         self.indicatorView.frame  = CGRectMake(indicatorWitdh * self.pageIndex, self.buttonsScrollView.height - self.heightOfIndicator, indicatorWitdh, self.heightOfIndicator);
     }

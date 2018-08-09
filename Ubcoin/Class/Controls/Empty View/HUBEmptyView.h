@@ -9,8 +9,8 @@
 @interface HUBEmptyView : UIView
 
 @property (weak, nonatomic) IBOutlet UIImageView *icon;
-@property (weak, nonatomic) IBOutlet UILabel *title;
-@property (weak, nonatomic) IBOutlet UILabel *desc;
+@property (weak, nonatomic) IBOutlet HUBLabel *title;
+@property (weak, nonatomic) IBOutlet HUBLabel *desc;
 @property (weak, nonatomic) IBOutlet HUBGeneralButton *firstButton;
 @property (weak, nonatomic) IBOutlet HUBGeneralButton *secondButton;
 

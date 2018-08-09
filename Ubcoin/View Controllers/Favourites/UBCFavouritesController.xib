@@ -28,57 +28,11 @@
                         <outlet property="actionDelegate" destination="-1" id="tr6-rU-ESK"/>
                     </connections>
                 </tableView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OUZ-nU-ycI">
-                    <rect key="frame" x="0.0" y="10" width="375" height="266.5"/>
-                    <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty_favorites" translatesAutoresizingMaskIntoConstraints="NO" id="KPz-eC-iYA">
-                            <rect key="frame" x="95" y="50" width="185" height="100"/>
-                        </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="str_no_favorite_title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rjS-Ib-euG" customClass="HUBLabel">
-                            <rect key="frame" x="15" y="165" width="345" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="labelStyle">
-                                    <integer key="value" value="1"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="str_no_favorite_desc" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tlF-Q2-aVM" customClass="HUBLabel">
-                            <rect key="frame" x="40" y="196" width="295" height="20.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="labelStyle">
-                                    <integer key="value" value="2"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstItem="KPz-eC-iYA" firstAttribute="top" secondItem="OUZ-nU-ycI" secondAttribute="top" constant="50" id="7W0-xV-fnj"/>
-                        <constraint firstAttribute="trailing" secondItem="tlF-Q2-aVM" secondAttribute="trailing" constant="40" id="AYx-FH-ocX"/>
-                        <constraint firstItem="rjS-Ib-euG" firstAttribute="top" secondItem="KPz-eC-iYA" secondAttribute="bottom" constant="15" id="PwU-fC-0NB"/>
-                        <constraint firstItem="tlF-Q2-aVM" firstAttribute="leading" secondItem="OUZ-nU-ycI" secondAttribute="leading" constant="40" id="YvR-ib-8XU"/>
-                        <constraint firstItem="KPz-eC-iYA" firstAttribute="centerX" secondItem="OUZ-nU-ycI" secondAttribute="centerX" id="dKx-nz-cTO"/>
-                        <constraint firstItem="rjS-Ib-euG" firstAttribute="leading" secondItem="OUZ-nU-ycI" secondAttribute="leading" constant="15" id="fdI-Sf-UYR"/>
-                        <constraint firstAttribute="trailing" secondItem="rjS-Ib-euG" secondAttribute="trailing" constant="15" id="sZh-Bl-6bS"/>
-                        <constraint firstItem="tlF-Q2-aVM" firstAttribute="top" secondItem="rjS-Ib-euG" secondAttribute="bottom" constant="10" id="vFN-YS-BJY"/>
-                        <constraint firstAttribute="bottom" secondItem="tlF-Q2-aVM" secondAttribute="bottom" constant="50" id="vZd-S0-sXf"/>
-                    </constraints>
-                    <viewLayoutGuide key="safeArea" id="xUI-29-RqB"/>
-                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="OUZ-nU-ycI" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="dwZ-kj-X8r"/>
-                <constraint firstItem="OUZ-nU-ycI" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="ha2-xz-sxq"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="NsC-Op-Z8T" secondAttribute="bottom" id="lOF-NH-K4j"/>
                 <constraint firstItem="NsC-Op-Z8T" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="-20" id="qaw-kD-wvb"/>
-                <constraint firstItem="OUZ-nU-ycI" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="rD6-sk-smz"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="NsC-Op-Z8T" secondAttribute="trailing" id="smJ-5T-6xA"/>
                 <constraint firstItem="NsC-Op-Z8T" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="yuM-ke-fAI"/>
             </constraints>
@@ -86,7 +40,4 @@
             <point key="canvasLocation" x="33.5" y="53.5"/>
         </view>
     </objects>
-    <resources>
-        <image name="empty_favorites" width="185" height="100"/>
-    </resources>
 </document>

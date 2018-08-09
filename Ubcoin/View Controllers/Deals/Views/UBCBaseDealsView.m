@@ -7,6 +7,7 @@
 //
 
 #import "UBCBaseDealsView.h"
+#import "UBCKeyChain.h"
 
 @interface UBCBaseDealsView()
 
@@ -21,6 +22,8 @@
     if (self)
     {
         [self setupTableView];
+        [self setupEmptyView];
+        [self updateInfo];
     }
     
     return self;
@@ -34,16 +37,41 @@
     [self addSubview:self.tableView];
     [self addConstraintsToFillSubview:self.tableView];
     
-    __weak typeof(self) weakSelf = self;
-    [self.tableView setupRefreshControllWithActionBlock:^{
-        weakSelf.pageNumber = 0;
-        [weakSelf updateInfo];
-    }];
+    if (UBCKeyChain.authorization)
+    {
+        __weak typeof(self) weakSelf = self;
+        [self.tableView setupRefreshControllWithActionBlock:^{
+            weakSelf.pageNumber = 0;
+            [weakSelf updateInfo];
+        }];
+    }
+}
+
+- (void)setupEmptyView
+{
+    self.tableView.emptyView.icon.image = [UIImage imageNamed:@"empty_deals"];
+    self.tableView.emptyView.title.text = UBLocalizedString(@"str_no_active_deals", nil);
 }
 
 - (void)updateInfo
 {
     
+}
+
+- (void)handleResponse:(NSArray *)deals
+{
+    [self.tableView.refreshControll endRefreshing];
+    if (deals)
+    {
+        if (self.pageNumber == 0)
+        {
+            self.items = [NSMutableArray array];
+        }
+        [self.items addObjectsFromArray:deals];
+        self.pageNumber++;
+    }
+    self.tableView.emptyView.hidden = self.items.count == 0;
+    [self.tableView reloadData];
 }
 
 #pragma mark - UBDefaultTableViewDelegate

@@ -32,21 +32,25 @@
     self.pageNumber = 0;
     self.items = [NSMutableArray array];
     
+    self.tableView.emptyView.icon.image = [UIImage imageNamed:@"empty_favorites"];
+    self.tableView.emptyView.title.text = UBLocalizedString(@"str_no_favorite_title", nil);
+    self.tableView.emptyView.desc.text = UBLocalizedString(@"str_no_favorite_desc", nil);
     self.tableView.backgroundColor = UBColor.backgroundColor;
-    __weak typeof(self) weakSelf = self;
-    [self.tableView setupRefreshControllWithActionBlock:^{
-        weakSelf.pageNumber = 0;
-        [weakSelf updateInfo];
-    }];
     
     if (UBCKeyChain.authorization)
     {
         [self startActivityIndicatorImmediately];
         [self updateInfo];
+        
+        __weak typeof(self) weakSelf = self;
+        [self.tableView setupRefreshControllWithActionBlock:^{
+            weakSelf.pageNumber = 0;
+            [weakSelf updateInfo];
+        }];
     }
     else
     {
-        self.tableView.hidden = YES;
+        self.tableView.emptyView.hidden = NO;
     }
 }
 
@@ -57,6 +61,12 @@
                                             withCompletionBlock:^(BOOL success, NSArray *goods, BOOL canLoadMore)
      {
          [weakSelf stopActivityIndicator];
+         [weakSelf.tableView.refreshControll endRefreshing];
+         if (success)
+         {
+             weakSelf.tableView.canLoadMore = canLoadMore;
+         }
+         
          if (goods)
          {
              if (weakSelf.pageNumber == 0)
@@ -66,7 +76,7 @@
              [weakSelf.items addObjectsFromArray:goods];
              weakSelf.pageNumber++;
          }
-         weakSelf.tableView.hidden = weakSelf.items.count == 0;
+         weakSelf.tableView.emptyView.hidden = weakSelf.items.count == 0;
          [weakSelf.tableView reloadData];
      }];
 }

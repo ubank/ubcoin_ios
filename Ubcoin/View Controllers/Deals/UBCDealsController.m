@@ -8,10 +8,14 @@
 
 #import "UBCDealsController.h"
 #import "UBCollectionViewSwitch.h"
+#import "UBCToBuyDealsView.h"
+#import "UBCToSellDealsView.h"
 
 @interface UBCDealsController ()
 
 @property (strong, nonatomic) UBCollectionViewSwitch *dealsSwitch;
+@property (strong, nonatomic) UBCToBuyDealsView *buyDealsView;
+@property (strong, nonatomic) UBCToSellDealsView *sellDealsView;
 
 @end
 
@@ -28,11 +32,14 @@
 
 - (void)setupViews
 {
-    UBCollectionViewSwitchContent *view1 = [[UBCollectionViewSwitchContent alloc] initWithTitle:UBLocalizedString(@"str_to_sell", nil)
-                                                                                                    view:nil];
-    UBCollectionViewSwitchContent *view2 = [[UBCollectionViewSwitchContent alloc] initWithTitle:UBLocalizedString(@"str_to_buy", nil)
-                                                                                                    view:nil];
+    self.buyDealsView = [UBCToBuyDealsView.alloc initWithFrame:self.view.bounds];
+    UBCollectionViewSwitchContent *view1 = [[UBCollectionViewSwitchContent alloc] initWithTitle:UBLocalizedString(@"str_to_buy", nil)
+                                                                                           view:self.buyDealsView];
     
+    self.sellDealsView = [UBCToSellDealsView.alloc initWithFrame:self.view.bounds];
+    UBCollectionViewSwitchContent *view2 = [[UBCollectionViewSwitchContent alloc] initWithTitle:UBLocalizedString(@"str_to_sell", nil)
+                                                                                                    view:self.sellDealsView];
+
     self.dealsSwitch = [[UBCollectionViewSwitch alloc] initWithFrame:self.view.bounds
                                                  withArrayOfPagesContent:@[view1, view2]];
     [self.view addSubview:self.dealsSwitch];

@@ -19,8 +19,8 @@
 
 #define BROWN_COLOR [UIColor colorWithHexString:@"D6584D"]
 #define RED_COLOR [UIColor colorWithHexString:@"FF4E50"]
-#define UBLACK_COLOR [UIColor colorWithHexString:@"2A2A2A"]
-#define UBGRAY_COLOR [UIColor colorWithHexString:@"808080"]
+#define UBLACK_COLOR UBColor.titleColor
+#define UBGRAY_COLOR UBColor.descColor
 #define LIGHT_GRAY_COLOR [UIColor colorWithHexString:@"EEEEEE"]
 #define LIGHT_GRAY_COLOR2 [UIColor colorWithHexString:@"DCDCDC"]
 

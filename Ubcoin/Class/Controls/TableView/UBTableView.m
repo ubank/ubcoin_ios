@@ -73,7 +73,10 @@
     self.emptyView = [HUBEmptyView loadFromXib];
     self.emptyView.hidden = YES;
     [self addSubview:self.emptyView];
-    [self addConstraintsForScrollToFillSubview:self.emptyView];
+    [self setTopConstraintToSubview:self.emptyView withValue:0];
+    [self setLeadingConstraintToSubview:self.emptyView withValue:0];
+    [self setTrailingConstraintToSubview:self.emptyView withValue:0];
+    [self setWidthEqualToSubview:self.emptyView];
 }
 
 #pragma mark -

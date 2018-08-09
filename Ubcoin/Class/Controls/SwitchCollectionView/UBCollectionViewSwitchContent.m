@@ -40,15 +40,15 @@
         self.titleOfCell = @"";
     }
     
-    self.attributedStringOfTitle = [[NSAttributedString alloc] initWithString:[self.titleOfCell uppercaseString]
-                                                                   attributes:@{NSFontAttributeName : UBFont.descFont,
+    self.attributedStringOfTitle = [[NSAttributedString alloc] initWithString:self.titleOfCell
+                                                                   attributes:@{NSFontAttributeName : UBFont.titleFont,
                                                                                 NSForegroundColorAttributeName : UBLACK_COLOR}];
 }
 
 - (NSAttributedString *)highlightedAttributedString
 {
-    return [[NSAttributedString alloc] initWithString:[self.titleOfCell uppercaseString]
-                                           attributes:@{NSFontAttributeName : UBFont.descFont,
+    return [[NSAttributedString alloc] initWithString:self.titleOfCell
+                                           attributes:@{NSFontAttributeName : UBFont.titleFont,
                                                         NSForegroundColorAttributeName: UBGRAY_COLOR}];
 }
 
