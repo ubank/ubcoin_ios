@@ -11,6 +11,7 @@
 @interface UBCPasswordView : UIView
 
 @property (readonly, nonatomic) NSString *text;
+@property (strong, nonatomic) NSString *placeholder;
 
 - (BOOL)becomeFirstResponder;
 - (BOOL)resignFirstResponder;

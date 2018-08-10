@@ -118,6 +118,16 @@
     return self.field.text;
 }
 
+- (void)setPlaceholder:(NSString *)placeholder
+{
+    self.field.placeholder = placeholder;
+}
+
+- (NSString *)placeholder
+{
+    return self.field.placeholder;
+}
+
 #pragma mark - UITextFieldDelegate
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string

@@ -96,3 +96,7 @@
 "str_no_active_deals" = "No active deals";
 "str_items_to_buy_will_be_here" = "Items you are going to buy will be here";
 "str_items_to_sell_will_be_here" = "Items you are going to sell will be here";
+"str_confirm" = "Confirm";
+"str_confirmation_code" = "Confirmation code";
+"str_new_password" = "New password";
+

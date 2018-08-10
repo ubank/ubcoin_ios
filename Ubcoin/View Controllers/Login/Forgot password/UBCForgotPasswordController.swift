@@ -31,8 +31,7 @@ class UBCForgotPasswordController: UBViewController {
         if (self.email.text?.isEmail)! {
             UBCDataProvider.shared.resendPassword(forEmail: self.email.text) { [weak self] success  in
                 if (success) {
-                    UBCToast.showErrorToast(withMessage: "str_email_successfully_sent")
-                    self?.navigationController?.popViewController(animated: true)
+                    self?.navigationController?.pushViewController(UBCResetPasswordController(), animated: true)
                 }
             }
         }
