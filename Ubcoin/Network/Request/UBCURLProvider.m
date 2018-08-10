@@ -43,6 +43,18 @@
     return [NSURL URLWithString:url];
 }
 
++ (NSURL *)verification
+{
+    NSString* url = [SERVER_URL stringByAppendingFormat:@"verification"];
+    return [NSURL URLWithString:url];
+}
+
++ (NSURL *)verificationCheck
+{
+    NSString* url = [SERVER_URL stringByAppendingFormat:@"verification/checkß"];
+    return [NSURL URLWithString:url];
+}
+
 + (NSURL *)user
 {
     NSString* url = [SERVER_URL stringByAppendingFormat:@"users/me"];

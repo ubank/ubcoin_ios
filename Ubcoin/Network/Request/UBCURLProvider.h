@@ -16,6 +16,8 @@
 + (NSURL *)login;
 + (NSURL *)logout;
 + (NSURL *)registration;
++ (NSURL *)verification;
++ (NSURL *)verificationCheck;
 
 + (NSURL *)user;
 + (NSURL *)userBalance;

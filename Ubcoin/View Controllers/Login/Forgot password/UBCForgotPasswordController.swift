@@ -29,7 +29,7 @@ class UBCForgotPasswordController: UBViewController {
     @IBAction func sendEmail() {
         
         if (self.email.text?.isEmail)! {
-            UBCDataProvider.shared.resendPassword(forEmail: self.email.text) { [weak self] success  in
+            UBCDataProvider.shared.sendVerificationCode(toEmail: self.email.text) { [weak self] success  in
                 if (success) {
                     self?.navigationController?.pushViewController(UBCResetPasswordController(), animated: true)
                 }

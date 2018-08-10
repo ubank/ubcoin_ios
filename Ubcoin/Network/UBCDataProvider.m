@@ -139,9 +139,34 @@
     
 }
 
-- (void)resendPasswordForEmail:(NSString *)email withCompletionBlock:(void (^)(BOOL))completionBlock
+- (void)sendVerificationCodeToEmail:(NSString *)email withCompletionBlock:(void (^)(BOOL))completionBlock
 {
+    NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider verification]
+                                                                andParams:@{@"email": email,
+                                                                            @"type": @"PASSWORD",}];
+    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (completionBlock)
+         {
+             completionBlock(success);
+         }
+     }];
+}
+
+- (void)resetPasswordWithParams:(NSDictionary *)params withCompletionBlock:(void (^)(BOOL))completionBlock
+{
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObject:@"PASSWORD" forKey:@"type"];
+    [dict addEntriesFromDictionary:params];
     
+    NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider verificationCheck]
+                                                                andParams:dict];
+    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (completionBlock)
+         {
+             completionBlock(success);
+         }
+     }];
 }
 
 - (void)logoutWithCompletionBlock:(void (^)(BOOL))completionBlock

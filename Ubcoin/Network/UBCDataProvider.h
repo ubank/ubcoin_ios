@@ -20,7 +20,8 @@
 - (void)loginWithEmail:(NSString *)email password:(NSString *)password withCompletionBlock:(void (^)(BOOL success))completionBlock;
 - (void)registerUserWithFields:(NSDictionary *)fields withCompletionBlock:(void (^)(BOOL success))completionBlock;
 - (void)verifyEmailWithCode:(NSString *)code withCompletionBlock:(void (^)(BOOL success))completionBlock;
-- (void)resendPasswordForEmail:(NSString *)email withCompletionBlock:(void (^)(BOOL success))completionBlock;
+- (void)sendVerificationCodeToEmail:(NSString *)email withCompletionBlock:(void (^)(BOOL success))completionBlock;
+- (void)resetPasswordWithParams:(NSDictionary *)params withCompletionBlock:(void (^)(BOOL success))completionBlock;
 - (void)logoutWithCompletionBlock:(void (^)(BOOL success))completionBlock;
 
 - (void)userInfoWithCompletionBlock:(void (^)(BOOL success))completionBlock;

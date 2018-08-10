@@ -55,7 +55,7 @@
 
 - (IBAction)resendEmail
 {
-    [UBCDataProvider.sharedProvider resendPasswordForEmail:self.email
+    [UBCDataProvider.sharedProvider sendVerificationCodeToEmail:self.email
                                        withCompletionBlock:^(BOOL success)
      {
          if (success)
@@ -63,6 +63,37 @@
              [UBCToast showToastWithMessage:@"str_email_resended"];
          }
      }];
+}
+
+- (IBAction)resetPassword
+{
+    if ([self isValidData])
+    {
+        [self startActivityIndicator];
+        __weak typeof(self) weakSelf = self;
+        NSDictionary *fields = @{@"code": self.codeField.text,
+                                 @"email": self.email,
+                                 @"value": self.passwordView.text};
+        [UBCDataProvider.sharedProvider resetPasswordWithParams:fields
+                                            withCompletionBlock:^(BOOL success)
+         {
+             [weakSelf stopActivityIndicator];
+             if (success)
+             {
+                 [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+             }
+         }];
+    }
+    else
+    {
+        [UBCToast showErrorToastWithMessage:@"str_incorrect_data"];
+    }
+}
+
+- (BOOL)isValidData
+{
+    return self.codeField.text.length == 6 &&
+    self.passwordView.isValid;
 }
 
 #pragma mark - UITextFieldDelegate
