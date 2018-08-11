@@ -71,7 +71,7 @@
     {
         [self startActivityIndicator];
         __weak typeof(self) weakSelf = self;
-        NSDictionary *fields = @{@"code": self.codeField.text,
+        NSDictionary *fields = @{@"code": @(self.codeField.text.integerValue),
                                  @"email": self.email,
                                  @"value": self.passwordView.text};
         [UBCDataProvider.sharedProvider resetPasswordWithParams:fields
@@ -92,11 +92,23 @@
 
 - (BOOL)isValidData
 {
-    return self.codeField.text.length == 6 &&
+    return self.codeField.text.integerValue >= 100000 &&
+    self.codeField.text.integerValue <= 999999 &&
     self.passwordView.isValid;
 }
 
 #pragma mark - UITextFieldDelegate
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if (string.isNotEmpty && !string.isNumber)
+    {
+        return NO;
+    }
+    NSString *text = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    
+    return text.length <= 6;
+}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {

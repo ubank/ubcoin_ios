@@ -98,9 +98,14 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
+    if (string.isNotEmpty && !string.isNumber)
+    {
+        return NO;
+    }
+    
     NSString *code = [textField.text stringByReplacingCharactersInRange:range withString:string];
     self.sendButton.enabled = code.length == 6;
-    return code.length < 7;
+    return code.length <= 6;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

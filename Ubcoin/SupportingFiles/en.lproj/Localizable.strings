@@ -99,4 +99,7 @@
 "str_confirm" = "Confirm";
 "str_confirmation_code" = "Confirmation code";
 "str_new_password" = "New password";
+"str_location_up" = "LOCATION";
+"str_seller_up" = "SELLER";
+"str_connect_to_seller" = "Connect to seller";
 

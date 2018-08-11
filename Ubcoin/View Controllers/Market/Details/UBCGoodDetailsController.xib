@@ -38,7 +38,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qbR-7S-QUP">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="1438"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="1417.5"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9M1-bB-Yuh">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
@@ -151,7 +151,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gTw-sN-qPV" userLabel="Location View">
                                     <rect key="frame" x="0.0" y="366.5" width="375" height="145.5"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOCATION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7lE-Xr-b8O" customClass="HUBLabel">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="str_location_up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7lE-Xr-b8O" customClass="HUBLabel">
                                             <rect key="frame" x="15" y="15" width="345" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -178,10 +178,10 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YfI-fd-tUa">
-                                    <rect key="frame" x="0.0" y="512" width="375" height="50.5"/>
+                                    <rect key="frame" x="0.0" y="512" width="375" height="30"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOCATION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Urf-EA-x8e" userLabel="Desc" customClass="HUBLabel">
-                                            <rect key="frame" x="15" y="15" width="345" height="20.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Urf-EA-x8e" userLabel="Desc" customClass="HUBLabel">
+                                            <rect key="frame" x="15" y="15" width="345" height="0.0"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -201,9 +201,9 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b75-hG-Hyi" userLabel="Seller View">
-                                    <rect key="frame" x="0.0" y="572.5" width="375" height="125"/>
+                                    <rect key="frame" x="0.0" y="552" width="375" height="125"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SELLER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="enc-FY-zqm" customClass="HUBLabel">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="str_seller_up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="enc-FY-zqm" customClass="HUBLabel">
                                             <rect key="frame" x="15" y="15" width="345" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -297,7 +297,7 @@
                                     </constraints>
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZSs-5A-Mf9" customClass="HUBGeneralButton">
-                                    <rect key="frame" x="0.0" y="722.5" width="375" height="50"/>
+                                    <rect key="frame" x="0.0" y="702" width="375" height="50"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="50" id="qNk-y2-Nau"/>
                                     </constraints>
@@ -313,7 +313,7 @@
                                     </connections>
                                 </button>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Br6-IK-hfa" userLabel="Related Items">
-                                    <rect key="frame" x="0.0" y="797.5" width="375" height="550.5"/>
+                                    <rect key="frame" x="0.0" y="777" width="375" height="550.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RELATED ITEMS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zem-eS-gxP" customClass="HUBLabel">
                                             <rect key="frame" x="15" y="15" width="345" height="20.5"/>
@@ -355,14 +355,14 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dYb-9Z-BGQ">
-                                    <rect key="frame" x="0.0" y="1348" width="375" height="90"/>
+                                    <rect key="frame" x="0.0" y="1327.5" width="375" height="90"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZW-YT-6xm" customClass="HUBGeneralButton">
                                             <rect key="frame" x="15" y="15" width="345" height="60"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="60" id="AaG-Ed-xqv"/>
                                             </constraints>
-                                            <state key="normal" title="Connect to seller"/>
+                                            <state key="normal" title="str_connect_to_seller"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="type">
                                                     <integer key="value" value="2"/>
