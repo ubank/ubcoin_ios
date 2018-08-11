@@ -85,7 +85,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   UBGeneralClasses:
-    :commit: 229778e2c6b54eeebc678863006128cb6151935a
+    :commit: a5761e8fcb421a4691d14a20008906d055ae8452
     :git: https://github.com/ubank/ub_general_classes_iOS.git
 
 SPEC CHECKSUMS:
@@ -100,6 +100,6 @@ SPEC CHECKSUMS:
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
   UBGeneralClasses: a5485a99a05a01e5c17321117caf26d2507eed87
 
-PODFILE CHECKSUM: 29998df8be063e41923c42f95b8e765b257acda1
+PODFILE CHECKSUM: 45f9cfb1a6a34519a0e82c0ebf4b405b044e6c75
 
 COCOAPODS: 1.5.3
