@@ -6,6 +6,20 @@
 	objectVersion = 50;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		897FB0A5211EEAE90060DED6 /* Version */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 897FB0A6211EEAE90060DED6 /* Build configuration list for PBXAggregateTarget "Version" */;
+			buildPhases = (
+				897FB0A9211EEB200060DED6 /* Run Script */,
+			);
+			dependencies = (
+			);
+			name = Version;
+			productName = Version;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		1C14F19F20F2655800B835AC /* UBCMapSelectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C14F19E20F2655800B835AC /* UBCMapSelectController.swift */; };
 		1C4034B220F2958100E51247 /* UBCShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4034B120F2958100E51247 /* UBCShared.swift */; };
@@ -125,6 +139,16 @@
 		89F16A7420F2C65D001AA440 /* UBCGoodCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F16A6620F2C65D001AA440 /* UBCGoodCell.m */; };
 		89F16A7520F2C65D001AA440 /* UBCMarketController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F16A6920F2C65D001AA440 /* UBCMarketController.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		897FB0AA211EEBB60060DED6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 899E216F20E68D8A004D891B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 897FB0A5211EEAE90060DED6;
+			remoteInfo = Version;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1C14F19D20F2366900B835AC /* Ubcoin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ubcoin-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -1152,6 +1176,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				897FB0AB211EEBB60060DED6 /* PBXTargetDependency */,
 			);
 			name = Ubcoin;
 			productName = Ubcoin;
@@ -1168,6 +1193,9 @@
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = UBANK;
 				TargetAttributes = {
+					897FB0A5211EEAE90060DED6 = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
 					899E217620E68D8A004D891B = {
 						CreatedOnToolsVersion = 9.4;
 						LastSwiftMigration = 1000;
@@ -1190,6 +1218,7 @@
 			projectRoot = "";
 			targets = (
 				899E217620E68D8A004D891B /* Ubcoin */,
+				897FB0A5211EEAE90060DED6 /* Version */,
 			);
 		};
 /* End PBXProject section */
@@ -1248,6 +1277,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" 3e551dafb827affc1eb15acb4316f426af7ed949 510b90b43fdbd4fda2d482d24cca395ae6912ff2c9447a30acca9c9d069495c0";
+		};
+		897FB0A9211EEB200060DED6 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "GIT_BRANCH=`git branch | grep \"\\*\" | awk '{print $2}'`\nPREFIX=\"XC_\"\n\nif [ -z \"${PROJECT_DIR}\" ]; then\nPROJECT_DIR=`pwd`\nfi\n\nBUILD_NUMBER=`xcrun git rev-list ${GIT_BRANCH} | wc -l | tr -d ' '`\nBUILD_HASH=`xcrun git rev-parse --short --verify master | tr -d ' '`\n\nif [ -z \"${PROJECT_DIR}/Version.h\" ]; then\nif [ \"${BUILD_NUMBER}\" == \"${BUILD_HASH}\" ]; then\necho \"${BUILD_NUMBER}\"\nelse\necho \"${BUILD_NUMBER}/${BUILD_HASH}\"\nfi\nelse\necho \"#define ${PREFIX}BUILD_NUMBER ${BUILD_NUMBER}\" > \"${PROJECT_DIR}/Version.h\"\necho \"#define ${PREFIX}BUILD_HASH @\\\"${BUILD_HASH}\\\"\" >> \"${PROJECT_DIR}/Version.h\"\n\nfind \"${PROJECT_DIR}\" -iname \"*.plist\" -maxdepth 1 -exec touch {} \\;\nfi\n";
 		};
 		D7FBA2A30FBED1FB60A62674 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1382,6 +1425,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		897FB0AB211EEBB60060DED6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 897FB0A5211EEAE90060DED6 /* Version */;
+			targetProxy = 897FB0AA211EEBB60060DED6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		8979E81721135EEB004B2473 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
@@ -1396,6 +1447,25 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		897FB0A7211EEAE90060DED6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = SWEX2R635A;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		897FB0A8211EEAE90060DED6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SWEX2R635A;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		899E218B20E68D8C004D891B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1520,6 +1590,8 @@
 				DEVELOPMENT_TEAM = SWEX2R635A;
 				GCC_PREFIX_HEADER = "Ubcoin/SupportingFiles/Ubcoin-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Ubcoin/SupportingFiles/Info.plist";
+				INFOPLIST_PREFIX_HEADER = Version.h;
+				INFOPLIST_PREPROCESS = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1543,6 +1615,8 @@
 				DEVELOPMENT_TEAM = SWEX2R635A;
 				GCC_PREFIX_HEADER = "Ubcoin/SupportingFiles/Ubcoin-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Ubcoin/SupportingFiles/Info.plist";
+				INFOPLIST_PREFIX_HEADER = Version.h;
+				INFOPLIST_PREPROCESS = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1558,6 +1632,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		897FB0A6211EEAE90060DED6 /* Build configuration list for PBXAggregateTarget "Version" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				897FB0A7211EEAE90060DED6 /* Debug */,
+				897FB0A8211EEAE90060DED6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		899E217220E68D8A004D891B /* Build configuration list for PBXProject "Ubcoin" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
