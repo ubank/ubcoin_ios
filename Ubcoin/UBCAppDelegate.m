@@ -9,6 +9,9 @@
 #import "UBCAppDelegate.h"
 #import "UBCTabBarController.h"
 
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
+
 @interface UBCAppDelegate ()
 
 @property (strong, nonatomic) UBCTabBarController *tabBar;
@@ -20,6 +23,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [Fabric with:@[[Crashlytics class]]];
+
     [self setupColors];
     [self setupFonts];
     
