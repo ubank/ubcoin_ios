@@ -118,10 +118,12 @@
     if ([self isValidData])
     {
         [self startActivityIndicator];
+        __weak typeof(self) weakSelf = self;
         [UBCDataProvider.sharedProvider loginWithEmail:self.loginField.text
                                               password:self.passwordField.text
                                    withCompletionBlock:^(BOOL success)
          {
+             [weakSelf stopActivityIndicator];
              if (success)
              {
                  [mainAppDelegate setupStack];
