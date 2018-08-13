@@ -76,8 +76,8 @@
              [weakSelf.items addObjectsFromArray:goods];
              weakSelf.pageNumber++;
          }
-         weakSelf.tableView.emptyView.hidden = weakSelf.items.count == 0;
-         [weakSelf.tableView reloadData];
+         weakSelf.tableView.emptyView.hidden = weakSelf.items.count > 0;
+         [weakSelf.tableView updateWithRowsData:weakSelf.items];
      }];
 }
 

@@ -104,4 +104,8 @@
 "str_connect_to_seller" = "Connect to seller";
 "str_chat" = "Chat";
 "str_you_need_to_be_logged_in" = "You need to be logged in";
+"str_account_settings" = "Account settings";
+"str_name" = "Name";
+"str_country" = "Country";
+"str_language" = "Language";
 

@@ -18,6 +18,7 @@
 {
     [super viewDidLoad];
 
+    self.title = @"str_my_balance";
 }
 
 @end

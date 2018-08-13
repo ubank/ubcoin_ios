@@ -13,8 +13,12 @@
 
 #import "UBCGoodDM.h"
 #import "UBCDealDM.h"
+#import "UBCUserDM.h"
 #import "UBCDiscountDM.h"
 #import "UBCCategoryDM.h"
+#import "UBCKeyChain.h"
+
+#import "UBCFavouriteCell.h"
 
 @interface UBCDataProvider ()
 
@@ -110,10 +114,16 @@
 - (void)loginWithEmail:(NSString *)email password:(NSString *)password withCompletionBlock:(void (^)(BOOL))completionBlock
 {
     NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider login]
-                                                                andParams:@{@"login" : [email stringByTrimmingEmptySymbolsAtTheEnds],
+                                                                andParams:@{@"email" : [email stringByTrimmingEmptySymbolsAtTheEnds],
                                                                             @"password" : password}];
     [self.connection sendRequest:request isBackground:YES withCompletionBlock:^(BOOL success, id responseObject)
      {
+         if (success)
+         {
+             UBCKeyChain.authorization = responseObject[@"accessToken"];
+             [UBCUserDM saveUserDict:responseObject[@"user"]];
+         }
+         
          if (completionBlock)
          {
              completionBlock(success);
@@ -228,7 +238,9 @@
              NSArray *items = [responseObject[@"data"] removeNulls];
              items = [items map:^id(id item) {
                  UBCGoodDM *good = [[UBCGoodDM alloc] initWithDictionary:item];
-                 return good.rowData;
+                 UBTableViewRowData *data = good.rowData;
+                 data.className = NSStringFromClass(UBCFavouriteCell.class);
+                 return data;
              }];
              
              if (completionBlock)

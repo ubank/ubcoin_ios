@@ -33,6 +33,7 @@
         self.desc.font = [UIFont systemFontOfSize:16 weight:UIFontWeightRegular];
         
         self.stars = UBCStarsView.new;
+        [self.stars setHeightConstraintWithValue:30];
         [self.leftStackView addArrangedSubview:self.stars];
     }
     

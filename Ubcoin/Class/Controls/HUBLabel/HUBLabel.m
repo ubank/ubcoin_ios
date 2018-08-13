@@ -66,8 +66,6 @@
             self.font = DEFAULT_HEADER_FONT;
             break;
     }
-    
-    self.numberOfLines = 0;
 }
 
 #pragma mark - IBDesignable

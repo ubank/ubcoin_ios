@@ -107,7 +107,7 @@
 - (void)setupRefreshControllWithActionBlock:(void (^)(void))block
 {
     self.refreshControll = [UIRefreshControl new];
-    self.refreshControll.tintColor = UBColor.activityColor;
+//    self.refreshControll.tintColor = UBColor.activityColor;
     [self.refreshControll addTarget:self action:@selector(handlerRefreshControll) forControlEvents:UIControlEventValueChanged];
     [self insertSubview:self.refreshControll atIndex:0];
     self.actionBlockOfRefreshControll = block;

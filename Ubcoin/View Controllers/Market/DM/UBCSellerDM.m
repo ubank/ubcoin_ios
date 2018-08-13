@@ -12,6 +12,11 @@
 
 - (instancetype)initWithDictionary:(NSDictionary *)dict
 {
+    if (dict.count == 0)
+    {
+        return nil;
+    }
+    
     self = [super init];
     if (self)
     {

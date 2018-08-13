@@ -39,13 +39,11 @@
     
     [self startActivityIndicatorImmediately];
     [self updateInfo];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
     
-    [self.collectionView reloadData];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(favoritesChanged:)
+                                                 name:kNotificationFavoritesChanged
+                                               object:nil];
 }
 
 #pragma mark -
@@ -122,7 +120,6 @@
                 weakSelf.items = [NSMutableArray array];
             }
             [weakSelf.items addObjectsFromArray:goods];
-            [UBCGoodDM saveGoods:weakSelf.items];
             weakSelf.collectionView.canLoadMore = canLoadMore;
             weakSelf.pageNumber++;
         }
@@ -141,6 +138,30 @@
     [self.collectionView.refreshControl endRefreshing];
     self.collectionView.discounts = self.discounts;
     self.collectionView.items = self.items;
+}
+
+- (void)favoritesChanged:(NSNotification *)notification
+{
+    if (!self.view.window)
+    {
+        UBCGoodDM *item = notification.object;
+        
+        NSUInteger index = NSNotFound;
+        for (UBCGoodDM *currentItem in self.items)
+        {
+            if ([currentItem.ID isEqualToString:item.ID])
+            {
+                index = [self.items indexOfObject:currentItem];
+                break;
+            }
+        }
+        
+        if (index != NSNotFound)
+        {
+            [self.items replaceObjectAtIndex:index withObject:item];
+            self.collectionView.items = self.items;
+        }
+    }
 }
 
 #pragma mark - Actions

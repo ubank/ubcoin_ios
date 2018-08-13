@@ -122,7 +122,6 @@
     [self.photoCount setupWithImage:[UIImage imageNamed:@"market_photo"]
                             andText:[NSString stringWithFormat:@"1/%d", (int)self.good.images.count]];
     
-    self.relatedItemsView.items = [UBCGoodDM relatedGoods];
     [self setupSellerView:self.good.seller];
 }
 

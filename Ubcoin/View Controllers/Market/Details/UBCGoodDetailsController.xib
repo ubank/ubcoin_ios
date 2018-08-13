@@ -20,7 +20,6 @@
                 <outlet property="itemTitle" destination="Gti-R0-jnL" id="7wh-w0-zau"/>
                 <outlet property="photoCount" destination="m7a-DO-gsQ" id="A95-If-n56"/>
                 <outlet property="price" destination="bhf-vo-Ont" id="Rbu-gc-fFf"/>
-                <outlet property="relatedItemsView" destination="Uhe-TQ-cOU" id="r5i-9c-SET"/>
                 <outlet property="scroll" destination="p5e-oR-mgC" id="aOW-PK-gLL"/>
                 <outlet property="sellerAvatar" destination="gln-MN-Ejo" id="uY5-wo-Zk1"/>
                 <outlet property="sellerDesc" destination="kpT-qZ-zpm" id="ui6-xw-q8g"/>
@@ -38,7 +37,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qbR-7S-QUP">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="1417.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="777"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9M1-bB-Yuh">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
@@ -180,7 +179,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YfI-fd-tUa">
                                     <rect key="frame" x="0.0" y="512" width="375" height="30"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Urf-EA-x8e" userLabel="Desc" customClass="HUBLabel">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Urf-EA-x8e" userLabel="Desc" customClass="HUBLabel">
                                             <rect key="frame" x="15" y="15" width="345" height="0.0"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -296,66 +295,8 @@
                                         <constraint firstAttribute="trailing" secondItem="TY4-vb-mN9" secondAttribute="trailing" id="vyT-6C-RXp"/>
                                     </constraints>
                                 </view>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZSs-5A-Mf9" customClass="HUBGeneralButton">
-                                    <rect key="frame" x="0.0" y="702" width="375" height="50"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="50" id="qNk-y2-Nau"/>
-                                    </constraints>
-                                    <state key="normal" title="Report post"/>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="type">
-                                            <integer key="value" value="1"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="boolean" keyPath="roundCorners" value="NO"/>
-                                    </userDefinedRuntimeAttributes>
-                                    <connections>
-                                        <action selector="reportPost" destination="-1" eventType="touchUpInside" id="wwO-Nh-Uu7"/>
-                                    </connections>
-                                </button>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Br6-IK-hfa" userLabel="Related Items">
-                                    <rect key="frame" x="0.0" y="777" width="375" height="550.5"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RELATED ITEMS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zem-eS-gxP" customClass="HUBLabel">
-                                            <rect key="frame" x="15" y="15" width="345" height="20.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="labelStyle">
-                                                    <integer key="value" value="2"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                        </label>
-                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Uhe-TQ-cOU" customClass="UBCGoodsCollectionView">
-                                            <rect key="frame" x="0.0" y="45.5" width="375" height="495"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="495" id="XP9-P3-bzx"/>
-                                            </constraints>
-                                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ybb-3t-dNX">
-                                                <size key="itemSize" width="50" height="50"/>
-                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                            </collectionViewFlowLayout>
-                                            <connections>
-                                                <outlet property="actionsDelegate" destination="-1" id="Om9-ti-BVS"/>
-                                            </connections>
-                                        </collectionView>
-                                    </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <constraints>
-                                        <constraint firstItem="zem-eS-gxP" firstAttribute="top" secondItem="Br6-IK-hfa" secondAttribute="top" constant="15" id="IFO-Bc-YgS"/>
-                                        <constraint firstAttribute="trailing" secondItem="zem-eS-gxP" secondAttribute="trailing" constant="15" id="R96-LI-Lez"/>
-                                        <constraint firstItem="Uhe-TQ-cOU" firstAttribute="top" secondItem="zem-eS-gxP" secondAttribute="bottom" constant="10" id="cJV-Kr-018"/>
-                                        <constraint firstItem="Uhe-TQ-cOU" firstAttribute="leading" secondItem="Br6-IK-hfa" secondAttribute="leading" id="fv7-KC-usG"/>
-                                        <constraint firstAttribute="trailing" secondItem="Uhe-TQ-cOU" secondAttribute="trailing" id="xQ7-Zc-SKF"/>
-                                        <constraint firstAttribute="bottom" secondItem="Uhe-TQ-cOU" secondAttribute="bottom" constant="10" id="yST-4i-ot8"/>
-                                        <constraint firstItem="zem-eS-gxP" firstAttribute="leading" secondItem="Br6-IK-hfa" secondAttribute="leading" constant="15" id="yxk-0I-NEj"/>
-                                    </constraints>
-                                </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dYb-9Z-BGQ">
-                                    <rect key="frame" x="0.0" y="1327.5" width="375" height="90"/>
+                                    <rect key="frame" x="0.0" y="687" width="375" height="90"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZW-YT-6xm" customClass="HUBGeneralButton">
                                             <rect key="frame" x="15" y="15" width="345" height="60"/>
@@ -387,28 +328,22 @@
                                 <constraint firstAttribute="trailing" secondItem="b75-hG-Hyi" secondAttribute="trailing" id="35n-ZH-9YO"/>
                                 <constraint firstItem="b75-hG-Hyi" firstAttribute="leading" secondItem="qbR-7S-QUP" secondAttribute="leading" id="3By-9S-ErM"/>
                                 <constraint firstItem="YfI-fd-tUa" firstAttribute="top" secondItem="gTw-sN-qPV" secondAttribute="bottom" id="3gc-fs-WTE"/>
-                                <constraint firstAttribute="trailing" secondItem="Br6-IK-hfa" secondAttribute="trailing" id="8eM-0s-QdA"/>
                                 <constraint firstItem="S5O-0B-R5g" firstAttribute="leading" secondItem="qbR-7S-QUP" secondAttribute="leading" id="Bri-S2-GUk"/>
                                 <constraint firstAttribute="trailing" secondItem="gTw-sN-qPV" secondAttribute="trailing" id="FDZ-G6-yGK"/>
                                 <constraint firstAttribute="bottom" secondItem="dYb-9Z-BGQ" secondAttribute="bottom" id="IDM-Q9-N5P"/>
-                                <constraint firstAttribute="trailing" secondItem="ZSs-5A-Mf9" secondAttribute="trailing" id="L0p-Ip-EK0"/>
                                 <constraint firstItem="9M1-bB-Yuh" firstAttribute="leading" secondItem="qbR-7S-QUP" secondAttribute="leading" id="NxD-FU-L9X"/>
                                 <constraint firstItem="b75-hG-Hyi" firstAttribute="top" secondItem="YfI-fd-tUa" secondAttribute="bottom" constant="10" id="OuE-QD-lSV"/>
                                 <constraint firstAttribute="trailing" secondItem="S5O-0B-R5g" secondAttribute="trailing" id="T4a-ZK-SuJ"/>
-                                <constraint firstItem="dYb-9Z-BGQ" firstAttribute="top" secondItem="Br6-IK-hfa" secondAttribute="bottom" id="Ulk-2A-fb0"/>
-                                <constraint firstItem="ZSs-5A-Mf9" firstAttribute="leading" secondItem="qbR-7S-QUP" secondAttribute="leading" id="Xdh-jr-J68"/>
                                 <constraint firstAttribute="trailing" secondItem="YfI-fd-tUa" secondAttribute="trailing" id="Yo0-ww-MTt"/>
-                                <constraint firstItem="Br6-IK-hfa" firstAttribute="top" secondItem="ZSs-5A-Mf9" secondAttribute="bottom" constant="25" id="bkR-Fq-lUH"/>
                                 <constraint firstItem="9M1-bB-Yuh" firstAttribute="top" secondItem="qbR-7S-QUP" secondAttribute="top" id="dLG-cR-noy"/>
                                 <constraint firstAttribute="trailing" secondItem="dYb-9Z-BGQ" secondAttribute="trailing" id="f0E-SZ-gI0"/>
                                 <constraint firstItem="gTw-sN-qPV" firstAttribute="top" secondItem="S5O-0B-R5g" secondAttribute="bottom" id="fz1-2V-9Ee"/>
                                 <constraint firstAttribute="trailing" secondItem="9M1-bB-Yuh" secondAttribute="trailing" id="mgX-PG-I1L"/>
                                 <constraint firstItem="dYb-9Z-BGQ" firstAttribute="leading" secondItem="qbR-7S-QUP" secondAttribute="leading" id="nXW-wd-qgG"/>
                                 <constraint firstItem="YfI-fd-tUa" firstAttribute="leading" secondItem="qbR-7S-QUP" secondAttribute="leading" id="pk7-Bv-Tls"/>
-                                <constraint firstItem="ZSs-5A-Mf9" firstAttribute="top" secondItem="b75-hG-Hyi" secondAttribute="bottom" constant="25" id="q0Y-W2-Jtv"/>
                                 <constraint firstItem="S5O-0B-R5g" firstAttribute="top" secondItem="9M1-bB-Yuh" secondAttribute="bottom" id="unM-qZ-pgL"/>
                                 <constraint firstItem="gTw-sN-qPV" firstAttribute="leading" secondItem="qbR-7S-QUP" secondAttribute="leading" id="vbm-rV-pew"/>
-                                <constraint firstItem="Br6-IK-hfa" firstAttribute="leading" secondItem="qbR-7S-QUP" secondAttribute="leading" id="wGb-cO-LrX"/>
+                                <constraint firstItem="dYb-9Z-BGQ" firstAttribute="top" secondItem="b75-hG-Hyi" secondAttribute="bottom" constant="10" id="wKd-jz-UJk"/>
                             </constraints>
                         </view>
                     </subviews>

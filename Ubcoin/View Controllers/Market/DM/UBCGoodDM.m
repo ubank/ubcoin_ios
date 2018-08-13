@@ -39,10 +39,10 @@
     if (UBCKeyChain.authorization)
     {
         _isFavorite = !self.isFavorite;
-        
+            
         [UBCDataProvider.sharedProvider toggleFavoriteWithID:self.ID isFavorite:self.isFavorite];
         
-        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationFavoritesChanged object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationFavoritesChanged object:self];
     }
     else
     {
@@ -60,34 +60,6 @@
     data.iconURL = [self.images firstObject];
     data.height = 95;
     return data;
-}
-
-#pragma mark -
-
-+ (void)saveGoods:(NSArray *)goods
-{
-    if (goods)
-    {
-        NSArray *dicts = [goods valueForKey:@"dict"];
-        [[NSUserDefaults standardUserDefaults] setObject:dicts forKey:ALL_GOODS_KEY];
-    }
-}
-
-+ (NSArray *)relatedGoods
-{
-    NSArray *goods = [[NSUserDefaults standardUserDefaults] objectForKey:ALL_GOODS_KEY];
-    
-    NSMutableSet *set = [NSMutableSet set];
-    if (goods.count > 1)
-    {
-        for (int i = 0; i < 4; i++)
-        {
-            [set addObject:goods[arc4random() % [goods count]]];
-        }
-    }
-    return [[set allObjects] map:^id(id item) {
-        return [[UBCGoodDM alloc] initWithDictionary:item];
-    }];
 }
 
 @end

@@ -8,11 +8,49 @@
 
 #import "UBCUserDM.h"
 
+#define USER_KEY @"user profile"
+
 @implementation UBCUserDM
+
+- (instancetype)initWithDictionary:(NSDictionary *)dict
+{
+    self = [super initWithDictionary:dict];
+    if (self)
+    {
+        _email = dict[@"email"];
+    }
+    return self;
+}
+
+- (UBTableViewRowData *)rowData
+{
+    UBTableViewRowData *data = UBTableViewRowData.new;
+    data.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    data.data = self;
+    data.title = self.name;
+    data.iconURL = self.avatarURL;
+    data.height = 80;
+    return data;
+}
 
 + (UBCUserDM *)loadProfile
 {
-    return nil;
+    NSDictionary *dict = [[NSUserDefaults standardUserDefaults] objectForKey:USER_KEY];
+    return [[UBCUserDM alloc] initWithDictionary:dict];
+}
+
++ (void)saveUserDict:(NSDictionary *)dict
+{
+    if (dict)
+    {
+        [[NSUserDefaults standardUserDefaults] setObject:dict forKey:USER_KEY];
+    }
+}
+
++ (void)clearUserData
+{
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end

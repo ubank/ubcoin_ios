@@ -29,6 +29,7 @@
     self.title = @"str_profile";
     
     [self setupTableView];
+    [self setupData];
 }
 
 - (void)setupTableView
@@ -42,16 +43,15 @@
 - (void)setupData
 {
     NSMutableArray *sections = [NSMutableArray array];
-    UBCUserDM *user = [UBCUserDM loadProfile];
     
     UBTableViewSectionData *profileSection = UBTableViewSectionData.new;
     profileSection.headerHeight = SEPARATOR_HEIGHT;
     
-    UBTableViewRowData *data = UBTableViewRowData.new;
-    data.title = user.name;
-    data.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    UBCUserDM *user = [UBCUserDM loadProfile];
+    UBTableViewRowData *data = user.rowData;
     data.name = PROFILE_ACTIVITY;
     profileSection.rows = @[data];
+    [sections addObject:profileSection];
     
     UBTableViewSectionData *balanceSection = UBTableViewSectionData.new;
     balanceSection.headerHeight = SEPARATOR_HEIGHT;
@@ -61,6 +61,7 @@
     data2.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     data2.name = BALANCE_ACTIVITY;
     balanceSection.rows = @[data2];
+    [sections addObject:balanceSection];
     
     [self.tableView updateWithSectionsData:sections];
 }

@@ -51,6 +51,7 @@
         self.leftIndent = UBCConstant.inset;
         self.rightIndent = UBCConstant.inset;
         
+        self.separatorType = UBSeparatorTypeFull;
         self.separatorAlignmentView = self.title;
     }
     
@@ -175,7 +176,7 @@
     }
     
     self.accessoryType = rowData.accessoryType;
-    self.separatorType = rowData.separatorType;
+//    self.separatorType = rowData.separatorType;
     self.showHighlighted = !rowData.disableHighlight;
     
     [self hideViews];

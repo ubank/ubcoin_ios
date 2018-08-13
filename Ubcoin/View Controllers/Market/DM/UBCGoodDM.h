@@ -32,7 +32,4 @@ static NSString * const kNotificationFavoritesChanged = @"kNotificationFavorites
 
 - (UBTableViewRowData *)rowData;
 
-+ (void)saveGoods:(NSArray *)goods;
-+ (NSArray *)relatedGoods;
-
 @end

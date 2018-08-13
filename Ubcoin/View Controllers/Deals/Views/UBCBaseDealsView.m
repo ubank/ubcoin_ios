@@ -70,8 +70,8 @@
         [self.items addObjectsFromArray:deals];
         self.pageNumber++;
     }
-    self.tableView.emptyView.hidden = self.items.count == 0;
-    [self.tableView reloadData];
+    self.tableView.emptyView.hidden = self.items.count > 0;
+    [self.tableView updateWithRowsData:self.items];
 }
 
 #pragma mark - UBDefaultTableViewDelegate

@@ -7,14 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "UBCSellerDM.h"
 
-@interface UBCUserDM : NSObject
+@interface UBCUserDM : UBCSellerDM
 
-@property (readonly, nonatomic) NSString *ID;
-@property (readonly, nonatomic) NSString *name;
-@property (readonly, nonatomic) NSString *phone;
+@property (readonly, nonatomic) NSString *email;
 @property (readonly, nonatomic) NSNumber *walletNumber;
 
 + (UBCUserDM *)loadProfile;
++ (void)saveUserDict:(NSDictionary *)dict;
++ (void)clearUserData;
+
+- (UBTableViewRowData *)rowData;
 
 @end
