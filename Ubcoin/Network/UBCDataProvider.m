@@ -110,9 +110,9 @@
 - (void)loginWithEmail:(NSString *)email password:(NSString *)password withCompletionBlock:(void (^)(BOOL))completionBlock
 {
     NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider login]
-                                                                andParams:@{@"login" : email,
+                                                                andParams:@{@"login" : [email stringByTrimmingEmptySymbolsAtTheEnds],
                                                                             @"password" : password}];
-    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+    [self.connection sendRequest:request isBackground:YES withCompletionBlock:^(BOOL success, id responseObject)
      {
          if (completionBlock)
          {

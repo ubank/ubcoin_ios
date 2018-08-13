@@ -104,6 +104,7 @@
             
         case HUBGeneralButtonTypeGreenTitle:
             self.titleColor = UBCColor.green;
+            self.titleLabel.font = UBFont.descFont;
             self.backgroundColor = UIColor.clearColor;
             break;
             
