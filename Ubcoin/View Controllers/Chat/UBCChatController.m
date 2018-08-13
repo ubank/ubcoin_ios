@@ -60,8 +60,7 @@
      {
          if (url)
          {
-             NSURLRequest *request = [NSURLRequest requestWithURL:url];
-             [weakSelf.webView loadRequest:request];
+             [weakSelf openChatWithURL:url];
          }
          else
          {
@@ -70,6 +69,22 @@
              });
          }
      }];
+}
+
+- (void)openChatWithURL:(NSURL *)url
+{
+    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"tg://"]])
+    {
+        NSString *tgURL = [url.absoluteString stringByReplacingOccurrencesOfString:@"https://t.me/" withString:@"tg://resolve?domain="];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:tgURL]
+                                           options:@{}
+                                 completionHandler:nil];
+    }
+    else
+    {
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        [self.webView loadRequest:request];
+    }
 }
 
 #pragma mark - WKNavigationDelegate

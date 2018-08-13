@@ -120,6 +120,7 @@
      {
          if (success)
          {
+             responseObject = [responseObject removeNulls];
              UBCKeyChain.authorization = responseObject[@"accessToken"];
              [UBCUserDM saveUserDict:responseObject[@"user"]];
          }
@@ -338,7 +339,7 @@
      {
          if (completionBlock)
          {
-             completionBlock(success, [NSURL URLWithString:responseObject]);
+             completionBlock(success, [NSURL URLWithString:responseObject[@"url"]]);
          }
      }];
 }
