@@ -11,8 +11,10 @@
 #import "UBCPhotoCollectionViewCell.h"
 #import "UBCGoodsCollectionView.h"
 #import "HUBNavigationBarView.h"
+#import "UBCChatController.h"
 #import "UBCInfoLabel.h"
 #import "UBCGoodDM.h"
+#import "UBCKeyChain.h"
 #import "UBCStarsView.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
@@ -160,7 +162,15 @@
 
 - (IBAction)connectToSeller
 {
-    
+    if (UBCKeyChain.authorization)
+    {
+        UBCChatController *controller = [[UBCChatController alloc] initWithItem:self.good];
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+    else
+    {
+        [UBAlert showAlertWithTitle:nil andMessage:@"str_you_need_to_be_logged_in"];
+    }
 }
 
 #pragma mark - UICollectionView

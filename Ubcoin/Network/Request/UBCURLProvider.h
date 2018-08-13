@@ -28,4 +28,6 @@
 + (NSURL *)dealsToSellListWithPageNumber:(NSUInteger)page;
 + (NSURL *)dealsToBuyListWithPageNumber:(NSUInteger)page;
 
++ (NSURL *)chatURLForItemID:(NSString *)itemID;
+
 @end

@@ -317,5 +317,19 @@
      }];
 }
 
+#pragma mark - CHAT
+
+- (void)chatURLForItemID:(NSString *)itemID withCompletionBlock:(void (^)(BOOL, NSURL *))completionBlock
+{
+    NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:[UBCURLProvider chatURLForItemID:itemID]];
+    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (completionBlock)
+         {
+             completionBlock(success, [NSURL URLWithString:responseObject]);
+         }
+     }];
+}
+
 @end
 

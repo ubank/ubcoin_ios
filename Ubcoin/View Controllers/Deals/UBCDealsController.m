@@ -10,8 +10,9 @@
 #import "UBCollectionViewSwitch.h"
 #import "UBCToBuyDealsView.h"
 #import "UBCToSellDealsView.h"
+#import "UBCChatController.h"
 
-@interface UBCDealsController ()
+@interface UBCDealsController () <UBCDealsViewDelegate>
 
 @property (strong, nonatomic) UBCollectionViewSwitch *dealsSwitch;
 @property (strong, nonatomic) UBCToBuyDealsView *buyDealsView;
@@ -33,10 +34,12 @@
 - (void)setupViews
 {
     self.buyDealsView = [UBCToBuyDealsView.alloc initWithFrame:self.view.bounds];
+    self.buyDealsView.delegate = self;
     UBCollectionViewSwitchContent *view1 = [[UBCollectionViewSwitchContent alloc] initWithTitle:UBLocalizedString(@"str_to_buy", nil)
                                                                                            view:self.buyDealsView];
     
     self.sellDealsView = [UBCToSellDealsView.alloc initWithFrame:self.view.bounds];
+    self.sellDealsView.delegate = self;
     UBCollectionViewSwitchContent *view2 = [[UBCollectionViewSwitchContent alloc] initWithTitle:UBLocalizedString(@"str_to_sell", nil)
                                                                                                     view:self.sellDealsView];
 
@@ -44,6 +47,14 @@
                                                  withArrayOfPagesContent:@[view1, view2]];
     [self.view addSubview:self.dealsSwitch];
     [self.view addConstraintsToFillSubview:self.dealsSwitch];
+}
+
+#pragma mark - UBCDealsViewDelegate
+
+- (void)openChatForItem:(UBCGoodDM *)item
+{
+    UBCChatController *controller = [[UBCChatController alloc] initWithItem:item];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 @end

@@ -76,6 +76,11 @@
 
 #pragma mark - UBDefaultTableViewDelegate
 
+- (void)didSelectData:(UBTableViewRowData *)data indexPath:(NSIndexPath *)indexPath
+{
+    [self.delegate openChatForItem:data.data];
+}
+
 - (void)updatePagination
 {
     [self updateInfo];

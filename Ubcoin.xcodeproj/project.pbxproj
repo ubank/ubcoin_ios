@@ -72,6 +72,7 @@
 		8979E81221134EEB004B2473 /* UBCDealsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8979E81121134EEB004B2473 /* UBCDealsController.m */; };
 		8979E81521135EEB004B2473 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8979E81721135EEB004B2473 /* Localizable.strings */; };
 		8979E81D21146DCB004B2473 /* HUBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8979E81C21146DCA004B2473 /* HUBHelper.swift */; };
+		897FB0B121218FDE0060DED6 /* UBCChatController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897FB0B021218FDE0060DED6 /* UBCChatController.m */; };
 		8980F22A20F3FB800066CF99 /* UBCStarsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980F22920F3FB800066CF99 /* UBCStarsView.m */; };
 		8980F23620F481BA0066CF99 /* UBCInfoLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980F23520F481BA0066CF99 /* UBCInfoLabel.m */; };
 		8980F23B20F486990066CF99 /* UBCGoodDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980F23920F486990066CF99 /* UBCGoodDetailsController.m */; };
@@ -230,6 +231,8 @@
 		8979E81821135EFC004B2473 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8979E81921135F07004B2473 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8979E81C21146DCA004B2473 /* HUBHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUBHelper.swift; sourceTree = "<group>"; };
+		897FB0AF21218FDE0060DED6 /* UBCChatController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCChatController.h; sourceTree = "<group>"; };
+		897FB0B021218FDE0060DED6 /* UBCChatController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCChatController.m; sourceTree = "<group>"; };
 		8980F22820F3FB800066CF99 /* UBCStarsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCStarsView.h; sourceTree = "<group>"; };
 		8980F22920F3FB800066CF99 /* UBCStarsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCStarsView.m; sourceTree = "<group>"; };
 		8980F23420F481BA0066CF99 /* UBCInfoLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCInfoLabel.h; sourceTree = "<group>"; };
@@ -608,6 +611,15 @@
 			path = Swift;
 			sourceTree = "<group>";
 		};
+		897FB0AE21218FC10060DED6 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				897FB0AF21218FDE0060DED6 /* UBCChatController.h */,
+				897FB0B021218FDE0060DED6 /* UBCChatController.m */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
 		8980F22720F3FB4B0066CF99 /* Stars view */ = {
 			isa = PBXGroup;
 			children = (
@@ -926,6 +938,7 @@
 		8987519B20EE2A4E00E2B615 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				897FB0AE21218FC10060DED6 /* Chat */,
 				8979E80F21134EC5004B2473 /* Deals */,
 				898751A320EE2B5000E2B615 /* Favourites */,
 				898751A220EE2B5000E2B615 /* Login */,
@@ -1349,6 +1362,7 @@
 				8987519920EE23A100E2B615 /* UBWaitCell.m in Sources */,
 				890077412119A4E400B6C1C5 /* UBCVerifyEmailController.m in Sources */,
 				898751B320EE2C4100E2B615 /* UBCLoginController.m in Sources */,
+				897FB0B121218FDE0060DED6 /* UBCChatController.m in Sources */,
 				8987517720EE119F00E2B615 /* UBTableHeaderView.m in Sources */,
 				8987517A20EE119F00E2B615 /* HUBTextView.m in Sources */,
 				8987518820EE119F00E2B615 /* UBAlertWindow.m in Sources */,

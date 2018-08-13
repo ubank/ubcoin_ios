@@ -91,4 +91,10 @@
     return [NSURL URLWithString:url];
 }
 
++ (NSURL *)chatURLForItemID:(NSString *)itemID
+{
+    NSString* url = [SERVER_URL stringByAppendingFormat:@"users/tg?itemId=%@", itemID];
+    return [NSURL URLWithString:url];
+}
+
 @end

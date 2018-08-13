@@ -8,8 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@class UBCGoodDM;
+@protocol UBCDealsViewDelegate <NSObject>
+
+- (void)openChatForItem:(UBCGoodDM *)item;
+
+@end
+
 @interface UBCBaseDealsView : UIView <UBDefaultTableViewDelegate>
 
+@property (weak, nonatomic) id<UBCDealsViewDelegate> delegate;
 @property (strong, nonatomic) UBDefaultTableView *tableView;
 @property (strong, nonatomic) NSMutableArray *items;
 @property (assign, nonatomic) NSUInteger pageNumber;

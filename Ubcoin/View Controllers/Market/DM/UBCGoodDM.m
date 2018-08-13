@@ -23,7 +23,7 @@
         _desc = dict[@"description"];
         _locationText = [dict valueForKeyPath:@"location.text"];
         _price = dict[@"price"];
-        _isFavorite = dict[@"is_favorite"];
+        _isFavorite = [dict[@"favorite"] boolValue];
         _creationDate = [NSDate dateFromISO8601String:dict[@"createdDate"]];
         _images = dict[@"images"];
         _seller = [[UBCSellerDM alloc] initWithDictionary:dict[@"user"]];
@@ -46,7 +46,7 @@
     }
     else
     {
-        [UBAlert showAlertWithTitle:nil andMessage:@"You need to be logged in"];
+        [UBAlert showAlertWithTitle:nil andMessage:@"str_you_need_to_be_logged_in"];
     }
 }
 

@@ -102,4 +102,6 @@
 "str_location_up" = "LOCATION";
 "str_seller_up" = "SELLER";
 "str_connect_to_seller" = "Connect to seller";
+"str_chat" = "Chat";
+"str_you_need_to_be_logged_in" = "You need to be logged in";
 

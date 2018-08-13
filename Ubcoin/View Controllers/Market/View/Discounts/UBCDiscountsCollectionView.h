@@ -11,7 +11,7 @@
 
 #define DISCOUNTS_HEIGHT 190
 
-@protocol UBCDiscountsCollectionViewDelegate
+@protocol UBCDiscountsCollectionViewDelegate <NSObject>
 
 - (void)showDiscountInfo:(UBCDiscountDM *)discount;
 

@@ -16,22 +16,14 @@
     if (self)
     {
         _ID = dict[@"id"];
-        _title = dict[@"title"];
-        _desc = dict[@"description"];
-        _iconURL = dict[@"image_url"];
+        _item = [[UBCGoodDM alloc] initWithDictionary:dict[@"item"]];
     }
     return self;
 }
 
 - (UBTableViewRowData *)rowData
 {
-    UBTableViewRowData *data = UBTableViewRowData.new;
-    data.data = self;
-    data.title = self.title;
-    data.desc = self.desc;
-    data.iconURL = self.iconURL;
-    data.height = 95;
-    return data;
+    return self.item.rowData;
 }
 
 @end

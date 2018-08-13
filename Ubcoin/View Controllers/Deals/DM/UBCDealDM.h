@@ -7,13 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "UBCGoodDM.h"
 
 @interface UBCDealDM : NSObject
 
 @property (readonly, nonatomic) NSString *ID;
-@property (readonly, nonatomic) NSString *title;
-@property (readonly, nonatomic) NSString *desc;
-@property (readonly, nonatomic) NSString *iconURL;
+@property (readonly, nonatomic) UBCGoodDM *item;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
 - (UBTableViewRowData *)rowData;
