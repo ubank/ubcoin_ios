@@ -47,10 +47,10 @@
                     </connections>
                 </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DEu-46-x8A">
-                    <rect key="frame" x="15" y="190" width="247.5" height="40"/>
+                    <rect key="frame" x="15" y="190" width="242.5" height="40"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="str_didnt_get_email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Et3-pv-YHp" customClass="HUBLabel">
-                            <rect key="frame" x="5" y="0.0" width="145.5" height="40"/>
+                            <rect key="frame" x="0.0" y="0.0" width="145.5" height="40"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -61,7 +61,7 @@
                             </userDefinedRuntimeAttributes>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CNB-jL-daV" customClass="HUBGeneralButton">
-                            <rect key="frame" x="155.5" y="0.0" width="87" height="40"/>
+                            <rect key="frame" x="150.5" y="0.0" width="87" height="40"/>
                             <state key="normal" title="str_resend_it"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="type">
@@ -80,7 +80,7 @@
                         <constraint firstItem="Et3-pv-YHp" firstAttribute="top" secondItem="DEu-46-x8A" secondAttribute="top" id="Te4-sT-Snw"/>
                         <constraint firstItem="CNB-jL-daV" firstAttribute="leading" secondItem="Et3-pv-YHp" secondAttribute="trailing" constant="5" id="Ufo-KG-Dtb"/>
                         <constraint firstAttribute="trailing" secondItem="CNB-jL-daV" secondAttribute="trailing" constant="5" id="VsS-vQ-aZu"/>
-                        <constraint firstItem="Et3-pv-YHp" firstAttribute="leading" secondItem="DEu-46-x8A" secondAttribute="leading" constant="5" id="Z08-FY-5ph"/>
+                        <constraint firstItem="Et3-pv-YHp" firstAttribute="leading" secondItem="DEu-46-x8A" secondAttribute="leading" id="Z08-FY-5ph"/>
                         <constraint firstItem="CNB-jL-daV" firstAttribute="top" secondItem="DEu-46-x8A" secondAttribute="top" id="Zbq-TY-b2r"/>
                         <constraint firstAttribute="height" constant="40" id="dhF-bR-0h7"/>
                     </constraints>

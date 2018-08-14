@@ -145,16 +145,33 @@
      }];
 }
 
-- (void)verifyEmailWithCode:(NSString *)code withCompletionBlock:(void (^)(BOOL))completionBlock
+- (void)verifyEmail:(NSString *)email withCode:(NSString *)code withCompletionBlock:(void (^)(BOOL))completionBlock
 {
-    
+    NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider verificationCheck]
+                                                                andParams:@{@"code": code,
+                                                                            @"email": email,
+                                                                            @"type": @"REGISTRATION"}];
+    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (success)
+         {
+             responseObject = [responseObject removeNulls];
+             UBCKeyChain.authorization = responseObject[@"accessToken"];
+             [UBCUserDM saveUserDict:responseObject[@"user"]];
+         }
+         
+         if (completionBlock)
+         {
+             completionBlock(success);
+         }
+     }];
 }
 
 - (void)sendVerificationCodeToEmail:(NSString *)email withCompletionBlock:(void (^)(BOOL))completionBlock
 {
     NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider verification]
                                                                 andParams:@{@"email": email,
-                                                                            @"type": @"PASSWORD",}];
+                                                                            @"type": @"PASSWORD"}];
     [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
      {
          if (completionBlock)

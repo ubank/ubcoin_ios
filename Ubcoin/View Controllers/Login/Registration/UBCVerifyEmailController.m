@@ -67,17 +67,15 @@
 {
     [self startActivityIndicator];
     __weak typeof(self) weakSelf = self;
-    [UBCDataProvider.sharedProvider verifyEmailWithCode:self.code.text
-                                    withCompletionBlock:^(BOOL success)
+    [UBCDataProvider.sharedProvider verifyEmail:self.fields[@"email"]
+                                       withCode:self.code.text
+                            withCompletionBlock:^(BOOL success)
      {
+         [weakSelf stopActivityIndicator];
          if (success)
          {
-             [weakSelf stopActivityIndicator];
-             if (success)
-             {
-                 [mainAppDelegate setupStack];
-                 [UBCSuccessRegistrationView show];
-             }
+             [mainAppDelegate setupStack];
+             [UBCSuccessRegistrationView show];
          }
      }];
 }

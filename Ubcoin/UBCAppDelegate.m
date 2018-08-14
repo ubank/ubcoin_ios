@@ -8,6 +8,7 @@
 
 #import "UBCAppDelegate.h"
 #import "UBCTabBarController.h"
+#import "UBCKeyChain.h"
 
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
@@ -25,6 +26,8 @@
 {
     [Fabric with:@[[Crashlytics class]]];
 
+    [UBCKeyChain checkForReset];
+    
     [self setupColors];
     [self setupFonts];
     

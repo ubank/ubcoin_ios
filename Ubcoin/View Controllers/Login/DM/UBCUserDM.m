@@ -29,6 +29,7 @@
     data.data = self;
     data.title = self.name;
     data.iconURL = self.avatarURL;
+    data.icon = [UIImage imageNamed:@"def_prof"];
     data.height = 80;
     return data;
 }

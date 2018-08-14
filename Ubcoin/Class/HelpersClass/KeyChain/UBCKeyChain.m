@@ -10,6 +10,7 @@
 
 @implementation UBCKeyChain
 
+#define CHECK_KEY @"is not first entry"
 #define kPathAuthorization [BUNDLE_ID stringByAppendingString:@"ubcoin.credential.authorization"]
 
 #pragma mark - Inner Methods
@@ -109,6 +110,18 @@
 + (void)removeAuthorization
 {
     [self deleteStringForKey:kPathAuthorization];
+}
+
+#pragma mark -
+
++ (void)checkForReset
+{
+    NSNumber *key = [[NSUserDefaults standardUserDefaults] objectForKey:CHECK_KEY];
+    if (!key)
+    {
+        [UBCKeyChain removeAuthorization];
+        [[NSUserDefaults standardUserDefaults] setObject:@1 forKey:CHECK_KEY];
+    }
 }
 
 @end

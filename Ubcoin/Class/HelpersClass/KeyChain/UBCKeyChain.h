@@ -13,5 +13,6 @@
 @property (class, strong, nonatomic) NSString *authorization;
 
 + (void)removeAuthorization;
++ (void)checkForReset;
 
 @end
