@@ -140,10 +140,9 @@
 
 - (void)rightBarButtonClick:(id)sender
 {
-    NSString *imageURL = self.good.images.firstObject;
-    if (imageURL)
+    if (self.good.shareURL.isNotEmpty)
     {
-        [self shareActivityItems:@[imageURL] withSubject:@"" withSender:sender withCompletionBlock:nil];
+        [self shareActivityItems:@[self.good.shareURL] withSubject:@"" withSender:sender withCompletionBlock:nil];
     }
 }
 
@@ -189,7 +188,7 @@
     UBCPhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(UBCPhotoCollectionViewCell.class) forIndexPath:indexPath];
     
     NSString *imageURL = self.good.images[indexPath.row];
-    [cell loadImageToFillWithURL:imageURL withDefaultImage:nil forImageView:cell.icon];
+    [cell loadImageToFillWithURL:imageURL withDefaultImage:[UIImage imageNamed:@"item_default_image"] forImageView:cell.icon];
     
     return cell;
 }

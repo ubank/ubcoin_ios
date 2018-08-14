@@ -56,7 +56,7 @@
     self.desc.text = content.desc;
     self.favoriteButton.image = [UIImage imageNamed:[NSString stringWithFormat:@"icFav%@", self.content.isFavorite ? @"B" : @"A"]];
     NSString *imageURL = [content.images firstObject];
-    [self loadImageToFillWithURL:imageURL withDefaultImage:nil forImageView:self.icon];
+    [self loadImageToFillWithURL:imageURL withDefaultImage:[UIImage imageNamed:@"item_default_image"] forImageView:self.icon];
     [self.stars showStars:content.seller.rating.unsignedIntegerValue];
     [self.photoCount setupWithImage:[UIImage imageNamed:@"market_photo"]
                             andText:[NSString stringWithFormat:@"1/%d", (int)content.images.count]];

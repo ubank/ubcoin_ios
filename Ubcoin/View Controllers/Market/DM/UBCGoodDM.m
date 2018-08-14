@@ -21,11 +21,13 @@
         _ID = dict[@"id"];
         _title = dict[@"title"];
         _desc = dict[@"description"];
-        _locationText = [dict valueForKeyPath:@"location.text"];
         _price = dict[@"price"];
+        _shareURL = dict[@"shareUrl"];
         _isFavorite = [dict[@"favorite"] boolValue];
         _creationDate = [NSDate dateFromISO8601String:dict[@"createdDate"]];
         _images = dict[@"images"];
+        NSDictionary *locationDict = dict[@"location"];
+        _location = CLLocationCoordinate2DMake([locationDict[@"latPoint"] doubleValue], [locationDict[@"longPoint"] doubleValue]);
         _seller = [[UBCSellerDM alloc] initWithDictionary:dict[@"user"]];
         _category = [[UBCCategoryDM alloc] initWithDictionary:dict[@"category"]];
         
@@ -58,6 +60,7 @@
     data.title = self.title;
     data.desc = self.desc;
     data.iconURL = [self.images firstObject];
+    data.icon = [UIImage imageNamed:@"item_default_image"];
     data.height = 95;
     return data;
 }
