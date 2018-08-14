@@ -8,7 +8,7 @@
 
 @interface UBLocationManager : NSObject
 
-typedef void(^locationBlock)(BOOL);
+typedef void(^locationBlock)(BOOL success);
 
 @property (readonly, nonatomic) CLLocationCoordinate2D myLocationCoordinate;
 @property (readonly, nonatomic) CLLocation *lastLocation;

@@ -209,15 +209,15 @@ static UBLocationManager * location = nil;
     }
     else if (distance >= 1000 && distance < 10000)
     {
-        distString = [NSString stringWithFormat:@"%.1f км", distance / 1000];
+        distString = [NSString stringWithFormat:@"%.1f km", distance / 1000];
     }
     else if (distance >= 10000)
     {
-        distString = [NSString stringWithFormat:@"%d км", (int)((distance) / 1000)];
+        distString = [NSString stringWithFormat:@"%d km", (int)((distance) / 1000)];
     }
     else
     {
-        distString = [NSString stringWithFormat:@"%d м", (int)distance];
+        distString = [NSString stringWithFormat:@"%d m", (int)distance];
     }
     
     return distString;

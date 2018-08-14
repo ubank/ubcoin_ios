@@ -26,14 +26,25 @@
         _isFavorite = [dict[@"favorite"] boolValue];
         _creationDate = [NSDate dateFromISO8601String:dict[@"createdDate"]];
         _images = dict[@"images"];
-        NSDictionary *locationDict = dict[@"location"];
-        _location = CLLocationCoordinate2DMake([locationDict[@"latPoint"] doubleValue], [locationDict[@"longPoint"] doubleValue]);
+        [self setupLocationWithDictionary:dict[@"location"]];
+        
         _seller = [[UBCSellerDM alloc] initWithDictionary:dict[@"user"]];
         _category = [[UBCCategoryDM alloc] initWithDictionary:dict[@"category"]];
         
         _dict = dict;
     }
     return self;
+}
+
+- (void)setupLocationWithDictionary:(NSDictionary *)dict
+{
+    NSNumber *lat = dict[@"latPoint"];
+    NSNumber *lon = dict[@"longPoint"];
+    if (lat && lon)
+    {
+        _location = [[CLLocation alloc] initWithLatitude:lat.doubleValue
+                                               longitude:lon.doubleValue];
+    }
 }
 
 - (void)toggleFavorite

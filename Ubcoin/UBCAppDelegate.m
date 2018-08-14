@@ -12,6 +12,7 @@
 
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
+#import <GoogleMaps/GoogleMaps.h>
 
 @interface UBCAppDelegate ()
 
@@ -27,6 +28,8 @@
     [Fabric with:@[[Crashlytics class]]];
 
     [UBCKeyChain checkForReset];
+    
+    [GMSServices provideAPIKey:@"AIzaSyA40IZr9VvgqJ_msVgyzWQ20P9MuGOeBBI"];
     
     [self setupColors];
     [self setupFonts];

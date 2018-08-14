@@ -16,6 +16,7 @@
 #import "UBCGoodDM.h"
 #import "UBCKeyChain.h"
 #import "UBCStarsView.h"
+#import "UBCMapView.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 #import "Ubcoin-Swift.h"
@@ -36,6 +37,8 @@
 @property (weak, nonatomic) IBOutlet HUBLabel *sellerName;
 @property (weak, nonatomic) IBOutlet UBCStarsView *sellerRating;
 @property (weak, nonatomic) IBOutlet HUBLabel *sellerDesc;
+@property (weak, nonatomic) IBOutlet UBCMapView *mapView;
+@property (weak, nonatomic) IBOutlet UIView *locationView;
 
 @property (strong, nonatomic) HUBNavigationBarView *navBarView;
 
@@ -62,6 +65,10 @@
     [self setupViews];
     [self setupNavBar];
     [self setupContent];
+    
+    [UBLocationManager.sharedLocation trackMyLocationOnce:^(BOOL success) {
+        
+    }];
 }    
 
 - (void)viewDidLayoutSubviews
@@ -117,6 +124,9 @@
     self.category.text = self.good.category.name;
     self.desc.text = self.good.desc;
     self.price.text = [NSString stringWithFormat:@"%@ UBC", self.good.price.priceStringWithoutCoins];
+    
+    self.locationView.hidden = !self.good.location;
+    self.mapView.location = self.good.location;
     
     self.favoriteButton.image = [UIImage imageNamed:[NSString stringWithFormat:@"icFav%@", self.good.isFavorite ? @"B" : @"A"]];
     [self.photoCount setupWithImage:[UIImage imageNamed:@"market_photo"]
