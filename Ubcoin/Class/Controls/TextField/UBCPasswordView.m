@@ -34,6 +34,7 @@
     self.scoring = DBZxcvbn.new;
     self.info.font = [UIFont systemFontOfSize:15 weight:UIFontWeightRegular];
     self.field.line.hidden = YES;
+    self.field.returnKeyType = UIReturnKeyDone;
     
     UIView *separator = UIView.new;
     separator.backgroundColor = UBColor.separatorColor;

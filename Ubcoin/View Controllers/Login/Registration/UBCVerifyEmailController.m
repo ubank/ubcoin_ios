@@ -51,7 +51,7 @@
     {
         NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:UBLocalizedString(@"str_we_sent_verification_letter", nil)];
         [text appendAttributedString:[[NSAttributedString alloc] initWithString:email attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13 weight:UIFontWeightSemibold]}]];
-        [text appendAttributedString:[[NSAttributedString alloc] initWithString:UBLocalizedString(@"str_click_link_to_get_started", nil)]];
+        [text appendAttributedString:[[NSAttributedString alloc] initWithString:UBLocalizedString(@"str_enter_code_to_confirm_your_email", nil)]];
         self.info.attributedText = text;
     }
 }
@@ -76,6 +76,10 @@
          {
              [mainAppDelegate setupStack];
              [UBCSuccessRegistrationView show];
+         }
+         else
+         {
+             [UBCToast showErrorToastWithMessage:@"str_wrong_code"];
          }
      }];
 }

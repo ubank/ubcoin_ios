@@ -73,6 +73,7 @@
 "str_forgot_password?" = "Forgot password?";
 "str_incorrect_data" = "Incorrect Data";
 "str_incorrect_email_password" = "Incorrect Email or Password";
+"str_wrong_code" = "Wrong code";
 "str_already_have_account" = "Already have an account?";
 "str_wrong_email" = "Wrong email";
 "str_email_successfully_sent" = "An email with your new password has been successfully sent";

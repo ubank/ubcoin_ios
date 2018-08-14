@@ -151,7 +151,7 @@
                                                                 andParams:@{@"code": code,
                                                                             @"email": email,
                                                                             @"type": @"REGISTRATION"}];
-    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+    [self.connection sendRequest:request isBackground:YES withCompletionBlock:^(BOOL success, id responseObject)
      {
          if (success)
          {

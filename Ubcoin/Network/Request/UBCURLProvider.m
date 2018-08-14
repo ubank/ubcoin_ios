@@ -51,7 +51,7 @@
 
 + (NSURL *)verificationCheck
 {
-    NSString* url = [SERVER_URL stringByAppendingFormat:@"verification/checkß"];
+    NSString* url = [SERVER_URL stringByAppendingFormat:@"verification/check"];
     return [NSURL URLWithString:url];
 }
 
