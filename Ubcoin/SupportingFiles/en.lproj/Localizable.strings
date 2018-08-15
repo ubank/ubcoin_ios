@@ -66,6 +66,11 @@
 "str_name" = "Name";
 "str_email" = "Email";
 "str_password" = "Password";
+"str_new_password" = "New password";
+"str_confirmation_code" = "Confirmation code";
+"str_country" = "Country";
+"str_language" = "Language";
+"str_common" = "Common";
 "str_weak" = "Weak";
 "str_normal" = "Normal";
 "str_strong" = "Strong";
@@ -98,15 +103,11 @@
 "str_items_to_buy_will_be_here" = "Items you are going to buy will be here";
 "str_items_to_sell_will_be_here" = "Items you are going to sell will be here";
 "str_confirm" = "Confirm";
-"str_confirmation_code" = "Confirmation code";
-"str_new_password" = "New password";
 "str_location_up" = "LOCATION";
 "str_seller_up" = "SELLER";
 "str_connect_to_seller" = "Connect to seller";
 "str_chat" = "Chat";
 "str_you_need_to_be_logged_in" = "You need to be logged in";
 "str_account_settings" = "Account settings";
-"str_name" = "Name";
-"str_country" = "Country";
-"str_language" = "Language";
+"str_my_reviews" = "My reviews";
 

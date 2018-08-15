@@ -16,8 +16,8 @@
     
     self.background.backgroundColor = UIColor.clearColor;
     
-    self.title.textColor = UBColor.titleColor;
-    self.title.font = UBFont.titleFont;
+    self.title.textColor = UBColor.descColor;
+    self.title.font = UBFont.descFont;
 }
 
 @end

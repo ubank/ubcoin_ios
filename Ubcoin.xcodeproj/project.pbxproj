@@ -74,6 +74,7 @@
 		8979E81D21146DCB004B2473 /* HUBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8979E81C21146DCA004B2473 /* HUBHelper.swift */; };
 		897FB0B121218FDE0060DED6 /* UBCChatController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897FB0B021218FDE0060DED6 /* UBCChatController.m */; };
 		897FB0B52123096B0060DED6 /* UBCMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 897FB0B42123096B0060DED6 /* UBCMapView.m */; };
+		897FB0BC21246C640060DED6 /* UBCAccountSettingsDM.m in Sources */ = {isa = PBXBuildFile; fileRef = 897FB0BB21246C640060DED6 /* UBCAccountSettingsDM.m */; };
 		8980F22A20F3FB800066CF99 /* UBCStarsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980F22920F3FB800066CF99 /* UBCStarsView.m */; };
 		8980F23620F481BA0066CF99 /* UBCInfoLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980F23520F481BA0066CF99 /* UBCInfoLabel.m */; };
 		8980F23B20F486990066CF99 /* UBCGoodDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980F23920F486990066CF99 /* UBCGoodDetailsController.m */; };
@@ -236,6 +237,8 @@
 		897FB0B021218FDE0060DED6 /* UBCChatController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCChatController.m; sourceTree = "<group>"; };
 		897FB0B32123096B0060DED6 /* UBCMapView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCMapView.h; sourceTree = "<group>"; };
 		897FB0B42123096B0060DED6 /* UBCMapView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCMapView.m; sourceTree = "<group>"; };
+		897FB0BA21246C640060DED6 /* UBCAccountSettingsDM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCAccountSettingsDM.h; sourceTree = "<group>"; };
+		897FB0BB21246C640060DED6 /* UBCAccountSettingsDM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCAccountSettingsDM.m; sourceTree = "<group>"; };
 		8980F22820F3FB800066CF99 /* UBCStarsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCStarsView.h; sourceTree = "<group>"; };
 		8980F22920F3FB800066CF99 /* UBCStarsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCStarsView.m; sourceTree = "<group>"; };
 		8980F23420F481BA0066CF99 /* UBCInfoLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCInfoLabel.h; sourceTree = "<group>"; };
@@ -432,6 +435,7 @@
 		89007743211AFE1800B6C1C5 /* Account Settings */ = {
 			isa = PBXGroup;
 			children = (
+				897FB0B9212454140060DED6 /* DM */,
 				89007745211AFE4E00B6C1C5 /* UBCAccountSettingsController.h */,
 				89007746211AFE4E00B6C1C5 /* UBCAccountSettingsController.m */,
 				89007748211AFEBB00B6C1C5 /* UBCAccountSettingsController.xib */,
@@ -630,6 +634,15 @@
 				897FB0B42123096B0060DED6 /* UBCMapView.m */,
 			);
 			path = "Map View";
+			sourceTree = "<group>";
+		};
+		897FB0B9212454140060DED6 /* DM */ = {
+			isa = PBXGroup;
+			children = (
+				897FB0BA21246C640060DED6 /* UBCAccountSettingsDM.h */,
+				897FB0BB21246C640060DED6 /* UBCAccountSettingsDM.m */,
+			);
+			path = DM;
 			sourceTree = "<group>";
 		};
 		8980F22720F3FB4B0066CF99 /* Stars view */ = {
@@ -1387,6 +1400,7 @@
 				89F16A6C20F2C65D001AA440 /* UBCSellerDM.m in Sources */,
 				8987517B20EE119F00E2B615 /* HUBGeneralButton.m in Sources */,
 				8987518920EE119F00E2B615 /* HUBEmptyView.m in Sources */,
+				897FB0BC21246C640060DED6 /* UBCAccountSettingsDM.m in Sources */,
 				8987518020EE119F00E2B615 /* HUBLabel.m in Sources */,
 				898751CB20EE6AEA00E2B615 /* UBCURLProvider.m in Sources */,
 				89007756211B5B8600B6C1C5 /* UBCDealDM.m in Sources */,
