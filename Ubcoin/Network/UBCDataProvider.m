@@ -14,6 +14,7 @@
 #import "UBCGoodDM.h"
 #import "UBCDealDM.h"
 #import "UBCUserDM.h"
+#import "UBCBalanceDM.h"
 #import "UBCDiscountDM.h"
 #import "UBCCategoryDM.h"
 #import "UBCKeyChain.h"
@@ -376,6 +377,25 @@
          if (completionBlock)
          {
              completionBlock(success, [NSURL URLWithString:responseObject[@"url"]]);
+         }
+     }];
+}
+
+#pragma mark - BALANCE
+
+- (void)updateBalanceWithCompletionBlock:(void (^)(BOOL))completionBlock
+{
+    NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:[UBCURLProvider userBalance]];
+    [self.connection sendRequest:request isBackground:YES withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (success)
+         {
+             [UBCBalanceDM saveBalanceDict:responseObject];
+         }
+         
+         if (completionBlock)
+         {
+             completionBlock(success);
          }
      }];
 }

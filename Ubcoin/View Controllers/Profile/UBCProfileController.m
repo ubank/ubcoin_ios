@@ -10,6 +10,7 @@
 #import "UBCBalanceController.h"
 #import "UBCAccountSettingsController.h"
 #import "UBCUserDM.h"
+#import "UBCBalanceDM.h"
 
 #define PROFILE_ACTIVITY @"profile"
 #define BALANCE_ACTIVITY @"balance"
@@ -36,6 +37,7 @@
     [super viewWillAppear:animated];
     
     [self setupData];
+    [self updateInfo];
 }
 
 - (void)setupTableView
@@ -62,14 +64,27 @@
     UBTableViewSectionData *balanceSection = UBTableViewSectionData.new;
     balanceSection.headerHeight = SEPARATOR_HEIGHT;
     
+    UBCBalanceDM *balance = [UBCBalanceDM loadBalance];
     UBTableViewRowData *data2 = UBTableViewRowData.new;
     data2.title = UBLocalizedString(@"str_my_balance", nil);
     data2.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     data2.name = BALANCE_ACTIVITY;
+    data2.rightTitle = [NSString stringWithFormat:@"%@ UBC", balance.amountUBC];
     balanceSection.rows = @[data2];
     [sections addObject:balanceSection];
     
     [self.tableView updateWithSectionsData:sections];
+}
+
+- (void)updateInfo
+{
+    __weak typeof(self) weakSelf = self;
+    [UBCDataProvider.sharedProvider updateBalanceWithCompletionBlock:^(BOOL success) {
+        if (success)
+        {
+            [weakSelf setupData];
+        }
+    }];
 }
 
 #pragma mark - UBDefaultTableViewDelegate

@@ -36,4 +36,6 @@
 
 - (void)chatURLForItemID:(NSString *)itemID withCompletionBlock:(void (^)(BOOL success, NSURL *url))completionBlock;
 
+- (void)updateBalanceWithCompletionBlock:(void (^)(BOOL success))completionBlock;
+
 @end
