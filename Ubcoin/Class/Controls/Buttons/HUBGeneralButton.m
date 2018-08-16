@@ -115,6 +115,11 @@
             self.layer.borderWidth = 1;
             break;
             
+        case HUBGeneralButtonTypeWhiteWithRedTitle:
+            self.titleColor = [UIColor colorWithHexString:@"e93754"];
+            self.backgroundColor = UIColor.whiteColor;
+            break;
+            
         default:
             break;
     }

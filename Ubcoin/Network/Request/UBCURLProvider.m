@@ -61,6 +61,12 @@
     return [NSURL URLWithString:url];
 }
 
++ (NSURL *)updateUserInfo
+{
+    NSString* url = [SERVER_URL stringByAppendingFormat:@"users"];
+    return [NSURL URLWithString:url];
+}
+
 + (NSURL *)userBalance
 {
     NSString* url = [SERVER_URL stringByAppendingFormat:@"balance"];

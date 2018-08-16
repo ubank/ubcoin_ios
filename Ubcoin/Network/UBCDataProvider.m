@@ -214,15 +214,34 @@
 - (void)userInfoWithCompletionBlock:(void (^)(BOOL))completionBlock
 {
     NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:[UBCURLProvider user]];
+    [self.connection sendRequest:request isBackground:YES withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (success)
+         {
+             [UBCUserDM saveUserDict:[responseObject removeNulls]];
+         }
+         
+         if (completionBlock)
+         {
+             completionBlock(success);
+         }
+     }];
+}
+
+- (void)updateUserFields:(NSDictionary *)fields withCompletionBlock:(void (^)(BOOL))completionBlock
+{
+    NSMutableURLRequest *request = [UBCRequestProvider putRequestWithURL:[UBCURLProvider updateUserInfo]
+                                                               andParams:fields];
     [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
      {
          if (success)
          {
-             
+             [UBCUserDM updateUserDict:fields];
          }
-         else if (completionBlock)
+         
+         if (completionBlock)
          {
-             
+             completionBlock(success);
          }
      }];
 }

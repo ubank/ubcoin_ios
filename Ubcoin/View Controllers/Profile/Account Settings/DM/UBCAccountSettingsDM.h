@@ -15,6 +15,7 @@
 
 @interface UBCAccountSettingsDM : NSObject
 
-+ (NSArray <UBTableViewSectionData *> *)fields;
++ (NSArray<UBTableViewSectionData *> *)fields;
++ (NSArray<UBTableViewRowData *> *)currentLocalizations;
 
 @end

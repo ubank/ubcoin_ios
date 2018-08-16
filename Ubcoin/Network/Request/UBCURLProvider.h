@@ -20,6 +20,7 @@
 + (NSURL *)verificationCheck;
 
 + (NSURL *)user;
++ (NSURL *)updateUserInfo;
 + (NSURL *)userBalance;
 
 + (NSURL *)favoriteWithID:(NSString *)favoriteID;

@@ -67,6 +67,7 @@
 - (void)updateWithRowsData:(NSArray<UBTableViewRowData *> *)rows
 {
     UBTableViewSectionData *section = UBTableViewSectionData.new;
+    section.headerHeight = SEPARATOR_HEIGHT;
     section.rows = rows;
     [self updateWithSectionsData:@[section]];
 }

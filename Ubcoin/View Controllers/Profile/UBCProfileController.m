@@ -29,6 +29,12 @@
     self.title = @"str_profile";
     
     [self setupTableView];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
     [self setupData];
 }
 

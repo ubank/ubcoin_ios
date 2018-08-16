@@ -25,6 +25,7 @@
 - (void)logoutWithCompletionBlock:(void (^)(BOOL success))completionBlock;
 
 - (void)userInfoWithCompletionBlock:(void (^)(BOOL success))completionBlock;
+- (void)updateUserFields:(NSDictionary *)fields withCompletionBlock:(void (^)(BOOL success))completionBlock;
 - (void)userBalanceWithCompletionBlock:(void (^)(BOOL success))completionBlock;
 
 - (void)favoritesListWithPageNumber:(NSUInteger)page withCompletionBlock:(void (^)(BOOL success, NSArray *goods, BOOL canLoadMore))completionBlock;

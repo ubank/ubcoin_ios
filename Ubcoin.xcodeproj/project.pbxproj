@@ -47,6 +47,9 @@
 		89007760211C79F200B6C1C5 /* UBCToBuyDealsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8900775F211C79F200B6C1C5 /* UBCToBuyDealsView.m */; };
 		89007764211DAB0C00B6C1C5 /* UBCResetPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89007762211DAB0C00B6C1C5 /* UBCResetPasswordController.m */; };
 		89007765211DAB0C00B6C1C5 /* UBCResetPasswordController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89007763211DAB0C00B6C1C5 /* UBCResetPasswordController.xib */; };
+		8919AB4F2125B80700D1B59C /* UBCChangeLanguageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8919AB4E2125B80700D1B59C /* UBCChangeLanguageController.m */; };
+		8919AB532125BC4600D1B59C /* UBCChangeNameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8919AB512125BC4600D1B59C /* UBCChangeNameController.m */; };
+		8919AB542125BC4600D1B59C /* UBCChangeNameController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8919AB522125BC4600D1B59C /* UBCChangeNameController.xib */; };
 		89678D9E210CED2900EB715E /* UBCStartLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89678D9D210CED2900EB715E /* UBCStartLoginController.swift */; };
 		89678DA1210CF12600EB715E /* UBCSignUpController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89678DA0210CF12600EB715E /* UBCSignUpController.m */; };
 		89678DA5210CF75500EB715E /* UBCUserDM.m in Sources */ = {isa = PBXBuildFile; fileRef = 89678DA4210CF75500EB715E /* UBCUserDM.m */; };
@@ -193,6 +196,11 @@
 		89007761211DAB0C00B6C1C5 /* UBCResetPasswordController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCResetPasswordController.h; sourceTree = "<group>"; };
 		89007762211DAB0C00B6C1C5 /* UBCResetPasswordController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCResetPasswordController.m; sourceTree = "<group>"; };
 		89007763211DAB0C00B6C1C5 /* UBCResetPasswordController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCResetPasswordController.xib; sourceTree = "<group>"; };
+		8919AB4D2125B80700D1B59C /* UBCChangeLanguageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCChangeLanguageController.h; sourceTree = "<group>"; };
+		8919AB4E2125B80700D1B59C /* UBCChangeLanguageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCChangeLanguageController.m; sourceTree = "<group>"; };
+		8919AB502125BC4600D1B59C /* UBCChangeNameController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCChangeNameController.h; sourceTree = "<group>"; };
+		8919AB512125BC4600D1B59C /* UBCChangeNameController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCChangeNameController.m; sourceTree = "<group>"; };
+		8919AB522125BC4600D1B59C /* UBCChangeNameController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCChangeNameController.xib; sourceTree = "<group>"; };
 		89678D9D210CED2900EB715E /* UBCStartLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCStartLoginController.swift; sourceTree = "<group>"; };
 		89678D9F210CF12600EB715E /* UBCSignUpController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCSignUpController.h; sourceTree = "<group>"; };
 		89678DA0210CF12600EB715E /* UBCSignUpController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCSignUpController.m; sourceTree = "<group>"; };
@@ -435,6 +443,8 @@
 		89007743211AFE1800B6C1C5 /* Account Settings */ = {
 			isa = PBXGroup;
 			children = (
+				8919AB4C2125B7C800D1B59C /* Change language */,
+				8919AB4B2125B7BD00D1B59C /* Change name */,
 				897FB0B9212454140060DED6 /* DM */,
 				89007745211AFE4E00B6C1C5 /* UBCAccountSettingsController.h */,
 				89007746211AFE4E00B6C1C5 /* UBCAccountSettingsController.m */,
@@ -482,6 +492,25 @@
 				89007759211B688200B6C1C5 /* UBCDealCell.m */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		8919AB4B2125B7BD00D1B59C /* Change name */ = {
+			isa = PBXGroup;
+			children = (
+				8919AB502125BC4600D1B59C /* UBCChangeNameController.h */,
+				8919AB512125BC4600D1B59C /* UBCChangeNameController.m */,
+				8919AB522125BC4600D1B59C /* UBCChangeNameController.xib */,
+			);
+			path = "Change name";
+			sourceTree = "<group>";
+		};
+		8919AB4C2125B7C800D1B59C /* Change language */ = {
+			isa = PBXGroup;
+			children = (
+				8919AB4D2125B80700D1B59C /* UBCChangeLanguageController.h */,
+				8919AB4E2125B80700D1B59C /* UBCChangeLanguageController.m */,
+			);
+			path = "Change language";
 			sourceTree = "<group>";
 		};
 		89678DA2210CF73E00EB715E /* DM */ = {
@@ -1284,6 +1313,7 @@
 				8987518A20EE119F00E2B615 /* HUBEmptyView.xib in Resources */,
 				89678DB9211088C600EB715E /* UBCStartLoginController.xib in Resources */,
 				89678DBD21108B5600EB715E /* UBCSignUpController.xib in Resources */,
+				8919AB542125BC4600D1B59C /* UBCChangeNameController.xib in Resources */,
 				89CB110E20EFCDA500729C95 /* HUBCollectionViewWaitCell.xib in Resources */,
 				89007765211DAB0C00B6C1C5 /* UBCResetPasswordController.xib in Resources */,
 				8980F24220F4954C0066CF99 /* UBCPhotoCollectionViewCell.xib in Resources */,
@@ -1415,6 +1445,7 @@
 				8979E81221134EEB004B2473 /* UBCDealsController.m in Sources */,
 				1CEFAA4520F3FCBE005719B3 /* UBCSTextFieldTableViewCell.swift in Sources */,
 				89F16A6A20F2C65D001AA440 /* UBCFiltersListController.m in Sources */,
+				8919AB532125BC4600D1B59C /* UBCChangeNameController.m in Sources */,
 				89678DEA2112424E00EB715E /* DBMatcher.m in Sources */,
 				8900775A211B688200B6C1C5 /* UBCDealCell.m in Sources */,
 				1CFFFE6A20F0CD3F003B5AD9 /* UBCSellDM.swift in Sources */,
@@ -1441,6 +1472,7 @@
 				89F16A7520F2C65D001AA440 /* UBCMarketController.m in Sources */,
 				8987516C20EE119F00E2B615 /* HUBNavigationBarView.m in Sources */,
 				8979E81D21146DCB004B2473 /* HUBHelper.swift in Sources */,
+				8919AB4F2125B80700D1B59C /* UBCChangeLanguageController.m in Sources */,
 				89007747211AFE4E00B6C1C5 /* UBCAccountSettingsController.m in Sources */,
 				8987518F20EE119F00E2B615 /* UBLocationManager.m in Sources */,
 				1CFFFE6E20F0DD28003B5AD9 /* UBCSTextViewTableViewCell.swift in Sources */,

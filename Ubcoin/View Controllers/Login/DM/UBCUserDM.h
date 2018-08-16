@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "UBCSellerDM.h"
 
+#define NAME_KEY @"name"
+
 @interface UBCUserDM : UBCSellerDM
 
 @property (readonly, nonatomic) NSString *email;
@@ -16,6 +18,7 @@
 
 + (UBCUserDM *)loadProfile;
 + (void)saveUserDict:(NSDictionary *)dict;
++ (void)updateUserDict:(NSDictionary *)dict;
 + (void)clearUserData;
 
 - (UBTableViewRowData *)rowData;

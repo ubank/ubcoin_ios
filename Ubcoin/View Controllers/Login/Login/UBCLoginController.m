@@ -79,6 +79,7 @@
     self.passwordField.delegate = self;
     self.passwordField.placeholder = UBLocalizedString(@"str_password", nil);
     self.passwordField.secureTextEntry = YES;
+    self.passwordField.returnKeyType = UIReturnKeyDone;
     [self.view addSubview:self.passwordField];
     
     [self.passwordField setHeightConstraintWithValue:50];

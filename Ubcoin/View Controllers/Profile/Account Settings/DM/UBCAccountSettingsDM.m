@@ -34,18 +34,18 @@
         row2.disableHighlight = YES;
         [rows addObject:row2];
         
-        UBTableViewRowData *row3 = UBTableViewRowData.new;
-        row3.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        row3.title = UBLocalizedString(@"str_country", nil);
-        row3.name = CHANGE_COUNTRY_ACTION;
-        [rows addObject:row3];
-        
-        UBTableViewRowData *row4 = UBTableViewRowData.new;
-        row4.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        row4.title = UBLocalizedString(@"str_language", nil);
-        row4.rightTitle = [self currentLanguage];
-        row4.name = CHANGE_LANGUAGE_ACTION;
-        [rows addObject:row4];
+//        UBTableViewRowData *row3 = UBTableViewRowData.new;
+//        row3.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//        row3.title = UBLocalizedString(@"str_country", nil);
+//        row3.name = CHANGE_COUNTRY_ACTION;
+//        [rows addObject:row3];
+
+//        UBTableViewRowData *row4 = UBTableViewRowData.new;
+//        row4.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//        row4.title = UBLocalizedString(@"str_language", nil);
+//        row4.rightTitle = [self currentLanguage];
+//        row4.name = CHANGE_LANGUAGE_ACTION;
+//        [rows addObject:row4];
         
         UBTableViewRowData *row5 = UBTableViewRowData.new;
         row5.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -66,7 +66,7 @@
     return [[NSLocale currentLocale] displayNameForKey:NSLocaleIdentifier value:UBLocal.shared.language];
 }
 
-+ (NSArray *)currentLocalizations
++ (NSArray<UBTableViewRowData *> *)currentLocalizations
 {
     NSArray *languages = [[NSBundle mainBundle] localizations];
     
@@ -75,7 +75,9 @@
     {
         UBTableViewRowData *row = UBTableViewRowData.new;
         row.title = [[NSLocale currentLocale] displayNameForKey:NSLocaleIdentifier value:lang];
+        row.name = lang;
         row.isSelected = [lang isEqualToString:UBLocal.shared.language];
+        row.accessoryType = row.isSelected ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
         [rows addObject:row];
     }
     

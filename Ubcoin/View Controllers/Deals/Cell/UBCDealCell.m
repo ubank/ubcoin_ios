@@ -36,6 +36,7 @@
 {
     NSTextAttachment *tgIcon = NSTextAttachment.new;
     tgIcon.image = [UIImage imageNamed:@"icTg"];
+    tgIcon.bounds = CGRectMake(0, (UBFont.descFont.pointSize - tgIcon.image.size.height), tgIcon.image.size.width, tgIcon.image.size.height);
     
     NSMutableAttributedString *info = [NSMutableAttributedString.alloc initWithAttributedString:[NSAttributedString attributedStringWithAttachment:tgIcon]];
     

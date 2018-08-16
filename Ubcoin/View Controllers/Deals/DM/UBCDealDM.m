@@ -7,6 +7,7 @@
 //
 
 #import "UBCDealDM.h"
+#import "UBCDealCell.h"
 
 @implementation UBCDealDM
 
@@ -23,7 +24,9 @@
 
 - (UBTableViewRowData *)rowData
 {
-    return self.item.rowData;
+    UBTableViewRowData *data = self.item.rowData;
+    data.className = NSStringFromClass(UBCDealCell.class);
+    return data;
 }
 
 @end

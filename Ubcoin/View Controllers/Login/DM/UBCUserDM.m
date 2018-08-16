@@ -28,9 +28,9 @@
     data.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     data.data = self;
     data.title = self.name;
-    data.iconURL = self.avatarURL;
-    data.icon = [UIImage imageNamed:@"def_prof"];
-    data.height = 80;
+//    data.iconURL = self.avatarURL;
+//    data.icon = [UIImage imageNamed:@"def_prof"];
+//    data.height = 80;
     return data;
 }
 
@@ -46,6 +46,13 @@
     {
         [[NSUserDefaults standardUserDefaults] setObject:dict forKey:USER_KEY];
     }
+}
+
++ (void)updateUserDict:(NSDictionary *)dict
+{
+    NSMutableDictionary *userDict = [[[NSUserDefaults standardUserDefaults] objectForKey:USER_KEY] mutableCopy];
+    [userDict addEntriesFromDictionary:dict];
+    [UBCUserDM saveUserDict:userDict];
 }
 
 + (void)clearUserData

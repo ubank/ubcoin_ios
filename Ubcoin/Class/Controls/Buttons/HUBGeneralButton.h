@@ -13,7 +13,8 @@ typedef enum
     HUBGeneralButtonTypeGreen,
     HUBGeneralButtonTypeGreenTitle,
     HUBGeneralButtonTypeSemitransparent,
-    HUBGeneralButtonTypeWhiteWithBrownBorder
+    HUBGeneralButtonTypeWhiteWithBrownBorder,
+    HUBGeneralButtonTypeWhiteWithRedTitle
 } HUBGeneralButtonType;
 
 IB_DESIGNABLE

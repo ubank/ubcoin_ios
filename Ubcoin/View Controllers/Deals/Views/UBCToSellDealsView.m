@@ -39,8 +39,8 @@
 - (void)loadDeals
 {
     __weak typeof(self) weakSelf = self;
-    [UBCDataProvider.sharedProvider dealsToBuyListWithPageNumber:self.pageNumber
-                                             withCompletionBlock:^(BOOL success, NSArray *deals, BOOL canLoadMore)
+    [UBCDataProvider.sharedProvider dealsToSellListWithPageNumber:self.pageNumber
+                                              withCompletionBlock:^(BOOL success, NSArray *deals, BOOL canLoadMore)
      {
          if (success)
          {
