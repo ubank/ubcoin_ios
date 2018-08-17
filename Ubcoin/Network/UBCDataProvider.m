@@ -17,6 +17,7 @@
 #import "UBCBalanceDM.h"
 #import "UBCDiscountDM.h"
 #import "UBCCategoryDM.h"
+#import "UBCTransactionDM.h"
 #import "UBCKeyChain.h"
 
 #import "UBCFavouriteCell.h"
@@ -247,18 +248,31 @@
      }];
 }
 
-- (void)userBalanceWithCompletionBlock:(void (^)(BOOL))completionBlock
+#pragma mark - TRANSACTIONS
+
+- (void)transactionsListWithPageNumber:(NSUInteger)page withCompletionBlock:(void (^)(BOOL, NSArray *, BOOL))completionBlock
 {
-    NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:[UBCURLProvider userBalance]];
+    NSURL *url = [UBCURLProvider transactionsListWithPageNumber:page];
+    NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:url];
     [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
      {
          if (success)
          {
+             NSArray *items = [responseObject[@"data"] removeNulls];
+             items = [items map:^id(id item) {
+                 UBCTransactionDM *deal = [[UBCTransactionDM alloc] initWithDictionary:item];
+                 return deal.rowData;
+             }];
              
+             if (completionBlock)
+             {
+                 NSNumber *totalPages = [responseObject valueForKeyPath:@"pageData.totalPages"];
+                 completionBlock(YES, items, totalPages.integerValue > page);
+             }
          }
          else if (completionBlock)
          {
-             
+             completionBlock(NO, nil, YES);
          }
      }];
 }

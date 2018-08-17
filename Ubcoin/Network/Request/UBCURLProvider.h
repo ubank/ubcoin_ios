@@ -23,6 +23,8 @@
 + (NSURL *)updateUserInfo;
 + (NSURL *)userBalance;
 
++ (NSURL *)transactionsListWithPageNumber:(NSUInteger)page;
+
 + (NSURL *)favoriteWithID:(NSString *)favoriteID;
 + (NSURL *)favoritesListWithPageNumber:(NSUInteger)page;
 

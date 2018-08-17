@@ -65,6 +65,10 @@
             self.textColor = UBColor.titleColor;
             self.font = DEFAULT_HEADER_FONT;
             break;
+        case HUBLabelStyleBalance:
+            self.textColor = UBColor.titleColor;
+            self.font = [UIFont systemFontOfSize:28 weight:UIFontWeightMedium];
+            break;
     }
 }
 

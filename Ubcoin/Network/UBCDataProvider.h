@@ -26,7 +26,8 @@
 
 - (void)userInfoWithCompletionBlock:(void (^)(BOOL success))completionBlock;
 - (void)updateUserFields:(NSDictionary *)fields withCompletionBlock:(void (^)(BOOL success))completionBlock;
-- (void)userBalanceWithCompletionBlock:(void (^)(BOOL success))completionBlock;
+
+- (void)transactionsListWithPageNumber:(NSUInteger)page withCompletionBlock:(void (^)(BOOL success, NSArray *goods, BOOL canLoadMore))completionBlock;
 
 - (void)favoritesListWithPageNumber:(NSUInteger)page withCompletionBlock:(void (^)(BOOL success, NSArray *goods, BOOL canLoadMore))completionBlock;
 - (void)toggleFavoriteWithID:(NSString *)favoriteID isFavorite:(BOOL)isFavorite;

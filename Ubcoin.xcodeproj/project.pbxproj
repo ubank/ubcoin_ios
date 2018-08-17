@@ -130,6 +130,9 @@
 		899E217C20E68D8A004D891B /* UBCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 899E217B20E68D8A004D891B /* UBCAppDelegate.m */; };
 		89AE1A6E20F7B8F1000662E8 /* UBCFavouritesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89AE1A6D20F7B8F1000662E8 /* UBCFavouritesController.xib */; };
 		89AE1A7320F7FDF3000662E8 /* UBCFavouriteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89AE1A7120F7FDF3000662E8 /* UBCFavouriteCell.m */; };
+		89B08E282127505700D8B68D /* UBCTransactionDM.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B08E272127505700D8B68D /* UBCTransactionDM.m */; };
+		89B08E2C2127522500D8B68D /* UBCTransactionInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B08E2A2127522500D8B68D /* UBCTransactionInfoController.m */; };
+		89B08E2D2127522500D8B68D /* UBCTransactionInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89B08E2B2127522500D8B68D /* UBCTransactionInfoController.xib */; };
 		89CB110E20EFCDA500729C95 /* HUBCollectionViewWaitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89CB110C20EFCDA500729C95 /* HUBCollectionViewWaitCell.xib */; };
 		89CB110F20EFCDA500729C95 /* HUBCollectionViewWaitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CB110D20EFCDA500729C95 /* HUBCollectionViewWaitCell.m */; };
 		89F16A6A20F2C65D001AA440 /* UBCFiltersListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F16A4F20F2C65D001AA440 /* UBCFiltersListController.m */; };
@@ -344,6 +347,11 @@
 		89AE1A6D20F7B8F1000662E8 /* UBCFavouritesController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCFavouritesController.xib; sourceTree = "<group>"; };
 		89AE1A7020F7FDF3000662E8 /* UBCFavouriteCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCFavouriteCell.h; sourceTree = "<group>"; };
 		89AE1A7120F7FDF3000662E8 /* UBCFavouriteCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCFavouriteCell.m; sourceTree = "<group>"; };
+		89B08E262127505700D8B68D /* UBCTransactionDM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCTransactionDM.h; sourceTree = "<group>"; };
+		89B08E272127505700D8B68D /* UBCTransactionDM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCTransactionDM.m; sourceTree = "<group>"; };
+		89B08E292127522500D8B68D /* UBCTransactionInfoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCTransactionInfoController.h; sourceTree = "<group>"; };
+		89B08E2A2127522500D8B68D /* UBCTransactionInfoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCTransactionInfoController.m; sourceTree = "<group>"; };
+		89B08E2B2127522500D8B68D /* UBCTransactionInfoController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCTransactionInfoController.xib; sourceTree = "<group>"; };
 		89CB110B20EFCDA500729C95 /* HUBCollectionViewWaitCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUBCollectionViewWaitCell.h; sourceTree = "<group>"; };
 		89CB110C20EFCDA500729C95 /* HUBCollectionViewWaitCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HUBCollectionViewWaitCell.xib; sourceTree = "<group>"; };
 		89CB110D20EFCDA500729C95 /* HUBCollectionViewWaitCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUBCollectionViewWaitCell.m; sourceTree = "<group>"; };
@@ -458,6 +466,7 @@
 		89007744211AFE2600B6C1C5 /* Balance */ = {
 			isa = PBXGroup;
 			children = (
+				89B08E2121274F2D00D8B68D /* History */,
 				8919AB552125DCEE00D1B59C /* DM */,
 				8900774A211AFF1C00B6C1C5 /* UBCBalanceController.h */,
 				8900774B211AFF1C00B6C1C5 /* UBCBalanceController.m */,
@@ -1152,6 +1161,26 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		89B08E2121274F2D00D8B68D /* History */ = {
+			isa = PBXGroup;
+			children = (
+				89B08E2221274F3600D8B68D /* DM */,
+				89B08E292127522500D8B68D /* UBCTransactionInfoController.h */,
+				89B08E2A2127522500D8B68D /* UBCTransactionInfoController.m */,
+				89B08E2B2127522500D8B68D /* UBCTransactionInfoController.xib */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		89B08E2221274F3600D8B68D /* DM */ = {
+			isa = PBXGroup;
+			children = (
+				89B08E262127505700D8B68D /* UBCTransactionDM.h */,
+				89B08E272127505700D8B68D /* UBCTransactionDM.m */,
+			);
+			path = DM;
+			sourceTree = "<group>";
+		};
 		89F16A4D20F2C65D001AA440 /* Market */ = {
 			isa = PBXGroup;
 			children = (
@@ -1310,6 +1339,7 @@
 			files = (
 				8987518720EE119F00E2B615 /* UBAlertWindow.xib in Resources */,
 				89678DEE2112430300EB715E /* UBCPasswordView.xib in Resources */,
+				89B08E2D2127522500D8B68D /* UBCTransactionInfoController.xib in Resources */,
 				89678DBB21108A6C00EB715E /* UBCLoginController.xib in Resources */,
 				8980F23C20F486990066CF99 /* UBCGoodDetailsController.xib in Resources */,
 				89678DE72112424E00EB715E /* frequency_lists.json in Resources */,
@@ -1442,6 +1472,7 @@
 				8987517B20EE119F00E2B615 /* HUBGeneralButton.m in Sources */,
 				8987518920EE119F00E2B615 /* HUBEmptyView.m in Sources */,
 				897FB0BC21246C640060DED6 /* UBCAccountSettingsDM.m in Sources */,
+				89B08E2C2127522500D8B68D /* UBCTransactionInfoController.m in Sources */,
 				8987518020EE119F00E2B615 /* HUBLabel.m in Sources */,
 				898751CB20EE6AEA00E2B615 /* UBCURLProvider.m in Sources */,
 				89007756211B5B8600B6C1C5 /* UBCDealDM.m in Sources */,
@@ -1497,6 +1528,7 @@
 				8987517520EE119F00E2B615 /* UBExpandableTableViewSectionHeader.m in Sources */,
 				1C14F19F20F2655800B835AC /* UBCMapSelectController.swift in Sources */,
 				89678DA9210DE28600EB715E /* UBCToast.m in Sources */,
+				89B08E282127505700D8B68D /* UBCTransactionDM.m in Sources */,
 				8900774D211AFF1C00B6C1C5 /* UBCBalanceController.m in Sources */,
 				89678DC72110C5F700EB715E /* UBFloatingPlaceholderTextField.m in Sources */,
 				898751C820EE65C000E2B615 /* UBCKeyChain.m in Sources */,

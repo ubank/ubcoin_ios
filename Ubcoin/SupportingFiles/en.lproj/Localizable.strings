@@ -96,7 +96,6 @@
 "str_transaction_history" = "Transaction history";
 "str_transaction_history_desc" = "All of your transaction history will be shown here right after the first top up.";
 "str_holded_transactions" = "HOLDED TRANSACTIONS";
-"str_transaction_history" = "TRANSACTION HISTORY";
 "str_scan_qr-code" = "Scan QR-code or press to copy the address to top up your balance.";
 "str_how_to_get_tokens" = "How to get UBC tokens";
 

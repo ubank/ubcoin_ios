@@ -69,7 +69,7 @@
     data2.title = UBLocalizedString(@"str_my_balance", nil);
     data2.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     data2.name = BALANCE_ACTIVITY;
-    data2.rightTitle = [NSString stringWithFormat:@"%@ UBC", balance.amountUBC];
+    data2.rightTitle = [NSString stringWithFormat:@"%@ UBC", balance.amountUBC.priceString];
     balanceSection.rows = @[data2];
     [sections addObject:balanceSection];
     

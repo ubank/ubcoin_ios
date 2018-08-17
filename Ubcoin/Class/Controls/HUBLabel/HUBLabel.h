@@ -13,7 +13,8 @@ typedef enum
     HUBLabelStyleDefaultDescription,
     HUBLabelStylePromoTitle,
     HUBLabelStylePromoDescription,
-    HUBLabelStyleHeader
+    HUBLabelStyleHeader,
+    HUBLabelStyleBalance
 } HUBLabelStyle;
 
 IB_DESIGNABLE

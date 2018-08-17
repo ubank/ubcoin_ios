@@ -73,6 +73,12 @@
     return [NSURL URLWithString:url];
 }
 
++ (NSURL *)transactionsListWithPageNumber:(NSUInteger)page
+{
+    NSString* url = [SERVER_URL stringByAppendingFormat:@"wallet/transactions?page=%d&size=%d", (int)page, ITEMS_PAGE_SIZE];
+    return [NSURL URLWithString:url];
+}
+
 + (NSURL *)favoriteWithID:(NSString *)favoriteID
 {
     NSString* url = [SERVER_URL stringByAppendingFormat:@"favorites/%@", favoriteID];
