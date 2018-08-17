@@ -121,3 +121,7 @@
 "str_scan_qr-code" = "Scan QR-code or press to copy the address to top up your balance.";
 "str_how_to_get_tokens" = "How to get UBC tokens";
 
+"error_unauthorized" = "You should be authorized to use this functionality";
+"str_sell_success_title" = "Item successfully placed";
+"str_sell_success_desc" = "Your item placed on marketplace";
+"error_all_fields_empty" = "Some fields are empty";

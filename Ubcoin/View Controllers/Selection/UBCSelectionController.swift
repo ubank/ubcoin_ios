@@ -14,20 +14,16 @@ class UBCSelectionController: UBViewController {
     
     private var tableView: UBDefaultTableView!
     
-    private var content: [String]!
+    private var content: [UBCCategoryDM]!
     private var selected: Int?
     
-    init(title: String, content: [String], selected: Int?) {
-        super.init(nibName: nil, bundle: nil)
+    convenience init(title: String, content: [UBCCategoryDM], selected: Int?) {
+        self.init()
         
         self.title = title
         
         self.content = content
         self.selected = selected
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
@@ -50,13 +46,13 @@ class UBCSelectionController: UBViewController {
             let row = UBTableViewRowData()
             row.height = UBCConstant.cellHeight
             
-            var color = UBColor.titleColor
+            var color = UBCColor.main
             if let selected = self.selected, selected == i {
                 row.accessoryType = .checkmark
                 color = UBCColor.green
             }
             
-            row.attributedTitle = NSAttributedString(string: self.content[i], attributes: [.foregroundColor: color!])
+            row.attributedTitle = NSAttributedString(string: self.content[i].name, attributes: [.foregroundColor: color, .font: UBCFont.title])
             rows.append(row)
         }
         self.tableView.update(withRowsData: rows)

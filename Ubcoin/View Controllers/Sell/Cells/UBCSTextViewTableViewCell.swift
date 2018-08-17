@@ -35,7 +35,7 @@ class UBCSTextViewTableViewCell: UBTableViewCell {
         
         self.textView = UITextView()
         self.textView.delegate = self
-        self.textView.font = UBFont.titleFont
+        self.textView.font = UBCFont.title
         self.textView.isScrollEnabled = false
         self.textView.textContainer.lineFragmentPadding = 0
         self.textView.textContainerInset = .zero
@@ -54,6 +54,7 @@ extension UBCSTextViewTableViewCell: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         if let delegate = self.delegate, var content = self.content {
             content.data = textView.text
+            content.sendData = content.data
             delegate.updatedRow(content)
         }
         
@@ -79,9 +80,6 @@ extension UBCSTextViewTableViewCell: UBCSellCellProtocol {
     
     func setContent(content: UBCSellCellDM) {
         self.content = content
-        
-        if let text = content.data as? String {
-            self.textView.text = text
-        }
+        self.textView.text = content.data as? String
     }
 }

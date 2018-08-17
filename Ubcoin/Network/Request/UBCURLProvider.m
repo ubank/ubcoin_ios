@@ -103,4 +103,18 @@
     return [NSURL URLWithString:url];
 }
 
++ (NSURL *)uploadImage
+{
+    NSString *url = [SERVER_URL stringByAppendingString:@"images"];
+    
+    return [NSURL URLWithString:url];
+}
+
++ (NSURL *)sellItem
+{
+    NSString *url = [SERVER_URL stringByAppendingString:@"items"];
+    
+    return [NSURL URLWithString:url];
+}
+
 @end

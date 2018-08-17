@@ -31,4 +31,7 @@
 
 + (NSURL *)chatURLForItemID:(NSString *)itemID;
 
++ (NSURL *)uploadImage;
++ (NSURL *)sellItem;
+
 @end

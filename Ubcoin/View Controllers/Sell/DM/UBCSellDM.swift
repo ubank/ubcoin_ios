@@ -51,12 +51,10 @@ class UBCSellDM: NSObject {
     func setup(categories: [Any]?) {
         guard let categoriesArray = categories as? [UBCCategoryDM] else { return }
         
-        let array = categoriesArray.map( {$0.name} ) as! [String]
-        
         for section in sections {
             for i in 0..<section.rows.count {
                 if var row = section.rows[i] as? UBCSellCellDM, row.type == .category {
-                    row.selectContent = array
+                    row.selectContent = categoriesArray
                     section.rows[i] = row
                 }
             }
@@ -86,6 +84,8 @@ class UBCSellDM: NSObject {
                         row.data = data
                     }
                     
+                    row.sendData = ["https://my.ubcoin.io/api/images/8988a3ce-108f-4581-93dd-f33e4658b482.jpg"]
+                    
                     section.rows[i] = row
                 }
             }
@@ -95,13 +95,27 @@ class UBCSellDM: NSObject {
     func isAllParamsNotEmpty() -> Bool {
         for section in sections {
             for row in section.rows {
-                if let row = row as? UBCSellCellDM, row.data == nil {
+                if let row = row as? UBCSellCellDM, row.sendData == nil {
                     return false
                 }
             }
         }
         
         return true
+    }
+    
+    func allFilledParams() -> [String: Any] {
+        var dict = [String: Any]()
+        
+        for section in self.sections {
+            for row in section.rows {
+                if let row = row as? UBCSellCellDM, let data = row.sendData {
+                    dict[row.type.sendType] = data
+                }
+            }
+        }
+        
+        return dict
     }
 }
 
@@ -111,13 +125,14 @@ struct UBCSellCellDM {
     var className: String
     
     var data: Any?
+    var sendData: Any?
     var placeholder: String
-    var selectContent: [String]?
+    var selectContent: [UBCCategoryDM]?
     var fieldInfo: String?
     
     init(type: UBCSellCellType) {
         self.type = type
-        self.height = type == .photo ? 95 : UBCConstant.cellHeight
+        self.height = type == .photo ? 90 : UBCConstant.cellHeight
         
         self.className = type.className
         self.placeholder = type.placeholder
@@ -166,6 +181,24 @@ enum UBCSellCellType {
                 return "Title"
             } else {
                 return ""
+            }
+        }
+    }
+    
+    var sendType: String {
+        get {
+            if self == .photo {
+                return "images"
+            } else if self == .title {
+                return "title"
+            } else if self == .category {
+                return "categoryId"
+            } else if self == .price {
+                return "price"
+            } else if self == .desc {
+                return "description"
+            } else {
+                return "location"
             }
         }
     }

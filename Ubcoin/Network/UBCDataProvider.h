@@ -38,4 +38,7 @@
 
 - (void)updateBalanceWithCompletionBlock:(void (^)(BOOL success))completionBlock;
 
+- (void)uploadImage:(UIImage *)image withCompletionBlock:(void (^)(BOOL success))completionBlock;
+- (void)sellItem:(NSDictionary *)dictionary withCompletionBlock:(void (^)(BOOL success))completionBlock;
+
 @end

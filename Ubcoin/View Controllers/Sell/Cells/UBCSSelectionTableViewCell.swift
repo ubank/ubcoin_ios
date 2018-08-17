@@ -29,7 +29,7 @@ class UBCSSelectionTableViewCell: UBTableViewCell {
     
     private func setupViews() {
         self.title = UILabel()
-        self.title.font = UBFont.titleFont
+        self.title.font = UBCFont.title
         self.title.numberOfLines = 2
         self.contentView.addSubview(self.title)
         self.contentView.setLeadingConstraintToSubview(self.title, withValue: UBCConstant.inset)
@@ -44,10 +44,10 @@ extension UBCSSelectionTableViewCell: UBCSellCellProtocol {
     func setContent(content: UBCSellCellDM) {
         if let titleText = content.data as? String {
             self.title.text = titleText
-            self.title.textColor = UBColor.titleColor
+            self.title.textColor = UBCColor.main
         } else {
             self.title.text = content.placeholder
-            self.title.textColor = UBColor.titleColor.withAlphaComponent(0.5)
+            self.title.textColor = UBCColor.info
         }
     }
 }

@@ -120,6 +120,18 @@
                 completionBlock(YES, responseObject);
             }
         }
+        else if ([responseObject[@"status"] isEqual:@401])
+        {
+            if (showErrors)
+            {
+                [UBAlert showAlertWithTitle:@"ui_alert_title_attention" andMessage:@"error_unauthorized"];
+            }
+            
+            if (completionBlock)
+            {
+                completionBlock(NO, responseObject);
+            }
+        }
         else if (error.code != kCFURLErrorCancelled)
         {
             if (showErrors)

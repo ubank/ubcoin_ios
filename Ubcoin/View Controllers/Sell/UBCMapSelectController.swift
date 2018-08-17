@@ -12,7 +12,7 @@ import CoreLocation
 
 class UBCMapSelectController: UBViewController {
     
-    var completion: ((String) -> Void)?
+    var completion: ((String, CLLocation) -> Void)?
     
     private var mapView: MKMapView!
     
@@ -29,14 +29,10 @@ class UBCMapSelectController: UBViewController {
         return locationManager
     }()
     
-    init(title: String) {
-        super.init(nibName: nil, bundle: nil)
+    convenience init(title: String) {
+        self.init()
         
         self.title = title
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 
     override func viewDidLoad() {
@@ -101,8 +97,8 @@ class UBCMapSelectController: UBViewController {
     }
     
     override func rightBarButtonClick(_ sender: Any!) {
-        if let completion = self.completion, let location = self.locationString {
-            completion(location)
+        if let completion = self.completion, let location = self.locationString, let loc = self.currentLocation {
+            completion(location, loc)
         }
     }
 }

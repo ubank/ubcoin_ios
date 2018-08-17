@@ -25,6 +25,10 @@ class UBCSellController: UBViewController {
         tableView.separatorStyle = .none
         tableView.estimatedRowHeight = UBCConstant.cellHeight
         
+        tableView.emptyView.icon.image = UIImage(named: "empty_favorites")
+        tableView.emptyView.title.text = "str_sell_success_title".localizedString()
+        tableView.emptyView.desc.text = "str_sell_success_desc".localizedString()
+        
         tableView.register(UBCSPhotoTableViewCell.self, forCellReuseIdentifier: UBCSPhotoTableViewCell.className)
         tableView.register(UBCSTextViewTableViewCell.self, forCellReuseIdentifier: UBCSTextViewTableViewCell.className)
         tableView.register(UBCSSelectionTableViewCell.self, forCellReuseIdentifier: UBCSSelectionTableViewCell.className)
@@ -45,7 +49,7 @@ class UBCSellController: UBViewController {
     }
     
     override func updateInfo() {
-        UBCDataProvider.shared.categories { [weak self] (success, categories) in
+        UBCDataProvider.shared.categories { [weak self] success, categories in
             self?.stopActivityIndicator()
             
             self?.model.setup(categories: categories)
@@ -77,10 +81,28 @@ class UBCSellController: UBViewController {
     
     @objc private func buttonPressed() {
         if self.model.isAllParamsNotEmpty() {
-            UBAlert.show(withTitle: "Success", andMessage: nil)
+            UBCDataProvider.shared.sellItem(self.model.allFilledParams()) { [weak self] success in
+                if success {
+                    self?.tableView.emptyView.isHidden = false
+                    self?.buttonView.isHidden = true
+                    self?.navigationContainer.rightImageTitle = "general_close"
+                    self?.updateBarButtons()
+                    self?.model.sections = []
+                    self?.tableView.reloadData()
+                }
+            }
         } else {
-            UBAlert.show(withTitle: "Error", andMessage: "You have one or more empty fields")
+            UBAlert.show(withTitle: "ui_alert_title_attention", andMessage: "error_all_fields_empty")
         }
+    }
+    
+    override func rightBarButtonClick(_ sender: Any!) {
+        self.tableView.emptyView.isHidden = true
+        self.buttonView.isHidden = false
+        self.navigationContainer.rightImageTitle = nil
+        self.updateBarButtons()
+        self.model.sections = UBCSellDM.sellActions()
+        self.tableView.reloadData()
     }
 }
 
@@ -152,13 +174,19 @@ extension UBCSellController: UITableViewDataSource, UITableViewDelegate {
         
         if row.type == .category, let content = row.selectContent, content.count > 0 {
             var selected: Int?
-            if let selectedString = row.data as? String {
-                selected = content.index(of: selectedString)
+            if let selectedString = row.sendData as? String {
+                for i in 0..<content.count {
+                    if content[i].id == selectedString {
+                        selected = i
+                        break
+                    }
+                }
             }
             
             let controller = UBCSelectionController(title: row.placeholder, content: content, selected: selected)
             controller.completion = { [weak self] index in
-                row.data = content[index]
+                row.data = content[index].name
+                row.sendData = content[index].id
                 section.rows[indexPath.row] = row
                 self?.tableView.reloadData()
                 self?.navigationController?.popViewController(animated: true)
@@ -166,8 +194,9 @@ extension UBCSellController: UITableViewDataSource, UITableViewDelegate {
             self.navigationController?.pushViewController(controller, animated: true)
         } else if row.type == .location {
             let controller = UBCMapSelectController(title: row.placeholder)
-            controller.completion = { [weak self] selectedLocation in
+            controller.completion = { [weak self] selectedLocation, location in
                 row.data = selectedLocation
+                row.sendData = ["text": selectedLocation, "longPoint": location.coordinate.longitude, "latPoint": location.coordinate.latitude]
                 section.rows[indexPath.row] = row
                 self?.tableView.reloadData()
                 self?.navigationController?.popViewController(animated: true)
@@ -235,6 +264,8 @@ extension UBCSellController: UIImagePickerControllerDelegate, UINavigationContro
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             self.model.updatePhotoRow(image: image)
             self.tableView.reloadData()
+            
+            UBCDataProvider.shared.uploadImage(image, withCompletionBlock: nil)
         }
 
         self.dismiss(animated: true, completion: nil)

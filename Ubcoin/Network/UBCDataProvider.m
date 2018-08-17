@@ -400,5 +400,36 @@
      }];
 }
 
+- (void)uploadImage:(UIImage *)image withCompletionBlock:(void (^)(BOOL))completionBlock
+{
+    NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider uploadImage] andParams:nil];
+    [request setValue:@"multipart/form-data" forHTTPHeaderField:@"Content-Type"];
+    request.HTTPBody = UIImageJPEGRepresentation(image, 0.7);
+    
+    [self.connection sendRequest:request isBackground:YES withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (completionBlock)
+         {
+             completionBlock(success);
+         }
+     }];
+}
+
+- (void)sellItem:(NSDictionary *)dictionary withCompletionBlock:(void (^)(BOOL))completionBlock
+{
+    NSMutableDictionary *full = dictionary.mutableCopy;
+    full[@"agreement"] = @"true";
+    
+    NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider sellItem] andParams:full.copy];
+    
+    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (completionBlock)
+         {
+             completionBlock(success);
+         }
+     }];
+}
+
 @end
 
