@@ -73,7 +73,7 @@ class UBCSellController: UBViewController {
         
         self.button = HUBGeneralButton()
         self.button.type = HUBGeneralButtonTypeGreen
-        self.button.title = "Done"
+        self.button.title = "ui_button_done".localizedString()
         self.button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         self.buttonView.addSubview(self.button)
         self.buttonView.setAllConstraintToSubview(self.button, with: UIEdgeInsets(top: 15, left: UBCConstant.inset, bottom: -15, right: -UBCConstant.inset))
@@ -210,28 +210,28 @@ extension UBCSellController: UITableViewDataSource, UITableViewDelegate {
 extension UBCSellController: UBCSPhotoTableViewCellDelegate {
     
     func addPhotoPressed(_ index: Int, sender: UIView) {
-        let action1 = UIAlertAction(title: "Camera", style: .default) { [weak self] action in
+        let action1 = UIAlertAction(title: "str_sell_camera".localizedString(), style: .default) { [weak self] action in
             self?.showImagePicker(sourceType: .camera)
         }
         
-        let action2 = UIAlertAction(title: "Photo Library", style: .default) { [weak self] action in
+        let action2 = UIAlertAction(title: "str_sell_library".localizedString(), style: .default) { [weak self] action in
             self?.showImagePicker(sourceType: .photoLibrary)
         }
         
-        UBAlert.showActionSheet(withTitle: "Choose action", message: nil, actions: [action1, action2], sourceView: sender)
+        UBAlert.showActionSheet(withTitle: "str_sell_choose".localizedString(), message: nil, actions: [action1, action2], sourceView: sender)
     }
     
     private func showImagePicker(sourceType: UIImagePickerControllerSourceType) {
         if sourceType == .camera {
             let status = AVCaptureDevice.authorizationStatus(for: .video)
             if status == .denied || status == .restricted || status == .notDetermined || UIImagePickerController.isSourceTypeAvailable(.camera) {
-                UBAlert.showToEnablePermissions(withMessage: "No access to camera")
+                UBAlert.showToEnablePermissions(withMessage: "str_sell_no_access_camera".localizedString())
                 
                 return
             }
         } else {
             if PHPhotoLibrary.authorizationStatus() == .denied {
-                UBAlert.showToEnablePermissions(withMessage: "No access to library")
+                UBAlert.showToEnablePermissions(withMessage: "str_sell_no_access_library".localizedString())
                 
                 return
             }

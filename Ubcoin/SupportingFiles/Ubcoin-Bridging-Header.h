@@ -9,7 +9,7 @@
 #import "UBCLoginController.h"
 #import "UBCSignUpController.h"
 #import "UBCResetPasswordController.h"
-
+#import "HUBBaseMapView.h"
 #import "UBLocal.h"
 #import "UBCToast.h"
 #import "UBFloatingPlaceholderTextField.h"

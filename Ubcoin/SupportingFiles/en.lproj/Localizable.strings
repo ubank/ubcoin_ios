@@ -116,3 +116,15 @@
 "str_amount" = "Amount";
 "str_total_amount" = "Total amount";
 
+"str_sell_about" = "About";
+"str_sell_desc" = "Description";
+"str_sell_location" = "Location";
+"str_sell_placeholder_category" = "Select category";
+"str_sell_placeholder_location" = "Select location";
+"str_sell_placeholder_price" = "Price";
+"str_sell_placeholder_title" = "Title";
+"str_sell_camera" = "Camera";
+"str_sell_library" = "Photo Library";
+"str_sell_choose" = "Choose action";
+"str_sell_no_access_camera" = "No access to camera";
+"str_sell_no_access_library" = "No access to library";

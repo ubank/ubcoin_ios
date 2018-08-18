@@ -49,8 +49,6 @@
                                                                  zoom:10];
     self.mapView = [GMSMapView mapWithFrame:self.bounds camera:camera];
     self.mapView.myLocationEnabled = YES;
-//    self.mapView.settings.myLocationButton = [[UBLocationManager sharedLocation] isGeoLocationPermissionStateAvailable];
-//    self.mapView.settings.compassButton = YES;
     [self.mapView setDelegate:self];
     [self.mapView setMinZoom:0 maxZoom:18];
     //        NSURL *grayscaleURL = [[NSBundle mainBundle] URLForResource:@"mapstyle"

@@ -24,7 +24,7 @@ class UBCSellDM: NSObject {
         
         let aboutSection = UBTableViewSectionData()
         aboutSection.headerHeight = UBCConstant.headerHeight
-        aboutSection.headerTitle = "About"
+        aboutSection.headerTitle = "str_sell_about".localizedString()
         let title = UBCSellCellDM(type: .title)
         let category = UBCSellCellDM(type: .category)
         let price = UBCSellCellDM(type: .price)
@@ -33,14 +33,14 @@ class UBCSellDM: NSObject {
         
         let descSection = UBTableViewSectionData()
         descSection.headerHeight = UBCConstant.headerHeight
-        descSection.headerTitle = "Description"
+        descSection.headerTitle = "str_sell_desc".localizedString()
         let desc = UBCSellCellDM(type: .desc)
         descSection.rows = [desc]
         sections.append(descSection)
 
         let locationSection = UBTableViewSectionData()
         locationSection.headerHeight = UBCConstant.headerHeight
-        locationSection.headerTitle = "Location"
+        locationSection.headerTitle = "str_sell_location".localizedString()
         let location = UBCSellCellDM(type: .location)
         locationSection.rows = [location]
         sections.append(locationSection)
@@ -172,13 +172,13 @@ enum UBCSellCellType {
     var placeholder: String {
         get {
             if self == .category {
-                return "Select category"
+                return "str_sell_placeholder_category".localizedString()
             } else if self == .location {
-                return "Select location"
+                return "str_sell_placeholder_location".localizedString()
             } else if self == .price {
-                return "Price"
+                return "str_sell_placeholder_price".localizedString()
             } else if self == .title {
-                return "Title"
+                return "str_sell_placeholder_title".localizedString()
             } else {
                 return ""
             }

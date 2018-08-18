@@ -14,7 +14,7 @@ class UBCMapSelectController: UBViewController {
     
     var completion: ((String, CLLocation) -> Void)?
     
-    private var mapView: MKMapView!
+    private var mapView: HUBBaseMapView!
     
     private var locationString: String?
     private var geocode = CLGeocoder()
@@ -38,7 +38,7 @@ class UBCMapSelectController: UBViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationContainer.rightTitle = "Save"
+        self.navigationContainer.rightTitle = "ui_button_save".localizedString()
         
         self.setupViews()
     
@@ -49,31 +49,31 @@ class UBCMapSelectController: UBViewController {
     }
     
     private func setupViews() {
-        self.mapView = MKMapView()
-        self.mapView.showsUserLocation = true
+        self.mapView = HUBBaseMapView()
+        self.mapView.mapView.delegate = self
+        self.mapView.mapView.settings.myLocationButton = true
         self.view.addSubview(self.mapView)
         self.view.addConstraints(toFillSubview: self.mapView)
-        
-        let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(tapOnMap(gesture:)))
-        longGesture.minimumPressDuration = 1
-        self.mapView.addGestureRecognizer(longGesture)
     }
     
-    @objc private func tapOnMap(gesture: UIGestureRecognizer) {
-        if gesture.state != .began {
-            return
+    override func rightBarButtonClick(_ sender: Any!) {
+        if let location = self.locationString, let loc = self.currentLocation {
+            self.completion?(location, loc)
         }
-        
-        self.mapView.removeAnnotations(self.mapView.annotations)
+    }
+}
 
-        let touchPoint = gesture.location(in: self.mapView)
-        let coordinate = self.mapView.convert(touchPoint, toCoordinateFrom: self.mapView)
+
+extension UBCMapSelectController: GMSMapViewDelegate {
+    
+    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
+        self.mapView.clearMap()
         
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = coordinate
-        self.mapView.addAnnotation(annotation)
+        let marker = self.mapView.marker(withCoordinates: coordinate)
+        marker?.icon = UIImage(named: "pin")
         
         let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+        
         self.geocode.reverseGeocodeLocation(location, completionHandler: { [weak self] placemarks, error in
             if error == nil, let selectedLocation = placemarks?.first {
                 var title = ""
@@ -91,15 +91,9 @@ class UBCMapSelectController: UBViewController {
                 }
                 
                 self?.locationString = String(title.dropLast(2))
-                annotation.title = self?.locationString
+                marker?.snippet = self?.locationString
             }
         })
-    }
-    
-    override func rightBarButtonClick(_ sender: Any!) {
-        if let completion = self.completion, let location = self.locationString, let loc = self.currentLocation {
-            completion(location, loc)
-        }
     }
 }
 
@@ -108,10 +102,8 @@ extension UBCMapSelectController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if self.currentLocation == nil, let userLocation = locations.last  {
-            let viewRegion = MKCoordinateRegion(center: userLocation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-            self.mapView.setRegion(viewRegion, animated: false)
+            self.mapView.camera(toCoord: userLocation.coordinate, withZoomLevel: 15)
+            self.currentLocation = userLocation
         }
-        
-        self.currentLocation = locations.last
     }
 }

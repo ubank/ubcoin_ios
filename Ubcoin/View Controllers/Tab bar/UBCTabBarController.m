@@ -51,7 +51,7 @@
     viewController2.tabBarItem.title = UBLocalizedString(@"str_favorites", nil);
     viewController2.tabBarItem.image = [UIImage imageNamed:@"tab_bar_favorites"];
     
-    UBCSellController *viewController3 = UBCSellController.new;
+    UBCStartLoginController *viewController3 = UBCStartLoginController.new;
     viewController3.tabBarItem.title = UBLocalizedString(@"str_sell", nil);
     viewController3.tabBarItem.image = [[UIImage imageNamed:@"tab_bar_sell"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
