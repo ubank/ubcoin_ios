@@ -19,8 +19,9 @@
 #import "UBCCategoryDM.h"
 #import "UBCTransactionDM.h"
 #import "UBCKeyChain.h"
-
 #import "UBCFavouriteCell.h"
+
+#import <AFNetworking/UIKit+AFNetworking.h>
 
 @interface UBCDataProvider ()
 
@@ -416,10 +417,10 @@
 
 - (void)uploadImage:(UIImage *)image withCompletionBlock:(void (^)(BOOL))completionBlock
 {
-    NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider uploadImage] andParams:nil];
-    [request setValue:@"multipart/form-data" forHTTPHeaderField:@"Content-Type"];
-    request.HTTPBody = UIImageJPEGRepresentation(image, 0.7);
-    
+    NSMutableURLRequest *request = [AFHTTPRequestSerializer.serializer multipartFormRequestWithMethod:@"POST" URLString:[UBCURLProvider uploadImage].absoluteString parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        [formData appendPartWithFileData:UIImageJPEGRepresentation(image, 0.7) name:@"file" fileName:@"image.jpg" mimeType:@"image/jpeg"];
+    } error:nil];
+
     [self.connection sendRequest:request isBackground:YES withCompletionBlock:^(BOOL success, id responseObject)
      {
          if (completionBlock)

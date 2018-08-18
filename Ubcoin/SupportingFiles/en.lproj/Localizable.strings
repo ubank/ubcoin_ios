@@ -126,5 +126,3 @@
 "str_sell_camera" = "Camera";
 "str_sell_library" = "Photo Library";
 "str_sell_choose" = "Choose action";
-"str_sell_no_access_camera" = "No access to camera";
-"str_sell_no_access_library" = "No access to library";

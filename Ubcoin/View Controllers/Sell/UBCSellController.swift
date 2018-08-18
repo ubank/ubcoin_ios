@@ -225,13 +225,13 @@ extension UBCSellController: UBCSPhotoTableViewCellDelegate {
         if sourceType == .camera {
             let status = AVCaptureDevice.authorizationStatus(for: .video)
             if status == .denied || status == .restricted || status == .notDetermined || UIImagePickerController.isSourceTypeAvailable(.camera) {
-                UBAlert.showToEnablePermissions(withMessage: "str_sell_no_access_camera".localizedString())
+                UBAlert.showToEnablePermissions(withMessage: "ui_alert_message_error_no_camera_access".localizedString())
                 
                 return
             }
         } else {
             if PHPhotoLibrary.authorizationStatus() == .denied {
-                UBAlert.showToEnablePermissions(withMessage: "str_sell_no_access_library".localizedString())
+                UBAlert.showToEnablePermissions(withMessage: "ui_alert_message_error_no_access".localizedString())
                 
                 return
             }
