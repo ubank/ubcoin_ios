@@ -23,6 +23,11 @@
 + (NSURL *)updateUserInfo;
 + (NSURL *)userBalance;
 
++ (NSURL *)convert;
++ (NSURL *)comission;
++ (NSURL *)withdraw;
++ (NSURL *)topup;
+
 + (NSURL *)transactionsListWithPageNumber:(NSUInteger)page;
 
 + (NSURL *)favoriteWithID:(NSString *)favoriteID;

@@ -29,6 +29,11 @@
 
 - (void)transactionsListWithPageNumber:(NSUInteger)page withCompletionBlock:(void (^)(BOOL success, NSArray *goods, BOOL canLoadMore))completionBlock;
 
+- (void)topupWithCompletionBlock:(void (^)(BOOL success))completionBlock;
+- (void)sendCoins:(NSNumber *)amount toAddress:(NSString *)address withCompletionBlock:(void (^)(BOOL success))completionBlock;
+- (void)comissionForAmount:(NSNumber *)amount withCompletionBlock:(void (^)(BOOL success, NSNumber *comission))completionBlock;
+- (void)convertCurrency:(NSString *)currency withAmount:(NSNumber *)amount withCompletionBlock:(void (^)(BOOL success, NSNumber *amountUBC))completionBlock;
+
 - (void)favoritesListWithPageNumber:(NSUInteger)page withCompletionBlock:(void (^)(BOOL success, NSArray *goods, BOOL canLoadMore))completionBlock;
 - (void)toggleFavoriteWithID:(NSString *)favoriteID isFavorite:(BOOL)isFavorite;
 

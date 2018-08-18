@@ -17,7 +17,7 @@
     self = [super init];
     if (self)
     {
-        _amountUBC = dict[@"amountUBC"];
+        _amountUBC = dict[@"effectiveAmount"];
         _amountOnHold = dict[@"amountOnHold"];
     }
     return self;

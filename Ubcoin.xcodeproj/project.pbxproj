@@ -137,6 +137,7 @@
 		89B08E332128397100D8B68D /* UBCSendCoinsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89B08E312128397100D8B68D /* UBCSendCoinsController.xib */; };
 		89B08E3721283D0200D8B68D /* UBCConfirmationSendCoinsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B08E3521283D0200D8B68D /* UBCConfirmationSendCoinsController.m */; };
 		89B08E3821283D0200D8B68D /* UBCConfirmationSendCoinsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89B08E3621283D0200D8B68D /* UBCConfirmationSendCoinsController.xib */; };
+		89B08E3C21284BA500D8B68D /* UBCPaymentDM.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B08E3B21284BA500D8B68D /* UBCPaymentDM.m */; };
 		89CB110E20EFCDA500729C95 /* HUBCollectionViewWaitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89CB110C20EFCDA500729C95 /* HUBCollectionViewWaitCell.xib */; };
 		89CB110F20EFCDA500729C95 /* HUBCollectionViewWaitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CB110D20EFCDA500729C95 /* HUBCollectionViewWaitCell.m */; };
 		89F16A6A20F2C65D001AA440 /* UBCFiltersListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F16A4F20F2C65D001AA440 /* UBCFiltersListController.m */; };
@@ -362,6 +363,8 @@
 		89B08E3421283D0200D8B68D /* UBCConfirmationSendCoinsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCConfirmationSendCoinsController.h; sourceTree = "<group>"; };
 		89B08E3521283D0200D8B68D /* UBCConfirmationSendCoinsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCConfirmationSendCoinsController.m; sourceTree = "<group>"; };
 		89B08E3621283D0200D8B68D /* UBCConfirmationSendCoinsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCConfirmationSendCoinsController.xib; sourceTree = "<group>"; };
+		89B08E3A21284BA500D8B68D /* UBCPaymentDM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCPaymentDM.h; sourceTree = "<group>"; };
+		89B08E3B21284BA500D8B68D /* UBCPaymentDM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCPaymentDM.m; sourceTree = "<group>"; };
 		89CB110B20EFCDA500729C95 /* HUBCollectionViewWaitCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUBCollectionViewWaitCell.h; sourceTree = "<group>"; };
 		89CB110C20EFCDA500729C95 /* HUBCollectionViewWaitCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HUBCollectionViewWaitCell.xib; sourceTree = "<group>"; };
 		89CB110D20EFCDA500729C95 /* HUBCollectionViewWaitCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUBCollectionViewWaitCell.m; sourceTree = "<group>"; };
@@ -1195,6 +1198,7 @@
 		89B08E2E2128394900D8B68D /* Send */ = {
 			isa = PBXGroup;
 			children = (
+				89B08E392128405000D8B68D /* DM */,
 				89B08E2F2128397100D8B68D /* UBCSendCoinsController.h */,
 				89B08E302128397100D8B68D /* UBCSendCoinsController.m */,
 				89B08E312128397100D8B68D /* UBCSendCoinsController.xib */,
@@ -1203,6 +1207,15 @@
 				89B08E3621283D0200D8B68D /* UBCConfirmationSendCoinsController.xib */,
 			);
 			path = Send;
+			sourceTree = "<group>";
+		};
+		89B08E392128405000D8B68D /* DM */ = {
+			isa = PBXGroup;
+			children = (
+				89B08E3A21284BA500D8B68D /* UBCPaymentDM.h */,
+				89B08E3B21284BA500D8B68D /* UBCPaymentDM.m */,
+			);
+			path = DM;
 			sourceTree = "<group>";
 		};
 		89F16A4D20F2C65D001AA440 /* Market */ = {
@@ -1553,6 +1566,7 @@
 				89F16A6F20F2C65D001AA440 /* UBCDiscountCollectionViewCell.m in Sources */,
 				898751AA20EE2BDD00E2B615 /* UBCFavouritesController.m in Sources */,
 				898751C020EE618B00E2B615 /* UBConnectionProvider.m in Sources */,
+				89B08E3C21284BA500D8B68D /* UBCPaymentDM.m in Sources */,
 				8987517520EE119F00E2B615 /* UBExpandableTableViewSectionHeader.m in Sources */,
 				1C14F19F20F2655800B835AC /* UBCMapSelectController.swift in Sources */,
 				89678DA9210DE28600EB715E /* UBCToast.m in Sources */,

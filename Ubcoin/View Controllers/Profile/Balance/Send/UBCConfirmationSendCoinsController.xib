@@ -24,6 +24,9 @@
                 <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="v7L-aK-K91" customClass="UBDefaultTableView">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="577"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <outlet property="actionDelegate" destination="-1" id="PhN-EY-4c2"/>
+                    </connections>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iON-3E-JWG">
                     <rect key="frame" x="0.0" y="577" width="375" height="90"/>
@@ -39,6 +42,9 @@
                                     <integer key="value" value="2"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="send" destination="-1" eventType="touchUpInside" id="8GX-eU-n7X"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -15,97 +15,121 @@
 
 + (NSURL *)goodsListWithPageNumber:(NSUInteger)page
 {
-    NSString* url = [SERVER_URL stringByAppendingFormat:@"items?page=%d&size=%d", (int)page, ITEMS_PAGE_SIZE];
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"items?page=%d&size=%d", (int)page, ITEMS_PAGE_SIZE];
     return [NSURL URLWithString:url];
 }
 
 + (NSURL *)categories
 {
-    NSString* url = [SERVER_URL stringByAppendingFormat:@"items/categories"];
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"items/categories"];
     return [NSURL URLWithString:url];
 }
 
 + (NSURL *)login
 {
-    NSString* url = [SERVER_URL stringByAppendingFormat:@"auth"];
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"auth"];
     return [NSURL URLWithString:url];
 }
 
 + (NSURL *)logout
 {
-    NSString* url = [SERVER_URL stringByAppendingFormat:@"auth/logout"];
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"auth/logout"];
     return [NSURL URLWithString:url];
 }
 
 + (NSURL *)registration
 {
-    NSString* url = [SERVER_URL stringByAppendingFormat:@"users/registration"];
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"users/registration"];
     return [NSURL URLWithString:url];
 }
 
 + (NSURL *)verification
 {
-    NSString* url = [SERVER_URL stringByAppendingFormat:@"verification"];
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"verification"];
     return [NSURL URLWithString:url];
 }
 
 + (NSURL *)verificationCheck
 {
-    NSString* url = [SERVER_URL stringByAppendingFormat:@"verification/check"];
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"verification/check"];
     return [NSURL URLWithString:url];
 }
 
 + (NSURL *)user
 {
-    NSString* url = [SERVER_URL stringByAppendingFormat:@"users/me"];
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"users/me"];
     return [NSURL URLWithString:url];
 }
 
 + (NSURL *)updateUserInfo
 {
-    NSString* url = [SERVER_URL stringByAppendingFormat:@"users"];
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"users"];
     return [NSURL URLWithString:url];
 }
 
 + (NSURL *)userBalance
 {
-    NSString* url = [SERVER_URL stringByAppendingFormat:@"balance"];
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"wallet/balance"];
+    return [NSURL URLWithString:url];
+}
+
++ (NSURL *)convert
+{
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"wallet/convert"];
+    return [NSURL URLWithString:url];
+}
+
++ (NSURL *)comission
+{
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"wallet/comission"];
+    return [NSURL URLWithString:url];
+}
+
++ (NSURL *)withdraw
+{
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"wallet/withdraw"];
+    return [NSURL URLWithString:url];
+}
+
++ (NSURL *)topup
+{
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"wallet/topup"];
     return [NSURL URLWithString:url];
 }
 
 + (NSURL *)transactionsListWithPageNumber:(NSUInteger)page
 {
-    NSString* url = [SERVER_URL stringByAppendingFormat:@"wallet/transactions?page=%d&size=%d", (int)page, ITEMS_PAGE_SIZE];
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"wallet/transactions?page=%d&size=%d", (int)page, ITEMS_PAGE_SIZE];
     return [NSURL URLWithString:url];
 }
 
 + (NSURL *)favoriteWithID:(NSString *)favoriteID
 {
-    NSString* url = [SERVER_URL stringByAppendingFormat:@"favorites/%@", favoriteID];
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"favorites/%@", favoriteID];
     return [NSURL URLWithString:url];
 }
 
 + (NSURL *)favoritesListWithPageNumber:(NSUInteger)page
 {
-    NSString* url = [SERVER_URL stringByAppendingFormat:@"favorites?page=%d&size=%d", (int)page, ITEMS_PAGE_SIZE];
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"favorites?page=%d&size=%d", (int)page, ITEMS_PAGE_SIZE];
     return [NSURL URLWithString:url];
 }
 
 + (NSURL *)dealsToSellListWithPageNumber:(NSUInteger)page
 {
-    NSString* url = [SERVER_URL stringByAppendingFormat:@"purchases/seller?page=%d&size=%d", (int)page, ITEMS_PAGE_SIZE];
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"purchases/seller?page=%d&size=%d", (int)page, ITEMS_PAGE_SIZE];
     return [NSURL URLWithString:url];
 }
 
 + (NSURL *)dealsToBuyListWithPageNumber:(NSUInteger)page
 {
-    NSString* url = [SERVER_URL stringByAppendingFormat:@"purchases/buyer?page=%d&size=%d", (int)page, ITEMS_PAGE_SIZE];
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"purchases/buyer?page=%d&size=%d", (int)page, ITEMS_PAGE_SIZE];
     return [NSURL URLWithString:url];
 }
 
 + (NSURL *)chatURLForItemID:(NSString *)itemID
 {
-    NSString* url = [SERVER_URL stringByAppendingFormat:@"users/tg?itemId=%@", itemID];
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"users/tg?itemId=%@", itemID];
     return [NSURL URLWithString:url];
 }
 

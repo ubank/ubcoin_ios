@@ -7,8 +7,11 @@
 //
 
 #import "UBCSendCoinsController.h"
+#import "UBCConfirmationSendCoinsController.h"
 
 @interface UBCSendCoinsController ()
+
+@property (strong, nonatomic) UBCPaymentDM *payment;
 
 @end
 
@@ -19,6 +22,17 @@
     [super viewDidLoad];
 
     self.title = @"ui_button_send";
+}
+
+#pragma mark - Actions
+
+- (IBAction)next
+{
+    if (self.payment.valid)
+    {
+        UBCConfirmationSendCoinsController *controller = [UBCConfirmationSendCoinsController.alloc initWithPayment:self.payment];
+        [self.navigationController pushViewController:controller animated:YES];
+    }
 }
 
 @end

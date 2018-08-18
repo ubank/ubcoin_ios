@@ -7,7 +7,10 @@
 //
 
 #import "UBViewController.h"
+#import "UBCPaymentDM.h"
 
 @interface UBCConfirmationSendCoinsController : UBViewController
+
+- (instancetype)initWithPayment:(UBCPaymentDM *)payment;
 
 @end
