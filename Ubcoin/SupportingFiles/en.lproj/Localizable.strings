@@ -103,3 +103,9 @@
 "str_sell_success_title" = "Item successfully placed";
 "str_sell_success_desc" = "Your item placed on marketplace";
 "error_all_fields_empty" = "Some fields are empty";
+
+"str_transaction_id" = "Transaction ID";
+"str_transaction_receipt_status" = "Transaction Receipt Status";
+"str_from" = "From";
+"str_to" = "To";
+

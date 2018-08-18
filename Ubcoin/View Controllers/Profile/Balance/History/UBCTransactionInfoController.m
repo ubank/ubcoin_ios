@@ -9,7 +9,10 @@
 #import "UBCTransactionInfoController.h"
 #import "UBCTransactionDM.h"
 
-@interface UBCTransactionInfoController ()
+@interface UBCTransactionInfoController () <UBDefaultTableViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UBDefaultTableView *tableView;
+@property (weak, nonatomic) IBOutlet HUBLabel *amount;
 
 @property (strong, nonatomic) UBCTransactionDM *transaction;
 
@@ -31,6 +34,24 @@
 {
     [super viewDidLoad];
 
+    [self setupContent];
+}
+
+- (void)setupContent
+{
+    self.amount.text = [NSString stringWithFormat:@"%@ UBC", self.transaction.amount.priceString];
+    [self.tableView updateWithRowsData:self.transaction.rowsData];
+}
+
+#pragma mark - UBDefaultTableViewDelegate
+
+- (void)prepareCell:(UBDefaultTableViewCell *)cell forData:(UBTableViewRowData *)data
+{
+    cell.title.textColor = UBColor.descColor;
+    cell.title.font = UBFont.descFont;
+    
+    cell.desc.textColor = UBColor.titleColor;
+    cell.desc.font = UBFont.titleFont;
 }
 
 @end

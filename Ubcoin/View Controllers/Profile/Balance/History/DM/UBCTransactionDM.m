@@ -21,6 +21,7 @@
         _from = dict[@"from"];
         _to = dict[@"to"];
         _amount = dict[@"amount"];
+        _status = dict[@"status"];
         _date = [NSDate dateFromISO8601String:dict[@"createdDate"]];
     }
     return self;
@@ -43,6 +44,37 @@
     NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:string attributes:@{NSForegroundColorAttributeName: textColor}];
     
     return text;
+}
+
+- (NSArray<UBTableViewRowData *> *)rowsData
+{
+    NSMutableArray *rows = [NSMutableArray array];
+    
+    UBTableViewRowData *row = UBTableViewRowData.new;
+    row.title = UBLocalizedString(@"str_transaction_id", nil);
+    row.desc = self.ID;
+    row.disableHighlight = YES;
+    [rows addObject:row];
+    
+    UBTableViewRowData *row2 = UBTableViewRowData.new;
+    row2.title = UBLocalizedString(@"str_transaction_receipt_status", nil);
+    row2.desc = self.status;
+    row2.disableHighlight = YES;
+    [rows addObject:row2];
+    
+    UBTableViewRowData *row3 = UBTableViewRowData.new;
+    row3.title = UBLocalizedString(@"str_from", nil);
+    row3.desc = self.from;
+    row3.disableHighlight = YES;
+    [rows addObject:row3];
+    
+    UBTableViewRowData *row4 = UBTableViewRowData.new;
+    row4.title = UBLocalizedString(@"str_to", nil);
+    row4.desc = self.to;
+    row4.disableHighlight = YES;
+    [rows addObject:row4];
+    
+    return rows;
 }
 
 @end
