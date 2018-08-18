@@ -34,6 +34,8 @@
 {
     [super viewDidLoad];
 
+    self.title = @"str_transaction_info";
+    
     [self setupContent];
 }
 

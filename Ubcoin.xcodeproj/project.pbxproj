@@ -133,6 +133,10 @@
 		89B08E282127505700D8B68D /* UBCTransactionDM.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B08E272127505700D8B68D /* UBCTransactionDM.m */; };
 		89B08E2C2127522500D8B68D /* UBCTransactionInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B08E2A2127522500D8B68D /* UBCTransactionInfoController.m */; };
 		89B08E2D2127522500D8B68D /* UBCTransactionInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89B08E2B2127522500D8B68D /* UBCTransactionInfoController.xib */; };
+		89B08E322128397100D8B68D /* UBCSendCoinsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B08E302128397100D8B68D /* UBCSendCoinsController.m */; };
+		89B08E332128397100D8B68D /* UBCSendCoinsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89B08E312128397100D8B68D /* UBCSendCoinsController.xib */; };
+		89B08E3721283D0200D8B68D /* UBCConfirmationSendCoinsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B08E3521283D0200D8B68D /* UBCConfirmationSendCoinsController.m */; };
+		89B08E3821283D0200D8B68D /* UBCConfirmationSendCoinsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89B08E3621283D0200D8B68D /* UBCConfirmationSendCoinsController.xib */; };
 		89CB110E20EFCDA500729C95 /* HUBCollectionViewWaitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89CB110C20EFCDA500729C95 /* HUBCollectionViewWaitCell.xib */; };
 		89CB110F20EFCDA500729C95 /* HUBCollectionViewWaitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CB110D20EFCDA500729C95 /* HUBCollectionViewWaitCell.m */; };
 		89F16A6A20F2C65D001AA440 /* UBCFiltersListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F16A4F20F2C65D001AA440 /* UBCFiltersListController.m */; };
@@ -352,6 +356,12 @@
 		89B08E292127522500D8B68D /* UBCTransactionInfoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCTransactionInfoController.h; sourceTree = "<group>"; };
 		89B08E2A2127522500D8B68D /* UBCTransactionInfoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCTransactionInfoController.m; sourceTree = "<group>"; };
 		89B08E2B2127522500D8B68D /* UBCTransactionInfoController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCTransactionInfoController.xib; sourceTree = "<group>"; };
+		89B08E2F2128397100D8B68D /* UBCSendCoinsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCSendCoinsController.h; sourceTree = "<group>"; };
+		89B08E302128397100D8B68D /* UBCSendCoinsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCSendCoinsController.m; sourceTree = "<group>"; };
+		89B08E312128397100D8B68D /* UBCSendCoinsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCSendCoinsController.xib; sourceTree = "<group>"; };
+		89B08E3421283D0200D8B68D /* UBCConfirmationSendCoinsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCConfirmationSendCoinsController.h; sourceTree = "<group>"; };
+		89B08E3521283D0200D8B68D /* UBCConfirmationSendCoinsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCConfirmationSendCoinsController.m; sourceTree = "<group>"; };
+		89B08E3621283D0200D8B68D /* UBCConfirmationSendCoinsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCConfirmationSendCoinsController.xib; sourceTree = "<group>"; };
 		89CB110B20EFCDA500729C95 /* HUBCollectionViewWaitCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUBCollectionViewWaitCell.h; sourceTree = "<group>"; };
 		89CB110C20EFCDA500729C95 /* HUBCollectionViewWaitCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HUBCollectionViewWaitCell.xib; sourceTree = "<group>"; };
 		89CB110D20EFCDA500729C95 /* HUBCollectionViewWaitCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUBCollectionViewWaitCell.m; sourceTree = "<group>"; };
@@ -466,6 +476,7 @@
 		89007744211AFE2600B6C1C5 /* Balance */ = {
 			isa = PBXGroup;
 			children = (
+				89B08E2E2128394900D8B68D /* Send */,
 				89B08E2121274F2D00D8B68D /* History */,
 				8919AB552125DCEE00D1B59C /* DM */,
 				8900774A211AFF1C00B6C1C5 /* UBCBalanceController.h */,
@@ -1181,6 +1192,19 @@
 			path = DM;
 			sourceTree = "<group>";
 		};
+		89B08E2E2128394900D8B68D /* Send */ = {
+			isa = PBXGroup;
+			children = (
+				89B08E2F2128397100D8B68D /* UBCSendCoinsController.h */,
+				89B08E302128397100D8B68D /* UBCSendCoinsController.m */,
+				89B08E312128397100D8B68D /* UBCSendCoinsController.xib */,
+				89B08E3421283D0200D8B68D /* UBCConfirmationSendCoinsController.h */,
+				89B08E3521283D0200D8B68D /* UBCConfirmationSendCoinsController.m */,
+				89B08E3621283D0200D8B68D /* UBCConfirmationSendCoinsController.xib */,
+			);
+			path = Send;
+			sourceTree = "<group>";
+		};
 		89F16A4D20F2C65D001AA440 /* Market */ = {
 			isa = PBXGroup;
 			children = (
@@ -1345,12 +1369,14 @@
 				89678DE72112424E00EB715E /* frequency_lists.json in Resources */,
 				8987517120EE119F00E2B615 /* HUBSystemAlertCell.xib in Resources */,
 				89F16A7020F2C65D001AA440 /* UBCDiscountCollectionViewCell.xib in Resources */,
+				89B08E3821283D0200D8B68D /* UBCConfirmationSendCoinsController.xib in Resources */,
 				8900774E211AFF1C00B6C1C5 /* UBCBalanceController.xib in Resources */,
 				89678DD321120F1A00EB715E /* UBCSuccessRegistrationView.xib in Resources */,
 				8987517820EE119F00E2B615 /* UBTableHeaderView.xib in Resources */,
 				8979E81521135EEB004B2473 /* Localizable.strings in Resources */,
 				8987516B20EE119F00E2B615 /* HUBNavigationBarView.xib in Resources */,
 				89F16A6E20F2C65D001AA440 /* UBCDiscountsCollectionView.xib in Resources */,
+				89B08E332128397100D8B68D /* UBCSendCoinsController.xib in Resources */,
 				1CFFFE7D20F230A9003B5AD9 /* Assets.xcassets in Resources */,
 				8987518A20EE119F00E2B615 /* HUBEmptyView.xib in Resources */,
 				89678DB9211088C600EB715E /* UBCStartLoginController.xib in Resources */,
@@ -1483,11 +1509,13 @@
 				8987519F20EE2A8B00E2B615 /* UBCTabBarController.m in Sources */,
 				8980F22A20F3FB800066CF99 /* UBCStarsView.m in Sources */,
 				1CFFFE7E20F230A9003B5AD9 /* main.m in Sources */,
+				89B08E3721283D0200D8B68D /* UBCConfirmationSendCoinsController.m in Sources */,
 				8987516F20EE119F00E2B615 /* HUBSystemAlertCell.m in Sources */,
 				8979E81221134EEB004B2473 /* UBCDealsController.m in Sources */,
 				1CEFAA4520F3FCBE005719B3 /* UBCSTextFieldTableViewCell.swift in Sources */,
 				89F16A6A20F2C65D001AA440 /* UBCFiltersListController.m in Sources */,
 				8919AB532125BC4600D1B59C /* UBCChangeNameController.m in Sources */,
+				89B08E322128397100D8B68D /* UBCSendCoinsController.m in Sources */,
 				89678DEA2112424E00EB715E /* DBMatcher.m in Sources */,
 				8919AB582125DF6B00D1B59C /* UBCBalanceDM.m in Sources */,
 				8900775A211B688200B6C1C5 /* UBCDealCell.m in Sources */,
