@@ -93,32 +93,36 @@ class UBCSellController: UBViewController {
             
             self.startActivityIndicator()
             
-            let myGroup = DispatchGroup()
+            var params = self.model.allFilledParams()
+            params["images"] = ["https://my.ubcoin.io/api/images/3b8ceb44-2d05-490c-a02f-9c85747118f2.jpg"]
             
-            for photo in photos {
-                myGroup.enter()
+            UBCDataProvider.shared.sellItem(params) { [weak self] success in
+                self?.stopActivityIndicator()
                 
-                UBCDataProvider.shared.uploadImage(photo) { success in
-                    if success {
-                        myGroup.leave()
-                    }
+                if success {
+                    self?.tableView.emptyView.isHidden = false
+                    self?.buttonView.isHidden = true
+                    self?.navigationContainer.rightImageTitle = "general_close"
+                    self?.updateBarButtons()
+                    self?.model.sections = []
+                    self?.tableView.reloadData()
                 }
             }
             
-            myGroup.notify(queue: .main) {
-                UBCDataProvider.shared.sellItem(self.model.allFilledParams()) { [weak self] success in
-                    self?.stopActivityIndicator()
-                    
-                    if success {
-                        self?.tableView.emptyView.isHidden = false
-                        self?.buttonView.isHidden = true
-                        self?.navigationContainer.rightImageTitle = "general_close"
-                        self?.updateBarButtons()
-                        self?.model.sections = []
-                        self?.tableView.reloadData()
-                    }
-                }
-            }
+//            let myGroup = DispatchGroup()
+//
+//            for photo in photos {
+//                myGroup.enter()
+//
+//                UBCDataProvider.shared.uploadImage(photo) { success in
+//                    if success {
+//                        myGroup.leave()
+//                    }
+//                }
+//            }
+//
+//            myGroup.notify(queue: .main) {
+//            }
         } else {
             UBAlert.show(withTitle: "ui_alert_title_attention", andMessage: "error_all_fields_empty")
         }
@@ -298,9 +302,6 @@ extension UBCSellController: UIImagePickerControllerDelegate, UINavigationContro
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             self.model.updatePhotoRow(image: image)
             self.tableView.reloadData()
-            
-            UBCDataProvider.shared.uploadImage(image) { success in
-            }
         }
 
         self.dismiss(animated: true, completion: nil)
