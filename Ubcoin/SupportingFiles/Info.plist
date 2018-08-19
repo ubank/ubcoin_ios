@@ -44,7 +44,7 @@
 		<dict/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>To make photo of your good</string>
+	<string>To take photo of your good or to scan qr codes</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>To find your location</string>
 	<key>NSPhotoLibraryUsageDescription</key>

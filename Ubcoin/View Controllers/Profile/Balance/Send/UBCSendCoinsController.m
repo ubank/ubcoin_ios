@@ -108,6 +108,11 @@
 
 - (IBAction)scanQR
 {
+    if (![HUBPermissions checkPermission:HUBPermissionValueCamera])
+    {
+        return;
+    }
+    
     QRCodeReader *reader = [QRCodeReader readerWithMetadataObjectTypes:@[AVMetadataObjectTypeQRCode]];
     
     QRCodeReaderViewController *controller = [QRCodeReaderViewController readerWithCancelButtonTitle:UBLocalizedString(@"ui_button_cancel", nil) codeReader:reader startScanningAtLoad:YES showSwitchCameraButton:NO showTorchButton:NO];
@@ -117,11 +122,10 @@
 
     __weak typeof(self) weakSelf = self;
     [reader setCompletionWithBlock:^(NSString *resultAsString) {
-        NSLog(@"%@", resultAsString);
         if (resultAsString.isNotEmpty)
         {
-            [weakSelf dismissViewControllerAnimated:YES completion:nil];
             weakSelf.addressField.text = resultAsString;
+            [weakSelf dismissViewControllerAnimated:YES completion:nil];
         }
     }];
 }
