@@ -12,6 +12,11 @@
 @interface UBCSendCoinsController ()
 
 @property (strong, nonatomic) UBCPaymentDM *payment;
+@property (weak, nonatomic) IBOutlet UIView *addressView;
+@property (weak, nonatomic) IBOutlet HUBGeneralButton *scanButton;
+@property (weak, nonatomic) IBOutlet UITextField *addressField;
+@property (weak, nonatomic) IBOutlet UIView *amountView;
+@property (weak, nonatomic) IBOutlet UITextField *amountField;
 
 @end
 

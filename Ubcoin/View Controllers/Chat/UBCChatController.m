@@ -56,11 +56,11 @@
     [self startActivityIndicatorImmediately];
     __weak typeof(self) weakSelf = self;
     [UBCDataProvider.sharedProvider chatURLForItemID:self.item.ID
-                                 withCompletionBlock:^(BOOL success, NSURL *url)
+                                 withCompletionBlock:^(BOOL success, NSURL *url, NSURL *appURL)
      {
          if (url)
          {
-             [weakSelf openChatWithURL:url];
+             [weakSelf openChatWithURL:url appURL:appURL];
          }
          else
          {
@@ -71,12 +71,11 @@
      }];
 }
 
-- (void)openChatWithURL:(NSURL *)url
+- (void)openChatWithURL:(NSURL *)url appURL:(NSURL *)appURL
 {
-    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"tg://"]])
+    if ([[UIApplication sharedApplication] canOpenURL:appURL])
     {
-        NSString *tgURL = [url.absoluteString stringByReplacingOccurrencesOfString:@"https://t.me/" withString:@"tg://resolve?domain="];
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:tgURL]
+        [[UIApplication sharedApplication] openURL:appURL
                                            options:@{}
                                  completionHandler:nil];
     }

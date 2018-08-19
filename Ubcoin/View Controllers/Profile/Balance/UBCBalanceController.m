@@ -8,6 +8,7 @@
 
 #import "UBCBalanceController.h"
 #import "UBCTransactionInfoController.h"
+#import "UBCSendCoinsController.h"
 #import "UBCBalanceDM.h"
 #import "UBCTransactionDM.h"
 
@@ -102,7 +103,7 @@
 
 - (IBAction)send
 {
-    
+    [self.navigationController pushViewController:UBCSendCoinsController.new animated:YES];
 }
 
 #pragma mark - UBDefaultTableViewDelegate
