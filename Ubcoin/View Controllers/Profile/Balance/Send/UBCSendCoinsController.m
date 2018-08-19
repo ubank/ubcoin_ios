@@ -9,14 +9,20 @@
 #import "UBCSendCoinsController.h"
 #import "UBCConfirmationSendCoinsController.h"
 
-@interface UBCSendCoinsController ()
+#import "Ubcoin-Swift.h"
 
-@property (strong, nonatomic) UBCPaymentDM *payment;
+@interface UBCSendCoinsController () <UITextFieldDelegate>
+
 @property (weak, nonatomic) IBOutlet UIView *addressView;
 @property (weak, nonatomic) IBOutlet HUBGeneralButton *scanButton;
 @property (weak, nonatomic) IBOutlet UITextField *addressField;
 @property (weak, nonatomic) IBOutlet UIView *amountView;
 @property (weak, nonatomic) IBOutlet UITextField *amountField;
+@property (weak, nonatomic) IBOutlet HUBLabel *comission;
+@property (weak, nonatomic) IBOutlet HUBLabel *amountInCurrency;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *currencyActivity;
+
+@property (strong, nonatomic) UBCPaymentDM *payment;
 
 @end
 
@@ -27,9 +33,82 @@
     [super viewDidLoad];
 
     self.title = @"ui_button_send";
+    
+    self.payment = UBCPaymentDM.new;
+    [self setupViews];
+}
+
+- (void)setupViews
+{
+    self.addressView.borderColor = UBColor.separatorColor;
+    self.addressView.borderWidth = 1;
+    self.addressView.cornerRadius = 6;
+    
+    self.addressField.textColor = UBColor.titleColor;
+    self.addressField.font = UBFont.descFont;
+    
+    self.scanButton.tintColor = UBCColor.green;
+    [self.scanButton setImage:[[UIImage imageNamed:@"wallet_qr"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
+    
+    self.amountView.borderColor = UBColor.separatorColor;
+    self.amountView.borderWidth = 1;
+    self.amountView.cornerRadius = 6;
+    
+    self.amountField.textColor = UBColor.titleColor;
+    self.amountField.font = UBFont.titleFont;
+}
+
+- (void)updateComission
+{
+    self.comission.text = @"";
+    self.payment.comission = nil;
+    
+    NSNumber *amount = @(self.amountField.text.doubleValue);
+    self.payment.amount = amount;
+    if (amount.doubleValue > 0)
+    {
+        __weak typeof(self) weakSelf = self;
+        [UBCDataProvider.sharedProvider comissionForAmount:amount
+                                       withCompletionBlock:^(BOOL success, NSNumber *comission)
+         {
+             if (success)
+             {
+                 weakSelf.payment.comission = comission;
+                 weakSelf.comission.text = [NSString stringWithFormat:@"%@: %@", UBLocalizedString(@"", nil), comission.priceString];
+             }
+         }];
+    }
+}
+
+- (void)convertUBC
+{
+    self.amountInCurrency.text = @"";
+    
+    NSNumber *amount = @(self.amountField.text.doubleValue);
+    if (amount.doubleValue > 0)
+    {
+        [self.currencyActivity startAnimating];
+        
+        __weak typeof(self) weakSelf = self;
+        [UBCDataProvider.sharedProvider convertCurrency:@"USD"
+                                             withAmount:amount
+                                    withCompletionBlock:^(BOOL success, NSNumber *amountInCurrency)
+         {
+             [weakSelf.currencyActivity stopAnimating];
+             if (success)
+             {
+                 weakSelf.amountInCurrency.text = amountInCurrency.priceString;
+             }
+         }];
+    }
 }
 
 #pragma mark - Actions
+
+- (IBAction)scanQR
+{
+    
+}
 
 - (IBAction)next
 {
@@ -38,6 +117,37 @@
         UBCConfirmationSendCoinsController *controller = [UBCConfirmationSendCoinsController.alloc initWithPayment:self.payment];
         [self.navigationController pushViewController:controller animated:YES];
     }
+    else
+    {
+        [UBCToast showErrorToastWithMessage:@"str_incorrect_data"];
+    }
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if ([textField isEqual:self.amountField])
+    {
+        [self convertUBC];
+        [self updateComission];
+    }
+    
+    return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if ([textField isEqual:self.addressField])
+    {
+        [self.amountField becomeFirstResponder];
+    }
+    else
+    {
+        [textField resignFirstResponder];
+    }
+    
+    return YES;
 }
 
 @end
