@@ -469,33 +469,20 @@
      }];
 }
 
-- (void)uploadImage:(UIImage *)image withCompletionBlock:(void (^)(BOOL))completionBlock
+- (void)uploadImage:(UIImage *)image withCompletionBlock:(void (^)(BOOL, NSString *))completionBlock
 {
-    NSString *boundaryConstant = @"---BOUNDARY";
+    NSData *imageData = UIImageJPEGRepresentation(image, 0.7);
+    NSString *base64 = [UBBase64 encode:imageData];
     
-    NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider uploadImage]];
-    [request setValue:[NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundaryConstant] forHTTPHeaderField:@"Content-Type"];
+    NSString *name = [NSString stringWithFormat:@"%li", (long)NSDate.date.timeIntervalSince1970];
     
-    NSMutableData *body = NSMutableData.data;
-    NSData *imageData = UIImageJPEGRepresentation([UIImage imageNamed:@"general_delete"], 0.5);
-    if (imageData)
-    {
-        [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundaryConstant] dataUsingEncoding:NSUTF8StringEncoding]];
-        [body appendData:[@"Content-Disposition: form-data; name=\"image\"; filename=\"image.jpg\"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-        [body appendData:[@"Content-Type: image/jpeg\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-        [body appendData:[@"Content-Transfer-Encoding: base64\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-        [body appendData:[[UBBase64 encode:imageData] dataUsingEncoding:NSUTF8StringEncoding]];
-        [body appendData:[[NSString stringWithFormat:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
-        [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundaryConstant] dataUsingEncoding:NSUTF8StringEncoding]];
-    }
-    request.HTTPBody = body;
-    [request setValue:[NSString stringWithFormat:@"%lu", body.length] forHTTPHeaderField:@"Content-Length"];
+    NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider uploadImage] andParams:base64 ? @{@"name": name, @"data": base64} : @{}];
 
     [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
      {
          if (completionBlock)
          {
-             completionBlock(success);
+             completionBlock(success, responseObject[@"url"]);
          }
      }];
 }

@@ -177,7 +177,7 @@ extension UBCPhotosController: UBCSPhotoTableViewCellDelegate {
     
     private func showImagePicker(sourceType: UIImagePickerControllerSourceType) {
         if sourceType == .camera {
-            if HUBPermissions.checkPermission(.camera) {
+            if !HUBPermissions.checkPermission(.camera) {
                 return
             }
         } else {

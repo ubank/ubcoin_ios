@@ -93,36 +93,42 @@ class UBCSellController: UBViewController {
             
             self.startActivityIndicator()
             
-            var params = self.model.allFilledParams()
-            params["images"] = ["https://my.ubcoin.io/api/images/3b8ceb44-2d05-490c-a02f-9c85747118f2.jpg"]
+            let myGroup = DispatchGroup()
             
-            UBCDataProvider.shared.sellItem(params) { [weak self] success in
-                self?.stopActivityIndicator()
-                
-                if success {
-                    self?.tableView.emptyView.isHidden = false
-                    self?.buttonView.isHidden = true
-                    self?.navigationContainer.rightImageTitle = "general_close"
-                    self?.updateBarButtons()
-                    self?.model.sections = []
-                    self?.tableView.reloadData()
+            var images = [String]()
+
+            for photo in photos {
+                myGroup.enter()
+
+                UBCDataProvider.shared.uploadImage(photo) { success, url in
+                    if success {
+                        if let url = url {
+                            images.append(url)
+                        }
+                        
+                        myGroup.leave()
+                    }
                 }
             }
-            
-//            let myGroup = DispatchGroup()
-//
-//            for photo in photos {
-//                myGroup.enter()
-//
-//                UBCDataProvider.shared.uploadImage(photo) { success in
-//                    if success {
-//                        myGroup.leave()
-//                    }
-//                }
-//            }
-//
-//            myGroup.notify(queue: .main) {
-//            }
+
+            myGroup.notify(queue: .main) {
+                var params = self.model.allFilledParams()
+                
+                params["images"] = images
+                
+                UBCDataProvider.shared.sellItem(params) { [weak self] success in
+                    self?.stopActivityIndicator()
+                    
+                    if success {
+                        self?.tableView.emptyView.isHidden = false
+                        self?.buttonView.isHidden = true
+                        self?.navigationContainer.rightImageTitle = "general_close"
+                        self?.updateBarButtons()
+                        self?.model.sections = []
+                        self?.tableView.reloadData()
+                    }
+                }
+            }
         } else {
             UBAlert.show(withTitle: "ui_alert_title_attention", andMessage: "error_all_fields_empty")
         }
@@ -261,7 +267,7 @@ extension UBCSellController: UBCSPhotoTableViewCellDelegate {
     
     private func showImagePicker(sourceType: UIImagePickerControllerSourceType) {
         if sourceType == .camera {
-            if HUBPermissions.checkPermission(.camera) {
+            if !HUBPermissions.checkPermission(.camera) {
                 return
             }
         } else {
@@ -299,6 +305,8 @@ extension UBCSellController: UIImagePickerControllerDelegate, UINavigationContro
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             self.model.updatePhotoRow(image: image)
             self.tableView.reloadData()
+            
+            UBCDataProvider.shared.uploadImage(image, withCompletionBlock: nil)
         }
 
         self.dismiss(animated: true, completion: nil)

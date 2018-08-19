@@ -135,7 +135,7 @@
 
 + (NSURL *)uploadImage
 {
-    NSString *url = [SERVER_URL stringByAppendingString:@"images"];
+    NSString *url = [SERVER_URL stringByAppendingString:@"images/base64"];
     
     return [NSURL URLWithString:url];
 }
