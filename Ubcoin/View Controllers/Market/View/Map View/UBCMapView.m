@@ -17,6 +17,19 @@
 
 @implementation UBCMapView
 
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    
+    if (self)
+    {
+        [self setupButton];
+        [self setupDistanceLabel];
+    }
+    
+    return self;
+}
+
 - (void)awakeFromNib
 {
     [super awakeFromNib];

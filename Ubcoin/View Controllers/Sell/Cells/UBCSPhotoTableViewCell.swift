@@ -9,7 +9,7 @@
 import UIKit
 
 protocol UBCSPhotoTableViewCellDelegate {
-    func addPhotoPressed(_ index: Int, sender: UIView)
+    func addPhotoPressed(_ index: Int?, sender: UIView)
 }
 
 
@@ -63,7 +63,8 @@ class UBCSPhotoTableViewCell: UBTableViewCell {
     
     @objc private func photoPressed(sender: UBCSPhotoAddView) {
         if let delegate = self.delegate {
-            delegate.addPhotoPressed(sender.tag, sender: sender)
+            let value = sender.backgroundImage(for: .normal) != nil ? sender.tag : nil
+            delegate.addPhotoPressed(value, sender: sender)
         }
     }
 }
@@ -112,6 +113,5 @@ private class UBCSPhotoAddView: UBButton {
         super.setBackgroundImage(image, for: state)
         
         self.image = image == nil ? UIImage(named: "general_photo") : nil
-        self.isUserInteractionEnabled = image == nil
     }
 }

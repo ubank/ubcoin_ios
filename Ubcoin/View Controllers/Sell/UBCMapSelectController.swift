@@ -19,6 +19,7 @@ class UBCMapSelectController: UBViewController {
     private var locationString: String?
     private var geocode = CLGeocoder()
     private var currentLocation: CLLocation?
+    private var selectLocation: CLLocation?
     
     private(set) lazy var locationManager: CLLocationManager = { [unowned self] in
         let locationManager = CLLocationManager()
@@ -57,8 +58,10 @@ class UBCMapSelectController: UBViewController {
     }
     
     override func rightBarButtonClick(_ sender: Any!) {
-        if let location = self.locationString, let loc = self.currentLocation {
+        if let location = self.locationString, let loc = self.selectLocation {
             self.completion?(location, loc)
+        } else {
+            UBAlert.show(withTitle: "ui_alert_title_attention", andMessage: "error_location_not_selected")
         }
     }
 }
@@ -72,7 +75,9 @@ extension UBCMapSelectController: GMSMapViewDelegate {
         let marker = self.mapView.marker(withCoordinates: coordinate)
         marker?.icon = UIImage(named: "pin")
         
-        let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+        self.selectLocation = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+        
+        guard let location = self.selectLocation else { return }
         
         self.geocode.reverseGeocodeLocation(location, completionHandler: { [weak self] placemarks, error in
             if error == nil, let selectedLocation = placemarks?.first {

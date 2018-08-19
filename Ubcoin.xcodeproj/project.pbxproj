@@ -22,6 +22,8 @@
 
 /* Begin PBXBuildFile section */
 		1C14F19F20F2655800B835AC /* UBCMapSelectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C14F19E20F2655800B835AC /* UBCMapSelectController.swift */; };
+		1C1C7222212846B1006BAF32 /* UBCSMapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1C7221212846B1006BAF32 /* UBCSMapTableViewCell.swift */; };
+		1C1C72242128B7B7006BAF32 /* UBCPhotosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1C72232128B7B7006BAF32 /* UBCPhotosController.swift */; };
 		1C4034B220F2958100E51247 /* UBCShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4034B120F2958100E51247 /* UBCShared.swift */; };
 		1CEFAA4520F3FCBE005719B3 /* UBCSTextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEFAA4420F3FCBE005719B3 /* UBCSTextFieldTableViewCell.swift */; };
 		1CFFFE6420F0CB3E003B5AD9 /* UBCSPhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFFFE6320F0CB3E003B5AD9 /* UBCSPhotoTableViewCell.swift */; };
@@ -167,6 +169,8 @@
 /* Begin PBXFileReference section */
 		1C14F19D20F2366900B835AC /* Ubcoin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ubcoin-Bridging-Header.h"; sourceTree = "<group>"; };
 		1C14F19E20F2655800B835AC /* UBCMapSelectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCMapSelectController.swift; sourceTree = "<group>"; };
+		1C1C7221212846B1006BAF32 /* UBCSMapTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCSMapTableViewCell.swift; sourceTree = "<group>"; };
+		1C1C72232128B7B7006BAF32 /* UBCPhotosController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCPhotosController.swift; sourceTree = "<group>"; };
 		1C4034B120F2958100E51247 /* UBCShared.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UBCShared.swift; sourceTree = "<group>"; };
 		1CEFAA4420F3FCBE005719B3 /* UBCSTextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCSTextFieldTableViewCell.swift; sourceTree = "<group>"; };
 		1CFFFE6320F0CB3E003B5AD9 /* UBCSPhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCSPhotoTableViewCell.swift; sourceTree = "<group>"; };
@@ -415,6 +419,7 @@
 		1CFFFE6120F0CB12003B5AD9 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				1C1C7221212846B1006BAF32 /* UBCSMapTableViewCell.swift */,
 				1CFFFE6320F0CB3E003B5AD9 /* UBCSPhotoTableViewCell.swift */,
 				1CFFFE6F20F0E204003B5AD9 /* UBCSSelectionTableViewCell.swift */,
 				1CEFAA4420F3FCBE005719B3 /* UBCSTextFieldTableViewCell.swift */,
@@ -1080,6 +1085,7 @@
 				1CFFFE6820F0CD3F003B5AD9 /* DM */,
 				1CFFFE6B20F0D0F8003B5AD9 /* UBCSellController.swift */,
 				1C14F19E20F2655800B835AC /* UBCMapSelectController.swift */,
+				1C1C72232128B7B7006BAF32 /* UBCPhotosController.swift */,
 			);
 			path = Sell;
 			sourceTree = "<group>";
@@ -1507,6 +1513,7 @@
 				8987517020EE119F00E2B615 /* UBSwitchTableViewCell.m in Sources */,
 				89F16A6D20F2C65D001AA440 /* UBCGoodsCollectionView.m in Sources */,
 				8987516E20EE119F00E2B615 /* UBDefaultTableViewCell.m in Sources */,
+				1C1C72242128B7B7006BAF32 /* UBCPhotosController.swift in Sources */,
 				89F16A6C20F2C65D001AA440 /* UBCSellerDM.m in Sources */,
 				8987517B20EE119F00E2B615 /* HUBGeneralButton.m in Sources */,
 				8987518920EE119F00E2B615 /* HUBEmptyView.m in Sources */,
@@ -1519,6 +1526,7 @@
 				8987518620EE119F00E2B615 /* HUBAttributedLabel.m in Sources */,
 				8987518B20EE119F00E2B615 /* UBAlertTableView.m in Sources */,
 				8987518320EE119F00E2B615 /* UBCollectionViewSwitchContent.m in Sources */,
+				1C1C7222212846B1006BAF32 /* UBCSMapTableViewCell.swift in Sources */,
 				8987519F20EE2A8B00E2B615 /* UBCTabBarController.m in Sources */,
 				8980F22A20F3FB800066CF99 /* UBCStarsView.m in Sources */,
 				1CFFFE7E20F230A9003B5AD9 /* main.m in Sources */,

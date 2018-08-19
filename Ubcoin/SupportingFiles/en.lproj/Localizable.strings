@@ -100,6 +100,7 @@
 "str_scan_qr-code" = "Scan QR-code or press to copy the address to top up your balance.";
 "str_how_to_get_tokens" = "How to get UBC tokens";
 
+"error_location_not_selected" = "Location not selected";
 "str_transaction_id" = "Transaction ID";
 "str_transaction_receipt_status" = "Transaction Receipt Status";
 "str_from" = "From";

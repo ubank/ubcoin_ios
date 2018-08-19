@@ -109,6 +109,7 @@ extension UBCSTextFieldTableViewCell: UBCSellCellProtocol {
         let width = self.title.sizeThatFits(CGSize(width: self.width, height: self.title.font.lineHeight)).width
         self.title.setWidthConstraintWithValue(width + 5)
 
+        self.textField.keyboardType = content.keyboardType
         self.textField.text = content.data as? String
         
         if let info = content.fieldInfo {

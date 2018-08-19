@@ -80,6 +80,7 @@ extension UBCSTextViewTableViewCell: UBCSellCellProtocol {
     
     func setContent(content: UBCSellCellDM) {
         self.content = content
+        
         self.textView.text = content.data as? String
     }
 }

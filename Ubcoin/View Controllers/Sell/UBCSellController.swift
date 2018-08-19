@@ -29,6 +29,7 @@ class UBCSellController: UBViewController {
         tableView.emptyView.title.text = "str_sell_success_title".localizedString()
         tableView.emptyView.desc.text = "str_sell_success_desc".localizedString()
         
+        tableView.register(UBCSMapTableViewCell.self, forCellReuseIdentifier: UBCSMapTableViewCell.className)
         tableView.register(UBCSPhotoTableViewCell.self, forCellReuseIdentifier: UBCSPhotoTableViewCell.className)
         tableView.register(UBCSTextViewTableViewCell.self, forCellReuseIdentifier: UBCSTextViewTableViewCell.className)
         tableView.register(UBCSSelectionTableViewCell.self, forCellReuseIdentifier: UBCSSelectionTableViewCell.className)
@@ -187,7 +188,7 @@ extension UBCSellController: UITableViewDataSource, UITableViewDelegate {
             controller.completion = { [weak self] index in
                 row.data = content[index].name
                 row.sendData = content[index].id
-                section.rows[indexPath.row] = row
+                self?.model.updateRow(row)
                 self?.tableView.reloadData()
                 self?.navigationController?.popViewController(animated: true)
             }
@@ -197,7 +198,7 @@ extension UBCSellController: UITableViewDataSource, UITableViewDelegate {
             controller.completion = { [weak self] selectedLocation, location in
                 row.data = selectedLocation
                 row.sendData = ["text": selectedLocation, "longPoint": location.coordinate.longitude, "latPoint": location.coordinate.latitude]
-                section.rows[indexPath.row] = row
+                self?.model.updateRow(row)
                 self?.tableView.reloadData()
                 self?.navigationController?.popViewController(animated: true)
             }
@@ -209,7 +210,13 @@ extension UBCSellController: UITableViewDataSource, UITableViewDelegate {
 
 extension UBCSellController: UBCSPhotoTableViewCellDelegate {
     
-    func addPhotoPressed(_ index: Int, sender: UIView) {
+    func addPhotoPressed(_ index: Int?, sender: UIView) {
+        if index != nil {
+            self.navigationController?.pushViewController(UBCPhotosController(model: self.model), animated: true)
+            
+            return
+        }
+        
         let action1 = UIAlertAction(title: "str_sell_camera".localizedString(), style: .default) { [weak self] action in
             self?.showImagePicker(sourceType: .camera)
         }
@@ -254,6 +261,12 @@ extension UBCSellController: UBCSTextCellDelegate {
     
     func updatedRow(_ row: UBCSellCellDM) {
         self.model.updateRow(row)
+        
+        if row.type == .price, let value = row.data as? NSString {
+            UBCDataProvider.shared.convertCurrency("USD", withAmount: value.correctNumberValue) { [weak self] success, amount in
+                print()
+            }
+        }
     }
 }
 

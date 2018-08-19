@@ -320,7 +320,8 @@
 
 - (void)convertCurrency:(NSString *)currency withAmount:(NSNumber *)amount withCompletionBlock:(void (^)(BOOL, NSNumber *))completionBlock
 {
-    NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:[UBCURLProvider convert]];
+    NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider convert] andParams:@{@"agentCode": @"ETH-IN", @"amountIn": amount}];
+                                                                                                               
     [self.connection sendRequest:request isBackground:YES withCompletionBlock:^(BOOL success, id responseObject)
      {
          if (completionBlock)

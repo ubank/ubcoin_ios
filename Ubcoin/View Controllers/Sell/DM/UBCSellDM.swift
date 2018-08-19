@@ -66,6 +66,16 @@ class UBCSellDM: NSObject {
             for i in 0..<section.rows.count {
                 if let oldRow = section.rows[i] as? UBCSellCellDM, oldRow.type == row.type {
                     section.rows[i] = row
+                    
+                    guard row.type == .location, var lastRow = section.rows.last as? UBCSellCellDM else { return }
+                
+                    if lastRow.type != .locationMap {
+                        lastRow = UBCSellCellDM(type: .locationMap)
+                        section.rows.append(lastRow)
+                    }
+                    
+                    lastRow.sendData = row.sendData
+                    section.rows[section.rows.count-1] = lastRow
                 }
             }
         }
@@ -92,10 +102,22 @@ class UBCSellDM: NSObject {
         }
     }
     
+    func photoRow() -> UBCSellCellDM? {
+        for section in sections {
+            for i in 0..<section.rows.count {
+                if let row = section.rows[i] as? UBCSellCellDM, row.type == .photo {
+                    return row
+                }
+            }
+        }
+        
+        return nil
+    }
+    
     func isAllParamsNotEmpty() -> Bool {
         for section in sections {
             for row in section.rows {
-                if let row = row as? UBCSellCellDM, row.sendData == nil {
+                if let row = row as? UBCSellCellDM, !row.optional, row.sendData == nil {
                     return false
                 }
             }
@@ -127,15 +149,26 @@ struct UBCSellCellDM {
     var data: Any?
     var sendData: Any?
     var placeholder: String
+    var optional = false
+    var keyboardType: UIKeyboardType = .default
+    
     var selectContent: [UBCCategoryDM]?
     var fieldInfo: String?
     
     init(type: UBCSellCellType) {
         self.type = type
-        self.height = type == .photo ? 90 : UBCConstant.cellHeight
+        self.height = type == .photo || type == .locationMap ? 90 : UBCConstant.cellHeight
         
         self.className = type.className
         self.placeholder = type.placeholder
+        
+        if type == .locationMap {
+            self.optional = true
+        }
+        
+        if type == .price {
+            self.keyboardType = .decimalPad
+        }
         
         if type == .category {
             self.selectContent = []
@@ -154,6 +187,7 @@ enum UBCSellCellType {
     case price
     case desc
     case location
+    case locationMap
     
     var className: String {
         get {
@@ -163,6 +197,8 @@ enum UBCSellCellType {
                 return UBCSSelectionTableViewCell.className
             } else if self == .price || self == .title {
                 return UBCSTextFieldTableViewCell.className
+            } else if self == .locationMap {
+                return UBCSMapTableViewCell.className
             } else {
                 return UBCSTextViewTableViewCell.className
             }
