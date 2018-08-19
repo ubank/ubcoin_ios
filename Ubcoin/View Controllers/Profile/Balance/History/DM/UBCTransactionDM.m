@@ -40,8 +40,17 @@
 - (NSAttributedString *)amountString
 {
     UIColor *textColor = self.amount.doubleValue > 0 ? UBColor.titleColor : UBCColor.green;
-    NSString *string = [NSString stringWithFormat:@"%@ UBC", self.amount.priceString];
+    NSString *string = [NSString stringWithFormat:@" %@ UBC", self.amount.priceString];
     NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:string attributes:@{NSForegroundColorAttributeName: textColor}];
+    
+    if ([self.status isEqualToString:@"IN_PROGRESS"])
+    {
+        NSTextAttachment *textAttachment = NSTextAttachment.new;
+        textAttachment.image = [UIImage imageNamed:@"history_pending"];
+        
+        NSAttributedString *attrStringWithImage = [NSAttributedString attributedStringWithAttachment:textAttachment];
+        [text insertAttributedString:attrStringWithImage atIndex:0];
+    }
     
     return text;
 }

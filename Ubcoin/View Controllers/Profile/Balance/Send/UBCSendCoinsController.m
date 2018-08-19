@@ -106,6 +106,11 @@
 
 #pragma mark - Actions
 
+- (IBAction)hideKeyboard:(id)sender
+{
+    [self.view endEditing:YES];
+}
+
 - (IBAction)scanQR
 {
     if (![HUBPermissions checkPermission:HUBPermissionValueCamera])
@@ -125,8 +130,8 @@
         if (resultAsString.isNotEmpty)
         {
             weakSelf.addressField.text = resultAsString;
-            [weakSelf dismissViewControllerAnimated:YES completion:nil];
         }
+        [weakSelf dismissViewControllerAnimated:YES completion:nil];
     }];
 }
 
