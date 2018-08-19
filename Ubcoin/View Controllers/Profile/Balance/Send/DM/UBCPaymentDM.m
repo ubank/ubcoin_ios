@@ -12,7 +12,8 @@
 
 - (BOOL)valid
 {
-    return YES;
+    return self.address.isNotEmpty &&
+    self.amount.doubleValue > 0;
 }
 
 - (NSArray<UBTableViewRowData *> *)rowsData
