@@ -261,10 +261,7 @@ extension UBCSellController: UBCSPhotoTableViewCellDelegate {
     
     private func showImagePicker(sourceType: UIImagePickerControllerSourceType) {
         if sourceType == .camera {
-            let status = AVCaptureDevice.authorizationStatus(for: .video)
-            if status == .denied || status == .restricted || status == .notDetermined || UIImagePickerController.isSourceTypeAvailable(.camera) {
-                UBAlert.showToEnablePermissions(withMessage: "ui_alert_message_error_no_camera_access".localizedString())
-                
+            if HUBPermissions.checkPermission(.camera) {
                 return
             }
         } else {
