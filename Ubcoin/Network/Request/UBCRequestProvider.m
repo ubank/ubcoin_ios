@@ -32,8 +32,8 @@
 + (NSString*)userAgent
 {
     NSString * version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-    NSString *userAgent = [NSString stringWithFormat:@"%@/%@ (Apple; iOS %@)", [[NSBundle mainBundle] bundleIdentifier],
-                           version, [[UIDevice currentDevice] systemVersion]];
+    NSString *userAgent = [NSString stringWithFormat:@"%@/%@ (Apple; iOS %@) %@", [[NSBundle mainBundle] bundleIdentifier],
+                           version, [[UIDevice currentDevice] systemVersion], UBLocal.shared.language];
     return userAgent;
 }
 

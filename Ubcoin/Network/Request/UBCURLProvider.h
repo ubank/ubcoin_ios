@@ -24,7 +24,7 @@
 + (NSURL *)userBalance;
 
 + (NSURL *)convert;
-+ (NSURL *)comission;
++ (NSURL *)commissionForAmount:(NSNumber *)amount;
 + (NSURL *)withdraw;
 + (NSURL *)topup;
 

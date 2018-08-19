@@ -19,7 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *addressField;
 @property (weak, nonatomic) IBOutlet UIView *amountView;
 @property (weak, nonatomic) IBOutlet UITextField *amountField;
-@property (weak, nonatomic) IBOutlet HUBLabel *comission;
+@property (weak, nonatomic) IBOutlet HUBLabel *commission;
 @property (weak, nonatomic) IBOutlet HUBLabel *amountInCurrency;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *currencyActivity;
 
@@ -59,23 +59,23 @@
     self.amountField.font = UBFont.titleFont;
 }
 
-- (void)updateComission
+- (void)updatecommission
 {
-    self.comission.text = @"";
-    self.payment.comission = nil;
+    self.commission.text = @"";
+    self.payment.commission = nil;
     
     NSNumber *amount = @(self.amountField.text.doubleValue);
     self.payment.amount = amount;
     if (amount.doubleValue > 0)
     {
         __weak typeof(self) weakSelf = self;
-        [UBCDataProvider.sharedProvider comissionForAmount:amount
-                                       withCompletionBlock:^(BOOL success, NSNumber *comission)
+        [UBCDataProvider.sharedProvider commissionForAmount:amount
+                                       withCompletionBlock:^(BOOL success, NSNumber *commission)
          {
              if (success)
              {
-                 weakSelf.payment.comission = comission;
-                 weakSelf.comission.text = [NSString stringWithFormat:@"%@: %@", UBLocalizedString(@"", nil), comission.priceString];
+                 weakSelf.payment.commission = commission;
+                 weakSelf.commission.text = [NSString stringWithFormat:@"%@: %@", UBLocalizedString(@"", nil), commission.priceString];
              }
          }];
     }
@@ -91,9 +91,10 @@
         [self.currencyActivity startAnimating];
         
         __weak typeof(self) weakSelf = self;
-        [UBCDataProvider.sharedProvider convertCurrency:@"USD"
-                                             withAmount:amount
-                                    withCompletionBlock:^(BOOL success, NSNumber *amountInCurrency)
+        [UBCDataProvider.sharedProvider convertFromCurrency:@"UBC"
+                                                 toCurrency:@"USD"
+                                                 withAmount:amount
+                                        withCompletionBlock:^(BOOL success, NSNumber *amountInCurrency)
          {
              [weakSelf.currencyActivity stopAnimating];
              if (success)
@@ -155,7 +156,7 @@
     if ([textField isEqual:self.amountField])
     {
         [self convertUBC];
-        [self updateComission];
+        [self updatecommission];
     }
     
     return YES;

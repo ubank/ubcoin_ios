@@ -106,7 +106,7 @@
 "str_from" = "From";
 "str_to" = "To";
 "str_send_UBC_to_wallet" = "Send UBC to any ERC-20 compatible wallet.";
-"str_transaction_comission" = "Transaction comission";
+"str_transaction_commission" = "Transaction commission";
 "str_info" = "Info";
 "str_address" = "Address";
 "str_amount" = "Amount";

@@ -18,7 +18,7 @@
 
 - (NSNumber *)totalAmount
 {
-    return @(self.amount.doubleValue + self.comission.doubleValue);
+    return @(self.amount.doubleValue + self.commission.doubleValue);
 }
 
 - (NSArray<UBTableViewRowData *> *)rowsData
@@ -38,8 +38,8 @@
     [rows addObject:row2];
     
     UBTableViewRowData *row3 = UBTableViewRowData.new;
-    row3.title = UBLocalizedString(@"str_transaction_comission", nil);
-    row3.desc = [NSString stringWithFormat:@"%@ UBC", self.comission.priceString];
+    row3.title = UBLocalizedString(@"str_transaction_commission", nil);
+    row3.desc = [NSString stringWithFormat:@"%@ UBC", self.commission.priceString];
     row3.disableHighlight = YES;
     [rows addObject:row3];
     

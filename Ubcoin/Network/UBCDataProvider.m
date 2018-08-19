@@ -288,12 +288,12 @@
          if (completionBlock)
          {
              responseObject = [responseObject removeNulls];
-             completionBlock(success, responseObject[@"qrCode"], responseObject[@"wallet"]);
+             completionBlock(success, responseObject[@"qrURL"], responseObject[@"ubCoinAddress"]);
          }
      }];
 }
 
-- (void)sendCoins:(NSNumber *)amount toAddress:(NSString *)address withCompletionBlock:(void (^)(BOOL))completionBlock
+- (void)sendCoins:(NSNumber *)amount toAddress:(NSString *)address withCompletionBlock:(void (^)(BOOL, NSNumber *, NSString *))completionBlock
 {
     NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider withdraw]
                                                                 andParams:@{@"externalAddress": address,
@@ -302,32 +302,32 @@
      {
          if (completionBlock)
          {
-             completionBlock(success);
+             completionBlock(success, responseObject[@"resultCode"], responseObject[@"message"]);
          }
      }];
 }
 
-- (void)comissionForAmount:(NSNumber *)amount withCompletionBlock:(void (^)(BOOL, NSNumber *))completionBlock
+- (void)commissionForAmount:(NSNumber *)amount withCompletionBlock:(void (^)(BOOL, NSNumber *))completionBlock
 {
-    NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:[UBCURLProvider comission]];
+    NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:[UBCURLProvider commissionForAmount:amount]];
     [self.connection sendRequest:request isBackground:YES withCompletionBlock:^(BOOL success, id responseObject)
      {
          if (completionBlock)
          {
-             completionBlock(success, responseObject[@"comission"]);
+             completionBlock(success, responseObject[@"commission"]);
          }
      }];
 }
 
-- (void)convertCurrency:(NSString *)currency withAmount:(NSNumber *)amount withCompletionBlock:(void (^)(BOOL, NSNumber *))completionBlock
+- (void)convertFromCurrency:(NSString *)fromCurrency toCurrency:(NSString *)toCurrency withAmount:(NSNumber *)amount withCompletionBlock:(void (^)(BOOL, NSNumber *))completionBlock
 {
-    NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider convert] andParams:@{@"currency": currency, @"amount": amount}];
+    NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider convert] andParams:@{@"currencyFrom": fromCurrency, @"currencyTo": toCurrency, @"amount": amount}];
                                                                                                                
     [self.connection sendRequest:request isBackground:YES withCompletionBlock:^(BOOL success, id responseObject)
      {
          if (completionBlock)
          {
-             completionBlock(success, responseObject[@"amountUBC"]);
+             completionBlock(success, responseObject[@"amount"]);
          }
      }];
 }

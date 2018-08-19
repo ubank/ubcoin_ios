@@ -12,7 +12,7 @@
 
 @property (strong, nonatomic) NSString *address;
 @property (strong, nonatomic) NSNumber *amount;
-@property (strong, nonatomic) NSNumber *comission;
+@property (strong, nonatomic) NSNumber *commission;
 @property (readonly, nonatomic) NSNumber *totalAmount;
 @property (readonly, nonatomic) BOOL valid;
 

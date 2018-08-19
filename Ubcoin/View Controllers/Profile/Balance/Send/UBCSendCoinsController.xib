@@ -17,7 +17,7 @@
                 <outlet property="amountField" destination="ylN-gv-oza" id="q2E-88-cQ6"/>
                 <outlet property="amountInCurrency" destination="gpr-7B-Puz" id="8gc-P5-7vZ"/>
                 <outlet property="amountView" destination="pj1-80-DGB" id="cvn-jX-T74"/>
-                <outlet property="comission" destination="ipd-55-NbN" id="SGQ-ea-r5n"/>
+                <outlet property="commission" destination="ipd-55-NbN" id="SGQ-ea-r5n"/>
                 <outlet property="currencyActivity" destination="rWD-IV-qZz" id="PmZ-FI-agJ"/>
                 <outlet property="scanButton" destination="Rll-mU-i3E" id="7wt-2n-ydP"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
