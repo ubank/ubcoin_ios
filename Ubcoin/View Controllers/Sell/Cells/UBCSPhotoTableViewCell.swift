@@ -19,6 +19,15 @@ class UBCSPhotoTableViewCell: UBTableViewCell {
     
     var delegate: UBCSPhotoTableViewCellDelegate?
     
+    var indexHighlited: Int = 0 {
+        didSet {
+            for i in 0..<UBCSPhotoTableViewCell.photosCount {
+                let view = photoViews[i]
+                view.isViewHighlighted = indexHighlited == i
+            }
+        }
+    }
+    
     private static let photosCount = 4
     
     private var stackView: UIStackView!
@@ -61,7 +70,8 @@ class UBCSPhotoTableViewCell: UBTableViewCell {
         self.stackView.spacing = freeSpacing / (CGFloat(UBCSPhotoTableViewCell.photosCount) - 1)
     }
     
-    @objc private func photoPressed(sender: UBCSPhotoAddView) {
+    @objc
+    private func photoPressed(sender: UBCSPhotoAddView) {
         if let delegate = self.delegate {
             let value = sender.backgroundImage(for: .normal) != nil ? sender.tag : nil
             delegate.addPhotoPressed(value, sender: sender)
@@ -75,7 +85,7 @@ extension UBCSPhotoTableViewCell: UBCSellCellProtocol {
     func setContent(content: UBCSellCellDM) {
         let images = content.data as? [UIImage]
         
-        for i in 0..<4 {
+        for i in 0..<UBCSPhotoTableViewCell.photosCount {
             let view = photoViews[i]
             
             var image: UIImage?
@@ -92,11 +102,18 @@ private class UBCSPhotoAddView: UBButton {
     
     static let photosSize: CGFloat = 70
     
+    var isViewHighlighted = false {
+        didSet {
+            self.layer.borderWidth = self.isViewHighlighted ? 2 : 0
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         self.cornerRadius = UBCConstant.cornerRadius
         self.backgroundColor = UIColor(red: 248 / 255.0, green: 248 / 255.0, blue: 248 / 255.0, alpha: 1)
+        self.layer.borderColor = UBCColor.green.cgColor
         
         let constraint1 = self.setHeightConstraintWithValue(UBCSPhotoAddView.photosSize)
         constraint1?.priority = UILayoutPriority.init(999)

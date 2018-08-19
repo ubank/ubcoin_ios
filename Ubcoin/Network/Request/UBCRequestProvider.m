@@ -46,6 +46,13 @@
     return request;
 }
 
++ (NSMutableURLRequest *)postRequestWithURL:(NSURL *)url
+{
+    NSMutableURLRequest *request = [self baseRequestWithUrl:url];
+    [request setHTTPMethod:@"POST"];
+    return request;
+}
+
 + (NSMutableURLRequest *)deleteRequestWithURL:(NSURL *)url
 {
     NSMutableURLRequest *request = [self baseRequestWithUrl:url];

@@ -38,16 +38,3 @@ class UBCConstant: NSObject {
     static let shadowOpacity: Float = 0.15
     static let shadowRadius: CGFloat = 2
 }
-
-@objc
-extension UIView {
-    
-    func defaultShadow() {
-        self.layer.shadowColor = UBCColor.shadowColor.cgColor
-        self.layer.shadowOpacity = UBCConstant.shadowOpacity
-        self.layer.shadowRadius = UBCConstant.shadowRadius
-        self.layer.shadowOffset = UBCConstant.shadowOffset
-        self.layer.rasterizationScale = UIScreen.main.scale
-        self.layer.shouldRasterize = true
-    }
-}

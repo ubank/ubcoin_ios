@@ -20,7 +20,6 @@ class UBCSTextFieldTableViewCell: UBTableViewCell {
     private var title: UILabel!
     private var textField: UITextField!
     private var info: UILabel!
-    private var desc: UILabel!
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -58,14 +57,6 @@ class UBCSTextFieldTableViewCell: UBTableViewCell {
         self.stackView.spacing = 5
         self.contentView.addSubview(self.stackView)
         self.contentView.setAllConstraintToSubview(self.stackView, with: UIEdgeInsets(top: 15, left: UBCConstant.inset, bottom: -15, right: -UBCConstant.inset))
-        
-        self.desc = UILabel()
-        self.desc.font = UBCFont.desc
-        self.desc.numberOfLines = 1
-        self.desc.textColor = UBCColor.info
-        self.contentView.addSubview(self.desc)
-        self.contentView.setTrailingConstraintToSubview(self.desc, withValue: -UBCConstant.inset)
-        self.contentView.setBottomConstraintToSubview(self.desc, withValue: -5)
     }
 }
 
@@ -77,19 +68,9 @@ extension UBCSTextFieldTableViewCell: UITextFieldDelegate {
             let newString = text.replacingCharacters(in: range, with: string)
             textField.text = newString
             
-            var ubcPrice: Double?
-            if !self.desc.isHidden, var value = Double(newString) {
-                value = value * 1.2
-                self.desc.text = "\(NSNumber(value: value).priceString ?? "") UBC"
-                ubcPrice = value
-            } else {
-                self.desc.text = ""
-                ubcPrice = Double(newString)
-            }
-            
             if let delegate = self.delegate, var content = self.content {
                 content.data = textField.text
-                content.sendData = ubcPrice
+                content.sendData = textField.text
                 delegate.updatedRow(content)
             }
         }
@@ -117,10 +98,8 @@ extension UBCSTextFieldTableViewCell: UBCSellCellProtocol {
             self.info.isHidden = false
             let width = self.info.sizeThatFits(CGSize(width: self.width, height: self.info.font.lineHeight)).width
             self.info.setWidthConstraintWithValue(width)
-            self.desc.isHidden = false
         } else {
             self.info.isHidden = true
-            self.desc.isHidden = true
         }
     }
 }

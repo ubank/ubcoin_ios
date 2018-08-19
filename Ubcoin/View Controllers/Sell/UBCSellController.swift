@@ -49,6 +49,12 @@ class UBCSellController: UBViewController {
         self.startActivityIndicatorImmediately()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.tableView.reloadData()
+    }
+    
     override func updateInfo() {
         UBCDataProvider.shared.categories { [weak self] success, categories in
             self?.stopActivityIndicator()
@@ -80,16 +86,37 @@ class UBCSellController: UBViewController {
         self.buttonView.setAllConstraintToSubview(self.button, with: UIEdgeInsets(top: 15, left: UBCConstant.inset, bottom: -15, right: -UBCConstant.inset))
     }
     
-    @objc private func buttonPressed() {
-        if self.model.isAllParamsNotEmpty() {
-            UBCDataProvider.shared.sellItem(self.model.allFilledParams()) { [weak self] success in
-                if success {
-                    self?.tableView.emptyView.isHidden = false
-                    self?.buttonView.isHidden = true
-                    self?.navigationContainer.rightImageTitle = "general_close"
-                    self?.updateBarButtons()
-                    self?.model.sections = []
-                    self?.tableView.reloadData()
+    @objc
+    private func buttonPressed() {
+        if self.model.isAllParamsNotEmpty(), let photoRow = self.model.photoRow() {
+            guard let photos = photoRow.data as? [UIImage], photos.count > 0 else { return }
+            
+            self.startActivityIndicator()
+            
+            let myGroup = DispatchGroup()
+            
+            for photo in photos {
+                myGroup.enter()
+                
+                UBCDataProvider.shared.uploadImage(photo) { success in
+                    if success {
+                        myGroup.leave()
+                    }
+                }
+            }
+            
+            myGroup.notify(queue: .main) {
+                UBCDataProvider.shared.sellItem(self.model.allFilledParams()) { [weak self] success in
+                    self?.stopActivityIndicator()
+                    
+                    if success {
+                        self?.tableView.emptyView.isHidden = false
+                        self?.buttonView.isHidden = true
+                        self?.navigationContainer.rightImageTitle = "general_close"
+                        self?.updateBarButtons()
+                        self?.model.sections = []
+                        self?.tableView.reloadData()
+                    }
                 }
             }
         } else {
@@ -211,8 +238,8 @@ extension UBCSellController: UITableViewDataSource, UITableViewDelegate {
 extension UBCSellController: UBCSPhotoTableViewCellDelegate {
     
     func addPhotoPressed(_ index: Int?, sender: UIView) {
-        if index != nil {
-            self.navigationController?.pushViewController(UBCPhotosController(model: self.model), animated: true)
+        if let index = index {
+            self.navigationController?.pushViewController(UBCPhotosController(model: self.model, index: index), animated: true)
             
             return
         }
@@ -261,12 +288,6 @@ extension UBCSellController: UBCSTextCellDelegate {
     
     func updatedRow(_ row: UBCSellCellDM) {
         self.model.updateRow(row)
-        
-        if row.type == .price, let value = row.data as? NSString {
-            UBCDataProvider.shared.convertCurrency("USD", withAmount: value.correctNumberValue) { [weak self] success, amount in
-                print()
-            }
-        }
     }
 }
 
@@ -278,7 +299,8 @@ extension UBCSellController: UIImagePickerControllerDelegate, UINavigationContro
             self.model.updatePhotoRow(image: image)
             self.tableView.reloadData()
             
-            UBCDataProvider.shared.uploadImage(image, withCompletionBlock: nil)
+            UBCDataProvider.shared.uploadImage(image) { success in
+            }
         }
 
         self.dismiss(animated: true, completion: nil)

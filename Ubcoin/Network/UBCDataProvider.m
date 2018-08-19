@@ -471,11 +471,27 @@
 
 - (void)uploadImage:(UIImage *)image withCompletionBlock:(void (^)(BOOL))completionBlock
 {
-    NSMutableURLRequest *request = [AFHTTPRequestSerializer.serializer multipartFormRequestWithMethod:@"POST" URLString:[UBCURLProvider uploadImage].absoluteString parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-        [formData appendPartWithFileData:UIImageJPEGRepresentation(image, 0.7) name:@"file" fileName:@"image.jpg" mimeType:@"image/jpeg"];
-    } error:nil];
+    NSString *boundaryConstant = @"---BOUNDARY";
+    
+    NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider uploadImage]];
+    [request setValue:[NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundaryConstant] forHTTPHeaderField:@"Content-Type"];
+    
+    NSMutableData *body = NSMutableData.data;
+    NSData *imageData = UIImageJPEGRepresentation([UIImage imageNamed:@"general_delete"], 0.5);
+    if (imageData)
+    {
+        [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundaryConstant] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[@"Content-Disposition: form-data; name=\"image\"; filename=\"image.jpg\"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[@"Content-Type: image/jpeg\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[@"Content-Transfer-Encoding: base64\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[UBBase64 encode:imageData] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithFormat:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundaryConstant] dataUsingEncoding:NSUTF8StringEncoding]];
+    }
+    request.HTTPBody = body;
+    [request setValue:[NSString stringWithFormat:@"%lu", body.length] forHTTPHeaderField:@"Content-Length"];
 
-    [self.connection sendRequest:request isBackground:YES withCompletionBlock:^(BOOL success, id responseObject)
+    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
      {
          if (completionBlock)
          {

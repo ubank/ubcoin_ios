@@ -9,7 +9,9 @@
 import Foundation
 import UIKit
 
+@objc
 extension UIView {
+    
     private static let activityTag = 1005
     
     func topSafeArea() -> CGFloat {
@@ -19,10 +21,20 @@ extension UIView {
         
         return 20
     }
+    
+    func defaultShadow() {
+        self.layer.shadowColor = UBCColor.shadowColor.cgColor
+        self.layer.shadowOpacity = UBCConstant.shadowOpacity
+        self.layer.shadowRadius = UBCConstant.shadowRadius
+        self.layer.shadowOffset = UBCConstant.shadowOffset
+        self.layer.rasterizationScale = UIScreen.main.scale
+        self.layer.shouldRasterize = true
+    }
 }
 
 
 extension UIButton {
+    
     func centerContentVertically() {
         guard let titleLabel = self.titleLabel, let imageView = self.imageView, let buttonTitle = titleLabel.text, let image = imageView.image else { return }
         
@@ -44,6 +56,7 @@ extension UIButton {
 
 
 extension String {
+    
     func localizedString() -> String {
         return UBLocal.shared.localizedString(forKey: self, value: nil) ?? ""
     }
@@ -51,6 +64,7 @@ extension String {
 
 
 extension UIDevice {
+    
     func isIPad() -> Bool {
         return self.userInterfaceIdiom == .pad
     }
@@ -68,6 +82,7 @@ extension Optional where Wrapped: Collection {
     }
 }
 
+
 extension Optional {
     
     func unwrap(_ value: Wrapped) -> Wrapped {
@@ -81,6 +96,7 @@ extension Optional {
 
 
 extension UIImageView {
+    
     @objc
     func loadFitImage(imageURL: String?) {
         self.loadImage(imageURL: imageURL, needFit: true)

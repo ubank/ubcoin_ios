@@ -11,7 +11,23 @@ import Photos
 
 final class UBCPhotosController: UBViewController {
     
+    private var model: UBCSellDM?
     private var row: UBCSellCellDM?
+    private var startIndex = 0
+    
+    private var selectedIndex = 0 {
+        didSet {
+            var image: UIImage?
+            if let array = self.row?.data as? [UIImage], array.count > self.selectedIndex, self.selectedIndex >= 0 {
+                image = array[self.selectedIndex]
+            } else {
+                image = nil
+            }
+            
+            self.imageView.image = image
+            self.tableView.reloadData()
+        }
+    }
     
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [self.imageView, self.bottomContainer])
@@ -23,6 +39,13 @@ final class UBCPhotosController: UBViewController {
     
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
+        
+        imageView.contentMode = .scaleAspectFit
+        
+        let view = UIView()
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+        imageView.addSubview(view)
+        imageView.addConstraints(toFillSubview: view)
         
         return imageView
     }()
@@ -42,11 +65,13 @@ final class UBCPhotosController: UBViewController {
         view.setCenterXConstraintToSubview(self.deleteButton)
         view.setBottomConstraintToSubview(self.deleteButton, withValue: -25)
         
+        view.addTopSeparator()
+        
         return view
     }()
     
     private lazy var tableView: UBTableView = { [unowned self] in
-        let tableView = UBTableView(frame: .zero, style: .grouped)
+        let tableView = UBTableView()
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -67,16 +92,15 @@ final class UBCPhotosController: UBViewController {
         button.image = UIImage(named: "general_delete")
         button.addTarget(self, action: #selector(removePhoto), for: .touchUpInside)
         
-        button.setHeightConstraintWithValue(30)
-        button.setWidthConstraintWithValue(30)
-        
         return button
     }()
     
-    convenience init(model: UBCSellDM) {
+    convenience init(model: UBCSellDM, index: Int) {
         self.init()
         
+        self.model = model
         self.row = model.photoRow()
+        self.startIndex = index
     }
     
     override func viewDidLoad() {
@@ -86,6 +110,8 @@ final class UBCPhotosController: UBViewController {
         self.navigationContainer.buttonsImageColor = .white
         
         self.setupViews()
+        
+        self.selectedIndex = self.startIndex
     }
     
     private func setupViews() {
@@ -97,7 +123,12 @@ final class UBCPhotosController: UBViewController {
     
     @objc
     private func removePhoto() {
+        guard var data = self.row?.data as? [UIImage], self.selectedIndex >= 0, data.count > self.selectedIndex else { return }
         
+        data.remove(at: self.selectedIndex)
+        self.row?.data = data
+        self.selectedIndex = self.selectedIndex - 1
+        self.model?.updateRow(self.row)
     }
 }
 
@@ -113,13 +144,11 @@ extension UBCPhotosController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let row = self.row, let cell = tableView.dequeueReusableCell(withIdentifier: row.className) as? UBTableViewCell & UBCSellCellProtocol else { return UBTableViewCell() }
+        guard let row = self.row, let cell = tableView.dequeueReusableCell(withIdentifier: row.className) as? UBCSPhotoTableViewCell else { return UBTableViewCell() }
         
         cell.setContent(content: row)
-        
-        if let cell = cell as? UBCSPhotoTableViewCell {
-            cell.delegate = self
-        }
+        cell.delegate = self
+        cell.indexHighlited = self.selectedIndex
         
         return cell
     }
@@ -130,6 +159,8 @@ extension UBCPhotosController: UBCSPhotoTableViewCellDelegate {
     
     func addPhotoPressed(_ index: Int?, sender: UIView) {
         if let index = index {
+            self.selectedIndex = index
+            
             return
         }
         
@@ -171,14 +202,16 @@ extension UBCPhotosController: UBCSPhotoTableViewCellDelegate {
 extension UBCPhotosController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-//            self.model.updatePhotoRow(image: image)
-            self.tableView.reloadData()
-            
-            UBCDataProvider.shared.uploadImage(image, withCompletionBlock: nil)
+        defer {
+            self.dismiss(animated: true, completion: nil)
         }
         
-        self.dismiss(animated: true, completion: nil)
+        guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage, var data = self.row?.data as? [UIImage] else { return }
+        
+        data.append(image)
+        self.row?.data = data
+        self.selectedIndex = data.count - 1
+        self.model?.updateRow(self.row)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

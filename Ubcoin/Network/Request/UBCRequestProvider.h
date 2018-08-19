@@ -12,6 +12,7 @@
 
 + (NSMutableURLRequest *)getRequestWithURL:(NSURL *)url;
 + (NSMutableURLRequest *)deleteRequestWithURL:(NSURL *)url;
++ (NSMutableURLRequest *)postRequestWithURL:(NSURL *)url;
 + (NSMutableURLRequest *)putRequestWithURL:(NSURL *)url andParams:(NSDictionary *)params;
 + (NSMutableURLRequest *)postRequestWithURL:(NSURL *)url andParams:(NSDictionary *)params;
 + (NSMutableURLRequest *)patchRequestWithURL:(NSURL *)url andParams:(NSDictionary *)params;

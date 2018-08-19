@@ -61,7 +61,9 @@ class UBCSellDM: NSObject {
         }
     }
     
-    func updateRow(_ row: UBCSellCellDM) {
+    func updateRow(_ row: UBCSellCellDM?) {
+        guard let row = row else { return }
+        
         for section in sections {
             for i in 0..<section.rows.count {
                 if let oldRow = section.rows[i] as? UBCSellCellDM, oldRow.type == row.type {
@@ -85,16 +87,10 @@ class UBCSellDM: NSObject {
         for section in sections {
             for i in 0..<section.rows.count {
                 if var row = section.rows[i] as? UBCSellCellDM, row.type == .photo {
-                    if row.data as? [UIImage] == nil {
-                        row.data = [UIImage]()
-                    }
-                    
                     if var data = row.data as? [UIImage] {
                         data.append(image)
                         row.data = data
                     }
-                    
-                    row.sendData = ["https://my.ubcoin.io/api/images/8988a3ce-108f-4581-93dd-f33e4658b482.jpg"]
                     
                     section.rows[i] = row
                 }
@@ -117,7 +113,7 @@ class UBCSellDM: NSObject {
     func isAllParamsNotEmpty() -> Bool {
         for section in sections {
             for row in section.rows {
-                if let row = row as? UBCSellCellDM, !row.optional, row.sendData == nil {
+                if let row = row as? UBCSellCellDM, !row.optional, row.sendData == nil, ((row.data as? [UIImage])?.count ?? 0) == 0 {
                     return false
                 }
             }
@@ -162,6 +158,10 @@ struct UBCSellCellDM {
         self.className = type.className
         self.placeholder = type.placeholder
         
+        if type == .photo {
+            self.data = [UIImage]()
+        }
+        
         if type == .locationMap {
             self.optional = true
         }
@@ -175,7 +175,7 @@ struct UBCSellCellDM {
         }
         
         if type == .price {
-            self.fieldInfo = "$"
+            self.fieldInfo = "UBC"
         }
     }
 }
