@@ -16,6 +16,11 @@
     self.amount.doubleValue > 0;
 }
 
+- (NSNumber *)totalAmount
+{
+    return @(self.amount.doubleValue + self.comission.doubleValue);
+}
+
 - (NSArray<UBTableViewRowData *> *)rowsData
 {
     NSMutableArray *rows = [NSMutableArray array];

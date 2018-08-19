@@ -280,14 +280,15 @@
 
 #pragma mark - WALLET
 
-- (void)topupWithCompletionBlock:(void (^)(BOOL))completionBlock
+- (void)topupWithCompletionBlock:(void (^)(BOOL, NSString *, NSString *))completionBlock
 {
     NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:[UBCURLProvider topup]];
     [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
      {
          if (completionBlock)
          {
-             completionBlock(success);
+             responseObject = [responseObject removeNulls];
+             completionBlock(success, responseObject[@"qrCode"], responseObject[@"wallet"]);
          }
      }];
 }

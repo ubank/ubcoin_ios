@@ -11,6 +11,7 @@
 #import "UBCSendCoinsController.h"
 #import "UBCBalanceDM.h"
 #import "UBCTransactionDM.h"
+#import "UBCTopupView.h"
 
 #import "Ubcoin-Swift.h"
 
@@ -98,7 +99,16 @@
 
 - (IBAction)topup
 {
-    
+    [self startActivityIndicator];
+    __weak typeof(self) weakSelf = self;
+    [UBCDataProvider.sharedProvider topupWithCompletionBlock:^(BOOL success, NSString *qrCodeURL, NSString *address) {
+        [weakSelf stopActivityIndicator];
+        if (success)
+        {
+            UBCTopupView *view = [UBCTopupView show];
+            [view setupWithQRCodeURL:qrCodeURL address:address];
+        }
+    }];
 }
 
 - (IBAction)send
