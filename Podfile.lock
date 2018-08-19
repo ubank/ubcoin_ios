@@ -25,6 +25,7 @@ PODS:
   - GoogleMaps/Maps (2.7.0):
     - GoogleMaps/Base
   - INTULocationManager (4.3.0)
+  - QRCodeReaderViewController (4.0.2)
   - SDWebImage (4.4.2):
     - SDWebImage/Core (= 4.4.2)
   - SDWebImage/Core (4.4.2)
@@ -64,6 +65,7 @@ DEPENDENCIES:
   - Fabric
   - GoogleMaps
   - INTULocationManager
+  - QRCodeReaderViewController
   - TTTAttributedLabel
   - UBGeneralClasses (from `https://github.com/ubank/ub_general_classes_iOS.git`)
 
@@ -76,6 +78,7 @@ SPEC REPOS:
     - GoogleAnalytics
     - GoogleMaps
     - INTULocationManager
+    - QRCodeReaderViewController
     - SDWebImage
     - TTTAttributedLabel
 
@@ -96,10 +99,11 @@ SPEC CHECKSUMS:
   GoogleAnalytics: f42cc53a87a51fe94334821868d9c8481ff47a7b
   GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
   INTULocationManager: 0ca5c76eacc029ba15938fc699520bc333ed6435
+  QRCodeReaderViewController: e8f27d035b3e72b1d4b1c61ff66458287e3be0ff
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
   UBGeneralClasses: a5485a99a05a01e5c17321117caf26d2507eed87
 
-PODFILE CHECKSUM: 45f9cfb1a6a34519a0e82c0ebf4b405b044e6c75
+PODFILE CHECKSUM: 1ff2f8a56e16b6173b6a806d08792edb08e2d8ac
 
 COCOAPODS: 1.5.3

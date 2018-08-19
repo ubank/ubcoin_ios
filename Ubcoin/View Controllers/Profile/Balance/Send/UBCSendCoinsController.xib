@@ -59,7 +59,7 @@
                     <rect key="frame" x="0.0" y="30" width="375" height="260"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="str_send_UBC_to_wallet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="8Lc-mZ-WMO" customClass="HUBLabel">
-                            <rect key="frame" x="15" y="30" width="345" height="20.5"/>
+                            <rect key="frame" x="15" y="30" width="345" height="18"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -70,7 +70,7 @@
                             </userDefinedRuntimeAttributes>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AgN-iE-tbc">
-                            <rect key="frame" x="15" y="80.5" width="345" height="55"/>
+                            <rect key="frame" x="15" y="78" width="345" height="55"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rll-mU-i3E" customClass="HUBGeneralButton">
                                     <rect key="frame" x="285" y="0.0" width="60" height="55"/>
@@ -109,10 +109,10 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pj1-80-DGB">
-                            <rect key="frame" x="15" y="145.5" width="160" height="55"/>
+                            <rect key="frame" x="15" y="143" width="160" height="55"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UBC" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="TyC-vx-Nfb" customClass="HUBLabel">
-                                    <rect key="frame" x="15" y="0.0" width="35" height="55"/>
+                                    <rect key="frame" x="15" y="0.0" width="32" height="55"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -123,7 +123,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </label>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ylN-gv-oza">
-                                    <rect key="frame" x="60" y="0.0" width="85" height="55"/>
+                                    <rect key="frame" x="57" y="0.0" width="88" height="55"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
@@ -146,13 +146,13 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hfX-Mk-X2V">
-                            <rect key="frame" x="190" y="145.5" width="170" height="55"/>
+                            <rect key="frame" x="190" y="143" width="170" height="55"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_right" translatesAutoresizingMaskIntoConstraints="NO" id="fTI-fE-4Cs">
                                     <rect key="frame" x="0.0" y="21" width="21" height="14"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USD" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="l23-Ok-pxn" customClass="HUBLabel">
-                                    <rect key="frame" x="36" y="-0.5" width="35" height="55"/>
+                                    <rect key="frame" x="36" y="-0.5" width="32" height="55"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -163,7 +163,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="gpr-7B-Puz" customClass="HUBLabel">
-                                    <rect key="frame" x="76" y="0.0" width="0.0" height="55"/>
+                                    <rect key="frame" x="73" y="0.0" width="0.0" height="55"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -174,7 +174,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </label>
                                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="rWD-IV-qZz">
-                                    <rect key="frame" x="76" y="17.5" width="20" height="20"/>
+                                    <rect key="frame" x="73" y="17.5" width="20" height="20"/>
                                 </activityIndicatorView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -192,7 +192,7 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="ipd-55-NbN" customClass="HUBLabel">
-                            <rect key="frame" x="15" y="215.5" width="0.0" height="0.0"/>
+                            <rect key="frame" x="15" y="213" width="0.0" height="0.0"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>

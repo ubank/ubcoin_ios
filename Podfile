@@ -11,5 +11,6 @@ target 'Ubcoin' do
     pod 'Fabric'
     pod 'GoogleMaps'
     pod 'INTULocationManager'
+    pod 'QRCodeReaderViewController'
     pod 'UBGeneralClasses', :git => 'https://github.com/ubank/ub_general_classes_iOS.git'
 end
