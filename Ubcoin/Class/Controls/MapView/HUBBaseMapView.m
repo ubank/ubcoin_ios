@@ -109,6 +109,7 @@
     marker.position = coord;
     marker.map = self.mapView;
     marker.tracksViewChanges = NO;
+    marker.icon = [UIImage imageNamed:@"pin"];
     
     return marker;
 }

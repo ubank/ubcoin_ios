@@ -14,20 +14,41 @@ class UBCMapSelectController: UBViewController {
     
     var completion: ((String, CLLocation) -> Void)?
     
-    private var mapView: HUBBaseMapView!
-    
     private var locationString: String?
     private var geocode = CLGeocoder()
     private var currentLocation: CLLocation?
     private var selectLocation: CLLocation?
     
-    private(set) lazy var locationManager: CLLocationManager = { [unowned self] in
+    private lazy var locationManager: CLLocationManager = { [unowned self] in
         let locationManager = CLLocationManager()
         
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         
         return locationManager
+    }()
+    
+    private lazy var mapView: HUBBaseMapView = { [unowned self] in
+        let mapView = HUBBaseMapView()
+        
+        mapView.mapView.delegate = self
+        mapView.mapView.settings.myLocationButton = true
+        
+        return mapView
+    }()
+    
+    private lazy var locationTitle: UILabel = { [unowned self] in
+        let label = UILabel()
+        
+        label.backgroundColor = .white
+        label.cornerRadius = UBCConstant.cornerRadius
+        label.font = UBCFont.title
+        label.textColor = UBColor.titleColor
+        label.textAlignment = .center
+        label.isHidden = true
+        label.numberOfLines = 0
+        
+        return label
     }()
     
     convenience init(title: String) {
@@ -50,11 +71,13 @@ class UBCMapSelectController: UBViewController {
     }
     
     private func setupViews() {
-        self.mapView = HUBBaseMapView()
-        self.mapView.mapView.delegate = self
-        self.mapView.mapView.settings.myLocationButton = true
         self.view.addSubview(self.mapView)
         self.view.addConstraints(toFillSubview: self.mapView)
+    
+        self.view.addSubview(self.locationTitle)
+        self.view.setLeadingConstraintToSubview(self.locationTitle, withValue: 16)
+        self.view.setTrailingConstraintToSubview(self.locationTitle, withValue: -16)
+        self.view.setTopConstraintToSubview(self.locationTitle, withValue: 16)
     }
     
     override func rightBarButtonClick(_ sender: Any!) {
@@ -64,16 +87,12 @@ class UBCMapSelectController: UBViewController {
             UBAlert.show(withTitle: "ui_alert_title_attention", andMessage: "error_location_not_selected")
         }
     }
-}
-
-
-extension UBCMapSelectController: GMSMapViewDelegate {
     
-    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
-        self.mapView.clearMap()
+    private func select(coordinate: CLLocationCoordinate2D?) {
+        guard let coordinate = coordinate else { return }
         
-        let marker = self.mapView.marker(withCoordinates: coordinate)
-        marker?.icon = UIImage(named: "pin")
+        self.mapView.clearMap()
+        self.mapView.marker(withCoordinates: coordinate)
         
         self.selectLocation = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
         
@@ -96,9 +115,20 @@ extension UBCMapSelectController: GMSMapViewDelegate {
                 }
                 
                 self?.locationString = String(title.dropLast(2))
-                marker?.snippet = self?.locationString
+                self?.locationTitle.isHidden = false
+                self?.locationTitle.text = self?.locationString
+            } else {
+                self?.locationTitle.isHidden = true
             }
         })
+    }
+}
+
+
+extension UBCMapSelectController: GMSMapViewDelegate {
+    
+    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
+        self.select(coordinate: coordinate)
     }
 }
 
@@ -109,6 +139,7 @@ extension UBCMapSelectController: CLLocationManagerDelegate {
         if self.currentLocation == nil, let userLocation = locations.last  {
             self.mapView.camera(toCoord: userLocation.coordinate, withZoomLevel: 15)
             self.currentLocation = userLocation
+            self.select(coordinate: self.currentLocation?.coordinate)
         }
     }
 }

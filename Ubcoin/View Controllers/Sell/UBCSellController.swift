@@ -35,6 +35,9 @@ class UBCSellController: UBViewController {
         tableView.register(UBCSSelectionTableViewCell.self, forCellReuseIdentifier: UBCSSelectionTableViewCell.className)
         tableView.register(UBCSTextFieldTableViewCell.self, forCellReuseIdentifier: UBCSTextFieldTableViewCell.className)
         
+//        let gesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+//        tableView.addGestureRecognizer(gesture)
+        
         return tableView
     }()
 
@@ -134,6 +137,11 @@ class UBCSellController: UBViewController {
         }
     }
     
+    @objc
+    func hideKeyboard() {
+        self.view.endEditing(true)
+    }
+    
     override func rightBarButtonClick(_ sender: Any!) {
         self.tableView.emptyView.isHidden = true
         self.buttonView.isHidden = false
@@ -141,6 +149,10 @@ class UBCSellController: UBViewController {
         self.updateBarButtons()
         self.model.sections = UBCSellDM.sellActions()
         self.tableView.reloadData()
+        
+        if let navigation = self.navigationController as? UBNavigationController {
+            navigation.pop(to: UBCMarketController(), animated: true)
+        }
     }
 }
 

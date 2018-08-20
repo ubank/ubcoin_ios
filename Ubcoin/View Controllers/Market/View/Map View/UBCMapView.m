@@ -73,10 +73,8 @@
 
 - (void)showMarkerAtCenter
 {
-    GMSMarker *marker = [self markerWithCoordinates:self.location.coordinate];
-    marker.icon = [UIImage imageNamed:@"pin"];
+    [self markerWithCoordinates:self.location.coordinate];
     
-    //        [self cameraToCoord:location.coordinate withZoomLevel:30];
     GMSCameraUpdate *camera = [GMSCameraUpdate setTarget:self.location.coordinate zoom:30];
     [self.mapView moveCamera:camera];
     
