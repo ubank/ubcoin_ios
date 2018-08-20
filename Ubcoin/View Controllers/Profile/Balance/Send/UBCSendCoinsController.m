@@ -12,7 +12,7 @@
 #import "Ubcoin-Swift.h"
 #import <QRCodeReaderViewController/QRCodeReaderViewController.h>
 
-@interface UBCSendCoinsController () <UITextFieldDelegate>
+@interface UBCSendCoinsController () <UITextFieldDelegate, QRCodeReaderDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *addressView;
 @property (weak, nonatomic) IBOutlet HUBGeneralButton *scanButton;
@@ -57,14 +57,15 @@
     
     self.amountField.textColor = UBColor.titleColor;
     self.amountField.font = UBFont.titleFont;
+    
+    self.amountInCurrency.textColor = UBColor.descColor;
 }
 
-- (void)updatecommission
+- (void)updateCommissionForAmount:(NSNumber *)amount
 {
     self.commission.text = @"";
     self.payment.commission = nil;
     
-    NSNumber *amount = @(self.amountField.text.doubleValue);
     self.payment.amount = amount;
     if (amount.doubleValue > 0)
     {
@@ -81,11 +82,10 @@
     }
 }
 
-- (void)convertUBC
+- (void)convertUBCForAmount:(NSNumber *)amount
 {
     self.amountInCurrency.text = @"";
     
-    NSNumber *amount = @(self.amountField.text.doubleValue);
     if (amount.doubleValue > 0)
     {
         [self.currencyActivity startAnimating];
@@ -124,16 +124,8 @@
     QRCodeReaderViewController *controller = [QRCodeReaderViewController readerWithCancelButtonTitle:UBLocalizedString(@"ui_button_cancel", nil) codeReader:reader startScanningAtLoad:YES showSwitchCameraButton:NO showTorchButton:NO];
     
     controller.modalPresentationStyle = UIModalPresentationFormSheet;
+    controller.delegate = self;
     [self presentViewController:controller animated:YES completion:NULL];
-
-    __weak typeof(self) weakSelf = self;
-    [reader setCompletionWithBlock:^(NSString *resultAsString) {
-        if (resultAsString.isNotEmpty)
-        {
-            weakSelf.addressField.text = resultAsString;
-        }
-        [weakSelf dismissViewControllerAnimated:YES completion:nil];
-    }];
 }
 
 - (IBAction)next
@@ -149,14 +141,30 @@
     }
 }
 
+#pragma mark - QRCodeReaderDelegate
+
+- (void)readerDidCancel:(QRCodeReaderViewController *)reader
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)reader:(QRCodeReaderViewController *)reader didScanResult:(NSString *)result
+{
+    self.addressField.text = result;
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark - UITextFieldDelegate
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     if ([textField isEqual:self.amountField])
     {
-        [self convertUBC];
-        [self updatecommission];
+        NSString *text = [textField.text stringByReplacingCharactersInRange:range withString:string];
+        NSNumber *amount = @(text.doubleValue);
+        [self convertUBCForAmount:amount];
+        [self updateCommissionForAmount:amount];
     }
     
     return YES;

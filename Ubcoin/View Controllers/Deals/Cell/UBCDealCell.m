@@ -43,11 +43,6 @@
     NSString *text = [NSString stringWithFormat:@" %@ ", UBLocalizedString(@"str_requires_external_app", nil)];
     [info appendAttributedString:[NSAttributedString.alloc initWithString:text attributes:@{NSForegroundColorAttributeName: UBColor.descColor, NSFontAttributeName: UBFont.descFont}]];
     
-    NSTextAttachment *arrowIcon = NSTextAttachment.new;
-    arrowIcon.image = [UIImage imageNamed:@"arrow"];
-    
-    [info appendAttributedString:[NSAttributedString attributedStringWithAttachment:arrowIcon]];
-    
     return info;
 }
 

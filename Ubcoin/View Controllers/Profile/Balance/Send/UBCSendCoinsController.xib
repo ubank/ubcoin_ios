@@ -148,11 +148,8 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hfX-Mk-X2V">
                             <rect key="frame" x="190" y="145.5" width="170" height="55"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_right" translatesAutoresizingMaskIntoConstraints="NO" id="fTI-fE-4Cs">
-                                    <rect key="frame" x="0.0" y="21" width="21" height="14"/>
-                                </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USD" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="l23-Ok-pxn" customClass="HUBLabel">
-                                    <rect key="frame" x="36" y="-0.5" width="35" height="55"/>
+                                    <rect key="frame" x="0.0" y="-0.5" width="35" height="55"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -163,7 +160,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="gpr-7B-Puz" customClass="HUBLabel">
-                                    <rect key="frame" x="76" y="0.0" width="0.0" height="55"/>
+                                    <rect key="frame" x="40" y="0.0" width="0.0" height="55"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -174,19 +171,17 @@
                                     </userDefinedRuntimeAttributes>
                                 </label>
                                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="rWD-IV-qZz">
-                                    <rect key="frame" x="76" y="17.5" width="20" height="20"/>
+                                    <rect key="frame" x="40" y="17.5" width="20" height="20"/>
                                 </activityIndicatorView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="l23-Ok-pxn" firstAttribute="top" secondItem="hfX-Mk-X2V" secondAttribute="top" id="CE2-ON-wRs"/>
-                                <constraint firstItem="fTI-fE-4Cs" firstAttribute="centerY" secondItem="hfX-Mk-X2V" secondAttribute="centerY" id="Gj6-Mc-sUR"/>
                                 <constraint firstItem="rWD-IV-qZz" firstAttribute="leading" secondItem="gpr-7B-Puz" secondAttribute="leading" id="ICD-Tf-evv"/>
                                 <constraint firstItem="rWD-IV-qZz" firstAttribute="centerY" secondItem="hfX-Mk-X2V" secondAttribute="centerY" id="JIY-Le-FAy"/>
                                 <constraint firstAttribute="bottom" secondItem="l23-Ok-pxn" secondAttribute="bottom" id="NzF-dW-fg7"/>
                                 <constraint firstAttribute="bottom" secondItem="gpr-7B-Puz" secondAttribute="bottom" id="PSJ-7w-Rr8"/>
-                                <constraint firstItem="l23-Ok-pxn" firstAttribute="leading" secondItem="fTI-fE-4Cs" secondAttribute="trailing" constant="15" id="hck-sg-Ul4"/>
-                                <constraint firstItem="fTI-fE-4Cs" firstAttribute="leading" secondItem="hfX-Mk-X2V" secondAttribute="leading" id="jLZ-W6-Tk0"/>
+                                <constraint firstItem="l23-Ok-pxn" firstAttribute="leading" secondItem="hfX-Mk-X2V" secondAttribute="leading" id="hFz-vR-uUK"/>
                                 <constraint firstItem="gpr-7B-Puz" firstAttribute="leading" secondItem="l23-Ok-pxn" secondAttribute="trailing" constant="5" id="kKT-v8-CLi"/>
                                 <constraint firstItem="gpr-7B-Puz" firstAttribute="top" secondItem="hfX-Mk-X2V" secondAttribute="top" id="rZj-Hi-Y59"/>
                             </constraints>
@@ -245,7 +240,4 @@
             </connections>
         </tapGestureRecognizer>
     </objects>
-    <resources>
-        <image name="arrow_right" width="21" height="14"/>
-    </resources>
 </document>
