@@ -451,6 +451,18 @@
      }];
 }
 
+- (void)registerInChatWithCompletionBlock:(void (^)(BOOL))completionBlock
+{
+    NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:[UBCURLProvider registrationInChat]];
+    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (completionBlock)
+         {
+             completionBlock([responseObject[@"authorized"] boolValue]);
+         }
+     }];
+}
+
 #pragma mark - BALANCE
 
 - (void)updateBalanceWithCompletionBlock:(void (^)(BOOL))completionBlock

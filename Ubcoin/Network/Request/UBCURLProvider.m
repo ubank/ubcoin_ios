@@ -55,6 +55,12 @@
     return [NSURL URLWithString:url];
 }
 
++ (NSURL *)registrationInChat
+{
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"users/tg"];
+    return [NSURL URLWithString:url];
+}
+
 + (NSURL *)user
 {
     NSString *url = [SERVER_URL stringByAppendingFormat:@"users/me"];

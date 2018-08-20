@@ -18,6 +18,7 @@
 + (NSURL *)registration;
 + (NSURL *)verification;
 + (NSURL *)verificationCheck;
++ (NSURL *)registrationInChat;
 
 + (NSURL *)user;
 + (NSURL *)updateUserInfo;
