@@ -34,4 +34,13 @@
     [self.qrCode sd_setImageWithURL:[NSURL URLWithString:qrCodeURL]];
 }
 
+#pragma mark - Actions
+
+- (IBAction)copyToClipboard
+{
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    pasteboard.string = self.address.text;
+    [UBCToast showToastWithMessage:@"str_address_copied_to_clipboard"];
+}
+
 @end

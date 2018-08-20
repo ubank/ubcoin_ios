@@ -76,7 +76,7 @@
              if (success)
              {
                  weakSelf.payment.commission = commission;
-                 weakSelf.commission.text = [NSString stringWithFormat:@"%@: %@", UBLocalizedString(@"", nil), commission.priceString];
+                 weakSelf.commission.text = [NSString stringWithFormat:@"%@: %@", UBLocalizedString(@"str_transaction_commission", nil), commission.priceString];
              }
          }];
     }
@@ -137,7 +137,7 @@
     }
     else
     {
-        [UBCToast showErrorToastWithMessage:@"str_incorrect_data"];
+        [UBAlert showAlertWithTitle:nil andMessage:@"str_incorrect_data"];
     }
 }
 

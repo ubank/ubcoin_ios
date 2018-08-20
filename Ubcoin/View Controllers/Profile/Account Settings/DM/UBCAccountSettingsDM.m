@@ -47,12 +47,12 @@
 //        row4.name = CHANGE_LANGUAGE_ACTION;
 //        [rows addObject:row4];
         
-        UBTableViewRowData *row5 = UBTableViewRowData.new;
-        row5.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        row5.title = UBLocalizedString(@"str_my_reviews", nil);
-        row5.rightTitle = [NSString stringWithFormat:@"%d", (int)user.reviewsCount];
-        row5.name = SHOW_REVIEWS_ACTION;
-        [rows addObject:row5];
+//        UBTableViewRowData *row5 = UBTableViewRowData.new;
+//        row5.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//        row5.title = UBLocalizedString(@"str_my_reviews", nil);
+//        row5.rightTitle = [NSString stringWithFormat:@"%d", (int)user.reviewsCount];
+//        row5.name = SHOW_REVIEWS_ACTION;
+//        [rows addObject:row5];
         
         section.rows = rows;
         

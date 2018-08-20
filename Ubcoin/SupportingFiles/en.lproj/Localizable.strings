@@ -111,7 +111,7 @@
 "str_address" = "Address";
 "str_amount" = "Amount";
 "str_total_amount" = "Total amount";
-"str_go_to_cucoin_exchange" = "Go to CuCoin exchange";
+"str_go_to_coss_exchange" = "Go to COSS exchange";
 "str_if_you_received_tokens_during_ico" = "If you received tokens during ICO, go to your ERC-20 wallet";
 
 "str_sell_success_title" = "Item successfully placed";
@@ -129,3 +129,5 @@
 
 "error_unauthorized" = "You should be authorized to use this functionality";
 "error_all_fields_empty" = "Some fields are empty";
+
+"str_address_copied_to_clipboard" = "Address copied to clipboard";
