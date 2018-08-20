@@ -451,14 +451,17 @@
      }];
 }
 
-- (void)registerInChatWithCompletionBlock:(void (^)(BOOL))completionBlock
+- (void)registerInChatWithCompletionBlock:(void (^)(BOOL, BOOL, NSURL *, NSURL *))completionBlock
 {
     NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:[UBCURLProvider registrationInChat]];
     [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
      {
          if (completionBlock)
          {
-             completionBlock([responseObject[@"authorized"] boolValue]);
+             completionBlock(success,
+                             [responseObject[@"authorized"] boolValue],
+                             [NSURL URLWithString:responseObject[@"url"]],
+                             [NSURL URLWithString:responseObject[@"app_url"]]);
          }
      }];
 }
