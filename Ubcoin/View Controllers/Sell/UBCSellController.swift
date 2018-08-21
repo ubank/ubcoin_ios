@@ -35,9 +35,6 @@ class UBCSellController: UBViewController {
         tableView.register(UBCSSelectionTableViewCell.self, forCellReuseIdentifier: UBCSSelectionTableViewCell.className)
         tableView.register(UBCSTextFieldTableViewCell.self, forCellReuseIdentifier: UBCSTextFieldTableViewCell.className)
         
-//        let gesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
-//        tableView.addGestureRecognizer(gesture)
-        
         return tableView
     }()
 
@@ -87,6 +84,10 @@ class UBCSellController: UBViewController {
         self.button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         self.buttonView.addSubview(self.button)
         self.buttonView.setAllConstraintToSubview(self.button, with: UIEdgeInsets(top: 15, left: UBCConstant.inset, bottom: -15, right: -UBCConstant.inset))
+        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        gesture.delegate = self
+        self.view.addGestureRecognizer(gesture)
     }
     
     @objc
@@ -333,5 +334,17 @@ extension UBCSellController: UIImagePickerControllerDelegate, UINavigationContro
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: true, completion: nil)
+    }
+}
+
+
+extension UBCSellController: UIGestureRecognizerDelegate {
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if touch.view?.superview as? UITableViewCell != nil {
+            return false
+        }
+        
+        return true
     }
 }
