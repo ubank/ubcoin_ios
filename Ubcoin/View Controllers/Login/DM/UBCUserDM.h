@@ -14,7 +14,7 @@
 @interface UBCUserDM : UBCSellerDM
 
 @property (readonly, nonatomic) NSString *email;
-@property (readonly, nonatomic) NSNumber *walletNumber;
+@property (readonly, nonatomic) BOOL authorizedInTg;
 
 + (UBCUserDM *)loadProfile;
 + (void)saveUserDict:(NSDictionary *)dict;

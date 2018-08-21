@@ -444,9 +444,10 @@
                                                                 andParams:@{@"id": itemID}];
     [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
      {
+         
          if (completionBlock)
          {
-             completionBlock(success, [NSURL URLWithString:responseObject[@"url"]], [NSURL URLWithString:responseObject[@"app_url"]]);
+             completionBlock(success, [NSURL URLWithString:responseObject[@"url"]], [NSURL URLWithString:responseObject[@"appUrl"]]);
          }
      }];
 }
@@ -456,12 +457,19 @@
     NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:[UBCURLProvider registrationInChat]];
     [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
      {
+         responseObject = [responseObject removeNulls];
+         if (success)
+         {
+             [UBCUserDM saveUserDict:responseObject[@"user"]];
+         }
+         
          if (completionBlock)
          {
+             BOOL authorized = [[responseObject valueForKeyPath:@"user.authorized"] boolValue];
              completionBlock(success,
-                             [responseObject[@"authorized"] boolValue],
+                             authorized,
                              [NSURL URLWithString:responseObject[@"url"]],
-                             [NSURL URLWithString:responseObject[@"app_url"]]);
+                             [NSURL URLWithString:responseObject[@"appUrl"]]);
          }
      }];
 }

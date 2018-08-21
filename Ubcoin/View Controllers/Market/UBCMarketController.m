@@ -189,7 +189,6 @@
 - (void)willPresentSearchController:(UISearchController *)searchController
 {
     self.navigationController.interactivePopGestureRecognizer.enabled = NO;
-    
 }
 
 - (void)willDismissSearchController:(UISearchController *)searchController

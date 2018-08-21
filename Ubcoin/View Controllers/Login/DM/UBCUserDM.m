@@ -18,6 +18,7 @@
     if (self)
     {
         _email = dict[@"email"];
+        _authorizedInTg = [dict[@"authorizedInTg"] boolValue];
     }
     return self;
 }

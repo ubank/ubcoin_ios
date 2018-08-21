@@ -67,6 +67,7 @@
     self.loginField.delegate = self;
     self.loginField.placeholder = UBLocalizedString(@"str_email", nil);
     self.loginField.keyboardType = UIKeyboardTypeEmailAddress;
+    self.loginField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     [self.view addSubview:self.loginField];
     
     [self.loginField setHeightConstraintWithValue:50];
