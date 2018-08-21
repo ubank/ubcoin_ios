@@ -123,7 +123,7 @@
     self.itemTitle.text = self.good.title;
     self.category.text = self.good.category.name;
     self.desc.text = self.good.desc;
-    self.price.text = [NSString stringWithFormat:@"%@ UBC", self.good.price.priceStringWithoutCoins];
+    self.price.text = [NSString stringWithFormat:@"%@ UBC", self.good.price.priceString];
     
     self.locationView.hidden = !self.good.location;
     self.mapView.location = self.good.location;

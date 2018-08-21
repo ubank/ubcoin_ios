@@ -68,7 +68,7 @@
     UBTableViewRowData *data = UBTableViewRowData.new;
     data.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     data.data = self;
-    data.title = self.title;
+    data.title = [NSString stringWithFormat:@"%@ UBC", self.price.priceString];
     data.desc = self.desc;
     data.iconURL = [self.images firstObject];
     data.icon = [UIImage imageNamed:@"item_default_image"];

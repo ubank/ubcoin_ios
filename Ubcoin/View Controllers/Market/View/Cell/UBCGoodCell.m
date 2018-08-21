@@ -52,7 +52,7 @@
 {
     _content = content;
     
-    self.title.text = content.title;
+    self.title.text = [NSString stringWithFormat:@"%@ UBC", content.price.priceString];;
     self.desc.text = content.desc;
     self.favoriteButton.image = [UIImage imageNamed:[NSString stringWithFormat:@"icFav%@", self.content.isFavorite ? @"B" : @"A"]];
     NSString *imageURL = [content.images firstObject];
