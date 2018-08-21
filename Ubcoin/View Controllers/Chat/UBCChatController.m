@@ -55,20 +55,35 @@
 {
     [self startActivityIndicatorImmediately];
     __weak typeof(self) weakSelf = self;
-    [UBCDataProvider.sharedProvider chatURLForItemID:self.item.ID
-                                 withCompletionBlock:^(BOOL success, NSURL *url, NSURL *appURL)
-     {
-         if (url)
-         {
-             [weakSelf openChatWithURL:url appURL:appURL];
-         }
-         else
-         {
-             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{             
-                 [weakSelf.navigationController popViewControllerAnimated:YES];
-             });
-         }
-     }];
+    if (self.item)
+    {
+        [UBCDataProvider.sharedProvider chatURLForItemID:self.item.ID
+                                     withCompletionBlock:^(BOOL success, NSURL *url, NSURL *appURL) {
+                                         
+             [weakSelf handleResponseWithURL:url appURL:appURL];
+         }];
+    }
+    else
+    {
+        [UBCDataProvider.sharedProvider registerInChatWithCompletionBlock:^(BOOL success, NSURL *url, NSURL *appURL) {
+            
+            [weakSelf handleResponseWithURL:url appURL:appURL];
+        }];
+    }
+}
+
+- (void)handleResponseWithURL:(NSURL *)url appURL:(NSURL *)appURL
+{
+    if (url)
+    {
+        [self openChatWithURL:url appURL:appURL];
+    }
+    else
+    {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.navigationController popViewControllerAnimated:YES];
+        });
+    }
 }
 
 - (void)openChatWithURL:(NSURL *)url appURL:(NSURL *)appURL

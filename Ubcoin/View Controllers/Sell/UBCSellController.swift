@@ -92,6 +92,13 @@ class UBCSellController: UBViewController {
     @objc
     private func buttonPressed() {
         if self.model.isAllParamsNotEmpty(), let photoRow = self.model.photoRow() {
+            guard let user = UBCUserDM.loadProfile(),
+                !user.authorizedInTg else {
+                self.navigationController?.pushViewController(UBCChatController(), animated: true)
+                
+                return
+            }
+            
             guard let photos = photoRow.data as? [UIImage], photos.count > 0 else { return }
             
             self.startActivityIndicator()

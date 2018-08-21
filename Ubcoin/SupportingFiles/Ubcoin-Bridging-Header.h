@@ -4,11 +4,13 @@
 
 #import "Ubcoin-Prefix.pch"
 
+#import "UBCUserDM.h"
 #import "UBCCategoryDM.h"
 
 #import "UBCLoginController.h"
 #import "UBCSignUpController.h"
 #import "UBCResetPasswordController.h"
+#import "UBCChatController.h"
 #import "UBCMapView.h"
 #import "HUBBaseMapView.h"
 #import "UBLocal.h"
