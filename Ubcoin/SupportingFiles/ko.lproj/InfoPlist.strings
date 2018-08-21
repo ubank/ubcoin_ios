@@ -6,3 +6,6 @@
   Copyright © 2018 UBANK. All rights reserved.
 */
 
+NSPhotoLibraryUsageDescription = "본인 정보는 주변에 판매되는 아이템에 대한 정보를표시합니다";
+NSCameraUsageDescription = "판매하고 QR코드로 구매를 진행하기 위해서는 카메라 접근 허용을해야합니다";
+NSLocationWhenInUseUsageDescription = "판매하고 싶은 아이템의 사진을 고르기 위해서는 사진앨범접근 허용을 해야합니다";

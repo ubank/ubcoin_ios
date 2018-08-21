@@ -6,3 +6,6 @@
   Copyright © 2018 UBANK. All rights reserved.
 */
 
+NSPhotoLibraryUsageDescription = "Info lokasi Anda akan digunakan untuk menampilkan barang-barang untuk penjualan terdekat";
+NSCameraUsageDescription = "Anda perlu mengaktifkan akses ke kamera Anda untuk dapat mengambil gambar barang yang ingin Anda jual dan untuk memindai kode qr untuk mengonfirmasi transaksi Anda";
+NSLocationWhenInUseUsageDescription = "Anda perlu mengaktifkan akses ke Perpustakaan Foto Anda untuk dapat memilih gambar barang yang ingin Anda jual";

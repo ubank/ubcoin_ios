@@ -28,6 +28,9 @@
 "ui_alert_message_addressbook_error"              = "Enable access to contacts";
 "ui_alert_message_geo_error"                      = "Enable access to geolocation to see points on the map near you";
 "error_network_unknown" = "Check Internet availability and the correct date and time. After that try again. In case of failure, contact support.";
+"error_unauthorized" = "You should be authorized to use this functionality";
+"error_all_fields_empty" = "Some fields are empty";
+"error_location_not_selected" = "Location not selected";
 
 "str_market" = "Market";
 "str_favorites" = "Favorites";
@@ -100,7 +103,6 @@
 "str_scan_qr-code" = "Scan QR-code or press to copy the address to top up your balance.";
 "str_how_to_get_tokens" = "How to get UBC tokens";
 
-"error_location_not_selected" = "Location not selected";
 "str_transaction_id" = "Transaction ID";
 "str_transaction_receipt_status" = "Transaction Receipt Status";
 "str_from" = "From";
@@ -113,6 +115,7 @@
 "str_total_amount" = "Total amount";
 "str_go_to_coss_exchange" = "Go to COSS exchange";
 "str_if_you_received_tokens_during_ico" = "If you received tokens during ICO, go to your ERC-20 wallet";
+"str_address_copied_to_clipboard" = "Address copied to clipboard";
 
 "str_sell_success_title" = "Item successfully placed";
 "str_sell_success_desc" = "Your item placed on marketplace";
@@ -126,8 +129,3 @@
 "str_sell_camera" = "Camera";
 "str_sell_library" = "Photo Library";
 "str_sell_choose" = "Choose action";
-
-"error_unauthorized" = "You should be authorized to use this functionality";
-"error_all_fields_empty" = "Some fields are empty";
-
-"str_address_copied_to_clipboard" = "Address copied to clipboard";

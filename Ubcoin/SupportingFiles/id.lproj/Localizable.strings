@@ -14,6 +14,7 @@
 "ui_button_enable"   = "Diaktifkan";
 "ui_button_skip"     = "Lewati";
 "ui_button_search"   = "Cari";
+"ui_button_continue" = "Lanjutkan";
 
 "ui_alert_button_ok"                              = "OK";
 "ui_alert_button_cancel"                          = "Membatalkan";
@@ -27,6 +28,9 @@
 "ui_alert_message_addressbook_error"              = "Aktifkan akses ke kontak";
 "ui_alert_message_geo_error"                      = "Aktifkan akses ke geolokasi untuk melihat titik pada peta di dekat Anda";
 "error_network_unknown" = "Periksa ketersedian internet dan tanggal dan waktu yang benar. Setelah itu coba lagi. Jika terjadi kegagalan, kontak dukungan kami.";
+"error_unauthorized" = "Anda harus diizinkan untuk menggunakan fungsi ini";
+"error_all_fields_empty" = "Beberapa bidang kosong";
+"error_location_not_selected" = "Lokasi belum dipilih";
 
 "str_market" = "Pasar";
 "str_favorites" = "Favorit";
@@ -96,11 +100,32 @@
 "str_transaction_history" = "Riwayat Transaksi";
 "str_transaction_history_desc" = "Semua riwayat transaksi Anda akan ditampilkan di sini tepat setelah isi ulang pertama.";
 "str_holded_transactions" = "TRANSAKSI YANG DITAHAN";
-"str_transaction_history" = "RIWAYAT TRANSAKSI";
 "str_scan_qr-code" = "Scan kode-QR atau tekan untuk menyalin alamat untuk isi ulang saldo anda.";
 "str_how_to_get_tokens" = "Bagaimana untuk mendapatkan token UBC";
 
-"error_unauthorized" = "Anda harus diizinkan untuk menggunakan fungsi ini";
+"str_transaction_id" = "ID transaksi";
+"str_transaction_receipt_status" = "Status Penerimaan Transaksi";
+"str_from" = "Dari";
+"str_to" = "Kepada";
+"str_send_UBC_to_wallet" = "Kirim UBC ke dompet yang kompatibel ERC-20.";
+"str_transaction_commission" = "Komisi Transaksi";
+"str_info" = "Info";
+"str_address" = "Alamat";
+"str_amount" = "Jumlah";
+"str_total_amount" = "Jumlah total";
+"str_go_to_coss_exchange" = "Pergi ke pertukaran COSS";
+"str_if_you_received_tokens_during_ico" = "Jika Anda menerima token selama ICO, pergi ke wallet ERC-20 anda";
+"str_address_copied_to_clipboard" = "Alamat disalin ke papan klip";
+
 "str_sell_success_title" = "Barang berhasil di tempatkan";
 "str_sell_success_desc" = "Barang anda ditempatkan di pasar";
-"error_all_fields_empty" = "Beberapa bidang kosong";
+"str_sell_about" = "Tentang";
+"str_sell_desc" = "Deskripsi";
+"str_sell_location" = "Lokasi";
+"str_sell_placeholder_category" = "Pilih Kategori";
+"str_sell_placeholder_location" = "Pilih Lokasi";
+"str_sell_placeholder_price" = "Harga";
+"str_sell_placeholder_title" = "Judul";
+"str_sell_camera" = "Kamera";
+"str_sell_library" = "Perpustakaan Foto";
+"str_sell_choose" = "Pilih tindakan";
