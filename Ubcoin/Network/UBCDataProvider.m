@@ -452,7 +452,7 @@
      }];
 }
 
-- (void)registerInChatWithCompletionBlock:(void (^)(BOOL, NSURL *, NSURL *))completionBlock
+- (void)registerInChatWithCompletionBlock:(void (^)(BOOL, BOOL, NSURL *, NSURL *))completionBlock
 {
     NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:[UBCURLProvider registrationInChat]];
     [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
@@ -465,7 +465,9 @@
          
          if (completionBlock)
          {
+             BOOL authorized = [[responseObject valueForKeyPath:@"user.authorized"] boolValue];
              completionBlock(success,
+                             authorized,
                              [NSURL URLWithString:responseObject[@"url"]],
                              [NSURL URLWithString:responseObject[@"appUrl"]]);
          }

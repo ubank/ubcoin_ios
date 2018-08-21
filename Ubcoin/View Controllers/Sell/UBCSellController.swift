@@ -94,52 +94,24 @@ class UBCSellController: UBViewController {
     private func buttonPressed() {
         if self.model.isAllParamsNotEmpty(), let photoRow = self.model.photoRow() {
             guard let user = UBCUserDM.loadProfile(),
-                !user.authorizedInTg else {
-                self.navigationController?.pushViewController(UBCChatController(), animated: true)
-                
-                return
-            }
-            
-            guard let photos = photoRow.data as? [UIImage], photos.count > 0 else { return }
-            
-            self.startActivityIndicator()
-            
-            let myGroup = DispatchGroup()
-            
-            var images = [String]()
-
-            for photo in photos {
-                myGroup.enter()
-
-                UBCDataProvider.shared.uploadImage(photo) { success, url in
-                    if success {
-                        if let url = url {
-                            images.append(url)
-                        }
+                user.authorizedInTg else {
+                    self.startActivityIndicator()
+                    UBCDataProvider.shared.registerInChat { [weak self] success, authorizedInTg, url, appURL in
+                        self?.stopActivityIndicator()
                         
-                        myGroup.leave()
+                        if authorizedInTg {
+                            self?.sendItem(photoRow: photoRow)
+                        }
+                        else {
+                            self?.navigationController?.pushViewController(UBCChatController(url: url, appURL: appURL), animated: true)
+                        }
                     }
-                }
-            }
-
-            myGroup.notify(queue: .main) {
-                var params = self.model.allFilledParams()
-                
-                params["images"] = images
-                
-                UBCDataProvider.shared.sellItem(params) { [weak self] success in
-                    self?.stopActivityIndicator()
                     
-                    if success {
-                        self?.tableView.emptyView.isHidden = false
-                        self?.buttonView.isHidden = true
-                        self?.navigationContainer.rightImageTitle = "general_close"
-                        self?.updateBarButtons()
-                        self?.model.sections = []
-                        self?.tableView.reloadData()
-                    }
-                }
+                    return
             }
+            
+            self.sendItem(photoRow: photoRow)
+            
         } else {
             UBAlert.show(withTitle: "ui_alert_title_attention", andMessage: "error_all_fields_empty")
         }
@@ -160,6 +132,49 @@ class UBCSellController: UBViewController {
         
         if let navigation = self.navigationController as? UBNavigationController {
             navigation.pop(to: UBCMarketController(), animated: true)
+        }
+    }
+    
+    private func sendItem(photoRow: UBCSellCellDM) {
+        guard let photos = photoRow.data as? [UIImage], photos.count > 0 else { return }
+        
+        self.startActivityIndicator()
+        
+        let myGroup = DispatchGroup()
+        
+        var images = [String]()
+        
+        for photo in photos {
+            myGroup.enter()
+            
+            UBCDataProvider.shared.uploadImage(photo) { success, url in
+                if success {
+                    if let url = url {
+                        images.append(url)
+                    }
+                    
+                    myGroup.leave()
+                }
+            }
+        }
+        
+        myGroup.notify(queue: .main) {
+            var params = self.model.allFilledParams()
+            
+            params["images"] = images
+            
+            UBCDataProvider.shared.sellItem(params) { [weak self] success in
+                self?.stopActivityIndicator()
+                
+                if success {
+                    self?.tableView.emptyView.isHidden = false
+                    self?.buttonView.isHidden = true
+                    self?.navigationContainer.rightImageTitle = "general_close"
+                    self?.updateBarButtons()
+                    self?.model.sections = []
+                    self?.tableView.reloadData()
+                }
+            }
         }
     }
 }

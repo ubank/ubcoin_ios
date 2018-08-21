@@ -12,5 +12,6 @@
 @interface UBCChatController : UBViewController
 
 - (instancetype)initWithItem:(UBCGoodDM *)item;
+- (instancetype)initWithURL:(NSURL *)url appURL:(NSURL *)appURL;
 
 @end

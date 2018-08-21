@@ -11,7 +11,10 @@
 @interface UBCChatController () <WKNavigationDelegate, WKUIDelegate>
 
 @property (strong, nonatomic) WKWebView *webView;
+
 @property (strong, nonatomic) UBCGoodDM *item;
+@property (strong, nonatomic) NSURL *url;
+@property (strong, nonatomic) NSURL *appURL;
 
 @end
 
@@ -28,6 +31,17 @@
     if (self)
     {
         self.item = item;
+    }
+    return self;
+}
+
+- (instancetype)initWithURL:(NSURL *)url appURL:(NSURL *)appURL
+{
+    self = [super init];
+    if (self)
+    {
+        self.url = url;
+        self.appURL = appURL;
     }
     return self;
 }
@@ -54,9 +68,9 @@
 - (void)updateInfo
 {
     [self startActivityIndicatorImmediately];
-    __weak typeof(self) weakSelf = self;
     if (self.item)
     {
+        __weak typeof(self) weakSelf = self;
         [UBCDataProvider.sharedProvider chatURLForItemID:self.item.ID
                                      withCompletionBlock:^(BOOL success, NSURL *url, NSURL *appURL) {
                                          
@@ -65,12 +79,11 @@
     }
     else
     {
-        [UBCDataProvider.sharedProvider registerInChatWithCompletionBlock:^(BOOL success, NSURL *url, NSURL *appURL) {
-            
-            [weakSelf handleResponseWithURL:url appURL:appURL];
-        }];
+        [self handleResponseWithURL:self.url appURL:self.appURL];
     }
 }
+
+#pragma mark -
 
 - (void)handleResponseWithURL:(NSURL *)url appURL:(NSURL *)appURL
 {
