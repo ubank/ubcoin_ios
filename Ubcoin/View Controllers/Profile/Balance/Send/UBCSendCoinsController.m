@@ -105,6 +105,12 @@
     }
 }
 
+- (void)setupPayment
+{
+    self.payment.address = self.addressField.text;
+    self.payment.amount = @(self.amountField.text.doubleValue);
+}
+
 #pragma mark - Actions
 
 - (IBAction)hideKeyboard:(id)sender
@@ -130,6 +136,9 @@
 
 - (IBAction)next
 {
+    [self.view endEditing:YES];
+    [self setupPayment];
+    
     if (self.payment.valid)
     {
         UBCConfirmationSendCoinsController *controller = [UBCConfirmationSendCoinsController.alloc initWithPayment:self.payment];
