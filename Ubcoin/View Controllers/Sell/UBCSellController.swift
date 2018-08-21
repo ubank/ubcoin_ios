@@ -25,7 +25,7 @@ class UBCSellController: UBViewController {
         tableView.separatorStyle = .none
         tableView.estimatedRowHeight = UBCConstant.cellHeight
         
-        tableView.emptyView.icon.image = UIImage(named: "empty_favorites")
+        tableView.emptyView.icon.image = UIImage(named: "imgPlaced")
         tableView.emptyView.title.text = "str_sell_success_title".localizedString()
         tableView.emptyView.desc.text = "str_sell_success_desc".localizedString()
         
