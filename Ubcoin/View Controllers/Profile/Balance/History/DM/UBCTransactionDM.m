@@ -39,7 +39,7 @@
 
 - (NSAttributedString *)amountString
 {
-    UIColor *textColor = self.amount.doubleValue > 0 ? UBColor.titleColor : UBCColor.green;
+    UIColor *textColor = self.amount.doubleValue > 0 ? UBCColor.green : UBColor.titleColor;
     NSString *string = [NSString stringWithFormat:@"  %@ UBC", self.amount.priceString];
     NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:string attributes:@{NSForegroundColorAttributeName: textColor}];
     
