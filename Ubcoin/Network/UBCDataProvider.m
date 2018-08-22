@@ -444,7 +444,6 @@
                                                                 andParams:@{@"id": itemID}];
     [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
      {
-         
          if (completionBlock)
          {
              completionBlock(success, [NSURL URLWithString:responseObject[@"url"]], [NSURL URLWithString:responseObject[@"appUrl"]]);

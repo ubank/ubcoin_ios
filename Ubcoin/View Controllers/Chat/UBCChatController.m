@@ -103,12 +103,10 @@
 {
     if ([[UIApplication sharedApplication] canOpenURL:appURL])
     {
-        __weak typeof(self) weakSelf = self;
         [[UIApplication sharedApplication] openURL:appURL
                                            options:@{}
-                                 completionHandler:^(BOOL success) {
-                                     [weakSelf.navigationController popViewControllerAnimated:YES];
-                                 }];
+                                 completionHandler:nil];
+        [self.navigationController popViewControllerAnimated:YES];
     }
     else
     {
