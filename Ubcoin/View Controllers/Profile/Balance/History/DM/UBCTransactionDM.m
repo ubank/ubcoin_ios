@@ -20,9 +20,9 @@
         _ID = dict[@"id"];
         _from = dict[@"from"];
         _to = dict[@"to"];
-        _amount = dict[@"amount"];
+        _amount = dict[@"amountUBC"];
         _status = dict[@"status"];
-        _date = [NSDate dateFromISO8601String:dict[@"createdDate"]];
+        _date = [NSDate dateFromString:dict[@"createdDate"] inFormat:@"YYYYMMDD'T'hhmmss+hhmm"];
     }
     return self;
 }
@@ -40,13 +40,14 @@
 - (NSAttributedString *)amountString
 {
     UIColor *textColor = self.amount.doubleValue > 0 ? UBColor.titleColor : UBCColor.green;
-    NSString *string = [NSString stringWithFormat:@" %@ UBC", self.amount.priceString];
+    NSString *string = [NSString stringWithFormat:@"  %@ UBC", self.amount.priceString];
     NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:string attributes:@{NSForegroundColorAttributeName: textColor}];
     
     if ([self.status isEqualToString:@"IN_PROGRESS"])
     {
         NSTextAttachment *textAttachment = NSTextAttachment.new;
         textAttachment.image = [UIImage imageNamed:@"history_pending"];
+        textAttachment.bounds = CGRectMake(0, (UBFont.descFont.pointSize - textAttachment.image.size.height), textAttachment.image.size.width, textAttachment.image.size.height);
         
         NSAttributedString *attrStringWithImage = [NSAttributedString attributedStringWithAttachment:textAttachment];
         [text insertAttributedString:attrStringWithImage atIndex:0];
