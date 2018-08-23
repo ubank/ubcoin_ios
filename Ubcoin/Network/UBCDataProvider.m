@@ -61,7 +61,7 @@
              if (completionBlock)
              {
                  NSNumber *totalPages = [responseObject valueForKeyPath:@"pageData.totalPages"];
-                 completionBlock(YES, items, totalPages.integerValue - 1 > page);
+                 completionBlock(YES, items, totalPages.integerValue > page + 1);
              }
          }
          else if (completionBlock)
@@ -268,7 +268,7 @@
              if (completionBlock)
              {
                  NSNumber *totalPages = [responseObject valueForKeyPath:@"pageData.totalPages"];
-                 completionBlock(YES, items, totalPages.integerValue - 1 > page);
+                 completionBlock(YES, items, totalPages.integerValue > page + 1);
              }
          }
          else if (completionBlock)
@@ -353,7 +353,7 @@
              if (completionBlock)
              {
                  NSNumber *totalPages = [responseObject valueForKeyPath:@"pageData.totalPages"];
-                 completionBlock(YES, items, totalPages.integerValue - 1 > page);
+                 completionBlock(YES, items, totalPages.integerValue > page + 1);
              }
          }
          else if (completionBlock)
@@ -399,7 +399,7 @@
              if (completionBlock)
              {
                  NSNumber *totalPages = [responseObject valueForKeyPath:@"pageData.totalPages"];
-                 completionBlock(YES, items, totalPages.integerValue - 1 > page);
+                 completionBlock(YES, items, totalPages.integerValue > page + 1);
              }
          }
          else if (completionBlock)
@@ -426,7 +426,7 @@
              if (completionBlock)
              {
                  NSNumber *totalPages = [responseObject valueForKeyPath:@"pageData.totalPages"];
-                 completionBlock(YES, items, totalPages.integerValue - 1 > page );
+                 completionBlock(YES, items, totalPages.integerValue > page + 1 );
              }
          }
          else if (completionBlock)
