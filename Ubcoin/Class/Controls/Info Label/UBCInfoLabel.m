@@ -40,6 +40,13 @@
     [self setHeightConstraintWithValue:21];
 }
 
+- (CGSize)intrinsicContentSize
+{
+    CGSize intrinsicSuperViewContentSize = [super intrinsicContentSize];
+    intrinsicSuperViewContentSize.width += 18;
+    return intrinsicSuperViewContentSize;
+}
+
 - (void)setupWithImage:(UIImage *)image andText:(NSString *)text
 {
     NSMutableAttributedString *attString = [[NSMutableAttributedString alloc] initWithString:[NSString notEmptyString:text]];
@@ -55,9 +62,6 @@
     }
     
     self.attributedText = attString;
-    
-    CGFloat width = attString.sizeWithAttributedString.width;
-    [self setWidthConstraintWithValue:MAX(48, width + 18)];
 }
 
 @end

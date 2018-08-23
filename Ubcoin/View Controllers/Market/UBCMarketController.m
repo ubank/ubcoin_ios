@@ -37,6 +37,14 @@
     [self setupCollectionView];
 //    [self setupSearch];
     
+    __weak typeof(self) weakSelf = self;
+    [UBLocationManager.sharedLocation trackMyLocationOnce:^(BOOL success) {
+        if (success)
+        {
+            [weakSelf.collectionView reloadData];
+        }
+    }];
+    
     [self startActivityIndicatorImmediately];
     [self updateInfo];
     

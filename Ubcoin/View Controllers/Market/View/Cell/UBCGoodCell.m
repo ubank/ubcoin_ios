@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet HUBLabel *title;
 @property (weak, nonatomic) IBOutlet HUBLabel *desc;
 @property (weak, nonatomic) IBOutlet UBCInfoLabel *photoCount;
+@property (weak, nonatomic) IBOutlet UBCInfoLabel *distanceLabel;
 @property (weak, nonatomic) IBOutlet UBButton *favoriteButton;
 @property (weak, nonatomic) IBOutlet UBCStarsView *stars;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
@@ -57,9 +58,18 @@
     self.favoriteButton.image = [UIImage imageNamed:[NSString stringWithFormat:@"icFav%@", self.content.isFavorite ? @"B" : @"A"]];
     NSString *imageURL = [content.images firstObject];
     [self loadImageToFillWithURL:imageURL withDefaultImage:[UIImage imageNamed:@"item_default_image"] forImageView:self.icon];
+    [self setLocation:content.location];
     [self.stars showStars:content.seller.rating.unsignedIntegerValue];
     [self.photoCount setupWithImage:[UIImage imageNamed:@"market_photo"]
                             andText:[NSString stringWithFormat:@"1/%d", (int)content.images.count]];
+}
+
+- (void)setLocation:(CLLocation *)location
+{
+    NSString *distance = [UBLocationManager distanceStringFromMeAndCoordinates:location.coordinate];
+    self.distanceLabel.hidden = !distance.isNotEmpty;
+    [self.distanceLabel setupWithImage:[UIImage imageNamed:@"market_location"]
+                               andText:distance];
 }
 
 #pragma mark - Actions

@@ -53,6 +53,12 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BpJ-sw-REP" customClass="UBCInfoLabel">
+                                                <rect key="frame" x="103" y="109" width="42" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -67,6 +73,8 @@
                                             <constraint firstItem="Dsj-sm-fQP" firstAttribute="top" secondItem="5rL-nz-cxb" secondAttribute="top" id="ib4-kg-d2b"/>
                                             <constraint firstItem="Tgf-u8-OoQ" firstAttribute="trailing" secondItem="Dsj-sm-fQP" secondAttribute="trailing" id="nUJ-iG-dF4"/>
                                             <constraint firstItem="Tgf-u8-OoQ" firstAttribute="leading" secondItem="Dsj-sm-fQP" secondAttribute="leading" id="piE-n9-c5v"/>
+                                            <constraint firstAttribute="bottom" secondItem="BpJ-sw-REP" secondAttribute="bottom" constant="10" id="v77-DB-ciR"/>
+                                            <constraint firstAttribute="trailing" secondItem="BpJ-sw-REP" secondAttribute="trailing" constant="10" id="vE9-mF-EYa"/>
                                             <constraint firstAttribute="trailing" secondItem="Dsj-sm-fQP" secondAttribute="trailing" id="zom-mt-ZfA"/>
                                         </constraints>
                                     </view>
@@ -151,6 +159,7 @@
                 <outlet property="background" destination="Tgf-u8-OoQ" id="B6S-uT-NCd"/>
                 <outlet property="containerView" destination="8xK-Sz-DZC" id="Ix6-cv-Fdl"/>
                 <outlet property="desc" destination="Hfj-8M-XLp" id="yjM-w4-mTb"/>
+                <outlet property="distanceLabel" destination="BpJ-sw-REP" id="2fb-UO-b94"/>
                 <outlet property="favoriteButton" destination="vF8-9a-uo3" id="5RQ-La-ppN"/>
                 <outlet property="icon" destination="Dsj-sm-fQP" id="pg1-Q2-iw6"/>
                 <outlet property="mainContainerView" destination="tpp-Mv-IYf" id="OQQ-2H-ouK"/>
