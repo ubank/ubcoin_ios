@@ -36,6 +36,13 @@
 
 #pragma mark - Actions
 
+- (IBAction)goToCoss
+{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://coss.io/"]
+                                       options:@{}
+                             completionHandler:nil];
+}
+
 - (IBAction)copyToClipboard
 {
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];

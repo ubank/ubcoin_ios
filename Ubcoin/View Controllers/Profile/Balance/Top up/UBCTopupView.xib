@@ -88,12 +88,23 @@
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coss" translatesAutoresizingMaskIntoConstraints="NO" id="ypt-ZN-0vX">
                                     <rect key="frame" x="35" y="36.5" width="87" height="74"/>
                                 </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fab-jB-llE">
+                                    <rect key="frame" x="0.0" y="0.0" width="157.5" height="96"/>
+                                    <state key="normal" title="Button"/>
+                                    <connections>
+                                        <action selector="goToCoss" destination="i5M-Pr-FkT" eventType="touchUpInside" id="uoH-Ki-PVx"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
+                                <constraint firstAttribute="trailing" secondItem="Fab-jB-llE" secondAttribute="trailing" id="2iM-y0-XDY"/>
                                 <constraint firstItem="uhd-cw-uYq" firstAttribute="top" secondItem="lSa-kY-5SH" secondAttribute="top" id="3my-4L-41X"/>
+                                <constraint firstItem="Fab-jB-llE" firstAttribute="leading" secondItem="lSa-kY-5SH" secondAttribute="leading" id="5cm-NN-eCZ"/>
                                 <constraint firstAttribute="trailing" secondItem="uhd-cw-uYq" secondAttribute="trailing" id="EfB-eP-SaJ"/>
+                                <constraint firstItem="Fab-jB-llE" firstAttribute="top" secondItem="lSa-kY-5SH" secondAttribute="top" id="LZ0-mL-oIo"/>
                                 <constraint firstItem="ypt-ZN-0vX" firstAttribute="centerX" secondItem="lSa-kY-5SH" secondAttribute="centerX" id="Xik-J9-dQu"/>
+                                <constraint firstAttribute="bottom" secondItem="Fab-jB-llE" secondAttribute="bottom" id="cXD-Wi-szV"/>
                                 <constraint firstItem="uhd-cw-uYq" firstAttribute="leading" secondItem="lSa-kY-5SH" secondAttribute="leading" id="rZg-cp-4W3"/>
                             </constraints>
                         </view>
