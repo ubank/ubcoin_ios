@@ -88,7 +88,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   UBGeneralClasses:
-    :commit: a5761e8fcb421a4691d14a20008906d055ae8452
+    :commit: ddca9c49bd64c57c6c20c27d79d06f91874ef032
     :git: https://github.com/ubank/ub_general_classes_iOS.git
 
 SPEC CHECKSUMS:
