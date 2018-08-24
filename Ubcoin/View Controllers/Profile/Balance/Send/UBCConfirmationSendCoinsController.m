@@ -45,12 +45,12 @@
     __weak typeof(self) weakSelf = self;
     [UBCDataProvider.sharedProvider sendCoins:self.payment.amount
                                     toAddress:self.payment.address
-                          withCompletionBlock:^(BOOL success, NSNumber *result, NSString *message)
+                          withCompletionBlock:^(BOOL success, NSString *result, NSString *message)
      {
          [weakSelf stopActivityIndicator];
          if (success)
          {
-             if ([result isEqualToNumber:@0])
+             if ([result isEqualToString:@"0"])
              {
                  [weakSelf.navigationController popToRootViewControllerAnimated:YES];
              }

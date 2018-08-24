@@ -293,7 +293,7 @@
      }];
 }
 
-- (void)sendCoins:(NSNumber *)amount toAddress:(NSString *)address withCompletionBlock:(void (^)(BOOL, NSNumber *, NSString *))completionBlock
+- (void)sendCoins:(NSNumber *)amount toAddress:(NSString *)address withCompletionBlock:(void (^)(BOOL, NSString *, NSString *))completionBlock
 {
     NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider withdraw]
                                                                 andParams:@{@"externalAddress": address,

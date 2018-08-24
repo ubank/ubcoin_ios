@@ -12,8 +12,6 @@
 #import "HUBCollectionViewWaitCell.h"
 #import "UBCGoodCell.h"
 
-#import "Ubcoin-Swift.h"
-
 @implementation UBCGoodsCollectionView
 
 - (void)awakeFromNib
@@ -49,7 +47,6 @@
     self.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     
     self.refreshControl = UIRefreshControl.new;
-    self.refreshControl.tintColor = UBCColor.green;
     [self.refreshControl addTarget:self action:@selector(refreshControlUpdate) forControlEvents:UIControlEventValueChanged];
     
     [self registerNib:[UINib nibWithNibName:NSStringFromClass(UBCGoodCell.class) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass(UBCGoodCell.class)];
