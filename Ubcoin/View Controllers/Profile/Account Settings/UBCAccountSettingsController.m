@@ -41,10 +41,17 @@
 
 - (void)setupFooter
 {
-    UIView *footerView = [UIView.alloc initWithFrame:CGRectMake(0, 0, self.tableView.width, 110)];
+    UIView *footerView = [UIView.alloc initWithFrame:CGRectMake(0, 0, self.tableView.width, 120)];
     footerView.backgroundColor = UIColor.clearColor;
     
-    HUBGeneralButton *button = [HUBGeneralButton.alloc initWithFrame:CGRectMake(0, 30, footerView.width, 50)];
+    HUBLabel *version = [[HUBLabel alloc] initWithStyle:HUBLabelStyleDefaultDescription];
+    version.frame = CGRectMake(0, 25, footerView.width, 30);
+    version.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    version.textAlignment = NSTextAlignmentCenter;
+    version.text = [NSString stringWithFormat:@"%@ %@ (%@)", UBLocalizedString(@"str_version", nil), UBDeviceInfo.appVersion, UBDeviceInfo.bundleVersion];
+    [footerView addSubview:version];
+    
+    HUBGeneralButton *button = [HUBGeneralButton.alloc initWithFrame:CGRectMake(0, 60, footerView.width, 50)];
     button.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     button.type = HUBGeneralButtonTypeWhiteWithRedTitle;
     button.roundCorners = NO;

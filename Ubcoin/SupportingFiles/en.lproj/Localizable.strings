@@ -130,4 +130,5 @@
 "str_sell_library" = "Photo Library";
 "str_sell_choose" = "Choose action";
 
+"str_version" = "Version";
 "str_ubcoin_is_going_to_open_telegram" = "Ubcoin Market is going to open a Telegram bot. This is necessary to buy or sell smth. Please create a Telegram account if you don’t have one.";
