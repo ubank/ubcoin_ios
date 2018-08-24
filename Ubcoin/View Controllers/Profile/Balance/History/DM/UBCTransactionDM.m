@@ -22,7 +22,7 @@
         _to = dict[@"to"];
         _amount = dict[@"amountUBC"];
         _status = dict[@"status"];
-        _date = [NSDate dateFromString:dict[@"createdDate"] inFormat:@"YYYYMMDD'T'hhmmss+hhmm"];
+        _date = [NSDate dateFromString:dict[@"createdDate"] inFormat:@"yyyyMMdd'T'HHmmss+HHmm"];
     }
     return self;
 }
