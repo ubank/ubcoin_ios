@@ -103,7 +103,11 @@ class UBCSellController: UBViewController {
                             self?.sendItem(photoRow: photoRow)
                         }
                         else {
-                            self?.navigationController?.pushViewController(UBCChatController(url: url, appURL: appURL), animated: true)
+                            UBAlert.show(withTitle: "",
+                                         andMessage: "str_ubcoin_is_going_to_open_telegram".localizedString(),
+                                         withCompletionBlock: {
+                                self?.navigationController?.pushViewController(UBCChatController(url: url, appURL: appURL), animated: true)
+                            })
                         }
                     }
                     
