@@ -286,7 +286,7 @@ extension UBCSellController: UITableViewDataSource, UITableViewDelegate {
 
 extension UBCSellController: UBCSPhotoTableViewCellDelegate {
     
-    func addPhotoPressed(_ index: Int?, sender: UIView) {
+    func addPhoto(_ index: Int?, sender: UIView) {
         if let index = index {
             self.navigationController?.pushViewController(UBCPhotosController(model: self.model, index: index), animated: true)
             
@@ -302,6 +302,13 @@ extension UBCSellController: UBCSPhotoTableViewCellDelegate {
         }
         
         UBAlert.showActionSheet(withTitle: "str_sell_choose".localizedString(), message: nil, actions: [action1, action2], sourceView: sender)
+    }
+    
+    func deletePhoto(_ index: Int?, sender: UIView) {
+        guard let index = index else { return }
+        
+        self.model.removePhoto(index: index)
+        self.tableView.reloadData()
     }
     
     private func showImagePicker(sourceType: UIImagePickerControllerSourceType) {
@@ -344,8 +351,6 @@ extension UBCSellController: UIImagePickerControllerDelegate, UINavigationContro
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             self.model.updatePhotoRow(image: image)
             self.tableView.reloadData()
-            
-            UBCDataProvider.shared.uploadImage(image, withCompletionBlock: nil)
         }
 
         self.dismiss(animated: true, completion: nil)
@@ -360,7 +365,7 @@ extension UBCSellController: UIImagePickerControllerDelegate, UINavigationContro
 extension UBCSellController: UIGestureRecognizerDelegate {
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        if touch.view?.superview as? UITableViewCell != nil {
+        if touch.view?.superview as? UITableViewCell != nil || touch.view?.superview?.superview as? UITableViewCell != nil {
             return false
         }
         

@@ -9,7 +9,8 @@
 import UIKit
 
 protocol UBCSPhotoTableViewCellDelegate {
-    func addPhotoPressed(_ index: Int?, sender: UIView)
+    func addPhoto(_ index: Int?, sender: UIView)
+    func deletePhoto(_ index: Int?, sender: UIView)
 }
 
 
@@ -24,6 +25,14 @@ class UBCSPhotoTableViewCell: UBTableViewCell {
             for i in 0..<UBCSPhotoTableViewCell.photosCount {
                 let view = photoViews[i]
                 view.isViewHighlighted = indexHighlited == i
+            }
+        }
+    }
+    
+    var isDeleteHidden = false {
+        didSet {
+            for view in self.photoViews {
+                view.isDeleteHidden = self.isDeleteHidden
             }
         }
     }
@@ -57,7 +66,7 @@ class UBCSPhotoTableViewCell: UBTableViewCell {
         for i in 0..<UBCSPhotoTableViewCell.photosCount {
             let photoView = UBCSPhotoAddView(frame: .zero)
             photoView.tag = i
-            photoView.addTarget(self, action: #selector(photoPressed(sender:)), for: .touchUpInside)
+            photoView.delegate = self
             photoViews.append(photoView)
             self.stackView.addArrangedSubview(photoView)
         }
@@ -69,13 +78,17 @@ class UBCSPhotoTableViewCell: UBTableViewCell {
         let freeSpacing = self.width - 2 * UBCConstant.inset - UBCSPhotoAddView.photosSize * CGFloat(UBCSPhotoTableViewCell.photosCount)
         self.stackView.spacing = freeSpacing / (CGFloat(UBCSPhotoTableViewCell.photosCount) - 1)
     }
+}
+
+
+extension UBCSPhotoTableViewCell: UBCSPhotoAddViewDelegate {
     
-    @objc
-    private func photoPressed(sender: UBCSPhotoAddView) {
-        if let delegate = self.delegate {
-            let value = sender.backgroundImage(for: .normal) != nil ? sender.tag : nil
-            delegate.addPhotoPressed(value, sender: sender)
-        }
+    func addPhoto(_ index: Int?, sender: UIView) {
+        self.delegate?.addPhoto(index, sender: sender)
+    }
+    
+    func deletePhoto(_ index: Int?, sender: UIView) {
+        self.delegate?.deletePhoto(index, sender: sender)
     }
 }
 
@@ -98,13 +111,36 @@ extension UBCSPhotoTableViewCell: UBCSellCellProtocol {
 }
 
 
+
+protocol UBCSPhotoAddViewDelegate: class {
+    func addPhoto(_ index: Int?, sender: UIView)
+    func deletePhoto(_ index: Int?, sender: UIView)
+}
+
 private class UBCSPhotoAddView: UBButton {
     
+    weak var delegate: UBCSPhotoAddViewDelegate?
+    
     static let photosSize: CGFloat = 70
+    
+    private lazy var deleteButton: UBButton = { [weak self] in
+        let button = UBButton()
+        
+        button.image = UIImage(named: "icEd")
+        button.addTarget(self, action: #selector(deletePressed(sender:)), for: .touchUpInside)
+        
+        return button
+    }()
     
     var isViewHighlighted = false {
         didSet {
             self.layer.borderWidth = self.isViewHighlighted ? 2 : 0
+        }
+    }
+    
+    var isDeleteHidden = false {
+        didSet {
+            self.deleteButton.isHidden = true
         }
     }
     
@@ -120,6 +156,12 @@ private class UBCSPhotoAddView: UBButton {
         
         let constraint2 = self.setWidthConstraintWithValue(UBCSPhotoAddView.photosSize)
         constraint2?.priority = UILayoutPriority.init(999)
+        
+        self.addTarget(self, action: #selector(photoPressed(sender:)), for: .touchUpInside)
+        
+        self.addSubview(self.deleteButton)
+        self.setTopConstraintToSubview(self.deleteButton, withValue: 5)
+        self.setTrailingConstraintToSubview(self.deleteButton, withValue: -5)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -130,5 +172,17 @@ private class UBCSPhotoAddView: UBButton {
         super.setBackgroundImage(image, for: state)
         
         self.image = image == nil ? UIImage(named: "general_photo") : nil
+        self.deleteButton.isHidden = image == nil || self.isDeleteHidden
+    }
+    
+    @objc
+    private func photoPressed(sender: UBCSPhotoAddView) {
+        let value = sender.backgroundImage(for: .normal) != nil ? self.tag : nil
+        self.delegate?.addPhoto(value, sender: sender)
+    }
+    
+    @objc
+    private func deletePressed(sender: UBCSPhotoAddView) {
+        self.delegate?.deletePhoto(self.tag, sender: sender)
     }
 }

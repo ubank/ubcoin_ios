@@ -17,7 +17,6 @@ class UBCSTextFieldTableViewCell: UBTableViewCell {
     private var content: UBCSellCellDM?
     
     private var stackView: UIStackView!
-    private var title: UILabel!
     private var textField: UITextField!
     private var info: UILabel!
     
@@ -34,23 +33,17 @@ class UBCSTextFieldTableViewCell: UBTableViewCell {
     }
     
     private func setupViews() {
-        self.title = UILabel()
-        self.title.font = UBCFont.title
-        self.title.numberOfLines = 1
-        self.title.textColor = UBCColor.info
-        
         self.textField = UITextField()
         self.textField.delegate = self
         self.textField.font = UBCFont.title
         self.textField.textColor = UBCColor.main
-        self.textField.textAlignment = .right
-        
+
         self.info = UILabel()
         self.info.font = UBCFont.title
         self.info.numberOfLines = 1
         self.info.textColor = UBCColor.main
         
-        self.stackView = UIStackView(arrangedSubviews: [self.title, self.textField, self.info])
+        self.stackView = UIStackView(arrangedSubviews: [self.textField, self.info])
         self.stackView.axis = .horizontal
         self.stackView.alignment = .fill
         self.stackView.distribution = .fill
@@ -85,11 +78,7 @@ extension UBCSTextFieldTableViewCell: UBCSellCellProtocol {
     func setContent(content: UBCSellCellDM) {
         self.content = content
         
-        self.title.text = content.placeholder
-        
-        let width = self.title.sizeThatFits(CGSize(width: self.width, height: self.title.font.lineHeight)).width
-        self.title.setWidthConstraintWithValue(width + 5)
-
+        self.textField.attributedPlaceholder = NSAttributedString(string: content.placeholder, attributes: [.font: UBCFont.title, .foregroundColor: UBCColor.info])
         self.textField.keyboardType = content.keyboardType
         self.textField.text = content.data as? String
         

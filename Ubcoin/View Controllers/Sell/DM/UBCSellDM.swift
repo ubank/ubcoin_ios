@@ -98,6 +98,21 @@ class UBCSellDM: NSObject {
         }
     }
     
+    func removePhoto(index: Int) {
+        for section in sections {
+            for i in 0..<section.rows.count {
+                if var row = section.rows[i] as? UBCSellCellDM, row.type == .photo {
+                    if var data = row.data as? [UIImage], index >= 0, index < data.count {
+                        data.remove(at: index)
+                        row.data = data
+                    }
+                    
+                    section.rows[i] = row
+                }
+            }
+        }
+    }
+    
     func photoRow() -> UBCSellCellDM? {
         for section in sections {
             for i in 0..<section.rows.count {

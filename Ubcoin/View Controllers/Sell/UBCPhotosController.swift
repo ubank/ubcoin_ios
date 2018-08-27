@@ -146,6 +146,7 @@ extension UBCPhotosController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let row = self.row, let cell = tableView.dequeueReusableCell(withIdentifier: row.className) as? UBCSPhotoTableViewCell else { return UBTableViewCell() }
         
+        cell.isDeleteHidden = true
         cell.setContent(content: row)
         cell.delegate = self
         cell.indexHighlited = self.selectedIndex
@@ -157,7 +158,7 @@ extension UBCPhotosController: UITableViewDataSource, UITableViewDelegate {
 
 extension UBCPhotosController: UBCSPhotoTableViewCellDelegate {
     
-    func addPhotoPressed(_ index: Int?, sender: UIView) {
+    func addPhoto(_ index: Int?, sender: UIView) {
         if let index = index {
             self.selectedIndex = index
             
@@ -173,6 +174,9 @@ extension UBCPhotosController: UBCSPhotoTableViewCellDelegate {
         }
         
         UBAlert.showActionSheet(withTitle: "str_sell_choose".localizedString(), message: nil, actions: [action1, action2], sourceView: sender)
+    }
+    
+    func deletePhoto(_ index: Int?, sender: UIView) {
     }
     
     private func showImagePicker(sourceType: UIImagePickerControllerSourceType) {
