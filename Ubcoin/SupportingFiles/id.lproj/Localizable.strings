@@ -129,3 +129,7 @@
 "str_sell_camera" = "Kamera";
 "str_sell_library" = "Perpustakaan Foto";
 "str_sell_choose" = "Pilih tindakan";
+
+"str_version" = "Versi";
+"str_ubcoin_is_going_to_open_telegram" = "Pasar Ubcoin akan membuka bot Telegram. Ini diperlukan untuk membeli atau menjual. Harap buat akun Telegram jika Anda tidak memilikinya."
+

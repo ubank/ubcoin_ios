@@ -37,10 +37,8 @@
     
     self.pageNumber = 0;
     
-    UBCBalanceDM *balance = [UBCBalanceDM loadBalance];
-    self.balance.text = [NSString stringWithFormat:@"%@ UBC", balance.amountUBC.priceString];
-    
     [self setupViews];
+    [self setupBalance];
     
     [self startActivityIndicatorImmediately];
     [self updateInfo];
@@ -93,6 +91,20 @@
          weakSelf.tableView.emptyView.hidden = weakSelf.items.count > 0;
          [weakSelf.tableView updateWithRowsData:weakSelf.items];
      }];
+    
+    [UBCDataProvider.sharedProvider updateBalanceWithCompletionBlock:^(BOOL success)
+     {
+         if (success)
+         {
+             [weakSelf setupBalance];
+         }
+     }];
+}
+
+- (void)setupBalance
+{
+    UBCBalanceDM *balance = [UBCBalanceDM loadBalance];
+    self.balance.text = [NSString stringWithFormat:@"%@ UBC", balance.amountUBC.priceString];
 }
 
 #pragma mark - Actions

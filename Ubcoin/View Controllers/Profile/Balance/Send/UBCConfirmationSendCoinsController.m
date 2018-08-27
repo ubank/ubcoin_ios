@@ -48,16 +48,13 @@
                           withCompletionBlock:^(BOOL success, NSString *result, NSString *message)
      {
          [weakSelf stopActivityIndicator];
-         if (success)
+         if ([result isEqualToString:@"0"])
          {
-             if ([result isEqualToString:@"0"])
-             {
-                 [weakSelf.navigationController popToRootViewControllerAnimated:YES];
-             }
-             else if (message.isNotEmpty)
-             {
-                 [UBCToast showErrorToastWithMessage:message];
-             }
+             [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+         }
+         else if (message.isNotEmpty)
+         {
+             [UBCToast showErrorToastWithMessage:message];
          }
      }];
 }

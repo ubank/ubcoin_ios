@@ -130,3 +130,5 @@
 "str_sell_library" = "사진 앨범";
 "str_sell_choose" = "취할 행동 고르기 ";
 
+"str_version" = "버젼";
+"str_ubcoin_is_going_to_open_telegram" = "Ubcoin은 곧 자동화 텔레그램방을 개설할 것입니다. 이를 통해 구매 판매를 하셔야 하니 텔레그램 계정을 만들어 주세요.";
