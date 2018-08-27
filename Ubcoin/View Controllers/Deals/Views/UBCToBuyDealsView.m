@@ -8,6 +8,7 @@
 
 #import "UBCToBuyDealsView.h"
 #import "UBCKeyChain.h"
+#import "UBCDealCell.h"
 
 @implementation UBCToBuyDealsView
 
@@ -48,6 +49,16 @@
          }
          [weakSelf handleResponse:deals];
      }];
+}
+
+#pragma mark - UBDefaultTableViewDelegate
+
+- (void)layoutCell:(UBDefaultTableViewCell *)cell forData:(UBTableViewRowData *)data indexPath:(NSIndexPath *)indexPath
+{
+    UBCDealDM *deal = data.data;
+    
+    UBCDealCell *dealCell = (UBCDealCell *)cell;
+    dealCell.info.attributedText = [self infoStringWithString:deal.seller.name];
 }
 
 @end

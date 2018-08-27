@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UBCDealDM.h"
 
 @class UBCGoodDM;
 @protocol UBCDealsViewDelegate <NSObject>
@@ -25,5 +26,7 @@
 - (void)setupEmptyView;
 - (void)updateInfo;
 - (void)handleResponse:(NSArray *)deals;
+
+- (NSAttributedString *)infoStringWithString:(NSString *)string;
 
 @end

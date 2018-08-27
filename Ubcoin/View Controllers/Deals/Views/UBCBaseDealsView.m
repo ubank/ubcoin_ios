@@ -74,11 +74,26 @@
     [self.tableView updateWithRowsData:self.items];
 }
 
+- (NSAttributedString *)infoStringWithString:(NSString *)string
+{
+    NSTextAttachment *tgIcon = NSTextAttachment.new;
+    tgIcon.image = [UIImage imageNamed:@"icTg"];
+    tgIcon.bounds = CGRectMake(0, (UBFont.descFont.pointSize - tgIcon.image.size.height), tgIcon.image.size.width, tgIcon.image.size.height);
+    
+    NSMutableAttributedString *info = [NSMutableAttributedString.alloc initWithAttributedString:[NSAttributedString attributedStringWithAttachment:tgIcon]];
+    
+    NSString *text = [NSString stringWithFormat:@" %@ ", string];
+    [info appendAttributedString:[NSAttributedString.alloc initWithString:text attributes:@{NSForegroundColorAttributeName: UBColor.descColor, NSFontAttributeName: UBFont.descFont}]];
+    
+    return info;
+}
+
 #pragma mark - UBDefaultTableViewDelegate
 
 - (void)didSelectData:(UBTableViewRowData *)data indexPath:(NSIndexPath *)indexPath
 {
-    [self.delegate openChatForItem:data.data];
+    UBCDealDM *deal = data.data;
+    [self.delegate openChatForItem:deal.item];
 }
 
 - (void)updatePagination

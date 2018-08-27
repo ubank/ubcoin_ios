@@ -24,26 +24,11 @@
         self.desc.numberOfLines = 1;
         self.desc.font = [UIFont systemFontOfSize:16 weight:UIFontWeightRegular];
         
-        HUBLabel *info = [HUBLabel.alloc initWithStyle:HUBLabelStyleDefaultDescription];
-        info.attributedText = [self infoString];
-        [self.leftStackView addArrangedSubview:info];
+        self.info = [HUBLabel.alloc initWithStyle:HUBLabelStyleDefaultDescription];
+        [self.leftStackView addArrangedSubview:self.info];
     }
     
     return self;
-}
-
-- (NSAttributedString *)infoString
-{
-    NSTextAttachment *tgIcon = NSTextAttachment.new;
-    tgIcon.image = [UIImage imageNamed:@"icTg"];
-    tgIcon.bounds = CGRectMake(0, (UBFont.descFont.pointSize - tgIcon.image.size.height), tgIcon.image.size.width, tgIcon.image.size.height);
-    
-    NSMutableAttributedString *info = [NSMutableAttributedString.alloc initWithAttributedString:[NSAttributedString attributedStringWithAttachment:tgIcon]];
-    
-    NSString *text = [NSString stringWithFormat:@" %@ ", UBLocalizedString(@"str_requires_external_app", nil)];
-    [info appendAttributedString:[NSAttributedString.alloc initWithString:text attributes:@{NSForegroundColorAttributeName: UBColor.descColor, NSFontAttributeName: UBFont.descFont}]];
-    
-    return info;
 }
 
 @end

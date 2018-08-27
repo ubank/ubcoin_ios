@@ -10,4 +10,6 @@
 
 @interface UBCDealCell : UBDefaultTableViewCell
 
+@property (strong, nonatomic) HUBLabel *info;
+
 @end

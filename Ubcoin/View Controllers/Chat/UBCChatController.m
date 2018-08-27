@@ -103,10 +103,10 @@
 {
     if ([[UIApplication sharedApplication] canOpenURL:appURL])
     {
+        [self.navigationController popViewControllerAnimated:YES];
         [[UIApplication sharedApplication] openURL:appURL
                                            options:@{}
                                  completionHandler:nil];
-        [self.navigationController popViewControllerAnimated:YES];
     }
     else
     {
