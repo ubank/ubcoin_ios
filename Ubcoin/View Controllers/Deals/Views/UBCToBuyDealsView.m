@@ -59,6 +59,7 @@
     
     UBCDealCell *dealCell = (UBCDealCell *)cell;
     dealCell.info.attributedText = [self infoStringWithString:deal.seller.name];
+    [dealCell setLocation:deal.item.location];
 }
 
 @end

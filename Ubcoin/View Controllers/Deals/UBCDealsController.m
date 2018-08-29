@@ -29,6 +29,15 @@
     self.title = @"str_deals";
     
     [self setupViews];
+    
+    __weak typeof(self) weakSelf = self;
+    [UBLocationManager.sharedLocation trackMyLocationOnce:^(BOOL success) {
+        if (success)
+        {
+            [weakSelf.buyDealsView reloadData];
+            [weakSelf.sellDealsView reloadData];
+        }
+    }];
 }
 
 - (void)setupViews

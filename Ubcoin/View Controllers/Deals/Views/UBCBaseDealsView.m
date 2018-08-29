@@ -53,6 +53,11 @@
     self.tableView.emptyView.title.text = UBLocalizedString(@"str_no_active_deals", nil);
 }
 
+- (void)reloadData
+{
+    [self.tableView reloadData];
+}
+
 - (void)updateInfo
 {
     

@@ -100,6 +100,11 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
+    if (string.length > 1)
+    {
+        string = [string allDigitsFromString];
+    }
+    
     if (string.isNotEmpty && !string.isNumber)
     {
         return NO;

@@ -7,9 +7,13 @@
 //
 
 #import "UBDefaultTableViewCell.h"
+#import "UBCInfoLabel.h"
 
 @interface UBCDealCell : UBDefaultTableViewCell
 
 @property (strong, nonatomic) HUBLabel *info;
+@property (strong, nonatomic) UBCInfoLabel *distanceLabel;
+
+- (void)setLocation:(CLLocation *)location;
 
 @end

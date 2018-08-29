@@ -101,13 +101,22 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    if (string.isNotEmpty && !string.isNumber)
+    if ([textField isEqual:self.codeField])
     {
-        return NO;
+        if (string.length > 1)
+        {
+            string = [string allDigitsFromString];
+        }
+        
+        if (string.isNotEmpty && !string.isNumber)
+        {
+            return NO;
+        }
+        NSString *text = [textField.text stringByReplacingCharactersInRange:range withString:string];
+        
+        return text.length <= 6;
     }
-    NSString *text = [textField.text stringByReplacingCharactersInRange:range withString:string];
-    
-    return text.length <= 6;
+    return YES;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

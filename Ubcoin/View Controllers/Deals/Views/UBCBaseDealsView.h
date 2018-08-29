@@ -25,6 +25,7 @@
 
 - (void)setupEmptyView;
 - (void)updateInfo;
+- (void)reloadData;
 - (void)handleResponse:(NSArray *)deals;
 
 - (NSAttributedString *)infoStringWithString:(NSString *)string;

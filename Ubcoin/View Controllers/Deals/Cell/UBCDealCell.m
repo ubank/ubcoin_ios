@@ -20,8 +20,11 @@
         self.iconWidth = 75;
         self.iconHeight = 75;
         
-        self.title.numberOfLines = 1;
-        self.desc.numberOfLines = 1;
+        self.distanceLabel = UBCInfoLabel.new;
+        [self.icon addSubview:self.distanceLabel];
+        [self.icon setBottomConstraintToSubview:self.distanceLabel withValue:-7];
+        [self.icon setCenterXConstraintToSubview:self.distanceLabel];
+        
         self.desc.font = [UIFont systemFontOfSize:16 weight:UIFontWeightRegular];
         
         self.info = [HUBLabel.alloc initWithStyle:HUBLabelStyleDefaultDescription];
@@ -29,6 +32,14 @@
     }
     
     return self;
+}
+
+- (void)setLocation:(CLLocation *)location
+{
+    NSString *distance = [UBLocationManager distanceStringFromMeAndCoordinates:location.coordinate];
+    self.distanceLabel.hidden = !distance.isNotEmpty;
+    [self.distanceLabel setupWithImage:[UIImage imageNamed:@"market_location"]
+                               andText:distance];
 }
 
 @end
