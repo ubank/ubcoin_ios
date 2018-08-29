@@ -1,0 +1,11 @@
+/* 
+  InfoPlist.strings
+  Ubcoin
+
+  Created by Alex Ostroushko on 21.08.2018.
+  Copyright © 2018 UBANK. All rights reserved.
+*/
+
+NSPhotoLibraryUsageDescription = "You need to enable access to your Photo Library to be able to choose pictures of goods you would like to sell";
+NSCameraUsageDescription = "You need to enable access to your camera to be able to take pictures of goods you would like to sell and to scan qr code to confirm your deal";
+NSLocationWhenInUseUsageDescription = "Your location info will be used to show goods for sale nearby";

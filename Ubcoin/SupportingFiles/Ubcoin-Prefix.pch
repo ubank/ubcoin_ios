@@ -1,0 +1,36 @@
+//
+//  Ubcoin-Prefix.pch
+//  Ubcoin
+//
+//  Created by Alex Ostroushko on 05.07.2018.
+//  Copyright © 2018 UBANK. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <AVFoundation/AVFoundation.h>
+#import <SystemConfiguration/SystemConfiguration.h>
+#import <MobileCoreServices/MobileCoreServices.h>
+#import <UserNotifications/UserNotifications.h>
+#import <CoreData/CoreData.h>
+#import <CoreText/CoreText.h>
+#import <CoreLocation/CoreLocation.h>
+#import <QuartzCore/QuartzCore.h>
+#import <WebKit/WebKit.h>
+
+#import <UBGeneralClasses/UBGeneralClassesHeader.h>
+
+#import "UBAlertWindow.h"
+#import "HUBConstants.h"
+#import "HUBLabel.h"
+#import "UBLocationManager.h"
+#import "UBDefaultTableViewCell.h"
+#import "HUBGeneralButton.h"
+#import "HUBAttributedLabel.h"
+#import "HUBEmptyView.h"
+#import "UBTableView.h"
+#import "UBDefaultTableView.h"
+#import "UBTableHeaderView.h"
+#import "HUBPermissions.h"
+#import "UBCDataProvider.h"
+#import "UBCToast.h"

@@ -1,0 +1,135 @@
+/*
+ Localization.strings
+ Ubcoin
+ 
+ Created by Alex Ostroushko on 02.08.2018.
+ Copyright © 2018 UBANK. All rights reserved.
+ */
+
+"ui_button_save"     = "Simpan";
+"ui_button_done"     = "Selesai";
+"ui_button_next"     = "Berikutnya";
+"ui_button_send"     = "Kirim";
+"ui_button_cancel"   = "Membatalkan";
+"ui_button_enable"   = "Diaktifkan";
+"ui_button_skip"     = "Lewati";
+"ui_button_search"   = "Cari";
+"ui_button_continue" = "Lanjutkan";
+
+"ui_alert_button_ok"                              = "OK";
+"ui_alert_button_cancel"                          = "Membatalkan";
+"ui_alert_button_close"                           = "Tutup";
+"ui_alert_button_save"                            = "Simpan";
+"ui_alert_button_yes"                             = "Ya";
+"ui_alert_button_no"                              = "Tidak";
+"ui_alert_title_attention"                        = "Perhatian";
+"ui_alert_message_error_no_access"                = "Izinkan akses foto untuk melampirkan gambar";
+"ui_alert_message_error_no_camera_access"         = "Ubcoin tidak memiliki akses ke kamera anda\nAnda dapat mengaktifkan akses dalam pengaturan";
+"ui_alert_message_addressbook_error"              = "Aktifkan akses ke kontak";
+"ui_alert_message_geo_error"                      = "Aktifkan akses ke geolokasi untuk melihat titik pada peta di dekat Anda";
+"error_network_unknown" = "Periksa ketersedian internet dan tanggal dan waktu yang benar. Setelah itu coba lagi. Jika terjadi kegagalan, kontak dukungan kami.";
+"error_unauthorized" = "Anda harus diizinkan untuk menggunakan fungsi ini";
+"error_all_fields_empty" = "Beberapa bidang kosong";
+"error_location_not_selected" = "Lokasi belum dipilih";
+
+"str_market" = "Pasar";
+"str_favorites" = "Favorit";
+"str_sell" = "Jual";
+"str_deals" = "Sepakat";
+"str_sign_in" = "Masuk";
+"str_sign_up" = "Daftar";
+"str_log_in" = "Masuk";
+"str_profile" = "Profil";
+
+"str_market_search" = "Saya sedang mencari...";
+
+"str_no_favorite_title" = "Tidak ada barang favorit";
+"str_no_favorite_desc" = "Barang favorit anda akan ada di sini";
+
+"str_name" = "Nama";
+"str_email" = "Email";
+"str_password" = "Kata sandi";
+"str_new_password" = "Kata sandi baru";
+"str_confirmation_code" = "Kode konfirmasi";
+"str_country" = "Negara";
+"str_language" = "Bahasa";
+"str_common" = "Umum";
+"str_weak" = "Lemah";
+"str_normal" = "Normal";
+"str_strong" = "Kuat";
+"str_forgot_password" = "Lupa kata sandi";
+"str_forgot_password?" = "Lupa kata sandi?";
+"str_incorrect_data" = "Data_salah";
+"str_incorrect_email_password" = "Email atau Kata Sandi Salah";
+"str_wrong_code" = "Kode Salah";
+"str_already_have_account" = "Sudah memmiliki akun?";
+"str_wrong_email" = "Email Salah";
+"str_email_successfully_sent" = "Sebuah email dengan kata sandi baru telah berhasil terkirim";
+"str_please_verify_email" = "Mohon verifikasi alamat email anda";
+"str_we_sent_verification_letter" = "Kami mengirimkan kode konfirmasi kepada ";
+"str_enter_code_to_confirm_your_email" = ". Masukan dibawah ini untuk konfirmasi alamat email anda:";
+"str_forgot_password_description" = "Lupa kata sandi anda? Jangan khawatir.\nHanya masukan email anda untuk mengatur ulang kata sandi.";
+"str_user_agreement" = "Perjanjian Pengguna";
+"str_successfully_confirmed" = "Berhasil dikonfirmasi";
+"str_let_get_it_started" = "Silahkan mulai!";
+"str_close" = "Tutup";
+"str_code" = "Kode";
+"str_confirmation" = "Konfirmasi";
+"str_didnt_get_email" = "Tidak mendapatkan email?";
+"str_resend_it" = "Kirim ulang";
+"str_email_resended" = "Sebuah email telah berhasil terkirim";
+"str_my_balance" = "Saldo saya";
+"str_to_sell" = "Untuk dijual";
+"str_to_buy" = "Untuk dibeli";
+"str_requires_external_app" = "Memerlukan aplikasi luar";
+"str_no_active_deals" = "Tidak ada penawaran aktif";
+"str_items_to_buy_will_be_here" = "Barang yang anda akan beli akan berada disini";
+"str_items_to_sell_will_be_here" = "Barang yang anda akan jual akan berada disini";
+"str_confirm" = "Konfirmasi";
+"str_location_up" = "LOKASI";
+"str_seller_up" = "PENJUAL";
+"str_connect_to_seller" = "Terhubung dengan penjual";
+"str_chat" = "Obrolan";
+"str_you_need_to_be_logged_in" = "Anda diperlukan untuk masuk";
+"str_account_settings" = "Pengaturan akun";
+"str_my_reviews" = "Ulasan saya";
+"str_logout" = "Keluar";
+"str_are_you_sure_you_want_to_sign_out" = "Apakah anda yakin ingin keluar?";
+"str_topup" = "Isi ulang";
+"str_transaction_info" = "Info Transaksi";
+"str_transaction_history" = "Riwayat Transaksi";
+"str_transaction_history_desc" = "Semua riwayat transaksi Anda akan ditampilkan di sini tepat setelah isi ulang pertama.";
+"str_holded_transactions" = "TRANSAKSI YANG DITAHAN";
+"str_scan_qr-code" = "Scan kode-QR atau tekan untuk menyalin alamat untuk isi ulang saldo anda.";
+"str_how_to_get_tokens" = "Bagaimana untuk mendapatkan token UBC";
+
+"str_transaction_id" = "ID transaksi";
+"str_transaction_receipt_status" = "Status Penerimaan Transaksi";
+"str_from" = "Dari";
+"str_to" = "Kepada";
+"str_send_UBC_to_wallet" = "Kirim UBC ke dompet yang kompatibel ERC-20.";
+"str_transaction_commission" = "Komisi Transaksi";
+"str_info" = "Info";
+"str_address" = "Alamat";
+"str_amount" = "Jumlah";
+"str_total_amount" = "Jumlah total";
+"str_go_to_coss_exchange" = "Pergi ke pertukaran COSS";
+"str_if_you_received_tokens_during_ico" = "Jika Anda menerima token selama ICO, pergi ke wallet ERC-20 anda";
+"str_address_copied_to_clipboard" = "Alamat disalin ke papan klip";
+
+"str_sell_success_title" = "Barang berhasil di tempatkan";
+"str_sell_success_desc" = "Barang anda ditempatkan di pasar";
+"str_sell_about" = "Tentang";
+"str_sell_desc" = "Deskripsi";
+"str_sell_location" = "Lokasi";
+"str_sell_placeholder_category" = "Pilih Kategori";
+"str_sell_placeholder_location" = "Pilih Lokasi";
+"str_sell_placeholder_price" = "Harga";
+"str_sell_placeholder_title" = "Judul";
+"str_sell_camera" = "Kamera";
+"str_sell_library" = "Perpustakaan Foto";
+"str_sell_choose" = "Pilih tindakan";
+
+"str_version" = "Versi";
+"str_ubcoin_is_going_to_open_telegram" = "Pasar Ubcoin akan membuka bot Telegram. Ini diperlukan untuk membeli atau menjual. Harap buat akun Telegram jika Anda tidak memilikinya.";
+

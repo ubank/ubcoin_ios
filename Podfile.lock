@@ -1,0 +1,109 @@
+PODS:
+  - AFNetworking (3.2.1):
+    - AFNetworking/NSURLSession (= 3.2.1)
+    - AFNetworking/Reachability (= 3.2.1)
+    - AFNetworking/Security (= 3.2.1)
+    - AFNetworking/Serialization (= 3.2.1)
+    - AFNetworking/UIKit (= 3.2.1)
+  - AFNetworking/NSURLSession (3.2.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.2.1)
+  - AFNetworking/Security (3.2.1)
+  - AFNetworking/Serialization (3.2.1)
+  - AFNetworking/UIKit (3.2.1):
+    - AFNetworking/NSURLSession
+  - Crashlytics (3.10.7):
+    - Fabric (~> 1.7.11)
+  - DGActivityIndicatorView (2.1.1)
+  - Fabric (1.7.11)
+  - GoogleAnalytics (3.17.0)
+  - GoogleMaps (2.7.0):
+    - GoogleMaps/Maps (= 2.7.0)
+  - GoogleMaps/Base (2.7.0)
+  - GoogleMaps/Maps (2.7.0):
+    - GoogleMaps/Base
+  - INTULocationManager (4.3.0)
+  - QRCodeReaderViewController (4.0.2)
+  - SDWebImage (4.4.2):
+    - SDWebImage/Core (= 4.4.2)
+  - SDWebImage/Core (4.4.2)
+  - TTTAttributedLabel (2.0.0)
+  - UBGeneralClasses (1.0.2):
+    - GoogleAnalytics
+    - SDWebImage
+    - UBGeneralClasses/Categories (= 1.0.2)
+    - UBGeneralClasses/Controls (= 1.0.2)
+    - UBGeneralClasses/Helpers (= 1.0.2)
+    - UBGeneralClasses/Models (= 1.0.2)
+    - UBGeneralClasses/Navigation (= 1.0.2)
+    - UBGeneralClasses/TableView (= 1.0.2)
+  - UBGeneralClasses/Categories (1.0.2):
+    - GoogleAnalytics
+    - SDWebImage
+  - UBGeneralClasses/Controls (1.0.2):
+    - GoogleAnalytics
+    - SDWebImage
+  - UBGeneralClasses/Helpers (1.0.2):
+    - GoogleAnalytics
+    - SDWebImage
+  - UBGeneralClasses/Models (1.0.2):
+    - GoogleAnalytics
+    - SDWebImage
+  - UBGeneralClasses/Navigation (1.0.2):
+    - GoogleAnalytics
+    - SDWebImage
+  - UBGeneralClasses/TableView (1.0.2):
+    - GoogleAnalytics
+    - SDWebImage
+
+DEPENDENCIES:
+  - AFNetworking
+  - Crashlytics
+  - DGActivityIndicatorView
+  - Fabric
+  - GoogleMaps
+  - INTULocationManager
+  - QRCodeReaderViewController
+  - TTTAttributedLabel
+  - UBGeneralClasses (from `https://github.com/ubank/ub_general_classes_iOS.git`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AFNetworking
+    - Crashlytics
+    - DGActivityIndicatorView
+    - Fabric
+    - GoogleAnalytics
+    - GoogleMaps
+    - INTULocationManager
+    - QRCodeReaderViewController
+    - SDWebImage
+    - TTTAttributedLabel
+
+EXTERNAL SOURCES:
+  UBGeneralClasses:
+    :git: https://github.com/ubank/ub_general_classes_iOS.git
+
+CHECKOUT OPTIONS:
+  UBGeneralClasses:
+    :commit: ddca9c49bd64c57c6c20c27d79d06f91874ef032
+    :git: https://github.com/ubank/ub_general_classes_iOS.git
+
+SPEC CHECKSUMS:
+  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  Crashlytics: ccaac42660eb9351b9960c0d66106b0bcf99f4fa
+  DGActivityIndicatorView: ff2c76073d79692f724863c8dd38685866a03cb6
+  Fabric: f233c9492b3bbc1f04e3882986740f7988a58edb
+  GoogleAnalytics: f42cc53a87a51fe94334821868d9c8481ff47a7b
+  GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
+  INTULocationManager: 0ca5c76eacc029ba15938fc699520bc333ed6435
+  QRCodeReaderViewController: e8f27d035b3e72b1d4b1c61ff66458287e3be0ff
+  SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
+  TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
+  UBGeneralClasses: a5485a99a05a01e5c17321117caf26d2507eed87
+
+PODFILE CHECKSUM: 1ff2f8a56e16b6173b6a806d08792edb08e2d8ac
+
+COCOAPODS: 1.5.3

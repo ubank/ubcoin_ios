@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="UBExpandableTableViewSectionHeader">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="89"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n5S-Bu-hc9">
+                    <rect key="frame" x="0.0" y="10" width="375" height="79"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Ayc-XZ-T6E">
+                            <rect key="frame" x="15" y="-13" width="325" height="105"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Im7-an-qwz" customClass="HUBLabel">
+                                    <rect key="frame" x="0.0" y="0.0" width="325" height="50"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="labelStyle">
+                                            <integer key="value" value="1"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G2Z-Tn-9hH" customClass="HUBLabel">
+                                    <rect key="frame" x="0.0" y="55" width="325" height="50"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="labelStyle">
+                                            <integer key="value" value="3"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
+                            </subviews>
+                        </stackView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_arrow_disclosure" translatesAutoresizingMaskIntoConstraints="NO" id="bvb-4Q-170">
+                            <rect key="frame" x="350" y="7" width="10" height="10"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="10" id="1b5-DF-jo6"/>
+                                <constraint firstAttribute="width" constant="10" id="asg-50-G3a"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="bvb-4Q-170" firstAttribute="leading" secondItem="Ayc-XZ-T6E" secondAttribute="trailing" constant="10" id="454-pY-cUG"/>
+                        <constraint firstItem="bvb-4Q-170" firstAttribute="centerY" secondItem="Im7-an-qwz" secondAttribute="centerY" id="QQC-IR-kea"/>
+                        <constraint firstItem="Ayc-XZ-T6E" firstAttribute="leading" secondItem="n5S-Bu-hc9" secondAttribute="leading" constant="15" id="ZgO-3w-UDh"/>
+                        <constraint firstAttribute="trailing" secondItem="bvb-4Q-170" secondAttribute="trailing" constant="15" id="k6V-k1-GTA"/>
+                        <constraint firstItem="Ayc-XZ-T6E" firstAttribute="centerY" secondItem="n5S-Bu-hc9" secondAttribute="centerY" id="uOf-dh-oO6"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="n5S-Bu-hc9" firstAttribute="bottom" secondItem="sOj-27-s1l" secondAttribute="bottom" id="1BO-eN-JxN"/>
+                <constraint firstItem="sOj-27-s1l" firstAttribute="trailing" secondItem="n5S-Bu-hc9" secondAttribute="trailing" id="F2a-Ua-SnW"/>
+                <constraint firstItem="n5S-Bu-hc9" firstAttribute="leading" secondItem="sOj-27-s1l" secondAttribute="leading" id="OdU-b1-XfN"/>
+                <constraint firstItem="n5S-Bu-hc9" firstAttribute="top" secondItem="sOj-27-s1l" secondAttribute="top" priority="999" constant="10" id="yqV-rH-yKQ"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="sOj-27-s1l"/>
+            <connections>
+                <outlet property="detailsLabel" destination="G2Z-Tn-9hH" id="vSf-a5-bib"/>
+                <outlet property="mainLabel" destination="Im7-an-qwz" id="oEc-Sr-adX"/>
+                <outlet property="rightArrow" destination="bvb-4Q-170" id="1yB-AL-mYV"/>
+            </connections>
+            <point key="canvasLocation" x="-236.5" y="-146.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="main_arrow_disclosure" width="14" height="9"/>
+    </resources>
+</document>
