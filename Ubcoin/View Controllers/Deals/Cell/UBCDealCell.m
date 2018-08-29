@@ -22,7 +22,7 @@
         
         self.distanceLabel = UBCInfoLabel.new;
         [self.icon addSubview:self.distanceLabel];
-        [self.icon setBottomConstraintToSubview:self.distanceLabel withValue:-7];
+        [self.icon setBottomConstraintToSubview:self.distanceLabel withValue:-2];
         [self.icon setCenterXConstraintToSubview:self.distanceLabel];
         
         self.desc.font = [UIFont systemFontOfSize:16 weight:UIFontWeightRegular];
