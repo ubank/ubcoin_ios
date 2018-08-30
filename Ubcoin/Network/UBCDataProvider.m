@@ -464,7 +464,7 @@
          
          if (completionBlock)
          {
-             BOOL authorized = [[responseObject valueForKeyPath:@"user.authorized"] boolValue];
+             BOOL authorized = [[responseObject valueForKeyPath:@"user.authorizedInTg"] boolValue];
              completionBlock(success,
                              authorized,
                              [NSURL URLWithString:responseObject[@"url"]],
