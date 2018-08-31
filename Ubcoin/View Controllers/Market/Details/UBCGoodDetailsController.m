@@ -39,6 +39,7 @@
 @property (weak, nonatomic) IBOutlet HUBLabel *sellerDesc;
 @property (weak, nonatomic) IBOutlet UBCMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIView *locationView;
+@property (weak, nonatomic) IBOutlet UIView *connectToSellerView;
 
 @property (strong, nonatomic) HUBNavigationBarView *navBarView;
 
@@ -144,6 +145,12 @@
     [self.sellerRating showStars:seller.rating.unsignedIntegerValue];
     
     self.sellerDesc.text = [NSString stringWithFormat:@"%lu items     Reviews(%lu)", (unsigned long)seller.itemsCount, (unsigned long)seller.reviewsCount];
+    
+    UBCUserDM *user = [UBCUserDM loadProfile];
+    if (user.ID)
+    {
+        self.connectToSellerView.hidden = [seller.ID isEqualToString:user.ID];
+    }
 }
      
 #pragma mark - Actions
