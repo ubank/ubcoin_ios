@@ -20,6 +20,8 @@ static NSString * const kNotificationFavoritesChanged = @"kNotificationFavorites
 @property (readonly, nonatomic) NSString *desc;
 @property (readonly, nonatomic) NSString *shareURL;
 @property (readonly, nonatomic) NSNumber *price;
+@property (readonly, nonatomic) NSNumber *priceInCurrency;
+@property (readonly, nonatomic) NSString *currency;
 @property (readonly, nonatomic) NSDate *creationDate;
 @property (readonly, nonatomic) NSArray *images;
 @property (readonly, nonatomic) BOOL isFavorite;

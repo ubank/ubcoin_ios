@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIView *background;
 @property (weak, nonatomic) IBOutlet HUBLabel *title;
 @property (weak, nonatomic) IBOutlet HUBLabel *desc;
+@property (weak, nonatomic) IBOutlet HUBLabel *priceInCurrency;
 @property (weak, nonatomic) IBOutlet UBCInfoLabel *photoCount;
 @property (weak, nonatomic) IBOutlet UBCInfoLabel *distanceLabel;
 @property (weak, nonatomic) IBOutlet UBButton *favoriteButton;
@@ -35,8 +36,7 @@
 {
     [super awakeFromNib];
 
-    self.title.numberOfLines = 1;
-    self.desc.numberOfLines = 1;
+    self.priceInCurrency.font = [UIFont systemFontOfSize:11 weight:UIFontWeightMedium];
     self.containerView.cornerRadius = UBCConstant.defaultCornerRadius;
     [self.mainContainerView defaultShadow];
 }
@@ -59,9 +59,22 @@
     NSString *imageURL = [content.images firstObject];
     [self loadImageToFillWithURL:imageURL withDefaultImage:[UIImage imageNamed:@"item_default_image"] forImageView:self.icon];
     [self setLocation:content.location];
+    [self setupPriceInCurrency];
     [self.stars showStars:content.seller.rating.unsignedIntegerValue];
     [self.photoCount setupWithImage:[UIImage imageNamed:@"market_photo"]
                             andText:[NSString stringWithFormat:@"1/%d", (int)content.images.count]];
+}
+
+- (void)setupPriceInCurrency
+{
+    if (self.content.priceInCurrency && self.content.currency)
+    {
+        self.priceInCurrency.text = [NSString stringWithFormat:@"~%@ %@", self.content.priceInCurrency.priceStringWithoutCoins, self.content.currency];
+    }
+    else
+    {
+        self.priceInCurrency.text = @"";
+    }
 }
 
 - (void)setLocation:(CLLocation *)location

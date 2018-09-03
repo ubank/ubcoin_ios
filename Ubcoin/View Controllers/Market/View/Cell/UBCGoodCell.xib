@@ -104,12 +104,24 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hwl-WE-kR5" customClass="UBCStarsView">
-                                                <rect key="frame" x="10" y="58" width="135" height="10"/>
+                                                <rect key="frame" x="10" y="58" width="70" height="10"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="10" id="ZXI-a2-HMu"/>
+                                                    <constraint firstAttribute="width" constant="70" id="ivD-2l-2C2"/>
                                                 </constraints>
                                             </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="Gd5-yQ-iig" customClass="HUBLabel">
+                                                <rect key="frame" x="85" y="53.5" width="60" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="labelStyle">
+                                                        <integer key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -117,11 +129,13 @@
                                             <constraint firstItem="Hfj-8M-XLp" firstAttribute="leading" secondItem="hgM-RG-O9h" secondAttribute="leading" id="4wU-t9-2nD"/>
                                             <constraint firstAttribute="bottom" secondItem="Hwl-WE-kR5" secondAttribute="bottom" constant="7" id="QW6-0O-wuW"/>
                                             <constraint firstItem="Hfj-8M-XLp" firstAttribute="trailing" secondItem="hgM-RG-O9h" secondAttribute="trailing" id="RQi-9J-ePe"/>
+                                            <constraint firstAttribute="trailing" secondItem="Gd5-yQ-iig" secondAttribute="trailing" constant="10" id="VXt-cq-jsg"/>
                                             <constraint firstItem="hgM-RG-O9h" firstAttribute="top" secondItem="U10-Rw-0DC" secondAttribute="top" constant="7" id="Y5n-Dn-ZN2"/>
                                             <constraint firstItem="Hfj-8M-XLp" firstAttribute="top" secondItem="hgM-RG-O9h" secondAttribute="bottom" constant="7" id="ZJI-k4-zcs"/>
-                                            <constraint firstAttribute="trailing" secondItem="Hwl-WE-kR5" secondAttribute="trailing" constant="10" id="meo-cS-RvH"/>
+                                            <constraint firstItem="Gd5-yQ-iig" firstAttribute="centerY" secondItem="Hwl-WE-kR5" secondAttribute="centerY" id="aUf-9f-5dd"/>
                                             <constraint firstItem="hgM-RG-O9h" firstAttribute="leading" secondItem="U10-Rw-0DC" secondAttribute="leading" constant="10" id="ubc-KC-TG5"/>
                                             <constraint firstAttribute="height" constant="75" id="xnT-6F-mQ8"/>
+                                            <constraint firstItem="Gd5-yQ-iig" firstAttribute="leading" secondItem="Hwl-WE-kR5" secondAttribute="trailing" constant="5" id="xv6-qX-lLL"/>
                                             <constraint firstAttribute="trailing" secondItem="hgM-RG-O9h" secondAttribute="trailing" constant="10" id="zrC-Jp-u9u"/>
                                         </constraints>
                                     </view>
@@ -164,6 +178,7 @@
                 <outlet property="icon" destination="Dsj-sm-fQP" id="pg1-Q2-iw6"/>
                 <outlet property="mainContainerView" destination="tpp-Mv-IYf" id="OQQ-2H-ouK"/>
                 <outlet property="photoCount" destination="52u-sh-H9e" id="Q9o-9K-5Ch"/>
+                <outlet property="priceInCurrency" destination="Gd5-yQ-iig" id="Nno-kJ-TBy"/>
                 <outlet property="stars" destination="Hwl-WE-kR5" id="7br-kU-915"/>
                 <outlet property="title" destination="hgM-RG-O9h" id="pDm-tw-8W5"/>
             </connections>

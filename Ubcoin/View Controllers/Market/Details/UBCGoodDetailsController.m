@@ -29,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UBCInfoLabel *photoCount;
 @property (weak, nonatomic) IBOutlet UBButton *favoriteButton;
 @property (weak, nonatomic) IBOutlet HUBLabel *price;
+@property (weak, nonatomic) IBOutlet HUBLabel *priceInCurrency;
 @property (weak, nonatomic) IBOutlet HUBLabel *category;
 @property (weak, nonatomic) IBOutlet HUBLabel *itemTitle;
 @property (weak, nonatomic) IBOutlet HUBLabel *desc;
@@ -112,6 +113,7 @@
     
     self.category.textColor = UBCColor.green;
     self.desc.textColor = UBColor.titleColor;
+    self.priceInCurrency.textColor = UBColor.descColor;
     
     self.scroll.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     self.collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
@@ -125,6 +127,7 @@
     self.category.text = self.good.category.name;
     self.desc.text = self.good.desc;
     self.price.text = [NSString stringWithFormat:@"%@ UBC", self.good.price.priceString];
+    [self setupPriceInCurrency];
     
     self.locationView.hidden = !self.good.location;
     self.mapView.location = self.good.location;
@@ -134,6 +137,18 @@
                             andText:[NSString stringWithFormat:@"1/%d", (int)self.good.images.count]];
     
     [self setupSellerView:self.good.seller];
+}
+
+- (void)setupPriceInCurrency
+{
+    if (self.good.priceInCurrency && self.good.currency)
+    {
+        self.priceInCurrency.text = [NSString stringWithFormat:@"~%@ %@", self.good.priceInCurrency.priceStringWithoutCoins, self.good.currency];
+    }
+    else
+    {
+        self.priceInCurrency.text = @"";
+    }
 }
 
 - (void)setupSellerView:(UBCSellerDM *)seller

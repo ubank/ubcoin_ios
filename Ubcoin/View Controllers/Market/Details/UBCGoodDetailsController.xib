@@ -23,6 +23,7 @@
                 <outlet property="mapView" destination="wo3-8c-mQO" id="kgm-I1-rjj"/>
                 <outlet property="photoCount" destination="m7a-DO-gsQ" id="A95-If-n56"/>
                 <outlet property="price" destination="bhf-vo-Ont" id="Rbu-gc-fFf"/>
+                <outlet property="priceInCurrency" destination="TsC-g5-Gef" id="fDD-cM-Aae"/>
                 <outlet property="scroll" destination="p5e-oR-mgC" id="aOW-PK-gLL"/>
                 <outlet property="sellerAvatar" destination="gln-MN-Ejo" id="uY5-wo-Zk1"/>
                 <outlet property="sellerDesc" destination="kpT-qZ-zpm" id="ui6-xw-q8g"/>
@@ -106,7 +107,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="131"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bhf-vo-Ont" customClass="HUBLabel">
-                                                    <rect key="frame" x="15" y="25" width="345" height="35"/>
+                                                    <rect key="frame" x="15" y="25" width="42" height="35"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -117,7 +118,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sLA-ZZ-xSa" customClass="HUBLabel">
-                                                    <rect key="frame" x="15" y="70" width="345" height="20.5"/>
+                                                    <rect key="frame" x="15" y="70" width="42" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -138,16 +139,29 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TsC-g5-Gef" customClass="HUBLabel">
+                                                    <rect key="frame" x="62" y="32.5" width="298" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="labelStyle">
+                                                            <integer key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="Gti-R0-jnL" secondAttribute="bottom" constant="10" id="1kw-Vp-EVr"/>
                                                 <constraint firstItem="bhf-vo-Ont" firstAttribute="top" secondItem="S5O-0B-R5g" secondAttribute="top" constant="25" id="64Y-6V-DOT"/>
+                                                <constraint firstItem="TsC-g5-Gef" firstAttribute="leading" secondItem="bhf-vo-Ont" secondAttribute="trailing" constant="5" id="7p5-V6-CrN"/>
                                                 <constraint firstItem="bhf-vo-Ont" firstAttribute="leading" secondItem="S5O-0B-R5g" secondAttribute="leading" constant="15" id="DRZ-8x-fin"/>
+                                                <constraint firstAttribute="trailing" secondItem="TsC-g5-Gef" secondAttribute="trailing" constant="15" id="Jp0-DQ-cfs"/>
+                                                <constraint firstItem="TsC-g5-Gef" firstAttribute="centerY" secondItem="bhf-vo-Ont" secondAttribute="centerY" id="Te4-AD-etR"/>
                                                 <constraint firstItem="sLA-ZZ-xSa" firstAttribute="top" secondItem="bhf-vo-Ont" secondAttribute="bottom" constant="10" id="Wdc-Dj-CO8"/>
                                                 <constraint firstItem="Gti-R0-jnL" firstAttribute="leading" secondItem="S5O-0B-R5g" secondAttribute="leading" constant="15" id="ao5-XV-UKh"/>
                                                 <constraint firstAttribute="trailing" secondItem="Gti-R0-jnL" secondAttribute="trailing" constant="15" id="bgv-tx-sA4"/>
-                                                <constraint firstAttribute="trailing" secondItem="bhf-vo-Ont" secondAttribute="trailing" constant="15" id="nY4-M9-S3I"/>
                                                 <constraint firstItem="Gti-R0-jnL" firstAttribute="top" secondItem="sLA-ZZ-xSa" secondAttribute="bottom" constant="10" id="oO7-qc-32l"/>
                                                 <constraint firstItem="sLA-ZZ-xSa" firstAttribute="leading" secondItem="bhf-vo-Ont" secondAttribute="leading" id="rCy-lp-Kod"/>
                                                 <constraint firstItem="sLA-ZZ-xSa" firstAttribute="trailing" secondItem="bhf-vo-Ont" secondAttribute="trailing" id="tCB-5c-0bu"/>

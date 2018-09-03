@@ -22,6 +22,8 @@
         _title = dict[@"title"];
         _desc = dict[@"description"];
         _price = dict[@"price"];
+        _priceInCurrency = dict[@"priceInCurrency"];
+        _currency = dict[@"currency"];
         _shareURL = dict[@"shareUrl"];
         _isFavorite = [dict[@"favorite"] boolValue];
         _creationDate = [NSDate dateFromISO8601String:dict[@"createdDate"]];
