@@ -16,6 +16,7 @@
 + (NSURL *)goodsListWithPageNumber:(NSUInteger)page
 {
     NSString *url = [SERVER_URL stringByAppendingFormat:@"items?page=%d&size=%d", (int)page, ITEMS_PAGE_SIZE];
+    url = [self addUserLocationToURL:url];
     return [NSURL URLWithString:url];
 }
 
@@ -151,6 +152,20 @@
     NSString *url = [SERVER_URL stringByAppendingString:@"items"];
     
     return [NSURL URLWithString:url];
+}
+
+#pragma mark -
+
++ (NSString *)addUserLocationToURL:(NSString *)url
+{
+    CLLocation *location = UBLocationManager.sharedLocation.lastLocation;
+    if (location)
+    {
+        url = [url stringByAppendingString:[url containsString:@"?"] ? @"&" : @"?"];
+        url = [url stringByAppendingFormat:@"latPoint=%f&longPoint=%f", location.coordinate.latitude, location.coordinate.longitude];
+    }
+    
+    return url;
 }
 
 @end

@@ -42,6 +42,7 @@
         if (success)
         {
             [weakSelf.collectionView reloadData];
+            [weakSelf refreshControlUpdate];
         }
     }];
     
