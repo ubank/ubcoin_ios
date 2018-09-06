@@ -132,3 +132,6 @@
 
 "str_version" = "Version";
 "str_ubcoin_is_going_to_open_telegram" = "Ubcoin Market is going to open a Telegram bot. This is necessary to buy or sell smth. Please create a Telegram account if you don’t have one.";
+
+"str_status_check" = "Please wait, your listing will appear on the Market right after moderation process.";
+"str_status_blocked" = "Listing was blocked for some reason. Please read our Terms and conditions and edit your listing.";

@@ -11,6 +11,14 @@
 #import "UBCSellerDM.h"
 #import "UBCCategoryDM.h"
 
+typedef enum
+{
+    UBCItemStatusActive,
+    UBCItemStatusCheck,
+    UBCItemStatusChecking,
+    UBCItemStatusBlocked
+} UBCItemStatus;
+
 static NSString * const kNotificationFavoritesChanged = @"kNotificationFavoritesChanged";
 
 @interface UBCGoodDM : NSObject
@@ -27,6 +35,7 @@ static NSString * const kNotificationFavoritesChanged = @"kNotificationFavorites
 @property (readonly, nonatomic) BOOL isFavorite;
 @property (readonly, nonatomic) CLLocation *location;
 @property (readonly, nonatomic) NSDictionary *dict;
+@property (readonly, nonatomic) UBCItemStatus status;
 
 @property (readonly, nonatomic) UBCSellerDM *seller;
 @property (readonly, nonatomic) UBCCategoryDM *category;

@@ -41,6 +41,9 @@
 @property (weak, nonatomic) IBOutlet UBCMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIView *locationView;
 @property (weak, nonatomic) IBOutlet UIView *connectToSellerView;
+@property (weak, nonatomic) IBOutlet UIView *warningView;
+@property (weak, nonatomic) IBOutlet UIImageView *warningIcon;
+@property (weak, nonatomic) IBOutlet HUBLabel *warningLabel;
 
 @property (strong, nonatomic) HUBNavigationBarView *navBarView;
 
@@ -137,6 +140,7 @@
                             andText:[NSString stringWithFormat:@"1/%d", (int)self.good.images.count]];
     
     [self setupSellerView:self.good.seller];
+    [self setupWarningView];
 }
 
 - (void)setupPriceInCurrency
@@ -148,6 +152,39 @@
     else
     {
         self.priceInCurrency.text = @"";
+    }
+}
+
+- (void)setupWarningView
+{
+    switch (self.good.status)
+    {
+        case UBCItemStatusCheck:
+        case UBCItemStatusChecking:
+        {
+            self.warningView.hidden = NO;
+            
+            UIColor *color = [UIColor colorWithHexString:@"ea9121"];
+            self.warningView.backgroundColor = [color colorWithAlphaComponent:0.2];
+            self.warningLabel.textColor = color;
+            self.warningLabel.text = UBLocalizedString(@"str_status_check", nil);
+            self.warningIcon.image = [UIImage imageNamed:@"status_attention"];
+        }
+            break;
+        case UBCItemStatusBlocked:
+        {
+            self.warningView.hidden = NO;
+            
+            UIColor *color = [UIColor colorWithHexString:@"e93754"];
+            self.warningView.backgroundColor = [color colorWithAlphaComponent:0.2];
+            self.warningLabel.textColor = color;
+            self.warningLabel.text = UBLocalizedString(@"str_status_blocked", nil);
+            self.warningIcon.image = [UIImage imageNamed:@"status_blocked"];
+        }
+            break;
+        default:
+            self.warningView.hidden = YES;
+            break;
     }
 }
 
@@ -200,6 +237,16 @@
     else
     {
         [UBAlert showAlertWithTitle:nil andMessage:@"str_you_need_to_be_logged_in"];
+    }
+}
+
+- (IBAction)showTermsAndConditions
+{
+    if (self.good.status == UBCItemStatusBlocked)
+    {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:USER_AGREEMENT_LINK]
+                                           options:@{}
+                                 completionHandler:nil];
     }
 }
 

@@ -28,6 +28,7 @@
         _isFavorite = [dict[@"favorite"] boolValue];
         _creationDate = [NSDate dateFromISO8601String:dict[@"createdDate"]];
         _images = dict[@"images"];
+        _status = [self statusFromString:dict[@"status"]];
         [self setupLocationWithDictionary:dict[@"location"]];
         
         _seller = [[UBCSellerDM alloc] initWithDictionary:dict[@"user"]];
@@ -47,6 +48,23 @@
         _location = [[CLLocation alloc] initWithLatitude:lat.doubleValue
                                                longitude:lon.doubleValue];
     }
+}
+
+- (UBCItemStatus)statusFromString:(NSString *)status
+{
+    if ([status isEqualToString:@"CHECK"])
+    {
+        return UBCItemStatusCheck;
+    }
+    else if ([status isEqualToString:@"CHECKING"])
+    {
+        return UBCItemStatusChecking;
+    }
+    else if ([status isEqualToString:@"BLOCKED"])
+    {
+        return UBCItemStatusBlocked;
+    }
+    return UBCItemStatusActive;
 }
 
 - (void)toggleFavorite
