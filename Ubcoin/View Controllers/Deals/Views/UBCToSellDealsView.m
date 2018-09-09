@@ -41,13 +41,13 @@
 {
     __weak typeof(self) weakSelf = self;
     [UBCDataProvider.sharedProvider dealsToSellListWithPageNumber:self.pageNumber
-                                              withCompletionBlock:^(BOOL success, NSArray *deals, BOOL canLoadMore)
+                                              withCompletionBlock:^(BOOL success, NSArray *items, BOOL canLoadMore)
      {
          if (success)
          {
              weakSelf.tableView.canLoadMore = canLoadMore;
          }
-         [weakSelf handleResponse:deals];
+         [weakSelf handleResponse:items];
      }];
 }
 
@@ -55,11 +55,11 @@
 
 - (void)layoutCell:(UBDefaultTableViewCell *)cell forData:(UBTableViewRowData *)data indexPath:(NSIndexPath *)indexPath
 {
-    UBCDealDM *deal = data.data;
+    UBCGoodDM *item = data.data;
     
     UBCDealCell *dealCell = (UBCDealCell *)cell;
-    dealCell.info.attributedText = [self infoStringWithString:deal.buyer.name];
-    [dealCell setLocation:deal.item.location];
+//    dealCell.info.attributedText = [self infoStringWithString:deal.buyer.name];
+    [dealCell setLocation:item.location];
 }
 
 @end

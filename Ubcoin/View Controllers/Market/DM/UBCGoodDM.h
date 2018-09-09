@@ -34,11 +34,11 @@ static NSString * const kNotificationFavoritesChanged = @"kNotificationFavorites
 @property (readonly, nonatomic) NSArray *images;
 @property (readonly, nonatomic) BOOL isFavorite;
 @property (readonly, nonatomic) CLLocation *location;
-@property (readonly, nonatomic) NSDictionary *dict;
 @property (readonly, nonatomic) UBCItemStatus status;
 
 @property (readonly, nonatomic) UBCSellerDM *seller;
 @property (readonly, nonatomic) UBCCategoryDM *category;
+@property (readonly, nonatomic) NSArray *deals;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
 - (void)toggleFavorite;

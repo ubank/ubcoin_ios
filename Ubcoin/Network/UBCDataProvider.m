@@ -20,6 +20,7 @@
 #import "UBCTransactionDM.h"
 #import "UBCKeyChain.h"
 #import "UBCFavouriteCell.h"
+#import "UBCDealCell.h"
 
 #import <AFNetworking/UIKit+AFNetworking.h>
 
@@ -392,8 +393,10 @@
          {
              NSArray *items = [responseObject[@"data"] removeNulls];
              items = [items map:^id(id item) {
-                 UBCDealDM *deal = [[UBCDealDM alloc] initWithDictionary:item];
-                 return deal.rowData;
+                 UBCGoodDM *good = [[UBCGoodDM alloc] initWithDictionary:item];
+                 UBTableViewRowData *data = good.rowData;
+                 data.className = NSStringFromClass(UBCDealCell.class);
+                 return data;
              }];
              
              if (completionBlock)

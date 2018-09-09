@@ -7,6 +7,7 @@
 //
 
 #import "UBCGoodDM.h"
+#import "UBCDealDM.h"
 #import "UBCKeyChain.h"
 
 #define ALL_GOODS_KEY @"all goods"
@@ -33,8 +34,9 @@
         
         _seller = [[UBCSellerDM alloc] initWithDictionary:dict[@"user"]];
         _category = [[UBCCategoryDM alloc] initWithDictionary:dict[@"category"]];
-        
-        _dict = dict;
+        _deals = [dict[@"purchases"] map:^id(id item) {
+            return [[UBCDealDM alloc] initWithDictionary:item];
+        }];
     }
     return self;
 }
