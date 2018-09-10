@@ -265,7 +265,7 @@
     {
         UBTableViewSectionData *sectionData = self.sections[section];
         
-        return sectionData.headerTitle;
+        return [sectionData.headerTitle uppercaseString];
     }
     
     return nil;

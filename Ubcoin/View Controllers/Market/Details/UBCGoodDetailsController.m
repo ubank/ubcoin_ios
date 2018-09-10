@@ -200,6 +200,9 @@
         self.connectToSellerView.hidden = YES;
         self.sellerView.hidden = YES;
         self.buyersView.hidden = NO;
+        
+        NSArray *buyers = [self.good.deals valueForKey:@"buyer"];
+        [self.buyersView updateWithBuyers:buyers];
     }
     else
     {

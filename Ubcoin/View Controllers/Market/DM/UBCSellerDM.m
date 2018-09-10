@@ -22,6 +22,7 @@
     {
         _ID = dict[@"id"];
         _name = dict[@"name"];
+        _status = dict[@"status"];
         _rating = dict[@"rating"];
         _avatarURL = dict[@"avatarUrl"];
         _itemsCount = [dict[@"itemsCount"] unsignedLongValue];
@@ -42,6 +43,19 @@
     [info appendAttributedString:[NSAttributedString.alloc initWithString:text attributes:@{NSForegroundColorAttributeName: UBColor.descColor, NSFontAttributeName: UBFont.descFont}]];
     
     return info;
+}
+
+- (UBTableViewRowData *)rowData
+{
+    UBTableViewRowData *data = UBTableViewRowData.new;
+    data.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    data.data = self;
+    data.title = self.name;
+    data.attributedDesc = self.info;
+    data.iconURL = self.avatarURL;
+    data.icon = [UIImage imageNamed:@"def_prof"];
+    data.height = 80;
+    return data;
 }
 
 @end
