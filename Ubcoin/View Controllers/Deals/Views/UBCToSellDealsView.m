@@ -51,6 +51,34 @@
      }];
 }
 
+#pragma mark -
+
+- (NSAttributedString *)infoStringWithDeals:(NSArray *)deals
+{
+    if (deals.count > 0)
+    {
+        if (deals.count == 1)
+        {
+            UBCDealDM *deal = deals.firstObject;
+            return [self infoStringWithString:deal.buyer.name];
+        }
+        else
+        {
+            NSTextAttachment *tgIcon = NSTextAttachment.new;
+            tgIcon.image = [UIImage imageNamed:@"icTg"];
+            tgIcon.bounds = CGRectMake(0, (UBFont.descFont.pointSize - tgIcon.image.size.height), tgIcon.image.size.width, tgIcon.image.size.height);
+            
+            NSMutableAttributedString *info = [NSMutableAttributedString.alloc initWithAttributedString:[NSAttributedString attributedStringWithAttachment:tgIcon]];
+            
+            NSString *text = [NSString stringWithFormat:@" %d %@", (int)deals.count, UBLocalizedString(@"str_active_buyers", nil)];
+            [info appendAttributedString:[NSAttributedString.alloc initWithString:text attributes:@{NSForegroundColorAttributeName: UBColor.descColor, NSFontAttributeName: UBFont.descFont}]];
+            
+            return info;
+        }
+    }
+    return nil;
+}
+
 #pragma mark - UBDefaultTableViewDelegate
 
 - (void)layoutCell:(UBDefaultTableViewCell *)cell forData:(UBTableViewRowData *)data indexPath:(NSIndexPath *)indexPath
@@ -58,8 +86,17 @@
     UBCGoodDM *item = data.data;
     
     UBCDealCell *dealCell = (UBCDealCell *)cell;
-//    dealCell.info.attributedText = [self infoStringWithString:deal.buyer.name];
+    dealCell.info.attributedText = [self infoStringWithDeals:item.deals];
     [dealCell setLocation:item.location];
+}
+
+- (void)didSelectData:(UBTableViewRowData *)data indexPath:(NSIndexPath *)indexPath
+{
+    if ([self.delegate respondsToSelector:@selector(showItem:)])
+    {    
+        UBCGoodDM *item = data.data;
+        [self.delegate showItem:item];
+    }
 }
 
 @end

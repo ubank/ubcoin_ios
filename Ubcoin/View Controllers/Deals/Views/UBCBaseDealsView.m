@@ -95,12 +95,6 @@
 
 #pragma mark - UBDefaultTableViewDelegate
 
-- (void)didSelectData:(UBTableViewRowData *)data indexPath:(NSIndexPath *)indexPath
-{
-    UBCDealDM *deal = data.data;
-    [self.delegate openChatForItem:deal.item];
-}
-
 - (void)updatePagination
 {
     [self updateInfo];

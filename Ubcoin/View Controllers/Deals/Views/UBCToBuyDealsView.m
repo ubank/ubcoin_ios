@@ -62,4 +62,13 @@
     [dealCell setLocation:deal.item.location];
 }
 
+- (void)didSelectData:(UBTableViewRowData *)data indexPath:(NSIndexPath *)indexPath
+{
+    if ([self.delegate respondsToSelector:@selector(openChatForItem:)])
+    {    
+        UBCDealDM *deal = data.data;
+        [self.delegate openChatForItem:deal.item];
+    }
+}
+
 @end

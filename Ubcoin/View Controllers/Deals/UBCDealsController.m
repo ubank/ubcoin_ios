@@ -11,6 +11,7 @@
 #import "UBCToBuyDealsView.h"
 #import "UBCToSellDealsView.h"
 #import "UBCChatController.h"
+#import "UBCGoodDetailsController.h"
 
 @interface UBCDealsController () <UBCDealsViewDelegate>
 
@@ -63,6 +64,12 @@
 - (void)openChatForItem:(UBCGoodDM *)item
 {
     UBCChatController *controller = [[UBCChatController alloc] initWithItem:item];
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+- (void)showItem:(UBCGoodDM *)item
+{
+    UBCGoodDetailsController *controller = [UBCGoodDetailsController.alloc initWithGood:item];
     [self.navigationController pushViewController:controller animated:YES];
 }
 

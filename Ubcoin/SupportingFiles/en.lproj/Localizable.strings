@@ -135,3 +135,5 @@
 
 "str_status_check" = "Please wait, your listing will appear on the Market right after moderation process.";
 "str_status_blocked" = "Listing was blocked for some reason. Please read our Terms and conditions and edit your listing.";
+
+"str_active_buyers" = "active buyers";
