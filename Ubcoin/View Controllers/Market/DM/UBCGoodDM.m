@@ -91,7 +91,7 @@
     data.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     data.data = self;
     data.title = [NSString stringWithFormat:@"%@ UBC", self.price.priceString];
-    data.desc = self.desc;
+    data.desc = self.title;
     data.iconURL = [self.images firstObject];
     data.icon = [UIImage imageNamed:@"item_default_image"];
     data.height = 95;

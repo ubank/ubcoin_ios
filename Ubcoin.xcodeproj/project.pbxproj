@@ -130,6 +130,7 @@
 		898751CB20EE6AEA00E2B615 /* UBCURLProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 898751CA20EE6AEA00E2B615 /* UBCURLProvider.m */; };
 		898751CE20EE6D7600E2B615 /* UBCDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 898751CD20EE6D7600E2B615 /* UBCDataProvider.m */; };
 		899E217C20E68D8A004D891B /* UBCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 899E217B20E68D8A004D891B /* UBCAppDelegate.m */; };
+		89AD7CE52146B1FD0015A2D2 /* UBCBuyersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AD7CE42146B1FD0015A2D2 /* UBCBuyersView.swift */; };
 		89AE1A6E20F7B8F1000662E8 /* UBCFavouritesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89AE1A6D20F7B8F1000662E8 /* UBCFavouritesController.xib */; };
 		89AE1A7320F7FDF3000662E8 /* UBCFavouriteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89AE1A7120F7FDF3000662E8 /* UBCFavouriteCell.m */; };
 		89B08E282127505700D8B68D /* UBCTransactionDM.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B08E272127505700D8B68D /* UBCTransactionDM.m */; };
@@ -356,6 +357,7 @@
 		899E217720E68D8A004D891B /* Ubcoin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ubcoin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		899E217A20E68D8A004D891B /* UBCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCAppDelegate.h; sourceTree = "<group>"; };
 		899E217B20E68D8A004D891B /* UBCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCAppDelegate.m; sourceTree = "<group>"; };
+		89AD7CE42146B1FD0015A2D2 /* UBCBuyersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCBuyersView.swift; sourceTree = "<group>"; };
 		89AE1A6D20F7B8F1000662E8 /* UBCFavouritesController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCFavouritesController.xib; sourceTree = "<group>"; };
 		89AE1A7020F7FDF3000662E8 /* UBCFavouriteCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCFavouriteCell.h; sourceTree = "<group>"; };
 		89AE1A7120F7FDF3000662E8 /* UBCFavouriteCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCFavouriteCell.m; sourceTree = "<group>"; };
@@ -747,6 +749,7 @@
 			isa = PBXGroup;
 			children = (
 				8980F23D20F495350066CF99 /* Cell */,
+				89AD7CE32146B1D10015A2D2 /* Views */,
 				8980F23820F486990066CF99 /* UBCGoodDetailsController.h */,
 				8980F23920F486990066CF99 /* UBCGoodDetailsController.m */,
 				8980F23A20F486990066CF99 /* UBCGoodDetailsController.xib */,
@@ -1183,6 +1186,14 @@
 			path = Ubcoin;
 			sourceTree = "<group>";
 		};
+		89AD7CE32146B1D10015A2D2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				89AD7CE42146B1FD0015A2D2 /* UBCBuyersView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		89AE1A6F20F7FDC2000662E8 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1610,6 +1621,7 @@
 				898751CE20EE6D7600E2B615 /* UBCDataProvider.m in Sources */,
 				89F16A7420F2C65D001AA440 /* UBCGoodCell.m in Sources */,
 				8980F24120F4954C0066CF99 /* UBCPhotoCollectionViewCell.m in Sources */,
+				89AD7CE52146B1FD0015A2D2 /* UBCBuyersView.swift in Sources */,
 				89F16A6B20F2C65D001AA440 /* UBCGoodDM.m in Sources */,
 				89007764211DAB0C00B6C1C5 /* UBCResetPasswordController.m in Sources */,
 			);

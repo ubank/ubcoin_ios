@@ -30,6 +30,4 @@
 - (void)reloadData;
 - (void)handleResponse:(NSArray *)deals;
 
-- (NSAttributedString *)infoStringWithString:(NSString *)string;
-
 @end

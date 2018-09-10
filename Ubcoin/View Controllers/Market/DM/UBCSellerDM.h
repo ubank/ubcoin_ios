@@ -17,6 +17,8 @@
 @property (readonly, nonatomic) NSUInteger itemsCount;
 @property (readonly, nonatomic) NSUInteger reviewsCount;
 
+@property (readonly, nonatomic) NSAttributedString *info;
+
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
 
 @end

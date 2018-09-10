@@ -64,19 +64,25 @@
         }
         else
         {
-            NSTextAttachment *tgIcon = NSTextAttachment.new;
-            tgIcon.image = [UIImage imageNamed:@"icTg"];
-            tgIcon.bounds = CGRectMake(0, (UBFont.descFont.pointSize - tgIcon.image.size.height), tgIcon.image.size.width, tgIcon.image.size.height);
-            
-            NSMutableAttributedString *info = [NSMutableAttributedString.alloc initWithAttributedString:[NSAttributedString attributedStringWithAttachment:tgIcon]];
-            
             NSString *text = [NSString stringWithFormat:@" %d %@", (int)deals.count, UBLocalizedString(@"str_active_buyers", nil)];
-            [info appendAttributedString:[NSAttributedString.alloc initWithString:text attributes:@{NSForegroundColorAttributeName: UBColor.descColor, NSFontAttributeName: UBFont.descFont}]];
-            
-            return info;
+            return [self infoStringWithString:text];
         }
     }
     return nil;
+}
+
+- (NSAttributedString *)infoStringWithString:(NSString *)string
+{
+    NSTextAttachment *tgIcon = NSTextAttachment.new;
+    tgIcon.image = [UIImage imageNamed:@"icDialog"];
+    tgIcon.bounds = CGRectMake(0, (UBFont.descFont.pointSize - tgIcon.image.size.height) - 3, tgIcon.image.size.width, tgIcon.image.size.height);
+    
+    NSMutableAttributedString *info = [NSMutableAttributedString.alloc initWithAttributedString:[NSAttributedString attributedStringWithAttachment:tgIcon]];
+    
+    NSString *text = [NSString stringWithFormat:@" %@", string];
+    [info appendAttributedString:[NSAttributedString.alloc initWithString:text attributes:@{NSForegroundColorAttributeName: UBColor.descColor, NSFontAttributeName: UBFont.descFont}]];
+    
+    return info;
 }
 
 #pragma mark - UBDefaultTableViewDelegate

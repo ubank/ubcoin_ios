@@ -34,10 +34,14 @@
 @property (weak, nonatomic) IBOutlet HUBLabel *itemTitle;
 @property (weak, nonatomic) IBOutlet HUBLabel *desc;
 @property (weak, nonatomic) IBOutlet UBCGoodsCollectionView *relatedItemsView;
+
 @property (weak, nonatomic) IBOutlet UIImageView *sellerAvatar;
 @property (weak, nonatomic) IBOutlet HUBLabel *sellerName;
 @property (weak, nonatomic) IBOutlet UBCStarsView *sellerRating;
 @property (weak, nonatomic) IBOutlet HUBLabel *sellerDesc;
+@property (weak, nonatomic) IBOutlet UIView *sellerView;
+@property (weak, nonatomic) IBOutlet UBCBuyersView *buyersView;
+
 @property (weak, nonatomic) IBOutlet UBCMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIView *locationView;
 @property (weak, nonatomic) IBOutlet UIView *connectToSellerView;
@@ -190,18 +194,26 @@
 
 - (void)setupSellerView:(UBCSellerDM *)seller
 {
-    [self.sellerAvatar sd_setImageWithURL:[NSURL URLWithString:seller.avatarURL]
-                         placeholderImage:[UIImage imageNamed:@"def_prof"]];
-    
-    self.sellerName.text = seller.name;
-    [self.sellerRating showStars:seller.rating.unsignedIntegerValue];
-    
-    self.sellerDesc.text = [NSString stringWithFormat:@"%lu items     Reviews(%lu)", (unsigned long)seller.itemsCount, (unsigned long)seller.reviewsCount];
-    
     UBCUserDM *user = [UBCUserDM loadProfile];
-    if (user.ID)
+    if (user.ID && [seller.ID isEqualToString:user.ID])
     {
-        self.connectToSellerView.hidden = [seller.ID isEqualToString:user.ID];
+        self.connectToSellerView.hidden = YES;
+        self.sellerView.hidden = YES;
+        self.buyersView.hidden = NO;
+    }
+    else
+    {
+        self.connectToSellerView.hidden = NO;
+        self.sellerView.hidden = NO;
+        self.buyersView.hidden = YES;
+        
+        [self.sellerAvatar sd_setImageWithURL:[NSURL URLWithString:seller.avatarURL]
+                             placeholderImage:[UIImage imageNamed:@"def_prof"]];
+        
+        self.sellerName.text = seller.name;
+        [self.sellerRating showStars:seller.rating.unsignedIntegerValue];
+        
+        self.sellerDesc.text = [NSString stringWithFormat:@"%lu items     Reviews(%lu)", (unsigned long)seller.itemsCount, (unsigned long)seller.reviewsCount];
     }
 }
      
