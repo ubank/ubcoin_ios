@@ -164,7 +164,6 @@
     switch (self.good.status)
     {
         case UBCItemStatusCheck:
-        case UBCItemStatusChecking:
         {
             self.warningView.hidden = NO;
             

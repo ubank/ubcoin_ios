@@ -54,17 +54,26 @@
 
 - (UBCItemStatus)statusFromString:(NSString *)status
 {
-    if ([status isEqualToString:@"CHECK"])
+    if ([status isEqualToString:@"CHECK"] ||
+        [status isEqualToString:@"CHECKING"])
     {
         return UBCItemStatusCheck;
-    }
-    else if ([status isEqualToString:@"CHECKING"])
-    {
-        return UBCItemStatusChecking;
     }
     else if ([status isEqualToString:@"BLOCKED"])
     {
         return UBCItemStatusBlocked;
+    }
+    else if ([status isEqualToString:@"SOLD"])
+    {
+        return UBCItemStatusSold;
+    }
+    else if ([status isEqualToString:@"RESERVED"])
+    {
+        return UBCItemStatusReserved;
+    }
+    else if ([status isEqualToString:@"DEACTIVATED"])
+    {
+        return UBCItemStatusDeactivated;
     }
     return UBCItemStatusActive;
 }
@@ -96,6 +105,25 @@
     data.icon = [UIImage imageNamed:@"item_default_image"];
     data.height = 95;
     return data;
+}
+
++ (NSString *)titleForStatus:(UBCItemStatus)status
+{
+    switch (status)
+    {
+        case UBCItemStatusActive:
+            return UBLocalizedString(@"str_item_status_active", nil);
+        case UBCItemStatusBlocked:
+            return UBLocalizedString(@"str_item_status_blocked", nil);
+        case UBCItemStatusCheck:
+            return UBLocalizedString(@"str_item_status_check", nil);
+        case UBCItemStatusDeactivated:
+            return UBLocalizedString(@"str_item_status_deactivated", nil);
+        case UBCItemStatusReserved:
+            return UBLocalizedString(@"str_item_status_reserved", nil);
+        case UBCItemStatusSold:
+            return UBLocalizedString(@"str_item_status_sold", nil);
+    }
 }
 
 @end

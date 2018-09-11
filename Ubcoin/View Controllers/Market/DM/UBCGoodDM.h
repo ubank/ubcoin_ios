@@ -14,9 +14,11 @@
 typedef enum
 {
     UBCItemStatusActive,
+    UBCItemStatusBlocked,
     UBCItemStatusCheck,
-    UBCItemStatusChecking,
-    UBCItemStatusBlocked
+    UBCItemStatusDeactivated,
+    UBCItemStatusReserved,
+    UBCItemStatusSold
 } UBCItemStatus;
 
 static NSString * const kNotificationFavoritesChanged = @"kNotificationFavoritesChanged";
@@ -44,5 +46,7 @@ static NSString * const kNotificationFavoritesChanged = @"kNotificationFavorites
 - (void)toggleFavorite;
 
 - (UBTableViewRowData *)rowData;
+
++ (NSString *)titleForStatus:(UBCItemStatus)status;
 
 @end

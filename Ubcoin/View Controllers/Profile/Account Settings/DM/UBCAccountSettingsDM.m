@@ -17,7 +17,7 @@
     if (user)
     {
         UBTableViewSectionData *section = UBTableViewSectionData.new;
-        section.headerTitle = [UBLocalizedString(@"str_common", nil) uppercaseString];
+        section.headerTitle = UBLocalizedString(@"str_common", nil);
         
         NSMutableArray *rows = [NSMutableArray array];
         

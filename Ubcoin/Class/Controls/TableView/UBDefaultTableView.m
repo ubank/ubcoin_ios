@@ -252,6 +252,10 @@
         NSString *header = [self tableView:self titleForHeaderInSection:section];
         if (header.isNotEmpty || sectionData.headerHeight <= SEPARATOR_HEIGHT)
         {
+            if (sectionData.headerHeight == HEADER_HEIGHT)
+            {
+                return 40;
+            }
             return sectionData.headerHeight;
         }
     }
