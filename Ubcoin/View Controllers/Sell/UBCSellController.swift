@@ -92,30 +92,29 @@ class UBCSellController: UBViewController {
     
     @objc
     private func buttonPressed() {
-        if self.model.isAllParamsNotEmpty(), let photoRow = self.model.photoRow() {
-            guard let user = UBCUserDM.loadProfile(),
-                user.authorizedInTg else {
-                    self.startActivityIndicator()
-                    UBCDataProvider.shared.registerInChat { [weak self] success, authorizedInTg, url, appURL in
-                        self?.stopActivityIndicator()
-                        
-                        if authorizedInTg {
-                            self?.sendItem(photoRow: photoRow)
-                        }
-                        else {
-                            UBAlert.show(withTitle: "",
-                                         andMessage: "str_ubcoin_is_going_to_open_telegram".localizedString(),
-                                         withCompletionBlock: {
-                                self?.navigationController?.pushViewController(UBCChatController(url: url, appURL: appURL), animated: true)
-                            })
-                        }
-                    }
-                    
-                    return
-            }
+        if self.model.isAllParamsNotEmpty(), let photoRow = self.model.row(type: .photo) {
+//            guard let user = UBCUserDM.loadProfile(),
+//                user.authorizedInTg else {
+//                    self.startActivityIndicator()
+//                    UBCDataProvider.shared.registerInChat { [weak self] success, authorizedInTg, url, appURL in
+//                        self?.stopActivityIndicator()
+//
+//                        if authorizedInTg {
+//                            self?.sendItem(photoRow: photoRow)
+//                        }
+//                        else {
+//                            UBAlert.show(withTitle: "",
+//                                         andMessage: "str_ubcoin_is_going_to_open_telegram".localizedString(),
+//                                         withCompletionBlock: {
+//                                self?.navigationController?.pushViewController(UBCChatController(url: url, appURL: appURL), animated: true)
+//                            })
+//                        }
+//                    }
+//
+//                    return
+//            }
             
             self.sendItem(photoRow: photoRow)
-            
         } else {
             UBAlert.show(withTitle: "ui_alert_title_attention", andMessage: "error_all_fields_empty")
         }
@@ -148,8 +147,10 @@ class UBCSellController: UBViewController {
         
         var images = [String]()
         
-        for photo in photos {
+        for index in 0..<photos.count {
             myGroup.enter()
+            
+            let photo = photos[index]
             
             UBCDataProvider.shared.uploadImage(photo) { success, url in
                 if success {
@@ -209,11 +210,23 @@ extension UBCSellController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return ZERO_HEIGHT
+        let section = self.model.sections[section]
+        
+        return section.footerHeight
+    }
+    
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        let section = self.model.sections[section]
+        
+        return section.footerTitle
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return UIView()
+        if self.tableView(tableView, titleForFooterInSection: section) == nil {
+            return UIView()
+        } else {
+            return nil
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -339,8 +352,54 @@ extension UBCSellController: UBCSTextCellDelegate {
         self.tableView.endUpdates()
     }
     
-    func updatedRow(_ row: UBCSellCellDM) {
+    func updatedRow(_ row: UBCSellCellDM, view: UIView) {
         self.model.updateRow(row)
+        
+        var updatedType: UBCSellCellType?
+        var from = "UBC"
+        var to = "USD"
+        
+        if row.type == .price {
+            updatedType = .priceUBC
+            from = "USD"
+            to = "UBC"
+        } else if row.type == .priceUBC {
+            updatedType = .price
+        }
+        
+        if let updatedType = updatedType, let amountStr = row.data as? String {
+            let amount = Double(amountStr)
+            
+            var newRow = self.model.row(type: updatedType)
+            newRow?.placeholder = amount != nil ? "str_convertation_in_progress".localizedString() : ""
+            newRow?.data = nil
+            newRow?.sendData = nil
+            newRow?.isEditable = false
+            self.model.updateRow(newRow)
+            self.tableView.reloadData()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+                view.becomeFirstResponder()
+            }
+            
+            guard let sendAmount = amount else { return }
+            
+            self.cancelAllTasks()
+            
+            self.add(UBCDataProvider.shared.convert(fromCurrency: from, toCurrency: to, withAmount: NSNumber(value: sendAmount)) { [weak self] success, amount in
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
+                    var newRow = self?.model.row(type: updatedType)
+                    newRow?.placeholder = ""
+                    newRow?.data = amount?.stringValue
+                    newRow?.sendData = amount?.stringValue
+                    newRow?.isEditable = true
+                    self?.model.updateRow(newRow)
+                    self?.tableView.reloadData()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+                        view.becomeFirstResponder()
+                    }
+                })
+            })
+        }
     }
 }
 
@@ -349,7 +408,12 @@ extension UBCSellController: UIImagePickerControllerDelegate, UINavigationContro
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            self.model.updatePhotoRow(image: image)
+            var row = self.model.row(type: .photo)
+            if var data = row?.data as? [UIImage] {
+                data.append(image)
+                row?.data = data
+            }
+            self.model.updateRow(row)
             self.tableView.reloadData()
         }
 

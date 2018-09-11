@@ -99,7 +99,7 @@ final class UBCPhotosController: UBViewController {
         self.init()
         
         self.model = model
-        self.row = model.photoRow()
+        self.row = model.row(type: .photo)
         self.startIndex = index
     }
     

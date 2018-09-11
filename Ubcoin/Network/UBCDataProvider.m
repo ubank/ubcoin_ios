@@ -342,11 +342,11 @@
      }];
 }
 
-- (void)convertFromCurrency:(NSString *)fromCurrency toCurrency:(NSString *)toCurrency withAmount:(NSNumber *)amount withCompletionBlock:(void (^)(BOOL, NSNumber *))completionBlock
+- (NSURLSessionDataTask *)convertFromCurrency:(NSString *)fromCurrency toCurrency:(NSString *)toCurrency withAmount:(NSNumber *)amount withCompletionBlock:(void (^)(BOOL, NSNumber *))completionBlock
 {
     NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider convert] andParams:@{@"currencyFrom": fromCurrency, @"currencyTo": toCurrency, @"amount": amount}];
                                                                                                                
-    [self.connection sendRequest:request isBackground:YES withCompletionBlock:^(BOOL success, id responseObject)
+    return [self.connection sendRequest:request isBackground:YES withCompletionBlock:^(BOOL success, id responseObject)
      {
          if (completionBlock)
          {

@@ -55,7 +55,7 @@ extension UBCSTextViewTableViewCell: UITextViewDelegate {
         if let delegate = self.delegate, var content = self.content {
             content.data = textView.text
             content.sendData = content.data
-            delegate.updatedRow(content)
+            delegate.updatedRow(content, view: textView)
         }
         
         let startHeight = textView.frame.size.height
