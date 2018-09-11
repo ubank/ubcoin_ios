@@ -15,6 +15,7 @@
 "ui_button_skip"     = "Skip";
 "ui_button_search"   = "Search";
 "ui_button_continue" = "Continue";
+"ui_button_copy"     = "Copy";
 
 "ui_alert_button_ok"                              = "OK";
 "ui_alert_button_cancel"                          = "Cancel";

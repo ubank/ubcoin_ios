@@ -27,6 +27,8 @@
         self.icon.cornerRadius = 10;
         self.iconWidth = 75;
         self.iconHeight = 75;
+        self.icon.contentMode = UIViewContentModeScaleAspectFill;
+        self.iconContentModeSetted = YES;
         
         self.title.numberOfLines = 1;
         self.desc.numberOfLines = 1;

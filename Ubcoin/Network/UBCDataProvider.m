@@ -24,6 +24,8 @@
 
 #import <AFNetworking/UIKit+AFNetworking.h>
 
+#import "Ubcoin-Swift.h"
+
 @interface UBCDataProvider ()
 
 @property (strong, nonatomic) UBConnectionProvider *connection;
@@ -281,15 +283,15 @@
 
 #pragma mark - WALLET
 
-- (void)topupWithCompletionBlock:(void (^)(BOOL, NSString *, NSString *))completionBlock
+- (void)topupWithCompletionBlock:(void (^)(BOOL, UBCTopupDM *))completionBlock
 {
     NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:[UBCURLProvider topup]];
     [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
      {
          if (completionBlock)
          {
-             responseObject = [responseObject removeNulls];
-             completionBlock(success, responseObject[@"qrURL"], responseObject[@"ubCoinAddress"]);
+             UBCTopupDM *dm = [[UBCTopupDM alloc] initWithDictionary:[responseObject removeNulls]];
+             completionBlock(success, dm);
          }
      }];
 }

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UBCTopUpController" customModule="Ubcoin" customModuleProvider="target">
+            <connections>
+                <outlet property="address" destination="hyy-Ix-5Wk" id="a98-5l-pes"/>
+                <outlet property="copyButton" destination="Gh5-co-uqb" id="8YT-8u-0RC"/>
+                <outlet property="timerLabel" destination="Eo6-my-1Xh" id="l1f-Q7-Ruh"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iAi-Eh-6oO">
+                    <rect key="frame" x="0.0" y="30" width="375" height="239.5"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="str_your_wallet_is_permanent" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uO7-sb-tbY" customClass="HUBLabel">
+                            <rect key="frame" x="20" y="30" width="335" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="labelStyle">
+                                    <integer key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eo6-my-1Xh" customClass="UBCTimerLabel" customModule="Ubcoin" customModuleProvider="target">
+                            <rect key="frame" x="20" y="70.5" width="335" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Address" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hyy-Ix-5Wk">
+                            <rect key="frame" x="20" y="121.5" width="335" height="33"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gh5-co-uqb" customClass="HUBGeneralButton">
+                            <rect key="frame" x="20" y="174.5" width="335" height="35"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="Yii-F4-Zsi"/>
+                            </constraints>
+                            <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
+                            <state key="normal" title="ui_button_copy" image="general_copy"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="roundCorners" value="YES"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="type">
+                                    <integer key="value" value="0"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="copyAddressToClipboard" destination="-1" eventType="touchUpInside" id="GUq-As-WEe"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="hyy-Ix-5Wk" firstAttribute="leading" secondItem="iAi-Eh-6oO" secondAttribute="leading" constant="20" id="0fP-Lp-56P"/>
+                        <constraint firstItem="Eo6-my-1Xh" firstAttribute="top" secondItem="uO7-sb-tbY" secondAttribute="bottom" constant="20" id="AgG-UJ-oN7"/>
+                        <constraint firstAttribute="trailing" secondItem="uO7-sb-tbY" secondAttribute="trailing" constant="20" id="Kv7-Tn-cEq"/>
+                        <constraint firstItem="Eo6-my-1Xh" firstAttribute="leading" secondItem="iAi-Eh-6oO" secondAttribute="leading" constant="20" id="Lim-V8-STa"/>
+                        <constraint firstItem="uO7-sb-tbY" firstAttribute="top" secondItem="iAi-Eh-6oO" secondAttribute="top" constant="30" id="NLb-VM-c8Q"/>
+                        <constraint firstItem="Gh5-co-uqb" firstAttribute="trailing" secondItem="hyy-Ix-5Wk" secondAttribute="trailing" id="Q5A-if-N99"/>
+                        <constraint firstAttribute="trailing" secondItem="hyy-Ix-5Wk" secondAttribute="trailing" constant="20" id="dMX-vi-iPA"/>
+                        <constraint firstAttribute="bottom" secondItem="Gh5-co-uqb" secondAttribute="bottom" constant="30" id="erz-D2-ZyJ"/>
+                        <constraint firstItem="Gh5-co-uqb" firstAttribute="top" secondItem="hyy-Ix-5Wk" secondAttribute="bottom" constant="20" id="jbO-fx-qt2"/>
+                        <constraint firstAttribute="trailing" secondItem="Eo6-my-1Xh" secondAttribute="trailing" constant="20" id="q9k-z6-1RC"/>
+                        <constraint firstItem="hyy-Ix-5Wk" firstAttribute="top" secondItem="Eo6-my-1Xh" secondAttribute="bottom" constant="30" id="qON-JO-gc1"/>
+                        <constraint firstItem="Gh5-co-uqb" firstAttribute="leading" secondItem="hyy-Ix-5Wk" secondAttribute="leading" id="rL2-na-ub2"/>
+                        <constraint firstItem="uO7-sb-tbY" firstAttribute="leading" secondItem="iAi-Eh-6oO" secondAttribute="leading" constant="20" id="ujg-PM-0Wy"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="iAi-Eh-6oO" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="AC9-QG-a75"/>
+                <constraint firstItem="iAi-Eh-6oO" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="n2g-iz-U9n"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="iAi-Eh-6oO" secondAttribute="trailing" id="pyp-k3-sZp"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="general_copy" width="17" height="16"/>
+    </resources>
+</document>

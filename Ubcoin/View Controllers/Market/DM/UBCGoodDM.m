@@ -27,7 +27,7 @@
         _currency = dict[@"currency"];
         _shareURL = dict[@"shareUrl"];
         _isFavorite = [dict[@"favorite"] boolValue];
-        _creationDate = [NSDate dateFromISO8601String:dict[@"createdDate"]];
+        _creationDate = [NSDate dateFromString:dict[@"createdDate"] inFormat:@"yyyyMMdd'T'HHmmss+HHmm"];
         _images = dict[@"images"];
         _status = [self statusFromString:dict[@"status"]];
         [self setupLocationWithDictionary:dict[@"location"]];
