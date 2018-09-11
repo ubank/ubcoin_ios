@@ -34,10 +34,12 @@ class UBCTimerLabel: UILabel {
     @objc private func updateTime() {
         totalSeconds -= 1
         
-        if totalSeconds == 0 {
+        if totalSeconds <= 0 {
+            totalSeconds = 0
             stopTimer()
         }
         
+        text = timeString()
     }
     
     private func timeString() -> String {
@@ -57,6 +59,6 @@ class UBCTimerLabel: UILabel {
             seconds -= Int64(minutes * SECONDS_IN_MINUTE);
         }
         
-        return "%02\(hours)d:%02\(minutes)d:%02\(seconds)d"
+        return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
     }
 }

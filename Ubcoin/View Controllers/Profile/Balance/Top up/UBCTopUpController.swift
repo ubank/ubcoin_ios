@@ -25,6 +25,7 @@ class UBCTopUpController: UBViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        title = "str_topup"
         setupViews()
     }
 
@@ -59,6 +60,10 @@ class UBCTopUpController: UBViewController {
             let leftSeconds = endTime - Date().timeIntervalSince1970
             timerLabel.setup(seconds: Int64(leftSeconds))
         }
+    }
+    
+    @IBAction func showMarkets() {
+        self.navigationController?.pushViewController(UBCMarketsListController(), animated: true)
     }
     
     @IBAction func copyAddressToClipboard() {

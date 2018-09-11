@@ -135,6 +135,7 @@
 		89AD7CE9214829A20015A2D2 /* UBCTopUpController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89AD7CE7214829A20015A2D2 /* UBCTopUpController.xib */; };
 		89AD7CED2148414A0015A2D2 /* UBCTopupDM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AD7CEC2148414A0015A2D2 /* UBCTopupDM.swift */; };
 		89AD7CF021484DFC0015A2D2 /* UBCTimerLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AD7CEF21484DFC0015A2D2 /* UBCTimerLabel.swift */; };
+		89AD7CF2214862700015A2D2 /* UBCMarketsListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AD7CF1214862700015A2D2 /* UBCMarketsListController.swift */; };
 		89AE1A6E20F7B8F1000662E8 /* UBCFavouritesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89AE1A6D20F7B8F1000662E8 /* UBCFavouritesController.xib */; };
 		89AE1A7320F7FDF3000662E8 /* UBCFavouriteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89AE1A7120F7FDF3000662E8 /* UBCFavouriteCell.m */; };
 		89B08E282127505700D8B68D /* UBCTransactionDM.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B08E272127505700D8B68D /* UBCTransactionDM.m */; };
@@ -364,6 +365,7 @@
 		89AD7CE7214829A20015A2D2 /* UBCTopUpController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCTopUpController.xib; sourceTree = "<group>"; };
 		89AD7CEC2148414A0015A2D2 /* UBCTopupDM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCTopupDM.swift; sourceTree = "<group>"; };
 		89AD7CEF21484DFC0015A2D2 /* UBCTimerLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCTimerLabel.swift; sourceTree = "<group>"; };
+		89AD7CF1214862700015A2D2 /* UBCMarketsListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCMarketsListController.swift; sourceTree = "<group>"; };
 		89AE1A6D20F7B8F1000662E8 /* UBCFavouritesController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCFavouritesController.xib; sourceTree = "<group>"; };
 		89AE1A7020F7FDF3000662E8 /* UBCFavouriteCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCFavouriteCell.h; sourceTree = "<group>"; };
 		89AE1A7120F7FDF3000662E8 /* UBCFavouriteCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCFavouriteCell.m; sourceTree = "<group>"; };
@@ -1272,6 +1274,7 @@
 				89AD7CEB2148412D0015A2D2 /* DM */,
 				89AD7CE6214829A20015A2D2 /* UBCTopUpController.swift */,
 				89AD7CE7214829A20015A2D2 /* UBCTopUpController.xib */,
+				89AD7CF1214862700015A2D2 /* UBCMarketsListController.swift */,
 			);
 			path = "Top up";
 			sourceTree = "<group>";
@@ -1612,6 +1615,7 @@
 				89AD7CED2148414A0015A2D2 /* UBCTopupDM.swift in Sources */,
 				8980F23620F481BA0066CF99 /* UBCInfoLabel.m in Sources */,
 				89678DEB2112424E00EB715E /* DBPasswordStrengthMeterView.m in Sources */,
+				89AD7CF2214862700015A2D2 /* UBCMarketsListController.swift in Sources */,
 				8987516D20EE119F00E2B615 /* HUBScrollView.m in Sources */,
 				89678DE92112424E00EB715E /* DBZxcvbn.m in Sources */,
 				89678DA5210CF75500EB715E /* UBCUserDM.m in Sources */,

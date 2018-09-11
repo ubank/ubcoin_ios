@@ -28,6 +28,7 @@
 + (NSURL *)commissionForAmount:(NSNumber *)amount;
 + (NSURL *)withdraw;
 + (NSURL *)topup;
++ (NSURL *)markets;
 
 + (NSURL *)transactionsListWithPageNumber:(NSUInteger)page;
 

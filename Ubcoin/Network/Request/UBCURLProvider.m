@@ -104,6 +104,12 @@
     return [NSURL URLWithString:url];
 }
 
++ (NSURL *)markets
+{
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"wallet/markets"];
+    return [NSURL URLWithString:url];
+}
+
 + (NSURL *)transactionsListWithPageNumber:(NSUInteger)page
 {
     NSString *url = [SERVER_URL stringByAppendingFormat:@"wallet/transactions?page=%d&size=%d", (int)page, ITEMS_PAGE_SIZE];

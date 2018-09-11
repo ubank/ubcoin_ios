@@ -296,6 +296,26 @@
      }];
 }
 
+- (void)marketsWithCompletionBlock:(void (^)(BOOL, NSArray *))completionBlock
+{
+    NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:[UBCURLProvider markets]];
+    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (completionBlock)
+         {
+             NSArray *markets = [[responseObject removeNulls] map:^id(id item) {
+                 UBTableViewRowData *data = UBTableViewRowData.new;
+                 data.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                 data.title = item[@"name"];
+                 data.iconURL = item[@"icon"];
+                 data.data = [NSURL URLWithString:item[@"url"]];
+                 return data;
+             }];
+             completionBlock(success, markets);
+         }
+     }];
+}
+
 - (void)sendCoins:(NSNumber *)amount toAddress:(NSString *)address withCompletionBlock:(void (^)(BOOL, NSString *, NSString *))completionBlock
 {
     NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider withdraw]

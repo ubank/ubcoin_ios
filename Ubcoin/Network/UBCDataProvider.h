@@ -31,6 +31,7 @@
 - (void)transactionsListWithPageNumber:(NSUInteger)page withCompletionBlock:(void (^)(BOOL success, NSArray *goods, BOOL canLoadMore))completionBlock;
 
 - (void)topupWithCompletionBlock:(void (^)(BOOL success, UBCTopupDM *topup))completionBlock;
+- (void)marketsWithCompletionBlock:(void (^)(BOOL success, NSArray *markets))completionBlock;
 - (void)sendCoins:(NSNumber *)amount toAddress:(NSString *)address withCompletionBlock:(void (^)(BOOL success, NSString *result, NSString *message))completionBlock;
 - (void)commissionForAmount:(NSNumber *)amount withCompletionBlock:(void (^)(BOOL success, NSNumber *commission))completionBlock;
 - (void)convertFromCurrency:(NSString *)fromCurrency toCurrency:(NSString *)toCurrency withAmount:(NSNumber *)amount withCompletionBlock:(void (^)(BOOL success, NSNumber *amountInCurrency))completionBlock;
