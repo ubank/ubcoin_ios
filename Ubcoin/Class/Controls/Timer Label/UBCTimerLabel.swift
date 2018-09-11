@@ -48,13 +48,13 @@ class UBCTimerLabel: UILabel {
         if (seconds > SECONDS_IN_HOUR)
         {
             hours = Int(floor(Double(seconds) / Double(SECONDS_IN_HOUR)));
-            seconds -= (hours * SECONDS_IN_HOUR);
+            seconds -= Int64(hours * SECONDS_IN_HOUR);
         }
         
         if (seconds > SECONDS_IN_MINUTE)
         {
             minutes = Int(floor(Double(seconds) / Double(SECONDS_IN_MINUTE)));
-            seconds -= (minutes * SECONDS_IN_MINUTE);
+            seconds -= Int64(minutes * SECONDS_IN_MINUTE);
         }
         
         return "%02\(hours)d:%02\(minutes)d:%02\(seconds)d"
