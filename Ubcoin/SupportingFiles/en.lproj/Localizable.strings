@@ -141,6 +141,8 @@
 "str_your_wallet_is_permanent" = "Your wallet is permanent but it has changeable top up address. You can use the current address for top up within:";
 "str_choose_exchange_to_buy_UBC" = "Choose exchange to buy UBC";
 "str_exchange_to_buy_UBC" = "Exchange to buy UBC";
+"str_price_in" = "Price in";
+"str_convertation_in_progress" = "Convertation in progress...";
 
 "str_item_status_active" = "Active";
 "str_item_status_deactivated" = "Deactivated";

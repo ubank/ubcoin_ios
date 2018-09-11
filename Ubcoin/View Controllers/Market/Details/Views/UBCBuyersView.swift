@@ -18,7 +18,7 @@ class UBCBuyersView: UIView {
     @IBOutlet weak var delegate: UBCBuyersViewDelegate?
     private var deals: [UBCDealDM]?
     
-    private(set) lazy var tableView: UBDefaultTableView = { [unowned self] in
+    private(set) lazy var tableView: UBDefaultTableView = { [weak self] in
         let tableView = UBDefaultTableView(frame: .zero, style: .grouped)
         
         tableView.actionDelegate = self
