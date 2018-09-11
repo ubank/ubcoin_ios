@@ -22,7 +22,6 @@
     {
         _ID = dict[@"id"];
         _name = dict[@"name"];
-        _status = dict[@"status"];
         _rating = dict[@"rating"];
         _avatarURL = dict[@"avatarUrl"];
         _itemsCount = [dict[@"itemsCount"] unsignedLongValue];

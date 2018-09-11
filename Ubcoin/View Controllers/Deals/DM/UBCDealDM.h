@@ -13,6 +13,7 @@
 @interface UBCDealDM : NSObject
 
 @property (readonly, nonatomic) NSString *ID;
+@property (readonly, nonatomic) NSString *status;
 @property (readonly, nonatomic) UBCGoodDM *item;
 @property (readonly, nonatomic) UBCSellerDM *buyer;
 @property (readonly, nonatomic) UBCSellerDM *seller;

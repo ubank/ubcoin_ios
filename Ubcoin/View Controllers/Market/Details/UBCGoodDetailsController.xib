@@ -389,6 +389,9 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" id="qSu-rH-t4F"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="-1" id="Sox-tU-akF"/>
+                                                    </connections>
                                                 </view>
                                             </subviews>
                                         </stackView>

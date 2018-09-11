@@ -13,6 +13,7 @@
 @property (strong, nonatomic) WKWebView *webView;
 
 @property (strong, nonatomic) UBCGoodDM *item;
+@property (strong, nonatomic) UBCDealDM *deal;
 @property (strong, nonatomic) NSURL *url;
 @property (strong, nonatomic) NSURL *appURL;
 
@@ -31,6 +32,16 @@
     if (self)
     {
         self.item = item;
+    }
+    return self;
+}
+
+- (instancetype)initWithDeal:(UBCDealDM *)deal
+{
+    self = [super init];
+    if (self)
+    {
+        self.deal = deal;
     }
     return self;
 }
@@ -76,6 +87,15 @@
                                          
              [weakSelf handleResponseWithURL:url appURL:appURL];
          }];
+    }
+    else if (self.deal)
+    {
+        __weak typeof(self) weakSelf = self;
+        [UBCDataProvider.sharedProvider chatURLForDealID:self.deal.ID
+                                     withCompletionBlock:^(BOOL success, NSURL *url, NSURL *appURL) {
+                                         
+                                         [weakSelf handleResponseWithURL:url appURL:appURL];
+                                     }];
     }
     else
     {

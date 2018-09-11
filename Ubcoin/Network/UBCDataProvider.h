@@ -41,6 +41,7 @@
 - (void)dealsToBuyListWithPageNumber:(NSUInteger)page withCompletionBlock:(void (^)(BOOL success, NSArray *deals, BOOL canLoadMore))completionBlock;
 
 - (void)chatURLForItemID:(NSString *)itemID withCompletionBlock:(void (^)(BOOL success, NSURL *url, NSURL *appURL))completionBlock;
+- (void)chatURLForDealID:(NSString *)dealID withCompletionBlock:(void (^)(BOOL, NSURL *, NSURL *))completionBlock;
 - (void)registerInChatWithCompletionBlock:(void (^)(BOOL success, BOOL authorized, NSURL *url, NSURL *appURL))completionBlock;
 
 - (void)updateBalanceWithCompletionBlock:(void (^)(BOOL success))completionBlock;

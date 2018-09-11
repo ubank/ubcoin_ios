@@ -13,7 +13,6 @@
 @property (readonly, nonatomic) NSString *ID;
 @property (readonly, nonatomic) NSString *name;
 @property (readonly, nonatomic) NSString *avatarURL;
-@property (readonly, nonatomic) NSString *status;
 @property (readonly, nonatomic) NSNumber *rating;
 @property (readonly, nonatomic) NSUInteger itemsCount;
 @property (readonly, nonatomic) NSUInteger reviewsCount;

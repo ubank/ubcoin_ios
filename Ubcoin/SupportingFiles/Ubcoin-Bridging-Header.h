@@ -5,6 +5,7 @@
 #import "Ubcoin-Prefix.pch"
 
 #import "UBCUserDM.h"
+#import "UBCDealDM.h"
 #import "UBCCategoryDM.h"
 
 #import "UBCLoginController.h"

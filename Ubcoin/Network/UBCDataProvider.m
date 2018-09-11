@@ -444,7 +444,20 @@
 - (void)chatURLForItemID:(NSString *)itemID withCompletionBlock:(void (^)(BOOL, NSURL *, NSURL *))completionBlock
 {
     NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider chatURL]
-                                                                andParams:@{@"id": itemID}];
+                                                                andParams:@{@"itemId": itemID}];
+    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (completionBlock)
+         {
+             completionBlock(success, [NSURL URLWithString:responseObject[@"url"]], [NSURL URLWithString:responseObject[@"appUrl"]]);
+         }
+     }];
+}
+
+- (void)chatURLForDealID:(NSString *)dealID withCompletionBlock:(void (^)(BOOL, NSURL *, NSURL *))completionBlock
+{
+    NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider chatURL]
+                                                                andParams:@{@"purchaseId": dealID}];
     [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
      {
          if (completionBlock)

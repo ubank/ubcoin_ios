@@ -8,9 +8,15 @@
 
 import UIKit
 
+@objc
+protocol UBCBuyersViewDelegate: AnyObject {
+    @objc func didSelect(deal: UBCDealDM)
+}
+
 class UBCBuyersView: UIView {
 
-    var buyers: Array<UBTableViewSectionData>?
+    @IBOutlet weak var delegate: UBCBuyersViewDelegate?
+    private var deals: [UBCDealDM]?
     
     private(set) lazy var tableView: UBDefaultTableView = { [unowned self] in
         let tableView = UBDefaultTableView(frame: .zero, style: .grouped)
@@ -25,31 +31,31 @@ class UBCBuyersView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.setupTableView()
+        setupTableView()
     }
 
-    func setupTableView() -> Void {
-        self.addSubview(self.tableView)
-        self.addConstraints(toFillSubview: self.tableView)
+    private func setupTableView() {
+        addSubview(self.tableView)
+        addConstraints(toFillSubview: tableView)
     }
     
-    @objc public func update(buyers: Array<UBCSellerDM>) -> Void {
-        self.buyers = self.setupSections(buyers: buyers)
-        self.tableView.update(withSectionsData: self.buyers)
-        self.setHeightConstraintWithValue(self.tableView.contentHeight)
+    @objc func update(deals: Array<UBCDealDM>) {
+        self.deals = deals
+        tableView.update(withSectionsData: setupSections(deals: deals))
+        setHeightConstraintWithValue(tableView.contentHeight)
     }
     
-    private func setupSections(buyers:Array<UBCSellerDM>) -> Array<UBTableViewSectionData> {
+    private func setupSections(deals:Array<UBCDealDM>) -> Array<UBTableViewSectionData> {
         
         var sections = [UBTableViewSectionData]()
         
         var reservedBuyers = [UBTableViewRowData]()
         var otherBuyers = [UBTableViewRowData]()
-        for buyer in buyers {
-            if buyer.status == "RESERVED" {
-                reservedBuyers.append(buyer.rowData())
+        for deal in deals {
+            if deal.status == "ACTIVE" {
+                reservedBuyers.append(deal.buyer.rowData())
             } else {
-                otherBuyers.append(buyer.rowData())
+                otherBuyers.append(deal.buyer.rowData())
             }
         }
         
@@ -63,7 +69,7 @@ class UBCBuyersView: UIView {
         let section = UBTableViewSectionData()
         if reservedBuyers.count > 0 {
             section.headerTitle = "str_others".localizedString()
-        } else {        
+        } else {
             section.headerHeight = SEPARATOR_HEIGHT;
         }
         section.rows = otherBuyers
@@ -75,4 +81,9 @@ class UBCBuyersView: UIView {
 
 extension UBCBuyersView: UBDefaultTableViewDelegate {
     
+    func didSelect(_ data: UBTableViewRowData!, indexPath: IndexPath!) {
+        if let indexPath = indexPath, let deal = deals?[indexPath.row] {
+            delegate?.didSelect(deal: deal)
+        }
+    }
 }

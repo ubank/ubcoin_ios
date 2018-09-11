@@ -8,10 +8,12 @@
 
 #import "UBViewController.h"
 #import "UBCGoodDM.h"
+#import "UBCDealDM.h"
 
 @interface UBCChatController : UBViewController
 
 - (instancetype)initWithItem:(UBCGoodDM *)item;
+- (instancetype)initWithDeal:(UBCDealDM *)deal;
 - (instancetype)initWithURL:(NSURL *)url appURL:(NSURL *)appURL;
 
 @end

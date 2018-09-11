@@ -21,7 +21,7 @@
 
 #import "Ubcoin-Swift.h"
 
-@interface UBCGoodDetailsController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UBCGoodsCollectionViewDelegate>
+@interface UBCGoodDetailsController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UBCGoodsCollectionViewDelegate, UBCBuyersViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scroll;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -201,8 +201,7 @@
         self.sellerView.hidden = YES;
         self.buyersView.hidden = NO;
         
-        NSArray *buyers = [self.good.deals valueForKey:@"buyer"];
-        [self.buyersView updateWithBuyers:buyers];
+        [self.buyersView updateWithDeals:self.good.deals];
     }
     else
     {
@@ -308,6 +307,14 @@
 - (void)didSelectItem:(UBCGoodDM *)item
 {
     UBCGoodDetailsController *controller = [UBCGoodDetailsController.alloc initWithGood:item];
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+#pragma mark - UBCBuyersViewDelegate
+
+- (void)didSelectWithDeal:(UBCDealDM *)deal
+{
+    UBCChatController *controller = [[UBCChatController alloc] initWithDeal:deal];
     [self.navigationController pushViewController:controller animated:YES];
 }
 
