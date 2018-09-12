@@ -52,32 +52,6 @@
     }
 }
 
-- (UBCItemStatus)statusFromString:(NSString *)status
-{
-    if ([status isEqualToString:@"CHECK"] ||
-        [status isEqualToString:@"CHECKING"])
-    {
-        return UBCItemStatusCheck;
-    }
-    else if ([status isEqualToString:@"BLOCKED"])
-    {
-        return UBCItemStatusBlocked;
-    }
-    else if ([status isEqualToString:@"SOLD"])
-    {
-        return UBCItemStatusSold;
-    }
-    else if ([status isEqualToString:@"RESERVED"])
-    {
-        return UBCItemStatusReserved;
-    }
-    else if ([status isEqualToString:@"DEACTIVATED"])
-    {
-        return UBCItemStatusDeactivated;
-    }
-    return UBCItemStatusActive;
-}
-
 - (void)toggleFavorite
 {
     if (UBCKeyChain.authorization)
@@ -111,6 +85,34 @@
     data.icon = [UIImage imageNamed:@"item_default_image"];
     data.height = 95;
     return data;
+}
+
+#pragma mark - Status
+
+- (UBCItemStatus)statusFromString:(NSString *)status
+{
+    if ([status isEqualToString:@"CHECK"] ||
+        [status isEqualToString:@"CHECKING"])
+    {
+        return UBCItemStatusCheck;
+    }
+    else if ([status isEqualToString:@"BLOCKED"])
+    {
+        return UBCItemStatusBlocked;
+    }
+    else if ([status isEqualToString:@"SOLD"])
+    {
+        return UBCItemStatusSold;
+    }
+    else if ([status isEqualToString:@"RESERVED"])
+    {
+        return UBCItemStatusReserved;
+    }
+    else if ([status isEqualToString:@"DEACTIVATED"])
+    {
+        return UBCItemStatusDeactivated;
+    }
+    return UBCItemStatusActive;
 }
 
 + (NSString *)titleForStatus:(UBCItemStatus)status

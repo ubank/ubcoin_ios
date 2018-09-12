@@ -26,6 +26,18 @@
     return [NSURL URLWithString:url];
 }
 
++ (NSURL *)activateItem
+{
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"items/activate"];
+    return [NSURL URLWithString:url];
+}
+
++ (NSURL *)deactivateItem
+{
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"items/deactivate"];
+    return [NSURL URLWithString:url];
+}
+
 + (NSURL *)login
 {
     NSString *url = [SERVER_URL stringByAppendingFormat:@"auth"];

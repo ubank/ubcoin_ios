@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+@class UBCGoodDM;
 @class UBCTopupDM;
 @interface UBCDataProvider : NSObject
 
@@ -15,6 +16,9 @@
 
 - (void)goodsListWithPageNumber:(NSUInteger)page withCompletionBlock:(void (^)(BOOL success, NSArray *goods, BOOL canLoadMore))completionBlock;
 - (void)discountsWithCompletionBlock:(void (^)(BOOL success, NSArray *discounts))completionBlock;
+
+- (void)activateItem:(NSString *)itemID withCompletionBlock:(void (^)(BOOL success, UBCGoodDM *item))completionBlock;
+- (void)deactivateItem:(NSString *)itemID withCompletionBlock:(void (^)(BOOL success, UBCGoodDM *item))completionBlock;
 
 - (void)categoriesWithCompletionBlock:(void (^)(BOOL success, NSArray *categories))completionBlock;
 

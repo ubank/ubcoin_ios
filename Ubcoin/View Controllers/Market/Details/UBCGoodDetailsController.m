@@ -95,7 +95,7 @@
 
 - (void)setupNavBar
 {
-    self.navigationContainer.rightImageTitle = @"general_export";
+    self.navigationContainer.rightImageTitle = [self navbarIcon];
     self.navigationContainer.titleTextColor = self.navBarView.isTransparent ? UIColor.whiteColor : UBColor.navigationTitleColor;
     self.navigationContainer.buttonsImageColor = self.navBarView.isTransparent ? UIColor.whiteColor : UBColor.navigationTitleColor;;
     self.navigationContainer.clearColorNavigation = YES;
@@ -193,8 +193,7 @@
 
 - (void)setupSellerView:(UBCSellerDM *)seller
 {
-    UBCUserDM *user = [UBCUserDM loadProfile];
-    if (user.ID && [seller.ID isEqualToString:user.ID])
+    if ([self isMyItem])
     {
         self.connectToSellerView.hidden = YES;
         self.sellerView.hidden = YES;
@@ -217,14 +216,24 @@
         self.sellerDesc.text = [NSString stringWithFormat:@"%lu items     Reviews(%lu)", (unsigned long)seller.itemsCount, (unsigned long)seller.reviewsCount];
     }
 }
-     
+
+- (BOOL)isMyItem
+{
+    UBCUserDM *user = [UBCUserDM loadProfile];
+    return user.ID && [self.good.seller.ID isEqualToString:user.ID];
+}
+
 #pragma mark - Actions
 
 - (void)rightBarButtonClick:(id)sender
 {
-    if (self.good.shareURL.isNotEmpty)
+    if ([self isMyItem])
     {
-        [self shareActivityItems:@[self.good.shareURL] withSubject:@"" withSender:sender withCompletionBlock:nil];
+        [self showItemOptions];
+    }
+    else
+    {
+        [self shareItem];
     }
 }
 
@@ -261,6 +270,121 @@
                                            options:@{}
                                  completionHandler:nil];
     }
+}
+
+#pragma mark -
+
+- (void)showItemOptions
+{
+    [UBAlert showActionSheetWithTitle:nil message:nil actions:[self itemOptions] sourceView:nil];
+}
+
+- (void)shareItem
+{
+    if (self.good.shareURL.isNotEmpty)
+    {
+        [self shareActivityItems:@[self.good.shareURL] withSubject:@"" withSender:nil withCompletionBlock:nil];
+    }
+}
+
+#pragma mark - Item options
+
+- (NSString *)navbarIcon
+{
+    if ([self isMyItem])
+    {
+        switch (self.good.status)
+        {
+            case UBCItemStatusCheck:
+            case UBCItemStatusReserved:
+            case UBCItemStatusSold:
+                return nil;
+                
+            default:
+                return @"general_options";
+        }
+    }
+    else
+    {
+        return @"general_export";
+    }
+}
+
+- (NSArray *)itemOptions
+{
+    NSMutableArray *actions = [NSMutableArray array];
+    switch (self.good.status)
+    {
+        case UBCItemStatusCheck:
+        case UBCItemStatusReserved:
+        case UBCItemStatusSold:
+            return nil;
+            
+        case UBCItemStatusBlocked:
+            [actions addObject:[self editAction]];
+            break;
+        case UBCItemStatusDeactivated:
+            [actions addObject:[self editAction]];
+            [actions addObject:[self activateAction]];
+            break;
+        case UBCItemStatusActive:
+            [actions addObject:[self editAction]];
+            [actions addObject:[self deactivateAction]];
+            break;
+    }
+    
+    return actions;
+}
+
+- (UIAlertAction *)editAction
+{
+    return [UIAlertAction actionWithTitle:UBLocalizedString(@"ui_button_edit", nil)
+                                    style:UIAlertActionStyleDefault
+                                  handler:^(UIAlertAction * _Nonnull action) {
+                                      
+                                  }];
+}
+
+- (UIAlertAction *)activateAction
+{
+    __weak typeof(self)weakSelf = self;
+    return [UIAlertAction actionWithTitle:UBLocalizedString(@"str_activate", nil)
+                                    style:UIAlertActionStyleDefault
+                                  handler:^(UIAlertAction * _Nonnull action)
+            {
+                [weakSelf startActivityIndicator];
+                [UBCDataProvider.sharedProvider activateItem:weakSelf.good.ID
+                                         withCompletionBlock:^(BOOL success, UBCGoodDM *item)
+                 {
+                     [weakSelf stopActivityIndicator];
+                     if (success)
+                     {
+                         weakSelf.good = item;
+                         [weakSelf setupContent];
+                     }
+                 }];
+            }];
+}
+
+- (UIAlertAction *)deactivateAction
+{
+    __weak typeof(self)weakSelf = self;
+    return [UIAlertAction actionWithTitle:UBLocalizedString(@"str_deactivate", nil)
+                                    style:UIAlertActionStyleDefault
+                                  handler:^(UIAlertAction * _Nonnull action)
+            {
+                [weakSelf startActivityIndicator];
+                [UBCDataProvider.sharedProvider deactivateItem:weakSelf.good.ID
+                                           withCompletionBlock:^(BOOL success, UBCGoodDM *item)
+                 {
+                     [weakSelf stopActivityIndicator];
+                     if (success)
+                     {
+                         weakSelf.good = item;
+                         [weakSelf setupContent];
+                     }
+                 }];
+            }];
 }
 
 #pragma mark - UICollectionView

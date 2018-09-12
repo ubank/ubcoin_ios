@@ -74,6 +74,36 @@
      }];
 }
 
+- (void)activateItem:(NSString *)itemID withCompletionBlock:(void (^)(BOOL, UBCGoodDM *))completionBlock
+{
+    NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider activateItem]
+                                                                andParams:@{@"itemId": itemID}];
+    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (completionBlock)
+         {
+             UBCGoodDM *item = [UBCGoodDM.alloc initWithDictionary:[responseObject removeNulls]];
+             completionBlock(success, item);
+         }
+     }];
+}
+
+- (void)deactivateItem:(NSString *)itemID withCompletionBlock:(void (^)(BOOL, UBCGoodDM *))completionBlock
+{
+    NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider deactivateItem]
+                                                                andParams:@{@"itemId": itemID}];
+    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (completionBlock)
+         {
+             UBCGoodDM *item = [UBCGoodDM.alloc initWithDictionary:[responseObject removeNulls]];
+             completionBlock(success, item);
+         }
+     }];
+}
+
+#pragma mark -
+
 - (void)discountsWithCompletionBlock:(void (^)(BOOL, NSArray *))completionBlock
 {
     if (completionBlock)

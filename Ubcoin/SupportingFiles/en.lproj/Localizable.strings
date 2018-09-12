@@ -16,6 +16,7 @@
 "ui_button_search"   = "Search";
 "ui_button_continue" = "Continue";
 "ui_button_copy"     = "Copy";
+"ui_button_edit"     = "Edit";
 
 "ui_alert_button_ok"                              = "OK";
 "ui_alert_button_cancel"                          = "Cancel";
@@ -145,6 +146,8 @@
 "str_price_in" = "Price in";
 "str_convertation_in_progress" = "Convertation in progress...";
 "str_deal_confirmed_by" = "Deal confirmed by";
+"str_activate" = "Activate";
+"str_deactivate" = "Deactivate";
 
 "str_item_status_active" = "Active";
 "str_item_status_deactivated" = "Deactivated";

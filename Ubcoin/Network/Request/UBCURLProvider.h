@@ -12,6 +12,8 @@
 
 + (NSURL *)goodsListWithPageNumber:(NSUInteger)page;
 + (NSURL *)categories;
++ (NSURL *)activateItem;
++ (NSURL *)deactivateItem;
 
 + (NSURL *)login;
 + (NSURL *)logout;
