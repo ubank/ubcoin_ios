@@ -52,7 +52,7 @@ class UBCBuyersView: UIView {
         var reservedBuyers = [UBTableViewRowData]()
         var otherBuyers = [UBTableViewRowData]()
         for deal in deals {
-            if deal.status == "ACTIVE" {
+            if deal.status == DEAL_STATUS_ACTIVE {
                 reservedBuyers.append(deal.buyer.rowData())
             } else {
                 otherBuyers.append(deal.buyer.rowData())

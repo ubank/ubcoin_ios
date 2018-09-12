@@ -27,7 +27,7 @@
         _currency = dict[@"currency"];
         _shareURL = dict[@"shareUrl"];
         _isFavorite = [dict[@"favorite"] boolValue];
-        _creationDate = [NSDate dateFromString:dict[@"createdDate"] inFormat:@"yyyyMMdd'T'HHmmss+HHmm"];
+        _creationDate = [NSDate dateFromString:dict[@"createdDate"] inFormat:@"yyyyMMdd'T'HHmmssZ"];
         _images = dict[@"images"];
         _status = [self statusFromString:dict[@"status"]];
         [self setupLocationWithDictionary:dict[@"location"]];
@@ -92,6 +92,12 @@
     {
         [UBAlert showAlertWithTitle:nil andMessage:@"str_you_need_to_be_logged_in"];
     }
+}
+
+- (NSArray *)activeDeals
+{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"status == %@", DEAL_STATUS_ACTIVE];
+    return [self.deals filteredArrayUsingPredicate:predicate];
 }
 
 - (UBTableViewRowData *)rowData

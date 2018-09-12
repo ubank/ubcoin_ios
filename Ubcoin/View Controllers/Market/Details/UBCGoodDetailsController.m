@@ -178,7 +178,7 @@
         {
             self.warningView.hidden = NO;
             
-            UIColor *color = [UIColor colorWithHexString:@"e93754"];
+            UIColor *color = RED_COLOR;
             self.warningView.backgroundColor = [color colorWithAlphaComponent:0.2];
             self.warningLabel.textColor = color;
             self.warningLabel.text = UBLocalizedString(@"str_status_blocked", nil);

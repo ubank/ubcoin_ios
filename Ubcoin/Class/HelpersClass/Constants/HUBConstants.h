@@ -18,7 +18,7 @@
 #define CELL_HEIGHT 65
 
 #define BROWN_COLOR [UIColor colorWithHexString:@"D6584D"]
-#define RED_COLOR [UIColor colorWithHexString:@"FF4E50"]
+#define RED_COLOR [UIColor colorWithHexString:@"e93754"]
 #define UBLACK_COLOR UBColor.titleColor
 #define UBGRAY_COLOR UBColor.descColor
 #define LIGHT_GRAY_COLOR [UIColor colorWithHexString:@"EEEEEE"]

@@ -144,6 +144,7 @@
 "str_exchange_to_buy_UBC" = "Exchange to buy UBC";
 "str_price_in" = "Price in";
 "str_convertation_in_progress" = "Convertation in progress...";
+"str_deal_confirmed_by" = "Deal confirmed by";
 
 "str_item_status_active" = "Active";
 "str_item_status_deactivated" = "Deactivated";

@@ -10,6 +10,8 @@
 #import "UBCGoodDM.h"
 #import "UBCSellerDM.h"
 
+static NSString * const DEAL_STATUS_ACTIVE = @"ACTIVE";
+
 @interface UBCDealDM : NSObject
 
 @property (readonly, nonatomic) NSString *ID;

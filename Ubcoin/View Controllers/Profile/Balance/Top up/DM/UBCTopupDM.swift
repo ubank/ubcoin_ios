@@ -18,7 +18,7 @@ class UBCTopupDM: NSObject {
     init?(dictionary: [String: Any]) {
         guard let address = dictionary["ubCoinAddress"] as? String,
             let qrCodeURL = dictionary["qrURL"] as? String,
-            let walletExpirationDate = NSDate.init(from: dictionary["finishUsage"] as? String, inFormat: "yyyyMMdd'T'HHmmss+HHmm") else {
+            let walletExpirationDate = NSDate.init(from: dictionary["finishUsage"] as? String, inFormat: "yyyyMMdd'T'HHmmssZ") else {
                 return nil
         }
         

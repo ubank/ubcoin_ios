@@ -45,8 +45,8 @@ static NSString * const kNotificationFavoritesChanged = @"kNotificationFavorites
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
 - (void)toggleFavorite;
 
+- (NSArray *)activeDeals;
 - (UBTableViewRowData *)rowData;
 
 + (NSString *)titleForStatus:(UBCItemStatus)status;
-
 @end

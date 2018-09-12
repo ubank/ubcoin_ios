@@ -110,6 +110,31 @@
 
 #pragma mark -
 
+- (NSAttributedString *)infoStringWithItem:(UBCGoodDM *)item
+{
+    switch (item.status)
+    {
+        case UBCItemStatusActive:
+            return [self infoStringWithDeals:item.deals];
+        case UBCItemStatusBlocked:
+            return [NSAttributedString attributedWithString:UBLocalizedString(@"str_item_status_blocked", nil)
+                                                       font:UBFont.descFont
+                                                      color:RED_COLOR
+                                                  alignment:NSTextAlignmentLeft];
+        case UBCItemStatusReserved:
+        {
+            UBCDealDM *deal = [item activeDeals].firstObject;
+            NSString *string = [NSString stringWithFormat:@"%@ %@", UBLocalizedString(@"str_deal_confirmed_by", nil), deal.buyer.name];
+            return [NSAttributedString attributedWithString:string
+                                                       font:UBFont.descFont
+                                                      color:UBColor.descColor
+                                                  alignment:NSTextAlignmentLeft];
+        }
+        default:
+            return nil;
+    }
+}
+
 - (NSAttributedString *)infoStringWithDeals:(NSArray *)deals
 {
     if (deals.count > 0)
@@ -149,7 +174,7 @@
     UBCGoodDM *item = data.data;
     
     UBCDealCell *dealCell = (UBCDealCell *)cell;
-    dealCell.info.attributedText = [self infoStringWithDeals:item.deals];
+    dealCell.info.attributedText = [self infoStringWithItem:item];
     [dealCell setLocation:item.location];
 }
 
