@@ -362,7 +362,7 @@ extension UBCSellController: UBCSTextCellDelegate {
         newRow?.placeholder = amount != nil ? "str_convertation_in_progress".localizedString() : ""
         newRow?.data = nil
         newRow?.sendData = nil
-        newRow?.isEditable = false
+        newRow?.isEditable = amount == nil
         newRow?.reloadButtonActive = false
         if let indexPath = self.model.updateRow(newRow) {
             self.tableView.reloadSections([indexPath.section], with: .none)
