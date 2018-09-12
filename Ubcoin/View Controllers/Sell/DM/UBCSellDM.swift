@@ -63,28 +63,19 @@ class UBCSellDM: NSObject {
         return sections
     }
     
-    func setup(categories: [Any]?) {
-        guard let categoriesArray = categories as? [UBCCategoryDM] else { return }
+    @discardableResult
+    func updateRow(_ row: UBCSellCellDM?) -> IndexPath? {
+        guard let row = row else { return nil }
         
-        for section in sections {
-            for i in 0..<section.rows.count {
-                if var row = section.rows[i] as? UBCSellCellDM, row.type == .category {
-                    row.selectContent = categoriesArray
-                    section.rows[i] = row
-                }
-            }
-        }
-    }
-    
-    func updateRow(_ row: UBCSellCellDM?) {
-        guard let row = row else { return }
-        
-        for section in sections {
+        for j in 0..<sections.count {
+            let section = sections[j]
             for i in 0..<section.rows.count {
                 if let oldRow = section.rows[i] as? UBCSellCellDM, oldRow.type == row.type {
                     section.rows[i] = row
                     
-                    guard row.type == .location, var lastRow = section.rows.last as? UBCSellCellDM else { return }
+                    guard row.type == .location, var lastRow = section.rows.last as? UBCSellCellDM else {
+                        return IndexPath(row: i, section: j)
+                    }
                 
                     if lastRow.type != .locationMap {
                         lastRow = UBCSellCellDM(type: .locationMap)
@@ -93,9 +84,13 @@ class UBCSellDM: NSObject {
                     
                     lastRow.sendData = row.sendData
                     section.rows[section.rows.count-1] = lastRow
+                    
+                    return IndexPath(row: i, section: j)
                 }
             }
         }
+        
+        return nil
     }
     
     func removePhoto(index: Int) {
@@ -163,8 +158,7 @@ struct UBCSellCellDM {
     var optional = false
     var isEditable = true
     var keyboardType: UIKeyboardType = .default
-    
-    var selectContent: [UBCCategoryDM]?
+    var reloadButtonActive = false
     
     init(type: UBCSellCellType) {
         self.type = type
@@ -183,10 +177,6 @@ struct UBCSellCellDM {
         
         if type == .price || type == .priceUBC {
             self.keyboardType = .decimalPad
-        }
-        
-        if type == .category {
-            self.selectContent = []
         }
     }
 }
@@ -258,5 +248,5 @@ protocol UBCSellCellProtocol {
 
 protocol UBCSTextCellDelegate {
     func updateTableView()
-    func updatedRow(_ row: UBCSellCellDM, view: UIView)
+    func updatedRow(_ row: UBCSellCellDM)
 }

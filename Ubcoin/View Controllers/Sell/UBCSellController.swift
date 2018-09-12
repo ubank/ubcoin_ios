@@ -12,6 +12,7 @@ import Photos
 class UBCSellController: UBViewController {
     
     var model = UBCSellDM()
+    var task: URLSessionDataTask?
     
     private var buttonView: UIView!
     private var button: HUBGeneralButton!
@@ -44,9 +45,6 @@ class UBCSellController: UBViewController {
         self.title = "str_sell"
 
         self.setupViews()
-        
-        self.updateInfo()
-        self.startActivityIndicatorImmediately()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,15 +53,6 @@ class UBCSellController: UBViewController {
         self.tableView.reloadData()
     }
     
-    override func updateInfo() {
-        UBCDataProvider.shared.categories { [weak self] success, categories in
-            self?.stopActivityIndicator()
-            
-            self?.model.setup(categories: categories)
-            self?.tableView.reloadData()
-        }
-    }
-
     private func setupViews() {
         let viewHeight = UBCConstant.actionButtonHeight + 30
         
@@ -92,32 +81,34 @@ class UBCSellController: UBViewController {
     
     @objc
     private func buttonPressed() {
-        if self.model.isAllParamsNotEmpty(), let photoRow = self.model.row(type: .photo) {
-//            guard let user = UBCUserDM.loadProfile(),
-//                user.authorizedInTg else {
-//                    self.startActivityIndicator()
-//                    UBCDataProvider.shared.registerInChat { [weak self] success, authorizedInTg, url, appURL in
-//                        self?.stopActivityIndicator()
-//
-//                        if authorizedInTg {
-//                            self?.sendItem(photoRow: photoRow)
-//                        }
-//                        else {
-//                            UBAlert.show(withTitle: "",
-//                                         andMessage: "str_ubcoin_is_going_to_open_telegram".localizedString(),
-//                                         withCompletionBlock: {
-//                                self?.navigationController?.pushViewController(UBCChatController(url: url, appURL: appURL), animated: true)
-//                            })
-//                        }
-//                    }
-//
-//                    return
-//            }
-            
-            self.sendItem(photoRow: photoRow)
-        } else {
+        guard self.model.isAllParamsNotEmpty(),
+            let photoRow = self.model.row(type: .photo) else {
             UBAlert.show(withTitle: "ui_alert_title_attention", andMessage: "error_all_fields_empty")
+            
+            return
         }
+        
+        guard let user = UBCUserDM.loadProfile(),
+            user.authorizedInTg else {
+                self.startActivityIndicator()
+                UBCDataProvider.shared.registerInChat { [weak self] success, authorizedInTg, url, appURL in
+                    self?.stopActivityIndicator()
+                    
+                    if authorizedInTg {
+                        self?.sendItem(photoRow: photoRow)
+                    } else {
+                        UBAlert.show(withTitle: "",
+                                     andMessage: "str_ubcoin_is_going_to_open_telegram".localizedString(),
+                                     withCompletionBlock: {
+                                        self?.navigationController?.pushViewController(UBCChatController(url: url, appURL: appURL), animated: true)
+                        })
+                    }
+                }
+                
+                return
+        }
+        
+        self.sendItem(photoRow: photoRow)
     }
     
     @objc
@@ -262,21 +253,11 @@ extension UBCSellController: UITableViewDataSource, UITableViewDelegate {
         let section = self.model.sections[indexPath.section]
         guard var row = section.rows[indexPath.row] as? UBCSellCellDM else { return }
         
-        if row.type == .category, let content = row.selectContent, content.count > 0 {
-            var selected: Int?
-            if let selectedString = row.sendData as? String {
-                for i in 0..<content.count {
-                    if content[i].id == selectedString {
-                        selected = i
-                        break
-                    }
-                }
-            }
-            
-            let controller = UBCSelectionController(title: row.placeholder, content: content, selected: selected)
-            controller.completion = { [weak self] index in
-                row.data = content[index].name
-                row.sendData = content[index].id
+        if row.type == .category {
+            let controller = UBCSelectionController(title: row.placeholder, selected: row.sendData as? String)
+            controller.completion = { [weak self] category in
+                row.data = category.name
+                row.sendData = category.id
                 self?.model.updateRow(row)
                 self?.tableView.reloadData()
                 self?.navigationController?.popViewController(animated: true)
@@ -352,53 +333,54 @@ extension UBCSellController: UBCSTextCellDelegate {
         self.tableView.endUpdates()
     }
     
-    func updatedRow(_ row: UBCSellCellDM, view: UIView) {
-        self.model.updateRow(row)
+    func updatedRow(_ row: UBCSellCellDM) {
+        var updateRow = row
+        
+        if updateRow.reloadButtonActive,
+            let row = self.model.row(type: updateRow.type == .price ? .priceUBC : .price) {
+            updateRow = row
+        } else {
+            self.model.updateRow(updateRow)
+        }
         
         var updatedType: UBCSellCellType?
         var from = "UBC"
         var to = "USD"
         
-        if row.type == .price {
+        if updateRow.type == .price {
             updatedType = .priceUBC
-            from = "USD"
-            to = "UBC"
-        } else if row.type == .priceUBC {
+            swap(&from, &to)
+        } else if updateRow.type == .priceUBC {
             updatedType = .price
         }
         
-        if let updatedType = updatedType, let amountStr = row.data as? String {
-            let amount = Double(amountStr)
-            
-            var newRow = self.model.row(type: updatedType)
-            newRow?.placeholder = amount != nil ? "str_convertation_in_progress".localizedString() : ""
-            newRow?.data = nil
-            newRow?.sendData = nil
-            newRow?.isEditable = false
-            self.model.updateRow(newRow)
-            self.tableView.reloadData()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-                view.becomeFirstResponder()
+        guard let newType = updatedType, let amountStr = updateRow.data as? String else { return }
+        
+        let amount = Double(amountStr)
+        
+        var newRow = self.model.row(type: newType)
+        newRow?.placeholder = amount != nil ? "str_convertation_in_progress".localizedString() : ""
+        newRow?.data = nil
+        newRow?.sendData = nil
+        newRow?.isEditable = false
+        newRow?.reloadButtonActive = false
+        if let indexPath = self.model.updateRow(newRow) {
+            self.tableView.reloadSections([indexPath.section], with: .none)
+        }
+        
+        guard let sendAmount = amount else { return }
+        
+        self.task?.cancel()
+        self.task = UBCDataProvider.shared.convert(fromCurrency: from, toCurrency: to, withAmount: NSNumber(value: sendAmount)) { [weak self] success, amount in
+            var newRow = self?.model.row(type: newType)
+            newRow?.placeholder = ""
+            newRow?.data = amount?.stringValue
+            newRow?.sendData = amount?.stringValue
+            newRow?.reloadButtonActive = !success
+            newRow?.isEditable = true
+            if let indexPath = self?.model.updateRow(newRow) {
+                self?.tableView.reloadSections([indexPath.section], with: .none)
             }
-            
-            guard let sendAmount = amount else { return }
-            
-            self.cancelAllTasks()
-            
-            self.add(UBCDataProvider.shared.convert(fromCurrency: from, toCurrency: to, withAmount: NSNumber(value: sendAmount)) { [weak self] success, amount in
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
-                    var newRow = self?.model.row(type: updatedType)
-                    newRow?.placeholder = ""
-                    newRow?.data = amount?.stringValue
-                    newRow?.sendData = amount?.stringValue
-                    newRow?.isEditable = true
-                    self?.model.updateRow(newRow)
-                    self?.tableView.reloadData()
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-                        view.becomeFirstResponder()
-                    }
-                })
-            })
         }
     }
 }

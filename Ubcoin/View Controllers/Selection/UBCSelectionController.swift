@@ -10,19 +10,18 @@ import UIKit
 
 class UBCSelectionController: UBViewController {
     
-    var completion: ((Int) -> Void)?
+    var completion: ((UBCCategoryDM) -> Void)?
     
     private var tableView: UBDefaultTableView!
     
-    private var content: [UBCCategoryDM]!
-    private var selected: Int?
+    private var content = [UBCCategoryDM]()
+    private var selected: String?
     
-    convenience init(title: String, content: [UBCCategoryDM], selected: Int?) {
+    convenience init(title: String, selected: String?) {
         self.init()
         
         self.title = title
         
-        self.content = content
         self.selected = selected
     }
     
@@ -30,24 +29,51 @@ class UBCSelectionController: UBViewController {
         super.viewDidLoad()
 
         self.setupViews()
-        self.setupContent()
+        
+        self.updateInfo()
+        self.startActivityIndicator()
+    }
+    
+    override func updateInfo() {
+        UBCDataProvider.shared.categories { [weak self] success, categories in
+            self?.stopActivityIndicator()
+            self?.tableView.refreshControll.endRefreshing()
+            
+            if let content = categories as? [UBCCategoryDM] {
+                self?.content = content
+            }
+            self?.setupContent()
+        }
     }
     
     private func setupViews() {
         self.tableView = UBDefaultTableView()
         self.tableView.actionDelegate = self
+        self.tableView.setupRefreshControll { [weak self] in
+            self?.updateInfo()
+        }
         self.view.addSubview(self.tableView)
         self.view.addConstraints(toFillSubview: self.tableView)
     }
     
     private func setupContent() {
+        var selectedRow: Int?
+        if let selectedString = self.selected {
+            for i in 0..<self.content.count {
+                if self.content[i].id == selectedString {
+                    selectedRow = i
+                    break
+                }
+            }
+        }
+        
         var rows = [UBTableViewRowData]()
         for i in 0..<self.content.count {
             let row = UBTableViewRowData()
             row.height = UBCConstant.cellHeight
             
             var color = UBCColor.main
-            if let selected = self.selected, selected == i {
+            if let selected = selectedRow, selected == i {
                 row.accessoryType = .checkmark
                 color = UBCColor.green
             }
@@ -68,7 +94,8 @@ extension UBCSelectionController: UBDefaultTableViewDelegate {
     
     func didSelect(_ data: UBTableViewRowData!, indexPath: IndexPath!) {
         if let completion = self.completion {
-            completion(indexPath.row)
+            let category = self.content[indexPath.row]
+            completion(category)
         }
     }
 }
