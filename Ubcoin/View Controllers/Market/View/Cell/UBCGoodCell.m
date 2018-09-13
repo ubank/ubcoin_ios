@@ -54,7 +54,7 @@
     _content = content;
     
     self.title.text = [NSString stringWithFormat:@"%@ UBC", content.price.priceString];;
-    self.desc.text = content.desc;
+    self.desc.text = content.title;
     self.favoriteButton.image = [UIImage imageNamed:[NSString stringWithFormat:@"icFav%@", self.content.isFavorite ? @"B" : @"A"]];
     NSString *imageURL = [content.images firstObject];
     [self loadImageToFillWithURL:imageURL withDefaultImage:[UIImage imageNamed:@"item_default_image"] forImageView:self.icon];

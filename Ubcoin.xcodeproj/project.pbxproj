@@ -53,6 +53,7 @@
 		8919AB532125BC4600D1B59C /* UBCChangeNameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8919AB512125BC4600D1B59C /* UBCChangeNameController.m */; };
 		8919AB542125BC4600D1B59C /* UBCChangeNameController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8919AB522125BC4600D1B59C /* UBCChangeNameController.xib */; };
 		8919AB582125DF6B00D1B59C /* UBCBalanceDM.m in Sources */ = {isa = PBXBuildFile; fileRef = 8919AB572125DF6B00D1B59C /* UBCBalanceDM.m */; };
+		893672CC214AB36E004F31FE /* NSNumber+UBC.m in Sources */ = {isa = PBXBuildFile; fileRef = 893672CB214AB36D004F31FE /* NSNumber+UBC.m */; };
 		89678D9E210CED2900EB715E /* UBCStartLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89678D9D210CED2900EB715E /* UBCStartLoginController.swift */; };
 		89678DA1210CF12600EB715E /* UBCSignUpController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89678DA0210CF12600EB715E /* UBCSignUpController.m */; };
 		89678DA5210CF75500EB715E /* UBCUserDM.m in Sources */ = {isa = PBXBuildFile; fileRef = 89678DA4210CF75500EB715E /* UBCUserDM.m */; };
@@ -222,6 +223,8 @@
 		8919AB522125BC4600D1B59C /* UBCChangeNameController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCChangeNameController.xib; sourceTree = "<group>"; };
 		8919AB562125DF6B00D1B59C /* UBCBalanceDM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCBalanceDM.h; sourceTree = "<group>"; };
 		8919AB572125DF6B00D1B59C /* UBCBalanceDM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCBalanceDM.m; sourceTree = "<group>"; };
+		893672CA214AB36D004F31FE /* NSNumber+UBC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSNumber+UBC.h"; sourceTree = "<group>"; };
+		893672CB214AB36D004F31FE /* NSNumber+UBC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+UBC.m"; sourceTree = "<group>"; };
 		89678D9D210CED2900EB715E /* UBCStartLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCStartLoginController.swift; sourceTree = "<group>"; };
 		89678D9F210CF12600EB715E /* UBCSignUpController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCSignUpController.h; sourceTree = "<group>"; };
 		89678DA0210CF12600EB715E /* UBCSignUpController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCSignUpController.m; sourceTree = "<group>"; };
@@ -569,6 +572,15 @@
 				8919AB572125DF6B00D1B59C /* UBCBalanceDM.m */,
 			);
 			path = DM;
+			sourceTree = "<group>";
+		};
+		893672C9214AA178004F31FE /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				893672CA214AB36D004F31FE /* NSNumber+UBC.h */,
+				893672CB214AB36D004F31FE /* NSNumber+UBC.m */,
+			);
+			path = Categories;
 			sourceTree = "<group>";
 		};
 		89678DA2210CF73E00EB715E /* DM */ = {
@@ -1004,6 +1016,7 @@
 		8987514C20EE119F00E2B615 /* HelpersClass */ = {
 			isa = PBXGroup;
 			children = (
+				893672C9214AA178004F31FE /* Categories */,
 				8987515920EE119F00E2B615 /* Constants */,
 				8987515E20EE119F00E2B615 /* KeyChain */,
 				8987515620EE119F00E2B615 /* Location */,
@@ -1555,6 +1568,7 @@
 				89678DA1210CF12600EB715E /* UBCSignUpController.m in Sources */,
 				89007752211B049900B6C1C5 /* UBCBaseDealsView.m in Sources */,
 				8987517920EE119F00E2B615 /* UBSectionHeaderView.m in Sources */,
+				893672CC214AB36E004F31FE /* NSNumber+UBC.m in Sources */,
 				1C4034B220F2958100E51247 /* UBCShared.swift in Sources */,
 				89F16A7120F2C65D001AA440 /* UBCDiscountsCollectionView.m in Sources */,
 				8980F23B20F486990066CF99 /* UBCGoodDetailsController.m in Sources */,

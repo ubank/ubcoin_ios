@@ -34,3 +34,5 @@
 #import "HUBPermissions.h"
 #import "UBCDataProvider.h"
 #import "UBCToast.h"
+
+#import "NSNumber+UBC.h"
