@@ -16,6 +16,7 @@ typedef enum
     UBCItemStatusActive,
     UBCItemStatusBlocked,
     UBCItemStatusCheck,
+    UBCItemStatusChecking,
     UBCItemStatusDeactivated,
     UBCItemStatusReserved,
     UBCItemStatusSold

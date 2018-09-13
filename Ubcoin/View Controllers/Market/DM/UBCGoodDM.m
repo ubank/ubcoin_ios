@@ -91,10 +91,13 @@
 
 - (UBCItemStatus)statusFromString:(NSString *)status
 {
-    if ([status isEqualToString:@"CHECK"] ||
-        [status isEqualToString:@"CHECKING"])
+    if ([status isEqualToString:@"CHECK"])
     {
         return UBCItemStatusCheck;
+    }
+    else if ([status isEqualToString:@"CHECKING"])
+    {
+        return UBCItemStatusChecking;
     }
     else if ([status isEqualToString:@"BLOCKED"])
     {
@@ -124,6 +127,7 @@
         case UBCItemStatusBlocked:
             return UBLocalizedString(@"str_item_status_blocked", nil);
         case UBCItemStatusCheck:
+        case UBCItemStatusChecking:
             return UBLocalizedString(@"str_item_status_check", nil);
         case UBCItemStatusDeactivated:
             return UBLocalizedString(@"str_item_status_deactivated", nil);

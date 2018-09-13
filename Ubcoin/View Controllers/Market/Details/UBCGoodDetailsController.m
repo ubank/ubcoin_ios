@@ -164,6 +164,7 @@
     switch (self.good.status)
     {
         case UBCItemStatusCheck:
+        case UBCItemStatusChecking:
         {
             self.warningView.hidden = NO;
             
@@ -305,7 +306,7 @@
     {
         switch (self.good.status)
         {
-            case UBCItemStatusCheck:
+            case UBCItemStatusChecking:
             case UBCItemStatusReserved:
             case UBCItemStatusSold:
                 return nil;
@@ -325,12 +326,13 @@
     NSMutableArray *actions = [NSMutableArray array];
     switch (self.good.status)
     {
-        case UBCItemStatusCheck:
+        case UBCItemStatusChecking:
         case UBCItemStatusReserved:
         case UBCItemStatusSold:
             return nil;
             
         case UBCItemStatusBlocked:
+        case UBCItemStatusCheck:
             [actions addObject:[self editAction]];
             break;
         case UBCItemStatusDeactivated:

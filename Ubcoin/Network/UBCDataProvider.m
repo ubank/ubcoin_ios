@@ -313,6 +313,23 @@
 
 #pragma mark - WALLET
 
+- (void)updateBalanceWithCompletionBlock:(void (^)(BOOL))completionBlock
+{
+    NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:[UBCURLProvider userBalance]];
+    [self.connection sendRequest:request isBackground:YES withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (success)
+         {
+             [UBCBalanceDM saveBalanceDict:responseObject];
+         }
+         
+         if (completionBlock)
+         {
+             completionBlock(success);
+         }
+     }];
+}
+
 - (void)topupWithCompletionBlock:(void (^)(BOOL, UBCTopupDM *))completionBlock
 {
     NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:[UBCURLProvider topup]];
@@ -371,6 +388,8 @@
          }
      }];
 }
+
+#pragma mark - CONVERTION
 
 - (NSURLSessionDataTask *)convertFromCurrency:(NSString *)fromCurrency toCurrency:(NSString *)toCurrency withAmount:(NSNumber *)amount withCompletionBlock:(void (^)(BOOL, NSNumber *))completionBlock
 {
@@ -541,24 +560,7 @@
      }];
 }
 
-#pragma mark - BALANCE
-
-- (void)updateBalanceWithCompletionBlock:(void (^)(BOOL))completionBlock
-{
-    NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:[UBCURLProvider userBalance]];
-    [self.connection sendRequest:request isBackground:YES withCompletionBlock:^(BOOL success, id responseObject)
-     {
-         if (success)
-         {
-             [UBCBalanceDM saveBalanceDict:responseObject];
-         }
-         
-         if (completionBlock)
-         {
-             completionBlock(success);
-         }
-     }];
-}
+#pragma mark - ITEM CREATION
 
 - (void)uploadImage:(UIImage *)image withCompletionBlock:(void (^)(BOOL, NSString *))completionBlock
 {
