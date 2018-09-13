@@ -140,6 +140,7 @@
     self.mapView.location = self.good.location;
     
     self.favoriteButton.image = [UIImage imageNamed:[NSString stringWithFormat:@"icFav%@", self.good.isFavorite ? @"B" : @"A"]];
+    self.favoriteButton.hidden = self.good.isMyItem;
     [self.photoCount setupWithImage:[UIImage imageNamed:@"market_photo"]
                             andText:[NSString stringWithFormat:@"1/%d", (int)self.good.images.count]];
     
@@ -204,7 +205,7 @@
 
 - (void)setupSellerView:(UBCSellerDM *)seller
 {
-    if ([self isMyItem])
+    if ([self.good isMyItem])
     {
         self.connectToSellerView.hidden = YES;
         self.sellerView.hidden = YES;
@@ -228,17 +229,11 @@
     }
 }
 
-- (BOOL)isMyItem
-{
-    UBCUserDM *user = [UBCUserDM loadProfile];
-    return user.ID && [self.good.seller.ID isEqualToString:user.ID];
-}
-
 #pragma mark - Actions
 
 - (void)rightBarButtonClick:(id)sender
 {
-    if ([self isMyItem])
+    if ([self.good isMyItem])
     {
         [self showItemOptions];
     }
@@ -302,7 +297,7 @@
 
 - (NSString *)navbarIcon
 {
-    if ([self isMyItem])
+    if ([self.good isMyItem])
     {
         switch (self.good.status)
         {

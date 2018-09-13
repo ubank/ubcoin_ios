@@ -8,6 +8,7 @@
 
 #import "UBCGoodDM.h"
 #import "UBCDealDM.h"
+#import "UBCUserDM.h"
 #import "UBCKeyChain.h"
 
 #define ALL_GOODS_KEY @"all goods"
@@ -50,6 +51,14 @@
         _location = [[CLLocation alloc] initWithLatitude:lat.doubleValue
                                                longitude:lon.doubleValue];
     }
+}
+
+#pragma mark -
+
+- (BOOL)isMyItem
+{
+    UBCUserDM *user = [UBCUserDM loadProfile];
+    return user.ID && [self.seller.ID isEqualToString:user.ID];
 }
 
 - (void)toggleFavorite
