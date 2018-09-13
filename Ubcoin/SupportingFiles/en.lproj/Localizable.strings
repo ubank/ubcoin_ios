@@ -137,6 +137,7 @@
 
 "str_status_check" = "Please wait, your listing will appear on the Market right after moderation process.";
 "str_status_blocked" = "Listing was blocked for some reason. Please read our Terms and conditions and edit your listing.";
+"str_status_deactivated" = "Your listing is deactivated and hided from the Market. Activate the listing to sell your item.";
 
 "str_active_buyers" = "active buyers";
 "str_others" = "Others";
@@ -148,6 +149,8 @@
 "str_deal_confirmed_by" = "Deal confirmed by";
 "str_activate" = "Activate";
 "str_deactivate" = "Deactivate";
+"str_the_listing_is_activated" = "The listing is activated";
+"str_the_listing_is_deactivated" = "The listing is deactivated";
 
 "str_item_status_active" = "Active";
 "str_item_status_deactivated" = "Deactivated";

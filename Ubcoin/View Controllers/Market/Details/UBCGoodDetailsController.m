@@ -185,6 +185,16 @@
             self.warningIcon.image = [UIImage imageNamed:@"status_blocked"];
         }
             break;
+        case UBCItemStatusDeactivated:
+        {
+            self.warningView.hidden = NO;
+            
+            self.warningView.backgroundColor = [UIColor colorWithHexString:@"e8e8e8"];
+            self.warningLabel.textColor = [UIColor colorWithHexString:@"5b676d"];
+            self.warningLabel.text = UBLocalizedString(@"str_status_deactivated", nil);
+            self.warningIcon.image = [UIImage imageNamed:@"status_deactivated"];
+        }
+            break;
         default:
             self.warningView.hidden = YES;
             break;
@@ -361,6 +371,7 @@
                      {
                          weakSelf.good = item;
                          [weakSelf setupContent];
+                         [UBAlert showAlertWithTitle:nil andMessage:@"str_the_listing_is_activated"];
                      }
                  }];
             }];
@@ -382,6 +393,7 @@
                      {
                          weakSelf.good = item;
                          [weakSelf setupContent];
+                         [UBAlert showAlertWithTitle:nil andMessage:@"str_the_listing_is_deactivated"];
                      }
                  }];
             }];
