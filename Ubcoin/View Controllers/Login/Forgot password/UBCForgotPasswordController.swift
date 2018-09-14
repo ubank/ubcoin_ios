@@ -20,6 +20,7 @@ class UBCForgotPasswordController: UBViewController {
         self.view.backgroundColor = UIColor.white
         self.info.textColor = UBColor.titleColor
         self.email.placeholder = "str_email".localizedString()
+        self.email.returnKeyType = .done
     }
     
     @IBAction func hideKeyboard(_ sender: Any) {
@@ -40,5 +41,13 @@ class UBCForgotPasswordController: UBViewController {
         else {
             UBCToast.showErrorToast(withMessage: "str_wrong_email")
         }
+    }
+}
+
+extension UBCForgotPasswordController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
