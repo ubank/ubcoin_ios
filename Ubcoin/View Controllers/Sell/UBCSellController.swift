@@ -39,6 +39,13 @@ class UBCSellController: UBViewController {
         return tableView
     }()
 
+    @objc
+    convenience init(item: UBCGoodDM) {
+        self.init()
+        
+        model = UBCSellDM.init(item: item)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

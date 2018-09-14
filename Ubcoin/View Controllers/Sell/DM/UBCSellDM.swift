@@ -11,7 +11,13 @@ import UIKit
 class UBCSellDM: NSObject {
     
     var sections = UBCSellDM.sellActions()
-
+    var item: UBCGoodDM?
+    
+    convenience init(item: UBCGoodDM) {
+        self.init()
+        self.item = item
+    }
+    
     class func sellActions() -> [UBTableViewSectionData] {
         var sections = [UBTableViewSectionData]()
         

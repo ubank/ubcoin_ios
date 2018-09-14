@@ -345,11 +345,14 @@
 
 - (UIAlertAction *)editAction
 {
+    __weak typeof(self)weakSelf = self;
     return [UIAlertAction actionWithTitle:UBLocalizedString(@"ui_button_edit", nil)
                                     style:UIAlertActionStyleDefault
-                                  handler:^(UIAlertAction * _Nonnull action) {
-                                      
-                                  }];
+                                  handler:^(UIAlertAction * _Nonnull action)
+            {
+                UBCSellController *controller = [UBCSellController.alloc initWithItem:weakSelf.good];
+                [weakSelf.navigationController pushViewController:controller animated:YES];
+            }];
 }
 
 - (UIAlertAction *)activateAction
