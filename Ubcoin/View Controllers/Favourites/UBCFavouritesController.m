@@ -52,6 +52,11 @@
     {
         self.tableView.emptyView.hidden = NO;
     }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(favoritesChanged:)
+                                                 name:kNotificationFavoritesChanged
+                                               object:nil];
 }
 
 - (void)updateInfo
@@ -79,6 +84,38 @@
          weakSelf.tableView.emptyView.hidden = weakSelf.items.count > 0;
          [weakSelf.tableView updateWithRowsData:weakSelf.items];
      }];
+}
+
+- (void)favoritesChanged:(NSNotification *)notification
+{
+    UBCGoodDM *item = notification.object;
+    
+    if (item.isFavorite)
+    {
+        UBTableViewRowData *data = item.rowData;
+        data.className = NSStringFromClass(UBCFavouriteCell.class);
+        [self.items insertObject:data atIndex:0];
+    }
+    else
+    {
+        NSUInteger index = NSNotFound;
+        for (UBTableViewRowData *data in self.items)
+        {
+            UBCGoodDM *currentItem = data.data;
+            if ([currentItem.ID isEqualToString:item.ID])
+            {
+                index = [self.items indexOfObject:data];
+                break;
+            }
+        }
+        
+        if (index != NSNotFound)
+        {
+            [self.items removeObjectAtIndex:index];
+        }
+    }
+    self.tableView.emptyView.hidden = self.items.count > 0;
+    [self.tableView updateWithRowsData:self.items];
 }
 
 #pragma mark - UBDefaultTableViewDelegate
