@@ -18,7 +18,7 @@
 
 - (NSNumber *)totalAmount
 {
-    return @(self.amount.doubleValue - self.commission.doubleValue);
+    return @(self.amount.doubleValue + self.commission.doubleValue);
 }
 
 - (NSArray<UBTableViewRowData *> *)rowsData
