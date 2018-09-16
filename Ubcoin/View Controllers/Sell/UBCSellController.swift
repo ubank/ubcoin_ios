@@ -9,15 +9,13 @@
 import UIKit
 import Photos
 
-class UBCSellController: UBViewController {
+final class UBCSellController: UBViewController {
     
-    var model = UBCSellDM()
-    var task: URLSessionDataTask?
+    private var model = UBCSellDM()
+    private var item: UBCGoodDM?
+    private var task: URLSessionDataTask?
     
-    private var buttonView: UIView!
-    private var button: HUBGeneralButton!
-    
-    private(set) lazy var tableView: UBTableView = { [unowned self] in
+    private lazy var tableView: UBTableView = { [unowned self] in
         let tableView = UBTableView(frame: .zero, style: .grouped)
         
         tableView.delegate = self
@@ -38,18 +36,35 @@ class UBCSellController: UBViewController {
         
         return tableView
     }()
+    
+    private lazy var buttonView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.setHeightConstraintWithValue(UBCConstant.actionButtonHeight + 30)
+        
+        let button = HUBGeneralButton()
+        button.type = HUBGeneralButtonTypeGreen
+        button.title = "ui_button_done".localizedString()
+        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        
+        view.addSubview(button)
+        view.setAllConstraintToSubview(button, with: UIEdgeInsets(top: 15, left: UBCConstant.inset, bottom: -15, right: -UBCConstant.inset))
+        
+        return view
+    }()
 
     @objc
     convenience init(item: UBCGoodDM) {
         self.init()
         
-        model = UBCSellDM.init(item: item)
+        self.item = item
+        self.model = UBCSellDM(item: item)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "str_sell"
+        self.title = self.item != nil ? "ui_button_edit" : "str_sell"
 
         self.setupViews()
     }
@@ -61,25 +76,21 @@ class UBCSellController: UBViewController {
     }
     
     private func setupViews() {
-        let viewHeight = UBCConstant.actionButtonHeight + 30
+        let isEdit = self.item != nil
+        
+        let viewHeight = isEdit ? 0 : UBCConstant.actionButtonHeight + 30
         
         self.view.addSubview(self.tableView)
         self.view.setAllConstraintToSubview(self.tableView, with: UIEdgeInsets(top: 0, left: 0, bottom: -viewHeight, right: 0))
         
-        self.buttonView = UIView()
-        self.buttonView.backgroundColor = .white
-        self.view.addSubview(self.buttonView)
-        self.view.setLeadingConstraintToSubview(self.buttonView, withValue: 0)
-        self.view.setTrailingConstraintToSubview(self.buttonView, withValue: 0)
-        self.view.setBottomConstraintToSubview(self.buttonView, withValue: 0)
-        self.buttonView.setHeightConstraintWithValue(UBCConstant.actionButtonHeight + 30)
-        
-        self.button = HUBGeneralButton()
-        self.button.type = HUBGeneralButtonTypeGreen
-        self.button.title = "ui_button_done".localizedString()
-        self.button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
-        self.buttonView.addSubview(self.button)
-        self.buttonView.setAllConstraintToSubview(self.button, with: UIEdgeInsets(top: 15, left: UBCConstant.inset, bottom: -15, right: -UBCConstant.inset))
+        if !isEdit {
+            self.view.addSubview(self.buttonView)
+            self.view.setLeadingConstraintToSubview(self.buttonView, withValue: 0)
+            self.view.setTrailingConstraintToSubview(self.buttonView, withValue: 0)
+            self.view.setBottomConstraintToSubview(self.buttonView, withValue: 0)
+        } else {
+            self.navigationContainer.rightTitle = "ui_button_save".localizedString()
+        }
         
         let gesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         gesture.delegate = self
@@ -100,9 +111,9 @@ class UBCSellController: UBViewController {
                 self.startActivityIndicator()
                 UBCDataProvider.shared.registerInChat { [weak self] success, authorizedInTg, url, appURL in
                     self?.stopActivityIndicator()
-                    
+
                     if authorizedInTg {
-                        self?.sendItem(photoRow: photoRow)
+                        self?.sendItem(photoRow: photoRow, id: self?.item?.id)
                     } else {
                         UBAlert.show(withTitle: "",
                                      andMessage: "str_ubcoin_is_going_to_open_telegram".localizedString(),
@@ -111,11 +122,11 @@ class UBCSellController: UBViewController {
                         })
                     }
                 }
-                
+
                 return
         }
         
-        self.sendItem(photoRow: photoRow)
+        self.sendItem(photoRow: photoRow, id: self.item?.id)
     }
     
     @objc
@@ -124,6 +135,12 @@ class UBCSellController: UBViewController {
     }
     
     override func rightBarButtonClick(_ sender: Any!) {
+        if self.item != nil {
+            self.buttonPressed()
+            
+            return
+        }
+        
         self.tableView.emptyView.isHidden = true
         self.buttonView.isHidden = false
         self.navigationContainer.rightImageTitle = nil
@@ -136,24 +153,22 @@ class UBCSellController: UBViewController {
         }
     }
     
-    private func sendItem(photoRow: UBCSellCellDM) {
-        guard let photos = photoRow.data as? [UIImage], photos.count > 0 else { return }
+    private func sendItem(photoRow: UBCSellCellDM, id: String?) {
+        guard var photos = photoRow.data as? [Any], photos.count > 0 else { return }
         
         self.startActivityIndicator()
         
         let myGroup = DispatchGroup()
         
-        var images = [String]()
-        
         for index in 0..<photos.count {
-            myGroup.enter()
-            
             let photo = photos[index]
             
-            UBCDataProvider.shared.uploadImage(photo) { success, url in
-                if success {
-                    if let url = url {
-                        images.append(url)
+            if let photo = photo as? UIImage {
+                myGroup.enter()
+                
+                UBCDataProvider.shared.uploadImage(photo) { success, url in
+                    if success, let url = url {
+                        photos[index] = url
                     }
                     
                     myGroup.leave()
@@ -164,18 +179,28 @@ class UBCSellController: UBViewController {
         myGroup.notify(queue: .main) {
             var params = self.model.allFilledParams()
             
-            params["images"] = images
+            if let id = id {
+                params["id"] = id
+            }
+            
+            params["images"] = photos
             
             UBCDataProvider.shared.sellItem(params) { [weak self] success in
                 self?.stopActivityIndicator()
                 
-                if success {
-                    self?.tableView.emptyView.isHidden = false
-                    self?.buttonView.isHidden = true
-                    self?.navigationContainer.rightImageTitle = "general_close"
-                    self?.updateBarButtons()
-                    self?.model.sections = []
-                    self?.tableView.reloadData()
+                guard let `self` = self, success else { return }
+                
+                if self.item == nil {
+                    self.tableView.emptyView.isHidden = false
+                    self.buttonView.isHidden = true
+                    self.navigationContainer.rightImageTitle = "general_close"
+                    self.updateBarButtons()
+                    self.model.sections = []
+                    self.tableView.reloadData()
+                } else {
+                    if let navigation = self.navigationController as? UBNavigationController {
+                        navigation.pop(to: UBCMarketController(), animated: true)
+                    }
                 }
             }
         }
@@ -398,7 +423,7 @@ extension UBCSellController: UIImagePickerControllerDelegate, UINavigationContro
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             var row = self.model.row(type: .photo)
-            if var data = row?.data as? [UIImage] {
+            if var data = row?.data as? [Any] {
                 data.append(image)
                 row?.data = data
             }

@@ -96,16 +96,13 @@ extension UBCSPhotoTableViewCell: UBCSPhotoAddViewDelegate {
 extension UBCSPhotoTableViewCell: UBCSellCellProtocol {
     
     func setContent(content: UBCSellCellDM) {
-        let images = content.data as? [UIImage]
-        
         for i in 0..<UBCSPhotoTableViewCell.photosCount {
             let view = photoViews[i]
             
-            var image: UIImage?
-            if let images = images, i < images.count {
-                image = images[i]
+            view.setBackgroundImage(nil, for: .normal)
+            content.imageForIndex(index: i) { image in
+                view.setBackgroundImage(image, for: .normal)
             }
-            view.setBackgroundImage(image, for: .normal)
         }
     }
 }
@@ -152,10 +149,10 @@ private class UBCSPhotoAddView: UBButton {
         self.layer.borderColor = UBCColor.green.cgColor
         
         let constraint1 = self.setHeightConstraintWithValue(UBCSPhotoAddView.photosSize)
-        constraint1?.priority = UILayoutPriority.init(999)
+        constraint1?.priority = UILayoutPriority(999)
         
         let constraint2 = self.setWidthConstraintWithValue(UBCSPhotoAddView.photosSize)
-        constraint2?.priority = UILayoutPriority.init(999)
+        constraint2?.priority = UILayoutPriority(999)
         
         self.addTarget(self, action: #selector(photoPressed(sender:)), for: .touchUpInside)
         

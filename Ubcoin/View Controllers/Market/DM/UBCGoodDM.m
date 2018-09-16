@@ -51,6 +51,8 @@
         _location = [[CLLocation alloc] initWithLatitude:lat.doubleValue
                                                longitude:lon.doubleValue];
     }
+    
+    _locationText = dict[@"text"];
 }
 
 #pragma mark -

@@ -71,7 +71,7 @@ extension UBCSTextFieldTableViewCell: UITextFieldDelegate {
             
             if let delegate = self.delegate, var content = self.content {
                 content.data = textField.text
-                content.sendData = textField.text
+                content.sendData = content.data
                 delegate.updatedRow(content)
             }
         }

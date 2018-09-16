@@ -15,24 +15,36 @@ class UBCSellDM: NSObject {
     
     convenience init(item: UBCGoodDM) {
         self.init()
+        
         self.item = item
+        self.sections = UBCSellDM.sellActions(good: item)
     }
     
-    class func sellActions() -> [UBTableViewSectionData] {
+    class func sellActions(good: UBCGoodDM? = nil) -> [UBTableViewSectionData] {
         var sections = [UBTableViewSectionData]()
         
         let photoSection = UBTableViewSectionData()
         photoSection.headerHeight = SEPARATOR_HEIGHT
         photoSection.headerTitle = " "
-        let photos = UBCSellCellDM(type: .photo)
+        
+        var photos = UBCSellCellDM(type: .photo)
+        photos.data = good?.images ?? []
+        
         photoSection.rows = [photos]
         sections.append(photoSection)
         
         let aboutSection = UBTableViewSectionData()
         aboutSection.headerHeight = UBCConstant.headerHeight
         aboutSection.headerTitle = "str_sell_about".localizedString()
-        let title = UBCSellCellDM(type: .title)
-        let category = UBCSellCellDM(type: .category)
+        
+        var title = UBCSellCellDM(type: .title)
+        title.data = good?.title
+        title.sendData = good?.title
+        
+        var category = UBCSellCellDM(type: .category)
+        category.data = good?.category?.name
+        category.sendData = good?.category?.id
+        
         aboutSection.rows = [title, category]
         sections.append(aboutSection)
         
@@ -41,28 +53,46 @@ class UBCSellDM: NSObject {
         priceDollarSection.headerTitle = "str_price_in".localizedString() + " $"
         priceDollarSection.footerTitle = "Your price will be fixed in UBC"
         priceDollarSection.footerHeight = 25
-        let price = UBCSellCellDM(type: .price)
+        
+        var price = UBCSellCellDM(type: .price)
+        price.data = good?.priceInCurrency?.stringValue
+        price.sendData = good?.priceInCurrency?.stringValue
+        
         priceDollarSection.rows = [price]
         sections.append(priceDollarSection)
         
         let priceUBCSection = UBTableViewSectionData()
         priceUBCSection.headerHeight = UBCConstant.headerHeight
         priceUBCSection.headerTitle = "str_price_in".localizedString() + " UBC"
-        let priceUBC = UBCSellCellDM(type: .priceUBC)
+        
+        var priceUBC = UBCSellCellDM(type: .priceUBC)
+        priceUBC.data = good?.price?.stringValue
+        priceUBC.sendData = good?.price?.stringValue
+        
         priceUBCSection.rows = [priceUBC]
         sections.append(priceUBCSection)
         
         let descSection = UBTableViewSectionData()
         descSection.headerHeight = UBCConstant.headerHeight
         descSection.headerTitle = "str_sell_desc".localizedString()
-        let desc = UBCSellCellDM(type: .desc)
+        
+        var desc = UBCSellCellDM(type: .desc)
+        desc.data = good?.desc
+        desc.sendData = good?.desc
+        
         descSection.rows = [desc]
         sections.append(descSection)
 
         let locationSection = UBTableViewSectionData()
         locationSection.headerHeight = UBCConstant.headerHeight
         locationSection.headerTitle = "str_sell_location".localizedString()
-        let location = UBCSellCellDM(type: .location)
+        
+        var location = UBCSellCellDM(type: .location)
+        if let loc = good?.location, let text = good?.locationText {
+            location.data = text
+            location.sendData = ["text": text, "longPoint": loc.coordinate.longitude, "latPoint": loc.coordinate.latitude]
+        }
+        
         locationSection.rows = [location]
         sections.append(locationSection)
         
@@ -103,7 +133,7 @@ class UBCSellDM: NSObject {
         for section in sections {
             for i in 0..<section.rows.count {
                 if var row = section.rows[i] as? UBCSellCellDM, row.type == .photo {
-                    if var data = row.data as? [UIImage], index >= 0, index < data.count {
+                    if var data = row.data as? [Any], index >= 0, index < data.count {
                         data.remove(at: index)
                         row.data = data
                     }
@@ -129,7 +159,7 @@ class UBCSellDM: NSObject {
     func isAllParamsNotEmpty() -> Bool {
         for section in sections {
             for row in section.rows {
-                if let row = row as? UBCSellCellDM, !row.optional, row.sendData == nil, ((row.data as? [UIImage])?.count ?? 0) == 0 {
+                if let row = row as? UBCSellCellDM, !row.optional, row.sendData == nil, ((row.data as? [Any])?.count ?? 0) == 0 {
                     return false
                 }
             }
@@ -173,16 +203,32 @@ struct UBCSellCellDM {
         self.className = type.className
         self.placeholder = type.placeholder
         
-        if type == .photo {
-            self.data = [UIImage]()
-        }
-        
         if type == .locationMap {
             self.optional = true
         }
         
         if type == .price || type == .priceUBC {
             self.keyboardType = .decimalPad
+        }
+    }
+    
+    func imageForIndex(index: Int, completion: @escaping (UIImage?) -> Void) {
+        guard let array = self.data as? [Any], array.count > index, index >= 0 else {
+            completion(nil)
+            
+            return
+        }
+        
+        let image = array[index]
+        
+        if let image = image as? UIImage {
+            completion(image)
+        } else if let imageStr = image as? String {
+            SDWebImageManager.shared().loadImage(with: URL(string: imageStr), options: .highPriority, progress: nil) { image, _, _, _, _, _ in
+                completion(image)
+            }
+        } else {
+            completion(nil)
         }
     }
 }
