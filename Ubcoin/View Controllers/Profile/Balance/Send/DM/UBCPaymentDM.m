@@ -8,6 +8,8 @@
 
 #import "UBCPaymentDM.h"
 
+#import "Ubcoin-Swift.h"
+
 @implementation UBCPaymentDM
 
 - (BOOL)valid
@@ -16,9 +18,9 @@
     self.amount.doubleValue > 0;
 }
 
-- (NSNumber *)totalAmount
+- (NSNumber *)currentAmount
 {
-    return @(self.amount.doubleValue + self.commission.doubleValue);
+    return @(self.amount.doubleValue - self.commission.doubleValue);
 }
 
 - (NSArray<UBTableViewRowData *> *)rowsData
@@ -33,7 +35,7 @@
     
     UBTableViewRowData *row2 = UBTableViewRowData.new;
     row2.title = UBLocalizedString(@"str_amount", nil);
-    row2.desc = [NSString stringWithFormat:@"%@ UBC", self.amount.priceString];
+    row2.desc = [NSString stringWithFormat:@"%@ UBC", self.currentAmount.priceString];
     row2.disableHighlight = YES;
     [rows addObject:row2];
     
@@ -45,12 +47,19 @@
     
     UBTableViewRowData *row4 = UBTableViewRowData.new;
     row4.title = UBLocalizedString(@"str_total_amount", nil);
-    row4.desc = [NSString stringWithFormat:@"%@ UBC", self.totalAmount.priceString];
+    row4.attributedDesc = [self totalAmountString];
     row4.disableHighlight = YES;
     row4.height = 95;
     [rows addObject:row4];
     
     return rows;
+}
+
+- (NSAttributedString *)totalAmountString
+{
+    return [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ UBC", self.amount.priceString]
+                                    attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:23],
+                                                 NSForegroundColorAttributeName : UBCColor.green}];
 }
 
 @end
