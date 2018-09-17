@@ -55,6 +55,13 @@
                                                object:nil];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [self.collectionView.refreshControl endRefreshing];
+}
+
 #pragma mark -
 
 - (void)setupCollectionView

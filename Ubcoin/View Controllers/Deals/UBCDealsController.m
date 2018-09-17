@@ -41,6 +41,16 @@
     }];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [self.buyDealsView.tableView.refreshControll endRefreshing];
+    [self.sellDealsView.tableView.refreshControll endRefreshing];
+}
+
+#pragma mark -
+
 - (void)setupViews
 {
     self.buyDealsView = [UBCToBuyDealsView.alloc initWithFrame:self.view.bounds];

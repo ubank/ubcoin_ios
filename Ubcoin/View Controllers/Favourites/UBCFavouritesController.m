@@ -59,6 +59,15 @@
                                                object:nil];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [self.tableView.refreshControll endRefreshing];
+}
+
+#pragma mark -
+
 - (void)updateInfo
 {
     __weak typeof(self) weakSelf = self;
