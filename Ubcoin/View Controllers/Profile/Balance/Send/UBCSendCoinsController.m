@@ -24,6 +24,8 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *currencyActivity;
 
 @property (strong, nonatomic) UBCPaymentDM *payment;
+@property (strong, nonatomic) NSURLSessionDataTask *commissionTask;
+@property (strong, nonatomic) NSURLSessionDataTask *conversionTask;
 
 @end
 
@@ -69,16 +71,18 @@
     self.payment.amount = amount;
     if (amount.doubleValue > 0)
     {
+        [self.commissionTask cancel];
+        
         __weak typeof(self) weakSelf = self;
-        [UBCDataProvider.sharedProvider commissionForAmount:amount
-                                       withCompletionBlock:^(BOOL success, NSNumber *commission)
-         {
-             if (success)
-             {
-                 weakSelf.payment.commission = commission;
-                 weakSelf.commission.text = [NSString stringWithFormat:@"%@: %@", UBLocalizedString(@"str_transaction_commission", nil), commission.priceString];
-             }
-         }];
+        self.commissionTask = [UBCDataProvider.sharedProvider commissionForAmount:amount
+                                                              withCompletionBlock:^(BOOL success, NSNumber *commission)
+                               {
+                                   if (success)
+                                   {
+                                       weakSelf.payment.commission = commission;
+                                       weakSelf.commission.text = [NSString stringWithFormat:@"%@: %@", UBLocalizedString(@"str_transaction_commission", nil), commission.priceString];
+                                   }
+                               }];
     }
 }
 
@@ -88,20 +92,21 @@
     
     if (amount.doubleValue > 0)
     {
+        [self.conversionTask cancel];
         [self.currencyActivity startAnimating];
         
         __weak typeof(self) weakSelf = self;
-        [UBCDataProvider.sharedProvider convertFromCurrency:@"UBC"
-                                                 toCurrency:@"USD"
-                                                 withAmount:amount
-                                        withCompletionBlock:^(BOOL success, NSNumber *amountInCurrency)
-         {
-             [weakSelf.currencyActivity stopAnimating];
-             if (success)
-             {
-                 weakSelf.amountInCurrency.text = amountInCurrency.priceString;
-             }
-         }];
+        self.conversionTask = [UBCDataProvider.sharedProvider convertFromCurrency:@"UBC"
+                                                                       toCurrency:@"USD"
+                                                                       withAmount:amount
+                                                              withCompletionBlock:^(BOOL success, NSNumber *amountInCurrency)
+                               {
+                                   [weakSelf.currencyActivity stopAnimating];
+                                   if (success)
+                                   {
+                                       weakSelf.amountInCurrency.text = amountInCurrency.priceString;
+                                   }
+                               }];
     }
 }
 
