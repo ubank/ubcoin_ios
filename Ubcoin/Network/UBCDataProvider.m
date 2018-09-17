@@ -80,10 +80,14 @@
                                                                 andParams:@{@"itemId": itemID}];
     [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
      {
-         if (completionBlock)
+         if (success)
          {
              UBCGoodDM *item = [UBCGoodDM.alloc initWithDictionary:[responseObject removeNulls]];
              completionBlock(success, item);
+         }
+         else if (completionBlock)
+         {
+             completionBlock(success, nil);
          }
      }];
 }
@@ -94,10 +98,14 @@
                                                                 andParams:@{@"itemId": itemID}];
     [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
      {
-         if (completionBlock)
+         if (success)
          {
              UBCGoodDM *item = [UBCGoodDM.alloc initWithDictionary:[responseObject removeNulls]];
              completionBlock(success, item);
+         }
+         else if (completionBlock)
+         {
+             completionBlock(success, nil);
          }
      }];
 }
