@@ -592,8 +592,11 @@
 {
     NSMutableDictionary *full = dictionary.mutableCopy;
     full[@"agreement"] = @"true";
-    
     NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider sellItem] andParams:full.copy];
+    if (dictionary[@"id"])
+    {
+        request = [UBCRequestProvider putRequestWithURL:[UBCURLProvider sellItem] andParams:full.copy];
+    }
     
     [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
      {
