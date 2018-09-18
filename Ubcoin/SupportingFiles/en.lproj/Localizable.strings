@@ -15,6 +15,8 @@
 "ui_button_skip"     = "Skip";
 "ui_button_search"   = "Search";
 "ui_button_continue" = "Continue";
+"ui_button_copy"     = "Copy";
+"ui_button_edit"     = "Edit";
 
 "ui_alert_button_ok"                              = "OK";
 "ui_alert_button_cancel"                          = "Cancel";
@@ -117,8 +119,8 @@
 "str_if_you_received_tokens_during_ico" = "If you received tokens during ICO, go to your ERC-20 wallet";
 "str_address_copied_to_clipboard" = "Address copied to clipboard";
 
-"str_sell_success_title" = "Item successfully placed";
-"str_sell_success_desc" = "Your item placed on marketplace";
+"str_sell_success_title" = "Your listing is in moderation";
+"str_sell_success_desc" = "It will appear on the Market right after moderation process";
 "str_sell_about" = "About";
 "str_sell_desc" = "Description";
 "str_sell_location" = "Location";
@@ -132,3 +134,27 @@
 
 "str_version" = "Version";
 "str_ubcoin_is_going_to_open_telegram" = "Ubcoin Market is going to open a Telegram bot. This is necessary to buy or sell smth. Please create a Telegram account if you don’t have one.";
+
+"str_status_check" = "Please wait, your listing will appear on the Market right after moderation process.";
+"str_status_blocked" = "Listing was blocked for some reason. Please read our Terms and conditions and edit your listing.";
+"str_status_deactivated" = "Your listing is deactivated and hided from the Market. Activate the listing to sell your item.";
+
+"str_active_buyers" = "active buyers";
+"str_others" = "Others";
+"str_your_wallet_is_permanent" = "Your wallet is permanent but it has changeable top up address. You can use the current address for top up within:";
+"str_choose_exchange_to_buy_UBC" = "Choose exchange to buy UBC";
+"str_exchange_to_buy_UBC" = "Exchange to buy UBC";
+"str_price_in" = "Price in";
+"str_convertation_in_progress" = "Convertation in progress...";
+"str_deal_confirmed_by" = "Deal confirmed by";
+"str_activate" = "Activate";
+"str_deactivate" = "Deactivate";
+"str_the_listing_is_activated" = "The listing is activated";
+"str_the_listing_is_deactivated" = "The listing is deactivated";
+
+"str_item_status_active" = "Active";
+"str_item_status_deactivated" = "Deactivated";
+"str_item_status_sold" = "Sold";
+"str_item_status_blocked" = "Blocked";
+"str_item_status_reserved" = "Reserved";
+"str_item_status_check" = "In moderation";

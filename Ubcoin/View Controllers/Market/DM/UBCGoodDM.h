@@ -11,6 +11,17 @@
 #import "UBCSellerDM.h"
 #import "UBCCategoryDM.h"
 
+typedef enum
+{
+    UBCItemStatusActive,
+    UBCItemStatusBlocked,
+    UBCItemStatusCheck,
+    UBCItemStatusChecking,
+    UBCItemStatusDeactivated,
+    UBCItemStatusReserved,
+    UBCItemStatusSold
+} UBCItemStatus;
+
 static NSString * const kNotificationFavoritesChanged = @"kNotificationFavoritesChanged";
 
 @interface UBCGoodDM : NSObject
@@ -20,18 +31,25 @@ static NSString * const kNotificationFavoritesChanged = @"kNotificationFavorites
 @property (readonly, nonatomic) NSString *desc;
 @property (readonly, nonatomic) NSString *shareURL;
 @property (readonly, nonatomic) NSNumber *price;
+@property (readonly, nonatomic) NSNumber *priceInCurrency;
+@property (readonly, nonatomic) NSString *currency;
 @property (readonly, nonatomic) NSDate *creationDate;
 @property (readonly, nonatomic) NSArray *images;
 @property (readonly, nonatomic) BOOL isFavorite;
 @property (readonly, nonatomic) CLLocation *location;
-@property (readonly, nonatomic) NSDictionary *dict;
+@property (readonly, nonatomic) NSString *locationText;
+@property (readonly, nonatomic) UBCItemStatus status;
 
 @property (readonly, nonatomic) UBCSellerDM *seller;
 @property (readonly, nonatomic) UBCCategoryDM *category;
+@property (readonly, nonatomic) NSArray *deals;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
 - (void)toggleFavorite;
 
+- (BOOL)isMyItem;
+- (NSArray *)activeDeals;
 - (UBTableViewRowData *)rowData;
 
++ (NSString *)titleForStatus:(UBCItemStatus)status;
 @end

@@ -15,6 +15,8 @@
 "ui_button_skip"     = "Lewati";
 "ui_button_search"   = "Cari";
 "ui_button_continue" = "Lanjutkan";
+"ui_button_copy" = "Salin";
+"ui_button_edit" = "Sunting";
 
 "ui_alert_button_ok"                              = "OK";
 "ui_alert_button_cancel"                          = "Membatalkan";
@@ -117,8 +119,8 @@
 "str_if_you_received_tokens_during_ico" = "Jika Anda menerima token selama ICO, pergi ke wallet ERC-20 anda";
 "str_address_copied_to_clipboard" = "Alamat disalin ke papan klip";
 
-"str_sell_success_title" = "Barang berhasil di tempatkan";
-"str_sell_success_desc" = "Barang anda ditempatkan di pasar";
+"str_sell_success_title" = "Pencatatan anda sedang di moderasi";
+"str_sell_success_desc" = "Barang akan muncul di Pasar tepat setelah proses moderasi";
 "str_sell_about" = "Tentang";
 "str_sell_desc" = "Deskripsi";
 "str_sell_location" = "Lokasi";
@@ -133,3 +135,26 @@
 "str_version" = "Versi";
 "str_ubcoin_is_going_to_open_telegram" = "Pasar Ubcoin akan membuka bot Telegram. Ini diperlukan untuk membeli atau menjual. Harap buat akun Telegram jika Anda tidak memilikinya.";
 
+"str_status_check" = "Harap tunggu, pencatatan akan muncul di Pasar tepat setelah proses moderasi.";
+"str_status_blocked" = "Pencatatan diblokir untuk beberapa alasan. Silakan baca Syarat dan Ketentuan kami dan ubah pencatatan Anda.";
+"str_status_deactivated" = "Pencatatan Anda dinonaktifkan dan disembunyikan dari Market. Aktifkan pencatatan untuk menjual barang Anda.";
+
+"str_active_buyers" = "pembeli aktif";
+"str_others" = "Lainnya";
+"str_your_wallet_is_permanent" = "Dompet Anda permanen tetapi memiliki alamat isi saldo yang dapat diganti. Anda dapat menggunakan alamat saat ini untuk isi saldo dalam:";
+"str_choose_exchange_to_buy_UBC" = "Pilih bursa untuk membeli UBC";
+"str_exchange_to_buy_UBC" = "Bursa untuk membeli UBC";
+"str_price_in" = "Harga dalam";
+"str_convertation_in_progress" = "Percakapan sedang berlangsung...";
+"str_deal_confirmed_by" = "Transaksi dikonfirmasi oleh";
+"str_activate" = "Mengaktifkan";
+"str_deactivate" = "Menonaktifkan";
+"str_the_listing_is_activated" = "Pencatatan diaktifkan";
+"str_the_listing_is_deactivated" = "Pencatatan dinonaktifkan";
+
+"str_item_status_active" = "Aktif";
+"str_item_status_deactivated" = "Nonaktif";
+"str_item_status_sold" = "Terjual";
+"str_item_status_blocked" = "Diblokir";
+"str_item_status_reserved" = "Sudah Dipesan";
+"str_item_status_check" = "Sedang di moderasi";

@@ -20,8 +20,11 @@
 #import "UBCTransactionDM.h"
 #import "UBCKeyChain.h"
 #import "UBCFavouriteCell.h"
+#import "UBCDealCell.h"
 
 #import <AFNetworking/UIKit+AFNetworking.h>
+
+#import "Ubcoin-Swift.h"
 
 @interface UBCDataProvider ()
 
@@ -70,6 +73,44 @@
          }
      }];
 }
+
+- (void)activateItem:(NSString *)itemID withCompletionBlock:(void (^)(BOOL, UBCGoodDM *))completionBlock
+{
+    NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider activateItem]
+                                                                andParams:@{@"itemId": itemID}];
+    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (success)
+         {
+             UBCGoodDM *item = [UBCGoodDM.alloc initWithDictionary:[responseObject removeNulls]];
+             completionBlock(success, item);
+         }
+         else if (completionBlock)
+         {
+             completionBlock(success, nil);
+         }
+     }];
+}
+
+- (void)deactivateItem:(NSString *)itemID withCompletionBlock:(void (^)(BOOL, UBCGoodDM *))completionBlock
+{
+    NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider deactivateItem]
+                                                                andParams:@{@"itemId": itemID}];
+    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (success)
+         {
+             UBCGoodDM *item = [UBCGoodDM.alloc initWithDictionary:[responseObject removeNulls]];
+             completionBlock(success, item);
+         }
+         else if (completionBlock)
+         {
+             completionBlock(success, nil);
+         }
+     }];
+}
+
+#pragma mark -
 
 - (void)discountsWithCompletionBlock:(void (^)(BOOL, NSArray *))completionBlock
 {
@@ -280,15 +321,52 @@
 
 #pragma mark - WALLET
 
-- (void)topupWithCompletionBlock:(void (^)(BOOL, NSString *, NSString *))completionBlock
+- (void)updateBalanceWithCompletionBlock:(void (^)(BOOL))completionBlock
+{
+    NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:[UBCURLProvider userBalance]];
+    [self.connection sendRequest:request isBackground:YES withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (success)
+         {
+             [UBCBalanceDM saveBalanceDict:responseObject];
+         }
+         
+         if (completionBlock)
+         {
+             completionBlock(success);
+         }
+     }];
+}
+
+- (void)topupWithCompletionBlock:(void (^)(BOOL, UBCTopupDM *))completionBlock
 {
     NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:[UBCURLProvider topup]];
     [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
      {
          if (completionBlock)
          {
-             responseObject = [responseObject removeNulls];
-             completionBlock(success, responseObject[@"qrURL"], responseObject[@"ubCoinAddress"]);
+             UBCTopupDM *dm = [[UBCTopupDM alloc] initWithDictionary:[responseObject removeNulls]];
+             completionBlock(success, dm);
+         }
+     }];
+}
+
+- (void)marketsWithCompletionBlock:(void (^)(BOOL, NSArray *))completionBlock
+{
+    NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:[UBCURLProvider markets]];
+    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (completionBlock)
+         {
+             NSArray *markets = [[responseObject removeNulls] map:^id(id item) {
+                 UBTableViewRowData *data = UBTableViewRowData.new;
+                 data.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                 data.title = item[@"name"];
+                 data.iconURL = item[@"icon"];
+                 data.data = [NSURL URLWithString:item[@"url"]];
+                 return data;
+             }];
+             completionBlock(success, markets);
          }
      }];
 }
@@ -307,10 +385,10 @@
      }];
 }
 
-- (void)commissionForAmount:(NSNumber *)amount withCompletionBlock:(void (^)(BOOL, NSNumber *))completionBlock
+- (NSURLSessionDataTask *)commissionForAmount:(NSNumber *)amount withCompletionBlock:(void (^)(BOOL, NSNumber *))completionBlock
 {
     NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:[UBCURLProvider commissionForAmount:amount]];
-    [self.connection sendRequest:request isBackground:YES withCompletionBlock:^(BOOL success, id responseObject)
+    return [self.connection sendRequest:request isBackground:YES withCompletionBlock:^(BOOL success, id responseObject)
      {
          if (completionBlock)
          {
@@ -319,11 +397,13 @@
      }];
 }
 
-- (void)convertFromCurrency:(NSString *)fromCurrency toCurrency:(NSString *)toCurrency withAmount:(NSNumber *)amount withCompletionBlock:(void (^)(BOOL, NSNumber *))completionBlock
+#pragma mark - CONVERTION
+
+- (NSURLSessionDataTask *)convertFromCurrency:(NSString *)fromCurrency toCurrency:(NSString *)toCurrency withAmount:(NSNumber *)amount withCompletionBlock:(void (^)(BOOL, NSNumber *))completionBlock
 {
     NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider convert] andParams:@{@"currencyFrom": fromCurrency, @"currencyTo": toCurrency, @"amount": amount}];
                                                                                                                
-    [self.connection sendRequest:request isBackground:YES withCompletionBlock:^(BOOL success, id responseObject)
+    return [self.connection sendRequest:request isBackground:YES withCompletionBlock:^(BOOL success, id responseObject)
      {
          if (completionBlock)
          {
@@ -392,8 +472,10 @@
          {
              NSArray *items = [responseObject[@"data"] removeNulls];
              items = [items map:^id(id item) {
-                 UBCDealDM *deal = [[UBCDealDM alloc] initWithDictionary:item];
-                 return deal.rowData;
+                 UBCGoodDM *good = [[UBCGoodDM alloc] initWithDictionary:item];
+                 UBTableViewRowData *data = good.rowData;
+                 data.className = NSStringFromClass(UBCDealCell.class);
+                 return data;
              }];
              
              if (completionBlock)
@@ -441,7 +523,20 @@
 - (void)chatURLForItemID:(NSString *)itemID withCompletionBlock:(void (^)(BOOL, NSURL *, NSURL *))completionBlock
 {
     NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider chatURL]
-                                                                andParams:@{@"id": itemID}];
+                                                                andParams:@{@"itemId": itemID}];
+    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (completionBlock)
+         {
+             completionBlock(success, [NSURL URLWithString:responseObject[@"url"]], [NSURL URLWithString:responseObject[@"appUrl"]]);
+         }
+     }];
+}
+
+- (void)chatURLForDealID:(NSString *)dealID withCompletionBlock:(void (^)(BOOL, NSURL *, NSURL *))completionBlock
+{
+    NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider chatURL]
+                                                                andParams:@{@"purchaseId": dealID}];
     [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
      {
          if (completionBlock)
@@ -464,7 +559,7 @@
          
          if (completionBlock)
          {
-             BOOL authorized = [[responseObject valueForKeyPath:@"user.authorized"] boolValue];
+             BOOL authorized = [[responseObject valueForKeyPath:@"user.authorizedInTg"] boolValue];
              completionBlock(success,
                              authorized,
                              [NSURL URLWithString:responseObject[@"url"]],
@@ -473,24 +568,7 @@
      }];
 }
 
-#pragma mark - BALANCE
-
-- (void)updateBalanceWithCompletionBlock:(void (^)(BOOL))completionBlock
-{
-    NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:[UBCURLProvider userBalance]];
-    [self.connection sendRequest:request isBackground:YES withCompletionBlock:^(BOOL success, id responseObject)
-     {
-         if (success)
-         {
-             [UBCBalanceDM saveBalanceDict:responseObject];
-         }
-         
-         if (completionBlock)
-         {
-             completionBlock(success);
-         }
-     }];
-}
+#pragma mark - ITEM CREATION
 
 - (void)uploadImage:(UIImage *)image withCompletionBlock:(void (^)(BOOL, NSString *))completionBlock
 {
@@ -514,8 +592,11 @@
 {
     NSMutableDictionary *full = dictionary.mutableCopy;
     full[@"agreement"] = @"true";
-    
     NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider sellItem] andParams:full.copy];
+    if (dictionary[@"id"])
+    {
+        request = [UBCRequestProvider putRequestWithURL:[UBCURLProvider sellItem] andParams:full.copy];
+    }
     
     [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
      {

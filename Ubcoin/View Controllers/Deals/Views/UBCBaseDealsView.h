@@ -12,7 +12,9 @@
 @class UBCGoodDM;
 @protocol UBCDealsViewDelegate <NSObject>
 
+@optional
 - (void)openChatForItem:(UBCGoodDM *)item;
+- (void)showItem:(UBCGoodDM *)item;
 
 @end
 
@@ -27,7 +29,5 @@
 - (void)updateInfo;
 - (void)reloadData;
 - (void)handleResponse:(NSArray *)deals;
-
-- (NSAttributedString *)infoStringWithString:(NSString *)string;
 
 @end

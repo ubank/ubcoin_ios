@@ -9,14 +9,13 @@
 import UIKit
 import Photos
 
-class UBCSellController: UBViewController {
+final class UBCSellController: UBViewController {
     
-    var model = UBCSellDM()
+    private var model = UBCSellDM()
+    private var item: UBCGoodDM?
+    private var task: URLSessionDataTask?
     
-    private var buttonView: UIView!
-    private var button: HUBGeneralButton!
-    
-    private(set) lazy var tableView: UBTableView = { [unowned self] in
+    private lazy var tableView: UBTableView = { [unowned self] in
         let tableView = UBTableView(frame: .zero, style: .grouped)
         
         tableView.delegate = self
@@ -37,16 +36,37 @@ class UBCSellController: UBViewController {
         
         return tableView
     }()
+    
+    private lazy var buttonView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.setHeightConstraintWithValue(UBCConstant.actionButtonHeight + 30)
+        
+        let button = HUBGeneralButton()
+        button.type = HUBGeneralButtonTypeGreen
+        button.title = "ui_button_done".localizedString()
+        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        
+        view.addSubview(button)
+        view.setAllConstraintToSubview(button, with: UIEdgeInsets(top: 15, left: UBCConstant.inset, bottom: -15, right: -UBCConstant.inset))
+        
+        return view
+    }()
 
+    @objc
+    convenience init(item: UBCGoodDM) {
+        self.init()
+        
+        self.item = item
+        self.model = UBCSellDM(item: item)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "str_sell"
+        self.title = self.item != nil ? "ui_button_edit" : "str_sell"
 
         self.setupViews()
-        
-        self.updateInfo()
-        self.startActivityIndicatorImmediately()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,35 +75,22 @@ class UBCSellController: UBViewController {
         self.tableView.reloadData()
     }
     
-    override func updateInfo() {
-        UBCDataProvider.shared.categories { [weak self] success, categories in
-            self?.stopActivityIndicator()
-            
-            self?.model.setup(categories: categories)
-            self?.tableView.reloadData()
-        }
-    }
-
     private func setupViews() {
-        let viewHeight = UBCConstant.actionButtonHeight + 30
+        let isEdit = self.item != nil
+        
+        let viewHeight = isEdit ? 0 : UBCConstant.actionButtonHeight + 30
         
         self.view.addSubview(self.tableView)
         self.view.setAllConstraintToSubview(self.tableView, with: UIEdgeInsets(top: 0, left: 0, bottom: -viewHeight, right: 0))
         
-        self.buttonView = UIView()
-        self.buttonView.backgroundColor = .white
-        self.view.addSubview(self.buttonView)
-        self.view.setLeadingConstraintToSubview(self.buttonView, withValue: 0)
-        self.view.setTrailingConstraintToSubview(self.buttonView, withValue: 0)
-        self.view.setBottomConstraintToSubview(self.buttonView, withValue: 0)
-        self.buttonView.setHeightConstraintWithValue(UBCConstant.actionButtonHeight + 30)
-        
-        self.button = HUBGeneralButton()
-        self.button.type = HUBGeneralButtonTypeGreen
-        self.button.title = "ui_button_done".localizedString()
-        self.button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
-        self.buttonView.addSubview(self.button)
-        self.buttonView.setAllConstraintToSubview(self.button, with: UIEdgeInsets(top: 15, left: UBCConstant.inset, bottom: -15, right: -UBCConstant.inset))
+        if !isEdit {
+            self.view.addSubview(self.buttonView)
+            self.view.setLeadingConstraintToSubview(self.buttonView, withValue: 0)
+            self.view.setTrailingConstraintToSubview(self.buttonView, withValue: 0)
+            self.view.setBottomConstraintToSubview(self.buttonView, withValue: 0)
+        } else {
+            self.navigationContainer.rightTitle = "ui_button_save".localizedString()
+        }
         
         let gesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         gesture.delegate = self
@@ -92,33 +99,34 @@ class UBCSellController: UBViewController {
     
     @objc
     private func buttonPressed() {
-        if self.model.isAllParamsNotEmpty(), let photoRow = self.model.photoRow() {
-            guard let user = UBCUserDM.loadProfile(),
-                user.authorizedInTg else {
-                    self.startActivityIndicator()
-                    UBCDataProvider.shared.registerInChat { [weak self] success, authorizedInTg, url, appURL in
-                        self?.stopActivityIndicator()
-                        
-                        if authorizedInTg {
-                            self?.sendItem(photoRow: photoRow)
-                        }
-                        else {
-                            UBAlert.show(withTitle: "",
-                                         andMessage: "str_ubcoin_is_going_to_open_telegram".localizedString(),
-                                         withCompletionBlock: {
-                                self?.navigationController?.pushViewController(UBCChatController(url: url, appURL: appURL), animated: true)
-                            })
-                        }
-                    }
-                    
-                    return
-            }
-            
-            self.sendItem(photoRow: photoRow)
-            
-        } else {
+        guard self.model.isAllParamsNotEmpty(),
+            let photoRow = self.model.row(type: .photo) else {
             UBAlert.show(withTitle: "ui_alert_title_attention", andMessage: "error_all_fields_empty")
+            
+            return
         }
+        
+        guard let user = UBCUserDM.loadProfile(),
+            user.authorizedInTg else {
+                self.startActivityIndicator()
+                UBCDataProvider.shared.registerInChat { [weak self] success, authorizedInTg, url, appURL in
+                    self?.stopActivityIndicator()
+
+                    if authorizedInTg {
+                        self?.sendItem(photoRow: photoRow, id: self?.item?.id)
+                    } else {
+                        UBAlert.show(withTitle: "",
+                                     andMessage: "str_ubcoin_is_going_to_open_telegram".localizedString(),
+                                     withCompletionBlock: {
+                                        self?.navigationController?.pushViewController(UBCChatController(url: url, appURL: appURL), animated: true)
+                        })
+                    }
+                }
+
+                return
+        }
+        
+        self.sendItem(photoRow: photoRow, id: self.item?.id)
     }
     
     @objc
@@ -127,6 +135,12 @@ class UBCSellController: UBViewController {
     }
     
     override func rightBarButtonClick(_ sender: Any!) {
+        if self.item != nil {
+            self.buttonPressed()
+            
+            return
+        }
+        
         self.tableView.emptyView.isHidden = true
         self.buttonView.isHidden = false
         self.navigationContainer.rightImageTitle = nil
@@ -139,22 +153,22 @@ class UBCSellController: UBViewController {
         }
     }
     
-    private func sendItem(photoRow: UBCSellCellDM) {
-        guard let photos = photoRow.data as? [UIImage], photos.count > 0 else { return }
+    private func sendItem(photoRow: UBCSellCellDM, id: String?) {
+        guard var photos = photoRow.data as? [Any], photos.count > 0 else { return }
         
         self.startActivityIndicator()
         
         let myGroup = DispatchGroup()
         
-        var images = [String]()
-        
-        for photo in photos {
-            myGroup.enter()
+        for index in 0..<photos.count {
+            let photo = photos[index]
             
-            UBCDataProvider.shared.uploadImage(photo) { success, url in
-                if success {
-                    if let url = url {
-                        images.append(url)
+            if let photo = photo as? UIImage {
+                myGroup.enter()
+                
+                UBCDataProvider.shared.uploadImage(photo) { success, url in
+                    if success, let url = url {
+                        photos[index] = url
                     }
                     
                     myGroup.leave()
@@ -165,18 +179,28 @@ class UBCSellController: UBViewController {
         myGroup.notify(queue: .main) {
             var params = self.model.allFilledParams()
             
-            params["images"] = images
+            if let id = id {
+                params["id"] = id
+            }
+            
+            params["images"] = photos
             
             UBCDataProvider.shared.sellItem(params) { [weak self] success in
                 self?.stopActivityIndicator()
                 
-                if success {
-                    self?.tableView.emptyView.isHidden = false
-                    self?.buttonView.isHidden = true
-                    self?.navigationContainer.rightImageTitle = "general_close"
-                    self?.updateBarButtons()
-                    self?.model.sections = []
-                    self?.tableView.reloadData()
+                guard let `self` = self, success else { return }
+                
+                if self.item == nil {
+                    self.tableView.emptyView.isHidden = false
+                    self.buttonView.isHidden = true
+                    self.navigationContainer.rightImageTitle = "general_close"
+                    self.updateBarButtons()
+                    self.model.sections = []
+                    self.tableView.reloadData()
+                } else {
+                    if let navigation = self.navigationController as? UBNavigationController {
+                        navigation.pop(to: UBCMarketController(), animated: true)
+                    }
                 }
             }
         }
@@ -209,11 +233,23 @@ extension UBCSellController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return ZERO_HEIGHT
+        let section = self.model.sections[section]
+        
+        return section.footerHeight
+    }
+    
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        let section = self.model.sections[section]
+        
+        return section.footerTitle
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return UIView()
+        if self.tableView(tableView, titleForFooterInSection: section) == nil {
+            return UIView()
+        } else {
+            return nil
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -249,21 +285,11 @@ extension UBCSellController: UITableViewDataSource, UITableViewDelegate {
         let section = self.model.sections[indexPath.section]
         guard var row = section.rows[indexPath.row] as? UBCSellCellDM else { return }
         
-        if row.type == .category, let content = row.selectContent, content.count > 0 {
-            var selected: Int?
-            if let selectedString = row.sendData as? String {
-                for i in 0..<content.count {
-                    if content[i].id == selectedString {
-                        selected = i
-                        break
-                    }
-                }
-            }
-            
-            let controller = UBCSelectionController(title: row.placeholder, content: content, selected: selected)
-            controller.completion = { [weak self] index in
-                row.data = content[index].name
-                row.sendData = content[index].id
+        if row.type == .category {
+            let controller = UBCSelectionController(title: row.placeholder, selected: row.sendData as? String)
+            controller.completion = { [weak self] category in
+                row.data = category.name
+                row.sendData = category.id
                 self?.model.updateRow(row)
                 self?.tableView.reloadData()
                 self?.navigationController?.popViewController(animated: true)
@@ -340,7 +366,54 @@ extension UBCSellController: UBCSTextCellDelegate {
     }
     
     func updatedRow(_ row: UBCSellCellDM) {
-        self.model.updateRow(row)
+        var updateRow = row
+        
+        if updateRow.reloadButtonActive,
+            let row = self.model.row(type: updateRow.type == .price ? .priceUBC : .price) {
+            updateRow = row
+        } else {
+            self.model.updateRow(updateRow)
+        }
+        
+        var updatedType: UBCSellCellType?
+        var from = "UBC"
+        var to = "USD"
+        
+        if updateRow.type == .price {
+            updatedType = .priceUBC
+            swap(&from, &to)
+        } else if updateRow.type == .priceUBC {
+            updatedType = .price
+        }
+        
+        guard let newType = updatedType, let amountStr = updateRow.data as? String else { return }
+        
+        let amount = Double(amountStr)
+        
+        var newRow = self.model.row(type: newType)
+        newRow?.placeholder = amount != nil ? "str_convertation_in_progress".localizedString() : ""
+        newRow?.data = nil
+        newRow?.sendData = nil
+        newRow?.isEditable = amount == nil
+        newRow?.reloadButtonActive = false
+        if let indexPath = self.model.updateRow(newRow) {
+            self.tableView.reloadSections([indexPath.section], with: .none)
+        }
+        
+        guard let sendAmount = amount else { return }
+        
+        self.task?.cancel()
+        self.task = UBCDataProvider.shared.convert(fromCurrency: from, toCurrency: to, withAmount: NSNumber(value: sendAmount)) { [weak self] success, amount in
+            var newRow = self?.model.row(type: newType)
+            newRow?.placeholder = ""
+            newRow?.data = amount?.stringValue
+            newRow?.sendData = amount?.stringValue
+            newRow?.reloadButtonActive = !success
+            newRow?.isEditable = true
+            if let indexPath = self?.model.updateRow(newRow) {
+                self?.tableView.reloadSections([indexPath.section], with: .none)
+            }
+        }
     }
 }
 
@@ -349,7 +422,12 @@ extension UBCSellController: UIImagePickerControllerDelegate, UINavigationContro
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            self.model.updatePhotoRow(image: image)
+            var row = self.model.row(type: .photo)
+            if var data = row?.data as? [Any] {
+                data.append(image)
+                row?.data = data
+            }
+            self.model.updateRow(row)
             self.tableView.reloadData()
         }
 

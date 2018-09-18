@@ -17,14 +17,11 @@ final class UBCPhotosController: UBViewController {
     
     private var selectedIndex = 0 {
         didSet {
-            var image: UIImage?
-            if let array = self.row?.data as? [UIImage], array.count > self.selectedIndex, self.selectedIndex >= 0 {
-                image = array[self.selectedIndex]
-            } else {
-                image = nil
-            }
+            self.imageView.image = nil
+            self.row?.imageForIndex(index: self.selectedIndex, completion: { [weak self] image in
+                self?.imageView.image = image
+            })
             
-            self.imageView.image = image
             self.tableView.reloadData()
         }
     }
@@ -99,7 +96,7 @@ final class UBCPhotosController: UBViewController {
         self.init()
         
         self.model = model
-        self.row = model.photoRow()
+        self.row = model.row(type: .photo)
         self.startIndex = index
     }
     
@@ -123,7 +120,7 @@ final class UBCPhotosController: UBViewController {
     
     @objc
     private func removePhoto() {
-        guard var data = self.row?.data as? [UIImage], self.selectedIndex >= 0, data.count > self.selectedIndex else { return }
+        guard var data = self.row?.data as? [Any], self.selectedIndex >= 0, data.count > self.selectedIndex else { return }
         
         data.remove(at: self.selectedIndex)
         self.row?.data = data
@@ -207,7 +204,7 @@ extension UBCPhotosController: UIImagePickerControllerDelegate, UINavigationCont
             self.dismiss(animated: true, completion: nil)
         }
         
-        guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage, var data = self.row?.data as? [UIImage] else { return }
+        guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage, var data = self.row?.data as? [Any] else { return }
         
         data.append(image)
         self.row?.data = data

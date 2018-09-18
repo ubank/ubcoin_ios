@@ -116,7 +116,7 @@
             break;
             
         case HUBGeneralButtonTypeWhiteWithRedTitle:
-            self.titleColor = [UIColor colorWithHexString:@"e93754"];
+            self.titleColor = RED_COLOR;
             self.backgroundColor = UIColor.whiteColor;
             break;
             

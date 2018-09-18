@@ -30,4 +30,31 @@
     return self;
 }
 
+- (NSAttributedString *)info
+{
+    NSTextAttachment *tgIcon = NSTextAttachment.new;
+    tgIcon.image = [UIImage imageNamed:@"icTg"];
+    tgIcon.bounds = CGRectMake(0, (UBFont.descFont.pointSize - tgIcon.image.size.height), tgIcon.image.size.width, tgIcon.image.size.height);
+    
+    NSMutableAttributedString *info = [NSMutableAttributedString.alloc initWithAttributedString:[NSAttributedString attributedStringWithAttachment:tgIcon]];
+    
+    NSString *text = [NSString stringWithFormat:@" %@", self.name];
+    [info appendAttributedString:[NSAttributedString.alloc initWithString:text attributes:@{NSForegroundColorAttributeName: UBColor.descColor, NSFontAttributeName: UBFont.descFont}]];
+    
+    return info;
+}
+
+- (UBTableViewRowData *)rowData
+{
+    UBTableViewRowData *data = UBTableViewRowData.new;
+    data.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    data.data = self;
+    data.title = self.name;
+    data.attributedDesc = self.info;
+    data.iconURL = self.avatarURL;
+    data.icon = [UIImage imageNamed:@"def_prof"];
+    data.height = 80;
+    return data;
+}
+
 @end

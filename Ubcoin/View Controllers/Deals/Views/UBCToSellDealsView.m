@@ -41,25 +41,150 @@
 {
     __weak typeof(self) weakSelf = self;
     [UBCDataProvider.sharedProvider dealsToSellListWithPageNumber:self.pageNumber
-                                              withCompletionBlock:^(BOOL success, NSArray *deals, BOOL canLoadMore)
+                                              withCompletionBlock:^(BOOL success, NSArray *items, BOOL canLoadMore)
      {
          if (success)
          {
              weakSelf.tableView.canLoadMore = canLoadMore;
          }
-         [weakSelf handleResponse:deals];
+         [weakSelf handleResponse:items];
      }];
+}
+
+- (void)handleResponse:(NSArray *)deals
+{
+    [self.tableView.refreshControll endRefreshing];
+    if (deals)
+    {
+        if (self.pageNumber == 0)
+        {
+            self.items = [NSMutableArray array];
+        }
+        [self.items addObjectsFromArray:deals];
+        self.pageNumber++;
+    }
+    self.tableView.emptyView.hidden = self.items.count > 0;
+    [self.tableView updateWithSectionsData:[self sections]];
+}
+
+- (NSArray *)sections
+{
+    NSMutableArray *sections = [NSMutableArray array];
+    
+    NSSet *statuses = [NSSet setWithArray:[self.items valueForKeyPath:@"data.status"]];
+    NSArray *sortedStatuses = [statuses.allObjects sortedArrayUsingSelector:@selector(compare:)];
+    for (NSNumber *statusNumber in sortedStatuses)
+    {
+        UBCItemStatus status = (UBCItemStatus)statusNumber.integerValue;
+        UBTableViewSectionData *section = [self sectionForStatus:status
+                                                       withTitle:[UBCGoodDM titleForStatus:status]];
+        if (section)
+        {
+            [sections addObject:section];
+        }
+    }
+    
+    return sections;
+}
+
+- (NSArray *)itemsWithStatus:(UBCItemStatus)status
+{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self.data.status == %d", status];
+    return [self.items filteredArrayUsingPredicate:predicate];
+}
+
+- (UBTableViewSectionData *)sectionForStatus:(UBCItemStatus)status withTitle:(NSString *)title
+{
+    NSArray *items = [self itemsWithStatus:status];
+    if (items.count > 0)
+    {
+        UBTableViewSectionData *section = UBTableViewSectionData.new;
+        section.headerTitle = UBLocalizedString(title, nil);
+        section.rows = items;
+        
+        return section;
+    }
+    
+    return nil;
+}
+
+#pragma mark -
+
+- (NSAttributedString *)infoStringWithItem:(UBCGoodDM *)item
+{
+    switch (item.status)
+    {
+        case UBCItemStatusActive:
+            return [self infoStringWithDeals:item.deals];
+        case UBCItemStatusBlocked:
+            return [NSAttributedString attributedWithString:UBLocalizedString(@"str_item_status_blocked", nil)
+                                                       font:UBFont.descFont
+                                                      color:RED_COLOR
+                                                  alignment:NSTextAlignmentLeft];
+        case UBCItemStatusReserved:
+        {
+            UBCDealDM *deal = [item activeDeals].firstObject;
+            NSString *string = [NSString stringWithFormat:@"%@ %@", UBLocalizedString(@"str_deal_confirmed_by", nil), deal.buyer.name];
+            return [NSAttributedString attributedWithString:string
+                                                       font:UBFont.descFont
+                                                      color:UBColor.descColor
+                                                  alignment:NSTextAlignmentLeft];
+        }
+        default:
+            return nil;
+    }
+}
+
+- (NSAttributedString *)infoStringWithDeals:(NSArray *)deals
+{
+    if (deals.count > 0)
+    {
+        if (deals.count == 1)
+        {
+            UBCDealDM *deal = deals.firstObject;
+            return [self infoStringWithString:deal.buyer.name];
+        }
+        else
+        {
+            NSString *text = [NSString stringWithFormat:@" %d %@", (int)deals.count, UBLocalizedString(@"str_active_buyers", nil)];
+            return [self infoStringWithString:text];
+        }
+    }
+    return nil;
+}
+
+- (NSAttributedString *)infoStringWithString:(NSString *)string
+{
+    NSTextAttachment *tgIcon = NSTextAttachment.new;
+    tgIcon.image = [UIImage imageNamed:@"icDialog"];
+    tgIcon.bounds = CGRectMake(0, (UBFont.descFont.pointSize - tgIcon.image.size.height) - 3, tgIcon.image.size.width, tgIcon.image.size.height);
+    
+    NSMutableAttributedString *info = [NSMutableAttributedString.alloc initWithAttributedString:[NSAttributedString attributedStringWithAttachment:tgIcon]];
+    
+    NSString *text = [NSString stringWithFormat:@" %@", string];
+    [info appendAttributedString:[NSAttributedString.alloc initWithString:text attributes:@{NSForegroundColorAttributeName: UBColor.descColor, NSFontAttributeName: UBFont.descFont}]];
+    
+    return info;
 }
 
 #pragma mark - UBDefaultTableViewDelegate
 
 - (void)layoutCell:(UBDefaultTableViewCell *)cell forData:(UBTableViewRowData *)data indexPath:(NSIndexPath *)indexPath
 {
-    UBCDealDM *deal = data.data;
+    UBCGoodDM *item = data.data;
     
     UBCDealCell *dealCell = (UBCDealCell *)cell;
-    dealCell.info.attributedText = [self infoStringWithString:deal.buyer.name];
-    [dealCell setLocation:deal.item.location];
+    dealCell.info.attributedText = [self infoStringWithItem:item];
+    [dealCell setLocation:item.location];
+}
+
+- (void)didSelectData:(UBTableViewRowData *)data indexPath:(NSIndexPath *)indexPath
+{
+    if ([self.delegate respondsToSelector:@selector(showItem:)])
+    {    
+        UBCGoodDM *item = data.data;
+        [self.delegate showItem:item];
+    }
 }
 
 @end

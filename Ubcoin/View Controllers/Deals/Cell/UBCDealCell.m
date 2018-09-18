@@ -19,6 +19,8 @@
         self.icon.cornerRadius = 10;
         self.iconWidth = 75;
         self.iconHeight = 75;
+        self.icon.contentMode = UIViewContentModeScaleAspectFill;
+        self.iconContentModeSetted = YES;
         
         self.distanceLabel = UBCInfoLabel.new;
         [self.icon addSubview:self.distanceLabel];

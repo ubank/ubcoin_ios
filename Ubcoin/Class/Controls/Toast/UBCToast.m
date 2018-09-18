@@ -21,7 +21,7 @@
                                       backgroundColor:backgroundColor
                                           andMaxWidth:window.width - 30];
     toast.originX = (window.width - toast.width) / 2;
-    toast.originY = 100;
+    toast.originY = 80;
     [window addSubview:toast];
     
     [toast show];
@@ -35,7 +35,7 @@
                                            titleColor:UIColor.whiteColor
                                       backgroundColor:[UIColor colorWithWhite:0 alpha:0.7] andMaxWidth:window.width - 30];
     toast.originX = (window.width - toast.width) / 2;
-    toast.originY = 100;
+    toast.originY = 80;
     [window addSubview:toast];
     
     [toast show];

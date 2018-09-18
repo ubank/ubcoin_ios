@@ -11,65 +11,107 @@ import UIKit
 class UBCSellDM: NSObject {
     
     var sections = UBCSellDM.sellActions()
-
-    class func sellActions() -> [UBTableViewSectionData] {
+    var item: UBCGoodDM?
+    
+    convenience init(item: UBCGoodDM) {
+        self.init()
+        
+        self.item = item
+        self.sections = UBCSellDM.sellActions(good: item)
+    }
+    
+    class func sellActions(good: UBCGoodDM? = nil) -> [UBTableViewSectionData] {
         var sections = [UBTableViewSectionData]()
         
         let photoSection = UBTableViewSectionData()
         photoSection.headerHeight = SEPARATOR_HEIGHT
         photoSection.headerTitle = " "
-        let photos = UBCSellCellDM(type: .photo)
+        
+        var photos = UBCSellCellDM(type: .photo)
+        photos.data = good?.images ?? []
+        
         photoSection.rows = [photos]
         sections.append(photoSection)
         
         let aboutSection = UBTableViewSectionData()
         aboutSection.headerHeight = UBCConstant.headerHeight
         aboutSection.headerTitle = "str_sell_about".localizedString()
-        let title = UBCSellCellDM(type: .title)
-        let category = UBCSellCellDM(type: .category)
-        let price = UBCSellCellDM(type: .price)
-        aboutSection.rows = [title, category, price]
+        
+        var title = UBCSellCellDM(type: .title)
+        title.data = good?.title
+        title.sendData = good?.title
+        
+        var category = UBCSellCellDM(type: .category)
+        category.data = good?.category?.name
+        category.sendData = good?.category?.id
+        
+        aboutSection.rows = [title, category]
         sections.append(aboutSection)
+        
+        let priceDollarSection = UBTableViewSectionData()
+        priceDollarSection.headerHeight = UBCConstant.headerHeight
+        priceDollarSection.headerTitle = "str_price_in".localizedString() + " $"
+        priceDollarSection.footerTitle = "Your price will be fixed in UBC"
+        priceDollarSection.footerHeight = 25
+        
+        var price = UBCSellCellDM(type: .price)
+        price.data = good?.priceInCurrency?.stringValue
+        price.sendData = good?.priceInCurrency?.stringValue
+        
+        priceDollarSection.rows = [price]
+        sections.append(priceDollarSection)
+        
+        let priceUBCSection = UBTableViewSectionData()
+        priceUBCSection.headerHeight = UBCConstant.headerHeight
+        priceUBCSection.headerTitle = "str_price_in".localizedString() + " UBC"
+        
+        var priceUBC = UBCSellCellDM(type: .priceUBC)
+        priceUBC.data = good?.price?.stringValue
+        priceUBC.sendData = good?.price?.stringValue
+        
+        priceUBCSection.rows = [priceUBC]
+        sections.append(priceUBCSection)
         
         let descSection = UBTableViewSectionData()
         descSection.headerHeight = UBCConstant.headerHeight
         descSection.headerTitle = "str_sell_desc".localizedString()
-        let desc = UBCSellCellDM(type: .desc)
+        
+        var desc = UBCSellCellDM(type: .desc)
+        desc.data = good?.desc
+        desc.sendData = good?.desc
+        
         descSection.rows = [desc]
         sections.append(descSection)
 
         let locationSection = UBTableViewSectionData()
         locationSection.headerHeight = UBCConstant.headerHeight
         locationSection.headerTitle = "str_sell_location".localizedString()
-        let location = UBCSellCellDM(type: .location)
+        
+        var location = UBCSellCellDM(type: .location)
+        if let loc = good?.location, let text = good?.locationText {
+            location.data = text
+            location.sendData = ["text": text, "longPoint": loc.coordinate.longitude, "latPoint": loc.coordinate.latitude]
+        }
+        
         locationSection.rows = [location]
         sections.append(locationSection)
         
         return sections
     }
     
-    func setup(categories: [Any]?) {
-        guard let categoriesArray = categories as? [UBCCategoryDM] else { return }
+    @discardableResult
+    func updateRow(_ row: UBCSellCellDM?) -> IndexPath? {
+        guard let row = row else { return nil }
         
-        for section in sections {
-            for i in 0..<section.rows.count {
-                if var row = section.rows[i] as? UBCSellCellDM, row.type == .category {
-                    row.selectContent = categoriesArray
-                    section.rows[i] = row
-                }
-            }
-        }
-    }
-    
-    func updateRow(_ row: UBCSellCellDM?) {
-        guard let row = row else { return }
-        
-        for section in sections {
+        for j in 0..<sections.count {
+            let section = sections[j]
             for i in 0..<section.rows.count {
                 if let oldRow = section.rows[i] as? UBCSellCellDM, oldRow.type == row.type {
                     section.rows[i] = row
                     
-                    guard row.type == .location, var lastRow = section.rows.last as? UBCSellCellDM else { return }
+                    guard row.type == .location, var lastRow = section.rows.last as? UBCSellCellDM else {
+                        return IndexPath(row: i, section: j)
+                    }
                 
                     if lastRow.type != .locationMap {
                         lastRow = UBCSellCellDM(type: .locationMap)
@@ -78,31 +120,20 @@ class UBCSellDM: NSObject {
                     
                     lastRow.sendData = row.sendData
                     section.rows[section.rows.count-1] = lastRow
-                }
-            }
-        }
-    }
-    
-    func updatePhotoRow(image: UIImage) {
-        for section in sections {
-            for i in 0..<section.rows.count {
-                if var row = section.rows[i] as? UBCSellCellDM, row.type == .photo {
-                    if var data = row.data as? [UIImage] {
-                        data.append(image)
-                        row.data = data
-                    }
                     
-                    section.rows[i] = row
+                    return IndexPath(row: i, section: j)
                 }
             }
         }
+        
+        return nil
     }
     
     func removePhoto(index: Int) {
         for section in sections {
             for i in 0..<section.rows.count {
                 if var row = section.rows[i] as? UBCSellCellDM, row.type == .photo {
-                    if var data = row.data as? [UIImage], index >= 0, index < data.count {
+                    if var data = row.data as? [Any], index >= 0, index < data.count {
                         data.remove(at: index)
                         row.data = data
                     }
@@ -113,10 +144,10 @@ class UBCSellDM: NSObject {
         }
     }
     
-    func photoRow() -> UBCSellCellDM? {
+    func row(type: UBCSellCellType) -> UBCSellCellDM? {
         for section in sections {
             for i in 0..<section.rows.count {
-                if let row = section.rows[i] as? UBCSellCellDM, row.type == .photo {
+                if let row = section.rows[i] as? UBCSellCellDM, row.type == type {
                     return row
                 }
             }
@@ -128,7 +159,7 @@ class UBCSellDM: NSObject {
     func isAllParamsNotEmpty() -> Bool {
         for section in sections {
             for row in section.rows {
-                if let row = row as? UBCSellCellDM, !row.optional, row.sendData == nil, ((row.data as? [UIImage])?.count ?? 0) == 0 {
+                if let row = row as? UBCSellCellDM, !row.optional, row.sendData == nil, ((row.data as? [Any])?.count ?? 0) == 0 {
                     return false
                 }
             }
@@ -161,10 +192,9 @@ struct UBCSellCellDM {
     var sendData: Any?
     var placeholder: String
     var optional = false
+    var isEditable = true
     var keyboardType: UIKeyboardType = .default
-    
-    var selectContent: [UBCCategoryDM]?
-    var fieldInfo: String?
+    var reloadButtonActive = false
     
     init(type: UBCSellCellType) {
         self.type = type
@@ -173,24 +203,32 @@ struct UBCSellCellDM {
         self.className = type.className
         self.placeholder = type.placeholder
         
-        if type == .photo {
-            self.data = [UIImage]()
-        }
-        
         if type == .locationMap {
             self.optional = true
         }
         
-        if type == .price {
+        if type == .price || type == .priceUBC {
             self.keyboardType = .decimalPad
         }
-        
-        if type == .category {
-            self.selectContent = []
+    }
+    
+    func imageForIndex(index: Int, completion: @escaping (UIImage?) -> Void) {
+        guard let array = self.data as? [Any], array.count > index, index >= 0 else {
+            completion(nil)
+            
+            return
         }
         
-        if type == .price {
-            self.fieldInfo = "UBC"
+        let image = array[index]
+        
+        if let image = image as? UIImage {
+            completion(image)
+        } else if let imageStr = image as? String {
+            SDWebImageManager.shared().loadImage(with: URL(string: imageStr), options: .highPriority, progress: nil) { image, _, _, _, _, _ in
+                completion(image)
+            }
+        } else {
+            completion(nil)
         }
     }
 }
@@ -200,6 +238,7 @@ enum UBCSellCellType {
     case title
     case category
     case price
+    case priceUBC
     case desc
     case location
     case locationMap
@@ -210,7 +249,7 @@ enum UBCSellCellType {
                 return UBCSPhotoTableViewCell.className
             } else if self == .category || self == .location {
                 return UBCSSelectionTableViewCell.className
-            } else if self == .price || self == .title {
+            } else if self == .price || self == .title || self == .priceUBC {
                 return UBCSTextFieldTableViewCell.className
             } else if self == .locationMap {
                 return UBCSMapTableViewCell.className
@@ -226,8 +265,6 @@ enum UBCSellCellType {
                 return "str_sell_placeholder_category".localizedString()
             } else if self == .location {
                 return "str_sell_placeholder_location".localizedString()
-            } else if self == .price {
-                return "str_sell_placeholder_price".localizedString()
             } else if self == .title {
                 return "str_sell_placeholder_title".localizedString()
             } else {
@@ -245,6 +282,8 @@ enum UBCSellCellType {
             } else if self == .category {
                 return "categoryId"
             } else if self == .price {
+                return "price$"
+            } else if self == .priceUBC {
                 return "price"
             } else if self == .desc {
                 return "description"

@@ -58,8 +58,17 @@
     UBCDealDM *deal = data.data;
     
     UBCDealCell *dealCell = (UBCDealCell *)cell;
-    dealCell.info.attributedText = [self infoStringWithString:deal.seller.name];
+    dealCell.info.attributedText = deal.seller.info;
     [dealCell setLocation:deal.item.location];
+}
+
+- (void)didSelectData:(UBTableViewRowData *)data indexPath:(NSIndexPath *)indexPath
+{
+    if ([self.delegate respondsToSelector:@selector(openChatForItem:)])
+    {    
+        UBCDealDM *deal = data.data;
+        [self.delegate openChatForItem:deal.item];
+    }
 }
 
 @end

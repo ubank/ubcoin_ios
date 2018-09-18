@@ -21,7 +21,7 @@
 
 #import "Ubcoin-Swift.h"
 
-@interface UBCGoodDetailsController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UBCGoodsCollectionViewDelegate>
+@interface UBCGoodDetailsController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UBCGoodsCollectionViewDelegate, UBCBuyersViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scroll;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -29,16 +29,25 @@
 @property (weak, nonatomic) IBOutlet UBCInfoLabel *photoCount;
 @property (weak, nonatomic) IBOutlet UBButton *favoriteButton;
 @property (weak, nonatomic) IBOutlet HUBLabel *price;
+@property (weak, nonatomic) IBOutlet HUBLabel *priceInCurrency;
 @property (weak, nonatomic) IBOutlet HUBLabel *category;
 @property (weak, nonatomic) IBOutlet HUBLabel *itemTitle;
 @property (weak, nonatomic) IBOutlet HUBLabel *desc;
 @property (weak, nonatomic) IBOutlet UBCGoodsCollectionView *relatedItemsView;
+
 @property (weak, nonatomic) IBOutlet UIImageView *sellerAvatar;
 @property (weak, nonatomic) IBOutlet HUBLabel *sellerName;
 @property (weak, nonatomic) IBOutlet UBCStarsView *sellerRating;
 @property (weak, nonatomic) IBOutlet HUBLabel *sellerDesc;
+@property (weak, nonatomic) IBOutlet UIView *sellerView;
+@property (weak, nonatomic) IBOutlet UBCBuyersView *buyersView;
+
 @property (weak, nonatomic) IBOutlet UBCMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIView *locationView;
+@property (weak, nonatomic) IBOutlet UIView *connectToSellerView;
+@property (weak, nonatomic) IBOutlet UIView *warningView;
+@property (weak, nonatomic) IBOutlet UIImageView *warningIcon;
+@property (weak, nonatomic) IBOutlet HUBLabel *warningLabel;
 
 @property (strong, nonatomic) HUBNavigationBarView *navBarView;
 
@@ -86,7 +95,7 @@
 
 - (void)setupNavBar
 {
-    self.navigationContainer.rightImageTitle = @"general_export";
+    self.navigationContainer.rightImageTitle = [self navbarIcon];
     self.navigationContainer.titleTextColor = self.navBarView.isTransparent ? UIColor.whiteColor : UBColor.navigationTitleColor;
     self.navigationContainer.buttonsImageColor = self.navBarView.isTransparent ? UIColor.whiteColor : UBColor.navigationTitleColor;;
     self.navigationContainer.clearColorNavigation = YES;
@@ -111,6 +120,7 @@
     
     self.category.textColor = UBCColor.green;
     self.desc.textColor = UBColor.titleColor;
+    self.priceInCurrency.textColor = UBColor.descColor;
     
     self.scroll.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     self.collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
@@ -124,35 +134,112 @@
     self.category.text = self.good.category.name;
     self.desc.text = self.good.desc;
     self.price.text = [NSString stringWithFormat:@"%@ UBC", self.good.price.priceString];
+    [self setupPriceInCurrency];
     
     self.locationView.hidden = !self.good.location;
     self.mapView.location = self.good.location;
     
     self.favoriteButton.image = [UIImage imageNamed:[NSString stringWithFormat:@"icFav%@", self.good.isFavorite ? @"B" : @"A"]];
+    self.favoriteButton.hidden = self.good.isMyItem;
     [self.photoCount setupWithImage:[UIImage imageNamed:@"market_photo"]
                             andText:[NSString stringWithFormat:@"1/%d", (int)self.good.images.count]];
     
     [self setupSellerView:self.good.seller];
+    [self setupWarningView];
+}
+
+- (void)setupPriceInCurrency
+{
+    if (self.good.priceInCurrency && self.good.currency)
+    {
+        self.priceInCurrency.text = [NSString stringWithFormat:@"~%@ %@", self.good.priceInCurrency.priceStringWithoutCoins, self.good.currency];
+    }
+    else
+    {
+        self.priceInCurrency.text = @"";
+    }
+}
+
+- (void)setupWarningView
+{
+    switch (self.good.status)
+    {
+        case UBCItemStatusCheck:
+        case UBCItemStatusChecking:
+        {
+            self.warningView.hidden = NO;
+            
+            UIColor *color = [UIColor colorWithHexString:@"ea9121"];
+            self.warningView.backgroundColor = [color colorWithAlphaComponent:0.2];
+            self.warningLabel.textColor = color;
+            self.warningLabel.text = UBLocalizedString(@"str_status_check", nil);
+            self.warningIcon.image = [UIImage imageNamed:@"status_attention"];
+        }
+            break;
+        case UBCItemStatusBlocked:
+        {
+            self.warningView.hidden = NO;
+            
+            UIColor *color = RED_COLOR;
+            self.warningView.backgroundColor = [color colorWithAlphaComponent:0.2];
+            self.warningLabel.textColor = color;
+            self.warningLabel.text = UBLocalizedString(@"str_status_blocked", nil);
+            self.warningIcon.image = [UIImage imageNamed:@"status_blocked"];
+        }
+            break;
+        case UBCItemStatusDeactivated:
+        {
+            self.warningView.hidden = NO;
+            
+            self.warningView.backgroundColor = [UIColor colorWithHexString:@"e8e8e8"];
+            self.warningLabel.textColor = [UIColor colorWithHexString:@"5b676d"];
+            self.warningLabel.text = UBLocalizedString(@"str_status_deactivated", nil);
+            self.warningIcon.image = [UIImage imageNamed:@"status_deactivated"];
+        }
+            break;
+        default:
+            self.warningView.hidden = YES;
+            break;
+    }
 }
 
 - (void)setupSellerView:(UBCSellerDM *)seller
 {
-    [self.sellerAvatar sd_setImageWithURL:[NSURL URLWithString:seller.avatarURL]
-                         placeholderImage:[UIImage imageNamed:@"def_prof"]];
-    
-    self.sellerName.text = seller.name;
-    [self.sellerRating showStars:seller.rating.unsignedIntegerValue];
-    
-    self.sellerDesc.text = [NSString stringWithFormat:@"%lu items     Reviews(%lu)", (unsigned long)seller.itemsCount, (unsigned long)seller.reviewsCount];
+    if ([self.good isMyItem])
+    {
+        self.connectToSellerView.hidden = YES;
+        self.sellerView.hidden = YES;
+        self.buyersView.hidden = NO;
+        
+        [self.buyersView updateWithDeals:self.good.deals];
+    }
+    else
+    {
+        self.connectToSellerView.hidden = NO;
+        self.sellerView.hidden = NO;
+        self.buyersView.hidden = YES;
+        
+        [self.sellerAvatar sd_setImageWithURL:[NSURL URLWithString:seller.avatarURL]
+                             placeholderImage:[UIImage imageNamed:@"def_prof"]];
+        
+        self.sellerName.text = seller.name;
+        [self.sellerRating showStars:seller.rating.unsignedIntegerValue];
+        
+        self.sellerDesc.text = [NSString stringWithFormat:@"%lu items     Reviews(%lu)", (unsigned long)seller.itemsCount, (unsigned long)seller.reviewsCount];
+    }
 }
-     
+
 #pragma mark - Actions
 
 - (void)rightBarButtonClick:(id)sender
 {
-    if (self.good.shareURL.isNotEmpty)
+    if ([self.good isMyItem])
     {
-        [self shareActivityItems:@[self.good.shareURL] withSubject:@"" withSender:sender withCompletionBlock:nil];
+        [self showItemOptions];
+    }
+    else
+    {
+        [self shareItem];
     }
 }
 
@@ -179,6 +266,137 @@
     {
         [UBAlert showAlertWithTitle:nil andMessage:@"str_you_need_to_be_logged_in"];
     }
+}
+
+- (IBAction)showTermsAndConditions
+{
+    if (self.good.status == UBCItemStatusBlocked)
+    {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:USER_AGREEMENT_LINK]
+                                           options:@{}
+                                 completionHandler:nil];
+    }
+}
+
+#pragma mark -
+
+- (void)showItemOptions
+{
+    [UBAlert showActionSheetWithTitle:nil message:nil actions:[self itemOptions] sourceView:nil];
+}
+
+- (void)shareItem
+{
+    if (self.good.shareURL.isNotEmpty)
+    {
+        [self shareActivityItems:@[self.good.shareURL] withSubject:@"" withSender:nil withCompletionBlock:nil];
+    }
+}
+
+#pragma mark - Item options
+
+- (NSString *)navbarIcon
+{
+    if ([self.good isMyItem])
+    {
+        switch (self.good.status)
+        {
+            case UBCItemStatusChecking:
+            case UBCItemStatusReserved:
+            case UBCItemStatusSold:
+                return nil;
+                
+            default:
+                return @"general_options";
+        }
+    }
+    else
+    {
+        return @"general_export";
+    }
+}
+
+- (NSArray *)itemOptions
+{
+    NSMutableArray *actions = [NSMutableArray array];
+    switch (self.good.status)
+    {
+        case UBCItemStatusChecking:
+        case UBCItemStatusReserved:
+        case UBCItemStatusSold:
+            return nil;
+            
+        case UBCItemStatusBlocked:
+        case UBCItemStatusCheck:
+            [actions addObject:[self editAction]];
+            break;
+        case UBCItemStatusDeactivated:
+            [actions addObject:[self editAction]];
+            [actions addObject:[self activateAction]];
+            break;
+        case UBCItemStatusActive:
+            [actions addObject:[self editAction]];
+            [actions addObject:[self deactivateAction]];
+            break;
+    }
+    
+    return actions;
+}
+
+- (UIAlertAction *)editAction
+{
+    __weak typeof(self)weakSelf = self;
+    return [UIAlertAction actionWithTitle:UBLocalizedString(@"ui_button_edit", nil)
+                                    style:UIAlertActionStyleDefault
+                                  handler:^(UIAlertAction * _Nonnull action)
+            {
+                UBCSellController *controller = [UBCSellController.alloc initWithItem:weakSelf.good];
+                [weakSelf.navigationController pushViewController:controller animated:YES];
+            }];
+}
+
+- (UIAlertAction *)activateAction
+{
+    __weak typeof(self)weakSelf = self;
+    return [UIAlertAction actionWithTitle:UBLocalizedString(@"str_activate", nil)
+                                    style:UIAlertActionStyleDefault
+                                  handler:^(UIAlertAction * _Nonnull action)
+            {
+                [weakSelf startActivityIndicator];
+                [UBCDataProvider.sharedProvider activateItem:weakSelf.good.ID
+                                         withCompletionBlock:^(BOOL success, UBCGoodDM *item)
+                 {
+                     [weakSelf stopActivityIndicator];
+                     if (success)
+                     {
+                         weakSelf.good = item;
+                         [weakSelf setupContent];
+                         [UBAlert showAlertWithTitle:nil andMessage:@"str_the_listing_is_activated"];
+                     }
+                 }];
+            }];
+}
+
+- (UIAlertAction *)deactivateAction
+{
+    __weak typeof(self)weakSelf = self;
+    return [UIAlertAction actionWithTitle:UBLocalizedString(@"str_deactivate", nil)
+                                    style:UIAlertActionStyleDefault
+                                  handler:^(UIAlertAction * _Nonnull action)
+            {
+                [weakSelf startActivityIndicator];
+                [UBCDataProvider.sharedProvider deactivateItem:weakSelf.good.ID
+                                           withCompletionBlock:^(BOOL success, UBCGoodDM *item)
+                 {
+                     [weakSelf stopActivityIndicator];
+                     if (success)
+                     {
+                         weakSelf.good = item;
+                         [weakSelf setupContent];
+                         [UBAlert showAlertWithTitle:nil andMessage:@"str_the_listing_is_deactivated"];
+                     }
+                 }];
+            }];
 }
 
 #pragma mark - UICollectionView
@@ -224,6 +442,14 @@
 - (void)didSelectItem:(UBCGoodDM *)item
 {
     UBCGoodDetailsController *controller = [UBCGoodDetailsController.alloc initWithGood:item];
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+#pragma mark - UBCBuyersViewDelegate
+
+- (void)didSelectWithDeal:(UBCDealDM *)deal
+{
+    UBCChatController *controller = [[UBCChatController alloc] initWithDeal:deal];
     [self.navigationController pushViewController:controller animated:YES];
 }
 

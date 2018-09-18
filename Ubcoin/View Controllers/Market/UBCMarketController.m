@@ -42,6 +42,7 @@
         if (success)
         {
             [weakSelf.collectionView reloadData];
+            [weakSelf refreshControlUpdate];
         }
     }];
     
@@ -52,6 +53,13 @@
                                              selector:@selector(favoritesChanged:)
                                                  name:kNotificationFavoritesChanged
                                                object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [self.collectionView.refreshControl endRefreshing];
 }
 
 #pragma mark -

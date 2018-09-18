@@ -12,6 +12,8 @@
 
 + (NSURL *)goodsListWithPageNumber:(NSUInteger)page;
 + (NSURL *)categories;
++ (NSURL *)activateItem;
++ (NSURL *)deactivateItem;
 
 + (NSURL *)login;
 + (NSURL *)logout;
@@ -28,6 +30,7 @@
 + (NSURL *)commissionForAmount:(NSNumber *)amount;
 + (NSURL *)withdraw;
 + (NSURL *)topup;
++ (NSURL *)markets;
 
 + (NSURL *)transactionsListWithPageNumber:(NSUInteger)page;
 

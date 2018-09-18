@@ -16,12 +16,25 @@
 + (NSURL *)goodsListWithPageNumber:(NSUInteger)page
 {
     NSString *url = [SERVER_URL stringByAppendingFormat:@"items?page=%d&size=%d", (int)page, ITEMS_PAGE_SIZE];
+    url = [self addUserLocationToURL:url];
     return [NSURL URLWithString:url];
 }
 
 + (NSURL *)categories
 {
     NSString *url = [SERVER_URL stringByAppendingFormat:@"items/categories"];
+    return [NSURL URLWithString:url];
+}
+
++ (NSURL *)activateItem
+{
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"items/activate"];
+    return [NSURL URLWithString:url];
+}
+
++ (NSURL *)deactivateItem
+{
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"items/deactivate"];
     return [NSURL URLWithString:url];
 }
 
@@ -103,6 +116,12 @@
     return [NSURL URLWithString:url];
 }
 
++ (NSURL *)markets
+{
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"wallet/markets"];
+    return [NSURL URLWithString:url];
+}
+
 + (NSURL *)transactionsListWithPageNumber:(NSUInteger)page
 {
     NSString *url = [SERVER_URL stringByAppendingFormat:@"wallet/transactions?page=%d&size=%d", (int)page, ITEMS_PAGE_SIZE];
@@ -151,6 +170,20 @@
     NSString *url = [SERVER_URL stringByAppendingString:@"items"];
     
     return [NSURL URLWithString:url];
+}
+
+#pragma mark -
+
++ (NSString *)addUserLocationToURL:(NSString *)url
+{
+    CLLocation *location = UBLocationManager.sharedLocation.lastLocation;
+    if (location)
+    {
+        url = [url stringByAppendingString:[url containsString:@"?"] ? @"&" : @"?"];
+        url = [url stringByAppendingFormat:@"latPoint=%f&longPoint=%f", location.coordinate.latitude, location.coordinate.longitude];
+    }
+    
+    return url;
 }
 
 @end

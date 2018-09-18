@@ -7,6 +7,9 @@
 //
 
 #import "UBConnectionProvider.h"
+#import "UBCUserDM.h"
+#import "UBCKeyChain.h"
+#import "UBCAppDelegate.h"
 
 #import <AFNetworking/UIKit+AFNetworking.h>
 
@@ -122,10 +125,11 @@
         }
         else if ([responseObject[@"status"] isEqual:@401])
         {
-            if (showErrors)
-            {
-                [UBAlert showAlertWithTitle:@"ui_alert_title_attention" andMessage:@"error_unauthorized"];
-            }
+            [UBAlert showAlertWithTitle:@"ui_alert_title_attention" andMessage:@"error_unauthorized"];
+            
+            [UBCUserDM clearUserData];
+            [UBCKeyChain removeAuthorization];
+            [mainAppDelegate setupStack];
             
             if (completionBlock)
             {
