@@ -158,3 +158,5 @@
 "str_item_status_blocked" = "Blocked";
 "str_item_status_reserved" = "Reserved";
 "str_item_status_check" = "In moderation";
+
+"str_send_success" = "Your transaction has been broadcast to the network. This does not mean that it has been successfully sent. During times of extreme volume, it may take 3+ hours to send.";

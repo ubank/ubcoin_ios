@@ -50,7 +50,11 @@
          [weakSelf stopActivityIndicator];
          if ([result isEqualToString:@"0"])
          {
-             [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+             [UBAlert showAlertWithTitle:nil
+                              andMessage:UBLocalizedString(@"str_send_success", nil)
+                     withCompletionBlock:^{
+                         [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+                     }];
          }
          else if (message.isNotEmpty)
          {
