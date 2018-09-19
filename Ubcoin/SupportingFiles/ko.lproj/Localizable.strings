@@ -119,8 +119,10 @@
 "str_if_you_received_tokens_during_ico" = "만약 ICO 기간동안 토큰을 받았다면 ERC-20 지갑을 열람해보세요 ";
 "str_address_copied_to_clipboard" = "지갑주소가 복사되었습니다 ";
 
-"str_sell_success_title" = "등록하신 물건이 심사중입니다.";
-"str_sell_success_desc" = "심사 후 물건이 등록됩니다.";
+"str_sell_success_title" = "아이템 등록 성공";
+"str_sell_success_desc" = "시장에 아이템이 등록되었습니다";
+"str_sell_moderation_title" = "등록하신 물건이 심사중입니다.";
+"str_sell_moderation_desc" = "심사 후 물건이 등록됩니다.";
 "str_sell_about" = "정보";
 "str_sell_desc" = "내역";
 "str_sell_location" = "위치";

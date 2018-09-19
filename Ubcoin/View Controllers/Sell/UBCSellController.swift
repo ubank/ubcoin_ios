@@ -201,6 +201,18 @@ final class UBCSellController: UBViewController {
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: kNotificationItemChanged), object: item)
                 }
                 
+                switch item?.status {
+                case UBCItemStatusCheck,
+                     UBCItemStatusChecking:
+                    self.tableView.emptyView.icon.image = UIImage(named: "imgModeration")
+                    self.tableView.emptyView.title.text = "str_sell_moderation_title".localizedString()
+                    self.tableView.emptyView.desc.text = "str_sell_moderation_desc".localizedString()
+                default:
+                    self.tableView.emptyView.icon.image = UIImage(named: "imgPlaced")
+                    self.tableView.emptyView.title.text = "str_sell_success_title".localizedString()
+                    self.tableView.emptyView.desc.text = "str_sell_success_desc".localizedString()    
+                }
+                
                 self.editingFinished = true
                 self.tableView.emptyView.isHidden = false
                 self.buttonView.isHidden = true

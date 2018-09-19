@@ -119,8 +119,10 @@
 "str_if_you_received_tokens_during_ico" = "If you received tokens during ICO, go to your ERC-20 wallet";
 "str_address_copied_to_clipboard" = "Address copied to clipboard";
 
-"str_sell_success_title" = "Your listing is in moderation";
-"str_sell_success_desc" = "It will appear on the Market right after moderation process";
+"str_sell_success_title" = "Item successfully placed";
+"str_sell_success_desc" = "Your item placed on marketplace";
+"str_sell_moderation_title" = "Your listing is in moderation";
+"str_sell_moderation_desc" = "It will appear on the Market right after moderation process";
 "str_sell_about" = "About";
 "str_sell_desc" = "Description";
 "str_sell_location" = "Location";
