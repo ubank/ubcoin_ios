@@ -588,7 +588,7 @@
      }];
 }
 
-- (void)sellItem:(NSDictionary *)dictionary withCompletionBlock:(void (^)(BOOL))completionBlock
+- (void)sellItem:(NSDictionary *)dictionary withCompletionBlock:(void (^)(BOOL, UBCGoodDM *))completionBlock
 {
     NSMutableDictionary *full = dictionary.mutableCopy;
     full[@"agreement"] = @"true";
@@ -602,7 +602,12 @@
      {
          if (completionBlock)
          {
-             completionBlock(success);
+             UBCGoodDM *item;
+             if (success)
+             {
+                 item = [UBCGoodDM.alloc initWithDictionary:[responseObject removeNulls]];
+             }
+             completionBlock(success, item);
          }
      }];
 }

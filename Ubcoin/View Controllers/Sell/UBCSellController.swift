@@ -15,6 +15,13 @@ final class UBCSellController: UBViewController {
     private var item: UBCGoodDM?
     private var task: URLSessionDataTask?
     
+    private var editingFinished = false
+    fileprivate var isEditingMode: Bool {
+        get {
+            return self.item != nil
+        }
+    }
+    
     private lazy var tableView: UBTableView = { [unowned self] in
         let tableView = UBTableView(frame: .zero, style: .grouped)
         
@@ -64,7 +71,7 @@ final class UBCSellController: UBViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = self.item != nil ? "ui_button_edit" : "str_sell"
+        self.title = isEditingMode ? "ui_button_edit" : "str_sell"
 
         self.setupViews()
     }
@@ -135,7 +142,7 @@ final class UBCSellController: UBViewController {
     }
     
     override func rightBarButtonClick(_ sender: Any!) {
-        if self.item != nil {
+        if self.isEditingMode && !self.editingFinished {
             self.buttonPressed()
             
             return
@@ -185,23 +192,23 @@ final class UBCSellController: UBViewController {
             
             params["images"] = photos
             
-            UBCDataProvider.shared.sellItem(params) { [weak self] success in
+            UBCDataProvider.shared.sellItem(params) { [weak self] success, item in
                 self?.stopActivityIndicator()
                 
                 guard let `self` = self, success else { return }
                 
-                if self.item == nil {
-                    self.tableView.emptyView.isHidden = false
-                    self.buttonView.isHidden = true
-                    self.navigationContainer.rightImageTitle = "general_close"
-                    self.updateBarButtons()
-                    self.model.sections = []
-                    self.tableView.reloadData()
-                } else {
-                    if let navigation = self.navigationController as? UBNavigationController {
-                        navigation.pop(to: UBCMarketController(), animated: true)
-                    }
+                if self.isEditingMode {
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: kNotificationItemChanged), object: item)
                 }
+                
+                self.editingFinished = true
+                self.tableView.emptyView.isHidden = false
+                self.buttonView.isHidden = true
+                self.navigationContainer.hiddenBackButton = true
+                self.navigationContainer.rightImageTitle = "general_close"
+                self.updateBarButtons()
+                self.model.sections = []
+                self.tableView.reloadData()
             }
         }
     }

@@ -23,6 +23,7 @@ typedef enum
 } UBCItemStatus;
 
 static NSString * const kNotificationFavoritesChanged = @"kNotificationFavoritesChanged";
+static NSString * const kNotificationItemChanged = @"kNotificationItemChanged";
 
 @interface UBCGoodDM : NSObject
 

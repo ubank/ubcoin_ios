@@ -52,6 +52,6 @@
 - (void)registerInChatWithCompletionBlock:(void (^)(BOOL success, BOOL authorized, NSURL *url, NSURL *appURL))completionBlock;
 
 - (void)uploadImage:(UIImage *)image withCompletionBlock:(void (^)(BOOL success, NSString *url))completionBlock;
-- (void)sellItem:(NSDictionary *)dictionary withCompletionBlock:(void (^)(BOOL success))completionBlock;
+- (void)sellItem:(NSDictionary *)dictionary withCompletionBlock:(void (^)(BOOL success, UBCGoodDM *item))completionBlock;
 
 @end
