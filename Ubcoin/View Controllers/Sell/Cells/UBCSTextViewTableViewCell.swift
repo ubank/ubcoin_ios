@@ -9,6 +9,8 @@
 import UIKit
 
 class UBCSTextViewTableViewCell: UBTableViewCell {
+    
+    static let defaultCell = UBCSTextViewTableViewCell()
 
     static let className = String(describing: UBCSTextViewTableViewCell.self)
     
@@ -31,8 +33,6 @@ class UBCSTextViewTableViewCell: UBTableViewCell {
     }
     
     private func setupViews() {
-        let offset = (UBCConstant.cellHeight - UBFont.titleFont.lineHeight) / 2
-        
         self.textView = UITextView()
         self.textView.delegate = self
         self.textView.font = UBCFont.title
@@ -40,11 +40,16 @@ class UBCSTextViewTableViewCell: UBTableViewCell {
         self.textView.textContainer.lineFragmentPadding = 0
         self.textView.textContainerInset = .zero
         self.contentView.addSubview(self.textView)
-        self.contentView.setTopConstraintToSubview(self.textView, withValue: offset)
-        self.contentView.setBottomConstraintToSubview(self.textView, withValue: -offset)
+        self.contentView.setTopConstraintToSubview(self.textView, withValue: 10)
+        self.contentView.setBottomConstraintToSubview(self.textView, withValue: -10)
         self.contentView.setLeadingConstraintToSubview(self.textView, withValue: UBCConstant.inset)
         self.contentView.setTrailingConstraintToSubview(self.textView, withValue: -UBCConstant.inset)
-        self.textView.setHeightConstraintWithValue(UBFont.titleFont.lineHeight, relatedBy: .greaterThanOrEqual)
+    }
+    
+    var cellHeight: CGFloat {
+        let value = self.textView.sizeThatFits(CGSize(width: self.width - 2 * UBCConstant.inset, height: CGFloat.greatestFiniteMagnitude)).height + 20
+        
+        return value > UBCConstant.cellHeight ? value : UBCConstant.cellHeight
     }
 }
 
@@ -58,13 +63,11 @@ extension UBCSTextViewTableViewCell: UITextViewDelegate {
             delegate.updatedRow(content)
         }
         
-        let startHeight = textView.frame.size.height
-        let calcHeight = textView.sizeThatFits(textView.frame.size).height
+        let startHeight = self.height
+        let calcHeight = self.cellHeight
         
-        if startHeight != calcHeight {
+        if abs(startHeight - calcHeight) >= 1 {
             UIView.setAnimationsEnabled(false)
-            
-            textView.setHeightConstraintWithValue(calcHeight, relatedBy: .greaterThanOrEqual)
             
             if let delegate = self.delegate {
                 delegate.updateTableView()

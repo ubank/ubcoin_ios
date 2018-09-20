@@ -276,7 +276,10 @@ extension UBCSellController: UITableViewDataSource, UITableViewDelegate {
         guard let row = section.rows[indexPath.row] as? UBCSellCellDM else { return ZERO_HEIGHT }
         
         if row.className == UBCSTextViewTableViewCell.className {
-            return UITableViewAutomaticDimension
+            UBCSTextViewTableViewCell.defaultCell.setContent(content: row)
+            UBCSTextViewTableViewCell.defaultCell.width = UIScreen.main.bounds.size.width
+            
+            return UBCSTextViewTableViewCell.defaultCell.cellHeight
         }
         
         return row.height
