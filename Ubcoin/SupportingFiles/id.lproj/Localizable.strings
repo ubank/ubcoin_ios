@@ -160,3 +160,5 @@
 "str_item_status_blocked" = "Diblokir";
 "str_item_status_reserved" = "Sudah Dipesan";
 "str_item_status_check" = "Sedang di moderasi";
+
+"str_send_success" = "Transaksi Anda telah ditambahkan ke antrian. Transaksi mungkin belum dikirim. Selama masa volume jaringan yang ekstrim, mungkin butuh waktu 3 jam lebih untuk selesai";
