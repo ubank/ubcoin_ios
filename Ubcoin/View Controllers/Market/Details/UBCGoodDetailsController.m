@@ -225,7 +225,7 @@
         self.sellerName.text = seller.name;
         [self.sellerRating showStars:seller.rating.unsignedIntegerValue];
         
-        self.sellerDesc.text = [NSString stringWithFormat:@"%lu items     Reviews(%lu)", (unsigned long)seller.itemsCount, (unsigned long)seller.reviewsCount];
+        self.sellerDesc.text = [NSString stringWithFormat:@"%lu items", (unsigned long)seller.itemsCount];
     }
 }
 

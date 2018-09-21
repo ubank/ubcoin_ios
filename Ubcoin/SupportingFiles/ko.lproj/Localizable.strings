@@ -162,4 +162,4 @@
 "str_item_status_check" = "심사중";
 
 "str_send_success" = "본인 거래가 진행대기란에 등록되었습니다. 네트워크 트레픽이 높은경우 최대 3시간정도 걸릴 수 있습니다.";
-
+"str_your_price_will_be_fixed_in_UBC" = "당신의 가격은 UBC로 고정될 것입니다";

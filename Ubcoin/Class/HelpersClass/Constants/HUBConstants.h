@@ -27,3 +27,5 @@
 #define DEFAULT_HEADER_FONT [UIFont systemFontOfSize:18 weight:UIFontWeightSemibold]
 
 static NSString *const USER_AGREEMENT_LINK = @"https://ubcoin.io/user-agreement";
+
+static NSString * const kNotificationHistoryChanged = @"kNotificationHistoryChanged";
