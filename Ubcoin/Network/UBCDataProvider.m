@@ -48,11 +48,12 @@
     return sharedInstance;
 }
 
-- (void)goodsListWithPageNumber:(NSUInteger)page withCompletionBlock:(void (^)(BOOL, NSArray *, BOOL))completionBlock
+- (NSURLSessionDataTask *)goodsListWithPageNumber:(NSUInteger)page withCompletionBlock:(void (^)(BOOL, NSArray *, BOOL))completionBlock
 {
     NSURL *url = [UBCURLProvider goodsListWithPageNumber:page];
+    NSLog(@"url = %@", url);
     NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:url];
-    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+    return [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
      {
          if (success)
          {

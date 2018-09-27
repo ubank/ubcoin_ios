@@ -45,7 +45,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(update)
                                                  name:kNotificationHistoryChanged
-                                               object:nil]
+                                               object:nil];
 }
 
 - (void)setupViews

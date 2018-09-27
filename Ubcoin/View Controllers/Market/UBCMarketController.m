@@ -19,6 +19,7 @@
 @property (strong, nonatomic) NSArray *discounts;
 @property (strong, nonatomic) NSMutableArray *items;
 @property (assign, nonatomic) NSUInteger pageNumber;
+@property (strong, nonatomic) NSURLSessionDataTask *task;
 
 @end
 
@@ -112,40 +113,43 @@
 
 - (void)updateInfo
 {
-    dispatch_group_t serviceGroup = dispatch_group_create();
-    
+//    dispatch_group_t serviceGroup = dispatch_group_create();
+//
     __weak typeof(self) weakSelf = self;
+//
+//    dispatch_group_enter(serviceGroup);
+//    [UBCDataProvider.sharedProvider discountsWithCompletionBlock:^(BOOL success, NSArray *discounts) {
+//        if (discounts)
+//        {
+//            weakSelf.discounts = discounts;
+//        }
+//
+//        dispatch_group_leave(serviceGroup);
+//    }];
+//
+    //    dispatch_group_enter(serviceGroup);
+    [self.task cancel];
+    self.task = [UBCDataProvider.sharedProvider goodsListWithPageNumber:self.pageNumber
+                                                    withCompletionBlock:^(BOOL success, NSArray *goods, BOOL canLoadMore)
+                 {
+                     if (success)
+                     {
+                         if (weakSelf.pageNumber == 0)
+                         {
+                             weakSelf.items = [NSMutableArray array];
+                         }
+                         [weakSelf.items addObjectsFromArray:goods];
+                         weakSelf.collectionView.canLoadMore = canLoadMore;
+                         weakSelf.pageNumber++;
+                     }
+                     [weakSelf handleResponse];
+                     
+                     //        dispatch_group_leave(serviceGroup);
+                 }];
     
-    dispatch_group_enter(serviceGroup);
-    [UBCDataProvider.sharedProvider discountsWithCompletionBlock:^(BOOL success, NSArray *discounts) {
-        if (discounts)
-        {
-            weakSelf.discounts = discounts;
-        }
-        
-        dispatch_group_leave(serviceGroup);
-    }];
-    
-    dispatch_group_enter(serviceGroup);
-    [UBCDataProvider.sharedProvider goodsListWithPageNumber:self.pageNumber
-                                        withCompletionBlock:^(BOOL success, NSArray *goods, BOOL canLoadMore) {
-        if (success)
-        {
-            if (weakSelf.pageNumber == 0)
-            {
-                weakSelf.items = [NSMutableArray array];
-            }
-            [weakSelf.items addObjectsFromArray:goods];
-            weakSelf.collectionView.canLoadMore = canLoadMore;
-            weakSelf.pageNumber++;
-        }
-        
-        dispatch_group_leave(serviceGroup);
-    }];
-    
-    dispatch_group_notify(serviceGroup, dispatch_get_main_queue(), ^{
-        [weakSelf handleResponse];
-    });
+    //    dispatch_group_notify(serviceGroup, dispatch_get_main_queue(), ^{
+//        [weakSelf handleResponse];
+//    });
 }
 
 - (void)handleResponse
