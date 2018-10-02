@@ -12,6 +12,21 @@
 
 @implementation UBCToSellDealsView
 
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    
+    if (self)
+    {
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(updateItems)
+                                                     name:kNotificationItemChanged
+                                                   object:nil];
+    }
+    
+    return self;
+}
+
 - (void)setupEmptyView
 {
     [super setupEmptyView];
@@ -33,6 +48,12 @@
     {
         self.tableView.emptyView.hidden = NO;
     }
+}
+
+- (void)updateItems
+{
+    self.pageNumber = 0;
+    [self updateInfo];
 }
 
 #pragma mark -

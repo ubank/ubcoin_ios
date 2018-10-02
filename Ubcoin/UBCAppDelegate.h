@@ -15,6 +15,7 @@
 @property (strong, nonatomic) UBNavigationController *navigationController;
 
 - (void)setupStack;
+- (UBViewController *)showControllers:(NSArray *)controllers;
 
 @end
 

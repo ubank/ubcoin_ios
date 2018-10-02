@@ -119,8 +119,10 @@
 "str_if_you_received_tokens_during_ico" = "Jika Anda menerima token selama ICO, pergi ke wallet ERC-20 anda";
 "str_address_copied_to_clipboard" = "Alamat disalin ke papan klip";
 
-"str_sell_success_title" = "Pencatatan anda sedang di moderasi";
-"str_sell_success_desc" = "Barang akan muncul di Pasar tepat setelah proses moderasi";
+"str_sell_success_title" = "Barang berhasil di tempatkan";
+"str_sell_success_desc" = "Barang anda ditempatkan di pasar";
+"str_sell_moderation_title" = "Pencatatan anda sedang di moderasi";
+"str_sell_moderation_desc" = "Barang akan muncul di Pasar tepat setelah proses moderasi";
 "str_sell_about" = "Tentang";
 "str_sell_desc" = "Deskripsi";
 "str_sell_location" = "Lokasi";
@@ -158,3 +160,6 @@
 "str_item_status_blocked" = "Diblokir";
 "str_item_status_reserved" = "Sudah Dipesan";
 "str_item_status_check" = "Sedang di moderasi";
+
+"str_send_success" = "Transaksi Anda telah ditambahkan ke antrian. Transaksi mungkin belum dikirim. Selama masa volume jaringan yang ekstrim, mungkin butuh waktu 3 jam lebih untuk selesai";
+"str_your_price_will_be_fixed_in_UBC" = "Harga Anda akan tetap dalam bentuk UBC";

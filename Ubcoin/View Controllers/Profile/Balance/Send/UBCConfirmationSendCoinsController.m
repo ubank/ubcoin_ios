@@ -7,6 +7,7 @@
 //
 
 #import "UBCConfirmationSendCoinsController.h"
+#import "UBCBalanceController.h"
 
 @interface UBCConfirmationSendCoinsController ()
 
@@ -50,7 +51,13 @@
          [weakSelf stopActivityIndicator];
          if ([result isEqualToString:@"0"])
          {
-             [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+             [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationHistoryChanged object:nil];
+             
+             [UBAlert showAlertWithTitle:nil
+                              andMessage:UBLocalizedString(@"str_send_success", nil)
+                     withCompletionBlock:^{
+                         [(UBNavigationController *)weakSelf.navigationController popToViewControllerClass:UBCBalanceController.class animated:YES];
+                     }];
          }
          else if (message.isNotEmpty)
          {

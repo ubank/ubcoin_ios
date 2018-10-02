@@ -48,11 +48,12 @@
     return sharedInstance;
 }
 
-- (void)goodsListWithPageNumber:(NSUInteger)page withCompletionBlock:(void (^)(BOOL, NSArray *, BOOL))completionBlock
+- (NSURLSessionDataTask *)goodsListWithPageNumber:(NSUInteger)page withCompletionBlock:(void (^)(BOOL, NSArray *, BOOL))completionBlock
 {
     NSURL *url = [UBCURLProvider goodsListWithPageNumber:page];
+    NSLog(@"url = %@", url);
     NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:url];
-    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+    return [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
      {
          if (success)
          {
@@ -70,6 +71,23 @@
          else if (completionBlock)
          {
              completionBlock(NO, nil, YES);
+         }
+     }];
+}
+
+- (void)goodWithID:(NSString *)itemID withCompletionBlock:(void (^)(BOOL, UBCGoodDM *))completionBlock
+{
+    NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:[UBCURLProvider goodWithID:itemID]];
+    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (success)
+         {
+             UBCGoodDM *item = [UBCGoodDM.alloc initWithDictionary:[responseObject removeNulls]];
+             completionBlock(success, item);
+         }
+         else if (completionBlock)
+         {
+             completionBlock(success, nil);
          }
      }];
 }
@@ -588,7 +606,7 @@
      }];
 }
 
-- (void)sellItem:(NSDictionary *)dictionary withCompletionBlock:(void (^)(BOOL))completionBlock
+- (void)sellItem:(NSDictionary *)dictionary withCompletionBlock:(void (^)(BOOL, UBCGoodDM *))completionBlock
 {
     NSMutableDictionary *full = dictionary.mutableCopy;
     full[@"agreement"] = @"true";
@@ -602,7 +620,12 @@
      {
          if (completionBlock)
          {
-             completionBlock(success);
+             UBCGoodDM *item;
+             if (success)
+             {
+                 item = [UBCGoodDM.alloc initWithDictionary:[responseObject removeNulls]];
+             }
+             completionBlock(success, item);
          }
      }];
 }

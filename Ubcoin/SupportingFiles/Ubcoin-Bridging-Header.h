@@ -18,5 +18,6 @@
 #import "UBCToast.h"
 #import "UBFloatingPlaceholderTextField.h"
 #import "UBCMarketController.h"
+#import "UBCAppDelegate.h"
 
 #import <SDWebImage/UIImageView+WebCache.h>

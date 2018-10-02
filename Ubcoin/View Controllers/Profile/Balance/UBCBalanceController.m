@@ -41,6 +41,11 @@
     
     [self startActivityIndicatorImmediately];
     [self updateInfo];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(update)
+                                                 name:kNotificationHistoryChanged
+                                               object:nil];
 }
 
 - (void)setupViews
@@ -60,9 +65,14 @@
     
     __weak typeof(self) weakSelf = self;
     [self.tableView setupRefreshControllWithActionBlock:^{
-        weakSelf.pageNumber = 0;
-        [weakSelf updateInfo];
+        [weakSelf update];
     }];
+}
+
+- (void)update
+{
+    self.pageNumber = 0;
+    [self updateInfo];
 }
 
 - (void)updateInfo

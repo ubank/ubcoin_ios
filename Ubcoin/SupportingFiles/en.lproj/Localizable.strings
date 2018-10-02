@@ -119,8 +119,10 @@
 "str_if_you_received_tokens_during_ico" = "If you received tokens during ICO, go to your ERC-20 wallet";
 "str_address_copied_to_clipboard" = "Address copied to clipboard";
 
-"str_sell_success_title" = "Your listing is in moderation";
-"str_sell_success_desc" = "It will appear on the Market right after moderation process";
+"str_sell_success_title" = "Item successfully placed";
+"str_sell_success_desc" = "Your item placed on marketplace";
+"str_sell_moderation_title" = "Your listing is in moderation";
+"str_sell_moderation_desc" = "It will appear on the Market right after moderation process";
 "str_sell_about" = "About";
 "str_sell_desc" = "Description";
 "str_sell_location" = "Location";
@@ -158,3 +160,6 @@
 "str_item_status_blocked" = "Blocked";
 "str_item_status_reserved" = "Reserved";
 "str_item_status_check" = "In moderation";
+
+"str_send_success" = "Your transaction has been broadcast to the network. This does not mean that it has been successfully sent. During times of extreme volume, it may take 3+ hours to send.";
+"str_your_price_will_be_fixed_in_UBC" = "Your price will be fixed in UBC";
