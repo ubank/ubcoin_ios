@@ -12,5 +12,6 @@
 @interface UBCGoodDetailsController : UBViewController
 
 - (instancetype)initWithGood:(UBCGoodDM *)good;
+- (instancetype)initWithGoodID:(NSString *)goodID;
 
 @end

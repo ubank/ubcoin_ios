@@ -14,6 +14,7 @@
 + (NSURL *)categories;
 + (NSURL *)activateItem;
 + (NSURL *)deactivateItem;
++ (NSURL *)goodWithID:(NSString *)itemID;
 
 + (NSURL *)login;
 + (NSURL *)logout;

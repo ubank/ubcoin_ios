@@ -20,6 +20,13 @@
     return [NSURL URLWithString:url];
 }
 
++ (NSURL *)goodWithID:(NSString *)itemID
+{
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"items/%@", itemID];
+    url = [self addUserLocationToURL:url];
+    return [NSURL URLWithString:url];
+}
+
 + (NSURL *)categories
 {
     NSString *url = [SERVER_URL stringByAppendingFormat:@"items/categories"];

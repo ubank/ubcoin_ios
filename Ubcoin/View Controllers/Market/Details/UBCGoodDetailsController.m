@@ -52,6 +52,7 @@
 @property (strong, nonatomic) HUBNavigationBarView *navBarView;
 
 @property (strong, nonatomic) UBCGoodDM *good;
+@property (strong, nonatomic) NSString *goodID;
 
 @end
 
@@ -67,13 +68,47 @@
     return self;
 }
 
+- (instancetype)initWithGoodID:(NSString *)goodID
+{
+    self = [super init];
+    if (self)
+    {
+        self.goodID = goodID;
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
     [self setupViews];
     [self setupNavBar];
-    [self setupContent];
+    
+    if (self.good)
+    {
+        [self setupContent];
+    }
+    else if (self.goodID)
+    {
+        [self startActivityIndicatorImmediately];
+        
+        __weak typeof(self) weakSelf = self;
+        [UBCDataProvider.sharedProvider goodWithID:self.goodID
+                               withCompletionBlock:^(BOOL success, UBCGoodDM *item)
+         {
+             [weakSelf stopActivityIndicator];
+             if (success && item)
+             {
+                 weakSelf.good = item;
+                 [weakSelf setupContent];
+             }
+             else
+             {
+                 [weakSelf.navigationController popViewControllerAnimated:YES];
+             }
+         }];
+    }
     
     [UBLocationManager.sharedLocation trackMyLocationOnce:^(BOOL success) {
         
@@ -143,6 +178,7 @@
     self.favoriteButton.hidden = self.good.isMyItem;
     [self.photoCount setupWithImage:[UIImage imageNamed:@"market_photo"]
                             andText:[NSString stringWithFormat:@"1/%d", (int)self.good.images.count]];
+    [self.collectionView reloadData];
     
     [self setupSellerView:self.good.seller];
     [self setupWarningView];

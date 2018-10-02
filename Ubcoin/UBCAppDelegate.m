@@ -9,6 +9,9 @@
 #import "UBCAppDelegate.h"
 #import "UBCTabBarController.h"
 #import "UBCKeyChain.h"
+#import "UBCNotificationHandler.h"
+
+#import "Ubcoin-Swift.h"
 
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
@@ -42,6 +45,13 @@
     return YES;
 }
 
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
+{
+    [UBCNotificationHandler openURL:url];
+    
+    return YES;
+}
+
 #pragma mark -
 
 - (void)setupStack
@@ -71,6 +81,16 @@
     UBFont.titleFont = [UIFont systemFontOfSize:17 weight:UIFontWeightMedium];
     UBFont.descFont = [UIFont systemFontOfSize:13 weight:UIFontWeightRegular];
     UBFont.buttonFont = [UIFont systemFontOfSize:18 weight:UIFontWeightMedium];
+}
+
+#pragma mark -
+
+- (UBViewController *)showControllers:(NSArray *)controllers
+{
+    [self.window endEditing:YES];
+    [UBAlert removeAllAlerts];
+    
+    return (UBViewController *)[self.navigationController showControllers:controllers];
 }
 
 @end
