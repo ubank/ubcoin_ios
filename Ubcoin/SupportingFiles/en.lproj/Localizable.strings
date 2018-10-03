@@ -163,3 +163,6 @@
 
 "str_send_success" = "Your transaction has been broadcast to the network. This does not mean that it has been successfully sent. During times of extreme volume, it may take 3+ hours to send.";
 "str_your_price_will_be_fixed_in_UBC" = "Your price will be fixed in UBC";
+
+"str_filters" = "Filters";
+"str_category" = "Category";

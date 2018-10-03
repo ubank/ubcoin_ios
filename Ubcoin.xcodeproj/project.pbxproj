@@ -149,9 +149,10 @@
 		89B08E3C21284BA500D8B68D /* UBCPaymentDM.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B08E3B21284BA500D8B68D /* UBCPaymentDM.m */; };
 		89B6ECB3212C3B6700CCDEF8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89B6ECB5212C3B6700CCDEF8 /* InfoPlist.strings */; };
 		89BA58CA2163821F00427A8E /* UBCNotificationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BA58C92163821F00427A8E /* UBCNotificationHandler.m */; };
+		89BA58CD21652D6800427A8E /* UBCFiltersListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BA58CC21652D6800427A8E /* UBCFiltersListController.swift */; };
+		89BA58CF21652D8500427A8E /* UBCCategoriesFilterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BA58CE21652D8500427A8E /* UBCCategoriesFilterController.swift */; };
 		89CB110E20EFCDA500729C95 /* HUBCollectionViewWaitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89CB110C20EFCDA500729C95 /* HUBCollectionViewWaitCell.xib */; };
 		89CB110F20EFCDA500729C95 /* HUBCollectionViewWaitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CB110D20EFCDA500729C95 /* HUBCollectionViewWaitCell.m */; };
-		89F16A6A20F2C65D001AA440 /* UBCFiltersListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F16A4F20F2C65D001AA440 /* UBCFiltersListController.m */; };
 		89F16A6B20F2C65D001AA440 /* UBCGoodDM.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F16A5420F2C65D001AA440 /* UBCGoodDM.m */; };
 		89F16A6C20F2C65D001AA440 /* UBCSellerDM.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F16A5620F2C65D001AA440 /* UBCSellerDM.m */; };
 		89F16A6D20F2C65D001AA440 /* UBCGoodsCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F16A5820F2C65D001AA440 /* UBCGoodsCollectionView.m */; };
@@ -391,11 +392,11 @@
 		89B6ECB7212C3B6A00CCDEF8 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		89BA58C82163821F00427A8E /* UBCNotificationHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBCNotificationHandler.h; sourceTree = "<group>"; };
 		89BA58C92163821F00427A8E /* UBCNotificationHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBCNotificationHandler.m; sourceTree = "<group>"; };
+		89BA58CC21652D6800427A8E /* UBCFiltersListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCFiltersListController.swift; sourceTree = "<group>"; };
+		89BA58CE21652D8500427A8E /* UBCCategoriesFilterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCCategoriesFilterController.swift; sourceTree = "<group>"; };
 		89CB110B20EFCDA500729C95 /* HUBCollectionViewWaitCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUBCollectionViewWaitCell.h; sourceTree = "<group>"; };
 		89CB110C20EFCDA500729C95 /* HUBCollectionViewWaitCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HUBCollectionViewWaitCell.xib; sourceTree = "<group>"; };
 		89CB110D20EFCDA500729C95 /* HUBCollectionViewWaitCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUBCollectionViewWaitCell.m; sourceTree = "<group>"; };
-		89F16A4F20F2C65D001AA440 /* UBCFiltersListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBCFiltersListController.m; sourceTree = "<group>"; };
-		89F16A5020F2C65D001AA440 /* UBCFiltersListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBCFiltersListController.h; sourceTree = "<group>"; };
 		89F16A5120F2C65D001AA440 /* UBCMarketController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBCMarketController.h; sourceTree = "<group>"; };
 		89F16A5320F2C65D001AA440 /* UBCSellerDM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBCSellerDM.h; sourceTree = "<group>"; };
 		89F16A5420F2C65D001AA440 /* UBCGoodDM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBCGoodDM.m; sourceTree = "<group>"; };
@@ -1305,6 +1306,14 @@
 			path = APNS;
 			sourceTree = "<group>";
 		};
+		89BA58CB21652D2600427A8E /* Category Filter */ = {
+			isa = PBXGroup;
+			children = (
+				89BA58CE21652D8500427A8E /* UBCCategoriesFilterController.swift */,
+			);
+			path = "Category Filter";
+			sourceTree = "<group>";
+		};
 		89F16A4D20F2C65D001AA440 /* Market */ = {
 			isa = PBXGroup;
 			children = (
@@ -1322,8 +1331,8 @@
 		89F16A4E20F2C65D001AA440 /* Filters */ = {
 			isa = PBXGroup;
 			children = (
-				89F16A5020F2C65D001AA440 /* UBCFiltersListController.h */,
-				89F16A4F20F2C65D001AA440 /* UBCFiltersListController.m */,
+				89BA58CB21652D2600427A8E /* Category Filter */,
+				89BA58CC21652D6800427A8E /* UBCFiltersListController.swift */,
 			);
 			path = Filters;
 			sourceTree = "<group>";
@@ -1590,6 +1599,7 @@
 				898751B320EE2C4100E2B615 /* UBCLoginController.m in Sources */,
 				897FB0B121218FDE0060DED6 /* UBCChatController.m in Sources */,
 				8987517720EE119F00E2B615 /* UBTableHeaderView.m in Sources */,
+				89BA58CD21652D6800427A8E /* UBCFiltersListController.swift in Sources */,
 				8987517A20EE119F00E2B615 /* HUBTextView.m in Sources */,
 				8987518820EE119F00E2B615 /* UBAlertWindow.m in Sources */,
 				8987516A20EE119F00E2B615 /* UBMigrationView.m in Sources */,
@@ -1606,6 +1616,7 @@
 				8987518020EE119F00E2B615 /* HUBLabel.m in Sources */,
 				898751CB20EE6AEA00E2B615 /* UBCURLProvider.m in Sources */,
 				89007756211B5B8600B6C1C5 /* UBCDealDM.m in Sources */,
+				89BA58CF21652D8500427A8E /* UBCCategoriesFilterController.swift in Sources */,
 				8987517320EE119F00E2B615 /* UBTableView.m in Sources */,
 				8987518620EE119F00E2B615 /* HUBAttributedLabel.m in Sources */,
 				8987518B20EE119F00E2B615 /* UBAlertTableView.m in Sources */,
@@ -1618,7 +1629,6 @@
 				8987516F20EE119F00E2B615 /* HUBSystemAlertCell.m in Sources */,
 				8979E81221134EEB004B2473 /* UBCDealsController.m in Sources */,
 				1CEFAA4520F3FCBE005719B3 /* UBCSTextFieldTableViewCell.swift in Sources */,
-				89F16A6A20F2C65D001AA440 /* UBCFiltersListController.m in Sources */,
 				8919AB532125BC4600D1B59C /* UBCChangeNameController.m in Sources */,
 				89B08E322128397100D8B68D /* UBCSendCoinsController.m in Sources */,
 				89678DEA2112424E00EB715E /* DBMatcher.m in Sources */,

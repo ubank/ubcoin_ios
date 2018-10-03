@@ -7,9 +7,10 @@
 //
 
 #import "UBCMarketController.h"
-#import "UBCFiltersListController.h"
 #import "UBCGoodsCollectionView.h"
 #import "UBCGoodDetailsController.h"
+
+#import "Ubcoin-Swift.h"
 
 @interface UBCMarketController () <UISearchControllerDelegate, UISearchBarDelegate, UBCGoodsCollectionViewDelegate>
 
@@ -30,6 +31,7 @@
     [super viewDidLoad];
     
     self.navigationContainer.image = [UIImage imageNamed:@"general_logo_black"];
+    self.navigationContainer.leftImageTitle = @"market_category_filter";
 //    self.navigationContainer.rightImageTitle = @"general_filter";
     
     self.pageNumber = 0;
@@ -185,6 +187,12 @@
 }
 
 #pragma mark - Actions
+
+- (void)navigationButtonBackClick:(id)sender
+{
+    UBCCategoriesFilterController *controller = [[UBCCategoriesFilterController alloc] init];
+    [self.navigationController pushViewController:controller animated:YES];
+}
 
 - (void)rightBarButtonClick:(id)sender
 {

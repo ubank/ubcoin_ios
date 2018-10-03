@@ -21,4 +21,12 @@
     return self;
 }
 
+- (UBTableViewRowData *)rowData
+{
+    UBTableViewRowData *data = UBTableViewRowData.new;
+    data.data = self;
+    data.title = self.name;
+    return data;
+}
+
 @end
