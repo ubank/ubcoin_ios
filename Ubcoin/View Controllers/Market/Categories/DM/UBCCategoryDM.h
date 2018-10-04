@@ -16,4 +16,6 @@
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
 - (UBTableViewRowData *)rowData;
 
++ (UBTableViewRowData *)allCategoriesData;
+
 @end

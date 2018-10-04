@@ -29,4 +29,11 @@
     return data;
 }
 
++ (UBTableViewRowData *)allCategoriesData
+{
+    UBTableViewRowData *data = UBTableViewRowData.new;
+    data.title = UBLocalizedString(@"str_all_categories", nil);
+    return data;
+}
+
 @end
