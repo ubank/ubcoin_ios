@@ -13,9 +13,9 @@
 
 @implementation UBCURLProvider
 
-+ (NSURL *)goodsListWithPageNumber:(NSUInteger)page
++ (NSURL *)goodsListWithPageNumber:(NSUInteger)page andFilters:(NSString *)filters
 {
-    NSString *url = [SERVER_URL stringByAppendingFormat:@"items?page=%d&size=%d", (int)page, ITEMS_PAGE_SIZE];
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"items?page=%d&size=%d%@", (int)page, ITEMS_PAGE_SIZE, [NSString notEmptyString:filters]];
     url = [self addUserLocationToURL:url];
     return [NSURL URLWithString:url];
 }

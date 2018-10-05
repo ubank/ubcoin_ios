@@ -10,7 +10,7 @@
 
 @interface UBCURLProvider : NSObject
 
-+ (NSURL *)goodsListWithPageNumber:(NSUInteger)page;
++ (NSURL *)goodsListWithPageNumber:(NSUInteger)page andFilters:(NSString *)filters;
 + (NSURL *)categories;
 + (NSURL *)activateItem;
 + (NSURL *)deactivateItem;

@@ -16,6 +16,7 @@
 #import "HUBBaseMapView.h"
 #import "UBLocal.h"
 #import "UBCToast.h"
+#import "UBCInfoLabel.h"
 #import "UBFloatingPlaceholderTextField.h"
 #import "UBCMarketController.h"
 #import "UBCAppDelegate.h"

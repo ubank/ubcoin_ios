@@ -10,8 +10,10 @@ import UIKit
 
 class UBCCategoriesFilterController: UBViewController {
 
+    @objc var completion: (([UBCFilterParam]) -> Void)?
+    
     var content: [UBTableViewRowData]?
-    var selectedCategories: [UBCCategoryDM]?
+    var selectedCategories: [UBCFilterParam]?
     private(set) lazy var tableView: UBDefaultTableView = { [weak self] in
         let tableView = UBDefaultTableView(frame: .zero, style: .grouped)
         
@@ -26,7 +28,7 @@ class UBCCategoriesFilterController: UBViewController {
     
     //MARK: -
     
-    convenience init(selectedCategories: [UBCCategoryDM]?) {
+    @objc convenience init(selectedCategories: [UBCFilterParam]?) {
         self.init()
         
         self.selectedCategories = selectedCategories
@@ -55,6 +57,14 @@ class UBCCategoriesFilterController: UBViewController {
         }
     }
     
+    override func navigationButtonBackClick(_ sender: Any?) {
+        if let completion = self.completion {
+            completion(seletedFilters())
+        }
+        
+        super.navigationButtonBackClick(sender)
+    }
+    
     //MARK: -
     
     private func setupContent(categories: [UBCCategoryDM]) {
@@ -64,8 +74,8 @@ class UBCCategoriesFilterController: UBViewController {
         content = rows
         
         if let selectedCategories = selectedCategories {
-            let selectedIDs = selectedCategories.compactMap { $0.id }
-            let predicate = NSPredicate(format: "data.id IN %@", selectedIDs)
+            let selectedIDs = selectedCategories.compactMap { $0.value }
+            let predicate = NSPredicate(format: "data.ID IN %@", selectedIDs)
             let selectedRows = rows.filter { predicate.evaluate(with: $0) }
             
             if selectedRows.count > 0 {
@@ -95,19 +105,18 @@ class UBCCategoriesFilterController: UBViewController {
         }
         
         if let rows = content {
-            let predicate = NSPredicate(format: "isSelected == 1")
-            let selectedRows = rows.filter { predicate.evaluate(with: $0) }
+            let selectedRowsData = selectedRows()
             
             let dataPredicate = NSPredicate(format: "data == nil")
-            if selectedRows.count > 0 {
+            if selectedRowsData.count > 0 {
                 if row.data == nil {
-                    for row in selectedRows {
+                    for row in selectedRowsData {
                         if row.data != nil {
                             deselect(row: row)
                         }
                     }
                 } else {
-                    let selectedRowsWithoutData = selectedRows.filter { dataPredicate.evaluate(with: $0) }
+                    let selectedRowsWithoutData = selectedRowsData.filter { dataPredicate.evaluate(with: $0) }
                     _ = selectedRowsWithoutData.compactMap { deselect(row: $0) }
                 }
             } else {
@@ -127,6 +136,18 @@ class UBCCategoriesFilterController: UBViewController {
         row.isSelected = false
         row.accessoryType = .none
         row.attributedTitle = NSAttributedString(string: row.title, attributes: [.foregroundColor: UBColor.titleColor, .font: UBFont.titleFont])
+    }
+    
+    private func selectedRows() -> [UBTableViewRowData] {
+        if let rows = content {
+            return rows.filter { $0.isSelected == true }
+        } else {
+            return []
+        }
+    }
+    
+    private func seletedFilters() -> [UBCFilterParam] {
+        return selectedRows().compactMap { UBCFilterParam.init(category: $0.data as? UBCCategoryDM) }
     }
 }
 

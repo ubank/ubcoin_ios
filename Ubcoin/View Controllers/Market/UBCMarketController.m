@@ -17,6 +17,7 @@
 @property (strong, nonatomic) UISearchController *searchController;
 @property (strong, nonatomic) UBCGoodsCollectionView *collectionView;
 
+@property (strong, nonatomic) UBCFilterDM *filterDM;
 @property (strong, nonatomic) NSArray *discounts;
 @property (strong, nonatomic) NSMutableArray *items;
 @property (assign, nonatomic) NSUInteger pageNumber;
@@ -36,6 +37,7 @@
     
     self.pageNumber = 0;
     self.items = [NSMutableArray array];
+    self.filterDM = UBCFilterDM.new;
     
     [self setupCollectionView];
 //    [self setupSearch];
@@ -132,6 +134,7 @@
     //    dispatch_group_enter(serviceGroup);
     [self.task cancel];
     self.task = [UBCDataProvider.sharedProvider goodsListWithPageNumber:self.pageNumber
+                                                             andFilters:[self.filterDM filterValues]
                                                     withCompletionBlock:^(BOOL success, NSArray *goods, BOOL canLoadMore)
                  {
                      if (success)
@@ -190,8 +193,13 @@
 
 - (void)navigationButtonBackClick:(id)sender
 {
-    UBCCategoriesFilterController *controller = [[UBCCategoriesFilterController alloc] init];
+    UBCCategoriesFilterController *controller = [[UBCCategoriesFilterController alloc] initWithSelectedCategories:self.filterDM.categoryFilters];
     [self.navigationController pushViewController:controller animated:YES];
+    
+    __weak typeof(self) weakSelf = self;
+    [controller setCompletion:^(NSArray<UBCFilterParam *> * selectedCategoryFilters) {
+        [weakSelf.filterDM updateCategoryFiltersWithSelectedCategoryFilters:selectedCategoryFilters];
+    }];
 }
 
 - (void)rightBarButtonClick:(id)sender
