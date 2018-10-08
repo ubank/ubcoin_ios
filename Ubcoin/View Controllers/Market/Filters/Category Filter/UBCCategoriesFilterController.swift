@@ -97,11 +97,7 @@ class UBCCategoriesFilterController: UBViewController {
         if row.data == nil { //all categories
             select(row: row)
         } else {
-            if  row.isSelected {
-                deselect(row: row)
-            } else {
-                select(row: row)
-            }
+            row.isSelected ? deselect(row: row) : select(row: row)
         }
         
         if let rows = content {
@@ -110,10 +106,8 @@ class UBCCategoriesFilterController: UBViewController {
             let dataPredicate = NSPredicate(format: "data == nil")
             if selectedRowsData.count > 0 {
                 if row.data == nil {
-                    for row in selectedRowsData {
-                        if row.data != nil {
-                            deselect(row: row)
-                        }
+                    for row in selectedRowsData where row.data != nil {
+                        deselect(row: row)
                     }
                 } else {
                     let selectedRowsWithoutData = selectedRowsData.filter { dataPredicate.evaluate(with: $0) }

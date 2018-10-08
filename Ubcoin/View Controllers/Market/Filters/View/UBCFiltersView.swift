@@ -10,7 +10,7 @@ import UIKit
 
 class UBCFiltersView: UIView {
 
-    var filters = [String]()
+    private var filters = [UBCFilterParam]()
     private(set) lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -29,11 +29,17 @@ class UBCFiltersView: UIView {
     }()
     
     convenience init() {
-        self.init()
+        self.init(frame: CGRect.zero)
         
         setupCollectionView()
     }
 
+    @objc func update(filters: [UBCFilterParam]) {
+        self.filters = filters
+        self.isHidden = filters.count == 0
+        collectionView.reloadData()
+    }
+    
     private func setupCollectionView() {
         self.addSubview(collectionView)
         self.addConstraints(toFillSubview: collectionView)
@@ -51,13 +57,18 @@ extension UBCFiltersView: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UBCFilterCollectionViewCell.className, for: indexPath)
 
+        if let cell = cell as? UBCFilterCollectionViewCell {        
+            let filter = filters[indexPath.row]
+            cell.title.text = filter.title
+        }
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        filters.remove(at: indexPath.row)
+        collectionView.deleteItems(at: [indexPath])
     }
 }

@@ -10,7 +10,7 @@ import UIKit
 
 class UBCFilterDM: NSObject {
 
-    var filters = [UBCFilterParam]()
+    @objc var filters = [UBCFilterParam]()
     
     @objc var categoryFilters: [UBCFilterParam] {
         return filters.filter { $0.name == "category"}
