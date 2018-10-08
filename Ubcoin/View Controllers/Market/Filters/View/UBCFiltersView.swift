@@ -23,7 +23,7 @@ class UBCFiltersView: UIView {
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        collectionView.register(UBCFilterCollectionViewCell.self, forCellWithReuseIdentifier: UBCFilterCollectionViewCell.className)
+        collectionView.register(UINib(nibName: UBCFilterCollectionViewCell.className, bundle: nil), forCellWithReuseIdentifier: UBCFilterCollectionViewCell.className)
         
         return collectionView
     }()
