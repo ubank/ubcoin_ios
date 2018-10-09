@@ -18,7 +18,7 @@ class UBCFilterCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
     
         self.cornerRadius = 10
-        self.backgroundColor = UBColor.backgroundColor
+        self.backgroundColor = UIColor(hexString: "F1F1F1")
         
         self.title.textColor = UBColor.titleColor
         self.title.font = UBFont.titleFont

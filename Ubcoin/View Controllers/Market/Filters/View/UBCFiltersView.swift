@@ -10,6 +10,8 @@ import UIKit
 
 class UBCFiltersView: UIView {
 
+    @objc var filtersChanged: (([UBCFilterParam]) -> Void)?
+    
     private var filters = [UBCFilterParam]()
     private(set) lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -20,12 +22,21 @@ class UBCFiltersView: UIView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         collectionView.backgroundColor = UIColor.clear
+        collectionView.showsHorizontalScrollIndicator = false
         collectionView.delegate = self
         collectionView.dataSource = self
         
         collectionView.register(UINib(nibName: UBCFilterCollectionViewCell.className, bundle: nil), forCellWithReuseIdentifier: UBCFilterCollectionViewCell.className)
         
         return collectionView
+    }()
+    
+    private lazy var sizingCell: UBCFilterCollectionViewCell = {
+        guard let cell = UBCFilterCollectionViewCell.loadFromXib() else {
+            preconditionFailure("Failed to load cell from XIB")
+        }
+        
+        return cell
     }()
     
     convenience init() {
@@ -46,14 +57,21 @@ class UBCFiltersView: UIView {
     }
 }
 
-extension UBCFiltersView: UICollectionViewDelegate, UICollectionViewDataSource {
+extension UBCFiltersView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return filters.count
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize.init(width: 50, height: 35)
+        let filter = filters[indexPath.row]
+        sizingCell.title.text = filter.title
+        sizingCell.setNeedsLayout()
+        sizingCell.layoutIfNeeded()
+        
+        let size = sizingCell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+        
+        return CGSize(width: size.width, height: 35)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -70,5 +88,10 @@ extension UBCFiltersView: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         filters.remove(at: indexPath.row)
         collectionView.deleteItems(at: [indexPath])
+        self.isHidden = filters.count == 0
+        
+        if let filtersChanged = self.filtersChanged {
+            filtersChanged(filters)
+        }
     }
 }

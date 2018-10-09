@@ -33,6 +33,7 @@
 {
     [super viewDidLoad];
     
+    self.view.backgroundColor = UIColor.whiteColor;
     self.navigationContainer.image = [UIImage imageNamed:@"general_logo_black"];
     self.navigationContainer.leftImageTitle = @"market_category_filter";
 //    self.navigationContainer.rightImageTitle = @"general_filter";
@@ -88,6 +89,12 @@
     [self.filtersView setHeightConstraintWithValue:55];
     [self.stackView addArrangedSubview:self.filtersView];
     self.filtersView.hidden = YES;
+    
+    __weak typeof(self) weakSelf = self;
+    [self.filtersView setFiltersChanged:^(NSArray<UBCFilterParam *> *filters) {
+        weakSelf.filterDM.filters = filters;
+        [weakSelf applyFilters];
+    }];
 }
 
 - (void)setupCollectionView
@@ -141,6 +148,7 @@
     
     self.pageNumber = 0;
     self.items = [NSMutableArray array];
+    self.collectionView.canLoadMore = NO;
     
     [self startActivityIndicator];
     [self updateInfo];
