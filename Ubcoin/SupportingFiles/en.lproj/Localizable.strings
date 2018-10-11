@@ -167,3 +167,11 @@
 "str_filters" = "Filters";
 "str_category" = "Category";
 "str_all_categories" = "All categories";
+"str_max_price" = "Max. price";
+"str_max_distance" = "Max. distance";
+"str_sort_by" = "Sort by";
+"str_placement_date" = "Placement Date";
+"str_item_price" = "Item Price";
+"str_distance_to_seller" = "Distance to seller";
+"str_clear_all" = "Clear all";
+"str_show_n_items" = "Show %d items";

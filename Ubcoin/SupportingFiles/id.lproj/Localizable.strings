@@ -163,3 +163,15 @@
 
 "str_send_success" = "Transaksi Anda telah ditambahkan ke antrian. Transaksi mungkin belum dikirim. Selama masa volume jaringan yang ekstrim, mungkin butuh waktu 3 jam lebih untuk selesai";
 "str_your_price_will_be_fixed_in_UBC" = "Harga Anda akan tetap dalam bentuk UBC";
+
+"str_filters" = "Urutkan";
+"str_category" = "Kategori";
+"str_all_categories" = "Semua Kategori";
+"str_max_price" = "Harga Maksimal";
+"str_max_distance" = "Jarak Maksimal";
+"str_sort_by" = "Sortir dengan";
+"str_placement_date" = "Tanggal Penempatan";
+"str_item_price" = "Harga barang";
+"str_distance_to_seller" = "Jarak ke penjual";
+"str_clear_all" = "Bersihkan semua";
+"str_show_n_items" = "Tampilkan %d barang";
