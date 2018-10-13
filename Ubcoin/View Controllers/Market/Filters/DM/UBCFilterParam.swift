@@ -10,10 +10,20 @@ import UIKit
 
 class UBCFilterParam: NSObject {
 
+    static let categoryType = "category"
+    static let priceType = "maxPrice"
+    static let distanceType = "maxDistance"
+    
+    static let dateSortType = "sortByDate"
+    static let priceSortType = "sortByPrice"
+    static let distanceSortType = "sortByDistance"
+    
+    static let ascSort = "asc"
+    static let descSort = "desc"
+    
     private(set) var name: String
     private(set) var title: String
-    private(set) var value: String
-    var isSelected = false
+    var value: String
     
     init?(dictionary: [String: Any]) {
         guard let name = dictionary["name"] as? String,
@@ -30,8 +40,17 @@ class UBCFilterParam: NSObject {
             let title = category.name,
             let value = category.id else { return nil }
         
-        self.name = "category"
+        self.name = UBCFilterParam.categoryType
         self.title = title
         self.value = value
+    }
+    
+    init?(rowData: UBTableViewRowData) {
+        guard let name = rowData.name,
+            let title = rowData.title else { return nil }
+        
+        self.name = name
+        self.title = title
+        self.value = UBCFilterParam.ascSort
     }
 }

@@ -36,7 +36,7 @@
     self.view.backgroundColor = UIColor.whiteColor;
     self.navigationContainer.image = [UIImage imageNamed:@"general_logo_black"];
     self.navigationContainer.leftImageTitle = @"market_category_filter";
-//    self.navigationContainer.rightImageTitle = @"general_filter";
+    self.navigationContainer.rightImageTitle = @"general_filter";
     
     self.pageNumber = 0;
     self.items = [NSMutableArray array];
@@ -244,8 +244,14 @@
 
 - (void)rightBarButtonClick:(id)sender
 {
-    UBCFiltersListController *controller = [[UBCFiltersListController alloc] init];
+    UBCFiltersListController *controller = [[UBCFiltersListController alloc] initWithModel:self.filterDM.copy];
     [self.navigationController pushViewController:controller animated:YES];
+    
+    __weak typeof(self) weakSelf = self;
+    [controller setCompletion:^(UBCFilterDM *model) {
+        weakSelf.filterDM = model;
+        [weakSelf applyFilters];
+    }];
 }
 
 #pragma mark - UISearchBarDelegate
