@@ -95,6 +95,7 @@
     [self.contentView setCenterYConstraintToSubview:self.horizontalStackView];
     
     [self.rightIcon setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
+    [self.rightIcon setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
     [self.rightTitle setContentCompressionResistancePriority:751 forAxis:UILayoutConstraintAxisHorizontal];
     [self.rightDesc setContentCompressionResistancePriority:751 forAxis:UILayoutConstraintAxisHorizontal];
 }

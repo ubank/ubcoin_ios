@@ -102,6 +102,10 @@
     self.collectionView = UBCGoodsCollectionView.new;
     self.collectionView.actionsDelegate = self;
     [self.stackView addArrangedSubview:self.collectionView];
+    
+    self.collectionView.emptyView.icon.image = [UIImage imageNamed:@"empty_results"];
+    self.collectionView.emptyView.title.text = UBLocalizedString(@"str_no_result_title", nil);
+    self.collectionView.emptyView.desc.text = UBLocalizedString(@"str_no_result_desc", nil);
 }
 
 - (void)setupSearch

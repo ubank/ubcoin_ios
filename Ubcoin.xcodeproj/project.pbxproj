@@ -158,6 +158,7 @@
 		89BA58DA21663CAC00427A8E /* UBCFilterParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BA58D921663CAC00427A8E /* UBCFilterParam.swift */; };
 		89CB110E20EFCDA500729C95 /* HUBCollectionViewWaitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89CB110C20EFCDA500729C95 /* HUBCollectionViewWaitCell.xib */; };
 		89CB110F20EFCDA500729C95 /* HUBCollectionViewWaitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CB110D20EFCDA500729C95 /* HUBCollectionViewWaitCell.m */; };
+		89CD68632174F18B003FBCB7 /* UBCPriceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CD68622174F18B003FBCB7 /* UBCPriceCell.swift */; };
 		89F16A6B20F2C65D001AA440 /* UBCGoodDM.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F16A5420F2C65D001AA440 /* UBCGoodDM.m */; };
 		89F16A6C20F2C65D001AA440 /* UBCSellerDM.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F16A5620F2C65D001AA440 /* UBCSellerDM.m */; };
 		89F16A6D20F2C65D001AA440 /* UBCGoodsCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F16A5820F2C65D001AA440 /* UBCGoodsCollectionView.m */; };
@@ -407,6 +408,7 @@
 		89CB110B20EFCDA500729C95 /* HUBCollectionViewWaitCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUBCollectionViewWaitCell.h; sourceTree = "<group>"; };
 		89CB110C20EFCDA500729C95 /* HUBCollectionViewWaitCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HUBCollectionViewWaitCell.xib; sourceTree = "<group>"; };
 		89CB110D20EFCDA500729C95 /* HUBCollectionViewWaitCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUBCollectionViewWaitCell.m; sourceTree = "<group>"; };
+		89CD68622174F18B003FBCB7 /* UBCPriceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCPriceCell.swift; sourceTree = "<group>"; };
 		89F16A5120F2C65D001AA440 /* UBCMarketController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBCMarketController.h; sourceTree = "<group>"; };
 		89F16A5320F2C65D001AA440 /* UBCSellerDM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBCSellerDM.h; sourceTree = "<group>"; };
 		89F16A5420F2C65D001AA440 /* UBCGoodDM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBCGoodDM.m; sourceTree = "<group>"; };
@@ -1351,6 +1353,14 @@
 			path = DM;
 			sourceTree = "<group>";
 		};
+		89CD68612174C835003FBCB7 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				89CD68622174F18B003FBCB7 /* UBCPriceCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		89F16A4D20F2C65D001AA440 /* Market */ = {
 			isa = PBXGroup;
 			children = (
@@ -1368,6 +1378,7 @@
 		89F16A4E20F2C65D001AA440 /* Filters */ = {
 			isa = PBXGroup;
 			children = (
+				89CD68612174C835003FBCB7 /* Cell */,
 				89BA58D821663C9400427A8E /* DM */,
 				89BA58D021660E5900427A8E /* View */,
 				89BA58CB21652D2600427A8E /* Category Filter */,
@@ -1708,6 +1719,7 @@
 				8987518F20EE119F00E2B615 /* UBLocationManager.m in Sources */,
 				1CFFFE6E20F0DD28003B5AD9 /* UBCSTextViewTableViewCell.swift in Sources */,
 				8987517220EE119F00E2B615 /* UBDefaultTableView.m in Sources */,
+				89CD68632174F18B003FBCB7 /* UBCPriceCell.swift in Sources */,
 				89678DE82112424E00EB715E /* DBScorer.m in Sources */,
 				899E217C20E68D8A004D891B /* UBCAppDelegate.m in Sources */,
 				89F16A6F20F2C65D001AA440 /* UBCDiscountCollectionViewCell.m in Sources */,

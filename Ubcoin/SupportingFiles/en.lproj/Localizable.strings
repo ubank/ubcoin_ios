@@ -175,3 +175,6 @@
 "str_distance_to_seller" = "Distance to seller";
 "str_clear_all" = "Clear all";
 "str_show_n_items" = "Show %d items";
+
+"str_no_result_title" = "No results";
+"str_no_result_desc" = "Seems like there is nothing to show. Please try to reset your filters.";

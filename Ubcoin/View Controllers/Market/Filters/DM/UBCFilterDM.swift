@@ -28,6 +28,18 @@ class UBCFilterDM: NSObject, NSCopying {
         }
     }
     
+    @objc var priceParam: UBCFilterParam? {
+        get {
+            return filters.filter { $0.name == UBCFilterParam.priceType }.first
+        } set {
+            filters.removeAll(where: { $0.name == UBCFilterParam.priceType })
+            
+            if let sort = newValue {
+                filters.append(sort)
+            }
+        }
+    }
+    
     func copy(with zone: NSZone? = nil) -> Any {
         let copy = UBCFilterDM()
         copy.filters = filters
@@ -74,12 +86,23 @@ class UBCFilterDM: NSObject, NSCopying {
     func filtersSectionData() -> [UBTableViewRowData] {
         var rows = [UBTableViewRowData]()
         
-        let row = UBTableViewRowData()
-        row.accessoryType = .disclosureIndicator
-        row.title = "str_all_categories".localizedString()
-        row.name = UBCFilterParam.categoryType
-        row.className = "UBDefaultTableViewCell"
-        rows.append(row)
+        let categories = UBTableViewRowData()
+        categories.accessoryType = .disclosureIndicator
+        categories.title = "str_all_categories".localizedString()
+        categories.name = UBCFilterParam.categoryType
+        rows.append(categories)
+        
+        let price = UBTableViewRowData()
+        price.title = "str_max_price".localizedString()
+        price.rightTitle = "UBC"
+        price.name = UBCFilterParam.priceType
+        price.className = UBCPriceCell.className
+        rows.append(price)
+        
+        let distance = UBTableViewRowData()
+        distance.desc = "str_max_distance".localizedString()
+        distance.name = UBCFilterParam.distanceType
+        rows.append(distance)
         
         return rows
     }
@@ -90,19 +113,16 @@ class UBCFilterDM: NSObject, NSCopying {
         let dateSort = UBTableViewRowData()
         dateSort.title = "str_placement_date".localizedString()
         dateSort.name = UBCFilterParam.dateSortType
-        dateSort.className = "UBDefaultTableViewCell"
         rows.append(dateSort)
         
         let priceSort = UBTableViewRowData()
         priceSort.title = "str_item_price".localizedString()
         priceSort.name = UBCFilterParam.priceSortType
-        priceSort.className = "UBDefaultTableViewCell"
         rows.append(priceSort)
         
         let distanceSort = UBTableViewRowData()
         distanceSort.title = "str_distance_to_seller".localizedString()
         distanceSort.name = UBCFilterParam.distanceSortType
-        distanceSort.className = "UBDefaultTableViewCell"
         rows.append(distanceSort)
         
         

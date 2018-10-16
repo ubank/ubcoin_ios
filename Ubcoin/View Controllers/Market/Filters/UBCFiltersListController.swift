@@ -13,17 +13,12 @@ class UBCFiltersListController: UBViewController {
     @objc var completion: ((UBCFilterDM) -> Void)?
     
     private var model: UBCFilterDM
-    private lazy var tableView: UBTableView = { [unowned self] in
-        let tableView = UBTableView(frame: .zero, style: .grouped)
+    private lazy var tableView: UBDefaultTableView = { [unowned self] in
+        let tableView = UBDefaultTableView(frame: .zero, style: .grouped)
         
-        tableView.delegate = self
-        tableView.dataSource = self
+        tableView.actionDelegate = self
         tableView.backgroundColor = .clear
-        tableView.separatorStyle = .none
-        tableView.rowHeight = UBCConstant.cellHeight
-        
-        tableView.register(UBDefaultTableViewCell.self, forCellReuseIdentifier: "UBDefaultTableViewCell")
-        tableView.register(UBCSTextFieldTableViewCell.self, forCellReuseIdentifier: UBCSTextFieldTableViewCell.className)
+        tableView.keyboardDismissMode = .onDrag
         
         return tableView
         }()
@@ -61,6 +56,7 @@ class UBCFiltersListController: UBViewController {
         self.title = "str_filters".localizedString()
         
         setupViews()
+        tableView.update(withSectionsData: model.sections)
     }
 
     private func setupViews() {
@@ -110,64 +106,11 @@ class UBCFiltersListController: UBViewController {
     }
 }
 
-extension UBCFiltersListController: UITableViewDataSource, UITableViewDelegate {
+extension UBCFiltersListController: UBDefaultTableViewDelegate {
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return self.model.sections.count
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let section = self.model.sections[section]
+    func didSelect(_ data: UBTableViewRowData!, indexPath: IndexPath!) {
         
-        return section.rows.count
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        let section = self.model.sections[section]
-        
-        return section.headerHeight
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let section = self.model.sections[section]
-        
-        return section.headerTitle
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let section = self.model.sections[indexPath.section]
-        guard let row = section.rows[indexPath.row] as? UBTableViewRowData,
-            let cell = tableView.dequeueReusableCell(withIdentifier: row.className) as? UBDefaultTableViewCell else { return UBTableViewCell() }
-        
-        if indexPath.section == 1 {
-            if let sortParam = model.sortParam,
-                sortParam.name == row.name {
-                let iconName = sortParam.value == UBCFilterParam.ascSort ? "icSortMinMax" : "icSortMaxMin"
-                row.rightIcon = UIImage(named: iconName)
-                row.attributedTitle = NSAttributedString(string: row.title, attributes: [.foregroundColor: UBCColor.green, .font: UBFont.titleFont])
-            } else {
-                row.attributedTitle = nil
-                row.rightIcon = nil
-            }
-        }
-        
-        cell.rowData = row
-        cell.showBottomSeparator = !self.tableView.isLast(indexPath)
-        
-//        if let cell = cell as? UBCSPhotoTableViewCell {
-//            cell.delegate = self
-//        } else if let cell = cell as? UBCSTextFieldTableViewCell {
-//            cell.delegate = self
-//        }
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let section = self.model.sections[indexPath.section]
-        guard let row = section.rows[indexPath.row] as? UBTableViewRowData else { return }
-        
-        if row.name == UBCFilterParam.categoryType {
+        if data.name == UBCFilterParam.categoryType {
             let controller = UBCCategoriesFilterController(selectedCategories: model.categoryFilters)
             self.navigationController?.pushViewController(controller, animated: true)
             
@@ -175,7 +118,24 @@ extension UBCFiltersListController: UITableViewDataSource, UITableViewDelegate {
                 self?.model.updateCategoryFilters(selectedCategoryFilters: selectedCategoryFilters)
             }
         } else if indexPath.section == 1 {
-            updateSort(data: row)
+            updateSort(data: data)
+        }
+    }
+    
+    func layoutCell(_ cell: UBDefaultTableViewCell!, for data: UBTableViewRowData!, indexPath: IndexPath!) {
+        
+        if indexPath.section == 1 {
+            if let sortParam = model.sortParam,
+                sortParam.name == data.name {
+                let iconName = sortParam.value == UBCFilterParam.ascSort ? "icSortMinMax" : "icSortMaxMin"
+                data.rightIcon = UIImage(named: iconName)
+                data.attributedTitle = NSAttributedString(string: data.title, attributes: [.foregroundColor: UBCColor.green, .font: UBFont.titleFont])
+            } else {
+                data.attributedTitle = nil
+                data.rightIcon = nil
+            }
+            
+            cell.rowData = data;
         }
     }
 }

@@ -12,6 +12,12 @@
 #import "HUBCollectionViewWaitCell.h"
 #import "UBCGoodCell.h"
 
+@interface UBCGoodsCollectionView()
+
+@property (strong, nonatomic, readwrite) HUBEmptyView *emptyView;
+
+@end
+
 @implementation UBCGoodsCollectionView
 
 - (void)awakeFromNib
@@ -53,6 +59,19 @@
     [self registerNib:[UINib nibWithNibName:NSStringFromClass(HUBCollectionViewWaitCell.class) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass(HUBCollectionViewWaitCell.class)];
     
     [self registerNib:[UINib nibWithNibName:NSStringFromClass(UBCDiscountsCollectionView.class) bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass(UBCDiscountsCollectionView.class)];
+    
+    [self setupEmptyView];
+}
+
+- (void)setupEmptyView
+{
+    self.emptyView = [HUBEmptyView loadFromXib];
+    self.emptyView.hidden = YES;
+    [self addSubview:self.emptyView];
+    [self setTopConstraintToSubview:self.emptyView withValue:0];
+    [self setLeadingConstraintToSubview:self.emptyView withValue:0];
+    [self setTrailingConstraintToSubview:self.emptyView withValue:0];
+    [self setWidthEqualToSubview:self.emptyView];
 }
 
 - (void)setDiscounts:(NSArray<UBCDiscountDM *> *)discounts
@@ -64,6 +83,7 @@
 - (void)setItems:(NSArray<UBCGoodDM *> *)items
 {
     _items = items;
+    self.emptyView.hidden = items.count > 0;
     [self reloadData];
 }
 
