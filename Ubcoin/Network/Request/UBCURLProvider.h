@@ -11,6 +11,7 @@
 @interface UBCURLProvider : NSObject
 
 + (NSURL *)goodsListWithPageNumber:(NSUInteger)page andFilters:(NSString *)filters;
++ (NSURL *)goodsCountWithFilters:(NSString *)filters;
 + (NSURL *)categories;
 + (NSURL *)activateItem;
 + (NSURL *)deactivateItem;

@@ -174,7 +174,8 @@
 "str_item_price" = "물건가격";
 "str_distance_to_seller" = "판매자와의 거리";
 "str_clear_all" = "취소";
-"str_show_n_items" = "%아이템 보여주기";
+"str_show_items" = "%아이템 보여주기";
+"str_show_n_items" = "%아이템 %d 보여주기";
 
 "str_no_result_title" = "결과없음";
 "str_no_result_desc" = "보여지는 것이 없으므로 필터를 다시 적용하세요";

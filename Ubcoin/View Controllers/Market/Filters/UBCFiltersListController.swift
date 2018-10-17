@@ -11,7 +11,7 @@ import UIKit
 class UBCFiltersListController: UBViewController {
 
     @objc var completion: ((UBCFilterDM) -> Void)?
-    
+    private var task: URLSessionDataTask?
     private var model: UBCFilterDM
     private lazy var tableView: UBDefaultTableView = { [unowned self] in
         let tableView = UBDefaultTableView(frame: .zero, style: .grouped)
@@ -23,15 +23,19 @@ class UBCFiltersListController: UBViewController {
         return tableView
         }()
     
+    private lazy var button: HUBGeneralButton = {
+        let button = HUBGeneralButton()
+        button.type = HUBGeneralButtonTypeGreen
+        button.title = "str_show_items".localizedString()
+        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        
+        return button
+    }()
+    
     private lazy var buttonView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
         view.setHeightConstraintWithValue(UBCConstant.actionButtonHeight + 30)
-        
-        let button = HUBGeneralButton()
-        button.type = HUBGeneralButtonTypeGreen
-        button.title = "ui_button_done".localizedString()
-        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         
         view.addSubview(button)
         view.setAllConstraintToSubview(button, with: UIEdgeInsets(top: 15, left: UBCConstant.inset, bottom: -15, right: -UBCConstant.inset))
@@ -87,6 +91,10 @@ class UBCFiltersListController: UBViewController {
         tableView.reloadData()
     }
     
+    override func keyboardWillHide(_ notification: Notification?) {
+        updateGoodsCount()
+    }
+    
     private func updateSort(data: UBTableViewRowData) {
         if let sortParam = model.sortParam,
             sortParam.name == data.name {
@@ -101,6 +109,20 @@ class UBCFiltersListController: UBViewController {
         
         tableView.reloadData()
     }
+    
+    func updateGoodsCount() {
+        button.title = "str_show_items".localizedString()
+        
+        task?.cancel()
+        
+        if !model.filters.isEmpty {
+            task = UBCDataProvider.shared.goodsCount(withFilters: model.filterValues()) { [weak self] success, count in
+                if let count = count {
+                    self?.button.title = String.init(format: "str_show_n_items".localizedString(), count)
+                }
+            }
+        }
+    }
 }
 
 extension UBCFiltersListController: UBDefaultTableViewDelegate {
@@ -113,6 +135,7 @@ extension UBCFiltersListController: UBDefaultTableViewDelegate {
             
             controller.completion = { [weak self] selectedCategoryFilters in
                 self?.model.updateCategoryFilters(selectedCategoryFilters: selectedCategoryFilters)
+                self?.updateGoodsCount()
             }
         } else if indexPath.section == 1 {
             updateSort(data: data)
@@ -134,16 +157,5 @@ extension UBCFiltersListController: UBDefaultTableViewDelegate {
             
             cell.rowData = data;
         }
-    }
-}
-
-extension UBCFiltersListController: UIGestureRecognizerDelegate {
-    
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        if touch.view?.superview as? UITableViewCell != nil || touch.view?.superview?.superview as? UITableViewCell != nil {
-            return false
-        }
-        
-        return true
     }
 }

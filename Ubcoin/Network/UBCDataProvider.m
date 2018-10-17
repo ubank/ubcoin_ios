@@ -74,6 +74,20 @@
      }];
 }
 
+- (NSURLSessionDataTask *)goodsCountWithFilters:(NSString *)filters withCompletionBlock:(void (^)(BOOL, NSNumber *))completionBlock
+{
+    NSURL *url = [UBCURLProvider goodsCountWithFilters:filters];
+    NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:url];
+    return [self.connection sendRequest:request isBackground:YES withCompletionBlock:^(BOOL success, id responseObject)
+            {
+                if (completionBlock)
+                {
+                    responseObject = [responseObject removeNulls];
+                    completionBlock(success, responseObject[@"count"]);
+                }
+            }];
+}
+
 - (void)goodWithID:(NSString *)itemID withCompletionBlock:(void (^)(BOOL, UBCGoodDM *))completionBlock
 {
     NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:[UBCURLProvider goodWithID:itemID]];

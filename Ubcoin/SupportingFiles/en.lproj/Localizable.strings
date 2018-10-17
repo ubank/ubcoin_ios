@@ -174,6 +174,7 @@
 "str_item_price" = "Item Price";
 "str_distance_to_seller" = "Distance to seller";
 "str_clear_all" = "Clear all";
+"str_show_items" = "Show items";
 "str_show_n_items" = "Show %d items";
 
 "str_no_result_title" = "No results";
