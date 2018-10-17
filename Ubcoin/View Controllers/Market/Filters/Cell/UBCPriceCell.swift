@@ -14,6 +14,7 @@ import UIKit
     
     lazy var textField: UITextField = {
         let textField = UITextField()
+        textField.delegate = self
         textField.keyboardType = .decimalPad
         textField.font = UBCFont.title
         textField.textColor = UBCColor.main
@@ -36,6 +37,9 @@ import UIKit
     override var rowData: UBTableViewRowData? {
         didSet {
             textField.placeholder = rowData?.title
+            
+            let param = rowData?.data as? UBCFilterParam
+            textField.text = param?.value
         }
     }
 }
@@ -45,11 +49,10 @@ extension UBCPriceCell: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if let text = textField.text as NSString? {
             let newString = text.replacingCharacters(in: range, with: string)
-            textField.text = newString
-            
-            
+            let param = rowData?.data as? UBCFilterParam
+            param?.value = newString
         }
         
-        return false
+        return true
     }
 }

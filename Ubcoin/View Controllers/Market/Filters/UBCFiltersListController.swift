@@ -54,6 +54,7 @@ class UBCFiltersListController: UBViewController {
         super.viewDidLoad()
 
         self.title = "str_filters".localizedString()
+        self.navigationContainer.rightTitle = "str_clear_all".localizedString()
         
         setupViews()
         tableView.update(withSectionsData: model.sections)
@@ -69,10 +70,6 @@ class UBCFiltersListController: UBViewController {
         self.view.setLeadingConstraintToSubview(self.buttonView, withValue: 0)
         self.view.setTrailingConstraintToSubview(self.buttonView, withValue: 0)
         self.view.setBottomConstraintToSubview(self.buttonView, withValue: 0)
-        
-//        let gesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
-//        gesture.delegate = self
-//        self.view.addGestureRecognizer(gesture)
     }
     
     //MARK: - Actions
@@ -85,9 +82,9 @@ class UBCFiltersListController: UBViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    @objc
-    func hideKeyboard() {
-        view.endEditing(true)
+    override func rightBarButtonClick(_ sender: Any?) {
+        model.clearFilters()
+        tableView.reloadData()
     }
     
     private func updateSort(data: UBTableViewRowData) {
@@ -99,7 +96,7 @@ class UBCFiltersListController: UBViewController {
                 model.sortParam = nil
             }
         } else {
-            model.sortParam = UBCFilterParam(rowData: data)
+            model.sortParam = UBCFilterParam(rowData: data, value: UBCFilterParam.ascSort)
         }
         
         tableView.reloadData()
@@ -110,7 +107,7 @@ extension UBCFiltersListController: UBDefaultTableViewDelegate {
     
     func didSelect(_ data: UBTableViewRowData!, indexPath: IndexPath!) {
         
-        if data.name == UBCFilterParam.categoryType {
+        if data.name == UBCFilterType.category.rawValue {
             let controller = UBCCategoriesFilterController(selectedCategories: model.categoryFilters)
             self.navigationController?.pushViewController(controller, animated: true)
             

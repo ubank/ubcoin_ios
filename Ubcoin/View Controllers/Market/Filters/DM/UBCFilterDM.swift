@@ -14,13 +14,13 @@ class UBCFilterDM: NSObject, NSCopying {
     @objc var filters = [UBCFilterParam]()
     @objc var sortParam: UBCFilterParam? {
         get {
-            return filters.filter { $0.name == UBCFilterParam.dateSortType ||
-                $0.name == UBCFilterParam.priceSortType ||
-                $0.name == UBCFilterParam.distanceSortType }.first
+            return filters.filter { $0.name == UBCFilterType.dateSort.rawValue ||
+                $0.name == UBCFilterType.priceSort.rawValue ||
+                $0.name == UBCFilterType.distanceSort.rawValue }.first
         } set {
-            filters.removeAll(where: { $0.name == UBCFilterParam.dateSortType ||
-                $0.name == UBCFilterParam.priceSortType ||
-                $0.name == UBCFilterParam.distanceSortType
+            filters.removeAll(where: { $0.name == UBCFilterType.dateSort.rawValue ||
+                $0.name == UBCFilterType.priceSort.rawValue ||
+                $0.name == UBCFilterType.distanceSort.rawValue
             })
             if let sort = newValue {
                 filters.append(sort)
@@ -30,12 +30,14 @@ class UBCFilterDM: NSObject, NSCopying {
     
     @objc var priceParam: UBCFilterParam? {
         get {
-            return filters.filter { $0.name == UBCFilterParam.priceType }.first
+            let param = filters.filter { $0.name == UBCFilterType.price.rawValue }.first ?? UBCFilterParam(type: UBCFilterType.price, value: "")
+            filters.append(param)
+            return param
         } set {
-            filters.removeAll(where: { $0.name == UBCFilterParam.priceType })
+            filters.removeAll(where: { $0.name == UBCFilterType.price.rawValue })
             
-            if let sort = newValue {
-                filters.append(sort)
+            if let param = newValue {
+                filters.append(param)
             }
         }
     }
@@ -48,7 +50,7 @@ class UBCFilterDM: NSObject, NSCopying {
     }
     
     @objc var categoryFilters: [UBCFilterParam] {
-        return filters.filter { $0.name == UBCFilterParam.categoryType}
+        return filters.filter { $0.name == UBCFilterType.category.rawValue}
     }
     
     private(set) lazy var sections: [UBTableViewSectionData] = {
@@ -74,10 +76,16 @@ class UBCFilterDM: NSObject, NSCopying {
         filters.append(contentsOf: selectedCategoryFilters)
     }
     
+    @objc func clearFilters() {
+        filters = [UBCFilterParam]()
+    }
+    
     @objc func filterValues() -> String {
         var result = ""
         for filter in filters {
-            result += "&\(filter.name)=\(filter.value)"
+            if !filter.value.isEmpty {
+                result += "&\(filter.name)=\(filter.value)"
+            }
         }
         
         return result
@@ -88,20 +96,21 @@ class UBCFilterDM: NSObject, NSCopying {
         
         let categories = UBTableViewRowData()
         categories.accessoryType = .disclosureIndicator
-        categories.title = "str_all_categories".localizedString()
-        categories.name = UBCFilterParam.categoryType
+        categories.title = UBCFilterType.category.title
+        categories.name = UBCFilterType.category.rawValue
         rows.append(categories)
         
         let price = UBTableViewRowData()
-        price.title = "str_max_price".localizedString()
+        price.title = UBCFilterType.price.title
         price.rightTitle = "UBC"
-        price.name = UBCFilterParam.priceType
+        price.name = UBCFilterType.price.rawValue
         price.className = UBCPriceCell.className
+        price.data = priceParam
         rows.append(price)
         
         let distance = UBTableViewRowData()
-        distance.desc = "str_max_distance".localizedString()
-        distance.name = UBCFilterParam.distanceType
+        distance.desc = UBCFilterType.distance.title
+        distance.name = UBCFilterType.distance.rawValue
         rows.append(distance)
         
         return rows
@@ -111,18 +120,18 @@ class UBCFilterDM: NSObject, NSCopying {
         var rows = [UBTableViewRowData]()
         
         let dateSort = UBTableViewRowData()
-        dateSort.title = "str_placement_date".localizedString()
-        dateSort.name = UBCFilterParam.dateSortType
+        dateSort.title = UBCFilterType.dateSort.title
+        dateSort.name = UBCFilterType.dateSort.rawValue
         rows.append(dateSort)
         
         let priceSort = UBTableViewRowData()
-        priceSort.title = "str_item_price".localizedString()
-        priceSort.name = UBCFilterParam.priceSortType
+        priceSort.title = UBCFilterType.priceSort.title
+        priceSort.name = UBCFilterType.priceSort.rawValue
         rows.append(priceSort)
         
         let distanceSort = UBTableViewRowData()
-        distanceSort.title = "str_distance_to_seller".localizedString()
-        distanceSort.name = UBCFilterParam.distanceSortType
+        distanceSort.title = UBCFilterType.distanceSort.title
+        distanceSort.name = UBCFilterType.distanceSort.rawValue
         rows.append(distanceSort)
         
         

@@ -9,14 +9,6 @@
 import UIKit
 
 class UBCFilterParam: NSObject {
-
-    static let categoryType = "category"
-    static let priceType = "maxPrice"
-    static let distanceType = "maxDistance"
-    
-    static let dateSortType = "sortByDate"
-    static let priceSortType = "sortByPrice"
-    static let distanceSortType = "sortByDistance"
     
     static let ascSort = "asc"
     static let descSort = "desc"
@@ -40,17 +32,50 @@ class UBCFilterParam: NSObject {
             let title = category.name,
             let value = category.id else { return nil }
         
-        self.name = UBCFilterParam.categoryType
+        self.name = UBCFilterType.category.rawValue
         self.title = title
         self.value = value
     }
     
-    init?(rowData: UBTableViewRowData) {
+    init(type: UBCFilterType, value: String) {
+        self.name = type.rawValue
+        self.title = type.title
+        self.value = value
+    }
+    
+    init?(rowData: UBTableViewRowData, value: String) {
         guard let name = rowData.name,
             let title = rowData.title else { return nil }
         
         self.name = name
         self.title = title
-        self.value = UBCFilterParam.ascSort
+        self.value = value
+    }
+}
+
+enum UBCFilterType: String {
+    case category = "category"
+    case price = "maxPrice"
+    case distance = "maxDistance"
+
+    case dateSort = "sortByDate"
+    case priceSort = "sortByPrice"
+    case distanceSort = "sortByDistance"
+    
+    var title: String {
+        switch self {
+        case .category:
+            return "str_all_categories".localizedString()
+        case .price:
+            return "str_max_price".localizedString()
+        case .distance:
+            return "str_max_distance".localizedString()
+        case .dateSort:
+            return "str_placement_date".localizedString()
+        case .priceSort:
+            return "str_item_price".localizedString()
+        case .distanceSort:
+            return "str_distance_to_seller".localizedString()
+        }
     }
 }
