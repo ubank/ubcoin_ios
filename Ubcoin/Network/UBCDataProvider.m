@@ -74,7 +74,7 @@
      }];
 }
 
-- (NSURLSessionDataTask *)goodsCountWithFilters:(NSString *)filters withCompletionBlock:(void (^)(BOOL, NSNumber *))completionBlock
+- (NSURLSessionDataTask *)goodsCountWithFilters:(NSString *)filters withCompletionBlock:(void (^)(BOOL, NSString *))completionBlock
 {
     NSURL *url = [UBCURLProvider goodsCountWithFilters:filters];
     NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:url];

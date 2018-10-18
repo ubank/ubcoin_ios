@@ -42,28 +42,25 @@ class UBCFilterDM: NSObject, NSCopying {
         }
     }
     
-    func copy(with zone: NSZone? = nil) -> Any {
-        let copy = UBCFilterDM()
-        copy.filters = filters
-        
-        return copy
+    @objc var distanceParam: UBCFilterParam? {
+        get {
+            let param = filters.filter { $0.name == UBCFilterType.distance.rawValue }.first ?? UBCFilterParam(type: UBCFilterType.distance, value: "")
+            filters.append(param)
+            return param
+        } set {
+            filters.removeAll(where: { $0.name == UBCFilterType.distance.rawValue })
+            
+            if let param = newValue {
+                filters.append(param)
+            }
+        }
     }
     
     @objc var categoryFilters: [UBCFilterParam] {
         return filters.filter { $0.name == UBCFilterType.category.rawValue}
     }
     
-    private(set) lazy var sections: [UBTableViewSectionData] = {
-        let filtersSection = UBTableViewSectionData()
-        filtersSection.headerTitle = "str_common".localizedString()
-        filtersSection.rows = filtersSectionData()
-        
-        let sortSection = UBTableViewSectionData()
-        sortSection.headerTitle = "str_sort_by".localizedString()
-        sortSection.rows = sortSectionData()
-        
-        return [filtersSection, sortSection]
-    }()
+    // MARK: -
     
     @objc func updateCategoryFilters(selectedCategoryFilters: [UBCFilterParam]) {
         let currentCategoryFilters = categoryFilters
@@ -91,6 +88,20 @@ class UBCFilterDM: NSObject, NSCopying {
         return result
     }
     
+    // MARK: -
+    
+    private(set) lazy var sections: [UBTableViewSectionData] = {
+        let filtersSection = UBTableViewSectionData()
+        filtersSection.headerTitle = "str_common".localizedString()
+        filtersSection.rows = filtersSectionData()
+        
+        let sortSection = UBTableViewSectionData()
+        sortSection.headerTitle = "str_sort_by".localizedString()
+        sortSection.rows = sortSectionData()
+        
+        return [filtersSection, sortSection]
+    }()
+    
     func filtersSectionData() -> [UBTableViewRowData] {
         var rows = [UBTableViewRowData]()
         
@@ -111,6 +122,9 @@ class UBCFilterDM: NSObject, NSCopying {
         let distance = UBTableViewRowData()
         distance.desc = UBCFilterType.distance.title
         distance.name = UBCFilterType.distance.rawValue
+        distance.className = UBCFilterValueSelectionCell.className
+        distance.height = 100;
+        distance.data = distanceParam
         rows.append(distance)
         
         return rows
@@ -136,5 +150,14 @@ class UBCFilterDM: NSObject, NSCopying {
         
         
         return rows
+    }
+    
+    // MARK: -
+    
+    func copy(with zone: NSZone? = nil) -> Any {
+        let copy = UBCFilterDM()
+        copy.filters = filters
+        
+        return copy
     }
 }

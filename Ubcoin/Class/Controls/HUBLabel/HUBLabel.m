@@ -37,6 +37,14 @@
     }
 }
 
+- (void)drawTextInRect:(CGRect)rect
+{
+    UIEdgeInsets insets = {self.topInset, self.leftInset,
+        self.bottomInset, self.rightInset};
+    
+    return [super drawTextInRect:UIEdgeInsetsInsetRect(rect, insets)];
+}
+
 #pragma mark - Private Styling
 
 - (void)applyStyle:(HUBLabelStyle)style

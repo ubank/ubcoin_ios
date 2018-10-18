@@ -89,6 +89,7 @@ class UBCFiltersListController: UBViewController {
     override func rightBarButtonClick(_ sender: Any?) {
         model.clearFilters()
         tableView.reloadData()
+        updateGoodsCount()
     }
     
     override func keyboardWillHide(_ notification: Notification?) {
@@ -115,8 +116,9 @@ class UBCFiltersListController: UBViewController {
         
         task?.cancel()
         
-        if !model.filters.isEmpty {
-            task = UBCDataProvider.shared.goodsCount(withFilters: model.filterValues()) { [weak self] success, count in
+        let filterValues = model.filterValues()
+        if !filterValues.isEmpty {
+            task = UBCDataProvider.shared.goodsCount(withFilters: filterValues) { [weak self] success, count in
                 if let count = count {
                     self?.button.title = String.init(format: "str_show_n_items".localizedString(), count)
                 }
@@ -142,6 +144,12 @@ extension UBCFiltersListController: UBDefaultTableViewDelegate {
         }
     }
     
+    func prepare(_ cell: UBDefaultTableViewCell!, for data: UBTableViewRowData!) {
+        if let cell = cell as? UBCFilterValueSelectionCell {
+            cell.delegate = self
+        }
+    }
+    
     func layoutCell(_ cell: UBDefaultTableViewCell!, for data: UBTableViewRowData!, indexPath: IndexPath!) {
         
         if indexPath.section == 1 {
@@ -157,5 +165,12 @@ extension UBCFiltersListController: UBDefaultTableViewDelegate {
             
             cell.rowData = data;
         }
+    }
+}
+
+extension UBCFiltersListController: UBCFilterValueSelectionCellDelegate {
+    
+    func didSelect() {
+        updateGoodsCount()
     }
 }

@@ -50,6 +50,7 @@ extension UBCPriceCell: UITextFieldDelegate {
         if let text = textField.text as NSString? {
             let newString = text.replacingCharacters(in: range, with: string)
             let param = rowData?.data as? UBCFilterParam
+            param?.title = newString + " UBC"
             param?.value = newString
         }
         

@@ -46,8 +46,8 @@ class UBCFiltersView: UIView {
     }
 
     @objc func update(filters: [UBCFilterParam]) {
-        self.filters = filters
-        self.isHidden = filters.count == 0
+        self.filters = filters.filter { !$0.value.isEmpty }
+        self.isHidden = self.filters.count == 0
         collectionView.reloadData()
     }
     

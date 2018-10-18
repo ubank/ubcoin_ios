@@ -15,7 +15,7 @@
 @property (class, nonatomic, readonly) UBCDataProvider *sharedProvider;
 
 - (NSURLSessionDataTask *)goodsListWithPageNumber:(NSUInteger)page andFilters:(NSString *)filters withCompletionBlock:(void (^)(BOOL success, NSArray *goods, BOOL canLoadMore))completionBlock;
-- (NSURLSessionDataTask *)goodsCountWithFilters:(NSString *)filters withCompletionBlock:(void (^)(BOOL success, NSNumber *count))completionBlock;
+- (NSURLSessionDataTask *)goodsCountWithFilters:(NSString *)filters withCompletionBlock:(void (^)(BOOL success, NSString *count))completionBlock;
 - (void)goodWithID:(NSString *)itemID withCompletionBlock:(void (^)(BOOL success, UBCGoodDM *item))completionBlock;
 
 - (void)discountsWithCompletionBlock:(void (^)(BOOL success, NSArray *discounts))completionBlock;

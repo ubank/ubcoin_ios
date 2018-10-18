@@ -14,8 +14,16 @@ class UBCFilterParam: NSObject {
     static let descSort = "desc"
     
     private(set) var name: String
-    private(set) var title: String
+    var title: String
     var value: String
+    var values: [UBTableViewRowData] {
+        switch name {
+        case UBCFilterType.distance.rawValue:
+            return distanceValues()
+        default:
+            return []
+        }
+    }
     
     init?(dictionary: [String: Any]) {
         guard let name = dictionary["name"] as? String,
@@ -50,6 +58,32 @@ class UBCFilterParam: NSObject {
         self.name = name
         self.title = title
         self.value = value
+    }
+    
+    func distanceValues() -> [UBTableViewRowData] {
+        var rows = [UBTableViewRowData]()
+        
+        var row = UBTableViewRowData()
+        row.title = "1 km"
+        row.name = "1"
+        rows.append(row)
+        
+        row = UBTableViewRowData()
+        row.title = "5 km"
+        row.name = "5"
+        rows.append(row)
+        
+        row = UBTableViewRowData()
+        row.title = "10 km"
+        row.name = "10"
+        rows.append(row)
+        
+        row = UBTableViewRowData()
+        row.title = "100 km"
+        row.name = "100"
+        rows.append(row)
+        
+        return rows
     }
 }
 
