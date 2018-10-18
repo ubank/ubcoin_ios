@@ -83,6 +83,10 @@ class UBCFilterParam: NSObject {
         row.name = "100"
         rows.append(row)
         
+        for row in rows {
+            row.isSelected = row.name == self.value
+        }
+        
         return rows
     }
 }

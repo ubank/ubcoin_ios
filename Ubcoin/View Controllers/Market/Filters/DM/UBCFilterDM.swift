@@ -73,10 +73,6 @@ class UBCFilterDM: NSObject, NSCopying {
         filters.append(contentsOf: selectedCategoryFilters)
     }
     
-    @objc func clearFilters() {
-        filters = [UBCFilterParam]()
-    }
-    
     @objc func filterValues() -> String {
         var result = ""
         for filter in filters {

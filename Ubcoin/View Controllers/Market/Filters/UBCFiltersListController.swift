@@ -62,6 +62,7 @@ class UBCFiltersListController: UBViewController {
         
         setupViews()
         tableView.update(withSectionsData: model.sections)
+        updateGoodsCount()
     }
 
     private func setupViews() {
@@ -87,8 +88,8 @@ class UBCFiltersListController: UBViewController {
     }
     
     override func rightBarButtonClick(_ sender: Any?) {
-        model.clearFilters()
-        tableView.reloadData()
+        model = UBCFilterDM()
+        tableView.update(withSectionsData: model.sections)
         updateGoodsCount()
     }
     
