@@ -166,6 +166,7 @@
 
 "str_filters" = "Filters";
 "str_category" = "Category";
+"str_categories" = "Сategories";
 "str_all_categories" = "All categories";
 "str_max_price" = "Max. price";
 "str_max_distance" = "Max. distance";

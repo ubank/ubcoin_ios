@@ -166,6 +166,7 @@
 
 "str_filters" = "Urutkan";
 "str_category" = "Kategori";
+"str_categories" = "Kategori";
 "str_all_categories" = "Semua Kategori";
 "str_max_price" = "Harga Maksimal";
 "str_max_distance" = "Jarak Maksimal";

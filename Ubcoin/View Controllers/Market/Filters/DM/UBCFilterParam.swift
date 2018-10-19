@@ -103,7 +103,7 @@ enum UBCFilterType: String {
     var title: String {
         switch self {
         case .category:
-            return "str_all_categories".localizedString()
+            return "str_categories".localizedString()
         case .price:
             return "str_max_price".localizedString()
         case .distance:

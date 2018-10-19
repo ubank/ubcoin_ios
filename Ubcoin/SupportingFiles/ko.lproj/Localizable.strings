@@ -166,6 +166,7 @@
 
 "str_filters" = "필터";
 "str_category" = "카테고리";
+"str_сategories" = "카테고리";
 "str_all_categories" = "모든 카테고리";
 "str_max_price" = "최대가격";
 "str_max_distance" = "최대치";

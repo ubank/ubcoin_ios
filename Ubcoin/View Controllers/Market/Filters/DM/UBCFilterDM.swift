@@ -31,6 +31,7 @@ class UBCFilterDM: NSObject, NSCopying {
     @objc var priceParam: UBCFilterParam? {
         get {
             let param = filters.filter { $0.name == UBCFilterType.price.rawValue }.first ?? UBCFilterParam(type: UBCFilterType.price, value: "")
+            filters.removeAll(where: { $0.name == UBCFilterType.price.rawValue })
             filters.append(param)
             return param
         } set {
@@ -45,6 +46,7 @@ class UBCFilterDM: NSObject, NSCopying {
     @objc var distanceParam: UBCFilterParam? {
         get {
             let param = filters.filter { $0.name == UBCFilterType.distance.rawValue }.first ?? UBCFilterParam(type: UBCFilterType.distance, value: "")
+            filters.removeAll(where: { $0.name == UBCFilterType.distance.rawValue })
             filters.append(param)
             return param
         } set {
