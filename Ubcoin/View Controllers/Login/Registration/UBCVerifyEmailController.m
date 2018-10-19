@@ -11,6 +11,7 @@
 #import "UBCAppDelegate.h"
 
 #import "Ubcoin-Swift.h"
+#import <FacebookSDK/FBSDKCoreKit/FBSDKCoreKit.h>
 
 @interface UBCVerifyEmailController () <UITextFieldDelegate>
 
@@ -76,6 +77,8 @@
          {
              [mainAppDelegate setupStack];
              [UBCSuccessRegistrationView show];
+             
+             [FBSDKAppEvents logEvent:FBSDKAppEventNameCompletedRegistration parameters:nil];
          }
          else
          {
