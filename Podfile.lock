@@ -24,15 +24,8 @@ PODS:
     - Fabric (~> 1.7.13)
   - DGActivityIndicatorView (2.1.1)
   - Fabric (1.7.13)
-  - FacebookSDK (4.37.0):
+  - FBSDKCoreKit (4.37.0):
     - Bolts (~> 1.7)
-    - FacebookSDK/CoreKit (= 4.37.0)
-    - FacebookSDK/MarketingKit (= 4.37.0)
-  - FacebookSDK/CoreKit (4.37.0):
-    - Bolts (~> 1.7)
-  - FacebookSDK/MarketingKit (4.37.0):
-    - Bolts (~> 1.7)
-    - FacebookSDK/CoreKit
   - GoogleAnalytics (3.17.0)
   - GoogleMaps (2.7.0):
     - GoogleMaps/Maps (= 2.7.0)
@@ -78,7 +71,7 @@ DEPENDENCIES:
   - Crashlytics
   - DGActivityIndicatorView
   - Fabric
-  - FacebookSDK
+  - FBSDKCoreKit
   - GoogleMaps
   - INTULocationManager
   - QRCodeReaderViewController
@@ -92,7 +85,7 @@ SPEC REPOS:
     - Crashlytics
     - DGActivityIndicatorView
     - Fabric
-    - FacebookSDK
+    - FBSDKCoreKit
     - GoogleAnalytics
     - GoogleMaps
     - INTULocationManager
@@ -115,7 +108,7 @@ SPEC CHECKSUMS:
   Crashlytics: 55e24fc23989680285a21cb1146578d9d18e432c
   DGActivityIndicatorView: ff2c76073d79692f724863c8dd38685866a03cb6
   Fabric: 25d0963b691fc97be566392243ff0ecef5a68338
-  FacebookSDK: aac401153feabdedd7dfeb46acaccad7ac53fb69
+  FBSDKCoreKit: fe5f3474499a81963e11e3f3a5c753d0a95ca2b4
   GoogleAnalytics: f42cc53a87a51fe94334821868d9c8481ff47a7b
   GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
   INTULocationManager: e5dc524611b0cd582f473bc56cc8c389adb2f338
@@ -124,6 +117,6 @@ SPEC CHECKSUMS:
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
   UBGeneralClasses: a5485a99a05a01e5c17321117caf26d2507eed87
 
-PODFILE CHECKSUM: d6d12e334a2824e5ac53d7c7a38711826136999c
+PODFILE CHECKSUM: b284053c6d6fda8d8a0784202f3d6f147c371d19
 
 COCOAPODS: 1.5.3

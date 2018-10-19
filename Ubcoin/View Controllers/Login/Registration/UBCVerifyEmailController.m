@@ -11,7 +11,7 @@
 #import "UBCAppDelegate.h"
 
 #import "Ubcoin-Swift.h"
-#import <FacebookSDK/FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 @interface UBCVerifyEmailController () <UITextFieldDelegate>
 

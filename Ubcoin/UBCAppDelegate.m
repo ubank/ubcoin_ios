@@ -16,7 +16,7 @@
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 #import <GoogleMaps/GoogleMaps.h>
-#import <FacebookSDK/FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 @interface UBCAppDelegate ()
 
