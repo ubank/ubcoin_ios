@@ -7,15 +7,19 @@
 //
 
 #import "UBCMarketController.h"
-#import "UBCFiltersListController.h"
 #import "UBCGoodsCollectionView.h"
 #import "UBCGoodDetailsController.h"
 
+#import "Ubcoin-Swift.h"
+
 @interface UBCMarketController () <UISearchControllerDelegate, UISearchBarDelegate, UBCGoodsCollectionViewDelegate>
 
+@property (strong, nonatomic) UIStackView *stackView;
 @property (strong, nonatomic) UISearchController *searchController;
 @property (strong, nonatomic) UBCGoodsCollectionView *collectionView;
+@property (strong, nonatomic) UBCFiltersView *filtersView;
 
+@property (strong, nonatomic) UBCFilterDM *filterDM;
 @property (strong, nonatomic) NSArray *discounts;
 @property (strong, nonatomic) NSMutableArray *items;
 @property (assign, nonatomic) NSUInteger pageNumber;
@@ -29,14 +33,16 @@
 {
     [super viewDidLoad];
     
+    self.view.backgroundColor = UIColor.whiteColor;
     self.navigationContainer.image = [UIImage imageNamed:@"general_logo_black"];
-//    self.navigationContainer.rightImageTitle = @"general_filter";
+    self.navigationContainer.leftImageTitle = @"market_category_filter";
+    self.navigationContainer.rightImageTitle = @"general_filter";
     
     self.pageNumber = 0;
     self.items = [NSMutableArray array];
+    self.filterDM = UBCFilterDM.new;
     
-    [self setupCollectionView];
-//    [self setupSearch];
+    [self setupViews];
     
     __weak typeof(self) weakSelf = self;
     [UBLocationManager.sharedLocation trackMyLocationOnce:^(BOOL success) {
@@ -65,12 +71,41 @@
 
 #pragma mark -
 
+- (void)setupViews
+{
+    self.stackView = UIStackView.new;
+    self.stackView.axis = UILayoutConstraintAxisVertical;
+    [self.view addSubview:self.stackView];
+    [self.view addConstraintsToFillSubview:self.stackView];
+    
+    //    [self setupSearch];
+    [self setupFiltersView];
+    [self setupCollectionView];
+}
+
+- (void)setupFiltersView
+{
+    self.filtersView = UBCFiltersView.new;
+    [self.filtersView setHeightConstraintWithValue:55];
+    [self.stackView addArrangedSubview:self.filtersView];
+    self.filtersView.hidden = YES;
+    
+    __weak typeof(self) weakSelf = self;
+    [self.filtersView setFiltersChanged:^(NSArray<UBCFilterParam *> *filters) {
+        weakSelf.filterDM.filters = filters;
+        [weakSelf applyFilters];
+    }];
+}
+
 - (void)setupCollectionView
 {
     self.collectionView = UBCGoodsCollectionView.new;
     self.collectionView.actionsDelegate = self;
-    [self.view addSubview:self.collectionView];
-    [self.view addConstraintsToFillSubview:self.collectionView];
+    [self.stackView addArrangedSubview:self.collectionView];
+    
+    self.collectionView.emptyView.icon.image = [UIImage imageNamed:@"empty_results"];
+    self.collectionView.emptyView.title.text = UBLocalizedString(@"str_no_result_title", nil);
+    self.collectionView.emptyView.desc.text = UBLocalizedString(@"str_no_result_desc", nil);
 }
 
 - (void)setupSearch
@@ -111,6 +146,18 @@
 
 #pragma mark -
 
+- (void)applyFilters
+{
+    [self.filtersView updateWithFilters:self.filterDM.filters];
+    
+    self.pageNumber = 0;
+    self.items = [NSMutableArray array];
+    self.collectionView.canLoadMore = NO;
+    
+    [self startActivityIndicator];
+    [self updateInfo];
+}
+
 - (void)updateInfo
 {
 //    dispatch_group_t serviceGroup = dispatch_group_create();
@@ -130,6 +177,7 @@
     //    dispatch_group_enter(serviceGroup);
     [self.task cancel];
     self.task = [UBCDataProvider.sharedProvider goodsListWithPageNumber:self.pageNumber
+                                                             andFilters:[self.filterDM filterValues]
                                                     withCompletionBlock:^(BOOL success, NSArray *goods, BOOL canLoadMore)
                  {
                      if (success)
@@ -186,10 +234,28 @@
 
 #pragma mark - Actions
 
+- (void)navigationButtonBackClick:(id)sender
+{
+    UBCCategoriesFilterController *controller = [[UBCCategoriesFilterController alloc] initWithSelectedCategories:self.filterDM.categoryFilters];
+    [self.navigationController pushViewController:controller animated:YES];
+    
+    __weak typeof(self) weakSelf = self;
+    [controller setCompletion:^(NSArray<UBCFilterParam *> * selectedCategoryFilters) {
+        [weakSelf.filterDM updateCategoryFiltersWithSelectedCategoryFilters:selectedCategoryFilters];
+        [weakSelf applyFilters];
+    }];
+}
+
 - (void)rightBarButtonClick:(id)sender
 {
-    UBCFiltersListController *controller = [[UBCFiltersListController alloc] init];
+    UBCFiltersListController *controller = [[UBCFiltersListController alloc] initWithModel:self.filterDM.copy];
     [self.navigationController pushViewController:controller animated:YES];
+    
+    __weak typeof(self) weakSelf = self;
+    [controller setCompletion:^(UBCFilterDM *model) {
+        weakSelf.filterDM = model;
+        [weakSelf applyFilters];
+    }];
 }
 
 #pragma mark - UISearchBarDelegate

@@ -23,6 +23,7 @@
 @interface UBCGoodsCollectionView : UICollectionView <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UBCDiscountsCollectionViewDelegate>
 
 @property (weak, nonatomic) IBOutlet id<UBCGoodsCollectionViewDelegate> actionsDelegate;
+@property (strong, nonatomic, readonly) HUBEmptyView *emptyView;
 @property (strong, nonatomic) NSArray<UBCGoodDM *> *items;
 @property (strong, nonatomic) NSArray<UBCDiscountDM *> *discounts;
 @property (assign, nonatomic) BOOL canLoadMore;

@@ -48,10 +48,9 @@
     return sharedInstance;
 }
 
-- (NSURLSessionDataTask *)goodsListWithPageNumber:(NSUInteger)page withCompletionBlock:(void (^)(BOOL, NSArray *, BOOL))completionBlock
+- (NSURLSessionDataTask *)goodsListWithPageNumber:(NSUInteger)page andFilters:(NSString *)filters withCompletionBlock:(void (^)(BOOL, NSArray *, BOOL))completionBlock
 {
-    NSURL *url = [UBCURLProvider goodsListWithPageNumber:page];
-    NSLog(@"url = %@", url);
+    NSURL *url = [UBCURLProvider goodsListWithPageNumber:page andFilters:filters];
     NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:url];
     return [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
      {
@@ -73,6 +72,20 @@
              completionBlock(NO, nil, YES);
          }
      }];
+}
+
+- (NSURLSessionDataTask *)goodsCountWithFilters:(NSString *)filters withCompletionBlock:(void (^)(BOOL, NSString *))completionBlock
+{
+    NSURL *url = [UBCURLProvider goodsCountWithFilters:filters];
+    NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:url];
+    return [self.connection sendRequest:request isBackground:YES withCompletionBlock:^(BOOL success, id responseObject)
+            {
+                if (completionBlock)
+                {
+                    responseObject = [responseObject removeNulls];
+                    completionBlock(success, responseObject[@"count"]);
+                }
+            }];
 }
 
 - (void)goodWithID:(NSString *)itemID withCompletionBlock:(void (^)(BOOL, UBCGoodDM *))completionBlock

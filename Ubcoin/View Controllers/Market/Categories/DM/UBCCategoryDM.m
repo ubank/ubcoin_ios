@@ -21,4 +21,19 @@
     return self;
 }
 
+- (UBTableViewRowData *)rowData
+{
+    UBTableViewRowData *data = UBTableViewRowData.new;
+    data.data = self;
+    data.title = self.name;
+    return data;
+}
+
++ (UBTableViewRowData *)allCategoriesData
+{
+    UBTableViewRowData *data = UBTableViewRowData.new;
+    data.title = UBLocalizedString(@"str_all_categories", nil);
+    return data;
+}
+
 @end

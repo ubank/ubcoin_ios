@@ -13,9 +13,17 @@
 
 @implementation UBCURLProvider
 
-+ (NSURL *)goodsListWithPageNumber:(NSUInteger)page
++ (NSURL *)goodsListWithPageNumber:(NSUInteger)page andFilters:(NSString *)filters
 {
-    NSString *url = [SERVER_URL stringByAppendingFormat:@"items?page=%d&size=%d", (int)page, ITEMS_PAGE_SIZE];
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"items?page=%d&size=%d%@", (int)page, ITEMS_PAGE_SIZE, [NSString notEmptyString:filters]];
+    url = [self addUserLocationToURL:url];
+    return [NSURL URLWithString:url];
+}
+
++ (NSURL *)goodsCountWithFilters:(NSString *)filters
+{
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"items/count"];
+    url = [self appendFilters:filters toURL:url];
     url = [self addUserLocationToURL:url];
     return [NSURL URLWithString:url];
 }
@@ -188,6 +196,23 @@
     {
         url = [url stringByAppendingString:[url containsString:@"?"] ? @"&" : @"?"];
         url = [url stringByAppendingFormat:@"latPoint=%f&longPoint=%f", location.coordinate.latitude, location.coordinate.longitude];
+    }
+    
+    return url;
+}
+
++ (NSString *)appendFilters:(NSString *)filters toURL:(NSString *)url
+{
+    if (filters.isNotEmpty)
+    {
+        if (![url containsString:@"?"] &&
+            [filters hasPrefix:@"&"])
+        {
+            filters = [filters stringByReplacingCharactersInRange:NSMakeRange(0, 1)
+                                                       withString:@"?"];
+        }
+        
+        url = [url stringByAppendingString:filters];
     }
     
     return url;

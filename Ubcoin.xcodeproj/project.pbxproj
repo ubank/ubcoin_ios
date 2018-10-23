@@ -53,6 +53,7 @@
 		8919AB532125BC4600D1B59C /* UBCChangeNameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8919AB512125BC4600D1B59C /* UBCChangeNameController.m */; };
 		8919AB542125BC4600D1B59C /* UBCChangeNameController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8919AB522125BC4600D1B59C /* UBCChangeNameController.xib */; };
 		8919AB582125DF6B00D1B59C /* UBCBalanceDM.m in Sources */ = {isa = PBXBuildFile; fileRef = 8919AB572125DF6B00D1B59C /* UBCBalanceDM.m */; };
+		891F08CE2167DED900160B04 /* UBCFilterDM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891F08CD2167DED900160B04 /* UBCFilterDM.swift */; };
 		893672CC214AB36E004F31FE /* NSNumber+UBC.m in Sources */ = {isa = PBXBuildFile; fileRef = 893672CB214AB36D004F31FE /* NSNumber+UBC.m */; };
 		89678D9E210CED2900EB715E /* UBCStartLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89678D9D210CED2900EB715E /* UBCStartLoginController.swift */; };
 		89678DA1210CF12600EB715E /* UBCSignUpController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89678DA0210CF12600EB715E /* UBCSignUpController.m */; };
@@ -130,6 +131,9 @@
 		898751C820EE65C000E2B615 /* UBCKeyChain.m in Sources */ = {isa = PBXBuildFile; fileRef = 898751C720EE65C000E2B615 /* UBCKeyChain.m */; };
 		898751CB20EE6AEA00E2B615 /* UBCURLProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 898751CA20EE6AEA00E2B615 /* UBCURLProvider.m */; };
 		898751CE20EE6D7600E2B615 /* UBCDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 898751CD20EE6D7600E2B615 /* UBCDataProvider.m */; };
+		8996A43C21789C9B00BCDEBD /* UBCFilterValueSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8996A43B21789C9B00BCDEBD /* UBCFilterValueSelectionCell.swift */; };
+		8996A43F2178C4EB00BCDEBD /* UBCFilterTitleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8996A43D2178C4EB00BCDEBD /* UBCFilterTitleCollectionViewCell.swift */; };
+		8996A4402178C4EB00BCDEBD /* UBCFilterTitleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8996A43E2178C4EB00BCDEBD /* UBCFilterTitleCollectionViewCell.xib */; };
 		899E217C20E68D8A004D891B /* UBCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 899E217B20E68D8A004D891B /* UBCAppDelegate.m */; };
 		89AD7CE52146B1FD0015A2D2 /* UBCBuyersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AD7CE42146B1FD0015A2D2 /* UBCBuyersView.swift */; };
 		89AD7CE8214829A20015A2D2 /* UBCTopUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AD7CE6214829A20015A2D2 /* UBCTopUpController.swift */; };
@@ -149,9 +153,15 @@
 		89B08E3C21284BA500D8B68D /* UBCPaymentDM.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B08E3B21284BA500D8B68D /* UBCPaymentDM.m */; };
 		89B6ECB3212C3B6700CCDEF8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89B6ECB5212C3B6700CCDEF8 /* InfoPlist.strings */; };
 		89BA58CA2163821F00427A8E /* UBCNotificationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BA58C92163821F00427A8E /* UBCNotificationHandler.m */; };
+		89BA58CD21652D6800427A8E /* UBCFiltersListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BA58CC21652D6800427A8E /* UBCFiltersListController.swift */; };
+		89BA58CF21652D8500427A8E /* UBCCategoriesFilterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BA58CE21652D8500427A8E /* UBCCategoriesFilterController.swift */; };
+		89BA58D22166251200427A8E /* UBCFiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BA58D12166251200427A8E /* UBCFiltersView.swift */; };
+		89BA58D621662CA300427A8E /* UBCFilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BA58D421662CA300427A8E /* UBCFilterCollectionViewCell.swift */; };
+		89BA58D721662CA300427A8E /* UBCFilterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89BA58D521662CA300427A8E /* UBCFilterCollectionViewCell.xib */; };
+		89BA58DA21663CAC00427A8E /* UBCFilterParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BA58D921663CAC00427A8E /* UBCFilterParam.swift */; };
 		89CB110E20EFCDA500729C95 /* HUBCollectionViewWaitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89CB110C20EFCDA500729C95 /* HUBCollectionViewWaitCell.xib */; };
 		89CB110F20EFCDA500729C95 /* HUBCollectionViewWaitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CB110D20EFCDA500729C95 /* HUBCollectionViewWaitCell.m */; };
-		89F16A6A20F2C65D001AA440 /* UBCFiltersListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F16A4F20F2C65D001AA440 /* UBCFiltersListController.m */; };
+		89CD68632174F18B003FBCB7 /* UBCPriceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CD68622174F18B003FBCB7 /* UBCPriceCell.swift */; };
 		89F16A6B20F2C65D001AA440 /* UBCGoodDM.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F16A5420F2C65D001AA440 /* UBCGoodDM.m */; };
 		89F16A6C20F2C65D001AA440 /* UBCSellerDM.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F16A5620F2C65D001AA440 /* UBCSellerDM.m */; };
 		89F16A6D20F2C65D001AA440 /* UBCGoodsCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F16A5820F2C65D001AA440 /* UBCGoodsCollectionView.m */; };
@@ -224,6 +234,7 @@
 		8919AB522125BC4600D1B59C /* UBCChangeNameController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCChangeNameController.xib; sourceTree = "<group>"; };
 		8919AB562125DF6B00D1B59C /* UBCBalanceDM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCBalanceDM.h; sourceTree = "<group>"; };
 		8919AB572125DF6B00D1B59C /* UBCBalanceDM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCBalanceDM.m; sourceTree = "<group>"; };
+		891F08CD2167DED900160B04 /* UBCFilterDM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCFilterDM.swift; sourceTree = "<group>"; };
 		893672CA214AB36D004F31FE /* NSNumber+UBC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSNumber+UBC.h"; sourceTree = "<group>"; };
 		893672CB214AB36D004F31FE /* NSNumber+UBC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+UBC.m"; sourceTree = "<group>"; };
 		89678D9D210CED2900EB715E /* UBCStartLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCStartLoginController.swift; sourceTree = "<group>"; };
@@ -361,6 +372,9 @@
 		898751CA20EE6AEA00E2B615 /* UBCURLProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCURLProvider.m; sourceTree = "<group>"; };
 		898751CC20EE6D7600E2B615 /* UBCDataProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCDataProvider.h; sourceTree = "<group>"; };
 		898751CD20EE6D7600E2B615 /* UBCDataProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCDataProvider.m; sourceTree = "<group>"; };
+		8996A43B21789C9B00BCDEBD /* UBCFilterValueSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCFilterValueSelectionCell.swift; sourceTree = "<group>"; };
+		8996A43D2178C4EB00BCDEBD /* UBCFilterTitleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCFilterTitleCollectionViewCell.swift; sourceTree = "<group>"; };
+		8996A43E2178C4EB00BCDEBD /* UBCFilterTitleCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCFilterTitleCollectionViewCell.xib; sourceTree = "<group>"; };
 		899E217720E68D8A004D891B /* Ubcoin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ubcoin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		899E217A20E68D8A004D891B /* UBCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCAppDelegate.h; sourceTree = "<group>"; };
 		899E217B20E68D8A004D891B /* UBCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCAppDelegate.m; sourceTree = "<group>"; };
@@ -391,11 +405,16 @@
 		89B6ECB7212C3B6A00CCDEF8 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		89BA58C82163821F00427A8E /* UBCNotificationHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBCNotificationHandler.h; sourceTree = "<group>"; };
 		89BA58C92163821F00427A8E /* UBCNotificationHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBCNotificationHandler.m; sourceTree = "<group>"; };
+		89BA58CC21652D6800427A8E /* UBCFiltersListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCFiltersListController.swift; sourceTree = "<group>"; };
+		89BA58CE21652D8500427A8E /* UBCCategoriesFilterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCCategoriesFilterController.swift; sourceTree = "<group>"; };
+		89BA58D12166251200427A8E /* UBCFiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCFiltersView.swift; sourceTree = "<group>"; };
+		89BA58D421662CA300427A8E /* UBCFilterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCFilterCollectionViewCell.swift; sourceTree = "<group>"; };
+		89BA58D521662CA300427A8E /* UBCFilterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCFilterCollectionViewCell.xib; sourceTree = "<group>"; };
+		89BA58D921663CAC00427A8E /* UBCFilterParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCFilterParam.swift; sourceTree = "<group>"; };
 		89CB110B20EFCDA500729C95 /* HUBCollectionViewWaitCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUBCollectionViewWaitCell.h; sourceTree = "<group>"; };
 		89CB110C20EFCDA500729C95 /* HUBCollectionViewWaitCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HUBCollectionViewWaitCell.xib; sourceTree = "<group>"; };
 		89CB110D20EFCDA500729C95 /* HUBCollectionViewWaitCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUBCollectionViewWaitCell.m; sourceTree = "<group>"; };
-		89F16A4F20F2C65D001AA440 /* UBCFiltersListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBCFiltersListController.m; sourceTree = "<group>"; };
-		89F16A5020F2C65D001AA440 /* UBCFiltersListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBCFiltersListController.h; sourceTree = "<group>"; };
+		89CD68622174F18B003FBCB7 /* UBCPriceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCPriceCell.swift; sourceTree = "<group>"; };
 		89F16A5120F2C65D001AA440 /* UBCMarketController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBCMarketController.h; sourceTree = "<group>"; };
 		89F16A5320F2C65D001AA440 /* UBCSellerDM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBCSellerDM.h; sourceTree = "<group>"; };
 		89F16A5420F2C65D001AA440 /* UBCGoodDM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBCGoodDM.m; sourceTree = "<group>"; };
@@ -1305,6 +1324,52 @@
 			path = APNS;
 			sourceTree = "<group>";
 		};
+		89BA58CB21652D2600427A8E /* Category Filter */ = {
+			isa = PBXGroup;
+			children = (
+				89BA58CE21652D8500427A8E /* UBCCategoriesFilterController.swift */,
+			);
+			path = "Category Filter";
+			sourceTree = "<group>";
+		};
+		89BA58D021660E5900427A8E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				89BA58D321662C8700427A8E /* Cell */,
+				89BA58D12166251200427A8E /* UBCFiltersView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		89BA58D321662C8700427A8E /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				89BA58D421662CA300427A8E /* UBCFilterCollectionViewCell.swift */,
+				89BA58D521662CA300427A8E /* UBCFilterCollectionViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		89BA58D821663C9400427A8E /* DM */ = {
+			isa = PBXGroup;
+			children = (
+				891F08CD2167DED900160B04 /* UBCFilterDM.swift */,
+				89BA58D921663CAC00427A8E /* UBCFilterParam.swift */,
+			);
+			path = DM;
+			sourceTree = "<group>";
+		};
+		89CD68612174C835003FBCB7 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				89CD68622174F18B003FBCB7 /* UBCPriceCell.swift */,
+				8996A43B21789C9B00BCDEBD /* UBCFilterValueSelectionCell.swift */,
+				8996A43D2178C4EB00BCDEBD /* UBCFilterTitleCollectionViewCell.swift */,
+				8996A43E2178C4EB00BCDEBD /* UBCFilterTitleCollectionViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		89F16A4D20F2C65D001AA440 /* Market */ = {
 			isa = PBXGroup;
 			children = (
@@ -1322,8 +1387,11 @@
 		89F16A4E20F2C65D001AA440 /* Filters */ = {
 			isa = PBXGroup;
 			children = (
-				89F16A5020F2C65D001AA440 /* UBCFiltersListController.h */,
-				89F16A4F20F2C65D001AA440 /* UBCFiltersListController.m */,
+				89CD68612174C835003FBCB7 /* Cell */,
+				89BA58D821663C9400427A8E /* DM */,
+				89BA58D021660E5900427A8E /* View */,
+				89BA58CB21652D2600427A8E /* Category Filter */,
+				89BA58CC21652D6800427A8E /* UBCFiltersListController.swift */,
 			);
 			path = Filters;
 			sourceTree = "<group>";
@@ -1463,6 +1531,7 @@
 			files = (
 				8987518720EE119F00E2B615 /* UBAlertWindow.xib in Resources */,
 				89678DEE2112430300EB715E /* UBCPasswordView.xib in Resources */,
+				89BA58D721662CA300427A8E /* UBCFilterCollectionViewCell.xib in Resources */,
 				89B08E2D2127522500D8B68D /* UBCTransactionInfoController.xib in Resources */,
 				89678DBB21108A6C00EB715E /* UBCLoginController.xib in Resources */,
 				8980F23C20F486990066CF99 /* UBCGoodDetailsController.xib in Resources */,
@@ -1482,6 +1551,7 @@
 				89678DB9211088C600EB715E /* UBCStartLoginController.xib in Resources */,
 				89678DBD21108B5600EB715E /* UBCSignUpController.xib in Resources */,
 				8919AB542125BC4600D1B59C /* UBCChangeNameController.xib in Resources */,
+				8996A4402178C4EB00BCDEBD /* UBCFilterTitleCollectionViewCell.xib in Resources */,
 				89CB110E20EFCDA500729C95 /* HUBCollectionViewWaitCell.xib in Resources */,
 				89007765211DAB0C00B6C1C5 /* UBCResetPasswordController.xib in Resources */,
 				8980F24220F4954C0066CF99 /* UBCPhotoCollectionViewCell.xib in Resources */,
@@ -1537,10 +1607,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Ubcoin/Pods-Ubcoin-resources.sh",
+				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FacebookSDKStrings.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1590,6 +1662,7 @@
 				898751B320EE2C4100E2B615 /* UBCLoginController.m in Sources */,
 				897FB0B121218FDE0060DED6 /* UBCChatController.m in Sources */,
 				8987517720EE119F00E2B615 /* UBTableHeaderView.m in Sources */,
+				89BA58CD21652D6800427A8E /* UBCFiltersListController.swift in Sources */,
 				8987517A20EE119F00E2B615 /* HUBTextView.m in Sources */,
 				8987518820EE119F00E2B615 /* UBAlertWindow.m in Sources */,
 				8987516A20EE119F00E2B615 /* UBMigrationView.m in Sources */,
@@ -1606,7 +1679,9 @@
 				8987518020EE119F00E2B615 /* HUBLabel.m in Sources */,
 				898751CB20EE6AEA00E2B615 /* UBCURLProvider.m in Sources */,
 				89007756211B5B8600B6C1C5 /* UBCDealDM.m in Sources */,
+				89BA58CF21652D8500427A8E /* UBCCategoriesFilterController.swift in Sources */,
 				8987517320EE119F00E2B615 /* UBTableView.m in Sources */,
+				8996A43F2178C4EB00BCDEBD /* UBCFilterTitleCollectionViewCell.swift in Sources */,
 				8987518620EE119F00E2B615 /* HUBAttributedLabel.m in Sources */,
 				8987518B20EE119F00E2B615 /* UBAlertTableView.m in Sources */,
 				8987518320EE119F00E2B615 /* UBCollectionViewSwitchContent.m in Sources */,
@@ -1616,9 +1691,9 @@
 				1CFFFE7E20F230A9003B5AD9 /* main.m in Sources */,
 				89B08E3721283D0200D8B68D /* UBCConfirmationSendCoinsController.m in Sources */,
 				8987516F20EE119F00E2B615 /* HUBSystemAlertCell.m in Sources */,
+				8996A43C21789C9B00BCDEBD /* UBCFilterValueSelectionCell.swift in Sources */,
 				8979E81221134EEB004B2473 /* UBCDealsController.m in Sources */,
 				1CEFAA4520F3FCBE005719B3 /* UBCSTextFieldTableViewCell.swift in Sources */,
-				89F16A6A20F2C65D001AA440 /* UBCFiltersListController.m in Sources */,
 				8919AB532125BC4600D1B59C /* UBCChangeNameController.m in Sources */,
 				89B08E322128397100D8B68D /* UBCSendCoinsController.m in Sources */,
 				89678DEA2112424E00EB715E /* DBMatcher.m in Sources */,
@@ -1633,7 +1708,9 @@
 				89007760211C79F200B6C1C5 /* UBCToBuyDealsView.m in Sources */,
 				8900775D211C79E200B6C1C5 /* UBCToSellDealsView.m in Sources */,
 				1CFFFE6420F0CB3E003B5AD9 /* UBCSPhotoTableViewCell.swift in Sources */,
+				89BA58D621662CA300427A8E /* UBCFilterCollectionViewCell.swift in Sources */,
 				8980F24720F505550066CF99 /* UBCCategoryDM.m in Sources */,
+				891F08CE2167DED900160B04 /* UBCFilterDM.swift in Sources */,
 				8987518120EE119F00E2B615 /* HUBSpringyCollectionViewFlowLayout.m in Sources */,
 				1CFFFE7020F0E204003B5AD9 /* UBCSSelectionTableViewCell.swift in Sources */,
 				89678DCC2111B02800EB715E /* UBCProfileController.m in Sources */,
@@ -1648,6 +1725,7 @@
 				89678DA5210CF75500EB715E /* UBCUserDM.m in Sources */,
 				89678DC32110C0AD00EB715E /* UBCForgotPasswordController.swift in Sources */,
 				89F16A7520F2C65D001AA440 /* UBCMarketController.m in Sources */,
+				89BA58DA21663CAC00427A8E /* UBCFilterParam.swift in Sources */,
 				8987516C20EE119F00E2B615 /* HUBNavigationBarView.m in Sources */,
 				8979E81D21146DCB004B2473 /* HUBHelper.swift in Sources */,
 				8919AB4F2125B80700D1B59C /* UBCChangeLanguageController.m in Sources */,
@@ -1655,6 +1733,7 @@
 				8987518F20EE119F00E2B615 /* UBLocationManager.m in Sources */,
 				1CFFFE6E20F0DD28003B5AD9 /* UBCSTextViewTableViewCell.swift in Sources */,
 				8987517220EE119F00E2B615 /* UBDefaultTableView.m in Sources */,
+				89CD68632174F18B003FBCB7 /* UBCPriceCell.swift in Sources */,
 				89678DE82112424E00EB715E /* DBScorer.m in Sources */,
 				899E217C20E68D8A004D891B /* UBCAppDelegate.m in Sources */,
 				89F16A6F20F2C65D001AA440 /* UBCDiscountCollectionViewCell.m in Sources */,
@@ -1662,6 +1741,7 @@
 				898751C020EE618B00E2B615 /* UBConnectionProvider.m in Sources */,
 				89B08E3C21284BA500D8B68D /* UBCPaymentDM.m in Sources */,
 				8987517520EE119F00E2B615 /* UBExpandableTableViewSectionHeader.m in Sources */,
+				89BA58D22166251200427A8E /* UBCFiltersView.swift in Sources */,
 				1C14F19F20F2655800B835AC /* UBCMapSelectController.swift in Sources */,
 				89678DA9210DE28600EB715E /* UBCToast.m in Sources */,
 				89B08E282127505700D8B68D /* UBCTransactionDM.m in Sources */,

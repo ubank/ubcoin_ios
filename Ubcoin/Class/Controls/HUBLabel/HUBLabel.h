@@ -26,6 +26,11 @@ IB_DESIGNABLE
 @property (assign, nonatomic) HUBLabelStyle labelStyle;
 #endif
 
+@property (assign, nonatomic) CGFloat topInset;
+@property (assign, nonatomic) CGFloat leftInset;
+@property (assign, nonatomic) CGFloat bottomInset;
+@property (assign, nonatomic) CGFloat rightInset;
+
 @property (strong, nonatomic) NSString *currencyText;
 
 @property (assign, nonatomic, readonly) BOOL isCustomAttributedText;

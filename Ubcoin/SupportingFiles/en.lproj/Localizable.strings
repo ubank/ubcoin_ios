@@ -163,3 +163,20 @@
 
 "str_send_success" = "Your transaction has been broadcast to the network. This does not mean that it has been successfully sent. During times of extreme volume, it may take 3+ hours to send.";
 "str_your_price_will_be_fixed_in_UBC" = "Your price will be fixed in UBC";
+
+"str_filters" = "Filters";
+"str_category" = "Category";
+"str_categories" = "Сategories";
+"str_all_categories" = "All categories";
+"str_max_price" = "Max. price";
+"str_max_distance" = "Max. distance";
+"str_sort_by" = "Sort by";
+"str_placement_date" = "Placement Date";
+"str_item_price" = "Item Price";
+"str_distance_to_seller" = "Distance to seller";
+"str_clear_all" = "Clear all";
+"str_show_items" = "Show items";
+"str_show_n_items" = "Show %@ items";
+
+"str_no_result_title" = "No results";
+"str_no_result_desc" = "Seems like there is nothing to show. Please try to reset your filters.";

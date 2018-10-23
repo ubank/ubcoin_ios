@@ -14,5 +14,8 @@
 @property (readonly, nonatomic) NSString *name;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
+- (UBTableViewRowData *)rowData;
+
++ (UBTableViewRowData *)allCategoriesData;
 
 @end

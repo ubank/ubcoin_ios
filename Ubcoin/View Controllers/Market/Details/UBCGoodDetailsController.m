@@ -325,7 +325,8 @@
 {
     if (self.good.shareURL.isNotEmpty)
     {
-        [self shareActivityItems:@[self.good.shareURL] withSubject:@"" withSender:nil withCompletionBlock:nil];
+        NSString *textToShare = [NSString stringWithFormat:@"%@ — buy fast and safe for cryptocurrency on Ubcoin Market.\n%@", self.good.title, self.good.shareURL];
+        [self shareActivityItems:@[textToShare] withSubject:@"" withSender:nil withCompletionBlock:nil];
     }
 }
 
@@ -450,6 +451,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UBCPhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(UBCPhotoCollectionViewCell.class) forIndexPath:indexPath];
+    [cell layoutIfNeeded];
     
     NSString *imageURL = self.good.images[indexPath.row];
     [cell loadImageToFillWithURL:imageURL withDefaultImage:[UIImage imageNamed:@"item_default_image"] forImageView:cell.icon];
