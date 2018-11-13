@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UBCGoodDetailsController">
             <connections>
+                <outlet property="address" destination="zVb-IR-GvK" id="2c4-h5-fA9"/>
                 <outlet property="background" destination="Q6l-Bt-ygF" id="xsO-B8-B2H"/>
                 <outlet property="buyersView" destination="CcZ-Oj-MiV" id="k7O-48-nmV"/>
                 <outlet property="category" destination="sLA-ZZ-xSa" id="MlD-BK-rPb"/>
@@ -46,7 +47,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qbR-7S-QUP">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="856"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="961"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9M1-bB-Yuh">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
@@ -106,16 +107,16 @@
                                     </constraints>
                                 </view>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="nHF-sb-mbC">
-                                    <rect key="frame" x="0.0" y="250" width="375" height="351"/>
+                                    <rect key="frame" x="0.0" y="250" width="375" height="711"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hyE-wl-XrB">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" image="status_attention" translatesAutoresizingMaskIntoConstraints="NO" id="1us-AG-gIn">
-                                                    <rect key="frame" x="15" y="25.5" width="26" height="23"/>
+                                                    <rect key="frame" x="15" y="26" width="26" height="23"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uOK-1M-zsA" customClass="HUBLabel">
-                                                    <rect key="frame" x="56" y="20" width="304" height="34"/>
+                                                    <rect key="frame" x="56" y="20" width="304" height="34.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -126,7 +127,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YP5-Vj-hS8">
-                                                    <rect key="frame" x="56" y="20" width="304" height="34"/>
+                                                    <rect key="frame" x="56" y="20" width="304" height="34.5"/>
                                                     <connections>
                                                         <action selector="showTermsAndConditions" destination="-1" eventType="touchUpInside" id="gWd-gj-omo"/>
                                                     </connections>
@@ -151,7 +152,7 @@
                                             <rect key="frame" x="0.0" y="74.5" width="375" height="131"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bhf-vo-Ont" customClass="HUBLabel">
-                                                    <rect key="frame" x="15" y="25" width="60" height="29"/>
+                                                    <rect key="frame" x="15" y="25" width="42" height="35"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -162,7 +163,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sLA-ZZ-xSa" customClass="HUBLabel">
-                                                    <rect key="frame" x="15" y="64" width="60" height="18"/>
+                                                    <rect key="frame" x="15" y="70" width="42" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -173,7 +174,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gti-R0-jnL" customClass="HUBLabel">
-                                                    <rect key="frame" x="15" y="92" width="345" height="29"/>
+                                                    <rect key="frame" x="15" y="100.5" width="345" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -184,7 +185,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TsC-g5-Gef" customClass="HUBLabel">
-                                                    <rect key="frame" x="80" y="31.5" width="280" height="18"/>
+                                                    <rect key="frame" x="62" y="32.5" width="298" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -211,11 +212,34 @@
                                                 <constraint firstItem="sLA-ZZ-xSa" firstAttribute="trailing" secondItem="bhf-vo-Ont" secondAttribute="trailing" id="tCB-5c-0bu"/>
                                             </constraints>
                                         </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YfI-fd-tUa">
+                                            <rect key="frame" x="0.0" y="205.5" width="375" height="50"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Urf-EA-x8e" userLabel="Desc" customClass="HUBLabel">
+                                                    <rect key="frame" x="15" y="15" width="345" height="20"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="labelStyle">
+                                                            <integer key="value" value="2"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="Urf-EA-x8e" secondAttribute="trailing" constant="15" id="33U-KI-Hv9"/>
+                                                <constraint firstAttribute="bottom" secondItem="Urf-EA-x8e" secondAttribute="bottom" constant="15" id="IW7-UL-qDi"/>
+                                                <constraint firstItem="Urf-EA-x8e" firstAttribute="leading" secondItem="YfI-fd-tUa" secondAttribute="leading" constant="15" id="UQa-hu-vEF"/>
+                                                <constraint firstItem="Urf-EA-x8e" firstAttribute="top" secondItem="YfI-fd-tUa" secondAttribute="top" constant="15" id="zr4-Bh-5rx"/>
+                                            </constraints>
+                                        </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gTw-sN-qPV" userLabel="Location View">
-                                            <rect key="frame" x="0.0" y="205.5" width="375" height="145.5"/>
+                                            <rect key="frame" x="0.0" y="255.5" width="375" height="230.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="str_location_up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7lE-Xr-b8O" customClass="HUBLabel">
-                                                    <rect key="frame" x="15" y="15" width="345" height="20.5"/>
+                                                    <rect key="frame" x="15" y="15" width="345" height="90.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -226,54 +250,40 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wo3-8c-mQO" customClass="UBCMapView">
-                                                    <rect key="frame" x="0.0" y="45.5" width="375" height="85"/>
+                                                    <rect key="frame" x="0.0" y="115.5" width="375" height="85"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="85" id="iBr-lw-qDQ"/>
                                                     </constraints>
                                                 </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zVb-IR-GvK" userLabel="Desc" customClass="HUBLabel">
+                                                    <rect key="frame" x="15" y="215.5" width="345" height="0.0"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="labelStyle">
+                                                            <integer key="value" value="2"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="zVb-IR-GvK" secondAttribute="bottom" constant="15" id="5qx-k0-nP0"/>
+                                                <constraint firstAttribute="trailing" secondItem="zVb-IR-GvK" secondAttribute="trailing" constant="15" id="9Ie-79-lj4"/>
                                                 <constraint firstItem="wo3-8c-mQO" firstAttribute="top" secondItem="7lE-Xr-b8O" secondAttribute="bottom" constant="10" id="H5u-eQ-86Z"/>
                                                 <constraint firstItem="wo3-8c-mQO" firstAttribute="leading" secondItem="gTw-sN-qPV" secondAttribute="leading" id="MUj-QF-3Eb"/>
                                                 <constraint firstAttribute="trailing" secondItem="wo3-8c-mQO" secondAttribute="trailing" id="Sle-h8-bcC"/>
-                                                <constraint firstAttribute="bottom" secondItem="wo3-8c-mQO" secondAttribute="bottom" constant="15" id="UJg-yz-6S0"/>
+                                                <constraint firstItem="zVb-IR-GvK" firstAttribute="leading" secondItem="gTw-sN-qPV" secondAttribute="leading" constant="15" id="TUI-ur-icP"/>
                                                 <constraint firstAttribute="trailing" secondItem="7lE-Xr-b8O" secondAttribute="trailing" constant="15" id="YEr-SR-Kha"/>
                                                 <constraint firstItem="7lE-Xr-b8O" firstAttribute="leading" secondItem="gTw-sN-qPV" secondAttribute="leading" constant="15" id="rQM-N5-Mj7"/>
+                                                <constraint firstItem="zVb-IR-GvK" firstAttribute="top" secondItem="wo3-8c-mQO" secondAttribute="bottom" constant="15" id="rxC-TQ-NS2"/>
                                                 <constraint firstItem="7lE-Xr-b8O" firstAttribute="top" secondItem="gTw-sN-qPV" secondAttribute="top" constant="15" id="vH7-8N-JD5"/>
                                             </constraints>
                                         </view>
-                                    </subviews>
-                                </stackView>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YfI-fd-tUa">
-                                    <rect key="frame" x="0.0" y="601" width="375" height="30"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Urf-EA-x8e" userLabel="Desc" customClass="HUBLabel">
-                                            <rect key="frame" x="15" y="15" width="345" height="0.0"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="labelStyle">
-                                                    <integer key="value" value="2"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="Urf-EA-x8e" secondAttribute="trailing" constant="15" id="33U-KI-Hv9"/>
-                                        <constraint firstAttribute="bottom" secondItem="Urf-EA-x8e" secondAttribute="bottom" constant="15" id="IW7-UL-qDi"/>
-                                        <constraint firstItem="Urf-EA-x8e" firstAttribute="leading" secondItem="YfI-fd-tUa" secondAttribute="leading" constant="15" id="UQa-hu-vEF"/>
-                                        <constraint firstItem="Urf-EA-x8e" firstAttribute="top" secondItem="YfI-fd-tUa" secondAttribute="top" constant="15" id="zr4-Bh-5rx"/>
-                                    </constraints>
-                                </view>
-                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ggq-lF-Mki">
-                                    <rect key="frame" x="0.0" y="631" width="375" height="225"/>
-                                    <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="jjE-RS-vsJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="135"/>
+                                            <rect key="frame" x="0.0" y="486" width="375" height="135"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5yE-UI-gCM">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="135"/>
@@ -282,7 +292,7 @@
                                                             <rect key="frame" x="0.0" y="10" width="375" height="125"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="str_seller_up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="enc-FY-zqm" customClass="HUBLabel">
-                                                                    <rect key="frame" x="15" y="15" width="345" height="16"/>
+                                                                    <rect key="frame" x="15" y="15" width="345" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -293,10 +303,10 @@
                                                                     </userDefinedRuntimeAttributes>
                                                                 </label>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TY4-vb-mN9">
-                                                                    <rect key="frame" x="0.0" y="41" width="375" height="74"/>
+                                                                    <rect key="frame" x="0.0" y="45.5" width="375" height="69.5"/>
                                                                     <subviews>
                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gln-MN-Ejo">
-                                                                            <rect key="frame" x="15" y="7.5" width="60" height="60"/>
+                                                                            <rect key="frame" x="15" y="5" width="60" height="60"/>
                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="60" id="AjC-QJ-q3g"/>
@@ -304,10 +314,10 @@
                                                                             </constraints>
                                                                         </imageView>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9dg-Sv-Ez6">
-                                                                            <rect key="frame" x="90" y="8.5" width="285" height="58"/>
+                                                                            <rect key="frame" x="90" y="2.5" width="285" height="65"/>
                                                                             <subviews>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1iI-E5-Y9y" customClass="HUBLabel">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="270" height="18"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="270" height="20.5"/>
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                     <nil key="textColor"/>
                                                                                     <nil key="highlightedColor"/>
@@ -318,14 +328,14 @@
                                                                                     </userDefinedRuntimeAttributes>
                                                                                 </label>
                                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CxU-Qu-hgC" customClass="UBCStarsView">
-                                                                                    <rect key="frame" x="0.0" y="25" width="235" height="10"/>
+                                                                                    <rect key="frame" x="0.0" y="27.5" width="235" height="10"/>
                                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="height" constant="10" id="hep-W0-cPC"/>
                                                                                     </constraints>
                                                                                 </view>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kpT-qZ-zpm" customClass="HUBLabel">
-                                                                                    <rect key="frame" x="0.0" y="42" width="270" height="16"/>
+                                                                                    <rect key="frame" x="0.0" y="44.5" width="270" height="20.5"/>
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                     <nil key="textColor"/>
                                                                                     <nil key="highlightedColor"/>
@@ -384,7 +394,7 @@
                                                     </constraints>
                                                 </view>
                                                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CcZ-Oj-MiV" customClass="UBCBuyersView" customModule="Ubcoin" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="-631" width="375" height="0.0"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" id="qSu-rH-t4F"/>
@@ -396,7 +406,7 @@
                                             </subviews>
                                         </stackView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dYb-9Z-BGQ">
-                                            <rect key="frame" x="0.0" y="135" width="375" height="90"/>
+                                            <rect key="frame" x="0.0" y="621" width="375" height="90"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZW-YT-6xm" customClass="HUBGeneralButton">
                                                     <rect key="frame" x="15" y="15" width="345" height="60"/>
@@ -427,19 +437,13 @@
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="trailing" secondItem="ggq-lF-Mki" secondAttribute="trailing" id="65l-On-RPm"/>
-                                <constraint firstItem="ggq-lF-Mki" firstAttribute="leading" secondItem="qbR-7S-QUP" secondAttribute="leading" id="6Q9-OB-ffm"/>
-                                <constraint firstItem="ggq-lF-Mki" firstAttribute="top" secondItem="YfI-fd-tUa" secondAttribute="bottom" id="Aj8-RG-lw3"/>
-                                <constraint firstAttribute="bottom" secondItem="ggq-lF-Mki" secondAttribute="bottom" id="MSX-Rz-J3X"/>
+                                <constraint firstAttribute="bottom" secondItem="nHF-sb-mbC" secondAttribute="bottom" id="K5U-Es-Ixd"/>
                                 <constraint firstItem="9M1-bB-Yuh" firstAttribute="leading" secondItem="qbR-7S-QUP" secondAttribute="leading" id="NxD-FU-L9X"/>
-                                <constraint firstAttribute="trailing" secondItem="YfI-fd-tUa" secondAttribute="trailing" id="Yo0-ww-MTt"/>
                                 <constraint firstItem="nHF-sb-mbC" firstAttribute="leading" secondItem="qbR-7S-QUP" secondAttribute="leading" id="Zcu-lb-lbi"/>
                                 <constraint firstItem="9M1-bB-Yuh" firstAttribute="top" secondItem="qbR-7S-QUP" secondAttribute="top" id="dLG-cR-noy"/>
                                 <constraint firstItem="nHF-sb-mbC" firstAttribute="top" secondItem="9M1-bB-Yuh" secondAttribute="bottom" id="juf-ot-0Xq"/>
                                 <constraint firstAttribute="trailing" secondItem="9M1-bB-Yuh" secondAttribute="trailing" id="mgX-PG-I1L"/>
                                 <constraint firstAttribute="trailing" secondItem="nHF-sb-mbC" secondAttribute="trailing" id="oBK-m8-gt3"/>
-                                <constraint firstItem="YfI-fd-tUa" firstAttribute="leading" secondItem="qbR-7S-QUP" secondAttribute="leading" id="pk7-Bv-Tls"/>
-                                <constraint firstItem="YfI-fd-tUa" firstAttribute="top" secondItem="nHF-sb-mbC" secondAttribute="bottom" id="uwZ-4C-bOB"/>
                             </constraints>
                         </view>
                     </subviews>

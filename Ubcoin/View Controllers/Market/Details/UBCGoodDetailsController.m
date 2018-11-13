@@ -42,6 +42,7 @@
 @property (weak, nonatomic) IBOutlet UIView *sellerView;
 @property (weak, nonatomic) IBOutlet UBCBuyersView *buyersView;
 
+@property (weak, nonatomic) IBOutlet HUBLabel *address;
 @property (weak, nonatomic) IBOutlet UBCMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIView *locationView;
 @property (weak, nonatomic) IBOutlet UIView *connectToSellerView;
@@ -156,6 +157,7 @@
     self.category.textColor = UBCColor.green;
     self.desc.textColor = UBColor.titleColor;
     self.priceInCurrency.textColor = UBColor.descColor;
+    self.address.textColor = UBColor.titleColor;
     
     self.scroll.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     self.collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
@@ -173,6 +175,7 @@
     
     self.locationView.hidden = !self.good.location;
     self.mapView.location = self.good.location;
+    self.address.text = self.good.locationText;
     
     self.favoriteButton.image = [UIImage imageNamed:[NSString stringWithFormat:@"icFav%@", self.good.isFavorite ? @"B" : @"A"]];
     self.favoriteButton.hidden = self.good.isMyItem;
