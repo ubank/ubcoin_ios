@@ -32,6 +32,9 @@ PODS:
   - GoogleMaps/Base (2.7.0)
   - GoogleMaps/Maps (2.7.0):
     - GoogleMaps/Base
+  - ImageSlideshow (1.7.0):
+    - ImageSlideshow/Core (= 1.7.0)
+  - ImageSlideshow/Core (1.7.0)
   - INTULocationManager (4.3.2)
   - QRCodeReaderViewController (4.0.2)
   - SDWebImage (4.4.2):
@@ -73,6 +76,7 @@ DEPENDENCIES:
   - Fabric
   - FBSDKCoreKit
   - GoogleMaps
+  - ImageSlideshow
   - INTULocationManager
   - QRCodeReaderViewController
   - TTTAttributedLabel
@@ -88,6 +92,7 @@ SPEC REPOS:
     - FBSDKCoreKit
     - GoogleAnalytics
     - GoogleMaps
+    - ImageSlideshow
     - INTULocationManager
     - QRCodeReaderViewController
     - SDWebImage
@@ -111,12 +116,13 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: fe5f3474499a81963e11e3f3a5c753d0a95ca2b4
   GoogleAnalytics: f42cc53a87a51fe94334821868d9c8481ff47a7b
   GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
+  ImageSlideshow: f8eec5e37a980f60923b585ff23b0e140fd24018
   INTULocationManager: e5dc524611b0cd582f473bc56cc8c389adb2f338
   QRCodeReaderViewController: e8f27d035b3e72b1d4b1c61ff66458287e3be0ff
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
   UBGeneralClasses: a5485a99a05a01e5c17321117caf26d2507eed87
 
-PODFILE CHECKSUM: b284053c6d6fda8d8a0784202f3d6f147c371d19
+PODFILE CHECKSUM: da074bcea74f19dd5ff43afc45feb7dfba25f312
 
 COCOAPODS: 1.5.3

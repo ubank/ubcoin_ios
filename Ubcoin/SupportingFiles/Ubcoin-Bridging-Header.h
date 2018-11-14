@@ -22,3 +22,4 @@
 #import "UBCAppDelegate.h"
 
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <SDWebImage/UIView+WebCache.h>

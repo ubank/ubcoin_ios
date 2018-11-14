@@ -20,6 +20,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 
 #import "Ubcoin-Swift.h"
+@import ImageSlideshow;
 
 @interface UBCGoodDetailsController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UBCGoodsCollectionViewDelegate, UBCBuyersViewDelegate>
 
@@ -460,6 +461,20 @@
     [cell loadImageToFillWithURL:imageURL withDefaultImage:[UIImage imageNamed:@"item_default_image"] forImageView:cell.icon];
     
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    FullScreenSlideshowViewController *controller = FullScreenSlideshowViewController.new;
+    NSArray *inputs = [self.good.images map:^id(id item) {
+        return [UBCImageSource.alloc initWithUrlString:item placeholder:nil];
+    }];
+    
+    controller.inputs = inputs;
+    controller.initialPage = indexPath.row;
+    controller.closeButton.hidden = YES;
+    self.navigationController.navigationBar.tintColor = UIColor.whiteColor;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
