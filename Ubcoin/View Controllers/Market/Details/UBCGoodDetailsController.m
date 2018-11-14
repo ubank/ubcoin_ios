@@ -15,7 +15,6 @@
 #import "UBCInfoLabel.h"
 #import "UBCGoodDM.h"
 #import "UBCKeyChain.h"
-#import "UBCStarsView.h"
 #import "UBCMapView.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
@@ -36,11 +35,8 @@
 @property (weak, nonatomic) IBOutlet HUBLabel *desc;
 @property (weak, nonatomic) IBOutlet UBCGoodsCollectionView *relatedItemsView;
 
-@property (weak, nonatomic) IBOutlet UIImageView *sellerAvatar;
-@property (weak, nonatomic) IBOutlet HUBLabel *sellerName;
-@property (weak, nonatomic) IBOutlet UBCStarsView *sellerRating;
-@property (weak, nonatomic) IBOutlet HUBLabel *sellerDesc;
-@property (weak, nonatomic) IBOutlet UIView *sellerView;
+@property (weak, nonatomic) IBOutlet UIView *sellerSectionView;
+@property (weak, nonatomic) IBOutlet UBCSellerView *sellerView;
 @property (weak, nonatomic) IBOutlet UBCBuyersView *buyersView;
 
 @property (weak, nonatomic) IBOutlet HUBLabel *address;
@@ -153,8 +149,6 @@
         [weakSelf.navigationController popViewControllerAnimated:YES];
     };
     
-    self.sellerAvatar.cornerRadius = self.sellerAvatar.height / 2;
-    
     self.category.textColor = UBCColor.green;
     self.desc.textColor = UBColor.titleColor;
     self.priceInCurrency.textColor = UBColor.descColor;
@@ -248,7 +242,7 @@
     if ([self.good isMyItem])
     {
         self.connectToSellerView.hidden = YES;
-        self.sellerView.hidden = YES;
+        self.sellerSectionView.hidden = YES;
         self.buyersView.hidden = NO;
         
         [self.buyersView updateWithDeals:self.good.deals];
@@ -256,16 +250,10 @@
     else
     {
         self.connectToSellerView.hidden = NO;
-        self.sellerView.hidden = NO;
+        self.sellerSectionView.hidden = NO;
         self.buyersView.hidden = YES;
         
-        [self.sellerAvatar sd_setImageWithURL:[NSURL URLWithString:seller.avatarURL]
-                             placeholderImage:[UIImage imageNamed:@"def_prof"]];
-        
-        self.sellerName.text = seller.name;
-        [self.sellerRating showStars:seller.rating.unsignedIntegerValue];
-        
-        self.sellerDesc.text = [NSString stringWithFormat:@"%lu items", (unsigned long)seller.itemsCount];
+        [self.sellerView setupWithSeller:self.good.seller];
     }
 }
 

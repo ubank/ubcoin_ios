@@ -50,6 +50,8 @@
 		89007764211DAB0C00B6C1C5 /* UBCResetPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89007762211DAB0C00B6C1C5 /* UBCResetPasswordController.m */; };
 		89007765211DAB0C00B6C1C5 /* UBCResetPasswordController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89007763211DAB0C00B6C1C5 /* UBCResetPasswordController.xib */; };
 		89172392219C496F0060E719 /* UBCImageSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89172391219C496F0060E719 /* UBCImageSource.swift */; };
+		89172395219C60350060E719 /* UBCSellerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89172393219C60350060E719 /* UBCSellerView.swift */; };
+		89172396219C60350060E719 /* UBCSellerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89172394219C60350060E719 /* UBCSellerView.xib */; };
 		8919AB4F2125B80700D1B59C /* UBCChangeLanguageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8919AB4E2125B80700D1B59C /* UBCChangeLanguageController.m */; };
 		8919AB532125BC4600D1B59C /* UBCChangeNameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8919AB512125BC4600D1B59C /* UBCChangeNameController.m */; };
 		8919AB542125BC4600D1B59C /* UBCChangeNameController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8919AB522125BC4600D1B59C /* UBCChangeNameController.xib */; };
@@ -229,6 +231,8 @@
 		89007762211DAB0C00B6C1C5 /* UBCResetPasswordController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCResetPasswordController.m; sourceTree = "<group>"; };
 		89007763211DAB0C00B6C1C5 /* UBCResetPasswordController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCResetPasswordController.xib; sourceTree = "<group>"; };
 		89172391219C496F0060E719 /* UBCImageSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCImageSource.swift; sourceTree = "<group>"; };
+		89172393219C60350060E719 /* UBCSellerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCSellerView.swift; sourceTree = "<group>"; };
+		89172394219C60350060E719 /* UBCSellerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCSellerView.xib; sourceTree = "<group>"; };
 		8919AB4D2125B80700D1B59C /* UBCChangeLanguageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCChangeLanguageController.h; sourceTree = "<group>"; };
 		8919AB4E2125B80700D1B59C /* UBCChangeLanguageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCChangeLanguageController.m; sourceTree = "<group>"; };
 		8919AB502125BC4600D1B59C /* UBCChangeNameController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCChangeNameController.h; sourceTree = "<group>"; };
@@ -1235,6 +1239,8 @@
 			isa = PBXGroup;
 			children = (
 				89AD7CE42146B1FD0015A2D2 /* UBCBuyersView.swift */,
+				89172393219C60350060E719 /* UBCSellerView.swift */,
+				89172394219C60350060E719 /* UBCSellerView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1550,6 +1556,7 @@
 				89F16A6E20F2C65D001AA440 /* UBCDiscountsCollectionView.xib in Resources */,
 				89B08E332128397100D8B68D /* UBCSendCoinsController.xib in Resources */,
 				1CFFFE7D20F230A9003B5AD9 /* Assets.xcassets in Resources */,
+				89172396219C60350060E719 /* UBCSellerView.xib in Resources */,
 				8987518A20EE119F00E2B615 /* HUBEmptyView.xib in Resources */,
 				89678DB9211088C600EB715E /* UBCStartLoginController.xib in Resources */,
 				89678DBD21108B5600EB715E /* UBCSignUpController.xib in Resources */,
@@ -1686,6 +1693,7 @@
 				8987518020EE119F00E2B615 /* HUBLabel.m in Sources */,
 				898751CB20EE6AEA00E2B615 /* UBCURLProvider.m in Sources */,
 				89007756211B5B8600B6C1C5 /* UBCDealDM.m in Sources */,
+				89172395219C60350060E719 /* UBCSellerView.swift in Sources */,
 				89BA58CF21652D8500427A8E /* UBCCategoriesFilterController.swift in Sources */,
 				89172392219C496F0060E719 /* UBCImageSource.swift in Sources */,
 				8987517320EE119F00E2B615 /* UBTableView.m in Sources */,

@@ -20,6 +20,7 @@
 #import "UBFloatingPlaceholderTextField.h"
 #import "UBCMarketController.h"
 #import "UBCAppDelegate.h"
+#import "UBCStarsView.h"
 
-#import <SDWebImage/UIImageView+WebCache.h>
 #import <SDWebImage/UIView+WebCache.h>
+#import <SDWebImage/UIImageView+WebCache.h>
