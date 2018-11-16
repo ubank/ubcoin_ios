@@ -133,6 +133,11 @@
     {
         return [UBCGoodDetailsController.alloc initWithGoodID:params[@"id"]];
     }
+    else if ([activity isEqualToString:SELLER_ACTIVITY])
+    {
+        return [UBCSellerController.alloc initWithSellerID:params[@"id"]];
+    }
+    
     return nil;
 }
 
@@ -173,7 +178,8 @@
 
 + (NSArray *)commonActivities
 {
-    return @[ITEM_ACTIVITY
+    return @[ITEM_ACTIVITY,
+             SELLER_ACTIVITY
              ];
 }
 

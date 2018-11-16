@@ -79,14 +79,24 @@
                         <constraint firstAttribute="trailing" secondItem="raO-8K-W36" secondAttribute="trailing" constant="15" id="vhJ-CG-DTM"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DJd-bb-8Wh">
+                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                    <connections>
+                        <action selector="showSeller" destination="-1" eventType="touchUpInside" id="KAa-Qe-eOe"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="SRh-Oq-nfU" firstAttribute="leading" secondItem="rj8-EZ-vPE" secondAttribute="leading" constant="15" id="4ED-hk-HW5"/>
                 <constraint firstItem="ShM-pJ-0DO" firstAttribute="trailing" secondItem="lB3-Ht-Vqp" secondAttribute="trailing" id="GDG-C0-kx2"/>
+                <constraint firstItem="DJd-bb-8Wh" firstAttribute="top" secondItem="ShM-pJ-0DO" secondAttribute="top" id="H0i-ps-M2P"/>
                 <constraint firstItem="lB3-Ht-Vqp" firstAttribute="leading" secondItem="SRh-Oq-nfU" secondAttribute="trailing" constant="15" id="JsP-9k-qxm"/>
                 <constraint firstItem="SRh-Oq-nfU" firstAttribute="centerY" secondItem="ShM-pJ-0DO" secondAttribute="centerY" id="ThQ-Mt-q7W"/>
                 <constraint firstItem="lB3-Ht-Vqp" firstAttribute="centerY" secondItem="ShM-pJ-0DO" secondAttribute="centerY" id="cHt-mF-Wex"/>
+                <constraint firstItem="ShM-pJ-0DO" firstAttribute="trailing" secondItem="DJd-bb-8Wh" secondAttribute="trailing" id="eJm-XU-hdN"/>
+                <constraint firstItem="ShM-pJ-0DO" firstAttribute="bottom" secondItem="DJd-bb-8Wh" secondAttribute="bottom" id="l5F-Ka-iA1"/>
+                <constraint firstItem="DJd-bb-8Wh" firstAttribute="leading" secondItem="ShM-pJ-0DO" secondAttribute="leading" id="xhf-YM-5q4"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ShM-pJ-0DO"/>
         </view>

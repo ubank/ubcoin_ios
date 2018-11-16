@@ -21,7 +21,7 @@
 #import "Ubcoin-Swift.h"
 @import ImageSlideshow;
 
-@interface UBCGoodDetailsController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UBCGoodsCollectionViewDelegate, UBCBuyersViewDelegate>
+@interface UBCGoodDetailsController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UBCGoodsCollectionViewDelegate, UBCBuyersViewDelegate, UBCSellerViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scroll;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -494,6 +494,14 @@
 - (void)didSelectWithDeal:(UBCDealDM *)deal
 {
     UBCChatController *controller = [[UBCChatController alloc] initWithDeal:deal];
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+#pragma mark - UBCSellerViewDelegate
+
+- (void)showWithSeller:(UBCSellerDM *)seller
+{
+    UBCSellerController *controller = [[UBCSellerController alloc] initWithSeller:seller];
     [self.navigationController pushViewController:controller animated:YES];
 }
 

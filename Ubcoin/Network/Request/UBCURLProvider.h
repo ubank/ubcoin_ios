@@ -11,11 +11,13 @@
 @interface UBCURLProvider : NSObject
 
 + (NSURL *)goodsListWithPageNumber:(NSUInteger)page andFilters:(NSString *)filters;
++ (NSURL *)goodsListWithPageNumber:(NSUInteger)page forSeller:(NSString *)sellerID;
 + (NSURL *)goodsCountWithFilters:(NSString *)filters;
 + (NSURL *)categories;
 + (NSURL *)activateItem;
 + (NSURL *)deactivateItem;
 + (NSURL *)goodWithID:(NSString *)itemID;
++ (NSURL *)sellerWithID:(NSString *)sellerID;
 
 + (NSURL *)login;
 + (NSURL *)logout;

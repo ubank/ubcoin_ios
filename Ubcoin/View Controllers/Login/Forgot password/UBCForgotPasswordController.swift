@@ -31,7 +31,7 @@ class UBCForgotPasswordController: UBViewController {
         
         if (self.email.text?.isEmail)! {
             self.startActivityIndicator()
-            UBCDataProvider.shared.sendVerificationCode(toEmail: self.email.text) { [weak self] success  in
+            UBCDataProvider.shared.sendVerificationCode(toEmail: self.email.text) { [weak self] success in
                 self?.stopActivityIndicator()
                 if (success) {
                     self?.navigationController?.pushViewController(UBCResetPasswordController(email: self?.email.text), animated: true)

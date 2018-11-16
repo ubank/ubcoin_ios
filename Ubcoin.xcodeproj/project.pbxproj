@@ -52,6 +52,7 @@
 		89172392219C496F0060E719 /* UBCImageSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89172391219C496F0060E719 /* UBCImageSource.swift */; };
 		89172395219C60350060E719 /* UBCSellerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89172393219C60350060E719 /* UBCSellerView.swift */; };
 		89172396219C60350060E719 /* UBCSellerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89172394219C60350060E719 /* UBCSellerView.xib */; };
+		8917239A219C704B0060E719 /* UBCSellerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89172398219C704B0060E719 /* UBCSellerController.swift */; };
 		8919AB4F2125B80700D1B59C /* UBCChangeLanguageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8919AB4E2125B80700D1B59C /* UBCChangeLanguageController.m */; };
 		8919AB532125BC4600D1B59C /* UBCChangeNameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8919AB512125BC4600D1B59C /* UBCChangeNameController.m */; };
 		8919AB542125BC4600D1B59C /* UBCChangeNameController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8919AB522125BC4600D1B59C /* UBCChangeNameController.xib */; };
@@ -233,6 +234,7 @@
 		89172391219C496F0060E719 /* UBCImageSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCImageSource.swift; sourceTree = "<group>"; };
 		89172393219C60350060E719 /* UBCSellerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCSellerView.swift; sourceTree = "<group>"; };
 		89172394219C60350060E719 /* UBCSellerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCSellerView.xib; sourceTree = "<group>"; };
+		89172398219C704B0060E719 /* UBCSellerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCSellerController.swift; sourceTree = "<group>"; };
 		8919AB4D2125B80700D1B59C /* UBCChangeLanguageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCChangeLanguageController.h; sourceTree = "<group>"; };
 		8919AB4E2125B80700D1B59C /* UBCChangeLanguageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCChangeLanguageController.m; sourceTree = "<group>"; };
 		8919AB502125BC4600D1B59C /* UBCChangeNameController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCChangeNameController.h; sourceTree = "<group>"; };
@@ -572,6 +574,34 @@
 				89007759211B688200B6C1C5 /* UBCDealCell.m */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		89172397219C6FF30060E719 /* Seller */ = {
+			isa = PBXGroup;
+			children = (
+				8917239D219C75120060E719 /* DM */,
+				8917239C219C72B90060E719 /* View */,
+				89172398219C704B0060E719 /* UBCSellerController.swift */,
+			);
+			path = Seller;
+			sourceTree = "<group>";
+		};
+		8917239C219C72B90060E719 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				89172393219C60350060E719 /* UBCSellerView.swift */,
+				89172394219C60350060E719 /* UBCSellerView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8917239D219C75120060E719 /* DM */ = {
+			isa = PBXGroup;
+			children = (
+				89F16A5320F2C65D001AA440 /* UBCSellerDM.h */,
+				89F16A5620F2C65D001AA440 /* UBCSellerDM.m */,
+			);
+			path = DM;
 			sourceTree = "<group>";
 		};
 		8919AB4B2125B7BD00D1B59C /* Change name */ = {
@@ -1239,8 +1269,6 @@
 			isa = PBXGroup;
 			children = (
 				89AD7CE42146B1FD0015A2D2 /* UBCBuyersView.swift */,
-				89172393219C60350060E719 /* UBCSellerView.swift */,
-				89172394219C60350060E719 /* UBCSellerView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1386,6 +1414,7 @@
 				8980F23720F4865F0066CF99 /* Details */,
 				89F16A5220F2C65D001AA440 /* DM */,
 				89F16A4E20F2C65D001AA440 /* Filters */,
+				89172397219C6FF30060E719 /* Seller */,
 				89F16A5720F2C65D001AA440 /* View */,
 				89F16A5120F2C65D001AA440 /* UBCMarketController.h */,
 				89F16A6920F2C65D001AA440 /* UBCMarketController.m */,
@@ -1410,8 +1439,6 @@
 			children = (
 				89F16A5520F2C65D001AA440 /* UBCGoodDM.h */,
 				89F16A5420F2C65D001AA440 /* UBCGoodDM.m */,
-				89F16A5320F2C65D001AA440 /* UBCSellerDM.h */,
-				89F16A5620F2C65D001AA440 /* UBCSellerDM.m */,
 			);
 			path = DM;
 			sourceTree = "<group>";
@@ -1704,6 +1731,7 @@
 				1C1C7222212846B1006BAF32 /* UBCSMapTableViewCell.swift in Sources */,
 				8987519F20EE2A8B00E2B615 /* UBCTabBarController.m in Sources */,
 				8980F22A20F3FB800066CF99 /* UBCStarsView.m in Sources */,
+				8917239A219C704B0060E719 /* UBCSellerController.swift in Sources */,
 				1CFFFE7E20F230A9003B5AD9 /* main.m in Sources */,
 				89B08E3721283D0200D8B68D /* UBCConfirmationSendCoinsController.m in Sources */,
 				8987516F20EE119F00E2B615 /* HUBSystemAlertCell.m in Sources */,
@@ -1848,7 +1876,7 @@
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
@@ -1907,7 +1935,7 @@
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;

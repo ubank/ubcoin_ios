@@ -303,6 +303,9 @@
                                                                     <rect key="frame" x="0.0" y="45.5" width="375" height="69.5"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <viewLayoutGuide key="safeArea" id="em2-08-4OQ"/>
+                                                                    <connections>
+                                                                        <outlet property="delegate" destination="-1" id="X3a-ie-tZS"/>
+                                                                    </connections>
                                                                 </view>
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

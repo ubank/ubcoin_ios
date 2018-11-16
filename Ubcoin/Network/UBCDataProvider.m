@@ -74,6 +74,32 @@
      }];
 }
 
+- (NSURLSessionDataTask *)goodsListWithPageNumber:(NSUInteger)page forSeller:(NSString *)sellerID withCompletionBlock:(void (^)(BOOL, NSArray *, BOOL))completionBlock
+{
+    NSURL *url = [UBCURLProvider goodsListWithPageNumber:page forSeller:sellerID];
+    NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:url];
+    return [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+            {
+                if (success)
+                {
+                    NSArray *items = [responseObject[@"data"] removeNulls];
+                    items = [items map:^id(id item) {
+                        return [[UBCGoodDM alloc] initWithDictionary:item];
+                    }];
+                    
+                    if (completionBlock)
+                    {
+                        NSNumber *totalPages = [responseObject valueForKeyPath:@"pageData.totalPages"];
+                        completionBlock(YES, items, totalPages.integerValue > page + 1);
+                    }
+                }
+                else if (completionBlock)
+                {
+                    completionBlock(NO, nil, YES);
+                }
+            }];
+}
+
 - (NSURLSessionDataTask *)goodsCountWithFilters:(NSString *)filters withCompletionBlock:(void (^)(BOOL, NSString *))completionBlock
 {
     NSURL *url = [UBCURLProvider goodsCountWithFilters:filters];
@@ -97,6 +123,23 @@
          {
              UBCGoodDM *item = [UBCGoodDM.alloc initWithDictionary:[responseObject removeNulls]];
              completionBlock(success, item);
+         }
+         else if (completionBlock)
+         {
+             completionBlock(success, nil);
+         }
+     }];
+}
+
+- (void)sellerWithID:(NSString *)sellerID withCompletionBlock:(void (^)(BOOL, UBCSellerDM *))completionBlock
+{
+    NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:[UBCURLProvider sellerWithID:sellerID]];
+    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (success)
+         {
+             UBCSellerDM *seller = [UBCSellerDM.alloc initWithDictionary:[responseObject removeNulls]];
+             completionBlock(success, seller);
          }
          else if (completionBlock)
          {

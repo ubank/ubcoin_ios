@@ -20,6 +20,13 @@
     return [NSURL URLWithString:url];
 }
 
++ (NSURL *)goodsListWithPageNumber:(NSUInteger)page forSeller:(NSString *)sellerID
+{
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"items?page=%d&size=%d&sellerId=%@", (int)page, ITEMS_PAGE_SIZE, sellerID];
+    url = [self addUserLocationToURL:url];
+    return [NSURL URLWithString:url];
+}
+
 + (NSURL *)goodsCountWithFilters:(NSString *)filters
 {
     NSString *url = [SERVER_URL stringByAppendingFormat:@"items/count"];
@@ -32,6 +39,12 @@
 {
     NSString *url = [SERVER_URL stringByAppendingFormat:@"items/%@", itemID];
     url = [self addUserLocationToURL:url];
+    return [NSURL URLWithString:url];
+}
+
++ (NSURL *)sellerWithID:(NSString *)sellerID
+{
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"users/seller?id=%@", sellerID];
     return [NSURL URLWithString:url];
 }
 

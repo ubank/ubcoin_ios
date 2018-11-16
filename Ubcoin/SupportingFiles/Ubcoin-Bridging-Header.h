@@ -21,6 +21,8 @@
 #import "UBCMarketController.h"
 #import "UBCAppDelegate.h"
 #import "UBCStarsView.h"
+#import "UBCGoodsCollectionView.h"
+#import "UBCGoodDetailsController.h"
 
 #import <SDWebImage/UIView+WebCache.h>
 #import <SDWebImage/UIImageView+WebCache.h>

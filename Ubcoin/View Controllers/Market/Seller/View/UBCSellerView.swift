@@ -8,13 +8,22 @@
 
 import UIKit
 
+@objc
+protocol UBCSellerViewDelegate: class {
+    func show(seller: UBCSellerDM)
+}
+
 class UBCSellerView: UIView {
 
+    @IBOutlet weak var delegate: UBCSellerViewDelegate?
+    
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var name: HUBLabel!
     @IBOutlet weak var rating: UBCStarsView!
     @IBOutlet weak var desc: HUBLabel!
+    
+    private var seller: UBCSellerDM?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -35,6 +44,8 @@ class UBCSellerView: UIView {
     }
     
     @objc func setup(seller: UBCSellerDM?) {
+        self.seller = seller
+        
         guard let seller = seller else { return }
         
         avatar.sd_setImage(with: URL(string: seller.avatarURL ?? ""),
@@ -45,5 +56,11 @@ class UBCSellerView: UIView {
         rating.showStars(seller.rating.uintValue)
         
         desc.text = String(format: "%lu items", seller.itemsCount)
+    }
+    
+    @IBAction func showSeller() {
+        if let seller = seller {
+            delegate?.show(seller: seller)
+        }
     }
 }

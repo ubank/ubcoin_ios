@@ -7,6 +7,7 @@
 //
 
 #define ITEM_ACTIVITY @"item"
+#define SELLER_ACTIVITY @"seller"
 
 /* Push message example:
  {
