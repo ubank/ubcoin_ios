@@ -31,6 +31,7 @@ static NSString * const kNotificationItemChanged = @"kNotificationItemChanged";
 @property (readonly, nonatomic) NSString *title;
 @property (readonly, nonatomic) NSString *desc;
 @property (readonly, nonatomic) NSString *shareURL;
+@property (readonly, nonatomic) NSNumber *rateUBC;
 @property (readonly, nonatomic) NSNumber *price;
 @property (readonly, nonatomic) NSNumber *priceInCurrency;
 @property (readonly, nonatomic) NSString *currency;

@@ -18,6 +18,9 @@
 - (void)refreshControlUpdate;
 - (void)updatePagination;
 
+- (UICollectionReusableView *)viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath;
+- (CGSize)referenceSizeForHeaderInSection:(NSInteger)section;
+
 @end
 
 @interface UBCGoodsCollectionView : UICollectionView <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UBCDiscountsCollectionViewDelegate>

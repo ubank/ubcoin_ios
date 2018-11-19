@@ -130,7 +130,7 @@
 {
     self.navigationContainer.rightImageTitle = [self navbarIcon];
     self.navigationContainer.titleTextColor = self.navBarView.isTransparent ? UIColor.whiteColor : UBColor.navigationTitleColor;
-    self.navigationContainer.buttonsImageColor = self.navBarView.isTransparent ? UIColor.whiteColor : UBColor.navigationTitleColor;;
+    self.navigationContainer.buttonsImageColor = self.navBarView.isTransparent ? UIColor.whiteColor : UBColor.navigationTitleColor;
     self.navigationContainer.clearColorNavigation = YES;
 }
 

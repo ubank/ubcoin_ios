@@ -13,6 +13,7 @@ class UBCSellerController: UBViewController {
     private lazy var collectionView: UBCGoodsCollectionView = {
         let collectionView = UBCGoodsCollectionView()
         collectionView.actionsDelegate = self
+        collectionView.register(UINib(nibName: UBCSellerCollectionReusableView.className, bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: UBCSellerCollectionReusableView.className)
         
         return collectionView
     }()
@@ -44,6 +45,8 @@ class UBCSellerController: UBViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationContainer.buttonsImageColor = UBColor.navigationTitleColor
+        
         view.addSubview(collectionView)
         view.addConstraints(toFillSubview: collectionView)
         
@@ -98,7 +101,16 @@ class UBCSellerController: UBViewController {
         guard let seller = seller else { return }
         
         title = seller.name
+        navigationContainer.rightImageTitle = seller.shareURL.isEmpty ? nil : "general_export"
+        updateBarButtons()
+    }
+    
+    override func rightBarButtonClick(_ sender: Any!) {
+        guard let seller = seller,
+            let url = seller.shareURL else { return }
         
+        let textToShare = String(format: "%@ on Ubcoin Market %@", seller.name, url)
+        shareActivityItems([textToShare], withSubject: "", withSender: sender, withCompletionBlock: nil)
     }
 }
 
@@ -115,6 +127,24 @@ extension UBCSellerController: UBCGoodsCollectionViewDelegate {
     
     func refreshControlUpdate() {
         pageNumber = 0
-        updateInfo()
+        if seller == nil {
+            loadSellerInfo()
+        } else {
+            updateInfo()
+        }
+    }
+    
+    func referenceSizeForHeader(inSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.width, height: 100)
+    }
+    
+    func viewForSupplementaryElement(ofKind kind: String!, at indexPath: IndexPath!) -> UICollectionReusableView! {
+        if let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: UBCSellerCollectionReusableView.className, for: indexPath) as? UBCSellerCollectionReusableView {
+            headerView.setup(seller: seller)
+            
+            return headerView
+        } else {
+            return nil
+        }
     }
 }

@@ -49,6 +49,8 @@
 		89007760211C79F200B6C1C5 /* UBCToBuyDealsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8900775F211C79F200B6C1C5 /* UBCToBuyDealsView.m */; };
 		89007764211DAB0C00B6C1C5 /* UBCResetPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89007762211DAB0C00B6C1C5 /* UBCResetPasswordController.m */; };
 		89007765211DAB0C00B6C1C5 /* UBCResetPasswordController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89007763211DAB0C00B6C1C5 /* UBCResetPasswordController.xib */; };
+		8915D05E21A307C0008D1BA2 /* UBCSellerCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8915D05C21A307C0008D1BA2 /* UBCSellerCollectionReusableView.swift */; };
+		8915D05F21A307C0008D1BA2 /* UBCSellerCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8915D05D21A307C0008D1BA2 /* UBCSellerCollectionReusableView.xib */; };
 		89172392219C496F0060E719 /* UBCImageSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89172391219C496F0060E719 /* UBCImageSource.swift */; };
 		89172395219C60350060E719 /* UBCSellerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89172393219C60350060E719 /* UBCSellerView.swift */; };
 		89172396219C60350060E719 /* UBCSellerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89172394219C60350060E719 /* UBCSellerView.xib */; };
@@ -231,6 +233,8 @@
 		89007761211DAB0C00B6C1C5 /* UBCResetPasswordController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCResetPasswordController.h; sourceTree = "<group>"; };
 		89007762211DAB0C00B6C1C5 /* UBCResetPasswordController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCResetPasswordController.m; sourceTree = "<group>"; };
 		89007763211DAB0C00B6C1C5 /* UBCResetPasswordController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCResetPasswordController.xib; sourceTree = "<group>"; };
+		8915D05C21A307C0008D1BA2 /* UBCSellerCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCSellerCollectionReusableView.swift; sourceTree = "<group>"; };
+		8915D05D21A307C0008D1BA2 /* UBCSellerCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCSellerCollectionReusableView.xib; sourceTree = "<group>"; };
 		89172391219C496F0060E719 /* UBCImageSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCImageSource.swift; sourceTree = "<group>"; };
 		89172393219C60350060E719 /* UBCSellerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCSellerView.swift; sourceTree = "<group>"; };
 		89172394219C60350060E719 /* UBCSellerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCSellerView.xib; sourceTree = "<group>"; };
@@ -591,6 +595,8 @@
 			children = (
 				89172393219C60350060E719 /* UBCSellerView.swift */,
 				89172394219C60350060E719 /* UBCSellerView.xib */,
+				8915D05C21A307C0008D1BA2 /* UBCSellerCollectionReusableView.swift */,
+				8915D05D21A307C0008D1BA2 /* UBCSellerCollectionReusableView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1596,6 +1602,7 @@
 				890077422119A4E400B6C1C5 /* UBCVerifyEmailController.xib in Resources */,
 				89F16A7320F2C65D001AA440 /* UBCGoodCell.xib in Resources */,
 				89007749211AFEBB00B6C1C5 /* UBCAccountSettingsController.xib in Resources */,
+				8915D05F21A307C0008D1BA2 /* UBCSellerCollectionReusableView.xib in Resources */,
 				8987519A20EE23A100E2B615 /* UBWaitCell.xib in Resources */,
 				1CFFFE7C20F230A9003B5AD9 /* LaunchScreen.storyboard in Resources */,
 				89AD7CE9214829A20015A2D2 /* UBCTopUpController.xib in Resources */,
@@ -1697,6 +1704,7 @@
 				893672CC214AB36E004F31FE /* NSNumber+UBC.m in Sources */,
 				1C4034B220F2958100E51247 /* UBCShared.swift in Sources */,
 				89F16A7120F2C65D001AA440 /* UBCDiscountsCollectionView.m in Sources */,
+				8915D05E21A307C0008D1BA2 /* UBCSellerCollectionReusableView.swift in Sources */,
 				8980F23B20F486990066CF99 /* UBCGoodDetailsController.m in Sources */,
 				8987519920EE23A100E2B615 /* UBWaitCell.m in Sources */,
 				890077412119A4E400B6C1C5 /* UBCVerifyEmailController.m in Sources */,

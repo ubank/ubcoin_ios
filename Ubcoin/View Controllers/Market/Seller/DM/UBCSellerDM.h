@@ -13,6 +13,7 @@
 @property (readonly, nonatomic) NSString *ID;
 @property (readonly, nonatomic) NSString *name;
 @property (readonly, nonatomic) NSString *avatarURL;
+@property (readonly, nonatomic) NSString *shareURL;
 @property (readonly, nonatomic) NSString *locationText;
 @property (readonly, nonatomic) NSDate *creationDate;
 @property (readonly, nonatomic) NSNumber *rating;

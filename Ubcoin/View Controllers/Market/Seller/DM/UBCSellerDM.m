@@ -23,6 +23,7 @@
         _ID = dict[@"id"];
         _name = dict[@"name"];
         _rating = dict[@"rating"];
+        _shareURL = dict[@"shareLink"];
         _avatarURL = dict[@"avatarUrl"];
         _locationText = dict[@"location"];
         _itemsCount = [dict[@"itemsCount"] unsignedLongValue];

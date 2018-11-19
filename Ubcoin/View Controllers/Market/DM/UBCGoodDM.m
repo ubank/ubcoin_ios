@@ -23,6 +23,7 @@
         _ID = dict[@"id"];
         _title = dict[@"title"];
         _desc = dict[@"description"];
+        _rateUBC = dict[@"rate"];
         _price = dict[@"price"];
         _priceInCurrency = dict[@"priceInCurrency"];
         _currency = dict[@"currency"];
