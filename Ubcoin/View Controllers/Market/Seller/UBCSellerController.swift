@@ -101,7 +101,13 @@ class UBCSellerController: UBViewController {
         guard let seller = seller else { return }
         
         title = seller.name
-        navigationContainer.rightImageTitle = seller.shareURL.isEmpty ? nil : "general_export"
+        if let shareURL = seller.shareURL,
+            !shareURL.isEmpty {
+            navigationContainer.rightImageTitle = "general_export"
+        } else {
+            navigationContainer.rightImageTitle = nil
+        }
+        
         updateBarButtons()
     }
     
