@@ -33,6 +33,7 @@
 @property (weak, nonatomic) IBOutlet HUBLabel *category;
 @property (weak, nonatomic) IBOutlet HUBLabel *itemTitle;
 @property (weak, nonatomic) IBOutlet HUBLabel *desc;
+@property (weak, nonatomic) IBOutlet HUBLabel *rateUBC;
 @property (weak, nonatomic) IBOutlet UBCGoodsCollectionView *relatedItemsView;
 
 @property (weak, nonatomic) IBOutlet UIView *sellerSectionView;
@@ -151,7 +152,7 @@
     
     self.category.textColor = UBCColor.green;
     self.desc.textColor = UBColor.titleColor;
-    self.priceInCurrency.textColor = UBColor.descColor;
+    self.rateUBC.textColor = UBColor.descColor;
     self.address.textColor = UBColor.titleColor;
     
     self.scroll.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
@@ -166,6 +167,7 @@
     self.category.text = self.good.category.name;
     self.desc.text = self.good.desc;
     self.price.text = [NSString stringWithFormat:@"%@ UBC", self.good.price.priceString];
+    self.rateUBC.text = [NSString stringWithFormat:@"1 UBC = %@ USD", self.good.rateUBC.priceString];
     [self setupPriceInCurrency];
     
     self.locationView.hidden = !self.good.location;
@@ -187,6 +189,27 @@
     if (self.good.priceInCurrency && self.good.currency)
     {
         self.priceInCurrency.text = [NSString stringWithFormat:@"~%@ %@", self.good.priceInCurrency.priceStringWithoutCoins, self.good.currency];
+    }
+    else
+    {
+        self.priceInCurrency.text = @"";
+    }
+}
+
+- (void)setupRateUBC
+{
+    if (self.good.rateUBC && self.good.currency)
+    {
+        NSNumberFormatter *format = NSNumberFormatter.new;
+        
+        format.groupingSize = 3;
+        format.groupingSeparator = @" ";
+        format.locale = UBLocal.shared.locale;
+        format.minimumFractionDigits = 0;
+        format.maximumFractionDigits = 4;
+        format.numberStyle = NSNumberFormatterDecimalStyle;
+        
+        self.rateUBC.text = [NSString stringWithFormat:@"1 UBC = %@ USD", [format stringFromNumber:self.good.rateUBC]];
     }
     else
     {
