@@ -49,6 +49,12 @@
 		89007760211C79F200B6C1C5 /* UBCToBuyDealsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8900775F211C79F200B6C1C5 /* UBCToBuyDealsView.m */; };
 		89007764211DAB0C00B6C1C5 /* UBCResetPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89007762211DAB0C00B6C1C5 /* UBCResetPasswordController.m */; };
 		89007765211DAB0C00B6C1C5 /* UBCResetPasswordController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89007763211DAB0C00B6C1C5 /* UBCResetPasswordController.xib */; };
+		8915D05E21A307C0008D1BA2 /* UBCSellerCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8915D05C21A307C0008D1BA2 /* UBCSellerCollectionReusableView.swift */; };
+		8915D05F21A307C0008D1BA2 /* UBCSellerCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8915D05D21A307C0008D1BA2 /* UBCSellerCollectionReusableView.xib */; };
+		89172392219C496F0060E719 /* UBCImageSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89172391219C496F0060E719 /* UBCImageSource.swift */; };
+		89172395219C60350060E719 /* UBCSellerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89172393219C60350060E719 /* UBCSellerView.swift */; };
+		89172396219C60350060E719 /* UBCSellerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89172394219C60350060E719 /* UBCSellerView.xib */; };
+		8917239A219C704B0060E719 /* UBCSellerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89172398219C704B0060E719 /* UBCSellerController.swift */; };
 		8919AB4F2125B80700D1B59C /* UBCChangeLanguageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8919AB4E2125B80700D1B59C /* UBCChangeLanguageController.m */; };
 		8919AB532125BC4600D1B59C /* UBCChangeNameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8919AB512125BC4600D1B59C /* UBCChangeNameController.m */; };
 		8919AB542125BC4600D1B59C /* UBCChangeNameController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8919AB522125BC4600D1B59C /* UBCChangeNameController.xib */; };
@@ -227,6 +233,12 @@
 		89007761211DAB0C00B6C1C5 /* UBCResetPasswordController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCResetPasswordController.h; sourceTree = "<group>"; };
 		89007762211DAB0C00B6C1C5 /* UBCResetPasswordController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCResetPasswordController.m; sourceTree = "<group>"; };
 		89007763211DAB0C00B6C1C5 /* UBCResetPasswordController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCResetPasswordController.xib; sourceTree = "<group>"; };
+		8915D05C21A307C0008D1BA2 /* UBCSellerCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCSellerCollectionReusableView.swift; sourceTree = "<group>"; };
+		8915D05D21A307C0008D1BA2 /* UBCSellerCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCSellerCollectionReusableView.xib; sourceTree = "<group>"; };
+		89172391219C496F0060E719 /* UBCImageSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCImageSource.swift; sourceTree = "<group>"; };
+		89172393219C60350060E719 /* UBCSellerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCSellerView.swift; sourceTree = "<group>"; };
+		89172394219C60350060E719 /* UBCSellerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCSellerView.xib; sourceTree = "<group>"; };
+		89172398219C704B0060E719 /* UBCSellerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCSellerController.swift; sourceTree = "<group>"; };
 		8919AB4D2125B80700D1B59C /* UBCChangeLanguageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCChangeLanguageController.h; sourceTree = "<group>"; };
 		8919AB4E2125B80700D1B59C /* UBCChangeLanguageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCChangeLanguageController.m; sourceTree = "<group>"; };
 		8919AB502125BC4600D1B59C /* UBCChangeNameController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCChangeNameController.h; sourceTree = "<group>"; };
@@ -568,6 +580,36 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		89172397219C6FF30060E719 /* Seller */ = {
+			isa = PBXGroup;
+			children = (
+				8917239D219C75120060E719 /* DM */,
+				8917239C219C72B90060E719 /* View */,
+				89172398219C704B0060E719 /* UBCSellerController.swift */,
+			);
+			path = Seller;
+			sourceTree = "<group>";
+		};
+		8917239C219C72B90060E719 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				89172393219C60350060E719 /* UBCSellerView.swift */,
+				89172394219C60350060E719 /* UBCSellerView.xib */,
+				8915D05C21A307C0008D1BA2 /* UBCSellerCollectionReusableView.swift */,
+				8915D05D21A307C0008D1BA2 /* UBCSellerCollectionReusableView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8917239D219C75120060E719 /* DM */ = {
+			isa = PBXGroup;
+			children = (
+				89F16A5320F2C65D001AA440 /* UBCSellerDM.h */,
+				89F16A5620F2C65D001AA440 /* UBCSellerDM.m */,
+			);
+			path = DM;
+			sourceTree = "<group>";
+		};
 		8919AB4B2125B7BD00D1B59C /* Change name */ = {
 			isa = PBXGroup;
 			children = (
@@ -792,6 +834,7 @@
 				8980F23820F486990066CF99 /* UBCGoodDetailsController.h */,
 				8980F23920F486990066CF99 /* UBCGoodDetailsController.m */,
 				8980F23A20F486990066CF99 /* UBCGoodDetailsController.xib */,
+				89172391219C496F0060E719 /* UBCImageSource.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -1377,6 +1420,7 @@
 				8980F23720F4865F0066CF99 /* Details */,
 				89F16A5220F2C65D001AA440 /* DM */,
 				89F16A4E20F2C65D001AA440 /* Filters */,
+				89172397219C6FF30060E719 /* Seller */,
 				89F16A5720F2C65D001AA440 /* View */,
 				89F16A5120F2C65D001AA440 /* UBCMarketController.h */,
 				89F16A6920F2C65D001AA440 /* UBCMarketController.m */,
@@ -1401,8 +1445,6 @@
 			children = (
 				89F16A5520F2C65D001AA440 /* UBCGoodDM.h */,
 				89F16A5420F2C65D001AA440 /* UBCGoodDM.m */,
-				89F16A5320F2C65D001AA440 /* UBCSellerDM.h */,
-				89F16A5620F2C65D001AA440 /* UBCSellerDM.m */,
 			);
 			path = DM;
 			sourceTree = "<group>";
@@ -1547,6 +1589,7 @@
 				89F16A6E20F2C65D001AA440 /* UBCDiscountsCollectionView.xib in Resources */,
 				89B08E332128397100D8B68D /* UBCSendCoinsController.xib in Resources */,
 				1CFFFE7D20F230A9003B5AD9 /* Assets.xcassets in Resources */,
+				89172396219C60350060E719 /* UBCSellerView.xib in Resources */,
 				8987518A20EE119F00E2B615 /* HUBEmptyView.xib in Resources */,
 				89678DB9211088C600EB715E /* UBCStartLoginController.xib in Resources */,
 				89678DBD21108B5600EB715E /* UBCSignUpController.xib in Resources */,
@@ -1559,6 +1602,7 @@
 				890077422119A4E400B6C1C5 /* UBCVerifyEmailController.xib in Resources */,
 				89F16A7320F2C65D001AA440 /* UBCGoodCell.xib in Resources */,
 				89007749211AFEBB00B6C1C5 /* UBCAccountSettingsController.xib in Resources */,
+				8915D05F21A307C0008D1BA2 /* UBCSellerCollectionReusableView.xib in Resources */,
 				8987519A20EE23A100E2B615 /* UBWaitCell.xib in Resources */,
 				1CFFFE7C20F230A9003B5AD9 /* LaunchScreen.storyboard in Resources */,
 				89AD7CE9214829A20015A2D2 /* UBCTopUpController.xib in Resources */,
@@ -1609,11 +1653,15 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Ubcoin/Pods-Ubcoin-resources.sh",
 				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/ImageSlideshow/ImageSlideshow/Assets/ic_cross_white@2x.png",
+				"${PODS_ROOT}/ImageSlideshow/ImageSlideshow/Assets/ic_cross_white@3x.png",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FacebookSDKStrings.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ic_cross_white@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ic_cross_white@3x.png",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1656,6 +1704,7 @@
 				893672CC214AB36E004F31FE /* NSNumber+UBC.m in Sources */,
 				1C4034B220F2958100E51247 /* UBCShared.swift in Sources */,
 				89F16A7120F2C65D001AA440 /* UBCDiscountsCollectionView.m in Sources */,
+				8915D05E21A307C0008D1BA2 /* UBCSellerCollectionReusableView.swift in Sources */,
 				8980F23B20F486990066CF99 /* UBCGoodDetailsController.m in Sources */,
 				8987519920EE23A100E2B615 /* UBWaitCell.m in Sources */,
 				890077412119A4E400B6C1C5 /* UBCVerifyEmailController.m in Sources */,
@@ -1679,7 +1728,9 @@
 				8987518020EE119F00E2B615 /* HUBLabel.m in Sources */,
 				898751CB20EE6AEA00E2B615 /* UBCURLProvider.m in Sources */,
 				89007756211B5B8600B6C1C5 /* UBCDealDM.m in Sources */,
+				89172395219C60350060E719 /* UBCSellerView.swift in Sources */,
 				89BA58CF21652D8500427A8E /* UBCCategoriesFilterController.swift in Sources */,
+				89172392219C496F0060E719 /* UBCImageSource.swift in Sources */,
 				8987517320EE119F00E2B615 /* UBTableView.m in Sources */,
 				8996A43F2178C4EB00BCDEBD /* UBCFilterTitleCollectionViewCell.swift in Sources */,
 				8987518620EE119F00E2B615 /* HUBAttributedLabel.m in Sources */,
@@ -1688,6 +1739,7 @@
 				1C1C7222212846B1006BAF32 /* UBCSMapTableViewCell.swift in Sources */,
 				8987519F20EE2A8B00E2B615 /* UBCTabBarController.m in Sources */,
 				8980F22A20F3FB800066CF99 /* UBCStarsView.m in Sources */,
+				8917239A219C704B0060E719 /* UBCSellerController.swift in Sources */,
 				1CFFFE7E20F230A9003B5AD9 /* main.m in Sources */,
 				89B08E3721283D0200D8B68D /* UBCConfirmationSendCoinsController.m in Sources */,
 				8987516F20EE119F00E2B615 /* HUBSystemAlertCell.m in Sources */,
@@ -1832,7 +1884,7 @@
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
@@ -1891,7 +1943,7 @@
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;

@@ -180,3 +180,17 @@
 
 "str_no_result_title" = "No results";
 "str_no_result_desc" = "Seems like there is nothing to show. Please try to reset your filters.";
+
+"str_on_market" = "On market";
+
+"str_day" = "day";
+"str_days3" = "days";
+"str_days5" = "days";
+
+"str_month" = "month";
+"str_months3" = "months";
+"str_months5" = "months";
+
+"str_year" = "year";
+"str_years3" = "years";
+"str_years5" = "years";

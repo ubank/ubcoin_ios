@@ -37,7 +37,7 @@
 "str_market" = "Pasar";
 "str_favorites" = "Favorit";
 "str_sell" = "Jual";
-"str_deals" = "Sepakat";
+"str_deals" = "Kesepakatan";
 "str_sign_in" = "Masuk";
 "str_sign_up" = "Daftar";
 "str_log_in" = "Masuk";
@@ -84,7 +84,7 @@
 "str_to_sell" = "Untuk dijual";
 "str_to_buy" = "Untuk dibeli";
 "str_requires_external_app" = "Memerlukan aplikasi luar";
-"str_no_active_deals" = "Tidak ada penawaran aktif";
+"str_no_active_deals" = "Tidak ada kesepakatan aktif";
 "str_items_to_buy_will_be_here" = "Barang yang anda akan beli akan berada disini";
 "str_items_to_sell_will_be_here" = "Barang yang anda akan jual akan berada disini";
 "str_confirm" = "Konfirmasi";
@@ -162,7 +162,7 @@
 "str_item_status_check" = "Sedang di moderasi";
 
 "str_send_success" = "Transaksi Anda telah ditambahkan ke antrian. Transaksi mungkin belum dikirim. Selama masa volume jaringan yang ekstrim, mungkin butuh waktu 3 jam lebih untuk selesai";
-"str_your_price_will_be_fixed_in_UBC" = "Harga Anda akan tetap dalam bentuk UBC";
+"str_your_price_will_be_fixed_in_UBC" = "Harga anda akan ditetapkan dalam UBC";
 
 "str_filters" = "Urutkan";
 "str_category" = "Kategori";

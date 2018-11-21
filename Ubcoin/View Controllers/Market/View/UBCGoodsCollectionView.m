@@ -108,6 +108,11 @@
         view.discounts = self.discounts;
         return view;
     }
+    else if ([self.actionsDelegate respondsToSelector:@selector(viewForSupplementaryElementOfKind:atIndexPath:)])
+    {
+        return [self.actionsDelegate viewForSupplementaryElementOfKind:kind atIndexPath:indexPath];
+    }
+    
     return nil;
 }
 
@@ -116,6 +121,10 @@
     if (self.discounts.count > 0)
     {
         return CGSizeMake(collectionView.width, DISCOUNTS_HEIGHT);
+    }
+    else if ([self.actionsDelegate respondsToSelector:@selector(referenceSizeForHeaderInSection:)])
+    {
+        return [self.actionsDelegate referenceSizeForHeaderInSection:section];
     }
     
     return CGSizeZero;
