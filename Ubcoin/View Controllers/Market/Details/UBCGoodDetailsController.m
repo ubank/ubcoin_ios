@@ -167,8 +167,8 @@
     self.category.text = self.good.category.name;
     self.desc.text = self.good.desc;
     self.price.text = [NSString stringWithFormat:@"%@ UBC", self.good.price.priceString];
-    self.rateUBC.text = [NSString stringWithFormat:@"1 UBC = %@ USD", self.good.rateUBC.priceString];
     [self setupPriceInCurrency];
+    [self setupRateUBC];
     
     self.locationView.hidden = !self.good.location;
     self.mapView.location = self.good.location;
@@ -205,7 +205,7 @@
         format.groupingSize = 3;
         format.groupingSeparator = @" ";
         format.locale = UBLocal.shared.locale;
-        format.minimumFractionDigits = 0;
+        format.minimumFractionDigits = 4;
         format.maximumFractionDigits = 4;
         format.numberStyle = NSNumberFormatterDecimalStyle;
         
