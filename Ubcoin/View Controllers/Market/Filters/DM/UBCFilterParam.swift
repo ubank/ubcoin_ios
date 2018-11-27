@@ -20,6 +20,8 @@ class UBCFilterParam: NSObject {
         switch name {
         case UBCFilterType.distance.rawValue:
             return distanceValues()
+        case UBCFilterType.condition.rawValue:
+            return conditionValues()
         default:
             return []
         }
@@ -89,12 +91,33 @@ class UBCFilterParam: NSObject {
         
         return rows
     }
+    
+    func conditionValues() -> [UBTableViewRowData] {
+        var rows = [UBTableViewRowData]()
+        
+        var row = UBTableViewRowData()
+        row.title = "str_new".localizedString()
+        row.name = conditionValueNew
+        rows.append(row)
+        
+        row = UBTableViewRowData()
+        row.title = "str_used".localizedString()
+        row.name = conditionValueUsed
+        rows.append(row)
+        
+        for row in rows {
+            row.isSelected = row.name == self.value
+        }
+        
+        return rows
+    }
 }
 
 enum UBCFilterType: String {
     case category = "category"
     case price = "maxPrice"
     case distance = "maxDistance"
+    case condition = "condition"
 
     case dateSort = "sortByDate"
     case priceSort = "sortByPrice"
@@ -108,6 +131,8 @@ enum UBCFilterType: String {
             return "str_max_price".localizedString()
         case .distance:
             return "str_max_distance".localizedString()
+        case .condition:
+            return "str_condition".localizedString()
         case .dateSort:
             return "str_placement_date".localizedString()
         case .priceSort:

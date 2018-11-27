@@ -30,10 +30,7 @@ class UBCFilterDM: NSObject, NSCopying {
     
     @objc var priceParam: UBCFilterParam? {
         get {
-            let param = filters.filter { $0.name == UBCFilterType.price.rawValue }.first ?? UBCFilterParam(type: UBCFilterType.price, value: "")
-            filters.removeAll(where: { $0.name == UBCFilterType.price.rawValue })
-            filters.append(param)
-            return param
+            return param(type: UBCFilterType.price)
         } set {
             filters.removeAll(where: { $0.name == UBCFilterType.price.rawValue })
             
@@ -45,10 +42,7 @@ class UBCFilterDM: NSObject, NSCopying {
     
     @objc var distanceParam: UBCFilterParam? {
         get {
-            let param = filters.filter { $0.name == UBCFilterType.distance.rawValue }.first ?? UBCFilterParam(type: UBCFilterType.distance, value: "")
-            filters.removeAll(where: { $0.name == UBCFilterType.distance.rawValue })
-            filters.append(param)
-            return param
+            return param(type: UBCFilterType.distance)
         } set {
             filters.removeAll(where: { $0.name == UBCFilterType.distance.rawValue })
             
@@ -58,8 +52,29 @@ class UBCFilterDM: NSObject, NSCopying {
         }
     }
     
+    @objc var conditionParam: UBCFilterParam? {
+        get {
+            return param(type: UBCFilterType.condition)
+        } set {
+            filters.removeAll(where: { $0.name == UBCFilterType.condition.rawValue })
+            
+            if let param = newValue {
+                filters.append(param)
+            }
+        }
+    }
+
     @objc var categoryFilters: [UBCFilterParam] {
         return filters.filter { $0.name == UBCFilterType.category.rawValue}
+    }
+
+    // MARK: -
+    
+    private func param(type: UBCFilterType) -> UBCFilterParam {
+        let param = filters.filter { $0.name == type.rawValue }.first ?? UBCFilterParam(type: type, value: "")
+        filters.removeAll(where: { $0.name == type.rawValue })
+        filters.append(param)
+        return param
     }
     
     // MARK: -
@@ -124,6 +139,14 @@ class UBCFilterDM: NSObject, NSCopying {
         distance.height = 100;
         distance.data = distanceParam
         rows.append(distance)
+        
+        let condition = UBTableViewRowData()
+        condition.desc = UBCFilterType.condition.title
+        condition.name = UBCFilterType.condition.rawValue
+        condition.className = UBCFilterValueSelectionCell.className
+        condition.height = 100;
+        condition.data = conditionParam
+        rows.append(condition)
         
         return rows
     }

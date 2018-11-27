@@ -183,6 +183,8 @@
 
 "str_on_market" = "On market";
 "str_condition" = "Condition";
+"str_new" = "New";
+"str_used" = "Used";
 
 "str_day" = "day";
 "str_days3" = "days";

@@ -22,6 +22,9 @@ typedef enum
     UBCItemStatusSold
 } UBCItemStatus;
 
+static NSString * const conditionValueNew = @"NEW";
+static NSString * const conditionValueUsed = @"USED";
+
 static NSString * const kNotificationFavoritesChanged = @"kNotificationFavoritesChanged";
 static NSString * const kNotificationItemChanged = @"kNotificationItemChanged";
 
