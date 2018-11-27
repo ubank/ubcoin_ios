@@ -40,6 +40,7 @@ static NSString * const kNotificationItemChanged = @"kNotificationItemChanged";
 @property (readonly, nonatomic) BOOL isFavorite;
 @property (readonly, nonatomic) CLLocation *location;
 @property (readonly, nonatomic) NSString *locationText;
+@property (readonly, nonatomic) NSString *condition;
 @property (readonly, nonatomic) UBCItemStatus status;
 
 @property (readonly, nonatomic) UBCSellerDM *seller;
@@ -54,4 +55,5 @@ static NSString * const kNotificationItemChanged = @"kNotificationItemChanged";
 - (UBTableViewRowData *)rowData;
 
 + (NSString *)titleForStatus:(UBCItemStatus)status;
+
 @end

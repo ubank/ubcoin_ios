@@ -165,10 +165,10 @@
     self.title = self.good.title;
     self.itemTitle.text = self.good.title;
     self.category.text = self.good.category.name;
-    self.desc.text = self.good.desc;
     self.price.text = [NSString stringWithFormat:@"%@ UBC", self.good.price.priceString];
     [self setupPriceInCurrency];
     [self setupRateUBC];
+    [self setupDesc];
     
     self.locationView.hidden = !self.good.location;
     self.mapView.location = self.good.location;
@@ -182,6 +182,19 @@
     
     [self setupSellerView:self.good.seller];
     [self setupWarningView];
+}
+
+- (void)setupDesc
+{
+    self.desc.text = self.good.desc;
+    if (self.good.condition.isNotEmpty)
+    {
+        NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:[NSString notEmptyString:self.good.desc]];
+        [text appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"\n\n%@\n\n", [UBLocalizedString(@"str_condition", nil) uppercaseString]] attributes:@{NSFontAttributeName : UBFont.descFont,
+                                                                                                                                                                NSForegroundColorAttributeName : UBColor.descColor}]];
+        [text appendAttributedString:[[NSAttributedString alloc] initWithString:[self.good.condition capitalizedString]]];
+        self.desc.attributedText = text;
+    }
 }
 
 - (void)setupPriceInCurrency
