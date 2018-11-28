@@ -45,7 +45,11 @@ class UBCSellDM: NSObject {
         category.data = good?.category?.name
         category.sendData = good?.category?.id
         
-        aboutSection.rows = [title, category]
+        var condition = UBCSellCellDM(type: .condition)
+        condition.data = good?.condition.capitalized
+        condition.sendData = good?.condition
+        
+        aboutSection.rows = [title, category, condition]
         sections.append(aboutSection)
         
         let priceDollarSection = UBTableViewSectionData()
@@ -237,6 +241,7 @@ enum UBCSellCellType {
     case photo
     case title
     case category
+    case condition
     case price
     case priceUBC
     case desc
@@ -245,15 +250,16 @@ enum UBCSellCellType {
     
     var className: String {
         get {
-            if self == .photo {
+            switch self {
+            case .photo:
                 return UBCSPhotoTableViewCell.className
-            } else if self == .category || self == .location {
+            case .category, .condition, .location:
                 return UBCSSelectionTableViewCell.className
-            } else if self == .price || self == .title || self == .priceUBC {
+            case .price, .priceUBC, .title:
                 return UBCSTextFieldTableViewCell.className
-            } else if self == .locationMap {
+            case .locationMap:
                 return UBCSMapTableViewCell.className
-            } else {
+            default:
                 return UBCSTextViewTableViewCell.className
             }
         }
@@ -261,13 +267,16 @@ enum UBCSellCellType {
     
     var placeholder: String {
         get {
-            if self == .category {
-                return "str_sell_placeholder_category".localizedString()
-            } else if self == .location {
+            switch self {
+            case .category:
+                return "str_category".localizedString()
+            case .condition:
+                return "str_condition".localizedString()
+            case .location:
                 return "str_sell_placeholder_location".localizedString()
-            } else if self == .title {
+            case .title:
                 return "str_sell_placeholder_title".localizedString()
-            } else {
+            default:
                 return ""
             }
         }
@@ -275,23 +284,52 @@ enum UBCSellCellType {
     
     var sendType: String {
         get {
-            if self == .photo {
+            switch self {
+            case .photo:
                 return "images"
-            } else if self == .title {
+            case .title:
                 return "title"
-            } else if self == .category {
+            case .category:
                 return "categoryId"
-            } else if self == .price {
+            case .condition:
+                return "condition"
+            case .price:
                 return "price$"
-            } else if self == .priceUBC {
+            case .priceUBC:
                 return "price"
-            } else if self == .desc {
+            case .desc:
                 return "description"
-            } else {
+            default:
                 return "location"
             }
         }
     }
+    
+    var values: [UBTableViewRowData] {
+        switch self {
+        case .condition:
+            return conditionValues()
+        default:
+            return []
+        }
+    }
+    
+    func conditionValues() -> [UBTableViewRowData] {
+        var rows = [UBTableViewRowData]()
+        
+        var row = UBTableViewRowData()
+        row.title = "str_new".localizedString()
+        row.name = conditionValueNew
+        rows.append(row)
+        
+        row = UBTableViewRowData()
+        row.title = "str_used".localizedString()
+        row.name = conditionValueUsed
+        rows.append(row)
+        
+        return rows
+    }
+    
 }
 
 protocol UBCSellCellProtocol {

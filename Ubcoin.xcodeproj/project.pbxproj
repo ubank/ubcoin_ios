@@ -31,7 +31,7 @@
 		1CFFFE6C20F0D0F8003B5AD9 /* UBCSellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFFFE6B20F0D0F8003B5AD9 /* UBCSellController.swift */; };
 		1CFFFE6E20F0DD28003B5AD9 /* UBCSTextViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFFFE6D20F0DD28003B5AD9 /* UBCSTextViewTableViewCell.swift */; };
 		1CFFFE7020F0E204003B5AD9 /* UBCSSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFFFE6F20F0E204003B5AD9 /* UBCSSelectionTableViewCell.swift */; };
-		1CFFFE7320F22599003B5AD9 /* UBCSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFFFE7220F22599003B5AD9 /* UBCSelectionController.swift */; };
+		1CFFFE7320F22599003B5AD9 /* UBCCategorySelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFFFE7220F22599003B5AD9 /* UBCCategorySelectionController.swift */; };
 		1CFFFE7C20F230A9003B5AD9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CFFFE7820F230A9003B5AD9 /* LaunchScreen.storyboard */; };
 		1CFFFE7D20F230A9003B5AD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CFFFE7920F230A9003B5AD9 /* Assets.xcassets */; };
 		1CFFFE7E20F230A9003B5AD9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFFFE7A20F230A9003B5AD9 /* main.m */; };
@@ -137,6 +137,7 @@
 		898751C820EE65C000E2B615 /* UBCKeyChain.m in Sources */ = {isa = PBXBuildFile; fileRef = 898751C720EE65C000E2B615 /* UBCKeyChain.m */; };
 		898751CB20EE6AEA00E2B615 /* UBCURLProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 898751CA20EE6AEA00E2B615 /* UBCURLProvider.m */; };
 		898751CE20EE6D7600E2B615 /* UBCDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 898751CD20EE6D7600E2B615 /* UBCDataProvider.m */; };
+		8989F83021AEB64500890C9E /* UBCSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8989F82F21AEB64500890C9E /* UBCSelectionController.swift */; };
 		8996A43C21789C9B00BCDEBD /* UBCFilterValueSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8996A43B21789C9B00BCDEBD /* UBCFilterValueSelectionCell.swift */; };
 		8996A43F2178C4EB00BCDEBD /* UBCFilterTitleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8996A43D2178C4EB00BCDEBD /* UBCFilterTitleCollectionViewCell.swift */; };
 		8996A4402178C4EB00BCDEBD /* UBCFilterTitleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8996A43E2178C4EB00BCDEBD /* UBCFilterTitleCollectionViewCell.xib */; };
@@ -203,7 +204,7 @@
 		1CFFFE6B20F0D0F8003B5AD9 /* UBCSellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCSellController.swift; sourceTree = "<group>"; };
 		1CFFFE6D20F0DD28003B5AD9 /* UBCSTextViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCSTextViewTableViewCell.swift; sourceTree = "<group>"; };
 		1CFFFE6F20F0E204003B5AD9 /* UBCSSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCSSelectionTableViewCell.swift; sourceTree = "<group>"; };
-		1CFFFE7220F22599003B5AD9 /* UBCSelectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCSelectionController.swift; sourceTree = "<group>"; };
+		1CFFFE7220F22599003B5AD9 /* UBCCategorySelectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCCategorySelectionController.swift; sourceTree = "<group>"; };
 		1CFFFE7720F230A9003B5AD9 /* Ubcoin-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Ubcoin-Prefix.pch"; sourceTree = "<group>"; };
 		1CFFFE7820F230A9003B5AD9 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1CFFFE7920F230A9003B5AD9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -384,6 +385,7 @@
 		898751CA20EE6AEA00E2B615 /* UBCURLProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCURLProvider.m; sourceTree = "<group>"; };
 		898751CC20EE6D7600E2B615 /* UBCDataProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCDataProvider.h; sourceTree = "<group>"; };
 		898751CD20EE6D7600E2B615 /* UBCDataProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCDataProvider.m; sourceTree = "<group>"; };
+		8989F82F21AEB64500890C9E /* UBCSelectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCSelectionController.swift; sourceTree = "<group>"; };
 		8996A43B21789C9B00BCDEBD /* UBCFilterValueSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCFilterValueSelectionCell.swift; sourceTree = "<group>"; };
 		8996A43D2178C4EB00BCDEBD /* UBCFilterTitleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCFilterTitleCollectionViewCell.swift; sourceTree = "<group>"; };
 		8996A43E2178C4EB00BCDEBD /* UBCFilterTitleCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCFilterTitleCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -492,7 +494,7 @@
 		1CFFFE7120F2256E003B5AD9 /* Selection */ = {
 			isa = PBXGroup;
 			children = (
-				1CFFFE7220F22599003B5AD9 /* UBCSelectionController.swift */,
+				8989F82F21AEB64500890C9E /* UBCSelectionController.swift */,
 			);
 			path = Selection;
 			sourceTree = "<group>";
@@ -1182,6 +1184,7 @@
 				1CFFFE6120F0CB12003B5AD9 /* Cells */,
 				1CFFFE6820F0CD3F003B5AD9 /* DM */,
 				1CFFFE6B20F0D0F8003B5AD9 /* UBCSellController.swift */,
+				1CFFFE7220F22599003B5AD9 /* UBCCategorySelectionController.swift */,
 				1C14F19E20F2655800B835AC /* UBCMapSelectController.swift */,
 				1C1C72232128B7B7006BAF32 /* UBCPhotosController.swift */,
 			);
@@ -1753,7 +1756,7 @@
 				8900775A211B688200B6C1C5 /* UBCDealCell.m in Sources */,
 				1CFFFE6A20F0CD3F003B5AD9 /* UBCSellDM.swift in Sources */,
 				1CFFFE6C20F0D0F8003B5AD9 /* UBCSellController.swift in Sources */,
-				1CFFFE7320F22599003B5AD9 /* UBCSelectionController.swift in Sources */,
+				1CFFFE7320F22599003B5AD9 /* UBCCategorySelectionController.swift in Sources */,
 				8987518520EE119F00E2B615 /* HUBBaseMapView.m in Sources */,
 				89CB110F20EFCDA500729C95 /* HUBCollectionViewWaitCell.m in Sources */,
 				89AE1A7320F7FDF3000662E8 /* UBCFavouriteCell.m in Sources */,
@@ -1804,6 +1807,7 @@
 				898751CE20EE6D7600E2B615 /* UBCDataProvider.m in Sources */,
 				89AD7CE8214829A20015A2D2 /* UBCTopUpController.swift in Sources */,
 				89F16A7420F2C65D001AA440 /* UBCGoodCell.m in Sources */,
+				8989F83021AEB64500890C9E /* UBCSelectionController.swift in Sources */,
 				8980F24120F4954C0066CF99 /* UBCPhotoCollectionViewCell.m in Sources */,
 				89AD7CE52146B1FD0015A2D2 /* UBCBuyersView.swift in Sources */,
 				89AD7CF021484DFC0015A2D2 /* UBCTimerLabel.swift in Sources */,
