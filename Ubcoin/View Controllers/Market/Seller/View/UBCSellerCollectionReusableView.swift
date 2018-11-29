@@ -40,13 +40,13 @@ class UBCSellerCollectionReusableView: UICollectionReusableView {
         
         let days = (registrationDate as NSDate).days(before: Date())
         if days < 30 {
-            return String(format: "%@: %lu days", "str_on_market".localizedString(), days)
+            return String(format: "%@: %@", "str_on_market".localizedString(), NSString(numberUnits: Int32(days), first: "str_day".localizedString(), second: "str_days3".localizedString(), third: "str_days5".localizedString()))
         } else if days < 365 {
             let months = days / 30
-            return String(format: "%@: %lu months", "str_on_market".localizedString(), months)
+            return String(format: "%@: %@", "str_on_market".localizedString(), NSString(numberUnits: Int32(months), first: "str_month".localizedString(), second: "str_months3".localizedString(), third: "str_months5".localizedString()))
         } else {
             let years = days / 365
-            return String(format: "%@: %lu years", "str_on_market".localizedString(), years)
+            return String(format: "%@: %@", "str_on_market".localizedString(), NSString(numberUnits: Int32(years), first: "str_year".localizedString(), second: "str_years3".localizedString(), third: "str_years5".localizedString()))
         }
     }
 }
