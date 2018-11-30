@@ -180,3 +180,20 @@
 
 "str_no_result_title" = "Tidak ada hasil";
 "str_no_result_desc" = "Sepertinya tidak ada yang bisa ditampilkan. Silakan coba atur ulang filter Anda.";
+
+"str_on_market" = "On market";
+"str_condition" = "Condition";
+"str_new" = "New";
+"str_used" = "Used";
+
+"str_day" = "day";
+"str_days3" = "days";
+"str_days5" = "days";
+
+"str_month" = "month";
+"str_months3" = "months";
+"str_months5" = "months";
+
+"str_year" = "year";
+"str_years3" = "years";
+"str_years5" = "years";

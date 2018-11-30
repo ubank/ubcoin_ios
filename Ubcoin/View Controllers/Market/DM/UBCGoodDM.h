@@ -22,6 +22,9 @@ typedef enum
     UBCItemStatusSold
 } UBCItemStatus;
 
+static NSString * const conditionValueNew = @"NEW";
+static NSString * const conditionValueUsed = @"USED";
+
 static NSString * const kNotificationFavoritesChanged = @"kNotificationFavoritesChanged";
 static NSString * const kNotificationItemChanged = @"kNotificationItemChanged";
 
@@ -40,6 +43,7 @@ static NSString * const kNotificationItemChanged = @"kNotificationItemChanged";
 @property (readonly, nonatomic) BOOL isFavorite;
 @property (readonly, nonatomic) CLLocation *location;
 @property (readonly, nonatomic) NSString *locationText;
+@property (readonly, nonatomic) NSString *condition;
 @property (readonly, nonatomic) UBCItemStatus status;
 
 @property (readonly, nonatomic) UBCSellerDM *seller;
@@ -54,4 +58,5 @@ static NSString * const kNotificationItemChanged = @"kNotificationItemChanged";
 - (UBTableViewRowData *)rowData;
 
 + (NSString *)titleForStatus:(UBCItemStatus)status;
+
 @end

@@ -28,10 +28,11 @@
         _priceInCurrency = dict[@"priceInCurrency"];
         _currency = dict[@"currency"];
         _shareURL = dict[@"shareUrl"];
+        _condition = dict[@"condition"];
         _isFavorite = [dict[@"favorite"] boolValue];
         _creationDate = [NSDate dateFromString:dict[@"createdDate"] inFormat:@"yyyyMMdd'T'HHmmssZ"];
         _images = dict[@"images"];
-        _status = [self statusFromString:dict[@"status"]];
+        _status = [UBCGoodDM statusFromString:dict[@"status"]];
         [self setupLocationWithDictionary:dict[@"location"]];
         
         _seller = [[UBCSellerDM alloc] initWithDictionary:dict[@"user"]];
@@ -101,7 +102,7 @@
 
 #pragma mark - Status
 
-- (UBCItemStatus)statusFromString:(NSString *)status
++ (UBCItemStatus)statusFromString:(NSString *)status
 {
     if ([status isEqualToString:@"CHECK"])
     {

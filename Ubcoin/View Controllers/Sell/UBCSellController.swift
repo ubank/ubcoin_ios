@@ -308,7 +308,7 @@ extension UBCSellController: UITableViewDataSource, UITableViewDelegate {
         guard var row = section.rows[indexPath.row] as? UBCSellCellDM else { return }
         
         if row.type == .category {
-            let controller = UBCSelectionController(title: row.placeholder, selected: row.sendData as? String)
+            let controller = UBCCategorySelectionController(title: row.placeholder, selected: row.sendData as? String)
             controller.completion = { [weak self] category in
                 row.data = category.name
                 row.sendData = category.id
@@ -317,6 +317,22 @@ extension UBCSellController: UITableViewDataSource, UITableViewDelegate {
                 self?.navigationController?.popViewController(animated: true)
             }
             self.navigationController?.pushViewController(controller, animated: true)
+        } else if row.type == .condition {
+            let values = row.type.values
+            for value in values {
+                let isSelected = value.name == row.sendData as? String
+                value.isSelected = isSelected
+                value.accessoryType = isSelected ? .checkmark : .none
+            }
+            let controller = UBCSelectionController(title: row.placeholder, content: values)
+            self.navigationController?.pushViewController(controller, animated: true)
+            
+            controller.completion = { [weak self] item in
+                row.data = item.title
+                row.sendData = item.name
+                self?.model.updateRow(row)
+                self?.tableView.reloadData()
+            }
         } else if row.type == .location {
             let controller = UBCMapSelectController(title: row.placeholder)
             controller.completion = { [weak self] selectedLocation, location in

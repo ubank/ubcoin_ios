@@ -180,3 +180,20 @@
 
 "str_no_result_title" = "결과없음";
 "str_no_result_desc" = "보여지는 것이 없으므로 필터를 다시 적용하세요";
+
+"str_on_market" = "On market";
+"str_condition" = "Condition";
+"str_new" = "New";
+"str_used" = "Used";
+
+"str_day" = "day";
+"str_days3" = "days";
+"str_days5" = "days";
+
+"str_month" = "month";
+"str_months3" = "months";
+"str_months5" = "months";
+
+"str_year" = "year";
+"str_years3" = "years";
+"str_years5" = "years";
