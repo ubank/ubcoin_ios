@@ -35,13 +35,13 @@
     
     UBTableViewRowData *row2 = UBTableViewRowData.new;
     row2.title = UBLocalizedString(@"str_amount", nil);
-    row2.desc = [NSString stringWithFormat:@"%@ UBC", self.currentAmount.priceString];
+    row2.desc = [NSString stringWithFormat:@"%@ %@", self.currentAmount.priceString, self.currency];
     row2.disableHighlight = YES;
     [rows addObject:row2];
     
     UBTableViewRowData *row3 = UBTableViewRowData.new;
     row3.title = UBLocalizedString(@"str_transaction_commission", nil);
-    row3.desc = [NSString stringWithFormat:@"%@ UBC", self.commission.priceString];
+    row3.desc = [NSString stringWithFormat:@"%@ %@", self.commission.priceString, self.currency];
     row3.disableHighlight = YES;
     [rows addObject:row3];
     
@@ -57,9 +57,17 @@
 
 - (NSAttributedString *)totalAmountString
 {
-    return [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ UBC", self.amount.priceString]
+    return [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ %@", self.amount.priceString, self.currency]
                                     attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:23],
                                                  NSForegroundColorAttributeName : UBCColor.green}];
+}
+
+- (NSDictionary *)requestParams
+{
+    NSString *amountParam = [@"amount" stringByAppendingString:self.currency];
+    return @{@"externalAddress": self.address,
+             @"currencyType": self.currency,
+             amountParam: self.amount};
 }
 
 @end

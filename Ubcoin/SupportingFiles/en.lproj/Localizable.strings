@@ -197,3 +197,5 @@
 "str_year" = "year";
 "str_years3" = "years";
 "str_years5" = "years";
+
+"str_send_ETH_to_wallet" = "Send ETH to your Ethereum wallet.";

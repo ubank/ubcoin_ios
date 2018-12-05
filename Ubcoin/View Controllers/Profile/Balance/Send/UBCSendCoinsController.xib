@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,11 +15,13 @@
                 <outlet property="addressField" destination="1Eh-UQ-asR" id="Ptc-cu-ikN"/>
                 <outlet property="addressView" destination="AgN-iE-tbc" id="mwO-jj-lyQ"/>
                 <outlet property="amountField" destination="ylN-gv-oza" id="q2E-88-cQ6"/>
-                <outlet property="amountInCurrency" destination="gpr-7B-Puz" id="8gc-P5-7vZ"/>
+                <outlet property="amountInCurrency" destination="gpr-7B-Puz" id="uqM-8k-c0G"/>
                 <outlet property="amountView" destination="pj1-80-DGB" id="cvn-jX-T74"/>
                 <outlet property="commission" destination="ipd-55-NbN" id="SGQ-ea-r5n"/>
+                <outlet property="currency" destination="TyC-vx-Nfb" id="SAF-wy-kyd"/>
                 <outlet property="currencyActivity" destination="rWD-IV-qZz" id="PmZ-FI-agJ"/>
                 <outlet property="scanButton" destination="Rll-mU-i3E" id="7wt-2n-ydP"/>
+                <outlet property="titleLabel" destination="8Lc-mZ-WMO" id="JN8-3W-D2i"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -149,7 +151,7 @@
                             <rect key="frame" x="190" y="145.5" width="170" height="55"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USD" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="l23-Ok-pxn" customClass="HUBLabel">
-                                    <rect key="frame" x="0.0" y="-0.5" width="35" height="55"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="35" height="55"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>

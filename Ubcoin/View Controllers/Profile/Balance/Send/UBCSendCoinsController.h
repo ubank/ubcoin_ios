@@ -10,4 +10,6 @@
 
 @interface UBCSendCoinsController : UBViewController
 
+- (instancetype)initWithETH:(BOOL)isETH;
+
 @end

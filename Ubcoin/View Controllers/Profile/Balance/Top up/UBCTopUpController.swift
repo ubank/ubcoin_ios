@@ -13,13 +13,16 @@ class UBCTopUpController: UBViewController {
     @IBOutlet weak var timerLabel: UBCTimerLabel!
     @IBOutlet weak var address: UITextView!
     @IBOutlet weak var copyButton: HUBGeneralButton!
+    @IBOutlet weak var ubcInfoView: UIView!
     
     private var topup: UBCTopupDM?
+    private var isETH = false
     
     @objc
-    convenience init(topup: UBCTopupDM) {
+    convenience init(topup: UBCTopupDM, isETH: Bool) {
         self.init()
         self.topup = topup
+        self.isETH = isETH
     }
     
     override func viewDidLoad() {
@@ -52,6 +55,8 @@ class UBCTopUpController: UBViewController {
         
         copyButton.backgroundColor = UBCColor.green
         copyButton.titleLabel?.font = UIFont.systemFont(ofSize: 16);
+        
+        ubcInfoView.isHidden = isETH
     }
     
     private func setupContent() {

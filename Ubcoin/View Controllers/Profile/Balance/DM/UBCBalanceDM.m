@@ -18,7 +18,7 @@
     if (self)
     {
         _amountUBC = dict[@"effectiveAmount"];
-        _amountOnHold = dict[@"amountOnHold"];
+        _amountETH = dict[@"effectiveAmountETH"];
     }
     return self;
 }

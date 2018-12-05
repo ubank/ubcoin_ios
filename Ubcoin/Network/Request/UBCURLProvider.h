@@ -36,7 +36,7 @@
 + (NSURL *)topup;
 + (NSURL *)markets;
 
-+ (NSURL *)transactionsListWithPageNumber:(NSUInteger)page;
++ (NSURL *)transactionsListWithPageNumber:(NSUInteger)page isETH:(BOOL)isETH;
 
 + (NSURL *)favoriteWithID:(NSString *)favoriteID;
 + (NSURL *)favoritesListWithPageNumber:(NSUInteger)page;

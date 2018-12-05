@@ -13,7 +13,8 @@
 #import "UBCBalanceDM.h"
 
 #define PROFILE_ACTIVITY @"profile"
-#define BALANCE_ACTIVITY @"balance"
+#define UBC_BALANCE_ACTIVITY @"ubc balance"
+#define ETH_BALANCE_ACTIVITY @"eth balance"
 
 @interface UBCProfileController () <UBDefaultTableViewDelegate>
 
@@ -66,11 +67,20 @@
     
     UBCBalanceDM *balance = [UBCBalanceDM loadBalance];
     UBTableViewRowData *data2 = UBTableViewRowData.new;
-    data2.title = UBLocalizedString(@"str_my_balance", nil);
+    data2.icon = [UIImage imageNamed:@"ubc_icon"];
+    data2.title = balance.amountUBC.priceString;
+    data2.desc = @"UBC";
     data2.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    data2.name = BALANCE_ACTIVITY;
-    data2.rightTitle = [NSString stringWithFormat:@"%@ UBC", balance.amountUBC.priceString];
-    balanceSection.rows = @[data2];
+    data2.name = UBC_BALANCE_ACTIVITY;
+
+    UBTableViewRowData *data3 = UBTableViewRowData.new;
+    data3.icon = [UIImage imageNamed:@"eth_icon"];
+    data3.title = balance.amountETH.priceString;
+    data3.desc = @"ETH";
+    data3.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    data3.name = ETH_BALANCE_ACTIVITY;
+
+    balanceSection.rows = @[data2, data3];
     [sections addObject:balanceSection];
     
     [self.tableView updateWithSectionsData:sections];
@@ -95,9 +105,12 @@
     {
         [self.navigationController pushViewController:UBCAccountSettingsController.new animated:YES];
     }
-    else if ([data.name isEqualToString:BALANCE_ACTIVITY])
+    else if ([data.name isEqualToString:UBC_BALANCE_ACTIVITY] ||
+             [data.name isEqualToString:ETH_BALANCE_ACTIVITY])
     {
-        [self.navigationController pushViewController:UBCBalanceController.new animated:YES];
+        BOOL isETH = [data.name isEqualToString:ETH_BALANCE_ACTIVITY];
+        UBCBalanceController *controller = [[UBCBalanceController alloc] initWithETH:isETH];
+        [self.navigationController pushViewController:controller animated:YES];
     }
 }
 

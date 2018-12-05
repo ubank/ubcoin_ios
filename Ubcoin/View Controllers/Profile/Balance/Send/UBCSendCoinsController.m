@@ -15,9 +15,11 @@
 @interface UBCSendCoinsController () <UITextFieldDelegate, QRCodeReaderDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *addressView;
+@property (weak, nonatomic) IBOutlet HUBLabel *titleLabel;
 @property (weak, nonatomic) IBOutlet HUBGeneralButton *scanButton;
 @property (weak, nonatomic) IBOutlet UITextField *addressField;
 @property (weak, nonatomic) IBOutlet UIView *amountView;
+@property (weak, nonatomic) IBOutlet HUBLabel *currency;
 @property (weak, nonatomic) IBOutlet UITextField *amountField;
 @property (weak, nonatomic) IBOutlet HUBLabel *commission;
 @property (weak, nonatomic) IBOutlet HUBLabel *amountInCurrency;
@@ -27,9 +29,21 @@
 @property (strong, nonatomic) NSURLSessionDataTask *commissionTask;
 @property (strong, nonatomic) NSURLSessionDataTask *conversionTask;
 
+@property (assign, nonatomic) BOOL isETH;
+
 @end
 
 @implementation UBCSendCoinsController
+
+- (instancetype)initWithETH:(BOOL)isETH
+{
+    self = [super init];
+    if (self)
+    {
+        self.isETH = isETH;
+    }
+    return self;
+}
 
 - (void)viewDidLoad
 {
@@ -38,11 +52,14 @@
     self.title = @"ui_button_send";
     
     self.payment = UBCPaymentDM.new;
+    self.payment.currency = self.isETH ? @"ETH" : @"UBC";
     [self setupViews];
 }
 
 - (void)setupViews
 {
+    self.titleLabel.text = self.isETH ? UBLocalizedString(@"str_send_ETH_to_wallet", nil) : UBLocalizedString(@"str_send_UBC_to_wallet", nil);
+    self.currency.text = self.payment.currency;
     self.addressView.borderColor = UBColor.separatorColor;
     self.addressView.borderWidth = 1;
     self.addressView.cornerRadius = 6;
@@ -96,7 +113,7 @@
         [self.currencyActivity startAnimating];
         
         __weak typeof(self) weakSelf = self;
-        self.conversionTask = [UBCDataProvider.sharedProvider convertFromCurrency:@"UBC"
+        self.conversionTask = [UBCDataProvider.sharedProvider convertFromCurrency:self.payment.currency
                                                                        toCurrency:@"USD"
                                                                        withAmount:amount
                                                               withCompletionBlock:^(BOOL success, NSNumber *amountInCurrency)

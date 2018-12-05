@@ -12,15 +12,16 @@
 
 @implementation UBCTransactionDM
 
-- (instancetype)initWithDictionary:(NSDictionary *)dict
+- (instancetype)initWithDictionary:(NSDictionary *)dict isETH:(BOOL)isETH
 {
     self = [super init];
     if (self)
     {
+        _isETH = isETH;
         _ID = dict[@"id"];
         _from = dict[@"from"];
         _to = dict[@"to"];
-        _amount = dict[@"amountUBC"];
+        _amount = isETH ? dict[@"amountETH"] : dict[@"amountUBC"];
         _status = dict[@"status"];
         _date = [NSDate dateFromString:dict[@"createdDate"] inFormat:@"yyyyMMdd'T'HHmmssZ"];
     }
@@ -40,7 +41,7 @@
 - (NSAttributedString *)amountString
 {
     UIColor *textColor = self.amount.doubleValue > 0 ? UBCColor.green : UBColor.titleColor;
-    NSString *string = [NSString stringWithFormat:@"  %@ UBC", self.amount.priceString];
+    NSString *string = [NSString stringWithFormat:@"  %@ %@", self.amount.priceString, self.currency];
     NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:string attributes:@{NSForegroundColorAttributeName: textColor}];
     
     if ([self.status isEqualToString:@"IN_PROGRESS"])
@@ -54,6 +55,11 @@
     }
     
     return text;
+}
+
+- (NSString *)currency
+{
+    return self.isETH ? @"ETH" : @"UBC";
 }
 
 - (NSArray<UBTableViewRowData *> *)rowsData
@@ -72,17 +78,23 @@
     row2.disableHighlight = YES;
     [rows addObject:row2];
     
-    UBTableViewRowData *row3 = UBTableViewRowData.new;
-    row3.title = UBLocalizedString(@"str_from", nil);
-    row3.desc = self.from;
-    row3.disableHighlight = YES;
-    [rows addObject:row3];
+    if (self.from.isNotEmpty)
+    {
+        UBTableViewRowData *row3 = UBTableViewRowData.new;
+        row3.title = UBLocalizedString(@"str_from", nil);
+        row3.desc = self.from;
+        row3.disableHighlight = YES;
+        [rows addObject:row3];
+    }
     
-    UBTableViewRowData *row4 = UBTableViewRowData.new;
-    row4.title = UBLocalizedString(@"str_to", nil);
-    row4.desc = self.to;
-    row4.disableHighlight = YES;
-    [rows addObject:row4];
+    if (self.to.isNotEmpty)
+    {    
+        UBTableViewRowData *row4 = UBTableViewRowData.new;
+        row4.title = UBLocalizedString(@"str_to", nil);
+        row4.desc = self.to;
+        row4.disableHighlight = YES;
+        [rows addObject:row4];
+    }
     
     return rows;
 }
