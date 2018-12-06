@@ -162,7 +162,6 @@
 "str_item_status_check" = "In moderation";
 
 "str_send_success" = "Your transaction has been broadcast to the network. This does not mean that it has been successfully sent. During times of extreme volume, it may take 3+ hours to send.";
-"str_your_price_will_be_fixed_in_UBC" = "Your price will be fixed in UBC";
 
 "str_filters" = "Filters";
 "str_category" = "Category";
@@ -198,5 +197,6 @@
 "str_years3" = "years";
 "str_years5" = "years";
 
-"str_send_ETH_to_wallet" = "Send ETH to your Ethereum wallet.";
 "str_commission_desc" = "Gas is a fee that Ethereum blockchain takes for making a transaction.";
+"str_send_ETH_to_wallet" = "Send ETH to your Ethereum wallet.";
+"str_your_price_will_be_displayed_in_UBC_and_ETH" = "Your price will be displayed in UBC and in ETH";

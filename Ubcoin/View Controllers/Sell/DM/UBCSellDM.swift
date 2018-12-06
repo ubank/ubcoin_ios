@@ -55,7 +55,7 @@ class UBCSellDM: NSObject {
         let priceDollarSection = UBTableViewSectionData()
         priceDollarSection.headerHeight = UBCConstant.headerHeight
         priceDollarSection.headerTitle = "str_price_in".localizedString() + " $"
-        priceDollarSection.footerTitle = "str_your_price_will_be_fixed_in_UBC".localizedString()
+        priceDollarSection.footerTitle = "str_your_price_will_be_displayed_in_UBC_and_ETH".localizedString()
         priceDollarSection.footerHeight = 25
         
         var price = UBCSellCellDM(type: .price)
@@ -75,6 +75,17 @@ class UBCSellDM: NSObject {
         
         priceUBCSection.rows = [priceUBC]
         sections.append(priceUBCSection)
+        
+        let priceETHSection = UBTableViewSectionData()
+        priceETHSection.headerHeight = UBCConstant.headerHeight
+        priceETHSection.headerTitle = "str_price_in".localizedString() + " ETH"
+        
+        var priceETH = UBCSellCellDM(type: .priceETH)
+        priceETH.data = good?.priceInETH?.stringValue
+        priceETH.sendData = good?.priceInETH?.stringValue
+        
+        priceETHSection.rows = [priceETH]
+        sections.append(priceETHSection)
         
         let descSection = UBTableViewSectionData()
         descSection.headerHeight = UBCConstant.headerHeight
@@ -244,6 +255,7 @@ enum UBCSellCellType {
     case condition
     case price
     case priceUBC
+    case priceETH
     case desc
     case location
     case locationMap
@@ -255,7 +267,7 @@ enum UBCSellCellType {
                 return UBCSPhotoTableViewCell.className
             case .category, .condition, .location:
                 return UBCSSelectionTableViewCell.className
-            case .price, .priceUBC, .title:
+            case .price, .priceUBC, .priceETH, .title:
                 return UBCSTextFieldTableViewCell.className
             case .locationMap:
                 return UBCSMapTableViewCell.className
@@ -297,6 +309,8 @@ enum UBCSellCellType {
                 return "price$"
             case .priceUBC:
                 return "price"
+            case .priceETH:
+                return  "priceETH"
             case .desc:
                 return "description"
             default:

@@ -162,7 +162,6 @@
 "str_item_status_check" = "Sedang di moderasi";
 
 "str_send_success" = "Transaksi Anda telah ditambahkan ke antrian. Transaksi mungkin belum dikirim. Selama masa volume jaringan yang ekstrim, mungkin butuh waktu 3 jam lebih untuk selesai";
-"str_your_price_will_be_fixed_in_UBC" = "Harga anda akan ditetapkan dalam UBC";
 
 "str_filters" = "Urutkan";
 "str_category" = "Kategori";
@@ -181,19 +180,21 @@
 "str_no_result_title" = "Tidak ada hasil";
 "str_no_result_desc" = "Sepertinya tidak ada yang bisa ditampilkan. Silakan coba atur ulang filter Anda.";
 
-"str_on_market" = "On market";
-"str_condition" = "Condition";
-"str_new" = "New";
-"str_used" = "Used";
+"str_on_market" = "Di pasar";
+"str_condition" = "Kondisi";
+"str_new" = "Baru";
+"str_used" = "Bekas";
 
-"str_day" = "day";
-"str_days3" = "days";
-"str_days5" = "days";
+"str_day" = "hari";
+"str_days3" = "hari";
+"str_days5" = "hari";
 
-"str_month" = "month";
-"str_months3" = "months";
-"str_months5" = "months";
+"str_month" = "bulan";
+"str_months3" = "bulan";
+"str_months5" = "bulan";
 
-"str_year" = "year";
-"str_years3" = "years";
-"str_years5" = "years";
+"str_year" = "tahun";
+"str_years3" = "tahun";
+"str_years5" = "tahun";
+
+"str_comission_desc" = "Gas adalah biaya yang Blockchain Ethereum ambil untuk membuat transaksi.";

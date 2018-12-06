@@ -13,7 +13,6 @@ final class UBCSellController: UBViewController {
     
     private var model = UBCSellDM()
     private var item: UBCGoodDM?
-    private var task: URLSessionDataTask?
     
     private var editingFinished = false
     fileprivate var isEditingMode: Bool {
@@ -393,6 +392,75 @@ extension UBCSellController: UBCSPhotoTableViewCellDelegate {
         imagePicker.sourceType = sourceType
         self.present(imagePicker, animated: true, completion: nil)
     }
+    
+    private func updatePrice(type: UBCSellCellType?, updateRow: UBCSellCellDM) {
+        guard let type = type, let amountStr = updateRow.data as? String else { return }
+        
+        let amount = Double(amountStr)
+        
+        var newRow = self.model.row(type: type)
+        newRow?.placeholder = amount != nil ? "str_convertation_in_progress".localizedString() : ""
+        newRow?.data = nil
+        newRow?.sendData = nil
+        newRow?.isEditable = amount == nil
+        newRow?.reloadButtonActive = false
+        if let indexPath = self.model.updateRow(newRow) {
+            self.tableView.reloadSections([indexPath.section], with: .none)
+        }
+        
+        guard let sendAmount = amount else { return }
+        
+        var from = "USD"
+        if updateRow.type == .priceUBC {
+            from = "UBC"
+        } else if updateRow.type == .priceETH {
+            from = "ETH"
+        }
+        
+        var to = "USD"
+        if type == .priceUBC {
+            to = "UBC"
+        } else if type == .priceETH {
+            to = "ETH"
+        }
+        
+        add(UBCDataProvider.shared.convert(fromCurrency: from, toCurrency: to, withAmount: NSNumber(value: sendAmount)) { [weak self] success, amount in
+            var newRow = self?.model.row(type: type)
+            newRow?.placeholder = ""
+            newRow?.data = amount?.stringValue
+            newRow?.sendData = amount?.stringValue
+            newRow?.reloadButtonActive = !success
+            newRow?.isEditable = true
+            if let indexPath = self?.model.updateRow(newRow) {
+                self?.tableView.reloadSections([indexPath.section], with: .none)
+            }
+        })
+    }
+    
+    private func enteredPriceRow(type: UBCSellCellType) -> UBCSellCellDM? {
+        
+        var row1: UBCSellCellDM?
+        var row2: UBCSellCellDM?
+        
+        if type == .price {
+            row1 = self.model.row(type: .priceUBC)
+            row2 = self.model.row(type: .priceETH)
+        } else if type == .priceUBC {
+            row1 = self.model.row(type: .price)
+            row2 = self.model.row(type: .priceETH)
+        } else if type == .priceETH {
+            row1 = self.model.row(type: .priceUBC)
+            row2 = self.model.row(type: .price)
+        }
+        
+        if ((row1?.data as? String) != nil) {
+            return row1
+        } else if ((row2?.data as? String) != nil) {
+            return row2
+        } else {
+            return nil
+        }
+    }
 }
 
 
@@ -407,50 +475,24 @@ extension UBCSellController: UBCSTextCellDelegate {
         var updateRow = row
         
         if updateRow.reloadButtonActive,
-            let row = self.model.row(type: updateRow.type == .price ? .priceUBC : .price) {
+            let row = enteredPriceRow(type: updateRow.type) {
             updateRow = row
         } else {
             self.model.updateRow(updateRow)
         }
         
-        var updatedType: UBCSellCellType?
-        var from = "UBC"
-        var to = "USD"
-        
         if updateRow.type == .price {
-            updatedType = .priceUBC
-            swap(&from, &to)
+            cancelAllTasks()
+            updatePrice(type: .priceUBC, updateRow: updateRow)
+            updatePrice(type: .priceETH, updateRow: updateRow)
         } else if updateRow.type == .priceUBC {
-            updatedType = .price
-        }
-        
-        guard let newType = updatedType, let amountStr = updateRow.data as? String else { return }
-        
-        let amount = Double(amountStr)
-        
-        var newRow = self.model.row(type: newType)
-        newRow?.placeholder = amount != nil ? "str_convertation_in_progress".localizedString() : ""
-        newRow?.data = nil
-        newRow?.sendData = nil
-        newRow?.isEditable = amount == nil
-        newRow?.reloadButtonActive = false
-        if let indexPath = self.model.updateRow(newRow) {
-            self.tableView.reloadSections([indexPath.section], with: .none)
-        }
-        
-        guard let sendAmount = amount else { return }
-        
-        self.task?.cancel()
-        self.task = UBCDataProvider.shared.convert(fromCurrency: from, toCurrency: to, withAmount: NSNumber(value: sendAmount)) { [weak self] success, amount in
-            var newRow = self?.model.row(type: newType)
-            newRow?.placeholder = ""
-            newRow?.data = amount?.stringValue
-            newRow?.sendData = amount?.stringValue
-            newRow?.reloadButtonActive = !success
-            newRow?.isEditable = true
-            if let indexPath = self?.model.updateRow(newRow) {
-                self?.tableView.reloadSections([indexPath.section], with: .none)
-            }
+            cancelAllTasks()
+            updatePrice(type: .price, updateRow: updateRow)
+            updatePrice(type: .priceETH, updateRow: updateRow)
+        } else if updateRow.type == .priceETH {
+            cancelAllTasks()
+            updatePrice(type: .price, updateRow: updateRow)
+            updatePrice(type: .priceUBC, updateRow: updateRow)
         }
     }
 }
