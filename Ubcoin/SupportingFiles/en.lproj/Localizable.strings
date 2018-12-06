@@ -199,3 +199,4 @@
 "str_years5" = "years";
 
 "str_send_ETH_to_wallet" = "Send ETH to your Ethereum wallet.";
+"str_commission_desc" = "Gas is a fee that Ethereum blockchain takes for making a transaction.";
