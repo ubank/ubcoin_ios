@@ -24,8 +24,10 @@
         _title = dict[@"title"];
         _desc = dict[@"description"];
         _rateUBC = dict[@"rate"];
+        _rateETH = dict[@"rateETH"];
         _price = dict[@"price"];
         _priceInCurrency = dict[@"priceInCurrency"];
+        _priceInETH = dict[@"priceETH"];
         _currency = dict[@"currency"];
         _shareURL = dict[@"shareUrl"];
         _condition = dict[@"condition"];
