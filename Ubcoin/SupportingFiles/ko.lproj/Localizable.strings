@@ -180,19 +180,21 @@
 "str_no_result_title" = "결과없음";
 "str_no_result_desc" = "보여지는 것이 없으므로 필터를 다시 적용하세요";
 
-"str_on_market" = "On market";
-"str_condition" = "Condition";
-"str_new" = "New";
-"str_used" = "Used";
+"str_on_market" = "시장등록";
+"str_condition" = "조건";
+"str_new" = "신규";
+"str_used" = "중고";
 
-"str_day" = "day";
-"str_days3" = "days";
-"str_days5" = "days";
+"str_day" = "일";
+"str_days3" = "일";
+"str_days5" = "일";
 
-"str_month" = "month";
-"str_months3" = "months";
-"str_months5" = "months";
+"str_month" = "월";
+"str_months3" = "월";
+"str_months5" = "월";
 
-"str_year" = "year";
-"str_years3" = "years";
-"str_years5" = "years";
+"str_year" = "년";
+"str_years3" = "년";
+"str_years5" = "년";
+
+"str_comission_desc" = "가스는 이더리움 전송에 필요한 수수료입니다.";
