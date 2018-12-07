@@ -222,7 +222,7 @@ struct UBCSellCellDM {
             self.optional = true
         }
         
-        if type == .price || type == .priceUBC {
+        if type == .price || type == .priceUBC || type == .priceETH {
             self.keyboardType = .decimalPad
         }
     }
