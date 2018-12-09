@@ -405,7 +405,7 @@ extension UBCSellController: UBCSPhotoTableViewCellDelegate {
         newRow?.isEditable = amount == nil
         newRow?.reloadButtonActive = false
         if let indexPath = self.model.updateRow(newRow) {
-            self.tableView.reloadSections([indexPath.section], with: .none)
+            self.tableView.reloadRows(at: [indexPath], with: .none)
         }
         
         guard let sendAmount = amount else { return }
@@ -432,7 +432,7 @@ extension UBCSellController: UBCSPhotoTableViewCellDelegate {
             newRow?.reloadButtonActive = !success
             newRow?.isEditable = true
             if let indexPath = self?.model.updateRow(newRow) {
-                self?.tableView.reloadSections([indexPath.section], with: .none)
+                self?.tableView.reloadRows(at: [indexPath], with: .none)
             }
         })
     }
