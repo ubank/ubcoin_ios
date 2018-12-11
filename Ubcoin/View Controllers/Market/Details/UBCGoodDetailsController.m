@@ -34,8 +34,6 @@
 @property (weak, nonatomic) IBOutlet HUBLabel *category;
 @property (weak, nonatomic) IBOutlet HUBLabel *itemTitle;
 @property (weak, nonatomic) IBOutlet HUBLabel *desc;
-@property (weak, nonatomic) IBOutlet HUBLabel *rateUBC;
-@property (weak, nonatomic) IBOutlet HUBLabel *rateETH;
 
 @property (weak, nonatomic) IBOutlet UBCGoodsCollectionView *relatedItemsView;
 
@@ -155,8 +153,7 @@
     
     self.category.textColor = UBCColor.green;
     self.desc.textColor = UBColor.titleColor;
-    self.rateUBC.textColor = UBColor.descColor;
-    self.rateETH.textColor = UBColor.descColor;
+    self.priceInCurrency.textColor = UBColor.descColor;
     self.address.textColor = UBColor.titleColor;
     
     self.scroll.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
@@ -171,7 +168,6 @@
     self.category.text = self.good.category.name;
     self.price.text = [NSString stringWithFormat:@"%@ UBC", self.good.price.priceString];
     [self setupPriceInCurrency];
-    [self setupRates];
     [self setupDesc];
     
     self.locationView.hidden = !self.good.location;
@@ -219,36 +215,6 @@
     else
     {
         self.priceInETH.text = @"";
-    }
-}
-
-- (void)setupRates
-{
-    NSNumberFormatter *format = NSNumberFormatter.new;
-    
-    format.groupingSize = 3;
-    format.groupingSeparator = @" ";
-    format.locale = UBLocal.shared.locale;
-    format.minimumFractionDigits = 4;
-    format.maximumFractionDigits = 4;
-    format.numberStyle = NSNumberFormatterDecimalStyle;
-
-    if (self.good.rateUBC && self.good.currency)
-    {
-        self.rateUBC.text = [NSString stringWithFormat:@"1 UBC = %@ %@", [format stringFromNumber:self.good.rateUBC], self.good.currency];
-    }
-    else
-    {
-        self.rateUBC.text = @"";
-    }
-    
-    if (self.good.rateETH)
-    {
-        self.rateETH.text = [NSString stringWithFormat:@"1 UBC = %@ ETH", [format stringFromNumber:self.good.rateETH]];
-    }
-    else
-    {
-        self.rateETH.text = @"";
     }
 }
 
