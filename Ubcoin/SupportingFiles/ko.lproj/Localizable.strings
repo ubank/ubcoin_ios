@@ -198,3 +198,5 @@
 "str_years5" = "년";
 
 "str_comission_desc" = "가스는 이더리움 전송에 필요한 수수료입니다.";
+"str_send_ETH_to_wallet" = "이더리움 지갑으로 이더리움을 보내세요.";
+"str_buyer_can_pay_you_in_UBC_or_ETH" = "구매자는 UBC나 ETH로 지불할 수 있습니다";

@@ -198,3 +198,5 @@
 "str_years5" = "tahun";
 
 "str_comission_desc" = "Gas adalah biaya yang Blockchain Ethereum ambil untuk membuat transaksi.";
+"str_send_ETH_to_wallet" = "Kirim ETH ke dompet Ethereum Anda.";
+"str_buyer_can_pay_you_in_UBC_or_ETH" = "Pembeli dapat membayar Anda dalam bentuk UBC atau ETH";

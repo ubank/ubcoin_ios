@@ -55,7 +55,7 @@ class UBCSellDM: NSObject {
         let priceDollarSection = UBTableViewSectionData()
         priceDollarSection.headerHeight = UBCConstant.headerHeight
         priceDollarSection.headerTitle = "str_price_in".localizedString() + " $"
-        priceDollarSection.footerTitle = "str_your_price_will_be_displayed_in_UBC_and_ETH".localizedString()
+        priceDollarSection.footerTitle = "str_buyer_can_pay_you_in_UBC_or_ETH".localizedString()
         priceDollarSection.footerHeight = 25
         
         var price = UBCSellCellDM(type: .price)
