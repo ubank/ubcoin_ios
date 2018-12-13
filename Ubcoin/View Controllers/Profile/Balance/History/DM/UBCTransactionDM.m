@@ -41,7 +41,7 @@
 - (NSAttributedString *)amountString
 {
     UIColor *textColor = self.amount.doubleValue > 0 ? UBCColor.green : UBColor.titleColor;
-    NSString *string = [NSString stringWithFormat:@"  %@ %@", self.amount.priceString, self.currency];
+    NSString *string = [NSString stringWithFormat:@"  %@", self.priceWithCurrency];
     NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:string attributes:@{NSForegroundColorAttributeName: textColor}];
     
     if ([self.status isEqualToString:@"IN_PROGRESS"])
@@ -60,6 +60,11 @@
 - (NSString *)currency
 {
     return self.isETH ? @"ETH" : @"UBC";
+}
+
+- (NSString *)priceWithCurrency
+{
+    return [NSString stringWithFormat:@"%@ %@", self.isETH ? self.amount.coinsPriceString : self.amount.priceString, self.currency];
 }
 
 - (NSArray<UBTableViewRowData *> *)rowsData

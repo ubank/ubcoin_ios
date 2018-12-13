@@ -17,6 +17,7 @@
 @property (readonly, nonatomic) NSNumber *currentAmount;
 @property (readonly, nonatomic) BOOL valid;
 
+- (NSString *)currencyWithAmount:(NSNumber *)amount;
 - (NSArray<UBTableViewRowData *> *)rowsData;
 - (NSDictionary *)requestParams;
 

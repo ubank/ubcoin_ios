@@ -136,7 +136,7 @@
     UBCBalanceDM *balance = [UBCBalanceDM loadBalance];
     if (self.isETH)
     {
-        self.balance.text = [NSString stringWithFormat:@"%@ ETH", balance.amountETH.priceString];
+        self.balance.text = [NSString stringWithFormat:@"%@ ETH", balance.amountETH.coinsPriceString];
     }
     else
     {

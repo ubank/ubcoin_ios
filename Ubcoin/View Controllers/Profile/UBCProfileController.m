@@ -75,7 +75,7 @@
 
     UBTableViewRowData *data3 = UBTableViewRowData.new;
     data3.icon = [UIImage imageNamed:@"eth_icon"];
-    data3.title = balance.amountETH.priceString;
+    data3.title = balance.amountETH.coinsPriceString;
     data3.desc = @"ETH";
     data3.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     data3.name = ETH_BALANCE_ACTIVITY;

@@ -31,7 +31,7 @@
 + (NSURL *)userBalance;
 
 + (NSURL *)convert;
-+ (NSURL *)commissionForAmount:(NSNumber *)amount;
++ (NSURL *)commissionForAmount:(NSNumber *)amount currency:(NSString *)currency;
 + (NSURL *)withdraw;
 + (NSURL *)topup;
 + (NSURL *)markets;

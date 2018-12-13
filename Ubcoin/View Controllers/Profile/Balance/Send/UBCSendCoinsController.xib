@@ -58,7 +58,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3LN-1O-B00">
-                    <rect key="frame" x="0.0" y="30" width="375" height="260"/>
+                    <rect key="frame" x="0.0" y="30" width="375" height="230.5"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="str_send_UBC_to_wallet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="8Lc-mZ-WMO" customClass="HUBLabel">
                             <rect key="frame" x="15" y="30" width="345" height="20.5"/>
@@ -189,7 +189,7 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="ipd-55-NbN" customClass="HUBLabel">
-                            <rect key="frame" x="15" y="215.5" width="345" height="29.5"/>
+                            <rect key="frame" x="15" y="215.5" width="345" height="0.0"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -218,7 +218,6 @@
                         <constraint firstAttribute="trailing" secondItem="ipd-55-NbN" secondAttribute="trailing" constant="15" id="nM9-4p-ayj"/>
                         <constraint firstAttribute="trailing" secondItem="8Lc-mZ-WMO" secondAttribute="trailing" constant="15" id="rlE-NZ-wQD"/>
                         <constraint firstItem="AgN-iE-tbc" firstAttribute="leading" secondItem="3LN-1O-B00" secondAttribute="leading" constant="15" id="sW2-fZ-irk"/>
-                        <constraint firstAttribute="height" constant="260" id="yux-at-G8P"/>
                     </constraints>
                 </view>
             </subviews>

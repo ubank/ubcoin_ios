@@ -459,9 +459,9 @@
      }];
 }
 
-- (NSURLSessionDataTask *)commissionForAmount:(NSNumber *)amount withCompletionBlock:(void (^)(BOOL, NSNumber *))completionBlock
+- (NSURLSessionDataTask *)commissionForAmount:(NSNumber *)amount currency:(NSString *)currency withCompletionBlock:(void (^)(BOOL, NSNumber *))completionBlock
 {
-    NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:[UBCURLProvider commissionForAmount:amount]];
+    NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:[UBCURLProvider commissionForAmount:amount currency:currency]];
     return [self.connection sendRequest:request isBackground:YES withCompletionBlock:^(BOOL success, id responseObject)
      {
          if (completionBlock)

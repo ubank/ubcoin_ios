@@ -210,7 +210,7 @@
     
     if (self.good.priceInETH)
     {
-        self.priceInETH.text = [NSString stringWithFormat:@"%@ ETH", self.good.priceInETH.priceString];
+        self.priceInETH.text = [NSString stringWithFormat:@"%@ ETH", self.good.priceInETH.coinsPriceString];
     }
     else
     {

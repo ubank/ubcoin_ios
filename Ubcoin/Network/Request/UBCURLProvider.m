@@ -126,9 +126,9 @@
     return [NSURL URLWithString:url];
 }
 
-+ (NSURL *)commissionForAmount:(NSNumber *)amount
++ (NSURL *)commissionForAmount:(NSNumber *)amount currency:(NSString *)currency
 {
-    NSString *url = [SERVER_URL stringByAppendingFormat:@"wallet/commission?amount=%@", amount];
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"wallet/commission?amount=%@&currencyType=%@", amount, currency];
     return [NSURL URLWithString:url];
 }
 

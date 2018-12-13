@@ -92,12 +92,14 @@
         
         __weak typeof(self) weakSelf = self;
         self.commissionTask = [UBCDataProvider.sharedProvider commissionForAmount:amount
+                                                                         currency:self.payment.currency
                                                               withCompletionBlock:^(BOOL success, NSNumber *commission)
                                {
                                    if (success)
                                    {
                                        weakSelf.payment.commission = commission;
-                                       weakSelf.commission.text = [NSString stringWithFormat:@"%@: %@ %@. %@", UBLocalizedString(@"str_transaction_commission", nil), commission.priceString, weakSelf.payment.currency, UBLocalizedString(@"str_commission_desc", nil)];
+                                       weakSelf.commission.text = [NSString stringWithFormat:@"%@: %@. %@", UBLocalizedString(@"str_transaction_commission", nil), [weakSelf.payment currencyWithAmount:commission], UBLocalizedString(@"str_commission_desc", nil)];
+                                       [weakSelf.view layoutIfNeeded];
                                    }
                                }];
     }
