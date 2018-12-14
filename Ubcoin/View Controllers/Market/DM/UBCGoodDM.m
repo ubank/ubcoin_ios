@@ -67,6 +67,11 @@
     return user.ID && [self.seller.ID isEqualToString:user.ID];
 }
 
+- (BOOL)isDigital
+{
+    return [self.category.ID isEqualToString:DigitalGoodsID];
+}
+
 - (void)toggleFavorite
 {
     if (UBCKeyChain.authorization)

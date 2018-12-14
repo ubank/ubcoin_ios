@@ -41,6 +41,7 @@
 @property (weak, nonatomic) IBOutlet UBCSellerView *sellerView;
 @property (weak, nonatomic) IBOutlet UBCBuyersView *buyersView;
 
+@property (weak, nonatomic) IBOutlet UIView *digitalGoodView;
 @property (weak, nonatomic) IBOutlet HUBLabel *address;
 @property (weak, nonatomic) IBOutlet UBCMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIView *locationView;
@@ -170,7 +171,8 @@
     [self setupPriceInCurrency];
     [self setupDesc];
     
-    self.locationView.hidden = !self.good.location;
+    self.digitalGoodView.hidden = !self.good.isDigital;
+    self.locationView.hidden = !self.good.location || self.good.isDigital;
     self.mapView.location = self.good.location;
     self.address.text = self.good.locationText;
     
@@ -187,7 +189,7 @@
 - (void)setupDesc
 {
     self.desc.text = self.good.desc;
-    if (self.good.condition.isNotEmpty)
+    if (!self.good.isDigital && self.good.condition.isNotEmpty)
     {
         NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:[NSString notEmptyString:self.good.desc]];
         [text appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"\n\n%@\n\n", [UBLocalizedString(@"str_condition", nil) uppercaseString]] attributes:@{NSFontAttributeName : UBFont.descFont,

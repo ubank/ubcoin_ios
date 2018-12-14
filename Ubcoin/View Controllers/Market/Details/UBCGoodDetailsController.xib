@@ -19,6 +19,7 @@
                 <outlet property="collectionView" destination="uA0-yc-f7K" id="pSi-qb-Rom"/>
                 <outlet property="connectToSellerView" destination="dYb-9Z-BGQ" id="4N0-AK-jd2"/>
                 <outlet property="desc" destination="Urf-EA-x8e" id="F6U-QP-B9j"/>
+                <outlet property="digitalGoodView" destination="DNx-cm-Jra" id="QKb-sl-RyA"/>
                 <outlet property="favoriteButton" destination="ZJb-hq-NUP" id="55p-sP-Bh5"/>
                 <outlet property="itemTitle" destination="Gti-R0-jnL" id="7wh-w0-zau"/>
                 <outlet property="locationView" destination="gTw-sN-qPV" id="bNn-Rn-Hhi"/>
@@ -45,7 +46,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qbR-7S-QUP">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="1007.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="1135.5"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9M1-bB-Yuh">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
@@ -105,7 +106,7 @@
                                     </constraints>
                                 </view>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="nHF-sb-mbC">
-                                    <rect key="frame" x="0.0" y="250" width="375" height="757.5"/>
+                                    <rect key="frame" x="0.0" y="250" width="375" height="885.5"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hyE-wl-XrB">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
@@ -258,8 +259,62 @@
                                                 <constraint firstItem="Urf-EA-x8e" firstAttribute="top" secondItem="YfI-fd-tUa" secondAttribute="top" constant="15" id="zr4-Bh-5rx"/>
                                             </constraints>
                                         </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DNx-cm-Jra">
+                                            <rect key="frame" x="0.0" y="302" width="375" height="128"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pby-kG-I96">
+                                                    <rect key="frame" x="0.0" y="10" width="375" height="118"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" image="market_digital_good" translatesAutoresizingMaskIntoConstraints="NO" id="Gp3-HP-EXS">
+                                                            <rect key="frame" x="15" y="34.5" width="52" height="49"/>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="str_file_is_checked_by_moderator" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZbK-Hv-Ixc" customClass="HUBLabel">
+                                                            <rect key="frame" x="82" y="20" width="278" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="labelStyle">
+                                                                    <integer key="value" value="1"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="str_receive_the_link_by_email" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8z6-Qy-IG4" customClass="HUBLabel">
+                                                            <rect key="frame" x="82" y="50.5" width="278" height="47.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="labelStyle">
+                                                                    <integer key="value" value="2"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="ZbK-Hv-Ixc" secondAttribute="trailing" constant="15" id="Arv-ff-NCe"/>
+                                                        <constraint firstItem="Gp3-HP-EXS" firstAttribute="centerY" secondItem="Pby-kG-I96" secondAttribute="centerY" id="Dca-pv-Mdb"/>
+                                                        <constraint firstAttribute="bottom" secondItem="8z6-Qy-IG4" secondAttribute="bottom" constant="20" id="K5z-iu-MYJ"/>
+                                                        <constraint firstItem="ZbK-Hv-Ixc" firstAttribute="leading" secondItem="Gp3-HP-EXS" secondAttribute="trailing" constant="15" id="Mv5-sm-i50"/>
+                                                        <constraint firstItem="ZbK-Hv-Ixc" firstAttribute="top" secondItem="Pby-kG-I96" secondAttribute="top" constant="20" id="Uv6-M1-Xo9"/>
+                                                        <constraint firstItem="8z6-Qy-IG4" firstAttribute="top" secondItem="ZbK-Hv-Ixc" secondAttribute="bottom" constant="10" id="hJg-Ji-Y9g"/>
+                                                        <constraint firstItem="8z6-Qy-IG4" firstAttribute="trailing" secondItem="ZbK-Hv-Ixc" secondAttribute="trailing" id="iUz-PY-syt"/>
+                                                        <constraint firstItem="Gp3-HP-EXS" firstAttribute="leading" secondItem="Pby-kG-I96" secondAttribute="leading" constant="15" id="pss-GU-w6Z"/>
+                                                        <constraint firstItem="8z6-Qy-IG4" firstAttribute="leading" secondItem="ZbK-Hv-Ixc" secondAttribute="leading" id="zXz-PY-Faw"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="Pby-kG-I96" firstAttribute="top" secondItem="DNx-cm-Jra" secondAttribute="top" constant="10" id="9zQ-gx-S7I"/>
+                                                <constraint firstAttribute="trailing" secondItem="Pby-kG-I96" secondAttribute="trailing" id="HQX-vr-KjA"/>
+                                                <constraint firstItem="Pby-kG-I96" firstAttribute="leading" secondItem="DNx-cm-Jra" secondAttribute="leading" id="X0B-Fm-d0s"/>
+                                                <constraint firstAttribute="bottom" secondItem="Pby-kG-I96" secondAttribute="bottom" id="oOA-09-Y5Q"/>
+                                            </constraints>
+                                        </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gTw-sN-qPV" userLabel="Location View">
-                                            <rect key="frame" x="0.0" y="302" width="375" height="230.5"/>
+                                            <rect key="frame" x="0.0" y="430" width="375" height="230.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="str_location_up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7lE-Xr-b8O" customClass="HUBLabel">
                                                     <rect key="frame" x="15" y="15" width="345" height="90.5"/>
@@ -306,7 +361,7 @@
                                             </constraints>
                                         </view>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="jjE-RS-vsJ">
-                                            <rect key="frame" x="0.0" y="532.5" width="375" height="135"/>
+                                            <rect key="frame" x="0.0" y="660.5" width="375" height="135"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5yE-UI-gCM">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="135"/>
@@ -368,7 +423,7 @@
                                             </subviews>
                                         </stackView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dYb-9Z-BGQ">
-                                            <rect key="frame" x="0.0" y="667.5" width="375" height="90"/>
+                                            <rect key="frame" x="0.0" y="795.5" width="375" height="90"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZW-YT-6xm" customClass="HUBGeneralButton">
                                                     <rect key="frame" x="15" y="15" width="345" height="60"/>
@@ -434,6 +489,7 @@
     </objects>
     <resources>
         <image name="icFavA" width="33" height="31"/>
+        <image name="market_digital_good" width="52" height="49"/>
         <image name="status_attention" width="26" height="23"/>
     </resources>
 </document>
