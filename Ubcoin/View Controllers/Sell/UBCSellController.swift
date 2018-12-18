@@ -309,9 +309,17 @@ extension UBCSellController: UITableViewDataSource, UITableViewDelegate {
         if row.type == .category {
             let controller = UBCCategorySelectionController(title: row.placeholder, selected: row.sendData as? String)
             controller.completion = { [weak self] category in
+                let prevCategoryID = row.sendData as? String
+                let needReloadParams = category.id != prevCategoryID &&
+                    (category.id == DigitalGoodsID || prevCategoryID == DigitalGoodsID)
+                
                 row.data = category.name
                 row.sendData = category.id
                 self?.model.updateRow(row)
+                
+                if needReloadParams {
+                    self?.model.reloadParams()
+                }
                 self?.tableView.reloadData()
                 self?.navigationController?.popViewController(animated: true)
             }

@@ -203,3 +203,6 @@
 
 "str_file_is_checked_by_moderator" = "File diperiksa oleh moderator.";
 "str_receive_the_link_by_email" = "Anda akan menerima tautan melalui e-mail setelah pembayaran Anda dibekukan oleh layanan escrow.";
+"str_link_to_download_the_file" = "Tautan untuk mengunduh file";
+"str_link_placeholder" = "Add your link from cloud storage";
+"str_paste_here_link_to_download_your_file_from_cloud_storage" = "Pastekan tautan di sini untuk mengunduh file Anda dari penyimpanan cloud (Google Drive, Dropbox, dll.). Pembeli TIDAK akan melihat tautan ini sampai layanan escrow membekukan pembayaran mereka.";

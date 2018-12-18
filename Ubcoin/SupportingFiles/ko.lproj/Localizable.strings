@@ -203,3 +203,6 @@
 
 "str_file_is_checked_by_moderator" = "파일은 중재자에 의해 체크 됩니다.";
 "str_receive_the_link_by_email" = "결제가 에스크로 서비스에 의해 동결된 후, 귀하의 이메일로 링크를 받아보실 수 있습니다.";
+"str_link_to_download_the_file" = "파일 다운로드를 위한 링크";
+"str_link_placeholder" = "Add your link from cloud storage";
+"str_paste_here_link_to_download_your_file_from_cloud_storage" = "이곳에 클라우드에 있는 당신의 파일을 다운로드 하기 위한 링크를 붙여 넣으십시오 (Google 드라이브, Dropbox, 등등). 구매자는 결제가 에스크로 서비스에 의해 동결이 완료되기 전까지 이 링크를 볼 수 없습니다.";
