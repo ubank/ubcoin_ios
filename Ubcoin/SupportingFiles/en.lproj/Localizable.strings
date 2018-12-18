@@ -199,4 +199,4 @@
 
 "str_commission_desc" = "Gas is a fee that Ethereum blockchain takes for making a transaction.";
 "str_send_ETH_to_wallet" = "Send ETH to your Ethereum wallet.";
-"str_buyer_can_pay_you_in_UBC_or_ETH" = "Your price will be displayed in UBC and in ETH";
+"str_buyer_can_pay_you_in_UBC_or_ETH" = "Buyer can pay you in UBC or ETH";
