@@ -15,6 +15,7 @@
 #import "UBCDealDM.h"
 #import "UBCUserDM.h"
 #import "UBCBalanceDM.h"
+#import "UBCPaymentDM.h"
 #import "UBCDiscountDM.h"
 #import "UBCCategoryDM.h"
 #import "UBCTransactionDM.h"
@@ -366,9 +367,9 @@
 
 #pragma mark - TRANSACTIONS
 
-- (void)transactionsListWithPageNumber:(NSUInteger)page withCompletionBlock:(void (^)(BOOL, NSArray *, BOOL))completionBlock
+- (void)transactionsListWithPageNumber:(NSUInteger)page isETH:(BOOL)isETH withCompletionBlock:(void (^)(BOOL, NSArray *, BOOL))completionBlock
 {
-    NSURL *url = [UBCURLProvider transactionsListWithPageNumber:page];
+    NSURL *url = [UBCURLProvider transactionsListWithPageNumber:page isETH:isETH];
     NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:url];
     [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
      {
@@ -376,8 +377,8 @@
          {
              NSArray *items = [responseObject[@"data"] removeNulls];
              items = [items map:^id(id item) {
-                 UBCTransactionDM *deal = [[UBCTransactionDM alloc] initWithDictionary:item];
-                 return deal.rowData;
+                 UBCTransactionDM *transaction = [[UBCTransactionDM alloc] initWithDictionary:item isETH:isETH];
+                 return transaction.rowData;
              }];
              
              if (completionBlock)
@@ -445,11 +446,10 @@
      }];
 }
 
-- (void)sendCoins:(NSNumber *)amount toAddress:(NSString *)address withCompletionBlock:(void (^)(BOOL, NSString *, NSString *))completionBlock
+- (void)sendCoins:(UBCPaymentDM *)payment withCompletionBlock:(void (^)(BOOL, NSString *, NSString *))completionBlock
 {
     NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider withdraw]
-                                                                andParams:@{@"externalAddress": address,
-                                                                            @"amountUBC": amount}];
+                                                                andParams:payment.requestParams];
     [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
      {
          if (completionBlock)
@@ -459,9 +459,9 @@
      }];
 }
 
-- (NSURLSessionDataTask *)commissionForAmount:(NSNumber *)amount withCompletionBlock:(void (^)(BOOL, NSNumber *))completionBlock
+- (NSURLSessionDataTask *)commissionForAmount:(NSNumber *)amount currency:(NSString *)currency withCompletionBlock:(void (^)(BOOL, NSNumber *))completionBlock
 {
-    NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:[UBCURLProvider commissionForAmount:amount]];
+    NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:[UBCURLProvider commissionForAmount:amount currency:currency]];
     return [self.connection sendRequest:request isBackground:YES withCompletionBlock:^(BOOL success, id responseObject)
      {
          if (completionBlock)

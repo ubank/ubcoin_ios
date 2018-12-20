@@ -10,4 +10,6 @@
 
 @interface UBCBalanceController : UBViewController
 
+- (instancetype)initWithETH:(BOOL)isETH;
+
 @end

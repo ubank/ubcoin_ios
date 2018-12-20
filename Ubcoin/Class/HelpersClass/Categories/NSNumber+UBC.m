@@ -15,9 +15,10 @@
     NSNumberFormatter *format = NSNumberFormatter.new;
     
     format.groupingSize = 3;
-    format.groupingSeparator = @",";
+    format.groupingSeparator = @" ";
     format.locale = UBLocal.shared.locale;
-    format.minimumFractionDigits = self.doubleValue == self.integerValue ? 0 : 4;
+//    format.minimumFractionDigits = self.doubleValue == self.integerValue ? 0 : 4;
+    format.minimumFractionDigits = 4;
     format.maximumFractionDigits = 4;
     format.numberStyle = NSNumberFormatterDecimalStyle;
     

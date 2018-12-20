@@ -41,7 +41,7 @@
 
 - (void)setupContent
 {
-    self.amount.text = [NSString stringWithFormat:@"%@ UBC", self.transaction.amount.priceString];
+    self.amount.text = self.transaction.priceWithCurrency;
     [self.tableView updateWithRowsData:self.transaction.rowsData];
 }
 

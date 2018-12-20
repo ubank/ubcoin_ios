@@ -44,8 +44,7 @@
 {
     [self startActivityIndicator];
     __weak typeof(self) weakSelf = self;
-    [UBCDataProvider.sharedProvider sendCoins:self.payment.amount
-                                    toAddress:self.payment.address
+    [UBCDataProvider.sharedProvider sendCoins:self.payment
                           withCompletionBlock:^(BOOL success, NSString *result, NSString *message)
      {
          [weakSelf stopActivityIndicator];

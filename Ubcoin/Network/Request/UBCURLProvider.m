@@ -126,9 +126,9 @@
     return [NSURL URLWithString:url];
 }
 
-+ (NSURL *)commissionForAmount:(NSNumber *)amount
++ (NSURL *)commissionForAmount:(NSNumber *)amount currency:(NSString *)currency
 {
-    NSString *url = [SERVER_URL stringByAppendingFormat:@"wallet/commission?amount=%@", amount];
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"wallet/commission?amount=%@&currencyType=%@", amount, currency];
     return [NSURL URLWithString:url];
 }
 
@@ -150,9 +150,9 @@
     return [NSURL URLWithString:url];
 }
 
-+ (NSURL *)transactionsListWithPageNumber:(NSUInteger)page
++ (NSURL *)transactionsListWithPageNumber:(NSUInteger)page isETH:(BOOL)isETH
 {
-    NSString *url = [SERVER_URL stringByAppendingFormat:@"wallet/transactions?page=%d&size=%d", (int)page, ITEMS_PAGE_SIZE];
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"wallet/transactions?page=%d&size=%d&currencyType=%@", (int)page, ITEMS_PAGE_SIZE, isETH ? @"ETH" : @"UBC"];
     return [NSURL URLWithString:url];
 }
 

@@ -14,10 +14,13 @@
 @property (readonly, nonatomic) NSString *from;
 @property (readonly, nonatomic) NSString *to;
 @property (readonly, nonatomic) NSString *status;
+@property (readonly, nonatomic) NSString *currency;
+@property (readonly, nonatomic) NSString *priceWithCurrency;
 @property (readonly, nonatomic) NSNumber *amount;
 @property (readonly, nonatomic) NSDate *date;
+@property (readonly, nonatomic) BOOL isETH;
 
-- (instancetype)initWithDictionary:(NSDictionary *)dict;
+- (instancetype)initWithDictionary:(NSDictionary *)dict isETH:(BOOL)isETH;
 - (UBTableViewRowData *)rowData;
 - (NSArray<UBTableViewRowData *> *)rowsData;
 

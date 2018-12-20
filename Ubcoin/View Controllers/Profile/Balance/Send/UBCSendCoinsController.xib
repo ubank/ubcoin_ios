@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,11 +15,13 @@
                 <outlet property="addressField" destination="1Eh-UQ-asR" id="Ptc-cu-ikN"/>
                 <outlet property="addressView" destination="AgN-iE-tbc" id="mwO-jj-lyQ"/>
                 <outlet property="amountField" destination="ylN-gv-oza" id="q2E-88-cQ6"/>
-                <outlet property="amountInCurrency" destination="gpr-7B-Puz" id="8gc-P5-7vZ"/>
+                <outlet property="amountInCurrency" destination="gpr-7B-Puz" id="uqM-8k-c0G"/>
                 <outlet property="amountView" destination="pj1-80-DGB" id="cvn-jX-T74"/>
                 <outlet property="commission" destination="ipd-55-NbN" id="SGQ-ea-r5n"/>
+                <outlet property="currency" destination="TyC-vx-Nfb" id="SAF-wy-kyd"/>
                 <outlet property="currencyActivity" destination="rWD-IV-qZz" id="PmZ-FI-agJ"/>
                 <outlet property="scanButton" destination="Rll-mU-i3E" id="7wt-2n-ydP"/>
+                <outlet property="titleLabel" destination="8Lc-mZ-WMO" id="JN8-3W-D2i"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -56,9 +58,9 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3LN-1O-B00">
-                    <rect key="frame" x="0.0" y="30" width="375" height="260"/>
+                    <rect key="frame" x="0.0" y="30" width="375" height="230.5"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="str_send_UBC_to_wallet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="8Lc-mZ-WMO" customClass="HUBLabel">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="str_send_UBC_to_wallet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="8Lc-mZ-WMO" customClass="HUBLabel">
                             <rect key="frame" x="15" y="30" width="345" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
@@ -149,7 +151,7 @@
                             <rect key="frame" x="190" y="145.5" width="170" height="55"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USD" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="l23-Ok-pxn" customClass="HUBLabel">
-                                    <rect key="frame" x="0.0" y="-0.5" width="35" height="55"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="35" height="55"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -186,8 +188,8 @@
                                 <constraint firstItem="gpr-7B-Puz" firstAttribute="top" secondItem="hfX-Mk-X2V" secondAttribute="top" id="rZj-Hi-Y59"/>
                             </constraints>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="ipd-55-NbN" customClass="HUBLabel">
-                            <rect key="frame" x="15" y="215.5" width="0.0" height="0.0"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="ipd-55-NbN" customClass="HUBLabel">
+                            <rect key="frame" x="15" y="215.5" width="345" height="0.0"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -211,10 +213,11 @@
                         <constraint firstItem="pj1-80-DGB" firstAttribute="leading" secondItem="3LN-1O-B00" secondAttribute="leading" constant="15" id="TEb-Yy-yOd"/>
                         <constraint firstItem="pj1-80-DGB" firstAttribute="top" secondItem="AgN-iE-tbc" secondAttribute="bottom" constant="10" id="Uzw-Wi-RMP"/>
                         <constraint firstItem="8Lc-mZ-WMO" firstAttribute="leading" secondItem="3LN-1O-B00" secondAttribute="leading" constant="15" id="cYV-pk-a8E"/>
+                        <constraint firstAttribute="bottom" secondItem="ipd-55-NbN" secondAttribute="bottom" constant="15" id="dnP-7n-T9s"/>
                         <constraint firstAttribute="trailing" secondItem="AgN-iE-tbc" secondAttribute="trailing" constant="15" id="ikS-qM-1cn"/>
+                        <constraint firstAttribute="trailing" secondItem="ipd-55-NbN" secondAttribute="trailing" constant="15" id="nM9-4p-ayj"/>
                         <constraint firstAttribute="trailing" secondItem="8Lc-mZ-WMO" secondAttribute="trailing" constant="15" id="rlE-NZ-wQD"/>
                         <constraint firstItem="AgN-iE-tbc" firstAttribute="leading" secondItem="3LN-1O-B00" secondAttribute="leading" constant="15" id="sW2-fZ-irk"/>
-                        <constraint firstAttribute="height" constant="260" id="yux-at-G8P"/>
                     </constraints>
                 </view>
             </subviews>

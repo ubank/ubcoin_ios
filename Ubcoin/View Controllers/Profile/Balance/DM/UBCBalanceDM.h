@@ -11,7 +11,7 @@
 @interface UBCBalanceDM : NSObject
 
 @property (readonly, nonatomic) NSNumber *amountUBC;
-@property (readonly, nonatomic) NSNumber *amountOnHold;
+@property (readonly, nonatomic) NSNumber *amountETH;
 
 + (UBCBalanceDM *)loadBalance;
 + (void)saveBalanceDict:(NSDictionary *)dict;

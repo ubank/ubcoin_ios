@@ -23,10 +23,21 @@
 
 @property (strong, nonatomic) NSMutableArray *items;
 @property (assign, nonatomic) NSUInteger pageNumber;
+@property (assign, nonatomic) BOOL isETH;
 
 @end
 
 @implementation UBCBalanceController
+
+- (instancetype)initWithETH:(BOOL)isETH
+{
+    self = [super init];
+    if (self)
+    {
+        self.isETH = isETH;
+    }
+    return self;
+}
 
 - (void)viewDidLoad
 {
@@ -69,6 +80,8 @@
     }];
 }
 
+#pragma mark -
+
 - (void)update
 {
     self.pageNumber = 0;
@@ -79,26 +92,10 @@
 {
     __weak typeof(self) weakSelf = self;
     [UBCDataProvider.sharedProvider transactionsListWithPageNumber:self.pageNumber
-                                               withCompletionBlock:^(BOOL success, NSArray *goods, BOOL canLoadMore)
+                                                             isETH:self.isETH
+                                               withCompletionBlock:^(BOOL success, NSArray *transactions, BOOL canLoadMore)
      {
-         [weakSelf stopActivityIndicator];
-         [weakSelf.tableView.refreshControll endRefreshing];
-         if (success)
-         {
-             weakSelf.tableView.canLoadMore = canLoadMore;
-         }
-         
-         if (goods)
-         {
-             if (weakSelf.pageNumber == 0)
-             {
-                 weakSelf.items = [NSMutableArray array];
-             }
-             [weakSelf.items addObjectsFromArray:goods];
-             weakSelf.pageNumber++;
-         }
-         weakSelf.tableView.emptyView.hidden = weakSelf.items.count > 0;
-         [weakSelf.tableView updateWithRowsData:weakSelf.items];
+         [weakSelf handleResponseWithStatus:success transactions:transactions canLoadMore:canLoadMore];
      }];
     
     [UBCDataProvider.sharedProvider updateBalanceWithCompletionBlock:^(BOOL success)
@@ -110,10 +107,41 @@
      }];
 }
 
+#pragma mark -
+
+- (void)handleResponseWithStatus:(BOOL)success transactions:(NSArray *)transactions canLoadMore:(BOOL)canLoadMore
+{
+    [self stopActivityIndicator];
+    [self.tableView.refreshControll endRefreshing];
+    if (success)
+    {
+        self.tableView.canLoadMore = canLoadMore;
+    }
+    
+    if (transactions)
+    {
+        if (self.pageNumber == 0)
+        {
+            self.items = [NSMutableArray array];
+        }
+        [self.items addObjectsFromArray:transactions];
+        self.pageNumber++;
+    }
+    self.tableView.emptyView.hidden = self.items.count > 0;
+    [self.tableView updateWithRowsData:self.items];
+}
+
 - (void)setupBalance
 {
     UBCBalanceDM *balance = [UBCBalanceDM loadBalance];
-    self.balance.text = [NSString stringWithFormat:@"%@ UBC", balance.amountUBC.priceString];
+    if (self.isETH)
+    {
+        self.balance.text = [NSString stringWithFormat:@"%@ ETH", balance.amountETH.coinsPriceString];
+    }
+    else
+    {
+        self.balance.text = [NSString stringWithFormat:@"%@ UBC", balance.amountUBC.priceString];
+    }
 }
 
 #pragma mark - Actions
@@ -127,7 +155,7 @@
          [weakSelf stopActivityIndicator];
          if (success && topup)
          {
-             UBCTopUpController *controller = [[UBCTopUpController alloc] initWithTopup:topup];
+             UBCTopUpController *controller = [[UBCTopUpController alloc] initWithTopup:topup isETH:self.isETH];
              [weakSelf.navigationController pushViewController:controller animated:YES];
          }
      }];
@@ -135,7 +163,8 @@
 
 - (IBAction)send
 {
-    [self.navigationController pushViewController:UBCSendCoinsController.new animated:YES];
+    UBCSendCoinsController *controller = [[UBCSendCoinsController alloc] initWithETH:self.isETH];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 #pragma mark - UBDefaultTableViewDelegate

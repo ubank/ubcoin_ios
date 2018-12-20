@@ -162,7 +162,6 @@
 "str_item_status_check" = "심사중";
 
 "str_send_success" = "본인 거래가 진행대기란에 등록되었습니다. 네트워크 트레픽이 높은경우 최대 3시간정도 걸릴 수 있습니다.";
-"str_your_price_will_be_fixed_in_UBC" = "당신의 가격은 UBC로 고정될 것입니다";
 
 "str_filters" = "필터";
 "str_category" = "카테고리";
@@ -181,19 +180,23 @@
 "str_no_result_title" = "결과없음";
 "str_no_result_desc" = "보여지는 것이 없으므로 필터를 다시 적용하세요";
 
-"str_on_market" = "On market";
-"str_condition" = "Condition";
-"str_new" = "New";
-"str_used" = "Used";
+"str_on_market" = "시장등록";
+"str_condition" = "조건";
+"str_new" = "신규";
+"str_used" = "중고";
 
-"str_day" = "day";
-"str_days3" = "days";
-"str_days5" = "days";
+"str_day" = "일";
+"str_days3" = "일";
+"str_days5" = "일";
 
-"str_month" = "month";
-"str_months3" = "months";
-"str_months5" = "months";
+"str_month" = "월";
+"str_months3" = "월";
+"str_months5" = "월";
 
-"str_year" = "year";
-"str_years3" = "years";
-"str_years5" = "years";
+"str_year" = "년";
+"str_years3" = "년";
+"str_years5" = "년";
+
+"str_comission_desc" = "가스는 이더리움 전송에 필요한 수수료입니다.";
+"str_send_ETH_to_wallet" = "이더리움 지갑으로 이더리움을 보내세요.";
+"str_buyer_can_pay_you_in_UBC_or_ETH" = "구매자는 UBC나 ETH로 지불할 수 있습니다";

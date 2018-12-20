@@ -35,13 +35,13 @@
     
     UBTableViewRowData *row2 = UBTableViewRowData.new;
     row2.title = UBLocalizedString(@"str_amount", nil);
-    row2.desc = [NSString stringWithFormat:@"%@ UBC", self.currentAmount.priceString];
+    row2.desc = [self currencyWithAmount:self.currentAmount];
     row2.disableHighlight = YES;
     [rows addObject:row2];
     
     UBTableViewRowData *row3 = UBTableViewRowData.new;
     row3.title = UBLocalizedString(@"str_transaction_commission", nil);
-    row3.desc = [NSString stringWithFormat:@"%@ UBC", self.commission.priceString];
+    row3.desc = [self currencyWithAmount:self.commission];
     row3.disableHighlight = YES;
     [rows addObject:row3];
     
@@ -57,9 +57,27 @@
 
 - (NSAttributedString *)totalAmountString
 {
-    return [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ UBC", self.amount.priceString]
+    return [[NSAttributedString alloc] initWithString:[self currencyWithAmount:self.amount]
                                     attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:23],
                                                  NSForegroundColorAttributeName : UBCColor.green}];
+}
+
+- (NSString *)currencyWithAmount:(NSNumber *)amount
+{
+    if ([self.currency isEqualToString:@"ETH"])
+    {
+        return [NSString stringWithFormat:@"%@ %@", amount.coinsPriceString, self.currency];
+    }
+    
+    return [NSString stringWithFormat:@"%@ %@", amount.priceString, self.currency];
+}
+
+- (NSDictionary *)requestParams
+{
+    NSString *amountParam = [@"amount" stringByAppendingString:self.currency];
+    return @{@"externalAddress": self.address,
+             @"currencyType": self.currency,
+             amountParam: self.amount};
 }
 
 @end

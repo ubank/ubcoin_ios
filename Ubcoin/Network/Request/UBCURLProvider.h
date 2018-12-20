@@ -31,12 +31,12 @@
 + (NSURL *)userBalance;
 
 + (NSURL *)convert;
-+ (NSURL *)commissionForAmount:(NSNumber *)amount;
++ (NSURL *)commissionForAmount:(NSNumber *)amount currency:(NSString *)currency;
 + (NSURL *)withdraw;
 + (NSURL *)topup;
 + (NSURL *)markets;
 
-+ (NSURL *)transactionsListWithPageNumber:(NSUInteger)page;
++ (NSURL *)transactionsListWithPageNumber:(NSUInteger)page isETH:(BOOL)isETH;
 
 + (NSURL *)favoriteWithID:(NSString *)favoriteID;
 + (NSURL *)favoritesListWithPageNumber:(NSUInteger)page;

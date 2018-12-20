@@ -91,6 +91,7 @@
     UBFont.titleFont = [UIFont systemFontOfSize:17 weight:UIFontWeightMedium];
     UBFont.descFont = [UIFont systemFontOfSize:13 weight:UIFontWeightRegular];
     UBFont.buttonFont = [UIFont systemFontOfSize:18 weight:UIFontWeightMedium];
+    UBFont.promoTitleFont = [UIFont systemFontOfSize:22 weight:UIFontWeightMedium];
 }
 
 #pragma mark -

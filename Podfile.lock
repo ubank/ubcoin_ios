@@ -20,13 +20,12 @@ PODS:
   - Bolts/AppLinks (1.9.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
-  - Crashlytics (3.10.9):
-    - Fabric (~> 1.7.13)
+  - Crashlytics (3.12.0):
+    - Fabric (~> 1.9.0)
   - DGActivityIndicatorView (2.1.1)
-  - Fabric (1.7.13)
-  - FBSDKCoreKit (4.37.0):
-    - Bolts (~> 1.7)
-  - GoogleAnalytics (3.17.0)
+  - Fabric (1.9.0)
+  - FBSDKCoreKit (4.39.0):
+    - Bolts (~> 1.9)
   - GoogleMaps (2.7.0):
     - GoogleMaps/Maps (= 2.7.0)
   - GoogleMaps/Base (2.7.0)
@@ -37,36 +36,29 @@ PODS:
   - ImageSlideshow/Core (1.7.0)
   - INTULocationManager (4.3.2)
   - QRCodeReaderViewController (4.0.2)
-  - SDWebImage (4.4.2):
-    - SDWebImage/Core (= 4.4.2)
-  - SDWebImage/Core (4.4.2)
+  - SDWebImage (4.4.3):
+    - SDWebImage/Core (= 4.4.3)
+  - SDWebImage/Core (4.4.3)
   - TTTAttributedLabel (2.0.0)
-  - UBGeneralClasses (1.0.2):
-    - GoogleAnalytics
+  - UBGeneralClasses (1.0.3):
     - SDWebImage
-    - UBGeneralClasses/Categories (= 1.0.2)
-    - UBGeneralClasses/Controls (= 1.0.2)
-    - UBGeneralClasses/Helpers (= 1.0.2)
-    - UBGeneralClasses/Models (= 1.0.2)
-    - UBGeneralClasses/Navigation (= 1.0.2)
-    - UBGeneralClasses/TableView (= 1.0.2)
-  - UBGeneralClasses/Categories (1.0.2):
-    - GoogleAnalytics
+    - UBGeneralClasses/Categories (= 1.0.3)
+    - UBGeneralClasses/Controls (= 1.0.3)
+    - UBGeneralClasses/Helpers (= 1.0.3)
+    - UBGeneralClasses/Models (= 1.0.3)
+    - UBGeneralClasses/Navigation (= 1.0.3)
+    - UBGeneralClasses/TableView (= 1.0.3)
+  - UBGeneralClasses/Categories (1.0.3):
     - SDWebImage
-  - UBGeneralClasses/Controls (1.0.2):
-    - GoogleAnalytics
+  - UBGeneralClasses/Controls (1.0.3):
     - SDWebImage
-  - UBGeneralClasses/Helpers (1.0.2):
-    - GoogleAnalytics
+  - UBGeneralClasses/Helpers (1.0.3):
     - SDWebImage
-  - UBGeneralClasses/Models (1.0.2):
-    - GoogleAnalytics
+  - UBGeneralClasses/Models (1.0.3):
     - SDWebImage
-  - UBGeneralClasses/Navigation (1.0.2):
-    - GoogleAnalytics
+  - UBGeneralClasses/Navigation (1.0.3):
     - SDWebImage
-  - UBGeneralClasses/TableView (1.0.2):
-    - GoogleAnalytics
+  - UBGeneralClasses/TableView (1.0.3):
     - SDWebImage
 
 DEPENDENCIES:
@@ -90,7 +82,6 @@ SPEC REPOS:
     - DGActivityIndicatorView
     - Fabric
     - FBSDKCoreKit
-    - GoogleAnalytics
     - GoogleMaps
     - ImageSlideshow
     - INTULocationManager
@@ -104,24 +95,23 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   UBGeneralClasses:
-    :commit: 8de4b22bddf3baf9274092836812d31eae527796
+    :commit: 54efd590f2319bc613a8f6bcf34e359c9db57fdc
     :git: https://github.com/ubank/ub_general_classes_iOS.git
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
-  Crashlytics: 55e24fc23989680285a21cb1146578d9d18e432c
+  Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   DGActivityIndicatorView: ff2c76073d79692f724863c8dd38685866a03cb6
-  Fabric: 25d0963b691fc97be566392243ff0ecef5a68338
-  FBSDKCoreKit: fe5f3474499a81963e11e3f3a5c753d0a95ca2b4
-  GoogleAnalytics: f42cc53a87a51fe94334821868d9c8481ff47a7b
+  Fabric: f988e33c97f08930a413e08123064d2e5f68d655
+  FBSDKCoreKit: 1e3981faefab8c88edfaa9eecd94aab02d99a9bc
   GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
   ImageSlideshow: f8eec5e37a980f60923b585ff23b0e140fd24018
   INTULocationManager: e5dc524611b0cd582f473bc56cc8c389adb2f338
   QRCodeReaderViewController: e8f27d035b3e72b1d4b1c61ff66458287e3be0ff
-  SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
+  SDWebImage: c5594f1a19c48d526d321e548902b56b479cd508
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
-  UBGeneralClasses: a5485a99a05a01e5c17321117caf26d2507eed87
+  UBGeneralClasses: d205ce1ce0a17dc8cc296c79d22a822e5b60edb7
 
 PODFILE CHECKSUM: da074bcea74f19dd5ff43afc45feb7dfba25f312
 

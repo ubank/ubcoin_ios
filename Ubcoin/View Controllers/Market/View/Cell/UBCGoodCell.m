@@ -53,7 +53,7 @@
 {
     _content = content;
     
-    self.title.text = [NSString stringWithFormat:@"%@ UBC", content.price.priceString];;
+    self.title.text = [NSString stringWithFormat:@"%@ ETH", content.priceInETH.coinsPriceString];;
     self.desc.text = content.title;
     self.favoriteButton.image = [UIImage imageNamed:[NSString stringWithFormat:@"icFav%@", self.content.isFavorite ? @"B" : @"A"]];
     self.favoriteButton.hidden = content.isMyItem;
