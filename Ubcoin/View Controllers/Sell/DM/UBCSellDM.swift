@@ -64,7 +64,6 @@ class UBCSellDM: NSObject {
             linkSection.headerHeight = UBCConstant.headerHeight
             linkSection.headerTitle = "str_link_to_download_the_file".localizedString()
             linkSection.footerTitle = "str_paste_here_link_to_download_your_file_from_cloud_storage".localizedString()
-            linkSection.footerHeight = 70
             
             var link = UBCSellCellDM(type: .link)
             link.data = good?.fileURL
@@ -78,7 +77,6 @@ class UBCSellDM: NSObject {
         priceDollarSection.headerHeight = UBCConstant.headerHeight
         priceDollarSection.headerTitle = "str_price_in".localizedString() + " $"
         priceDollarSection.footerTitle = "str_buyer_can_pay_you_in_UBC_or_ETH".localizedString()
-        priceDollarSection.footerHeight = 25
         
         var price = UBCSellCellDM(type: .price)
         price.data = good?.priceInCurrency?.stringValue
@@ -343,7 +341,7 @@ enum UBCSellCellType {
             case .condition:
                 return "condition"
             case .price:
-                return "price$"
+                return "priceInCurrency"
             case .priceUBC:
                 return "price"
             case .priceETH:

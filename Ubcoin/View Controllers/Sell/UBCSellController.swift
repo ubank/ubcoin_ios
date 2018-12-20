@@ -29,6 +29,8 @@ final class UBCSellController: UBViewController {
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
         tableView.estimatedRowHeight = UBCConstant.cellHeight
+        tableView.sectionFooterHeight = UITableViewAutomaticDimension
+        tableView.estimatedSectionFooterHeight = ZERO_HEIGHT
         
         tableView.emptyView.icon.image = UIImage(named: "imgPlaced")
         tableView.emptyView.title.text = "str_sell_success_title".localizedString()
@@ -248,12 +250,6 @@ extension UBCSellController: UITableViewDataSource, UITableViewDelegate {
         let section = self.model.sections[section]
         
         return section.headerTitle
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        let section = self.model.sections[section]
-        
-        return section.footerHeight
     }
     
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
