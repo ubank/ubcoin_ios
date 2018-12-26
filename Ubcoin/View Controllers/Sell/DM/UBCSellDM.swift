@@ -80,7 +80,7 @@ class UBCSellDM: NSObject {
         
         var price = UBCSellCellDM(type: .price)
         price.data = good?.priceInCurrency?.stringValue
-        price.sendData = good?.priceInCurrency?.stringValue
+        price.sendData = good?.priceInCurrency
         
         priceDollarSection.rows = [price]
         sections.append(priceDollarSection)
@@ -91,7 +91,7 @@ class UBCSellDM: NSObject {
         
         var priceUBC = UBCSellCellDM(type: .priceUBC)
         priceUBC.data = good?.price?.stringValue
-        priceUBC.sendData = good?.price?.stringValue
+        priceUBC.sendData = good?.price
         
         priceUBCSection.rows = [priceUBC]
         sections.append(priceUBCSection)
@@ -102,7 +102,7 @@ class UBCSellDM: NSObject {
         
         var priceETH = UBCSellCellDM(type: .priceETH)
         priceETH.data = good?.priceInETH?.stringValue
-        priceETH.sendData = good?.priceInETH?.stringValue
+        priceETH.sendData = good?.priceInETH
         
         priceETHSection.rows = [priceETH]
         sections.append(priceETHSection)
