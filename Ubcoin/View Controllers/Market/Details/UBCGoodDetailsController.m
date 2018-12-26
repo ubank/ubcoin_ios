@@ -42,6 +42,7 @@
 @property (weak, nonatomic) IBOutlet UBCBuyersView *buyersView;
 
 @property (weak, nonatomic) IBOutlet UIView *digitalGoodView;
+@property (weak, nonatomic) IBOutlet HUBLabel *digitalGoodDesc;
 @property (weak, nonatomic) IBOutlet HUBLabel *address;
 @property (weak, nonatomic) IBOutlet UBCMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIView *locationView;
@@ -172,6 +173,7 @@
     [self setupDesc];
     
     self.digitalGoodView.hidden = !self.good.isDigital;
+    self.digitalGoodDesc.text = self.good.isMyItem ? UBLocalizedString(@"str_buyer_receive_the_link_by_email", nil) : UBLocalizedString(@"str_receive_the_link_by_email", nil);
     self.locationView.hidden = !self.good.location || self.good.isDigital;
     self.mapView.location = self.good.location;
     self.address.text = self.good.locationText;

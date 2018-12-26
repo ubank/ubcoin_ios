@@ -206,3 +206,5 @@
 "str_link_to_download_the_file" = "Link to download the file";
 "str_link_placeholder" = "Add your link from cloud storage";
 "str_paste_here_link_to_download_your_file_from_cloud_storage" = "Paste here link to download your file from cloud storage (Google Drive, Dropbox, etc.). Buyers will NOT see this link until escrow service freezes their payment.";
+"str_buyer_receive_the_link_by_email" = "Buyer will receive the link by e-mail after buyer's payment is frozen by escrow service.";
+

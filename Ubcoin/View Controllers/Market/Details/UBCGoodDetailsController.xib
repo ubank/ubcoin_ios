@@ -19,6 +19,7 @@
                 <outlet property="collectionView" destination="uA0-yc-f7K" id="pSi-qb-Rom"/>
                 <outlet property="connectToSellerView" destination="dYb-9Z-BGQ" id="4N0-AK-jd2"/>
                 <outlet property="desc" destination="Urf-EA-x8e" id="F6U-QP-B9j"/>
+                <outlet property="digitalGoodDesc" destination="8z6-Qy-IG4" id="DRM-t3-byG"/>
                 <outlet property="digitalGoodView" destination="DNx-cm-Jra" id="QKb-sl-RyA"/>
                 <outlet property="favoriteButton" destination="ZJb-hq-NUP" id="55p-sP-Bh5"/>
                 <outlet property="itemTitle" destination="Gti-R0-jnL" id="7wh-w0-zau"/>
