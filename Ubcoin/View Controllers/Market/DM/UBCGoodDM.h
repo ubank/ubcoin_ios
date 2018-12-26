@@ -42,11 +42,14 @@ static NSString * const kNotificationItemChanged = @"kNotificationItemChanged";
 @property (readonly, nonatomic) NSString *currency;
 @property (readonly, nonatomic) NSDate *creationDate;
 @property (readonly, nonatomic) NSArray *images;
-@property (readonly, nonatomic) BOOL isFavorite;
 @property (readonly, nonatomic) CLLocation *location;
 @property (readonly, nonatomic) NSString *locationText;
 @property (readonly, nonatomic) NSString *condition;
+@property (readonly, nonatomic) NSString *fileURL;
 @property (readonly, nonatomic) UBCItemStatus status;
+@property (readonly, nonatomic) BOOL isFavorite;
+@property (readonly, nonatomic) BOOL isDigital;
+@property (readonly, nonatomic) BOOL isMyItem;
 
 @property (readonly, nonatomic) UBCSellerDM *seller;
 @property (readonly, nonatomic) UBCCategoryDM *category;
@@ -55,7 +58,6 @@ static NSString * const kNotificationItemChanged = @"kNotificationItemChanged";
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
 - (void)toggleFavorite;
 
-- (BOOL)isMyItem;
 - (NSArray *)activeDeals;
 - (UBTableViewRowData *)rowData;
 

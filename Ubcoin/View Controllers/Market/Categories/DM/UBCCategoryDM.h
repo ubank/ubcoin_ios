@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+static NSString * const DigitalGoodsID = @"dc602e1f-80d2-af0d-9588-de6f1956f4ef";
+
 @interface UBCCategoryDM : NSObject
 
 @property (readonly, nonatomic) NSString *ID;

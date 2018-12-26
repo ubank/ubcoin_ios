@@ -20,7 +20,7 @@ class UBCSellDM: NSObject {
         self.sections = UBCSellDM.sellActions(good: item)
     }
     
-    class func sellActions(good: UBCGoodDM? = nil) -> [UBTableViewSectionData] {
+    class func sellActions(good: UBCGoodDM? = nil, categoryID: String? = nil) -> [UBTableViewSectionData] {
         var sections = [UBTableViewSectionData]()
         
         let photoSection = UBTableViewSectionData()
@@ -45,22 +45,42 @@ class UBCSellDM: NSObject {
         category.data = good?.category?.name
         category.sendData = good?.category?.id
         
-        var condition = UBCSellCellDM(type: .condition)
-        condition.data = good?.condition.capitalized
-        condition.sendData = good?.condition
+        let isDigital = categoryID != nil ? (categoryID == DigitalGoodsID) : good?.isDigital ?? false
         
-        aboutSection.rows = [title, category, condition]
+        if isDigital {
+            aboutSection.rows = [title, category]
+        } else {
+            var condition = UBCSellCellDM(type: .condition)
+            condition.data = good?.condition?.capitalized
+            condition.sendData = good?.condition
+            
+            aboutSection.rows = [title, category, condition]
+        }
+        
         sections.append(aboutSection)
+        
+        if isDigital {
+            let linkSection = UBTableViewSectionData()
+            linkSection.headerHeight = UBCConstant.headerHeight
+            linkSection.headerTitle = "str_link_to_download_the_file".localizedString()
+            linkSection.footerTitle = "str_paste_here_link_to_download_your_file_from_cloud_storage".localizedString()
+            
+            var link = UBCSellCellDM(type: .link)
+            link.data = good?.fileURL
+            link.sendData = good?.fileURL
+            
+            linkSection.rows = [link]
+            sections.append(linkSection)
+        }
         
         let priceDollarSection = UBTableViewSectionData()
         priceDollarSection.headerHeight = UBCConstant.headerHeight
         priceDollarSection.headerTitle = "str_price_in".localizedString() + " $"
         priceDollarSection.footerTitle = "str_buyer_can_pay_you_in_UBC_or_ETH".localizedString()
-        priceDollarSection.footerHeight = 25
         
         var price = UBCSellCellDM(type: .price)
         price.data = good?.priceInCurrency?.stringValue
-        price.sendData = good?.priceInCurrency?.stringValue
+        price.sendData = good?.priceInCurrency
         
         priceDollarSection.rows = [price]
         sections.append(priceDollarSection)
@@ -71,7 +91,7 @@ class UBCSellDM: NSObject {
         
         var priceUBC = UBCSellCellDM(type: .priceUBC)
         priceUBC.data = good?.price?.stringValue
-        priceUBC.sendData = good?.price?.stringValue
+        priceUBC.sendData = good?.price
         
         priceUBCSection.rows = [priceUBC]
         sections.append(priceUBCSection)
@@ -82,7 +102,7 @@ class UBCSellDM: NSObject {
         
         var priceETH = UBCSellCellDM(type: .priceETH)
         priceETH.data = good?.priceInETH?.stringValue
-        priceETH.sendData = good?.priceInETH?.stringValue
+        priceETH.sendData = good?.priceInETH
         
         priceETHSection.rows = [priceETH]
         sections.append(priceETHSection)
@@ -98,19 +118,20 @@ class UBCSellDM: NSObject {
         descSection.rows = [desc]
         sections.append(descSection)
 
-        let locationSection = UBTableViewSectionData()
-        locationSection.headerHeight = UBCConstant.headerHeight
-        locationSection.headerTitle = "str_sell_location".localizedString()
-        
-        var location = UBCSellCellDM(type: .location)
-        if let loc = good?.location, let text = good?.locationText {
-            location.data = text
-            location.sendData = ["text": text, "longPoint": loc.coordinate.longitude, "latPoint": loc.coordinate.latitude]
+        if !isDigital {
+            let locationSection = UBTableViewSectionData()
+            locationSection.headerHeight = UBCConstant.headerHeight
+            locationSection.headerTitle = "str_sell_location".localizedString()
+            
+            var location = UBCSellCellDM(type: .location)
+            if let loc = good?.location, let text = good?.locationText {
+                location.data = text
+                location.sendData = ["text": text, "longPoint": loc.coordinate.longitude, "latPoint": loc.coordinate.latitude]
+            }
+            
+            locationSection.rows = [location]
+            sections.append(locationSection)
         }
-        
-        locationSection.rows = [location]
-        sections.append(locationSection)
-        
         return sections
     }
     
@@ -196,6 +217,15 @@ class UBCSellDM: NSObject {
         
         return dict
     }
+    
+    func reloadParams() {
+        let category = self.row(type: .category)
+        let images = self.row(type: .photo)
+        self.item = UBCGoodDM(dictionary: self.allFilledParams())
+        self.sections = UBCSellDM.sellActions(good: item, categoryID: category?.sendData as? String)
+        self.updateRow(category)
+        self.updateRow(images)
+    }
 }
 
 struct UBCSellCellDM {
@@ -252,6 +282,7 @@ enum UBCSellCellType {
     case photo
     case title
     case category
+    case link
     case condition
     case price
     case priceUBC
@@ -267,7 +298,7 @@ enum UBCSellCellType {
                 return UBCSPhotoTableViewCell.className
             case .category, .condition, .location:
                 return UBCSSelectionTableViewCell.className
-            case .price, .priceUBC, .priceETH, .title:
+            case .price, .priceUBC, .priceETH, .title, .link:
                 return UBCSTextFieldTableViewCell.className
             case .locationMap:
                 return UBCSMapTableViewCell.className
@@ -288,6 +319,8 @@ enum UBCSellCellType {
                 return "str_sell_placeholder_location".localizedString()
             case .title:
                 return "str_sell_placeholder_title".localizedString()
+            case .link:
+                return "str_link_placeholder".localizedString()
             default:
                 return ""
             }
@@ -303,10 +336,12 @@ enum UBCSellCellType {
                 return "title"
             case .category:
                 return "categoryId"
+            case .link:
+                return "fileUrl"
             case .condition:
                 return "condition"
             case .price:
-                return "price$"
+                return "priceInCurrency"
             case .priceUBC:
                 return "price"
             case .priceETH:

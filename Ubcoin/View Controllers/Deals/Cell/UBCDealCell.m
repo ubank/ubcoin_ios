@@ -39,7 +39,7 @@
 - (void)setLocation:(CLLocation *)location
 {
     NSString *distance = [UBLocationManager distanceStringFromMeAndCoordinates:location.coordinate];
-    self.distanceLabel.hidden = !distance.isNotEmpty;
+    self.distanceLabel.hidden = !distance.isNotEmpty || !location;
     [self.distanceLabel setupWithImage:[UIImage imageNamed:@"market_location"]
                                andText:distance];
 }
