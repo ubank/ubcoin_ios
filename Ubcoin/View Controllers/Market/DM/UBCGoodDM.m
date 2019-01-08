@@ -31,6 +31,7 @@
         _currency = dict[@"currency"];
         _shareURL = dict[@"shareUrl"];
         _condition = dict[@"condition"];
+        _fileURL = dict[@"fileUrl"];
         _isFavorite = [dict[@"favorite"] boolValue];
         _creationDate = [NSDate dateFromString:dict[@"createdDate"] inFormat:@"yyyyMMdd'T'HHmmssZ"];
         _images = dict[@"images"];
@@ -65,6 +66,11 @@
 {
     UBCUserDM *user = [UBCUserDM loadProfile];
     return user.ID && [self.seller.ID isEqualToString:user.ID];
+}
+
+- (BOOL)isDigital
+{
+    return [self.category.ID isEqualToString:DigitalGoodsID];
 }
 
 - (void)toggleFavorite

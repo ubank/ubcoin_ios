@@ -29,6 +29,8 @@ final class UBCSellController: UBViewController {
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
         tableView.estimatedRowHeight = UBCConstant.cellHeight
+        tableView.sectionFooterHeight = UITableViewAutomaticDimension
+        tableView.estimatedSectionFooterHeight = ZERO_HEIGHT
         
         tableView.emptyView.icon.image = UIImage(named: "imgPlaced")
         tableView.emptyView.title.text = "str_sell_success_title".localizedString()
@@ -250,12 +252,6 @@ extension UBCSellController: UITableViewDataSource, UITableViewDelegate {
         return section.headerTitle
     }
     
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        let section = self.model.sections[section]
-        
-        return section.footerHeight
-    }
-    
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         let section = self.model.sections[section]
         
@@ -309,9 +305,17 @@ extension UBCSellController: UITableViewDataSource, UITableViewDelegate {
         if row.type == .category {
             let controller = UBCCategorySelectionController(title: row.placeholder, selected: row.sendData as? String)
             controller.completion = { [weak self] category in
+                let prevCategoryID = row.sendData as? String
+                let needReloadParams = category.id != prevCategoryID &&
+                    (category.id == DigitalGoodsID || prevCategoryID == DigitalGoodsID)
+                
                 row.data = category.name
                 row.sendData = category.id
                 self?.model.updateRow(row)
+                
+                if needReloadParams {
+                    self?.model.reloadParams()
+                }
                 self?.tableView.reloadData()
                 self?.navigationController?.popViewController(animated: true)
             }
