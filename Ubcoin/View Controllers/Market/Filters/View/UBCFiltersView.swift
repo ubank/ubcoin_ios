@@ -9,7 +9,7 @@
 import UIKit
 
 class UBCFiltersView: UIView {
-
+    
     @objc var filtersChanged: (([UBCFilterParam]) -> Void)?
     
     private var filters = [UBCFilterParam]()
