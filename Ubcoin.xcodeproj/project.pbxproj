@@ -158,6 +158,7 @@
 		89B08E3721283D0200D8B68D /* UBCConfirmationSendCoinsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B08E3521283D0200D8B68D /* UBCConfirmationSendCoinsController.m */; };
 		89B08E3821283D0200D8B68D /* UBCConfirmationSendCoinsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89B08E3621283D0200D8B68D /* UBCConfirmationSendCoinsController.xib */; };
 		89B08E3C21284BA500D8B68D /* UBCPaymentDM.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B08E3B21284BA500D8B68D /* UBCPaymentDM.m */; };
+		89B42C8721F0B20B0008ED98 /* UBCMessagesListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B42C8621F0B20B0008ED98 /* UBCMessagesListController.swift */; };
 		89B6ECB3212C3B6700CCDEF8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89B6ECB5212C3B6700CCDEF8 /* InfoPlist.strings */; };
 		89BA58CA2163821F00427A8E /* UBCNotificationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BA58C92163821F00427A8E /* UBCNotificationHandler.m */; };
 		89BA58CD21652D6800427A8E /* UBCFiltersListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BA58CC21652D6800427A8E /* UBCFiltersListController.swift */; };
@@ -414,6 +415,7 @@
 		89B08E3621283D0200D8B68D /* UBCConfirmationSendCoinsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCConfirmationSendCoinsController.xib; sourceTree = "<group>"; };
 		89B08E3A21284BA500D8B68D /* UBCPaymentDM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCPaymentDM.h; sourceTree = "<group>"; };
 		89B08E3B21284BA500D8B68D /* UBCPaymentDM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCPaymentDM.m; sourceTree = "<group>"; };
+		89B42C8621F0B20B0008ED98 /* UBCMessagesListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCMessagesListController.swift; sourceTree = "<group>"; };
 		89B6ECB4212C3B6700CCDEF8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		89B6ECB6212C3B6900CCDEF8 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		89B6ECB7212C3B6A00CCDEF8 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -788,6 +790,7 @@
 			children = (
 				897FB0AF21218FDE0060DED6 /* UBCChatController.h */,
 				897FB0B021218FDE0060DED6 /* UBCChatController.m */,
+				89B42C8621F0B20B0008ED98 /* UBCMessagesListController.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -1714,6 +1717,7 @@
 				898751B320EE2C4100E2B615 /* UBCLoginController.m in Sources */,
 				897FB0B121218FDE0060DED6 /* UBCChatController.m in Sources */,
 				8987517720EE119F00E2B615 /* UBTableHeaderView.m in Sources */,
+				89B42C8721F0B20B0008ED98 /* UBCMessagesListController.swift in Sources */,
 				89BA58CD21652D6800427A8E /* UBCFiltersListController.swift in Sources */,
 				8987517A20EE119F00E2B615 /* HUBTextView.m in Sources */,
 				8987518820EE119F00E2B615 /* UBAlertWindow.m in Sources */,
