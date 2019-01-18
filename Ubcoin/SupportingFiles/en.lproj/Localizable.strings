@@ -210,3 +210,5 @@
 "str_buyer_receive_the_link_by_email" = "Buyer will receive the link by e-mail after buyer's payment is frozen by escrow service.";
 
 "str_messages" = "Messages";
+"str_no_messages_title" = "No messages";
+"str_no_messages_desc" = "Seems like it’s a sign to start connecting with people";
