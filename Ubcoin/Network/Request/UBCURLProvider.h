@@ -41,10 +41,11 @@
 + (NSURL *)favoriteWithID:(NSString *)favoriteID;
 + (NSURL *)favoritesListWithPageNumber:(NSUInteger)page;
 
++ (NSURL *)deal;
++ (NSURL *)dealsListWithPageNumber:(NSUInteger)page;
 + (NSURL *)dealsToSellListWithPageNumber:(NSUInteger)page;
 + (NSURL *)dealsToBuyListWithPageNumber:(NSUInteger)page;
 
-+ (NSURL *)chatURL;
 
 + (NSURL *)uploadImage;
 + (NSURL *)sellItem;

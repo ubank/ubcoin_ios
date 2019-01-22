@@ -594,50 +594,42 @@
 
 #pragma mark - CHAT
 
-- (void)chatURLForItemID:(NSString *)itemID withCompletionBlock:(void (^)(BOOL, NSURL *, NSURL *))completionBlock
+- (void)dealForItemID:(NSString *)itemID withCompletionBlock:(void (^)(BOOL, UBCDealDM *))completionBlock
 {
-    NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider chatURL]
+    NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider deal]
                                                                 andParams:@{@"itemId": itemID}];
     [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
      {
          if (completionBlock)
          {
-             completionBlock(success, [NSURL URLWithString:responseObject[@"url"]], [NSURL URLWithString:responseObject[@"appUrl"]]);
+             completionBlock(success, [[UBCDealDM alloc] initWithDictionary:[responseObject removeNulls]]);
          }
      }];
 }
 
-- (void)chatURLForDealID:(NSString *)dealID withCompletionBlock:(void (^)(BOOL, NSURL *, NSURL *))completionBlock
+- (void)dealsListWithPageNumber:(NSUInteger)page withCompletionBlock:(void (^)(BOOL, NSArray *, BOOL))completionBlock
 {
-    NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider chatURL]
-                                                                andParams:@{@"purchaseId": dealID}];
+    NSURL *url = [UBCURLProvider dealsListWithPageNumber:page];
+    NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:url];
     [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
      {
-         if (completionBlock)
-         {
-             completionBlock(success, [NSURL URLWithString:responseObject[@"url"]], [NSURL URLWithString:responseObject[@"appUrl"]]);
-         }
-     }];
-}
-
-- (void)registerInChatWithCompletionBlock:(void (^)(BOOL, BOOL, NSURL *, NSURL *))completionBlock
-{
-    NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:[UBCURLProvider registrationInChat]];
-    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
-     {
-         responseObject = [responseObject removeNulls];
          if (success)
          {
-             [UBCUserDM saveUserDict:responseObject[@"user"]];
+             NSArray *items = [responseObject[@"content"] removeNulls];
+             items = [items map:^id(id item) {
+                 UBCDealDM *deal = [[UBCDealDM alloc] initWithDictionary:item];
+                 return deal.rowData;
+             }];
+             
+             if (completionBlock)
+             {
+                 NSNumber *totalPages = responseObject[@"totalPages"];
+                 completionBlock(YES, items, totalPages.integerValue > page + 1 );
+             }
          }
-         
-         if (completionBlock)
+         else if (completionBlock)
          {
-             BOOL authorized = [[responseObject valueForKeyPath:@"user.authorizedInTg"] boolValue];
-             completionBlock(success,
-                             authorized,
-                             [NSURL URLWithString:responseObject[@"url"]],
-                             [NSURL URLWithString:responseObject[@"appUrl"]]);
+             completionBlock(NO, nil, YES);
          }
      }];
 }

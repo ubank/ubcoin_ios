@@ -168,6 +168,18 @@
     return [NSURL URLWithString:url];
 }
 
++ (NSURL *)deal
+{
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"purchases/create"];
+    return [NSURL URLWithString:url];
+}
+
++ (NSURL *)dealsListWithPageNumber:(NSUInteger)page
+{
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"purchases/related?page=%d&size=%d", (int)page, ITEMS_PAGE_SIZE];
+    return [NSURL URLWithString:url];
+}
+
 + (NSURL *)dealsToSellListWithPageNumber:(NSUInteger)page
 {
     NSString *url = [SERVER_URL stringByAppendingFormat:@"purchases/seller?page=%d&size=%d", (int)page, ITEMS_PAGE_SIZE];
@@ -177,12 +189,6 @@
 + (NSURL *)dealsToBuyListWithPageNumber:(NSUInteger)page
 {
     NSString *url = [SERVER_URL stringByAppendingFormat:@"purchases/buyer?page=%d&size=%d", (int)page, ITEMS_PAGE_SIZE];
-    return [NSURL URLWithString:url];
-}
-
-+ (NSURL *)chatURL
-{
-    NSString *url = [SERVER_URL stringByAppendingFormat:@"items/discuss"];
     return [NSURL URLWithString:url];
 }
 

@@ -14,6 +14,5 @@
 
 - (instancetype)initWithItem:(UBCGoodDM *)item;
 - (instancetype)initWithDeal:(UBCDealDM *)deal;
-- (instancetype)initWithURL:(NSURL *)url appURL:(NSURL *)appURL;
 
 @end
