@@ -11,7 +11,6 @@
 #import "UBCPhotoCollectionViewCell.h"
 #import "UBCGoodsCollectionView.h"
 #import "HUBNavigationBarView.h"
-#import "UBCChatController.h"
 #import "UBCInfoLabel.h"
 #import "UBCGoodDM.h"
 #import "UBCKeyChain.h"

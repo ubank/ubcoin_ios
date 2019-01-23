@@ -85,7 +85,6 @@
 		8979E81221134EEB004B2473 /* UBCDealsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8979E81121134EEB004B2473 /* UBCDealsController.m */; };
 		8979E81521135EEB004B2473 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8979E81721135EEB004B2473 /* Localizable.strings */; };
 		8979E81D21146DCB004B2473 /* HUBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8979E81C21146DCA004B2473 /* HUBHelper.swift */; };
-		897FB0B121218FDE0060DED6 /* UBCChatController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897FB0B021218FDE0060DED6 /* UBCChatController.m */; };
 		897FB0B52123096B0060DED6 /* UBCMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 897FB0B42123096B0060DED6 /* UBCMapView.m */; };
 		897FB0BC21246C640060DED6 /* UBCAccountSettingsDM.m in Sources */ = {isa = PBXBuildFile; fileRef = 897FB0BB21246C640060DED6 /* UBCAccountSettingsDM.m */; };
 		8980F22A20F3FB800066CF99 /* UBCStarsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980F22920F3FB800066CF99 /* UBCStarsView.m */; };
@@ -138,6 +137,7 @@
 		898751CB20EE6AEA00E2B615 /* UBCURLProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 898751CA20EE6AEA00E2B615 /* UBCURLProvider.m */; };
 		898751CE20EE6D7600E2B615 /* UBCDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 898751CD20EE6D7600E2B615 /* UBCDataProvider.m */; };
 		8989F83021AEB64500890C9E /* UBCSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8989F82F21AEB64500890C9E /* UBCSelectionController.swift */; };
+		898B409821F75C5D005B0133 /* UBCChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B409721F75C5D005B0133 /* UBCChatController.swift */; };
 		8996A43C21789C9B00BCDEBD /* UBCFilterValueSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8996A43B21789C9B00BCDEBD /* UBCFilterValueSelectionCell.swift */; };
 		8996A43F2178C4EB00BCDEBD /* UBCFilterTitleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8996A43D2178C4EB00BCDEBD /* UBCFilterTitleCollectionViewCell.swift */; };
 		8996A4402178C4EB00BCDEBD /* UBCFilterTitleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8996A43E2178C4EB00BCDEBD /* UBCFilterTitleCollectionViewCell.xib */; };
@@ -291,8 +291,6 @@
 		8979E81821135EFC004B2473 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8979E81921135F07004B2473 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8979E81C21146DCA004B2473 /* HUBHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUBHelper.swift; sourceTree = "<group>"; };
-		897FB0AF21218FDE0060DED6 /* UBCChatController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCChatController.h; sourceTree = "<group>"; };
-		897FB0B021218FDE0060DED6 /* UBCChatController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCChatController.m; sourceTree = "<group>"; };
 		897FB0B32123096B0060DED6 /* UBCMapView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCMapView.h; sourceTree = "<group>"; };
 		897FB0B42123096B0060DED6 /* UBCMapView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCMapView.m; sourceTree = "<group>"; };
 		897FB0BA21246C640060DED6 /* UBCAccountSettingsDM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCAccountSettingsDM.h; sourceTree = "<group>"; };
@@ -387,6 +385,7 @@
 		898751CC20EE6D7600E2B615 /* UBCDataProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCDataProvider.h; sourceTree = "<group>"; };
 		898751CD20EE6D7600E2B615 /* UBCDataProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCDataProvider.m; sourceTree = "<group>"; };
 		8989F82F21AEB64500890C9E /* UBCSelectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCSelectionController.swift; sourceTree = "<group>"; };
+		898B409721F75C5D005B0133 /* UBCChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCChatController.swift; sourceTree = "<group>"; };
 		8996A43B21789C9B00BCDEBD /* UBCFilterValueSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCFilterValueSelectionCell.swift; sourceTree = "<group>"; };
 		8996A43D2178C4EB00BCDEBD /* UBCFilterTitleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCFilterTitleCollectionViewCell.swift; sourceTree = "<group>"; };
 		8996A43E2178C4EB00BCDEBD /* UBCFilterTitleCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCFilterTitleCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -788,8 +787,7 @@
 		897FB0AE21218FC10060DED6 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				897FB0AF21218FDE0060DED6 /* UBCChatController.h */,
-				897FB0B021218FDE0060DED6 /* UBCChatController.m */,
+				898B409721F75C5D005B0133 /* UBCChatController.swift */,
 				89B42C8621F0B20B0008ED98 /* UBCMessagesListController.swift */,
 			);
 			path = Chat;
@@ -1634,7 +1632,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" 3e551dafb827affc1eb15acb4316f426af7ed949 510b90b43fdbd4fda2d482d24cca395ae6912ff2c9447a30acca9c9d069495c0";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 3e551dafb827affc1eb15acb4316f426af7ed949 510b90b43fdbd4fda2d482d24cca395ae6912ff2c9447a30acca9c9d069495c0\n";
 		};
 		897FB0A9211EEB200060DED6 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1715,7 +1713,6 @@
 				8987519920EE23A100E2B615 /* UBWaitCell.m in Sources */,
 				890077412119A4E400B6C1C5 /* UBCVerifyEmailController.m in Sources */,
 				898751B320EE2C4100E2B615 /* UBCLoginController.m in Sources */,
-				897FB0B121218FDE0060DED6 /* UBCChatController.m in Sources */,
 				8987517720EE119F00E2B615 /* UBTableHeaderView.m in Sources */,
 				89B42C8721F0B20B0008ED98 /* UBCMessagesListController.swift in Sources */,
 				89BA58CD21652D6800427A8E /* UBCFiltersListController.swift in Sources */,
@@ -1746,6 +1743,7 @@
 				1C1C7222212846B1006BAF32 /* UBCSMapTableViewCell.swift in Sources */,
 				8987519F20EE2A8B00E2B615 /* UBCTabBarController.m in Sources */,
 				8980F22A20F3FB800066CF99 /* UBCStarsView.m in Sources */,
+				898B409821F75C5D005B0133 /* UBCChatController.swift in Sources */,
 				8917239A219C704B0060E719 /* UBCSellerController.swift in Sources */,
 				1CFFFE7E20F230A9003B5AD9 /* main.m in Sources */,
 				89B08E3721283D0200D8B68D /* UBCConfirmationSendCoinsController.m in Sources */,
