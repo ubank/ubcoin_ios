@@ -33,6 +33,7 @@
 "error_unauthorized" = "You should be authorized to use this functionality";
 "error_all_fields_empty" = "Some fields are empty";
 "error_location_not_selected" = "Location not selected";
+"error_invalid_link" = "Invalid link";
 
 "str_market" = "Market";
 "str_favorites" = "Favorites";

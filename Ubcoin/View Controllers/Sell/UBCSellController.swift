@@ -109,7 +109,13 @@ final class UBCSellController: UBViewController {
     private func buttonPressed() {
         guard self.model.isAllParamsNotEmpty(),
             let photoRow = self.model.row(type: .photo) else {
-            UBAlert.show(withTitle: "ui_alert_title_attention", andMessage: "error_all_fields_empty")
+                UBAlert.show(withTitle: "ui_alert_title_attention", andMessage: "error_all_fields_empty")
+                
+                return
+        }
+        
+        guard self.model.isValidURL() else {
+            UBAlert.show(withTitle: "ui_alert_title_attention", andMessage: "error_invalid_link")
             
             return
         }
