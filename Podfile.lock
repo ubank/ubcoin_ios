@@ -35,6 +35,9 @@ PODS:
     - ImageSlideshow/Core (= 1.7.0)
   - ImageSlideshow/Core (1.7.0)
   - INTULocationManager (4.3.2)
+  - MessageInputBar/Core (0.4.1)
+  - MessageKit (2.0.0):
+    - MessageInputBar/Core
   - QRCodeReaderViewController (4.0.2)
   - SDWebImage (4.4.3):
     - SDWebImage/Core (= 4.4.3)
@@ -70,6 +73,7 @@ DEPENDENCIES:
   - GoogleMaps
   - ImageSlideshow
   - INTULocationManager
+  - MessageKit
   - QRCodeReaderViewController
   - TTTAttributedLabel
   - UBGeneralClasses (from `https://github.com/ubank/ub_general_classes_iOS.git`)
@@ -85,6 +89,8 @@ SPEC REPOS:
     - GoogleMaps
     - ImageSlideshow
     - INTULocationManager
+    - MessageInputBar
+    - MessageKit
     - QRCodeReaderViewController
     - SDWebImage
     - TTTAttributedLabel
@@ -108,11 +114,13 @@ SPEC CHECKSUMS:
   GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
   ImageSlideshow: f8eec5e37a980f60923b585ff23b0e140fd24018
   INTULocationManager: e5dc524611b0cd582f473bc56cc8c389adb2f338
+  MessageInputBar: e81c7535347f1f7b923de7080409a535a004b6e4
+  MessageKit: 29c1c87e5a396d2ca7a3f712e5171dc9aba42a1e
   QRCodeReaderViewController: e8f27d035b3e72b1d4b1c61ff66458287e3be0ff
   SDWebImage: c5594f1a19c48d526d321e548902b56b479cd508
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
   UBGeneralClasses: d205ce1ce0a17dc8cc296c79d22a822e5b60edb7
 
-PODFILE CHECKSUM: ffd274b12611c03d633154731afdeddd4249c75b
+PODFILE CHECKSUM: d7761796bbc0b36156e594cc057de82968687c8e
 
 COCOAPODS: 1.5.3

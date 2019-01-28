@@ -10,6 +10,7 @@ target 'Ubcoin' do
     pod 'TTTAttributedLabel'
     pod 'Crashlytics'
     pod 'DGActivityIndicatorView'
+    pod 'MessageKit'
     pod 'Fabric'
     pod 'GoogleMaps'
     pod 'FBSDKCoreKit'
@@ -21,6 +22,12 @@ end
 
 post_install do |installer|
     installer.pods_project.targets.each do |target|
+        if target.name == 'MessageKit' ||
+            target.name == 'MessageInputBar'
+            target.build_configurations.each do |config|
+                config.build_settings['SWIFT_VERSION'] = '4.2'
+            end
+        end
         target.build_configurations.each do |config|
             config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = project_target_version
         end
