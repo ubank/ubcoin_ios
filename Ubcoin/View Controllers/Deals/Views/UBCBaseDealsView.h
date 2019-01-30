@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "UBCDealDM.h"
 
+@class UBCDealDM;
 @class UBCGoodDM;
 @protocol UBCDealsViewDelegate <NSObject>
 
 @optional
-- (void)openChatForItem:(UBCGoodDM *)item;
+- (void)showDeal:(UBCDealDM *)deal;
 - (void)showItem:(UBCGoodDM *)item;
 
 @end

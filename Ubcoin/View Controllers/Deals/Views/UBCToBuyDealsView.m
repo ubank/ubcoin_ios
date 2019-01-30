@@ -64,10 +64,10 @@
 
 - (void)didSelectData:(UBTableViewRowData *)data indexPath:(NSIndexPath *)indexPath
 {
-    if ([self.delegate respondsToSelector:@selector(openChatForItem:)])
+    if ([self.delegate respondsToSelector:@selector(showDeal:)])
     {    
         UBCDealDM *deal = data.data;
-        [self.delegate openChatForItem:deal.item];
+        [self.delegate showDeal:deal];
     }
 }
 

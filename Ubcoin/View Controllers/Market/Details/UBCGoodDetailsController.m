@@ -315,7 +315,7 @@
 {
     if (UBCKeyChain.authorization)
     {
-        UBCChatController *controller = [[UBCChatController alloc] initWithItem:self.good];
+        UBCDealInfoController *controller = [[UBCDealInfoController alloc] initWithItem:self.good];
         [self.navigationController pushViewController:controller animated:YES];
     }
     else
@@ -521,7 +521,7 @@
 
 - (void)didSelectWithDeal:(UBCDealDM *)deal
 {
-    UBCChatController *controller = [[UBCChatController alloc] initWithDeal:deal];
+    UBCDealInfoController *controller = [[UBCDealInfoController alloc] initWithDeal:deal];
     [self.navigationController pushViewController:controller animated:YES];
 }
 
@@ -530,6 +530,12 @@
 - (void)showWithSeller:(UBCSellerDM *)seller
 {
     UBCSellerController *controller = [[UBCSellerController alloc] initWithSeller:seller];
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+- (void)chatWithSeller:(UBCSellerDM *)seller
+{
+    UBCChatController *controller = [[UBCChatController alloc] initWithItem:self.good];
     [self.navigationController pushViewController:controller animated:YES];
 }
 

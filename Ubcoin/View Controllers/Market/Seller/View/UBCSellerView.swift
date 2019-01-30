@@ -11,6 +11,7 @@ import UIKit
 @objc
 protocol UBCSellerViewDelegate: class {
     func show(seller: UBCSellerDM)
+    func chat(seller: UBCSellerDM)
 }
 
 class UBCSellerView: UIView {
@@ -22,6 +23,7 @@ class UBCSellerView: UIView {
     @IBOutlet weak var name: HUBLabel!
     @IBOutlet weak var rating: UBCStarsView!
     @IBOutlet weak var desc: HUBLabel!
+    @IBOutlet weak var chatButton: HUBGeneralButton!
     
     private var seller: UBCSellerDM?
     
@@ -40,6 +42,8 @@ class UBCSellerView: UIView {
         addSubview(contentView)
         self.addConstraints(toFillSubview: contentView)
         
+        chatButton.addTopSeparator()
+        chatButton.titleLabel?.font = UBFont.buttonFont
         avatar.cornerRadius = avatar.height / 2;
     }
     
@@ -61,6 +65,12 @@ class UBCSellerView: UIView {
     @IBAction func showSeller() {
         if let seller = seller {
             delegate?.show(seller: seller)
+        }
+    }
+    
+    @IBAction func showChat() {
+        if let seller = seller {
+            delegate?.chat(seller: seller)
         }
     }
 }

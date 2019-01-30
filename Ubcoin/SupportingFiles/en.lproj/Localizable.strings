@@ -209,3 +209,11 @@
 "str_paste_here_link_to_download_your_file_from_cloud_storage" = "Paste here link to download your file from cloud storage (Google Drive, Dropbox, etc.). Buyers will NOT see this link until escrow service freezes their payment.";
 "str_buyer_receive_the_link_by_email" = "Buyer will receive the link by e-mail after buyer's payment is frozen by escrow service.";
 
+"str_messages" = "Messages";
+"str_no_messages_title" = "No messages";
+"str_no_messages_desc" = "Seems like it’s a sign to start connecting with people";
+"str_purchase" = "Purchase";
+"str_purchase_process_desc" = "After you confirm purchase, Item price will be blocked on your Ubcoin wallet by Ubcoin escrow service. Then you will receive on your email link to download file. You will need to download file and check it. Seller will receive money only after you confirm that file is OK.";
+"str_buy_now" = "Buy now";
+"str_chat_with_seller" = "Chat with seller";
+
