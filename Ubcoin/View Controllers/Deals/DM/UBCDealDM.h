@@ -10,6 +10,8 @@
 #import "UBCGoodDM.h"
 #import "UBCSellerDM.h"
 
+static NSString * const ItemRow = @"item";
+
 static NSString * const DEAL_STATUS_ACTIVE = @"ACTIVE";
 
 @interface UBCDealDM : NSObject
@@ -21,6 +23,7 @@ static NSString * const DEAL_STATUS_ACTIVE = @"ACTIVE";
 @property (readonly, nonatomic) UBCSellerDM *seller;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
+- (NSArray <UBTableViewSectionData *> *)sectionsData;
 - (UBTableViewRowData *)rowData;
 
 @end

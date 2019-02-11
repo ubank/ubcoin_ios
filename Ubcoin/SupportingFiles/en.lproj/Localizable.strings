@@ -173,6 +173,7 @@
 "str_sort_by" = "Sort by";
 "str_placement_date" = "Placement Date";
 "str_item_price" = "Item Price";
+"str_item_price_up" = "ITEM PRICE";
 "str_distance_to_seller" = "Distance to seller";
 "str_clear_all" = "Clear all";
 "str_show_items" = "Show items";
@@ -216,4 +217,9 @@
 "str_purchase_process_desc" = "After you confirm purchase, Item price will be blocked on your Ubcoin wallet by Ubcoin escrow service. Then you will receive on your email link to download file. You will need to download file and check it. Seller will receive money only after you confirm that file is OK.";
 "str_buy_now" = "Buy now";
 "str_chat_with_seller" = "Chat with seller";
-
+"str_progress_up" = "PROGRESS";
+"str_currency_up" = "CURRENCY";
+"str_your_balance" = "Your balance";
+"str_purcahse_rules_description" = "We will block the ETH or UBC amount on your Ubcoin wallet. Seller will receive money only after you get the item in your hands.";
+"str_attention_commission" = "ATTENTION: We take commission 2% for buying in ETH.";
+"str_confirm_in" = "Confirm in";

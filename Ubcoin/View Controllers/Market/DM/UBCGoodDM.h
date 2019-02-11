@@ -42,6 +42,7 @@ static NSString * const kNotificationItemChanged = @"kNotificationItemChanged";
 @property (readonly, nonatomic) NSString *currency;
 @property (readonly, nonatomic) NSDate *creationDate;
 @property (readonly, nonatomic) NSArray *images;
+@property (readonly, nonatomic) NSString *imageURL;
 @property (readonly, nonatomic) CLLocation *location;
 @property (readonly, nonatomic) NSString *locationText;
 @property (readonly, nonatomic) NSString *condition;

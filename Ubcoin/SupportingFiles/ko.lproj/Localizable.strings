@@ -172,6 +172,7 @@
 "str_sort_by" = "분류방식";
 "str_placement_date" = "게시일";
 "str_item_price" = "물건가격";
+"str_item_price_up" = "물건가격";
 "str_distance_to_seller" = "판매자와의 거리";
 "str_clear_all" = "취소";
 "str_show_items" = "%아이템 보여주기";

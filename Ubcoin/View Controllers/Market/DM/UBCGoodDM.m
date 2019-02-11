@@ -62,6 +62,11 @@
 
 #pragma mark -
 
+- (NSString *)imageURL
+{
+    return self.images.firstObject;
+}
+
 - (BOOL)isMyItem
 {
     UBCUserDM *user = [UBCUserDM loadProfile];

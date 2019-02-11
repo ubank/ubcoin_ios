@@ -6,6 +6,7 @@
 
 #import "UBCUserDM.h"
 #import "UBCDealDM.h"
+#import "UBCBalanceDM.h"
 #import "UBCCategoryDM.h"
 
 #import "UBCLoginController.h"

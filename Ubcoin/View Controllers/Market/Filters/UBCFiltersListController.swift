@@ -13,7 +13,7 @@ class UBCFiltersListController: UBViewController {
     @objc var completion: ((UBCFilterDM) -> Void)?
     private var task: URLSessionDataTask?
     private var model: UBCFilterDM
-    private lazy var tableView: UBDefaultTableView = { [unowned self] in
+    private lazy var tableView: UBDefaultTableView = {
         let tableView = UBDefaultTableView(frame: .zero, style: .grouped)
         
         tableView.actionDelegate = self

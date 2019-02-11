@@ -172,6 +172,7 @@
 "str_sort_by" = "Sortir dengan";
 "str_placement_date" = "Tanggal Penempatan";
 "str_item_price" = "Harga barang";
+"str_item_price_up" = "HARGA BARANG";
 "str_distance_to_seller" = "Jarak ke penjual";
 "str_clear_all" = "Bersihkan semua";
 "str_show_items" = "Tampilkan barang";

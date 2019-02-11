@@ -10,27 +10,34 @@ import UIKit
 
 class UBCDealInfoController: UBViewController {
 
-    private var item: UBCGoodDM?
-    private var deal: UBCDealDM?
-    private var content = [UBTableViewRowData]()
+    @IBOutlet weak var itemIcon: UIImageView!
+    @IBOutlet weak var itemTitle: HUBLabel!
+    @IBOutlet weak var itemDesc: HUBLabel!
     
-    private lazy var tableView: UBDefaultTableView = {
-        let tableView = UBDefaultTableView()
-        tableView.actionDelegate = self
-        
-        return tableView
-    }()
+    @IBOutlet weak var statusTitle: HUBLabel!
+    @IBOutlet weak var statusDesc: HUBLabel!
+    
+    @IBOutlet weak var sellerView: UBCSellerView!
+    
+    @IBOutlet weak var progressContainerView: UIView!
+    
+    @IBOutlet weak var paymentContainerView: UIView!
+    @IBOutlet weak var itemPrice: HUBLabel!
+    
+    
+    private var purchaseDM: UBCPurchaseDM?
+    private var content = [UBTableViewRowData]()
 
     @objc convenience init(item: UBCGoodDM) {
         self.init()
         
-        self.item = item
+        self.purchaseDM = UBCPurchaseDM(item: item)
     }
 
     @objc convenience init(deal: UBCDealDM) {
         self.init()
         
-        self.deal = deal
+        self.purchaseDM = UBCPurchaseDM(deal: deal)
     }
 
     override func viewDidLoad() {
@@ -38,20 +45,60 @@ class UBCDealInfoController: UBViewController {
 
         self.title = "str_purchase"
         
-        setupTableView()
+        setupViews()
+        setupContent()
     }
     
-    private func setupTableView() {
-        view.addSubview(tableView)
-        view.addConstraints(toFillSubview: tableView)
+    private func setupViews() {
+        itemIcon.cornerRadius = 5
+        sellerView.delegate = self
+    }
+    
+    private func setupContent() {
+        guard let purchaseDM = purchaseDM else { return }
         
-        tableView.backgroundColor = UBColor.backgroundColor
+        if let item = purchaseDM.item {
+            let itemIconURL = URL(string: item.imageURL ?? "")
+            itemIcon.sd_setImage(with: itemIconURL, completed: nil)
+            itemTitle.text = item.title
+            let itemPriceString = String(format: "%@ UBC / %@ ETH", item.price.priceString, item.priceInETH.coinsPriceString)
+            itemDesc.text = itemPriceString
+            itemPrice.text = itemPriceString
+        }
+        
+        statusTitle.text = purchaseDM.longStatusTitle
+        statusTitle.isHidden = statusTitle.text?.isEmpty == true
+        statusDesc.text = purchaseDM.longStatusDesc
+        statusDesc.isHidden = statusDesc.text?.isEmpty == true
+        
+        sellerView.setup(seller: purchaseDM.item?.seller)
+        progressContainerView.isHidden = true
+    }
+    
+    //MARK: - Actions
+    
+    @IBAction func showItem() {
+        if let controller = UBCGoodDetailsController(good: purchaseDM?.item) {        
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
     }
 }
 
-extension UBCDealInfoController: UBDefaultTableViewDelegate {
+extension UBCDealInfoController: UBCSellerViewDelegate {
+    func show(seller: UBCSellerDM) {
+        let controller = UBCSellerController(seller: seller)
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
     
-    func didSelect(_ data: UBTableViewRowData!, indexPath: IndexPath!) {
+    func chat(seller: UBCSellerDM) {
+        if let controller = UBCChatController(item: purchaseDM?.item) {
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
+    }
+}
+
+extension UBCDealInfoController: UBCCurrencySelectionViewDelegate {
+    func confirm(currency: String) {
         
     }
 }
