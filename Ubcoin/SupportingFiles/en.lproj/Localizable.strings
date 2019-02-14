@@ -223,3 +223,10 @@
 "str_purcahse_rules_description" = "We will block the ETH or UBC amount on your Ubcoin wallet. Seller will receive money only after you get the item in your hands.";
 "str_attention_commission" = "ATTENTION: We take commission 2% for buying in ETH.";
 "str_confirm_in" = "Confirm in";
+"str_seller_location" = "Seller location";
+"str_seller_location_up" = "SELLER LOCATION";
+"str_item_will_be_delivered_to_me" = "Item will be delivered to me";
+"str_by_courier_or_a_delivery_service" = "by courier or a delivery service";
+"str_i_will_meet_seller_in_person" = "I will meet seller in person";
+"str_for_a_handshake" = "for a handshake";
+

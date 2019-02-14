@@ -14,6 +14,8 @@ class UBCDealInfoController: UBViewController {
     @IBOutlet weak var itemTitle: HUBLabel!
     @IBOutlet weak var itemDesc: HUBLabel!
     
+    @IBOutlet weak var deliveryView: UBCDeliverySelectionView!
+    
     @IBOutlet weak var statusTitle: HUBLabel!
     @IBOutlet weak var statusDesc: HUBLabel!
     
@@ -61,9 +63,12 @@ class UBCDealInfoController: UBViewController {
             let itemIconURL = URL(string: item.imageURL ?? "")
             itemIcon.sd_setImage(with: itemIconURL, completed: nil)
             itemTitle.text = item.title
+            
             let itemPriceString = String(format: "%@ UBC / %@ ETH", item.price.priceString, item.priceInETH.coinsPriceString)
             itemDesc.text = itemPriceString
             itemPrice.text = itemPriceString
+            
+            deliveryView.setup(item: item)
         }
         
         statusTitle.text = purchaseDM.longStatusTitle
@@ -98,7 +103,16 @@ extension UBCDealInfoController: UBCSellerViewDelegate {
 }
 
 extension UBCDealInfoController: UBCCurrencySelectionViewDelegate {
+    
     func confirm(currency: String) {
         
+    }
+}
+
+extension UBCDealInfoController: UBCDeliverySelectionViewDelegate {
+   
+    func showSellerLocation() {
+        let controller = UBCMapSelectController(title: "str_seller_location", location: purchaseDM?.item?.location)
+        self.navigationController?.pushViewController(controller, animated: true)
     }
 }

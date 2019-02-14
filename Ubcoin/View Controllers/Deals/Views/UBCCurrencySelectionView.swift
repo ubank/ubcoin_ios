@@ -81,6 +81,8 @@ class UBCCurrencySelectionView: UIView {
     }
     
     @IBAction func confirm() {
-        
+        if let delegate = delegate {
+            delegate.confirm(currency: currency)
+        }
     }
 }

@@ -46,6 +46,7 @@
 		8900775A211B688200B6C1C5 /* UBCDealCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89007759211B688200B6C1C5 /* UBCDealCell.m */; };
 		89007764211DAB0C00B6C1C5 /* UBCResetPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89007762211DAB0C00B6C1C5 /* UBCResetPasswordController.m */; };
 		89007765211DAB0C00B6C1C5 /* UBCResetPasswordController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89007763211DAB0C00B6C1C5 /* UBCResetPasswordController.xib */; };
+		89043B6D2215722F00A740BC /* UBCDeliveryMethodSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89043B6C2215722F00A740BC /* UBCDeliveryMethodSelectionView.swift */; };
 		8915760B2200A0DB00DB55CC /* UBCPurchaseDM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8915760A2200A0DB00DB55CC /* UBCPurchaseDM.swift */; };
 		8915760D22030A1500DB55CC /* UBCDealInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8915760C22030A1500DB55CC /* UBCDealInfoController.xib */; };
 		8915D05E21A307C0008D1BA2 /* UBCSellerCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8915D05C21A307C0008D1BA2 /* UBCSellerCollectionReusableView.swift */; };
@@ -60,6 +61,7 @@
 		8919AB582125DF6B00D1B59C /* UBCBalanceDM.m in Sources */ = {isa = PBXBuildFile; fileRef = 8919AB572125DF6B00D1B59C /* UBCBalanceDM.m */; };
 		891F08CE2167DED900160B04 /* UBCFilterDM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891F08CD2167DED900160B04 /* UBCFilterDM.swift */; };
 		893672CC214AB36E004F31FE /* NSNumber+UBC.m in Sources */ = {isa = PBXBuildFile; fileRef = 893672CB214AB36D004F31FE /* NSNumber+UBC.m */; };
+		8958A74422131216006323FB /* UBCDeliverySelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8958A74322131216006323FB /* UBCDeliverySelectionView.swift */; };
 		895B2E9321FF5FBC003FD000 /* UBCDealInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895B2E9221FF5FBC003FD000 /* UBCDealInfoController.swift */; };
 		89678D9E210CED2900EB715E /* UBCStartLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89678D9D210CED2900EB715E /* UBCStartLoginController.swift */; };
 		89678DA1210CF12600EB715E /* UBCSignUpController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89678DA0210CF12600EB715E /* UBCSignUpController.m */; };
@@ -232,6 +234,7 @@
 		89007761211DAB0C00B6C1C5 /* UBCResetPasswordController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCResetPasswordController.h; sourceTree = "<group>"; };
 		89007762211DAB0C00B6C1C5 /* UBCResetPasswordController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCResetPasswordController.m; sourceTree = "<group>"; };
 		89007763211DAB0C00B6C1C5 /* UBCResetPasswordController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCResetPasswordController.xib; sourceTree = "<group>"; };
+		89043B6C2215722F00A740BC /* UBCDeliveryMethodSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCDeliveryMethodSelectionView.swift; sourceTree = "<group>"; };
 		8915760A2200A0DB00DB55CC /* UBCPurchaseDM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCPurchaseDM.swift; sourceTree = "<group>"; };
 		8915760C22030A1500DB55CC /* UBCDealInfoController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCDealInfoController.xib; sourceTree = "<group>"; };
 		8915D05C21A307C0008D1BA2 /* UBCSellerCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCSellerCollectionReusableView.swift; sourceTree = "<group>"; };
@@ -250,6 +253,7 @@
 		891F08CD2167DED900160B04 /* UBCFilterDM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCFilterDM.swift; sourceTree = "<group>"; };
 		893672CA214AB36D004F31FE /* NSNumber+UBC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSNumber+UBC.h"; sourceTree = "<group>"; };
 		893672CB214AB36D004F31FE /* NSNumber+UBC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+UBC.m"; sourceTree = "<group>"; };
+		8958A74322131216006323FB /* UBCDeliverySelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCDeliverySelectionView.swift; sourceTree = "<group>"; };
 		895B2E9221FF5FBC003FD000 /* UBCDealInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCDealInfoController.swift; sourceTree = "<group>"; };
 		89678D9D210CED2900EB715E /* UBCStartLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCStartLoginController.swift; sourceTree = "<group>"; };
 		89678D9F210CF12600EB715E /* UBCSignUpController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCSignUpController.h; sourceTree = "<group>"; };
@@ -564,6 +568,8 @@
 			children = (
 				89BB382522087982007CE470 /* Deals */,
 				89BB382322087979007CE470 /* UBCCurrencySelectionView.swift */,
+				8958A74322131216006323FB /* UBCDeliverySelectionView.swift */,
+				89043B6C2215722F00A740BC /* UBCDeliveryMethodSelectionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1795,6 +1801,7 @@
 				89678DEB2112424E00EB715E /* DBPasswordStrengthMeterView.m in Sources */,
 				89AD7CF2214862700015A2D2 /* UBCMarketsListController.swift in Sources */,
 				8987516D20EE119F00E2B615 /* HUBScrollView.m in Sources */,
+				8958A74422131216006323FB /* UBCDeliverySelectionView.swift in Sources */,
 				89BB382422087979007CE470 /* UBCCurrencySelectionView.swift in Sources */,
 				89678DE92112424E00EB715E /* DBZxcvbn.m in Sources */,
 				89678DA5210CF75500EB715E /* UBCUserDM.m in Sources */,
@@ -1818,6 +1825,7 @@
 				89B08E3C21284BA500D8B68D /* UBCPaymentDM.m in Sources */,
 				8987517520EE119F00E2B615 /* UBExpandableTableViewSectionHeader.m in Sources */,
 				89BB382C22087FB8007CE470 /* UBCBaseDealsView.m in Sources */,
+				89043B6D2215722F00A740BC /* UBCDeliveryMethodSelectionView.swift in Sources */,
 				89BA58D22166251200427A8E /* UBCFiltersView.swift in Sources */,
 				1C14F19F20F2655800B835AC /* UBCMapSelectController.swift in Sources */,
 				89678DA9210DE28600EB715E /* UBCToast.m in Sources */,
