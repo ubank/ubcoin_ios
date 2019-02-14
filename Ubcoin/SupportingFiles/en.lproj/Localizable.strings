@@ -229,4 +229,8 @@
 "str_by_courier_or_a_delivery_service" = "by courier or a delivery service";
 "str_i_will_meet_seller_in_person" = "I will meet seller in person";
 "str_for_a_handshake" = "for a handshake";
-
+"str_please_top_up_your_balance" = "Please top up your balance.";
+"str_you_don_have_enough_eth_on_your_wallet" = "You don’t have enough ETH on your wallet.";
+"str_you_don_have_enough_ubc_on_your_wallet" = "You don’t have enough UBC on your wallet.";
+"str_confirm_purchase" = "Confirm purchase?";
+"str_will_be_blocked_on_your_wallet" = "will be blocked on your wallet.";

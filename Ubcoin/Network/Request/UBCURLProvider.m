@@ -200,6 +200,14 @@
     return [NSURL URLWithString:url];
 }
 
++ (NSURL *)buyItem
+{
+    NSString *url = [SERVER_URL stringByAppendingString:@"items/buy"];
+    
+    return [NSURL URLWithString:url];
+}
+
+
 #pragma mark -
 
 + (NSString *)addUserLocationToURL:(NSString *)url

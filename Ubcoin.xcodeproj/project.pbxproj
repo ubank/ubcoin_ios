@@ -47,6 +47,7 @@
 		89007764211DAB0C00B6C1C5 /* UBCResetPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89007762211DAB0C00B6C1C5 /* UBCResetPasswordController.m */; };
 		89007765211DAB0C00B6C1C5 /* UBCResetPasswordController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89007763211DAB0C00B6C1C5 /* UBCResetPasswordController.xib */; };
 		89043B6D2215722F00A740BC /* UBCDeliveryMethodSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89043B6C2215722F00A740BC /* UBCDeliveryMethodSelectionView.swift */; };
+		89043B6F2215B8AF00A740BC /* UBCPurchaseProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89043B6E2215B8AF00A740BC /* UBCPurchaseProgressView.swift */; };
 		8915760B2200A0DB00DB55CC /* UBCPurchaseDM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8915760A2200A0DB00DB55CC /* UBCPurchaseDM.swift */; };
 		8915760D22030A1500DB55CC /* UBCDealInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8915760C22030A1500DB55CC /* UBCDealInfoController.xib */; };
 		8915D05E21A307C0008D1BA2 /* UBCSellerCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8915D05C21A307C0008D1BA2 /* UBCSellerCollectionReusableView.swift */; };
@@ -235,6 +236,7 @@
 		89007762211DAB0C00B6C1C5 /* UBCResetPasswordController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBCResetPasswordController.m; sourceTree = "<group>"; };
 		89007763211DAB0C00B6C1C5 /* UBCResetPasswordController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCResetPasswordController.xib; sourceTree = "<group>"; };
 		89043B6C2215722F00A740BC /* UBCDeliveryMethodSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCDeliveryMethodSelectionView.swift; sourceTree = "<group>"; };
+		89043B6E2215B8AF00A740BC /* UBCPurchaseProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCPurchaseProgressView.swift; sourceTree = "<group>"; };
 		8915760A2200A0DB00DB55CC /* UBCPurchaseDM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCPurchaseDM.swift; sourceTree = "<group>"; };
 		8915760C22030A1500DB55CC /* UBCDealInfoController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCDealInfoController.xib; sourceTree = "<group>"; };
 		8915D05C21A307C0008D1BA2 /* UBCSellerCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCSellerCollectionReusableView.swift; sourceTree = "<group>"; };
@@ -570,6 +572,7 @@
 				89BB382322087979007CE470 /* UBCCurrencySelectionView.swift */,
 				8958A74322131216006323FB /* UBCDeliverySelectionView.swift */,
 				89043B6C2215722F00A740BC /* UBCDeliveryMethodSelectionView.swift */,
+				89043B6E2215B8AF00A740BC /* UBCPurchaseProgressView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1788,6 +1791,7 @@
 				89CB110F20EFCDA500729C95 /* HUBCollectionViewWaitCell.m in Sources */,
 				89AE1A7320F7FDF3000662E8 /* UBCFavouriteCell.m in Sources */,
 				1CFFFE6420F0CB3E003B5AD9 /* UBCSPhotoTableViewCell.swift in Sources */,
+				89043B6F2215B8AF00A740BC /* UBCPurchaseProgressView.swift in Sources */,
 				89BA58D621662CA300427A8E /* UBCFilterCollectionViewCell.swift in Sources */,
 				8980F24720F505550066CF99 /* UBCCategoryDM.m in Sources */,
 				891F08CE2167DED900160B04 /* UBCFilterDM.swift in Sources */,

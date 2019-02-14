@@ -17,6 +17,14 @@ class UBCDeliverySelectionView: UIView {
 
     @IBOutlet weak var delegate: UBCDeliverySelectionViewDelegate?
     
+    var isDelivery: Bool {
+        return footerView.isDelivery
+    }
+    
+    private(set) lazy var footerView: UBCDeliveryMethodSelectionView = {
+            return UBCDeliveryMethodSelectionView()
+    }()
+    
     private(set) lazy var tableView: UBDefaultTableView = {
         let tableView = UBDefaultTableView(frame: .zero, style: .grouped)
         
@@ -33,7 +41,7 @@ class UBCDeliverySelectionView: UIView {
         addSubview(tableView)
         addConstraints(toFillSubview: tableView)
         
-        setupFooter()
+        tableView.tableFooterView = footerView
     }
     
     func setup(item: UBCGoodDM) {
@@ -50,11 +58,6 @@ class UBCDeliverySelectionView: UIView {
         section.rows = [row]
         
         tableView.update(withSectionsData: [section])
-    }
-    
-    private func setupFooter() {
-        let footerView = UBCDeliveryMethodSelectionView()
-        tableView.tableFooterView = footerView
     }
 }
 

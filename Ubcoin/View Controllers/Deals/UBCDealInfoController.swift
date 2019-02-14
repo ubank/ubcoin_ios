@@ -69,6 +69,7 @@ class UBCDealInfoController: UBViewController {
             itemPrice.text = itemPriceString
             
             deliveryView.setup(item: item)
+            deliveryView.isHidden = item.isDigital
         }
         
         statusTitle.text = purchaseDM.longStatusTitle
@@ -85,6 +86,17 @@ class UBCDealInfoController: UBViewController {
     @IBAction func showItem() {
         if let controller = UBCGoodDetailsController(good: purchaseDM?.item) {        
             self.navigationController?.pushViewController(controller, animated: true)
+        }
+    }
+    
+    private func confirmPurchase(currency: String) {
+        guard let item = purchaseDM?.item else { return }
+        
+        startActivityIndicator()
+        UBCDataProvider.shared.buyItem(item.id,
+                                       isDelivery: deliveryView.isDelivery,
+                                       currency: currency) { [weak self] success, deal in
+                                        self?.stopActivityIndicator()
         }
     }
 }
@@ -104,8 +116,40 @@ extension UBCDealInfoController: UBCSellerViewDelegate {
 
 extension UBCDealInfoController: UBCCurrencySelectionViewDelegate {
     
-    func confirm(currency: String) {
+    func confirm(isETH: Bool, currency: String) {
         
+        guard let balance = UBCBalanceDM.loadBalance(),
+            let item = purchaseDM?.item else { return }
+        
+        if isETH {
+            if balance.amountETH.doubleValue > item.priceInETH.doubleValue {
+                let title = item.priceInETH.coinsPriceString + " ETH " + "str_will_be_blocked_on_your_wallet".localizedString()
+                UBAlert.show(withTitle: title,
+                             andMessage: "str_confirm_purchase".localizedString(),
+                             titleButtonMain: "str_confirm",
+                             titleButtonCancel: "ui_button_cancel") { index in
+                                if index != CANCEL_INDEX {
+                                    self.confirmPurchase(currency: currency)
+                                }
+                }
+            } else {
+                UBAlert.show(withTitle: "str_please_top_up_your_balance", andMessage: "str_you_don_have_enough_eth_on_your_wallet")
+            }
+        } else {
+            if balance.amountUBC.doubleValue > item.price.doubleValue {
+                let title = item.price.priceString + " UBC " + "str_will_be_blocked_on_your_wallet".localizedString()
+                UBAlert.show(withTitle: title,
+                             andMessage: "str_confirm_purchase".localizedString(),
+                             titleButtonMain: "str_confirm",
+                             titleButtonCancel: "ui_button_cancel") { index in
+                                if index != CANCEL_INDEX {
+                                    self.confirmPurchase(currency: currency)
+                                }
+                }
+            } else {
+                UBAlert.show(withTitle: "str_please_top_up_your_balance", andMessage: "str_you_don_have_enough_ubc_on_your_wallet")
+            }
+        }
     }
 }
 

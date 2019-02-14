@@ -686,5 +686,22 @@
      }];
 }
 
+- (void)buyItem:(NSString *)itemID isDelivery:(BOOL)isDelivery currency:(NSString *)currency withCompletionBlock:(void (^)(BOOL, UBCDealDM *))completionBlock
+{
+    NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider buyItem]
+                                                                andParams:@{@"itemId": itemID,
+                                                                            @"withDelivery": @(isDelivery),
+                                                                            @"currencyType": currency}];
+    
+    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (completionBlock)
+         {
+             UBCDealDM *deal = [UBCDealDM.alloc initWithDictionary:[responseObject removeNulls]];
+             completionBlock(success, deal);
+         }
+     }];
+}
+    
 @end
 

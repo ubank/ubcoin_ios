@@ -10,7 +10,7 @@ import UIKit
 
 @objc
 protocol UBCCurrencySelectionViewDelegate {
-    func confirm(currency: String)
+    func confirm(isETH: Bool, currency: String)
 }
 
 class UBCCurrencySelectionView: UIView {
@@ -82,7 +82,7 @@ class UBCCurrencySelectionView: UIView {
     
     @IBAction func confirm() {
         if let delegate = delegate {
-            delegate.confirm(currency: currency)
+            delegate.confirm(isETH: isETH, currency: currency)
         }
     }
 }

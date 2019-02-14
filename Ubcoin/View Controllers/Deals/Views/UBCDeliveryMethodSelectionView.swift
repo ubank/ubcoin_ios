@@ -12,7 +12,7 @@ class UBCDeliveryMethodSelectionView: UIView {
 
     static let delivery = "delivery"
     
-    private var isDelivery: Bool = false
+    var isDelivery: Bool = true
     private(set) lazy var tableView: UBDefaultTableView = {
         let tableView = UBDefaultTableView(frame: .zero, style: .grouped)
         
