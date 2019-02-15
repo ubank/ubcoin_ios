@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UBCDealInfoController" customModule="Ubcoin" customModuleProvider="target">
             <connections>
+                <outlet property="actionButton" destination="A1P-qz-HXo" id="rrB-3c-djM"/>
                 <outlet property="deliveryView" destination="Rxk-hU-QQx" id="9sY-Aq-Nlz"/>
                 <outlet property="itemDesc" destination="HOD-Qx-RHO" id="f28-CU-8IW"/>
                 <outlet property="itemIcon" destination="o57-xG-3eQ" id="195-V0-Ltx"/>
@@ -34,10 +35,10 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fZe-5b-7Ff">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="1321"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="1381"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="GeS-75-6mf">
-                                    <rect key="frame" x="0.0" y="10" width="375" height="1311"/>
+                                    <rect key="frame" x="0.0" y="10" width="375" height="1371"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QX9-wY-2RY">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
@@ -427,6 +428,21 @@
                                                 <constraint firstItem="4pg-OA-G4J" firstAttribute="top" secondItem="xRc-SI-FJb" secondAttribute="bottom" id="o7f-yj-NGS"/>
                                             </constraints>
                                         </view>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A1P-qz-HXo" customClass="HUBGeneralButton">
+                                            <rect key="frame" x="0.0" y="1321" width="375" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="Jb5-ii-7DV"/>
+                                            </constraints>
+                                            <state key="normal" title="Button"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="type">
+                                                    <integer key="value" value="6"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="footerAction" destination="-1" eventType="touchUpInside" id="N0d-xc-Pph"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </stackView>

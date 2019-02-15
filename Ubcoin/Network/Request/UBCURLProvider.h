@@ -50,5 +50,6 @@
 + (NSURL *)sellItem;
 
 + (NSURL *)buyItem;
++ (NSURL *)cancelDeal:(NSString *)dealID;
 
 @end

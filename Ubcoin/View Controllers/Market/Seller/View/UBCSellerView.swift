@@ -47,11 +47,12 @@ class UBCSellerView: UIView {
         avatar.cornerRadius = avatar.height / 2;
     }
     
-    @objc func setup(seller: UBCSellerDM?) {
+    @objc func setup(seller: UBCSellerDM?, isSeller: Bool) {
         self.seller = seller
         
         guard let seller = seller else { return }
         
+        chatButton.title = isSeller ? "str_chat_with_seller".localizedString() : "str_chat_with_buyer".localizedString()
         avatar.sd_setImage(with: URL(string: seller.avatarURL ?? ""),
                            placeholderImage: UIImage(named: "def_prof"),
                            options: [],

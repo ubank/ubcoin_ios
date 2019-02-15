@@ -217,6 +217,7 @@
 "str_purchase_process_desc" = "After you confirm purchase, Item price will be blocked on your Ubcoin wallet by Ubcoin escrow service. Then you will receive on your email link to download file. You will need to download file and check it. Seller will receive money only after you confirm that file is OK.";
 "str_buy_now" = "Buy now";
 "str_chat_with_seller" = "Chat with seller";
+"str_chat_with_buyer" = "Chat with buyer";
 "str_progress_up" = "PROGRESS";
 "str_currency_up" = "CURRENCY";
 "str_your_balance" = "Your balance";
@@ -234,3 +235,4 @@
 "str_you_don_have_enough_ubc_on_your_wallet" = "You don’t have enough UBC on your wallet.";
 "str_confirm_purchase" = "Confirm purchase?";
 "str_will_be_blocked_on_your_wallet" = "will be blocked on your wallet.";
+"str_cancel_the_deal" = "Cancel the deal";

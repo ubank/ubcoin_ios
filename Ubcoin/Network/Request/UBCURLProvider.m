@@ -207,6 +207,12 @@
     return [NSURL URLWithString:url];
 }
 
++ (NSURL *)cancelDeal:(NSString *)dealID
+{
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"purchases/cancel/%@", dealID];
+    
+    return [NSURL URLWithString:url];
+}
 
 #pragma mark -
 

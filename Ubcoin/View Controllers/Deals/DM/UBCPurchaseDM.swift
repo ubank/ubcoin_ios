@@ -10,19 +10,27 @@ import UIKit
 
 class UBCPurchaseDM: NSObject {
 
+    var isPurchase: Bool = false
     var item: UBCGoodDM?
-    private var deal: UBCDealDM?
+    var deal: UBCDealDM?
     
     var longStatusTitle: String? {
-        get {
-            return ""
-        }
+        return ""
     }
     
     var longStatusDesc: String? {
-        get {
-            return "str_purchase_process_desc".localizedString()
+        return "str_purchase_process_desc".localizedString()
+    }
+    
+    var actionButtonTitle: String {
+        return "str_cancel_the_deal".localizedString()
+    }
+    
+    var seller: UBCSellerDM? {
+        if let seller = item?.seller {
+            return seller
         }
+        return deal?.seller
     }
     
     @objc convenience init(item: UBCGoodDM) {
@@ -36,5 +44,6 @@ class UBCPurchaseDM: NSObject {
         
         self.deal = deal
         self.item = deal.item
+        self.isPurchase = true
     }
 }

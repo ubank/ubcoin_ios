@@ -281,7 +281,7 @@
         self.sellerSectionView.hidden = NO;
         self.buyersView.hidden = YES;
         
-        [self.sellerView setupWithSeller:self.good.seller];
+        [self.sellerView setupWithSeller:self.good.seller isSeller:YES];
     }
 }
 

@@ -702,6 +702,19 @@
          }
      }];
 }
+
+- (void)cancelDeal:(NSString *)dealID withCompletionBlock:(void (^)(BOOL))completionBlock
+{
+    NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider cancelDeal:dealID] andParams:@{}];
     
+    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (completionBlock)
+         {
+             completionBlock(success);
+         }
+     }];
+}
+
 @end
 

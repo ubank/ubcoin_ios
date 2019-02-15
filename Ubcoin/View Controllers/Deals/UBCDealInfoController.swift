@@ -26,6 +26,7 @@ class UBCDealInfoController: UBViewController {
     @IBOutlet weak var paymentContainerView: UIView!
     @IBOutlet weak var itemPrice: HUBLabel!
     
+    @IBOutlet weak var actionButton: HUBGeneralButton!
     
     private var purchaseDM: UBCPurchaseDM?
     private var content = [UBTableViewRowData]()
@@ -60,6 +61,7 @@ class UBCDealInfoController: UBViewController {
         guard let purchaseDM = purchaseDM else { return }
         
         if let item = purchaseDM.item {
+            
             let itemIconURL = URL(string: item.imageURL ?? "")
             itemIcon.sd_setImage(with: itemIconURL, completed: nil)
             itemTitle.text = item.title
@@ -69,16 +71,22 @@ class UBCDealInfoController: UBViewController {
             itemPrice.text = itemPriceString
             
             deliveryView.setup(item: item)
-            deliveryView.isHidden = item.isDigital
+            deliveryView.isHidden = item.isDigital || purchaseDM.isPurchase
+    
+            let person = item.isMyItem ? purchaseDM.deal?.buyer : purchaseDM.seller
+            sellerView.setup(seller: person, isSeller: !item.isMyItem)
         }
         
         statusTitle.text = purchaseDM.longStatusTitle
         statusTitle.isHidden = statusTitle.text?.isEmpty == true
         statusDesc.text = purchaseDM.longStatusDesc
         statusDesc.isHidden = statusDesc.text?.isEmpty == true
+
+        paymentContainerView.isHidden = purchaseDM.isPurchase
+        progressContainerView.isHidden = !purchaseDM.isPurchase
         
-        sellerView.setup(seller: purchaseDM.item?.seller)
-        progressContainerView.isHidden = true
+        actionButton.isHidden = !purchaseDM.isPurchase
+        actionButton.title = purchaseDM.actionButtonTitle
     }
     
     //MARK: - Actions
@@ -86,6 +94,20 @@ class UBCDealInfoController: UBViewController {
     @IBAction func showItem() {
         if let controller = UBCGoodDetailsController(good: purchaseDM?.item) {        
             self.navigationController?.pushViewController(controller, animated: true)
+        }
+    }
+    
+    @IBAction func footerAction() {
+        
+        guard let deal = purchaseDM?.deal else { return }
+        
+        startActivityIndicator()
+        UBCDataProvider.shared.cancelDeal(deal.id) { [weak self] success in
+            self?.stopActivityIndicator()
+            
+            if success {
+                self?.navigationController?.popViewController(animated: true)
+            }
         }
     }
     
@@ -97,6 +119,11 @@ class UBCDealInfoController: UBViewController {
                                        isDelivery: deliveryView.isDelivery,
                                        currency: currency) { [weak self] success, deal in
                                         self?.stopActivityIndicator()
+                                        
+                                        if let deal = deal {
+                                            self?.purchaseDM = UBCPurchaseDM(deal: deal)
+                                            self?.setupContent()
+                                        }
         }
     }
 }
