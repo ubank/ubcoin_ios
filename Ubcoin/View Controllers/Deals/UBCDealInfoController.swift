@@ -10,6 +10,7 @@ import UIKit
 
 class UBCDealInfoController: UBViewController {
 
+    @IBOutlet weak var scroll: UIScrollView!
     @IBOutlet weak var itemIcon: UIImageView!
     @IBOutlet weak var itemTitle: HUBLabel!
     @IBOutlet weak var itemDesc: HUBLabel!

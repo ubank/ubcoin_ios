@@ -14,6 +14,7 @@ static NSString * const ItemRow = @"item";
 
 static NSString * const DEAL_STATUS_ACTIVE = @"ACTIVE";
 
+@class UBCDealStatusDM;
 @interface UBCDealDM : NSObject
 
 @property (readonly, nonatomic) NSString *ID;
@@ -21,6 +22,7 @@ static NSString * const DEAL_STATUS_ACTIVE = @"ACTIVE";
 @property (readonly, nonatomic) UBCGoodDM *item;
 @property (readonly, nonatomic) UBCSellerDM *buyer;
 @property (readonly, nonatomic) UBCSellerDM *seller;
+@property (readonly, nonatomic) UBCDealStatusDM *currentStatus;
 @property (readonly, nonatomic) NSArray *statusDescriptions;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

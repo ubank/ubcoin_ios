@@ -46,6 +46,8 @@ class UBCDeliverySelectionView: UIView {
     
     func setup(item: UBCGoodDM) {
         
+        guard let location = item.location else { return }
+        
         let section = UBTableViewSectionData()
         section.headerTitle = "str_seller_location_up".localizedString()
         section.footerHeight = 10
@@ -54,7 +56,7 @@ class UBCDeliverySelectionView: UIView {
         row.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
         row.icon = UIImage(named: "location")
         row.title = item.locationText
-        row.desc = UBLocationManager.distanceString(fromMeAndCoordinates: item.location.coordinate)
+        row.desc = UBLocationManager.distanceString(fromMeAndCoordinates: location.coordinate)
         section.rows = [row]
         
         tableView.update(withSectionsData: [section])

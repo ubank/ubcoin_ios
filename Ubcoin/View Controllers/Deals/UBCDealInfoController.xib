@@ -20,6 +20,7 @@
                 <outlet property="itemTitle" destination="73C-U7-hq0" id="Rzc-5N-RSa"/>
                 <outlet property="paymentContainerView" destination="ouI-pv-tGx" id="yh3-2d-Rkp"/>
                 <outlet property="progressContainerView" destination="1Ec-6M-6bt" id="vqO-aL-xse"/>
+                <outlet property="scroll" destination="Ojn-2n-SN3" id="4Wm-of-7pp"/>
                 <outlet property="sellerView" destination="M2Z-KJ-Zsr" id="Yqr-nE-vTN"/>
                 <outlet property="statusDesc" destination="SqI-7E-Xii" id="u72-kd-wXS"/>
                 <outlet property="statusTitle" destination="UMU-pA-5VX" id="tm3-5q-Eex"/>
@@ -197,10 +198,10 @@
                                             <rect key="frame" x="0.0" y="811" width="375" height="500"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xRc-SI-FJb" userLabel="Item Price">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="125.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="173.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="str_item_price_up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="smZ-qk-0YO" customClass="HUBLabel">
-                                                            <rect key="frame" x="15" y="15" width="345" height="20.5"/>
+                                                            <rect key="frame" x="15" y="15" width="345" height="68.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -211,7 +212,7 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eeE-ps-0f9">
-                                                            <rect key="frame" x="0.0" y="45.5" width="375" height="70"/>
+                                                            <rect key="frame" x="0.0" y="93.5" width="375" height="70"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CfH-zU-87e" customClass="HUBLabel">
                                                                     <rect key="frame" x="15" y="0.0" width="345" height="70"/>
@@ -248,10 +249,10 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4pg-OA-G4J" userLabel="Currency">
-                                                    <rect key="frame" x="0.0" y="125.5" width="375" height="374.5"/>
+                                                    <rect key="frame" x="0.0" y="173.5" width="375" height="326.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="str_currency_up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JZF-rW-X8f" customClass="HUBLabel">
-                                                            <rect key="frame" x="15" y="15" width="345" height="68.5"/>
+                                                            <rect key="frame" x="15" y="15" width="345" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -262,7 +263,7 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xx6-2U-dzI" customClass="UBCCurrencySelectionView" customModule="Ubcoin" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="93.5" width="375" height="281"/>
+                                                            <rect key="frame" x="0.0" y="45.5" width="375" height="281"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yRh-0I-Uk9">
                                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>

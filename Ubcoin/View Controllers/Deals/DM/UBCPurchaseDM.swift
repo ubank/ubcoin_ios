@@ -15,11 +15,22 @@ class UBCPurchaseDM: NSObject {
     var deal: UBCDealDM?
     
     var longStatusTitle: String? {
-        return ""
+        guard let status = deal?.currentStatus else { return "" }
+        
+        return status.longTitle
     }
     
     var longStatusDesc: String? {
-        return "str_purchase_process_desc".localizedString()
+        if isPurchase {
+            guard let status = deal?.currentStatus else { return "" }
+            
+            return status.longDesc
+            
+        } else if item?.isDigital == true {
+            return "str_purchase_process_desc".localizedString()
+        } else {
+            return ""
+        }
     }
     
     var actionButtonTitle: String {

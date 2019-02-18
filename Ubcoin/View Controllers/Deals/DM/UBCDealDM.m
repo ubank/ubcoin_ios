@@ -9,6 +9,8 @@
 #import "UBCDealDM.h"
 #import "UBCDealCell.h"
 
+#import "Ubcoin-Swift.h"
+
 @implementation UBCDealDM
 
 - (instancetype)initWithDictionary:(NSDictionary *)dict
@@ -21,9 +23,18 @@
         _item = [[UBCGoodDM alloc] initWithDictionary:dict[@"item"]];
         _buyer = [[UBCSellerDM alloc] initWithDictionary:dict[@"buyer"]];
         _seller = [[UBCSellerDM alloc] initWithDictionary:dict[@"seller"]];
+        _statusDescriptions = [dict[@"statusDescriptions"] map:^id(id item) {
+            return [UBCDealStatusDM.alloc initWithDictionary:item];
+        }];
     }
     
     return self;
+}
+
+- (UBCDealStatusDM *)currentStatus
+{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self.selected == 1"];
+    return [[self.statusDescriptions filteredArrayUsingPredicate:predicate] lastObject];
 }
 
 - (UBTableViewRowData *)rowData
