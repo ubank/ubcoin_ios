@@ -716,5 +716,19 @@
      }];
 }
 
+- (void)confirmDeal:(NSString *)dealID withCompletionBlock:(void (^)(BOOL, UBCDealDM *))completionBlock
+{
+    NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider confirmDeal:dealID] andParams:@{}];
+    
+    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (completionBlock)
+         {
+             UBCDealDM *deal = [UBCDealDM.alloc initWithDictionary:[responseObject removeNulls]];
+             completionBlock(success, deal);
+         }
+     }];
+}
+
 @end
 

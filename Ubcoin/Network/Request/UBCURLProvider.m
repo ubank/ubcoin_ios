@@ -214,6 +214,13 @@
     return [NSURL URLWithString:url];
 }
 
++ (NSURL *)confirmDeal:(NSString *)dealID
+{
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"purchases/confirm/%@", dealID];
+    
+    return [NSURL URLWithString:url];
+}
+
 #pragma mark -
 
 + (NSString *)addUserLocationToURL:(NSString *)url

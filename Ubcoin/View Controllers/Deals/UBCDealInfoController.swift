@@ -19,7 +19,9 @@ class UBCDealInfoController: UBViewController {
     
     @IBOutlet weak var statusTitle: HUBLabel!
     @IBOutlet weak var statusDesc: HUBLabel!
+    @IBOutlet weak var confirmDigitalItemView: UIView!
     
+    @IBOutlet weak var confirmDigitalItemButton: HUBGeneralButton!
     @IBOutlet weak var sellerView: UBCSellerView!
     
     @IBOutlet weak var progressContainerView: UIView!
@@ -56,6 +58,9 @@ class UBCDealInfoController: UBViewController {
     private func setupViews() {
         itemIcon.cornerRadius = 5
         sellerView.delegate = self
+        
+        confirmDigitalItemButton.backgroundColor = UBCColor.green
+        confirmDigitalItemButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
     }
     
     private func setupContent() {
@@ -76,13 +81,15 @@ class UBCDealInfoController: UBViewController {
     
             let person = item.isMyItem ? purchaseDM.deal?.buyer : purchaseDM.seller
             sellerView.setup(seller: person, isSeller: !item.isMyItem)
+    
+            let needShow = item.isDigital && purchaseDM.deal?.status == DEAL_STATUS_ACTIVE && !item.isMyItem
+            confirmDigitalItemView.isHidden = !needShow
         }
         
         statusTitle.text = purchaseDM.longStatusTitle
         statusTitle.isHidden = statusTitle.text?.isEmpty == true
         statusDesc.text = purchaseDM.longStatusDesc
         statusDesc.isHidden = statusDesc.text?.isEmpty == true
-
         paymentContainerView.isHidden = purchaseDM.isPurchase
         progressContainerView.isHidden = !purchaseDM.isPurchase
         
@@ -98,8 +105,21 @@ class UBCDealInfoController: UBViewController {
         }
     }
     
-    @IBAction func footerAction() {
+    @IBAction func confirmDigitalItem() {
+        guard let deal = purchaseDM?.deal else { return }
         
+        startActivityIndicator()
+        UBCDataProvider.shared.confirmDeal(deal.id) { [weak self] success, deal in
+            self?.stopActivityIndicator()
+            
+            if let deal = deal {
+                self?.purchaseDM = UBCPurchaseDM(deal: deal)
+                self?.setupContent()
+            }
+        }
+    }
+    
+    @IBAction func footerAction() {
         guard let deal = purchaseDM?.deal else { return }
         
         startActivityIndicator()

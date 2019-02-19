@@ -13,6 +13,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UBCDealInfoController" customModule="Ubcoin" customModuleProvider="target">
             <connections>
                 <outlet property="actionButton" destination="A1P-qz-HXo" id="rrB-3c-djM"/>
+                <outlet property="confirmDigitalItemButton" destination="Bod-hW-Zzq" id="n7q-7w-Ii0"/>
+                <outlet property="confirmDigitalItemView" destination="nej-Lb-meb" id="YxU-Nl-dKa"/>
                 <outlet property="deliveryView" destination="Rxk-hU-QQx" id="9sY-Aq-Nlz"/>
                 <outlet property="itemDesc" destination="HOD-Qx-RHO" id="f28-CU-8IW"/>
                 <outlet property="itemIcon" destination="o57-xG-3eQ" id="195-V0-Ltx"/>
@@ -36,10 +38,10 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fZe-5b-7Ff">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="1381"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="1519"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="GeS-75-6mf">
-                                    <rect key="frame" x="0.0" y="10" width="375" height="1371"/>
+                                    <rect key="frame" x="0.0" y="10" width="375" height="1509"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QX9-wY-2RY">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
@@ -116,13 +118,13 @@
                                             </connections>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CyS-dJ-OTC">
-                                            <rect key="frame" x="0.0" y="385" width="375" height="91"/>
+                                            <rect key="frame" x="0.0" y="385" width="375" height="229"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xGG-jK-GDf">
-                                                    <rect key="frame" x="15" y="20" width="345" height="51"/>
+                                                    <rect key="frame" x="15" y="20" width="345" height="189"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UMU-pA-5VX" customClass="HUBLabel">
-                                                            <rect key="frame" x="0.0" y="0.0" width="345" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="345" height="103.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -133,7 +135,7 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SqI-7E-Xii" customClass="HUBLabel">
-                                                            <rect key="frame" x="0.0" y="30.5" width="345" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="113.5" width="345" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -143,6 +145,35 @@
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                         </label>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nej-Lb-meb">
+                                                            <rect key="frame" x="0.0" y="144" width="345" height="45"/>
+                                                            <subviews>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bod-hW-Zzq" customClass="HUBGeneralButton">
+                                                                    <rect key="frame" x="15" y="10" width="315" height="35"/>
+                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
+                                                                    <state key="normal" title="str_confirm_file_ok"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="roundCorners" value="YES"/>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="type">
+                                                                            <integer key="value" value="0"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                    <connections>
+                                                                        <action selector="confirmDigitalItem" destination="-1" eventType="touchUpInside" id="t95-t4-Bbb"/>
+                                                                    </connections>
+                                                                </button>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstItem="Bod-hW-Zzq" firstAttribute="top" secondItem="nej-Lb-meb" secondAttribute="top" constant="10" id="3Ae-34-EDc"/>
+                                                                <constraint firstAttribute="trailing" secondItem="Bod-hW-Zzq" secondAttribute="trailing" constant="15" id="O3W-KG-1OK"/>
+                                                                <constraint firstAttribute="bottom" secondItem="Bod-hW-Zzq" secondAttribute="bottom" id="QUS-Oc-txf"/>
+                                                                <constraint firstItem="Bod-hW-Zzq" firstAttribute="leading" secondItem="nej-Lb-meb" secondAttribute="leading" constant="15" id="XHl-rS-gee"/>
+                                                                <constraint firstAttribute="height" constant="45" id="eqD-28-G92"/>
+                                                            </constraints>
+                                                        </view>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
@@ -155,7 +186,7 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M2Z-KJ-Zsr" customClass="UBCSellerView" customModule="Ubcoin" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="486" width="375" height="130"/>
+                                            <rect key="frame" x="0.0" y="624" width="375" height="130"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="130" id="dNX-so-vyG"/>
@@ -163,7 +194,7 @@
                                             <viewLayoutGuide key="safeArea" id="H6b-6x-k66"/>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Ec-6M-6bt" userLabel="Progress Container">
-                                            <rect key="frame" x="0.0" y="626" width="375" height="175"/>
+                                            <rect key="frame" x="0.0" y="764" width="375" height="175"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="str_progress_up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TqP-7H-zcD" customClass="HUBLabel">
                                                     <rect key="frame" x="15" y="15" width="345" height="20.5"/>
@@ -195,13 +226,13 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ouI-pv-tGx">
-                                            <rect key="frame" x="0.0" y="811" width="375" height="500"/>
+                                            <rect key="frame" x="0.0" y="949" width="375" height="500"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xRc-SI-FJb" userLabel="Item Price">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="173.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="125.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="str_item_price_up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="smZ-qk-0YO" customClass="HUBLabel">
-                                                            <rect key="frame" x="15" y="15" width="345" height="68.5"/>
+                                                            <rect key="frame" x="15" y="15" width="345" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -212,7 +243,7 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eeE-ps-0f9">
-                                                            <rect key="frame" x="0.0" y="93.5" width="375" height="70"/>
+                                                            <rect key="frame" x="0.0" y="45.5" width="375" height="70"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CfH-zU-87e" customClass="HUBLabel">
                                                                     <rect key="frame" x="15" y="0.0" width="345" height="70"/>
@@ -249,10 +280,10 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4pg-OA-G4J" userLabel="Currency">
-                                                    <rect key="frame" x="0.0" y="173.5" width="375" height="326.5"/>
+                                                    <rect key="frame" x="0.0" y="125.5" width="375" height="374.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="str_currency_up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JZF-rW-X8f" customClass="HUBLabel">
-                                                            <rect key="frame" x="15" y="15" width="345" height="20.5"/>
+                                                            <rect key="frame" x="15" y="15" width="345" height="68.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -263,7 +294,7 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xx6-2U-dzI" customClass="UBCCurrencySelectionView" customModule="Ubcoin" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="45.5" width="375" height="281"/>
+                                                            <rect key="frame" x="0.0" y="93.5" width="375" height="281"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yRh-0I-Uk9">
                                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
@@ -430,7 +461,7 @@
                                             </constraints>
                                         </view>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A1P-qz-HXo" customClass="HUBGeneralButton">
-                                            <rect key="frame" x="0.0" y="1321" width="375" height="50"/>
+                                            <rect key="frame" x="0.0" y="1459" width="375" height="50"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="50" id="Jb5-ii-7DV"/>
                                             </constraints>

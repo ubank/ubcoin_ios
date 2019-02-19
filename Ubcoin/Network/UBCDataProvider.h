@@ -64,5 +64,6 @@
 
 - (void)buyItem:(NSString *)itemID isDelivery:(BOOL)isDelivery currency:(NSString *)currency withCompletionBlock:(void (^)(BOOL success, UBCDealDM *deal))completionBlock;
 - (void)cancelDeal:(NSString *)dealID withCompletionBlock:(void (^)(BOOL success))completionBlock;
+- (void)confirmDeal:(NSString *)dealID withCompletionBlock:(void (^)(BOOL success, UBCDealDM *deal))completionBlock;
 
 @end
