@@ -69,7 +69,7 @@ class UBCDealInfoController: UBViewController {
         if let item = purchaseDM.item {
             
             let itemIconURL = URL(string: item.imageURL ?? "")
-            itemIcon.sd_setImage(with: itemIconURL, completed: nil)
+            itemIcon.sd_setImage(with: itemIconURL, placeholderImage: UIImage(named: "item_default_image"), options: [], completed: nil)
             itemTitle.text = item.title
             
             let itemPriceString = String(format: "%@ UBC / %@ ETH", item.price.priceString, item.priceInETH.coinsPriceString)
