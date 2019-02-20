@@ -35,6 +35,8 @@ PODS:
     - ImageSlideshow/Core (= 1.7.0)
   - ImageSlideshow/Core (1.7.0)
   - INTULocationManager (4.3.2)
+  - MessageInputBar (0.4.1):
+    - MessageInputBar/Core (= 0.4.1)
   - MessageInputBar/Core (0.4.1)
   - MessageKit (2.0.0):
     - MessageInputBar/Core
@@ -42,6 +44,9 @@ PODS:
   - SDWebImage (4.4.3):
     - SDWebImage/Core (= 4.4.3)
   - SDWebImage/Core (4.4.3)
+  - Socket.IO-Client-Swift (14.0.0):
+    - Starscream (~> 3.0.6)
+  - Starscream (3.0.6)
   - TTTAttributedLabel (2.0.0)
   - UBGeneralClasses (1.0.3):
     - SDWebImage
@@ -73,8 +78,10 @@ DEPENDENCIES:
   - GoogleMaps
   - ImageSlideshow
   - INTULocationManager
+  - MessageInputBar
   - MessageKit
   - QRCodeReaderViewController
+  - Socket.IO-Client-Swift
   - TTTAttributedLabel
   - UBGeneralClasses (from `https://github.com/ubank/ub_general_classes_iOS.git`)
 
@@ -93,6 +100,8 @@ SPEC REPOS:
     - MessageKit
     - QRCodeReaderViewController
     - SDWebImage
+    - Socket.IO-Client-Swift
+    - Starscream
     - TTTAttributedLabel
 
 EXTERNAL SOURCES:
@@ -118,9 +127,11 @@ SPEC CHECKSUMS:
   MessageKit: 29c1c87e5a396d2ca7a3f712e5171dc9aba42a1e
   QRCodeReaderViewController: e8f27d035b3e72b1d4b1c61ff66458287e3be0ff
   SDWebImage: c5594f1a19c48d526d321e548902b56b479cd508
+  Socket.IO-Client-Swift: 21e6a8a23a7d367d5ddfab6cbbd3c679cf3c25d6
+  Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
   UBGeneralClasses: d205ce1ce0a17dc8cc296c79d22a822e5b60edb7
 
-PODFILE CHECKSUM: d7761796bbc0b36156e594cc057de82968687c8e
+PODFILE CHECKSUM: b0f59ec236ce736c7c00b66aafe010229358a667
 
 COCOAPODS: 1.5.3

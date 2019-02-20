@@ -11,6 +11,8 @@ target 'Ubcoin' do
     pod 'Crashlytics'
     pod 'DGActivityIndicatorView'
     pod 'MessageKit'
+    pod 'MessageInputBar'
+    pod 'Socket.IO-Client-Swift'
     pod 'Fabric'
     pod 'GoogleMaps'
     pod 'FBSDKCoreKit'

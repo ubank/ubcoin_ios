@@ -47,6 +47,11 @@ class UBCMessagesListController: UBViewController {
     }
     
     override func updateInfo() {
+        
+        UBCDataProvider.shared.chartDealsList(completionBlock: { success, items, canLoadMore in
+            print("use Chart message list")
+        })
+        
         UBCDataProvider.shared.dealsList(withPageNumber: pageNumber) { [weak self] success, items, canLoadMore in
             guard let self = self else { return }
             

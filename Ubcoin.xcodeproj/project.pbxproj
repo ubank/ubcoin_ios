@@ -36,6 +36,10 @@
 		1CFFFE7D20F230A9003B5AD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CFFFE7920F230A9003B5AD9 /* Assets.xcassets */; };
 		1CFFFE7E20F230A9003B5AD9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFFFE7A20F230A9003B5AD9 /* main.m */; };
 		30A0668C891003DF59D2BECC /* libPods-Ubcoin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DD3B2DB73F06ACB93DC3B9 /* libPods-Ubcoin.a */; };
+		758D0F06221ADEAB0034739B /* UBCSocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758D0F05221ADEAB0034739B /* UBCSocketIOManager.swift */; };
+		758D0F0B221C20250034739B /* UBCMessageChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758D0F0A221C20250034739B /* UBCMessageChat.swift */; };
+		758D0F0D221D3F990034739B /* UBCMessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758D0F0C221D3F990034739B /* UBCMessagesViewController.swift */; };
+		758D0F0F221D88E90034739B /* UBCMediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758D0F0E221D88E90034739B /* UBCMediaItem.swift */; };
 		890077412119A4E400B6C1C5 /* UBCVerifyEmailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8900773F2119A4E400B6C1C5 /* UBCVerifyEmailController.m */; };
 		890077422119A4E400B6C1C5 /* UBCVerifyEmailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 890077402119A4E400B6C1C5 /* UBCVerifyEmailController.xib */; };
 		89007747211AFE4E00B6C1C5 /* UBCAccountSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89007746211AFE4E00B6C1C5 /* UBCAccountSettingsController.m */; };
@@ -211,6 +215,10 @@
 		1CFFFE7920F230A9003B5AD9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1CFFFE7A20F230A9003B5AD9 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1CFFFE7B20F230A9003B5AD9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		758D0F05221ADEAB0034739B /* UBCSocketIOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCSocketIOManager.swift; sourceTree = "<group>"; };
+		758D0F0A221C20250034739B /* UBCMessageChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCMessageChat.swift; sourceTree = "<group>"; };
+		758D0F0C221D3F990034739B /* UBCMessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCMessagesViewController.swift; sourceTree = "<group>"; };
+		758D0F0E221D88E90034739B /* UBCMediaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCMediaItem.swift; sourceTree = "<group>"; };
 		8133FFCED3512BADEB40D574 /* Pods-Ubcoin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ubcoin.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ubcoin/Pods-Ubcoin.release.xcconfig"; sourceTree = "<group>"; };
 		82DD3B2DB73F06ACB93DC3B9 /* libPods-Ubcoin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Ubcoin.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8900773E2119A4E400B6C1C5 /* UBCVerifyEmailController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCVerifyEmailController.h; sourceTree = "<group>"; };
@@ -525,6 +533,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		758D0F09221C1FF90034739B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				758D0F0A221C20250034739B /* UBCMessageChat.swift */,
+				758D0F0E221D88E90034739B /* UBCMediaItem.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		89007743211AFE1800B6C1C5 /* Account Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -787,6 +804,9 @@
 		897FB0AE21218FC10060DED6 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				758D0F09221C1FF90034739B /* Models */,
+				758D0F05221ADEAB0034739B /* UBCSocketIOManager.swift */,
+				758D0F0C221D3F990034739B /* UBCMessagesViewController.swift */,
 				898B409721F75C5D005B0133 /* UBCChatController.swift */,
 				89B42C8621F0B20B0008ED98 /* UBCMessagesListController.swift */,
 			);
@@ -1750,8 +1770,10 @@
 				1CFFFE7E20F230A9003B5AD9 /* main.m in Sources */,
 				89B08E3721283D0200D8B68D /* UBCConfirmationSendCoinsController.m in Sources */,
 				8987516F20EE119F00E2B615 /* HUBSystemAlertCell.m in Sources */,
+				758D0F0F221D88E90034739B /* UBCMediaItem.swift in Sources */,
 				8996A43C21789C9B00BCDEBD /* UBCFilterValueSelectionCell.swift in Sources */,
 				8979E81221134EEB004B2473 /* UBCDealsController.m in Sources */,
+				758D0F06221ADEAB0034739B /* UBCSocketIOManager.swift in Sources */,
 				1CEFAA4520F3FCBE005719B3 /* UBCSTextFieldTableViewCell.swift in Sources */,
 				8919AB532125BC4600D1B59C /* UBCChangeNameController.m in Sources */,
 				89B08E322128397100D8B68D /* UBCSendCoinsController.m in Sources */,
@@ -1763,10 +1785,12 @@
 				1CFFFE7320F22599003B5AD9 /* UBCCategorySelectionController.swift in Sources */,
 				8987518520EE119F00E2B615 /* HUBBaseMapView.m in Sources */,
 				89CB110F20EFCDA500729C95 /* HUBCollectionViewWaitCell.m in Sources */,
+				758D0F0D221D3F990034739B /* UBCMessagesViewController.swift in Sources */,
 				89AE1A7320F7FDF3000662E8 /* UBCFavouriteCell.m in Sources */,
 				89007760211C79F200B6C1C5 /* UBCToBuyDealsView.m in Sources */,
 				8900775D211C79E200B6C1C5 /* UBCToSellDealsView.m in Sources */,
 				1CFFFE6420F0CB3E003B5AD9 /* UBCSPhotoTableViewCell.swift in Sources */,
+				758D0F0B221C20250034739B /* UBCMessageChat.swift in Sources */,
 				89BA58D621662CA300427A8E /* UBCFilterCollectionViewCell.swift in Sources */,
 				8980F24720F505550066CF99 /* UBCCategoryDM.m in Sources */,
 				891F08CE2167DED900160B04 /* UBCFilterDM.swift in Sources */,
@@ -1993,9 +2017,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = SWEX2R635A;
+				DEVELOPMENT_TEAM = Z44RY25MUV;
 				GCC_PREFIX_HEADER = "Ubcoin/SupportingFiles/Ubcoin-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Ubcoin/SupportingFiles/Info.plist";
 				INFOPLIST_PREFIX_HEADER = Version.h;
@@ -2006,6 +2030,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ubcoin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Develop: Wildcard App *";
 				SWIFT_OBJC_BRIDGING_HEADER = "Ubcoin/SupportingFiles/Ubcoin-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -2019,8 +2044,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SWEX2R635A;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = Z44RY25MUV;
 				GCC_PREFIX_HEADER = "Ubcoin/SupportingFiles/Ubcoin-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Ubcoin/SupportingFiles/Info.plist";
 				INFOPLIST_PREFIX_HEADER = Version.h;
@@ -2031,6 +2056,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ubcoin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Develop: Wildcard App *";
 				SWIFT_OBJC_BRIDGING_HEADER = "Ubcoin/SupportingFiles/Ubcoin-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;

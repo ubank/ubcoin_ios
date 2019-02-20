@@ -633,6 +633,33 @@
          }
      }];
 }
+    
+- (void)chartDealsListWithCompletionBlock:(void (^)(BOOL, NSArray *, BOOL))completionBlock
+{
+    NSURL *url = [UBCURLProvider chartDealsList];
+    NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:url];
+    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (success && ((NSArray *)responseObject).count > 0)
+         {
+             NSArray *items = [responseObject[@"content"] removeNulls];
+             items = [items map:^id(id item) {
+                 UBCDealDM *deal = [[UBCDealDM alloc] initWithDictionary:item];
+                 return deal.rowData;
+             }];
+             
+             if (completionBlock)
+             {
+                 NSNumber *totalPages = responseObject[@"totalPages"];
+                 completionBlock(YES, items, YES);
+             }
+         }
+         else if (completionBlock)
+         {
+             completionBlock(NO, nil, YES);
+         }
+     }];
+}
 
 #pragma mark - ITEM CREATION
 

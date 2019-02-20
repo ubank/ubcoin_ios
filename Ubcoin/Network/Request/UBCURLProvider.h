@@ -45,6 +45,9 @@
 + (NSURL *)dealsListWithPageNumber:(NSUInteger)page;
 + (NSURL *)dealsToSellListWithPageNumber:(NSUInteger)page;
 + (NSURL *)dealsToBuyListWithPageNumber:(NSUInteger)page;
+    
++ (NSURL *) chartDealsList;
+
 
 
 + (NSURL *)uploadImage;

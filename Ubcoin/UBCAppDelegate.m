@@ -49,6 +49,12 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     [FBSDKAppEvents activateApp];
+    [[UBCSocketIOManager sharedInstance] establishConnection];
+}
+    
+- (void) applicationDidEnterBackground:(UIApplication *)application
+{
+    [[UBCSocketIOManager sharedInstance] closeConnection];
 }
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options

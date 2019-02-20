@@ -191,6 +191,12 @@
     NSString *url = [SERVER_URL stringByAppendingFormat:@"purchases/buyer?page=%d&size=%d", (int)page, ITEMS_PAGE_SIZE];
     return [NSURL URLWithString:url];
 }
+    
++ (NSURL *) chartDealsList
+    {
+        NSString *url = [SERVER_URL stringByAppendingFormat:@"chats"];
+        return [NSURL URLWithString:url];
+    }
 
 + (NSURL *)uploadImage
 {
