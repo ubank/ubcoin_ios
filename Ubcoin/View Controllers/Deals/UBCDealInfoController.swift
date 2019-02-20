@@ -25,6 +25,7 @@ class UBCDealInfoController: UBViewController {
     @IBOutlet weak var sellerView: UBCSellerView!
     
     @IBOutlet weak var progressContainerView: UIView!
+    @IBOutlet weak var progressView: StepProgressView!
     
     @IBOutlet weak var paymentContainerView: UIView!
     @IBOutlet weak var itemPrice: HUBLabel!
@@ -61,6 +62,19 @@ class UBCDealInfoController: UBViewController {
         
         confirmDigitalItemButton.backgroundColor = UBCColor.green
         confirmDigitalItemButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        
+        progressView.lineWidth = 2
+        progressView.textFont = UBFont.titleFont
+        progressView.detailFont = UBFont.descFont
+        
+        progressView.currentStepColor = UBCColor.green
+        progressView.pastStepColor = UBCColor.green
+        progressView.futureStepColor = UBColor.titleColor.withAlphaComponent(0.2)
+
+        progressView.currentTextColor = UBColor.navigationTitleColor
+        progressView.pastTextColor = UBColor.navigationTitleColor
+        progressView.futureTextColor = UBColor.titleColor.withAlphaComponent(0.2)
+        progressView.currentDetailColor = UBColor.descColor
     }
     
     private func setupContent() {
@@ -91,7 +105,17 @@ class UBCDealInfoController: UBViewController {
         statusDesc.text = purchaseDM.longStatusDesc
         statusDesc.isHidden = statusDesc.text?.isEmpty == true
         paymentContainerView.isHidden = purchaseDM.isPurchase
+        
         progressContainerView.isHidden = !purchaseDM.isPurchase
+        if let deal = purchaseDM.deal {
+            progressView.steps = deal.statusDescriptions.map { $0.title }
+            var details: [Int: String] = [:]
+            for (index, status) in deal.statusDescriptions.enumerated() where status.desc != nil {
+                details[index] = status.desc
+            }
+            progressView.details = details
+            progressView.currentStep = deal.statusDescriptions.index(of: deal.currentStatus) ?? 0
+        }
         
         actionButton.isHidden = !purchaseDM.isPurchase
         actionButton.title = purchaseDM.actionButtonTitle

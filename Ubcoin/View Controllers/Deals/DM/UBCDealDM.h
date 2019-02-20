@@ -23,7 +23,7 @@ static NSString * const DEAL_STATUS_ACTIVE = @"ACTIVE";
 @property (readonly, nonatomic) UBCSellerDM *buyer;
 @property (readonly, nonatomic) UBCSellerDM *seller;
 @property (readonly, nonatomic) UBCDealStatusDM *currentStatus;
-@property (readonly, nonatomic) NSArray *statusDescriptions;
+@property (readonly, nonatomic) NSArray <UBCDealStatusDM *> *statusDescriptions;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
 - (NSArray <UBTableViewSectionData *> *)sectionsData;

@@ -11,6 +11,7 @@ target 'Ubcoin' do
     pod 'Crashlytics'
     pod 'DGActivityIndicatorView'
     pod 'Fabric'
+    pod 'MiniLayout'
     pod 'GoogleMaps'
     pod 'FBSDKCoreKit'
     pod 'ImageSlideshow'

@@ -24,21 +24,22 @@ PODS:
     - Fabric (~> 1.9.0)
   - DGActivityIndicatorView (2.1.1)
   - Fabric (1.9.0)
-  - FBSDKCoreKit (4.39.0):
+  - FBSDKCoreKit (4.40.0):
     - Bolts (~> 1.9)
-  - GoogleMaps (2.7.0):
-    - GoogleMaps/Maps (= 2.7.0)
-  - GoogleMaps/Base (2.7.0)
-  - GoogleMaps/Maps (2.7.0):
+  - GoogleMaps (3.0.2):
+    - GoogleMaps/Maps (= 3.0.2)
+  - GoogleMaps/Base (3.0.2)
+  - GoogleMaps/Maps (3.0.2):
     - GoogleMaps/Base
   - ImageSlideshow (1.7.0):
     - ImageSlideshow/Core (= 1.7.0)
   - ImageSlideshow/Core (1.7.0)
   - INTULocationManager (4.3.2)
+  - MiniLayout (1.4.0)
   - QRCodeReaderViewController (4.0.2)
-  - SDWebImage (4.4.3):
-    - SDWebImage/Core (= 4.4.3)
-  - SDWebImage/Core (4.4.3)
+  - SDWebImage (4.4.5):
+    - SDWebImage/Core (= 4.4.5)
+  - SDWebImage/Core (4.4.5)
   - TTTAttributedLabel (2.0.0)
   - UBGeneralClasses (1.0.3):
     - SDWebImage
@@ -70,6 +71,7 @@ DEPENDENCIES:
   - GoogleMaps
   - ImageSlideshow
   - INTULocationManager
+  - MiniLayout
   - QRCodeReaderViewController
   - TTTAttributedLabel
   - UBGeneralClasses (from `https://github.com/ubank/ub_general_classes_iOS.git`)
@@ -85,6 +87,7 @@ SPEC REPOS:
     - GoogleMaps
     - ImageSlideshow
     - INTULocationManager
+    - MiniLayout
     - QRCodeReaderViewController
     - SDWebImage
     - TTTAttributedLabel
@@ -104,15 +107,16 @@ SPEC CHECKSUMS:
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   DGActivityIndicatorView: ff2c76073d79692f724863c8dd38685866a03cb6
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655
-  FBSDKCoreKit: 1e3981faefab8c88edfaa9eecd94aab02d99a9bc
-  GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
+  FBSDKCoreKit: ae214474b25033399c131dc81d258e412582a2ba
+  GoogleMaps: 941cd655e009b4d8e42df19a3d749bc3fccec973
   ImageSlideshow: f8eec5e37a980f60923b585ff23b0e140fd24018
   INTULocationManager: e5dc524611b0cd582f473bc56cc8c389adb2f338
+  MiniLayout: e35331ce9ab50a4111c3f91deca158834f86d9e7
   QRCodeReaderViewController: e8f27d035b3e72b1d4b1c61ff66458287e3be0ff
-  SDWebImage: c5594f1a19c48d526d321e548902b56b479cd508
+  SDWebImage: ecc03494e973b93b80213649d32175f8d2d17d4d
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
   UBGeneralClasses: d205ce1ce0a17dc8cc296c79d22a822e5b60edb7
 
-PODFILE CHECKSUM: ffd274b12611c03d633154731afdeddd4249c75b
+PODFILE CHECKSUM: af363c5cd70eaadc0083ffbabb5666d4d7e87030
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.0

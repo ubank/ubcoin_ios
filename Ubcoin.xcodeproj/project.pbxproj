@@ -51,6 +51,7 @@
 		8915760B2200A0DB00DB55CC /* UBCPurchaseDM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8915760A2200A0DB00DB55CC /* UBCPurchaseDM.swift */; };
 		8915760D22030A1500DB55CC /* UBCDealInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8915760C22030A1500DB55CC /* UBCDealInfoController.xib */; };
 		8915B821221AFE3D00BCAF4B /* UBCDealStatusDM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8915B820221AFE3D00BCAF4B /* UBCDealStatusDM.swift */; };
+		8915B824221D956500BCAF4B /* StepProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8915B823221D956500BCAF4B /* StepProgressView.swift */; };
 		8915D05E21A307C0008D1BA2 /* UBCSellerCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8915D05C21A307C0008D1BA2 /* UBCSellerCollectionReusableView.swift */; };
 		8915D05F21A307C0008D1BA2 /* UBCSellerCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8915D05D21A307C0008D1BA2 /* UBCSellerCollectionReusableView.xib */; };
 		89172392219C496F0060E719 /* UBCImageSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89172391219C496F0060E719 /* UBCImageSource.swift */; };
@@ -241,6 +242,7 @@
 		8915760A2200A0DB00DB55CC /* UBCPurchaseDM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCPurchaseDM.swift; sourceTree = "<group>"; };
 		8915760C22030A1500DB55CC /* UBCDealInfoController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCDealInfoController.xib; sourceTree = "<group>"; };
 		8915B820221AFE3D00BCAF4B /* UBCDealStatusDM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCDealStatusDM.swift; sourceTree = "<group>"; };
+		8915B823221D956500BCAF4B /* StepProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepProgressView.swift; sourceTree = "<group>"; };
 		8915D05C21A307C0008D1BA2 /* UBCSellerCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCSellerCollectionReusableView.swift; sourceTree = "<group>"; };
 		8915D05D21A307C0008D1BA2 /* UBCSellerCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCSellerCollectionReusableView.xib; sourceTree = "<group>"; };
 		89172391219C496F0060E719 /* UBCImageSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCImageSource.swift; sourceTree = "<group>"; };
@@ -599,6 +601,14 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		8915B822221D954500BCAF4B /* Steps View */ = {
+			isa = PBXGroup;
+			children = (
+				8915B823221D956500BCAF4B /* StepProgressView.swift */,
+			);
+			path = "Steps View";
+			sourceTree = "<group>";
+		};
 		89172397219C6FF30060E719 /* Seller */ = {
 			isa = PBXGroup;
 			children = (
@@ -914,6 +924,7 @@
 				8987513820EE119F00E2B615 /* Picker View */,
 				8987510320EE119F00E2B615 /* ScrollView */,
 				8980F22720F3FB4B0066CF99 /* Stars view */,
+				8915B822221D954500BCAF4B /* Steps View */,
 				8987513320EE119F00E2B615 /* SwitchCollectionView */,
 				8987510620EE119F00E2B615 /* TableView */,
 				89678DB2210F7F8900EB715E /* TextField */,
@@ -1686,7 +1697,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Ubcoin/Pods-Ubcoin-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Ubcoin/Pods-Ubcoin-resources.sh",
 				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
 				"${PODS_ROOT}/ImageSlideshow/ImageSlideshow/Assets/ic_cross_white@2x.png",
@@ -1701,7 +1712,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Ubcoin/Pods-Ubcoin-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Ubcoin/Pods-Ubcoin-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F9136AB4A7CDD4439AB8F29C /* [CP] Check Pods Manifest.lock */ = {
@@ -1752,6 +1763,7 @@
 				8987518820EE119F00E2B615 /* UBAlertWindow.m in Sources */,
 				8987516A20EE119F00E2B615 /* UBMigrationView.m in Sources */,
 				8987519020EE119F00E2B615 /* HUBPermissions.m in Sources */,
+				8915B824221D956500BCAF4B /* StepProgressView.swift in Sources */,
 				8987517020EE119F00E2B615 /* UBSwitchTableViewCell.m in Sources */,
 				89F16A6D20F2C65D001AA440 /* UBCGoodsCollectionView.m in Sources */,
 				8987516E20EE119F00E2B615 /* UBDefaultTableViewCell.m in Sources */,
