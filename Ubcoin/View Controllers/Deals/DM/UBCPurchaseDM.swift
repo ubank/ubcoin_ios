@@ -34,7 +34,18 @@ class UBCPurchaseDM: NSObject {
     }
     
     var actionButtonTitle: String {
-        return "str_cancel_the_deal".localizedString()
+        if canCancelDeal {
+            return "str_cancel_the_deal".localizedString()
+        }
+        return "str_report_problems".localizedString()
+    }
+    
+    var canCancelDeal: Bool {
+        if let status = deal?.status,
+            (status == DEAL_STATUS_DELIVERY || status == DEAL_STATUS_CONFIRMED) {
+            return false
+        }
+        return item?.isDigital == false
     }
     
     var seller: UBCSellerDM? {

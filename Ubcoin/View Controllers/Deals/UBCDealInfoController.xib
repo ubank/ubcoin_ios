@@ -27,6 +27,7 @@
                 <outlet property="sellerView" destination="M2Z-KJ-Zsr" id="Yqr-nE-vTN"/>
                 <outlet property="statusDesc" destination="SqI-7E-Xii" id="u72-kd-wXS"/>
                 <outlet property="statusTitle" destination="UMU-pA-5VX" id="tm3-5q-Eex"/>
+                <outlet property="statusView" destination="CyS-dJ-OTC" id="KLs-l5-MsV"/>
                 <outlet property="view" destination="iN0-l3-epB" id="C3N-aT-CaG"/>
             </connections>
         </placeholder>

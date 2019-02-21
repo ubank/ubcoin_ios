@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MessageUI
 
 class UBCDealInfoController: UBViewController {
 
@@ -17,6 +18,7 @@ class UBCDealInfoController: UBViewController {
     
     @IBOutlet weak var deliveryView: UBCDeliverySelectionView!
     
+    @IBOutlet weak var statusView: UIView!
     @IBOutlet weak var statusTitle: HUBLabel!
     @IBOutlet weak var statusDesc: HUBLabel!
     @IBOutlet weak var confirmDigitalItemView: UIView!
@@ -104,6 +106,7 @@ class UBCDealInfoController: UBViewController {
         statusTitle.isHidden = statusTitle.text?.isEmpty == true
         statusDesc.text = purchaseDM.longStatusDesc
         statusDesc.isHidden = statusDesc.text?.isEmpty == true
+        statusView.isHidden = confirmDigitalItemView.isHidden && statusTitle.isHidden && statusDesc.isHidden
         paymentContainerView.isHidden = purchaseDM.isPurchase
         
         progressContainerView.isHidden = !purchaseDM.isPurchase
@@ -144,15 +147,21 @@ class UBCDealInfoController: UBViewController {
     }
     
     @IBAction func footerAction() {
-        guard let deal = purchaseDM?.deal else { return }
+        guard let purchaseDM = purchaseDM else { return }
         
-        startActivityIndicator()
-        UBCDataProvider.shared.cancelDeal(deal.id) { [weak self] success in
-            self?.stopActivityIndicator()
+        if purchaseDM.canCancelDeal {
+            guard let deal = purchaseDM.deal else { return }
             
-            if success {
-                self?.navigationController?.popViewController(animated: true)
+            startActivityIndicator()
+            UBCDataProvider.shared.cancelDeal(deal.id) { [weak self] success in
+                self?.stopActivityIndicator()
+                
+                if success {
+                    self?.navigationController?.popViewController(animated: true)
+                }
             }
+        } else {
+            sendEmail()
         }
     }
     
@@ -169,6 +178,18 @@ class UBCDealInfoController: UBViewController {
                                             self?.purchaseDM = UBCPurchaseDM(deal: deal)
                                             self?.setupContent()
                                         }
+        }
+    }
+    
+    func sendEmail() {
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self
+            mail.setToRecipients(["support@ubcoin.io"])
+            
+            present(mail, animated: true)
+        } else {
+            // show failure alert
         }
     }
 }
@@ -230,5 +251,12 @@ extension UBCDealInfoController: UBCDeliverySelectionViewDelegate {
     func showSellerLocation() {
         let controller = UBCMapSelectController(title: "str_seller_location", location: purchaseDM?.item?.location)
         self.navigationController?.pushViewController(controller, animated: true)
+    }
+}
+
+extension UBCDealInfoController: MFMailComposeViewControllerDelegate {
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
     }
 }

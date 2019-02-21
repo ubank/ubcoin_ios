@@ -13,6 +13,8 @@
 static NSString * const ItemRow = @"item";
 
 static NSString * const DEAL_STATUS_ACTIVE = @"ACTIVE";
+static NSString * const DEAL_STATUS_DELIVERY = @"DELIVERY";
+static NSString * const DEAL_STATUS_CONFIRMED = @"CONFIRMED";
 
 @class UBCDealStatusDM;
 @interface UBCDealDM : NSObject
