@@ -40,6 +40,7 @@
 		758D0F0B221C20250034739B /* UBCMessageChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758D0F0A221C20250034739B /* UBCMessageChat.swift */; };
 		758D0F0D221D3F990034739B /* UBCMessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758D0F0C221D3F990034739B /* UBCMessagesViewController.swift */; };
 		758D0F0F221D88E90034739B /* UBCMediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758D0F0E221D88E90034739B /* UBCMediaItem.swift */; };
+		75C3B5EC221EC40C00A2E3CB /* ExtensionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C3B5EB221EC40C00A2E3CB /* ExtensionHelper.swift */; };
 		890077412119A4E400B6C1C5 /* UBCVerifyEmailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8900773F2119A4E400B6C1C5 /* UBCVerifyEmailController.m */; };
 		890077422119A4E400B6C1C5 /* UBCVerifyEmailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 890077402119A4E400B6C1C5 /* UBCVerifyEmailController.xib */; };
 		89007747211AFE4E00B6C1C5 /* UBCAccountSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89007746211AFE4E00B6C1C5 /* UBCAccountSettingsController.m */; };
@@ -219,6 +220,7 @@
 		758D0F0A221C20250034739B /* UBCMessageChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCMessageChat.swift; sourceTree = "<group>"; };
 		758D0F0C221D3F990034739B /* UBCMessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCMessagesViewController.swift; sourceTree = "<group>"; };
 		758D0F0E221D88E90034739B /* UBCMediaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCMediaItem.swift; sourceTree = "<group>"; };
+		75C3B5EB221EC40C00A2E3CB /* ExtensionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionHelper.swift; sourceTree = "<group>"; };
 		8133FFCED3512BADEB40D574 /* Pods-Ubcoin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ubcoin.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ubcoin/Pods-Ubcoin.release.xcconfig"; sourceTree = "<group>"; };
 		82DD3B2DB73F06ACB93DC3B9 /* libPods-Ubcoin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Ubcoin.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8900773E2119A4E400B6C1C5 /* UBCVerifyEmailController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBCVerifyEmailController.h; sourceTree = "<group>"; };
@@ -804,6 +806,7 @@
 		897FB0AE21218FC10060DED6 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				75C3B5EB221EC40C00A2E3CB /* ExtensionHelper.swift */,
 				758D0F09221C1FF90034739B /* Models */,
 				758D0F05221ADEAB0034739B /* UBCSocketIOManager.swift */,
 				758D0F0C221D3F990034739B /* UBCMessagesViewController.swift */,
@@ -1828,6 +1831,7 @@
 				1C14F19F20F2655800B835AC /* UBCMapSelectController.swift in Sources */,
 				89678DA9210DE28600EB715E /* UBCToast.m in Sources */,
 				89B08E282127505700D8B68D /* UBCTransactionDM.m in Sources */,
+				75C3B5EC221EC40C00A2E3CB /* ExtensionHelper.swift in Sources */,
 				8900774D211AFF1C00B6C1C5 /* UBCBalanceController.m in Sources */,
 				89678DC72110C5F700EB715E /* UBFloatingPlaceholderTextField.m in Sources */,
 				898751C820EE65C000E2B615 /* UBCKeyChain.m in Sources */,

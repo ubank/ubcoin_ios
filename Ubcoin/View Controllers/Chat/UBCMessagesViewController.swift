@@ -13,24 +13,24 @@ import Photos
 
 class UBCMessagesViewController: MessagesViewController {
     
+    private var isImagePicker = false
+    
     let refreshControl = UIRefreshControl()
     var messages: [UBCMessageChat] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         configureMessageInputBar()
         configureMessageCollectionView()
-        configureCamera()
     }
     
-    override var title: String? {
-        didSet{
-            navigationItem.title = title
-            tabBarController?.navigationItem.title = title
-            navigationController?.title = title
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if isImagePicker == false {
+           UBCSocketIOManager.sharedInstance.exitChat()
         }
+        
+        navigationController?.navigationBar.clearShadow()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,17 +42,21 @@ class UBCMessagesViewController: MessagesViewController {
         
         navigationItem.leftItemsSupplementBackButton = true
         navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.tintColor = UBColor.navigationTintColor!
         navigationController?.navigationBar.barTintColor = UBColor.backgroundColor!
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UBColor.navigationTitleColor!]
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.defaultShadow()
+        
         navigationController?.view.backgroundColor = UBColor.backgroundColor!
         navigationItem.largeTitleDisplayMode = .never
     }
     
+    //MARK: Configure Message
     
     func configureMessageCollectionView() {
         messagesCollectionView.messagesLayoutDelegate = self
@@ -71,6 +75,51 @@ class UBCMessagesViewController: MessagesViewController {
         messageInputBar.delegate = self
         messageInputBar.inputTextView.tintColor = UBColor.navigationTintColor
         messageInputBar.sendButton.tintColor = UBColor.navigationTintColor
+        
+       // messageInputBar.isTranslucent = true
+       // messageInputBar.separatorLine.isHidden = true
+        
+        messageInputBar.separatorLine.backgroundColor = UIColor(hexString: "F5F5F5")
+        messageInputBar.separatorLine.defaultShadow()
+        
+        messageInputBar.inputTextView.backgroundColor = UIColor(hexString: "F5F5F5")
+        messageInputBar.inputTextView.placeholderTextColor = UIColor(hexString: "9A9A9A")
+        messageInputBar.inputTextView.placeholder =  "New message..."
+        messageInputBar.inputTextView.textContainerInset = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 36)
+        messageInputBar.inputTextView.placeholderLabelInsets = UIEdgeInsets(top: 8, left: 20, bottom: 8, right: 36)
+        messageInputBar.inputTextView.layer.borderColor = UIColor(hexString: "D7DFE1")?.cgColor
+        messageInputBar.inputTextView.layer.borderWidth = 1.0
+        messageInputBar.inputTextView.layer.cornerRadius = 16
+        messageInputBar.inputTextView.layer.masksToBounds = true
+        messageInputBar.inputTextView.scrollIndicatorInsets = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
+        
+        configureInputBarItems()
+    }
+    
+    private func configureInputBarItems() {
+        messageInputBar.setRightStackViewWidthConstant(to: 36, animated: false)
+        messageInputBar.sendButton.imageView?.backgroundColor = UIColor(white: 0.85, alpha: 1)
+        messageInputBar.sendButton.contentEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
+        messageInputBar.sendButton.setSize(CGSize(width: 36, height: 36), animated: false)
+        messageInputBar.sendButton.setImage(#imageLiteral(resourceName: "chat_send_message"), for: .normal)
+        messageInputBar.sendButton.setTitle(nil, for: .normal)
+        messageInputBar.sendButton.imageView?.layer.cornerRadius = 16
+        messageInputBar.textViewPadding.right = -38
+ 
+
+        // This just adds some more flare
+        messageInputBar.sendButton
+            .onEnabled { item in
+                UIView.animate(withDuration: 0.3, animations: {
+                    item.imageView?.backgroundColor = .primaryMessage
+                })
+            }.onDisabled { item in
+                UIView.animate(withDuration: 0.3, animations: {
+                    item.imageView?.backgroundColor = UIColor(white: 0.85, alpha: 1)
+                })
+        }
+        
+        configureCamera()
     }
     
     func configureCamera() {
@@ -83,11 +132,10 @@ class UBCMessagesViewController: MessagesViewController {
             for: .touchUpInside
         )
         cameraItem.setSize(CGSize(width: 30, height: 30), animated: false)
+        cameraItem.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
         
         messageInputBar.leftStackView.alignment = .center
-        messageInputBar.setLeftStackViewWidthConstant(to: 50, animated: false)
-        
-        // 3
+        messageInputBar.setLeftStackViewWidthConstant(to: 30, animated: false)
         messageInputBar.setStackViewItems([cameraItem], forStack: .left, animated: false)
     }
     
@@ -108,20 +156,29 @@ class UBCMessagesViewController: MessagesViewController {
             picker.sourceType = .photoLibrary
         }
         
+        isImagePicker = true
         present(picker, animated: true, completion: nil)
     }
         
     
     // MARK: - Helpers
     
-    func setHistory(_ messages: [UBCMessageChat]) {
-        self.messages = messages
+    func setHistory(_ messages: [UBCMessageChat], append:Bool = false) {
         
         DispatchQueue.main.async {
-            self.messagesCollectionView.reloadData()
-            self.messagesCollectionView.scrollToBottom()
+            if append == true {
+                self.messages.insert(contentsOf: messages, at: 0)
+            } else{
+                self.messages = messages
+            }
+            
+            self.messagesCollectionView.reloadDataAndKeepOffset()
+            if append == false {
+                self.messagesCollectionView.reloadData()
+                self.messagesCollectionView.scrollToBottom()
+            }
+            
         }
-        
     }
     
     func insertMessage(_ message: UBCMessageChat) {
@@ -222,29 +279,12 @@ extension UBCMessagesViewController: MessagesDisplayDelegate {
     
     func configureMediaMessageImageView(_ imageView: UIImageView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
         switch message.kind {
-        case .text(_):
-            print("text")
-        case .attributedText(_):
-            print("attr")
         case .photo(let photoItem):
             if let ubcItem = photoItem as? UBCMediaItem {
-                
                 imageView.sd_setImage(with: ubcItem.url, completed: nil)
-                
-//                ubcItem.loadImage({[weak self] image in
-//                    self?.reloadInputViews()
-//                    imageView.image = image
-//                })
             }
-            print("photp")
-        case .video(_):
-            print("video")
-        case .location(_):
-            print("location")
-        case .emoji(_):
-            print("emoj")
-        case .custom(_):
-            print("custom")
+        default:
+            break
         }
     }
 }
@@ -313,7 +353,9 @@ extension UBCMessagesViewController: MessageInputBarDelegate {
     extension UBCMessagesViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
         
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-            picker.dismiss(animated: true, completion: nil)
+            picker.dismiss(animated: true, completion: { [weak self] in
+                self?.isImagePicker = false
+            })
             
             if let asset = info[UIImagePickerControllerEditedImage] as? PHAsset {
                 let size = CGSize(width: 250, height: 250)
@@ -330,7 +372,6 @@ extension UBCMessagesViewController: MessageInputBarDelegate {
             } else if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
                 UBCSocketIOManager.sharedInstance.sendPhoto(image)
             }
-            
         }
         
         func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

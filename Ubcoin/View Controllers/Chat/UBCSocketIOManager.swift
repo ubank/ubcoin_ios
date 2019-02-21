@@ -10,10 +10,6 @@ import UIKit
 import SocketIO
 import MessageKit
 
-let sPath = "https://qa.ubcoin.io"
-let manager = SocketManager(socketURL: URL(string: sPath)!, config: [.log(true), .compress])
-let socket = manager.defaultSocket
-private let user = UBCUserDM.loadProfile()
 
 public enum UBTypeIOMessage : String{
     case textType = "message", imageType = "image"
@@ -22,6 +18,11 @@ public enum UBTypeIOMessage : String{
 //MARK: Initialize
 
 class UBCSocketIOManager: NSObject {
+    
+    static let sPath = "https://qa.ubcoin.io"
+    static let manager = SocketManager(socketURL: URL(string: sPath)!, config: [.log(true), .compress])
+    static let socket = manager.defaultSocket
+    private static let user = UBCUserDM.loadProfile()
     
     private let defaultDate = "2019-01-31T12:26:25.064Z"
     private var completionMessage: ((UBCMessageChat) -> Void)?
@@ -39,24 +40,22 @@ class UBCSocketIOManager: NSObject {
     
     override init() {
         super.init()
+        listenMethods()
     }
 
     func enterRoom(item:UBCGoodDM?) {
         
         guard let item = item,
-              let user = user else {
+            let user = UBCSocketIOManager.user else {
             return
         }
-        
-        
-        listenMethods()
         
         var params:[String:Any] = [:]
         params["token"] = UBCKeyChain.authorization
         params["itemId"] = item.id
         params["users"] = [user.id, item.seller.id]
         
-        socket.emit("enterRoom", params)
+        UBCSocketIOManager.socket.emit("enterRoom", params)
     }
 }
 
@@ -65,11 +64,11 @@ class UBCSocketIOManager: NSObject {
 extension UBCSocketIOManager {
     
     func sendPhoto(_ image:UIImage) {
-        UBCDataProvider.shared.uploadImage(image, withCompletionBlock: { isCompite, imageUrl in
+        
+        UBCDataProvider.shared.uploadImage(image, withCompletionBlock: {[weak self] isCompite, imageUrl in
             if let imageUrl = imageUrl, isCompite == true {
-                DispatchQueue.main.async { [weak self] in
-                    self?.sendMessage(message: imageUrl, .imageType)
-                }
+                self?.sendMessage(message: imageUrl, .imageType)
+            
             }
         })
     }
@@ -78,28 +77,24 @@ extension UBCSocketIOManager {
         var params:[String:Any] = [:]
         params["content"] = message
         params["type"] = type.rawValue
-        
+
         if let userDM = UBCUserDM.loadProfile() {
             params["publisher"] =  userDM.id
         }
-        socket.emit("sendMessage", params)
-        
-        if type == .imageType {
-            updateHistory(from: Date())
-        }
+        UBCSocketIOManager.socket.emit("sendMessage", params)
     }
     
     func exitChat() {
-        socket.emit("leaveRoom")
+        UBCSocketIOManager.socket.emit("leaveRoom")
     }
     
-    func updateHistory(from date:Date?, limit:Int = 50) {
+    func updateHistory(from date:Date?, limit:Int = 5) {
         guard let date = date else {
             return
         }
         let st = date.chatStringDate()
         //NSDate.stringFromDate(inFormat_dd_MM_yyyy_HH_mm_ss: date)
-        socket.emit("history", ["fromDate":st ?? defaultDate, "limit":limit])
+        UBCSocketIOManager.socket.emit("history", ["fromDate":st ?? defaultDate, "limit":limit])
     }
 }
 
@@ -117,7 +112,7 @@ extension UBCSocketIOManager {
     
     private func listenMethods() {
         
-        socket.on("history") {[weak self] dataArray, socketAck in
+        UBCSocketIOManager.socket.on("history") {[weak self] dataArray, socketAck in
             guard let sself = self else {
                 return
             }
@@ -129,7 +124,7 @@ extension UBCSocketIOManager {
             }
         }
         
-        socket.on("sendMessage") { [weak self] dataArray, socketAck in
+        UBCSocketIOManager.socket.on("sendMessage") { [weak self] dataArray, socketAck in
             guard let sself = self else {
                 return
             }
@@ -151,51 +146,10 @@ extension UBCSocketIOManager {
 extension UBCSocketIOManager {
     
     @objc func establishConnection() {
-        socket.connect()
+        UBCSocketIOManager.socket.connect()
     }
     
     @objc func closeConnection() {
-        socket.disconnect()
+        UBCSocketIOManager.socket.disconnect()
     }
-}
-
-extension Date {
-    
-    func chatStringDate() -> String? {
-        let format = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = format
-        return dateFormatter.string(from: self)
-    }
-    
-    func isInSameDayOf(date: Date) -> Bool {
-        return Calendar.current.isDate(self, inSameDayAs:date)
-    }
-    
-    func chatDisplayDate() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        return dateFormatter.string(from: self)
-    }
-}
-
-extension String {
-    
-    func chatDate() -> Date? {
-        let format = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        // Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = format
-        return dateFormatter.date(from: self)
-        
-      //  dateFormater.locale = UBLocal.shared.locale;
-      //  dateFormater.timeZone = NSTimeZone.systemTimeZone
-    }
-}
-
-extension UIColor {
-    static let primaryMessage = UIColor(hexString: "279A75")!
-    static let slaveMessage = UIColor(hexString: "BFBFBF")!
 }

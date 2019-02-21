@@ -27,23 +27,5 @@ class UBCMediaItem: MediaItem {
         self.placeholderImage = UIImage()
         self.size = CGSize(width: 200, height: 200)
     }
-    
-    
-    func loadImage(_ completion: ((UIImage?) -> Void)?) {
-        guard let url = url else {
-            return
-        }
-        
-        SDWebImageManager.shared().imageDownloader?.downloadImage(with: url, options: .continueInBackground, progress: nil, completed: {[weak self] image, data, error, finished in
-            guard let sself = self else {
-                return
-            }
-            sself.image = image
-            
-            if let completion = completion{
-                completion(image)
-            }
-        })
-    }
 
 }

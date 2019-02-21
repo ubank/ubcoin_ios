@@ -13,6 +13,8 @@ import MessageInputBar
 
 class UBCChatController: UBCMessagesViewController {
     
+    private var isAppendHistory = false
+    
     private var item: UBCGoodDM?
     private var deal: UBCDealDM?
     
@@ -30,10 +32,9 @@ class UBCChatController: UBCMessagesViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.title = UBLocal.shared.localizedString(forKey: "str_chat", value: "")
+        self.navigationItem.setTitle(title: item?.title ?? UBLocal.shared.localizedString(forKey: "str_chat", value: ""), subtitle: item?.seller.name ?? "")
+
         messagesCollectionView.messageCellDelegate = self
-        
         UBCSocketIOManager.sharedInstance.enterRoom(item: item)
         
         UBCSocketIOManager.sharedInstance.messageListener {[weak self] message in
@@ -47,20 +48,24 @@ class UBCChatController: UBCMessagesViewController {
             guard let sself = self else {
                 return
             }
-            sself.setHistory(messages)
+            
+            sself.setHistory(messages, append: sself.isAppendHistory)
+            sself.isAppendHistory = false
 
         }
-        
-        
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        UBCSocketIOManager.sharedInstance.exitChat()
-    }
     
     
     override func loadMoreMessages() {
+        
+        if let first = messages.first {
+            isAppendHistory = true
+            UBCSocketIOManager.sharedInstance.updateHistory(from: first.sentDate)
+        }
+        
+        
+        
         DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + 1) {
             //            SampleData.shared.getMessages(count: 20) { messages in
             DispatchQueue.main.async {
