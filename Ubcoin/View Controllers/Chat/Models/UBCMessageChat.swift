@@ -35,8 +35,7 @@ class UBCMessageChat: MessageType {
     
     
     init?(_ document: [String:Any]) {
-        
-        guard let sentDate = NSDate(fromISO8601String: document["date"] as? String)   else {
+        guard let sentDate = (document["date"] as? String)?.chatDate()  else {
             return nil
         }
         guard let senderName = document["userName"] as? String else {
@@ -53,7 +52,8 @@ class UBCMessageChat: MessageType {
         
         self.id = nil
         
-        self.sentDate = sentDate as Date
+        
+        self.sentDate = sentDate
         sender = Sender(id:publiser, displayName: senderName)
         
         if type == "image"{
@@ -65,7 +65,7 @@ class UBCMessageChat: MessageType {
     
     init?(history document: [String:Any]) {
         
-        guard let sentDate  = (document["date"] as? String)?.chatDate() else {   // NSDate(fromISO8601String: document["date"] as? String)   else {
+        guard let sentDate = (document["date"] as? String)?.chatDate() else {
             return nil
         }
         guard let senderName = document["userName"] as? String else {
@@ -82,7 +82,7 @@ class UBCMessageChat: MessageType {
         
         self.id = nil
         
-        self.sentDate = sentDate as Date
+        self.sentDate = sentDate
         sender = Sender(id:publiser, displayName: senderName)
         
         if type == "image"{

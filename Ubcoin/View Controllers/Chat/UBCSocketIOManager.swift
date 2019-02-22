@@ -88,12 +88,11 @@ extension UBCSocketIOManager {
         UBCSocketIOManager.socket.emit("leaveRoom")
     }
     
-    func updateHistory(from date:Date?, limit:Int = 5) {
+    func updateHistory(from date:Date?, limit:Int = 10) {
         guard let date = date else {
             return
         }
         let st = date.chatStringDate()
-        //NSDate.stringFromDate(inFormat_dd_MM_yyyy_HH_mm_ss: date)
         UBCSocketIOManager.socket.emit("history", ["fromDate":st ?? defaultDate, "limit":limit])
     }
 }

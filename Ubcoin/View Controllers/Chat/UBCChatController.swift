@@ -32,10 +32,17 @@ class UBCChatController: UBCMessagesViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.setTitle(title: item?.title ?? UBLocal.shared.localizedString(forKey: "str_chat", value: ""), subtitle: item?.seller.name ?? "")
-
+        
+        if let item = item {
+            self.navigationItem.setTitle(title: item.title ?? UBLocal.shared.localizedString(forKey: "str_chat", value: ""), subtitle: item.seller.name ?? "")
+            UBCSocketIOManager.sharedInstance.enterRoom(item: item)
+        } else if let deal = deal {
+            self.navigationItem.setTitle(title: deal.item.title ?? UBLocal.shared.localizedString(forKey: "str_chat", value: ""), subtitle: deal.item.seller.name ?? "")
+            UBCSocketIOManager.sharedInstance.enterRoom(item: deal.item)
+        }
+        
+        
         messagesCollectionView.messageCellDelegate = self
-        UBCSocketIOManager.sharedInstance.enterRoom(item: item)
         
         UBCSocketIOManager.sharedInstance.messageListener {[weak self] message in
             guard let sself = self else {

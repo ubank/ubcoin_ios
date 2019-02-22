@@ -642,6 +642,19 @@
      {
          if (success && ((NSArray *)responseObject).count > 0)
          {
+             //MARK: fixed this hak
+             completionBlock(NO, nil, YES);
+             return;
+             
+             NSArray *items2 = [responseObject removeNulls];
+             items2 = [items2 map:^id(id item) {
+                 UBCSellerDM *sailerDM = [[UBCSellerDM alloc]initWithDictionary:item[@"user"]];
+                 
+                 return sailerDM.rowData;
+             }];
+             
+         
+             
              NSArray *items = [responseObject[@"content"] removeNulls];
              items = [items map:^id(id item) {
                  UBCDealDM *deal = [[UBCDealDM alloc] initWithDictionary:item];
