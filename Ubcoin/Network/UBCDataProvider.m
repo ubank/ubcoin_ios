@@ -642,29 +642,15 @@
      {
          if (success && ((NSArray *)responseObject).count > 0)
          {
-             //MARK: fixed this hak
-             completionBlock(NO, nil, YES);
-             return;
-             
-             NSArray *items2 = [responseObject removeNulls];
-             items2 = [items2 map:^id(id item) {
-                 UBCSellerDM *sailerDM = [[UBCSellerDM alloc]initWithDictionary:item[@"user"]];
-                 
-                 return sailerDM.rowData;
-             }];
-             
-         
-             
-             NSArray *items = [responseObject[@"content"] removeNulls];
+             NSArray *items = [responseObject removeNulls];
              items = [items map:^id(id item) {
-                 UBCDealDM *deal = [[UBCDealDM alloc] initWithDictionary:item];
-                 return deal.rowData;
+                 UBCChatRoom *chatRoom = [[UBCChatRoom alloc] initWithItem:item];
+                 return [chatRoom rowData];
              }];
              
              if (completionBlock)
              {
-                 NSNumber *totalPages = responseObject[@"totalPages"];
-                 completionBlock(YES, items, YES);
+                 completionBlock(YES, items, NO);
              }
          }
          else if (completionBlock)

@@ -77,6 +77,8 @@
     
     self.window.rootViewController = self.navigationController;
     [self.window makeKeyAndVisible];
+    
+    [[UBCSocketIOManager sharedInstance] reloadConnection];
 }
 
 - (void)setupColors

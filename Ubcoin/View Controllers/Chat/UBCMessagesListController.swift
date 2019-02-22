@@ -48,11 +48,8 @@ class UBCMessagesListController: UBViewController {
     
     override func updateInfo() {
         
-        UBCDataProvider.shared.chartDealsList(completionBlock: { success, items, canLoadMore in
+        UBCDataProvider.shared.chartDealsList(completionBlock: {[weak self] success, items, canLoadMore in
             print("use Chart message list")
-        })
-        
-        UBCDataProvider.shared.dealsList(withPageNumber: pageNumber) { [weak self] success, items, canLoadMore in
             guard let self = self else { return }
             
             self.stopActivityIndicator()
@@ -72,7 +69,30 @@ class UBCMessagesListController: UBViewController {
             
             self.tableView.emptyView.isHidden = !self.deals.isEmpty
             self.tableView.update(withRowsData: self.deals)
-        }
+
+        })
+        
+//        UBCDataProvider.shared.dealsList(withPageNumber: pageNumber) { [weak self] success, items, canLoadMore in
+//            guard let self = self else { return }
+//
+//            self.stopActivityIndicator()
+//            self.tableView.refreshControll.endRefreshing()
+//
+//            if success {
+//                self.tableView.canLoadMore = canLoadMore
+//            }
+//
+//            if let items = items as? [UBTableViewRowData] {
+//                if self.pageNumber == 0 {
+//                    self.deals = [UBTableViewRowData]()
+//                }
+//                self.deals += items
+//                self.pageNumber += 1
+//            }
+//
+//            self.tableView.emptyView.isHidden = !self.deals.isEmpty
+//            self.tableView.update(withRowsData: self.deals)
+//        }
     }
 }
 
@@ -81,6 +101,10 @@ extension UBCMessagesListController: UBDefaultTableViewDelegate {
     func didSelect(_ data: UBTableViewRowData!, indexPath: IndexPath!) {
         if let deal = data.data as? UBCDealDM {
             navigationController?.pushViewController(UBCChatController(deal: deal), animated: true)
+        }
+        
+        if let chatDeal = data.data as? UBCChatRoom {
+            navigationController?.pushViewController(UBCChatController(chatDeal: chatDeal), animated: true)
         }
     }
     

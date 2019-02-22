@@ -17,6 +17,7 @@ class UBCChatController: UBCMessagesViewController {
     
     private var item: UBCGoodDM?
     private var deal: UBCDealDM?
+    private var chatDeal:UBCChatRoom?
     
     @objc convenience init(item: UBCGoodDM) {
         self.init()
@@ -30,15 +31,21 @@ class UBCChatController: UBCMessagesViewController {
         self.deal = deal
     }
     
+    @objc convenience init(chatDeal:UBCChatRoom) {
+        self.init()
+        self.chatDeal = chatDeal
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let item = item {
             self.navigationItem.setTitle(title: item.title ?? UBLocal.shared.localizedString(forKey: "str_chat", value: ""), subtitle: item.seller.name ?? "")
             UBCSocketIOManager.sharedInstance.enterRoom(item: item)
-        } else if let deal = deal {
-            self.navigationItem.setTitle(title: deal.item.title ?? UBLocal.shared.localizedString(forKey: "str_chat", value: ""), subtitle: deal.item.seller.name ?? "")
-            UBCSocketIOManager.sharedInstance.enterRoom(item: deal.item)
+        } else if let deal = chatDeal {
+            self.navigationItem.setTitle(title: deal.name, subtitle: deal.seller?.name ?? "")
+            UBCSocketIOManager.sharedInstance.enterRoom(chatRoom: deal)
         }
         
         

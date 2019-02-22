@@ -57,6 +57,21 @@ class UBCSocketIOManager: NSObject {
         
         UBCSocketIOManager.socket.emit("enterRoom", params)
     }
+    
+    func enterRoom(chatRoom:UBCChatRoom?) {
+        
+        guard let item = chatRoom,
+            let user = UBCSocketIOManager.user else {
+                return
+        }
+        
+        var params:[String:Any] = [:]
+        params["token"] = UBCKeyChain.authorization
+        params["itemId"] = item.id
+        params["users"] = [user.id, item.seller?.id]
+        
+        UBCSocketIOManager.socket.emit("enterRoom", params)
+    }
 }
 
 //MARK: Sender methods
@@ -150,5 +165,10 @@ extension UBCSocketIOManager {
     
     @objc func closeConnection() {
         UBCSocketIOManager.socket.disconnect()
+    }
+    
+    @objc func reloadConnection() {
+        UBCSocketIOManager.socket.disconnect()
+        UBCSocketIOManager.socket.connect()
     }
 }
