@@ -64,7 +64,7 @@ open class StepProgressView: UIView {
     @IBInspectable open var pastStepColor: UIColor = .lightGray { didSet { needsColor = true } }
 
     /// nil => use the view's tintColor
-    @IBInspectable open var currentStepColor: UIColor? { didSet { needsColor = true } }
+    @IBInspectable open var currentStepColor: UIColor = UBCColor.green { didSet { needsColor = true } }
 
     /// nil => use currentStepColor
     @IBInspectable open var currentDetailColor: UIColor? = .darkGray { didSet { needsColor = true } }
@@ -176,6 +176,11 @@ open class StepProgressView: UIView {
             prevView = stepView
             prevAttribute = .bottom
         }
+        
+        if let lastView = stepViews.last {
+            constrain(lastView, at: .bottom, to: self, at: .bottom)
+        }
+        
         stepViews.last?.lineView.isHidden = true
 
         colorSteps()
@@ -195,7 +200,7 @@ open class StepProgressView: UIView {
             if currentStep >= 0 {
                 let textColor: UIColor = currentTextColor ?? tintColor
                 let detailColor = currentDetailColor ?? textColor
-                stepViews[currentStep].color(text: textColor, detail: detailColor, stroke: textColor, fill: currentStepFillColor, line: futureStepColor)
+                stepViews[currentStep].color(text: textColor, detail: detailColor, stroke: currentStepColor, fill: currentStepFillColor, line: futureStepColor)
             }
         }
 
@@ -233,6 +238,7 @@ private class SingleStepView: UIView {
         textLabel.numberOfLines = 0
         textLabel.translatesAutoresizingMaskIntoConstraints = false
         addConstrainedSubview(textLabel, constrain: .top, .trailing)
+        constrain(textLabel, at: .top, diff: -5)
         constrain(textLabel, at: .leading, diff: hPadding + shapeSize + lineWidth)
 
         // detail
@@ -244,13 +250,15 @@ private class SingleStepView: UIView {
         constrain(detailLabel, at: .top, to: textLabel, at: .bottom)
         constrain(detailLabel, at: .trailing, to: textLabel)
         constrain(detailLabel, at: .leading, to: textLabel)
-        constrain(detailLabel, at: .bottom, diff: -vPadding)
+        constrain(detailLabel, at: .bottom, diff: -vPadding - 10)
 
         // line to next step
         lineView.translatesAutoresizingMaskIntoConstraints = false
         addConstrainedSubview(lineView, constrain: .bottom)
         constrain(lineView, at: .leading, diff: shapeSize / 2)
         constrain(lineView, at: .top, diff: shapeSize + lineWidth + 2)
+        constrain(lineView, at: .bottom, diff: -2)
+        
         lineView.constrain(.width, to: lineWidth)
     }
 

@@ -113,8 +113,8 @@ class UBCDealInfoController: UBViewController {
         if let deal = purchaseDM.deal {
             progressView.steps = deal.statusDescriptions.map { $0.title }
             var details: [Int: String] = [:]
-            for (index, status) in deal.statusDescriptions.enumerated() where status.desc != nil {
-                details[index] = status.desc
+            for (index, status) in deal.statusDescriptions.enumerated() {
+                details[index] = status.desc == "" && index != deal.statusDescriptions.count-1 ? " " : status.desc
             }
             progressView.details = details
             progressView.currentStep = deal.statusDescriptions.index(of: deal.currentStatus) ?? 0

@@ -59,9 +59,10 @@ class UBCCurrencySelectionView: UIView {
         confirmButton.title = String(format: "%@ %@", "str_confirm_in".localizedString(), currency)
         commissionLabel.isHidden = !isETH
         
-        let balance = UBCBalanceDM.loadBalance()
-        let balanceAmount = isETH ? balance?.amountETH.coinsPriceString : balance?.amountUBC.priceString
-        balanceLabel.text = String(format: "%@: %@ %@", "str_your_balance".localizedString(), balanceAmount ?? "", currency)
+        if let balance = UBCBalanceDM.loadBalance(),let balanceAmount = isETH ? balance.amountETH.coinsPriceString : balance.amountUBC.priceString  {
+            
+            balanceLabel.text = String(format: "%@: %@ %@", "str_your_balance".localizedString(), balanceAmount, currency)
+        }
     }
     
     @IBAction func UBCSelected() {
