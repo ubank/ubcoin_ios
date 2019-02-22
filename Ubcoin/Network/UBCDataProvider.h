@@ -55,9 +55,10 @@
 - (void)dealsToSellWithCompletionBlock:(void (^)(BOOL success, NSArray *itemsSections))completionBlock;
 - (void)dealsToBuyWithCompletionBlock:(void (^)(BOOL success, NSArray *itemsSections))completionBlock;
 
-- (void)chatURLForItemID:(NSString *)itemID withCompletionBlock:(void (^)(BOOL success, NSURL *url, NSURL *appURL))completionBlock;
-- (void)chatURLForDealID:(NSString *)dealID withCompletionBlock:(void (^)(BOOL, NSURL *, NSURL *))completionBlock;
-- (void)registerInChatWithCompletionBlock:(void (^)(BOOL success, BOOL authorized, NSURL *url, NSURL *appURL))completionBlock;
+- (void)dealForItemID:(NSString *)itemID withCompletionBlock:(void (^)(BOOL success, UBCDealDM *deal))completionBlock;
+- (void)dealsListWithPageNumber:(NSUInteger)page withCompletionBlock:(void (^)(BOOL success, NSArray *deals, BOOL canLoadMore))completionBlock;
+    
+- (void)chartDealsListWithCompletionBlock:(void (^)(BOOL, NSArray *, BOOL))completionBlock;
 
 - (void)uploadImage:(UIImage *)image withCompletionBlock:(void (^)(BOOL success, NSString *url))completionBlock;
 - (void)sellItem:(NSDictionary *)dictionary withCompletionBlock:(void (^)(BOOL success, UBCGoodDM *item))completionBlock;

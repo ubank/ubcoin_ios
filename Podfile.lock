@@ -26,20 +26,28 @@ PODS:
   - Fabric (1.9.0)
   - FBSDKCoreKit (4.40.0):
     - Bolts (~> 1.9)
-  - GoogleMaps (3.0.2):
-    - GoogleMaps/Maps (= 3.0.2)
-  - GoogleMaps/Base (3.0.2)
-  - GoogleMaps/Maps (3.0.2):
+  - GoogleMaps (3.0.3):
+    - GoogleMaps/Maps (= 3.0.3)
+  - GoogleMaps/Base (3.0.3)
+  - GoogleMaps/Maps (3.0.3):
     - GoogleMaps/Base
   - ImageSlideshow (1.7.0):
     - ImageSlideshow/Core (= 1.7.0)
   - ImageSlideshow/Core (1.7.0)
   - INTULocationManager (4.3.2)
+  - MessageInputBar (0.4.1):
+    - MessageInputBar/Core (= 0.4.1)
+  - MessageInputBar/Core (0.4.1)
+  - MessageKit (2.0.0):
+    - MessageInputBar/Core
   - MiniLayout (1.4.0)
   - QRCodeReaderViewController (4.0.2)
   - SDWebImage (4.4.5):
     - SDWebImage/Core (= 4.4.5)
   - SDWebImage/Core (4.4.5)
+  - Socket.IO-Client-Swift (14.0.0):
+    - Starscream (~> 3.0.6)
+  - Starscream (3.0.6)
   - TTTAttributedLabel (2.0.0)
   - UBGeneralClasses (1.0.3):
     - SDWebImage
@@ -71,8 +79,11 @@ DEPENDENCIES:
   - GoogleMaps
   - ImageSlideshow
   - INTULocationManager
+  - MessageInputBar
+  - MessageKit
   - MiniLayout
   - QRCodeReaderViewController
+  - Socket.IO-Client-Swift
   - TTTAttributedLabel
   - UBGeneralClasses (from `https://github.com/ubank/ub_general_classes_iOS.git`)
 
@@ -87,9 +98,13 @@ SPEC REPOS:
     - GoogleMaps
     - ImageSlideshow
     - INTULocationManager
+    - MessageInputBar
+    - MessageKit
     - MiniLayout
     - QRCodeReaderViewController
     - SDWebImage
+    - Socket.IO-Client-Swift
+    - Starscream
     - TTTAttributedLabel
 
 EXTERNAL SOURCES:
@@ -108,15 +123,19 @@ SPEC CHECKSUMS:
   DGActivityIndicatorView: ff2c76073d79692f724863c8dd38685866a03cb6
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655
   FBSDKCoreKit: ae214474b25033399c131dc81d258e412582a2ba
-  GoogleMaps: 941cd655e009b4d8e42df19a3d749bc3fccec973
+  GoogleMaps: fd5c9fa58871781b9fb94d4936f19c69fe60ce32
   ImageSlideshow: f8eec5e37a980f60923b585ff23b0e140fd24018
   INTULocationManager: e5dc524611b0cd582f473bc56cc8c389adb2f338
+  MessageInputBar: e81c7535347f1f7b923de7080409a535a004b6e4
+  MessageKit: 29c1c87e5a396d2ca7a3f712e5171dc9aba42a1e
   MiniLayout: e35331ce9ab50a4111c3f91deca158834f86d9e7
   QRCodeReaderViewController: e8f27d035b3e72b1d4b1c61ff66458287e3be0ff
   SDWebImage: ecc03494e973b93b80213649d32175f8d2d17d4d
+  Socket.IO-Client-Swift: 21e6a8a23a7d367d5ddfab6cbbd3c679cf3c25d6
+  Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
   UBGeneralClasses: d205ce1ce0a17dc8cc296c79d22a822e5b60edb7
 
-PODFILE CHECKSUM: af363c5cd70eaadc0083ffbabb5666d4d7e87030
+PODFILE CHECKSUM: 60d1fabff73c69ef768b4b7e3b9a3b6d82b917d3
 
-COCOAPODS: 1.6.0
+COCOAPODS: 1.6.1

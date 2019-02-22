@@ -182,9 +182,21 @@
     return [NSURL URLWithString:url];
 }
 
-+ (NSURL *)chatURL
++ (NSURL *)deal
 {
-    NSString *url = [SERVER_URL stringByAppendingFormat:@"items/discuss"];
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"purchases/create"];
+    return [NSURL URLWithString:url];
+}
+
++ (NSURL *)dealsListWithPageNumber:(NSUInteger)page
+{
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"purchases/related?page=%d&size=%d", (int)page, ITEMS_PAGE_SIZE];
+    return [NSURL URLWithString:url];
+}
+    
++ (NSURL *)chartDealsList
+{
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"chats"];
     return [NSURL URLWithString:url];
 }
 

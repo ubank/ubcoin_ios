@@ -30,6 +30,10 @@ extension UIView {
         self.layer.rasterizationScale = UIScreen.main.scale
         self.layer.shouldRasterize = true
     }
+    
+    func clearShadow()  {
+        self.layer.shadowOpacity = 0.0;
+    }
 }
 
 

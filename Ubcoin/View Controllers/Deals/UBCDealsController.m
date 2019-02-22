@@ -10,7 +10,6 @@
 #import "UBCollectionViewSwitch.h"
 #import "UBCToBuyDealsView.h"
 #import "UBCToSellDealsView.h"
-#import "UBCChatController.h"
 #import "UBCGoodDetailsController.h"
 
 #import "Ubcoin-Swift.h"

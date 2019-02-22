@@ -195,13 +195,15 @@ class UBCDealInfoController: UBViewController {
 }
 
 extension UBCDealInfoController: UBCSellerViewDelegate {
+    
     func show(seller: UBCSellerDM) {
         let controller = UBCSellerController(seller: seller)
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
     func chat(seller: UBCSellerDM) {
-        if let controller = UBCChatController(item: purchaseDM?.item) {
+        if let item = purchaseDM?.item {
+            let controller = UBCChatController(item: item)
             self.navigationController?.pushViewController(controller, animated: true)
         }
     }
