@@ -1653,7 +1653,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Ubcoin/Pods-Ubcoin-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Ubcoin/Pods-Ubcoin-resources.sh",
 				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
 				"${PODS_ROOT}/ImageSlideshow/ImageSlideshow/Assets/ic_cross_white@2x.png",
@@ -1668,7 +1668,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Ubcoin/Pods-Ubcoin-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Ubcoin/Pods-Ubcoin-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F9136AB4A7CDD4439AB8F29C /* [CP] Check Pods Manifest.lock */ = {
