@@ -73,12 +73,6 @@
 
 #pragma mark - UBCDealsViewDelegate
 
-- (void)showDeal:(UBCDealDM *)deal
-{
-    UBCDealInfoController *controller = [[UBCDealInfoController alloc] initWithDeal:deal];
-    [self.navigationController pushViewController:controller animated:YES];
-}
-
 - (void)showItem:(UBCGoodDM *)item
 {
     UBCGoodDetailsController *controller = [UBCGoodDetailsController.alloc initWithGood:item];

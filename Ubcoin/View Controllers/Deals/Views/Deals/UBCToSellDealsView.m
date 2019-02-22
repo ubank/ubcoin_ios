@@ -19,7 +19,7 @@
     if (self)
     {
         [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(updateItems)
+                                                 selector:@selector(updateInfo)
                                                      name:kNotificationItemChanged
                                                    object:nil];
     }
@@ -38,95 +38,17 @@
 {
     if (UBCKeyChain.authorization)
     {
-        if (self.items.count == 0)
-        {
-            [self.tableView.refreshControll beginRefreshing];
-        }
-        [self loadDeals];
+        [self.tableView.refreshControll beginRefreshing];
+        __weak typeof(self) weakSelf = self;
+        [UBCDataProvider.sharedProvider dealsToSellWithCompletionBlock:^(BOOL success, NSArray *itemsSections)
+         {
+             [weakSelf handleResponse:itemsSections];
+         }];
     }
     else
     {
         self.tableView.emptyView.hidden = NO;
     }
-}
-
-- (void)updateItems
-{
-    self.pageNumber = 0;
-    [self updateInfo];
-}
-
-#pragma mark -
-
-- (void)loadDeals
-{
-    __weak typeof(self) weakSelf = self;
-    [UBCDataProvider.sharedProvider dealsToSellListWithPageNumber:self.pageNumber
-                                              withCompletionBlock:^(BOOL success, NSArray *items, BOOL canLoadMore)
-     {
-         if (success)
-         {
-             weakSelf.tableView.canLoadMore = canLoadMore;
-         }
-         [weakSelf handleResponse:items];
-     }];
-}
-
-- (void)handleResponse:(NSArray *)deals
-{
-    [self.tableView.refreshControll endRefreshing];
-    if (deals)
-    {
-        if (self.pageNumber == 0)
-        {
-            self.items = [NSMutableArray array];
-        }
-        [self.items addObjectsFromArray:deals];
-        self.pageNumber++;
-    }
-    self.tableView.emptyView.hidden = self.items.count > 0;
-    [self.tableView updateWithSectionsData:[self sections]];
-}
-
-- (NSArray *)sections
-{
-    NSMutableArray *sections = [NSMutableArray array];
-    
-    NSSet *statuses = [NSSet setWithArray:[self.items valueForKeyPath:@"data.status"]];
-    NSArray *sortedStatuses = [statuses.allObjects sortedArrayUsingSelector:@selector(compare:)];
-    for (NSNumber *statusNumber in sortedStatuses)
-    {
-        UBCItemStatus status = (UBCItemStatus)statusNumber.integerValue;
-        UBTableViewSectionData *section = [self sectionForStatus:status
-                                                       withTitle:[UBCGoodDM titleForStatus:status]];
-        if (section)
-        {
-            [sections addObject:section];
-        }
-    }
-    
-    return sections;
-}
-
-- (NSArray *)itemsWithStatus:(UBCItemStatus)status
-{
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self.data.status == %d", status];
-    return [self.items filteredArrayUsingPredicate:predicate];
-}
-
-- (UBTableViewSectionData *)sectionForStatus:(UBCItemStatus)status withTitle:(NSString *)title
-{
-    NSArray *items = [self itemsWithStatus:status];
-    if (items.count > 0)
-    {
-        UBTableViewSectionData *section = UBTableViewSectionData.new;
-        section.headerTitle = UBLocalizedString(title, nil);
-        section.rows = items;
-        
-        return section;
-    }
-    
-    return nil;
 }
 
 #pragma mark -

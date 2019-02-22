@@ -23,11 +23,12 @@
 {
     if (UBCKeyChain.authorization)
     {
-        if (self.items.count == 0)
-        {
-            [self.tableView.refreshControll beginRefreshing];
-        }
-        [self loadDeals];
+        [self.tableView.refreshControll beginRefreshing];
+        __weak typeof(self) weakSelf = self;
+        [UBCDataProvider.sharedProvider dealsToBuyWithCompletionBlock:^(BOOL success, NSArray *itemsSections)
+         {
+             [weakSelf handleResponse:itemsSections];
+         }];
     }
     else
     {
@@ -35,39 +36,23 @@
     }
 }
 
-#pragma mark -
-
-- (void)loadDeals
-{
-    __weak typeof(self) weakSelf = self;
-    [UBCDataProvider.sharedProvider dealsToBuyListWithPageNumber:self.pageNumber
-                                             withCompletionBlock:^(BOOL success, NSArray *deals, BOOL canLoadMore)
-     {
-         if (success)
-         {
-             weakSelf.tableView.canLoadMore = canLoadMore;
-         }
-         [weakSelf handleResponse:deals];
-     }];
-}
-
 #pragma mark - UBDefaultTableViewDelegate
 
 - (void)layoutCell:(UBDefaultTableViewCell *)cell forData:(UBTableViewRowData *)data indexPath:(NSIndexPath *)indexPath
 {
-    UBCDealDM *deal = data.data;
+    UBCGoodDM *item = data.data;
     
     UBCDealCell *dealCell = (UBCDealCell *)cell;
-    dealCell.info.attributedText = deal.seller.info;
-    [dealCell setLocation:deal.item.location];
+    dealCell.info.attributedText = item.seller.info;
+    [dealCell setLocation:item.location];
 }
 
 - (void)didSelectData:(UBTableViewRowData *)data indexPath:(NSIndexPath *)indexPath
 {
-    if ([self.delegate respondsToSelector:@selector(showDeal:)])
-    {    
-        UBCDealDM *deal = data.data;
-        [self.delegate showDeal:deal];
+    if ([self.delegate respondsToSelector:@selector(showItem:)])
+    {
+        UBCGoodDM *item = data.data;
+        [self.delegate showItem:item];
     }
 }
 

@@ -14,7 +14,6 @@
 @protocol UBCDealsViewDelegate <NSObject>
 
 @optional
-- (void)showDeal:(UBCDealDM *)deal;
 - (void)showItem:(UBCGoodDM *)item;
 
 @end
@@ -23,8 +22,6 @@
 
 @property (weak, nonatomic) id<UBCDealsViewDelegate> delegate;
 @property (strong, nonatomic) UBDefaultTableView *tableView;
-@property (strong, nonatomic) NSMutableArray *items;
-@property (assign, nonatomic) NSUInteger pageNumber;
 
 - (void)setupEmptyView;
 - (void)updateInfo;

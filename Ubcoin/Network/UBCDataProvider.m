@@ -536,58 +536,114 @@
 
 #pragma mark - DEALS
 
-- (void)dealsToSellListWithPageNumber:(NSUInteger)page withCompletionBlock:(void (^)(BOOL, NSArray *, BOOL))completionBlock
+- (void)dealsToSellWithCompletionBlock:(void (^)(BOOL, NSArray *))completionBlock
 {
-    NSURL *url = [UBCURLProvider dealsToSellListWithPageNumber:page];
+    NSURL *url = [UBCURLProvider dealsToSell];
     NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:url];
     [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
      {
          if (success)
          {
-             NSArray *items = [responseObject[@"data"] removeNulls];
-             items = [items map:^id(id item) {
+             NSArray *activeItems = [responseObject[@"active"] removeNulls];
+             activeItems = [activeItems map:^id(id item) {
                  UBCGoodDM *good = [[UBCGoodDM alloc] initWithDictionary:item];
                  UBTableViewRowData *data = good.rowData;
                  data.className = NSStringFromClass(UBCDealCell.class);
                  return data;
              }];
              
+             NSArray *notActiveItems = [responseObject[@"waste"] removeNulls];
+             notActiveItems = [notActiveItems map:^id(id item) {
+                 UBCGoodDM *good = [[UBCGoodDM alloc] initWithDictionary:item];
+                 UBTableViewRowData *data = good.rowData;
+                 data.className = NSStringFromClass(UBCDealCell.class);
+                 return data;
+             }];
+             
+             NSMutableArray *sections = [NSMutableArray array];
+             
+             if (activeItems.count > 0)
+             {
+                 UBTableViewSectionData *section = UBTableViewSectionData.new;
+                 section.headerTitle = UBLocalizedString(@"str_item_status_active", nil);
+                 section.rows = activeItems;
+                 
+                 [sections addObject:section];
+             }
+             
+             if (notActiveItems.count > 0)
+             {
+                 UBTableViewSectionData *section = UBTableViewSectionData.new;
+                 section.headerTitle = UBLocalizedString(@"str_item_status_not_active", nil);
+                 section.rows = notActiveItems;
+                 
+                 [sections addObject:section];
+             }
+             
              if (completionBlock)
              {
-                 NSNumber *totalPages = [responseObject valueForKeyPath:@"pageData.totalPages"];
-                 completionBlock(YES, items, totalPages.integerValue > page + 1);
+                 completionBlock(YES, sections);
              }
          }
          else if (completionBlock)
          {
-             completionBlock(NO, nil, YES);
+             completionBlock(NO, nil);
          }
      }];
 }
 
-- (void)dealsToBuyListWithPageNumber:(NSUInteger)page withCompletionBlock:(void (^)(BOOL, NSArray *, BOOL))completionBlock
+- (void)dealsToBuyWithCompletionBlock:(void (^)(BOOL, NSArray *))completionBlock
 {
-    NSURL *url = [UBCURLProvider dealsToBuyListWithPageNumber:page];
+    NSURL *url = [UBCURLProvider dealsToBuy];
     NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:url];
     [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
      {
          if (success)
          {
-             NSArray *items = [responseObject[@"data"] removeNulls];
-             items = [items map:^id(id item) {
-                 UBCDealDM *deal = [[UBCDealDM alloc] initWithDictionary:item];
-                 return deal.rowData;
+             NSArray *activeItems = [responseObject[@"active"] removeNulls];
+             activeItems = [activeItems map:^id(id item) {
+                 UBCGoodDM *good = [[UBCGoodDM alloc] initWithDictionary:item];
+                 UBTableViewRowData *data = good.rowData;
+                 data.className = NSStringFromClass(UBCDealCell.class);
+                 return data;
              }];
+             
+             NSArray *notActiveItems = [responseObject[@"waste"] removeNulls];
+             notActiveItems = [notActiveItems map:^id(id item) {
+                 UBCGoodDM *good = [[UBCGoodDM alloc] initWithDictionary:item];
+                 UBTableViewRowData *data = good.rowData;
+                 data.className = NSStringFromClass(UBCDealCell.class);
+                 return data;
+             }];
+             
+             NSMutableArray *sections = [NSMutableArray array];
+             
+             if (activeItems.count > 0)
+             {
+                 UBTableViewSectionData *section = UBTableViewSectionData.new;
+                 section.headerTitle = UBLocalizedString(@"str_item_status_active", nil);
+                 section.rows = activeItems;
+                 
+                 [sections addObject:section];
+             }
+             
+             if (notActiveItems.count > 0)
+             {
+                 UBTableViewSectionData *section = UBTableViewSectionData.new;
+                 section.headerTitle = UBLocalizedString(@"str_item_status_not_active", nil);
+                 section.rows = notActiveItems;
+                 
+                 [sections addObject:section];
+             }
              
              if (completionBlock)
              {
-                 NSNumber *totalPages = [responseObject valueForKeyPath:@"pageData.totalPages"];
-                 completionBlock(YES, items, totalPages.integerValue > page + 1 );
+                 completionBlock(YES, sections);
              }
          }
          else if (completionBlock)
          {
-             completionBlock(NO, nil, YES);
+             completionBlock(NO, nil);
          }
      }];
 }

@@ -156,6 +156,7 @@
 "str_the_listing_is_deactivated" = "The listing is deactivated";
 
 "str_item_status_active" = "Active";
+"str_item_status_not_active" = "Not active";
 "str_item_status_deactivated" = "Deactivated";
 "str_item_status_sold" = "Sold";
 "str_item_status_blocked" = "Blocked";

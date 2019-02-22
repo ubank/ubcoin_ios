@@ -168,15 +168,17 @@
     return [NSURL URLWithString:url];
 }
 
-+ (NSURL *)dealsToSellListWithPageNumber:(NSUInteger)page
++ (NSURL *)dealsToSell
 {
-    NSString *url = [SERVER_URL stringByAppendingFormat:@"purchases/seller?page=%d&size=%d", (int)page, ITEMS_PAGE_SIZE];
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"items/to-sell"];
+    
     return [NSURL URLWithString:url];
 }
 
-+ (NSURL *)dealsToBuyListWithPageNumber:(NSUInteger)page
++ (NSURL *)dealsToBuy
 {
-    NSString *url = [SERVER_URL stringByAppendingFormat:@"purchases/buyer?page=%d&size=%d", (int)page, ITEMS_PAGE_SIZE];
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"items/to-buy"];
+    
     return [NSURL URLWithString:url];
 }
 
