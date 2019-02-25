@@ -67,4 +67,11 @@
 - (void)cancelDeal:(NSString *)dealID withCompletionBlock:(void (^)(BOOL success))completionBlock;
 - (void)confirmDeal:(NSString *)dealID withCompletionBlock:(void (^)(BOOL success, UBCDealDM *deal))completionBlock;
 
+- (void)checkStatusForDeal:(NSString *)dealID withCompletionBlock:(void (^)(BOOL success, UBCDealDM *deal))completionBlock;
+
+- (void)changePersonalMeetingToDeliveryForDeal:(NSString *)dealID withCompletionBlock:(void (^)(BOOL success, UBCDealDM *deal))completionBlock;
+- (void)setDeliveryPriceForDeal:(NSString *)dealID price:(NSString *)price withCompletionBlock:(void (^)(BOOL success, UBCDealDM *deal))completionBlock;
+- (void)confirmDeliveryPriceForDeal:(NSString *)dealID price:(NSString *)price withCompletionBlock:(void (^)(BOOL success, UBCDealDM *deal))completionBlock;
+- (void)startDeliveryForDeal:(NSString *)dealID withCompletionBlock:(void (^)(BOOL success, UBCDealDM *deal))completionBlock;
+
 @end

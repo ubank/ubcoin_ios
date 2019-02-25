@@ -8,7 +8,7 @@
 
 #import "UBCURLProvider.h"
 
-#define SERVER_URL @"https://my.ubcoin.io/api/"
+#define SERVER_URL @"https://qa.ubcoin.io/api/"
 #define ITEMS_PAGE_SIZE 15
 
 @implementation UBCURLProvider
@@ -214,6 +214,8 @@
     return [NSURL URLWithString:url];
 }
 
+#pragma mark -
+
 + (NSURL *)buyItem
 {
     NSString *url = [SERVER_URL stringByAppendingString:@"items/buy"];
@@ -231,6 +233,43 @@
 + (NSURL *)confirmDeal:(NSString *)dealID
 {
     NSString *url = [SERVER_URL stringByAppendingFormat:@"purchases/confirm/%@", dealID];
+    
+    return [NSURL URLWithString:url];
+}
+
++ (NSURL *)checkStatusForDeal:(NSString *)dealID
+{
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"purchases/status/%@", dealID];
+    
+    return [NSURL URLWithString:url];
+}
+
+#pragma mark -
+
++ (NSURL *)changePersonalMeetingToDeliveryForDeal:(NSString *)dealID
+{
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"purchases/with-delivery/%@", dealID];
+    
+    return [NSURL URLWithString:url];
+}
+
++ (NSURL *)setDeliveryPriceForDeal:(NSString *)dealID
+{
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"purchases/set-delivery-price/%@", dealID];
+    
+    return [NSURL URLWithString:url];
+}
+
++ (NSURL *)confirmDeliveryPriceForDeal:(NSString *)dealID
+{
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"purchases/confirm-delivery-price/%@", dealID];
+    
+    return [NSURL URLWithString:url];
+}
+
++ (NSURL *)startDeliveryForDeal:(NSString *)dealID
+{
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"purchases/start-delivery/%@", dealID];
     
     return [NSURL URLWithString:url];
 }

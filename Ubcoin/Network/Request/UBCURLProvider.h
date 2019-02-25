@@ -56,4 +56,11 @@
 + (NSURL *)cancelDeal:(NSString *)dealID;
 + (NSURL *)confirmDeal:(NSString *)dealID;
 
++ (NSURL *)checkStatusForDeal:(NSString *)dealID;
+
++ (NSURL *)changePersonalMeetingToDeliveryForDeal:(NSString *)dealID;
++ (NSURL *)setDeliveryPriceForDeal:(NSString *)dealID;
++ (NSURL *)confirmDeliveryPriceForDeal:(NSString *)dealID;
++ (NSURL *)startDeliveryForDeal:(NSString *)dealID;
+
 @end
