@@ -165,17 +165,21 @@ class UBCMessagesViewController: MessagesViewController {
     
     func setHistory(_ messages: [UBCMessageChat], append:Bool = false) {
         
-        DispatchQueue.main.async {
+        if append == true {
+            self.messages.insert(contentsOf: messages, at: 0)
+        } else{
+            self.messages = messages
+        }
+        
+        DispatchQueue.main.async { [weak self] in
             if append == true {
-                self.messages.insert(contentsOf: messages, at: 0)
-            } else{
-                self.messages = messages
-            }
-            
-            self.messagesCollectionView.reloadDataAndKeepOffset()
-            if append == false {
-                self.messagesCollectionView.reloadData()
-                self.messagesCollectionView.scrollToBottom()
+                if messages.count != 1 {
+                    self?.messagesCollectionView.reloadDataAndKeepOffset()
+                }
+               
+            } else {
+                self?.messagesCollectionView.reloadData()
+                self?.messagesCollectionView.scrollToBottom(animated: false)
             }
             
         }
