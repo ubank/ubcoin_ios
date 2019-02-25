@@ -8,7 +8,7 @@
 
 #import "UBCURLProvider.h"
 
-#define SERVER_URL @"https://qa.ubcoin.io/api/"
+#define SERVER_URL @"https://my.ubcoin.io/api/"
 #define ITEMS_PAGE_SIZE 15
 
 @implementation UBCURLProvider

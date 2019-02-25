@@ -613,6 +613,7 @@
                  UBCGoodDM *good = [[UBCGoodDM alloc] initWithDictionary:item];
                  UBTableViewRowData *data = good.rowData;
                  data.className = NSStringFromClass(UBCDealCell.class);
+                 data.isDisabled = good.status != UBCItemStatusActive;
                  return data;
              }];
              
