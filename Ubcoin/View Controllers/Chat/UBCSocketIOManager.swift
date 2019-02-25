@@ -63,18 +63,18 @@ class UBCSocketIOManager: NSObject {
         UBCSocketIOManager.socket.emit("enterRoom", params)
     }
     
-    func enterRoom(chatRoom:UBCChatRoom?) {
+    func enterRoom(chatRoom: UBCChatRoom?) {
         UBCSocketIOManager.user = UBCUserDM.loadProfile()
         
-        guard let item = chatRoom,
+        guard let chatRoom = chatRoom,
             let user = UBCSocketIOManager.user else {
                 return
         }
         
         var params:[String:Any] = [:]
         params["token"] = UBCKeyChain.authorization
-        params["itemId"] = item.id
-        params["users"] = [user.id, item.seller?.id]
+        params["itemId"] = chatRoom.item.id
+        params["users"] = [user.id, chatRoom.user.id]
         
         UBCSocketIOManager.socket.emit("enterRoom", params)
     }

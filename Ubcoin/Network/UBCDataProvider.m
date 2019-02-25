@@ -700,7 +700,7 @@
          {
              NSArray *items = [responseObject removeNulls];
              items = [items map:^id(id item) {
-                 UBCChatRoom *chatRoom = [[UBCChatRoom alloc] initWithItem:item];
+                 UBCChatRoom *chatRoom = [[UBCChatRoom alloc] initWithDictionary:item];
                  return [chatRoom rowData];
              }];
              

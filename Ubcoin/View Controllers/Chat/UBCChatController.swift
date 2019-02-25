@@ -31,7 +31,7 @@ class UBCChatController: UBCMessagesViewController {
         self.deal = deal
     }
     
-    @objc convenience init(chatDeal:UBCChatRoom) {
+    @objc convenience init(chatDeal: UBCChatRoom) {
         self.init()
         self.chatDeal = chatDeal
     }
@@ -44,21 +44,20 @@ class UBCChatController: UBCMessagesViewController {
             self.navigationItem.setTitle(title: item.title ?? UBLocal.shared.localizedString(forKey: "str_chat", value: ""), subtitle: item.seller.name ?? "")
             UBCSocketIOManager.sharedInstance.enterRoom(item: item)
         } else if let deal = chatDeal {
-            self.navigationItem.setTitle(title: deal.name, subtitle: deal.seller?.name ?? "")
+            self.navigationItem.setTitle(title: deal.item.title, subtitle: deal.user.name)
             UBCSocketIOManager.sharedInstance.enterRoom(chatRoom: deal)
         }
         
-        
         messagesCollectionView.messageCellDelegate = self
         
-        UBCSocketIOManager.sharedInstance.messageListener {[weak self] message in
+        UBCSocketIOManager.sharedInstance.messageListener { [weak self] message in
             guard let sself = self else {
                 return
             }
             sself.insertMessage(message)
         }
         
-        UBCSocketIOManager.sharedInstance.historyListener {[weak self] messages in
+        UBCSocketIOManager.sharedInstance.historyListener { [weak self] messages in
             guard let sself = self else {
                 return
             }
