@@ -62,32 +62,23 @@ class UBCChatController: UBCMessagesViewController {
             guard let sself = self else {
                 return
             }
-            
             sself.setHistory(messages, append: sself.isAppendHistory)
             sself.isAppendHistory = false
+            
+            DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + 1) {
+                DispatchQueue.main.async {
+                    self?.refreshControl.endRefreshing()
+                }
+            }
 
         }
     }
-    
-    
     
     override func loadMoreMessages() {
         
         if let first = messages.first {
             isAppendHistory = true
             UBCSocketIOManager.sharedInstance.updateHistory(from: first.sentDate)
-        }
-        
-        
-        
-        DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + 1) {
-            //            SampleData.shared.getMessages(count: 20) { messages in
-            DispatchQueue.main.async {
-                //self.messageList.insert(contentsOf: messages, at: 0)
-                self.messagesCollectionView.reloadDataAndKeepOffset()
-                self.refreshControl.endRefreshing()
-            }
-            //            }
         }
     }
     

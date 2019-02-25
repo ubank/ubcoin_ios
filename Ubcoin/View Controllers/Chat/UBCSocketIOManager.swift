@@ -22,7 +22,7 @@ class UBCSocketIOManager: NSObject {
     static let sPath = "https://qa.ubcoin.io"
     static let manager = SocketManager(socketURL: URL(string: sPath)!, config: [.log(true), .compress])
     static let socket = manager.defaultSocket
-    private static let user = UBCUserDM.loadProfile()
+    private static var user = UBCUserDM.loadProfile()
     
     private let defaultDate = "2019-01-31T12:26:25.064Z"
     private var completionMessage: ((UBCMessageChat) -> Void)?
@@ -42,8 +42,13 @@ class UBCSocketIOManager: NSObject {
         super.init()
         listenMethods()
     }
+    
+    func realoadUser() {
+        UBCSocketIOManager.user = UBCUserDM.loadProfile()
+    }
 
     func enterRoom(item:UBCGoodDM?) {
+        UBCSocketIOManager.user = UBCUserDM.loadProfile()
         
         guard let item = item,
             let user = UBCSocketIOManager.user else {
@@ -59,6 +64,7 @@ class UBCSocketIOManager: NSObject {
     }
     
     func enterRoom(chatRoom:UBCChatRoom?) {
+        UBCSocketIOManager.user = UBCUserDM.loadProfile()
         
         guard let item = chatRoom,
             let user = UBCSocketIOManager.user else {
@@ -103,7 +109,7 @@ extension UBCSocketIOManager {
         UBCSocketIOManager.socket.emit("leaveRoom")
     }
     
-    func updateHistory(from date:Date?, limit:Int = 10) {
+    func updateHistory(from date:Date?, limit:Int = 15) {
         guard let date = date else {
             return
         }
