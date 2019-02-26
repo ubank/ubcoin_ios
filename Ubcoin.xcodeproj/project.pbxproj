@@ -36,6 +36,10 @@
 		1CFFFE7D20F230A9003B5AD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CFFFE7920F230A9003B5AD9 /* Assets.xcassets */; };
 		1CFFFE7E20F230A9003B5AD9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFFFE7A20F230A9003B5AD9 /* main.m */; };
 		30A0668C891003DF59D2BECC /* libPods-Ubcoin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DD3B2DB73F06ACB93DC3B9 /* libPods-Ubcoin.a */; };
+		755B5D7422250FA700AA5259 /* UBCBuyerDeliveryCostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755B5D7322250FA700AA5259 /* UBCBuyerDeliveryCostView.swift */; };
+		755B5D7622250FB800AA5259 /* UBCBuyerDeliveryCostView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 755B5D7522250FB800AA5259 /* UBCBuyerDeliveryCostView.xib */; };
+		755B5D782225327E00AA5259 /* UBCSellerDeliveryCostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755B5D772225327E00AA5259 /* UBCSellerDeliveryCostView.swift */; };
+		755B5D7A222532AC00AA5259 /* UBCSellerDeliveryCostView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 755B5D79222532AC00AA5259 /* UBCSellerDeliveryCostView.xib */; };
 		758D0F06221ADEAB0034739B /* UBCSocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758D0F05221ADEAB0034739B /* UBCSocketIOManager.swift */; };
 		758D0F0B221C20250034739B /* UBCMessageChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758D0F0A221C20250034739B /* UBCMessageChat.swift */; };
 		758D0F0D221D3F990034739B /* UBCMessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758D0F0C221D3F990034739B /* UBCMessagesViewController.swift */; };
@@ -226,6 +230,10 @@
 		1CFFFE7920F230A9003B5AD9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1CFFFE7A20F230A9003B5AD9 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1CFFFE7B20F230A9003B5AD9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		755B5D7322250FA700AA5259 /* UBCBuyerDeliveryCostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCBuyerDeliveryCostView.swift; sourceTree = "<group>"; };
+		755B5D7522250FB800AA5259 /* UBCBuyerDeliveryCostView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCBuyerDeliveryCostView.xib; sourceTree = "<group>"; };
+		755B5D772225327E00AA5259 /* UBCSellerDeliveryCostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCSellerDeliveryCostView.swift; sourceTree = "<group>"; };
+		755B5D79222532AC00AA5259 /* UBCSellerDeliveryCostView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCSellerDeliveryCostView.xib; sourceTree = "<group>"; };
 		758D0F05221ADEAB0034739B /* UBCSocketIOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCSocketIOManager.swift; sourceTree = "<group>"; };
 		758D0F0A221C20250034739B /* UBCMessageChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCMessageChat.swift; sourceTree = "<group>"; };
 		758D0F0C221D3F990034739B /* UBCMessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCMessagesViewController.swift; sourceTree = "<group>"; };
@@ -555,6 +563,23 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		755B5D7122250F5400AA5259 /* Buyer */ = {
+			isa = PBXGroup;
+			children = (
+				755B5D7222250F6900AA5259 /* View */,
+			);
+			path = Buyer;
+			sourceTree = "<group>";
+		};
+		755B5D7222250F6900AA5259 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				755B5D7322250FA700AA5259 /* UBCBuyerDeliveryCostView.swift */,
+				755B5D7522250FB800AA5259 /* UBCBuyerDeliveryCostView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		758D0F09221C1FF90034739B /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -645,6 +670,8 @@
 		8917239C219C72B90060E719 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				755B5D772225327E00AA5259 /* UBCSellerDeliveryCostView.swift */,
+				755B5D79222532AC00AA5259 /* UBCSellerDeliveryCostView.xib */,
 				89172393219C60350060E719 /* UBCSellerView.swift */,
 				89172394219C60350060E719 /* UBCSellerView.xib */,
 				8915D05C21A307C0008D1BA2 /* UBCSellerCollectionReusableView.swift */,
@@ -1489,6 +1516,7 @@
 		89F16A4D20F2C65D001AA440 /* Market */ = {
 			isa = PBXGroup;
 			children = (
+				755B5D7122250F5400AA5259 /* Buyer */,
 				8980F24320F505220066CF99 /* Categories */,
 				8980F23720F4865F0066CF99 /* Details */,
 				89F16A5220F2C65D001AA440 /* DM */,
@@ -1664,6 +1692,7 @@
 				89B08E332128397100D8B68D /* UBCSendCoinsController.xib in Resources */,
 				1CFFFE7D20F230A9003B5AD9 /* Assets.xcassets in Resources */,
 				89172396219C60350060E719 /* UBCSellerView.xib in Resources */,
+				755B5D7A222532AC00AA5259 /* UBCSellerDeliveryCostView.xib in Resources */,
 				8987518A20EE119F00E2B615 /* HUBEmptyView.xib in Resources */,
 				89678DB9211088C600EB715E /* UBCStartLoginController.xib in Resources */,
 				89678DBD21108B5600EB715E /* UBCSignUpController.xib in Resources */,
@@ -1683,6 +1712,7 @@
 				89678DC42110C0AD00EB715E /* UBCForgotPasswordController.xib in Resources */,
 				8987517420EE119F00E2B615 /* UBSectionHeaderView.xib in Resources */,
 				89678DE62112424E00EB715E /* adjacency_graphs.json in Resources */,
+				755B5D7622250FB800AA5259 /* UBCBuyerDeliveryCostView.xib in Resources */,
 				89AE1A6E20F7B8F1000662E8 /* UBCFavouritesController.xib in Resources */,
 				8987517620EE119F00E2B615 /* UBExpandableTableViewSectionHeader.xib in Resources */,
 			);
@@ -1724,7 +1754,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Ubcoin/Pods-Ubcoin-resources.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-Ubcoin/Pods-Ubcoin-resources.sh",
 				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
 				"${PODS_ROOT}/ImageSlideshow/ImageSlideshow/Assets/ic_cross_white@2x.png",
@@ -1741,7 +1771,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Ubcoin/Pods-Ubcoin-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Ubcoin/Pods-Ubcoin-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F9136AB4A7CDD4439AB8F29C /* [CP] Check Pods Manifest.lock */ = {
@@ -1868,6 +1898,7 @@
 				8919AB4F2125B80700D1B59C /* UBCChangeLanguageController.m in Sources */,
 				89007747211AFE4E00B6C1C5 /* UBCAccountSettingsController.m in Sources */,
 				8987518F20EE119F00E2B615 /* UBLocationManager.m in Sources */,
+				755B5D7422250FA700AA5259 /* UBCBuyerDeliveryCostView.swift in Sources */,
 				1CFFFE6E20F0DD28003B5AD9 /* UBCSTextViewTableViewCell.swift in Sources */,
 				8987517220EE119F00E2B615 /* UBDefaultTableView.m in Sources */,
 				89CD68632174F18B003FBCB7 /* UBCPriceCell.swift in Sources */,
@@ -1901,6 +1932,7 @@
 				89BA58CA2163821F00427A8E /* UBCNotificationHandler.m in Sources */,
 				89F16A6B20F2C65D001AA440 /* UBCGoodDM.m in Sources */,
 				89007764211DAB0C00B6C1C5 /* UBCResetPasswordController.m in Sources */,
+				755B5D782225327E00AA5259 /* UBCSellerDeliveryCostView.swift in Sources */,
 				89BB382D22087FB8007CE470 /* UBCToBuyDealsView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

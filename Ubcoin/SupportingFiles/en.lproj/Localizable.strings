@@ -227,6 +227,9 @@
 "str_confirm_in" = "Confirm in";
 "str_seller_location" = "Seller location";
 "str_seller_location_up" = "SELLER LOCATION";
+"str_buyer_location" = "Buyer location";
+"str_buyer_address" = "BUYER ADDRESS";
+"str_delivery_price" = "DELIVERY PRICE IN ";
 "str_item_will_be_delivered_to_me" = "Item will be delivered to me";
 "str_by_courier_or_a_delivery_service" = "by courier or a delivery service";
 "str_i_will_meet_seller_in_person" = "I will meet seller in person";

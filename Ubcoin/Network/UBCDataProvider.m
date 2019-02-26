@@ -777,6 +777,15 @@
          {
              UBCDealDM *deal = [UBCDealDM.alloc initWithDictionary:[responseObject removeNulls]];
              completionBlock(success, deal);
+             
+             // need this for update purchase
+//
+//             [self checkStatusForDeal:deal.ID withCompletionBlock:^(BOOL success, id responseObject)
+//              {
+//                  completionBlock(success, responseObject);
+//              }];
+             
+             
          }
      }];
 }

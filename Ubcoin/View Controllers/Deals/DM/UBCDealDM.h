@@ -15,12 +15,14 @@ static NSString * const ItemRow = @"item";
 static NSString * const DEAL_STATUS_ACTIVE = @"ACTIVE";
 static NSString * const DEAL_STATUS_DELIVERY = @"DELIVERY";
 static NSString * const DEAL_STATUS_CONFIRMED = @"CONFIRMED";
+static NSString * const DEAL_STATUS_CANCELLED = @"CANCELLED";
 
 @class UBCDealStatusDM;
 @interface UBCDealDM : NSObject
 
 @property (readonly, nonatomic) NSString *ID;
 @property (readonly, nonatomic) NSString *status;
+@property (readonly, nonatomic) NSString *deliveryPrice;
 @property (readonly, nonatomic) UBCGoodDM *item;
 @property (readonly, nonatomic) UBCSellerDM *buyer;
 @property (readonly, nonatomic) UBCSellerDM *seller;

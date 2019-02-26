@@ -20,6 +20,7 @@
     {
         _ID = dict[@"id"];
         _status = dict[@"status"];
+        _deliveryPrice = dict[@"deliveryPrice"];
         _item = [[UBCGoodDM alloc] initWithDictionary:dict[@"item"]];
         _buyer = [[UBCSellerDM alloc] initWithDictionary:dict[@"buyer"]];
         _seller = [[UBCSellerDM alloc] initWithDictionary:dict[@"seller"]];

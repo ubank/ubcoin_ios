@@ -26,6 +26,9 @@ class UBCDealInfoController: UBViewController {
     @IBOutlet weak var confirmDigitalItemButton: HUBGeneralButton!
     @IBOutlet weak var sellerView: UBCSellerView!
     
+    @IBOutlet weak var sellerDeliveryCostView: UBCSellerDeliveryCostView!
+    @IBOutlet weak var buyerDeliveryCostView: UBCBuyerDeliveryCostView!
+    
     @IBOutlet weak var progressContainerView: UIView!
     @IBOutlet weak var progressView: StepProgressView!
     
@@ -36,6 +39,8 @@ class UBCDealInfoController: UBViewController {
     
     private var purchaseDM: UBCPurchaseDM?
     private var content = [UBTableViewRowData]()
+    
+    private var isNowBuy:Bool = false
 
     @objc convenience init(item: UBCGoodDM) {
         self.init()
@@ -56,6 +61,15 @@ class UBCDealInfoController: UBViewController {
         
         setupViews()
         setupContent()
+    }
+    
+    override func navigationButtonBackClick(_ sender: Any!) {
+        if isNowBuy == true {
+            navigationController?.popToRootViewController(animated: true)
+        } else {
+            navigationController?.popViewController(animated: true)
+        }
+        
     }
     
     private func setupViews() {
@@ -100,6 +114,17 @@ class UBCDealInfoController: UBViewController {
     
             let needShow = item.isDigital && purchaseDM.deal?.status == DEAL_STATUS_ACTIVE && !item.isMyItem
             confirmDigitalItemView.isHidden = !needShow
+            
+            
+            // need implenented
+            
+            sellerDeliveryCostView.isHidden =  true
+           // let needShowBuyer = purchaseDM.isPurchase && !item.isMyItem
+            buyerDeliveryCostView.isHidden = true
+            
+            if let bayer = purchaseDM.deal?.buyer, let locationSt = bayer.locationText  {
+                sellerDeliveryCostView.buyerAddress.text = locationSt
+            }
         }
         
         statusTitle.text = purchaseDM.longStatusTitle
@@ -111,6 +136,11 @@ class UBCDealInfoController: UBViewController {
         
         progressContainerView.isHidden = !purchaseDM.isPurchase
         if let deal = purchaseDM.deal {
+            
+            let status = deal.currentStatus.title
+            
+            
+            
             progressView.steps = deal.statusDescriptions.map { $0.title }
             var details: [Int: String] = [:]
             for (index, status) in deal.statusDescriptions.enumerated() {
@@ -120,8 +150,15 @@ class UBCDealInfoController: UBViewController {
             progressView.currentStep = deal.statusDescriptions.index(of: deal.currentStatus) ?? 0
         }
         
+        
         actionButton.isHidden = !purchaseDM.isPurchase
         actionButton.title = purchaseDM.actionButtonTitle
+        
+        if purchaseDM.isCanceled {
+            actionButton.isHidden = true
+        }
+        
+        
     }
     
     //MARK: - Actions
@@ -177,6 +214,7 @@ class UBCDealInfoController: UBViewController {
                                         if let deal = deal {
                                             self?.purchaseDM = UBCPurchaseDM(deal: deal)
                                             self?.setupContent()
+                                            self?.isNowBuy = true
                                         }
         }
     }
@@ -192,6 +230,33 @@ class UBCDealInfoController: UBViewController {
             // show failure alert
         }
     }
+}
+
+extension UBCDealInfoController: UBCBuyerDeliveryCostViewDelegate {
+    
+    func confirmDelivery(seller: UBCSellerDM) {
+    //
+    }
+    
+    func showBuyerLocation() {
+       // let controller = UBCMapSelectController(title: "str_buyer_location", location: purchaseDM?.item?.location)
+       // self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+}
+
+
+extension UBCDealInfoController: UBCSellerDeliveryCostViewDelegate {
+    func changeDeliveryPrice(_ seller: UBCSellerDM) {
+        //<#code#>
+    }
+    
+    func confirmNewDeliveryPrice(_ seller: UBCSellerDM) {
+       // <#code#>
+    }
+    
+    
+    
 }
 
 extension UBCDealInfoController: UBCSellerViewDelegate {

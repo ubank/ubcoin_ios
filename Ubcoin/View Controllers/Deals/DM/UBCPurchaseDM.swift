@@ -40,6 +40,13 @@ class UBCPurchaseDM: NSObject {
         return "str_report_problems".localizedString()
     }
     
+    var isCanceled: Bool {
+        if let status = deal?.status, status == DEAL_STATUS_CANCELLED {
+            return true
+        }
+        return false
+    }
+    
     var canCancelDeal: Bool {
         if let status = deal?.status,
             (status == DEAL_STATUS_DELIVERY || status == DEAL_STATUS_CONFIRMED) {

@@ -92,7 +92,7 @@ open class StepProgressView: UIView {
     }
 
     open override func tintColorDidChange() {
-        if nil == currentStepColor || nil == currentTextColor {
+        if currentTextColor == nil {
             needsColor = true
         }
     }
