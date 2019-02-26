@@ -10,8 +10,9 @@ import UIKit
 
 @objc
 protocol UBCBuyerDeliveryCostViewDelegate: class {
-    func confirmDelivery(seller: UBCSellerDM)
-    func showBuyerLocation()
+
+    func confirmDeliveryPrice(_ dealId: String, _ price: String)
+    
 }
 
 class UBCBuyerDeliveryCostView: UIView {
@@ -28,7 +29,7 @@ class UBCBuyerDeliveryCostView: UIView {
     
     @IBOutlet weak var confirmDeliveryButton: HUBGeneralButton!
     
-    private var seller: UBCSellerDM?
+    private var deal: UBCDealDM?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -52,34 +53,30 @@ class UBCBuyerDeliveryCostView: UIView {
         deliveryPriceCostLabel.textColor = UBCColor.green
     }
     
-    @objc func setup(seller: UBCSellerDM?, isSeller: Bool) {
-        self.seller = seller
+    @objc func setup(deal: UBCDealDM?) {
         
-//        guard let seller = seller else { return }
-//
-//        chatButton.title = isSeller ? "str_chat_with_seller".localizedString() : "str_chat_with_buyer".localizedString()
-//        avatar.sd_setImage(with: URL(string: seller.avatarURL ?? ""),
-//                           placeholderImage: UIImage(named: "def_prof"),
-//                           options: [],
-//                           completed: nil)
-//        name.text = seller.name
-//        rating.showStars(seller.rating.uintValue)
-//
-//        desc.text = String(format: "%lu items", seller.itemsCount)
+        guard let deal = deal else {
+            isHidden = true
+            return
+        }
+        self.deal = deal
+        
+        buyerAddress.text = deal.buyer.locationText ?? ""
+        
+        deliveryPriceLabel.text = "str_delivery_price".localizedString() + deal.currencyType
+        deliveryPriceCostLabel.text = deal.deliveryPrice
+        
     }
     
     
     @IBAction func confirmDeliveryTouch(_ sender: Any) {
-        if let seller = seller {
-            delegate?.confirmDelivery(seller: seller)
+        if let deal = deal, let price = deliveryPriceCostLabel.text, let delegate = delegate {
+            delegate.confirmDeliveryPrice(deal.id, price.replacingOccurrences(of: ",", with: "."))
         }
         
     }
     
     @IBAction func changeAddressTouch(_ sender: Any) {
-        if let delegate = delegate {
-            delegate.showBuyerLocation()
-        }
     }
     
     

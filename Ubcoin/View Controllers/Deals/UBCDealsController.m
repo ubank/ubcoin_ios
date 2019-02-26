@@ -80,6 +80,14 @@
 
 - (void)showItem:(UBCGoodDM *)item
 {
+   
+    if (item.status == UBCItemStatusReserved && item.deals.firstObject) {
+        UBCDealDM *deal = item.deals.firstObject;
+        [self showDeal:deal];
+        return;
+    }
+        
+        
     UBCGoodDetailsController *controller = [UBCGoodDetailsController.alloc initWithGood:item];
     [self.navigationController pushViewController:controller animated:YES];
 }

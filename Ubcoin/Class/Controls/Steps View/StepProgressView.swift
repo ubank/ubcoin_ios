@@ -61,16 +61,16 @@ open class StepProgressView: UIView {
     // MARK: - Colors
 
     @IBInspectable open var futureStepColor: UIColor = .lightGray { didSet { needsColor = true } }
-    @IBInspectable open var pastStepColor: UIColor = .lightGray { didSet { needsColor = true } }
+    @IBInspectable open var pastStepColor: UIColor = UBCColor.green { didSet { needsColor = true } }
 
     /// nil => use the view's tintColor
     @IBInspectable open var currentStepColor: UIColor = UBCColor.green { didSet { needsColor = true } }
 
     /// nil => use currentStepColor
-    @IBInspectable open var currentDetailColor: UIColor? = .darkGray { didSet { needsColor = true } }
+    @IBInspectable open var currentDetailColor: UIColor? = UBCColor.green { didSet { needsColor = true } }
 
     @IBInspectable open var futureStepFillColor: UIColor = .clear { didSet { needsColor = true } }
-    @IBInspectable open var pastStepFillColor: UIColor = .lightGray { didSet { needsColor = true } }
+    @IBInspectable open var pastStepFillColor: UIColor = UBCColor.green  { didSet { needsColor = true } }
     @IBInspectable open var currentStepFillColor: UIColor = .clear { didSet { needsColor = true } }
 
     @IBInspectable open var futureTextColor: UIColor = .lightGray { didSet { needsColor = true } }

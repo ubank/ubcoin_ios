@@ -10,8 +10,7 @@ import UIKit
 
 @objc
 protocol UBCSellerDeliveryCostViewDelegate: class {
-    func changeDeliveryPrice(_ seller: UBCSellerDM)
-    func confirmNewDeliveryPrice(_ seller: UBCSellerDM)
+    func confirmNewDeliveryPrice(_ dealId: String, _ price: String)
 }
 
 class UBCSellerDeliveryCostView: UIView {
@@ -22,12 +21,12 @@ class UBCSellerDeliveryCostView: UIView {
     
     @IBOutlet weak var buyerAddress: HUBLabel!
     @IBOutlet weak var deliveryPriceLabel: HUBLabel!
-    @IBOutlet weak var deliveryPriceCostLabel: HUBLabel!
+    @IBOutlet weak var deliveryPriceCostField: UITextField!
     
     @IBOutlet weak var confirmNewDeliveryPriceButton: HUBGeneralButton!
     
     @IBOutlet weak var heightDeliveryButton: NSLayoutConstraint!
-    private var seller: UBCSellerDM?
+    private var deal: UBCDealDM?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -47,6 +46,24 @@ class UBCSellerDeliveryCostView: UIView {
         confirmNewDeliveryPriceButton.clipsToBounds = false
         confirmNewDeliveryPriceButton.titleColor = UIColor.white
         confirmNewDeliveryPriceButton.backgroundColor = UBCColor.green
+        
+        deliveryPriceCostField.font = UBCFont.title
+        deliveryPriceCostField.textColor = UBCColor.main
+        deliveryPriceCostField.addDoneToolbar()
+    }
+    
+    func setupDeal(_ deal: UBCDealDM?) {
+        
+        guard let deal = deal else {
+            isHidden = true
+            return
+        }
+        self.deal = deal
+        
+        buyerAddress.text = deal.buyer.locationText ?? ""
+        
+        deliveryPriceLabel.text = "str_delivery_price".localizedString() + deal.currencyType
+        deliveryPriceCostField.text = deal.deliveryPrice
     }
     
     func hideButton(_ isHide:Bool = false) {
@@ -56,14 +73,11 @@ class UBCSellerDeliveryCostView: UIView {
     }
     
     @IBAction func changeDeliveryPriceTouch(_ sender: Any) {
-        if let seller = seller {
-            delegate?.changeDeliveryPrice(seller)
-        }
     }
     
     @IBAction func confirmNewDeliveryPrice(_ sender: Any) {
-        if let seller = seller {
-            delegate?.confirmNewDeliveryPrice(seller)
+        if let deal = deal, let price = deliveryPriceCostField.text, let delegate = delegate {
+            delegate.confirmNewDeliveryPrice(deal.id, price.replacingOccurrences(of: ",", with: "."))
         }
     }
     
