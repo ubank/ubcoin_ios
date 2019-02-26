@@ -14,8 +14,7 @@
 
 #import "Ubcoin-Swift.h"
 
-#define PUSH_ACTIVITY @"activity_name"
-#define PUSH_TYPE @"type"
+#define PUSH_ACTIVITY @"activityName"
 
 @implementation UBCNotificationHandler
 

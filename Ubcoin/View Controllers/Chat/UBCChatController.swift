@@ -17,7 +17,17 @@ class UBCChatController: UBCMessagesViewController {
     
     private var item: UBCGoodDM?
     private var deal: UBCDealDM?
-    private var chatDeal:UBCChatRoom?
+    private var chatDeal: UBCChatRoom?
+    
+    private var currentItem: UBCGoodDM? {
+        if let item = item {
+            return item
+        } else if let item = deal?.item {
+            return item
+        }
+        
+        return chatDeal?.item
+    }
     
     @objc convenience init(item: UBCGoodDM) {
         self.init()
@@ -47,6 +57,8 @@ class UBCChatController: UBCMessagesViewController {
             self.navigationItem.setTitle(title: deal.item.title, subtitle: deal.user.name)
             UBCSocketIOManager.sharedInstance.enterRoom(chatRoom: deal)
         }
+        
+        self.navigationItem.rightBarButtonItem = itemNavButton()
         
         messagesCollectionView.messageCellDelegate = self
         
@@ -81,6 +93,57 @@ class UBCChatController: UBCMessagesViewController {
         }
     }
     
+    private func itemNavButton() -> UIBarButtonItem? {
+        
+        guard let item = currentItem,
+            needShowItem(item: item) else { return nil }
+        
+        let button = UBButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        button.cornerRadius = 5
+        button.addTarget(self, action: #selector(showItem), for: .touchUpInside)
+        
+        let itemIconURL = URL(string: item.imageURL ?? "")
+        button.sd_internalSetImage(with: itemIconURL,
+                                   placeholderImage: UIImage(named: "item_default_image"),
+                                   options: [],
+                                   operationKey: nil,
+                                   setImageBlock: nil,
+                                   progress: nil,
+                                   completed: nil)
+
+        let container = UIView(frame: CGRect(x: 0, y: 0, width: 45, height: 30))
+        container.addSubview(button)
+        
+        return UIBarButtonItem(customView: container)
+    }
+    
+    private func needShowItem(item: UBCGoodDM) -> Bool {
+        
+        if item.isMyItem {
+            return true
+        } else if item.status == UBCItemStatusActive {
+            return true
+        } else if let deal = item.deals.first,
+        let me = UBCUserDM.loadProfile(),
+            deal.buyer.id == me.id,
+            item.status != UBCItemStatusDeactivated,
+            item.status != UBCItemStatusBlocked,
+            item.status != UBCItemStatusCheck,
+            item.status != UBCItemStatusChecking {
+            return true
+        }
+        
+        return false
+    }
+    
+    @objc private func showItem() {
+        
+        guard let item = currentItem else { return }
+        
+        if let controller = UBCGoodDetailsController(good: item) {
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
+    }
 }
 
 

@@ -48,11 +48,11 @@ class UBCMessagesViewController: MessagesViewController {
         super.viewDidAppear(animated)
         
         navigationController?.navigationBar.isTranslucent = false
-        navigationController?.navigationBar.tintColor = UBColor.navigationTintColor!
-        navigationController?.navigationBar.barTintColor = UBColor.backgroundColor!
+        navigationController?.navigationBar.tintColor = UBColor.navigationTintColor
+        navigationController?.navigationBar.barTintColor = UBColor.backgroundColor
         navigationController?.navigationBar.defaultShadow()
         
-        navigationController?.view.backgroundColor = UBColor.backgroundColor!
+        navigationController?.view.backgroundColor = UBColor.backgroundColor
         navigationItem.largeTitleDisplayMode = .never
     }
     
