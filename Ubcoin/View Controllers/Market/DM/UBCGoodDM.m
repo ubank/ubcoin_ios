@@ -35,6 +35,7 @@
         _isFavorite = [dict[@"favorite"] boolValue];
         _creationDate = [NSDate dateFromString:dict[@"createdDate"] inFormat:@"yyyyMMdd'T'HHmmssZ"];
         _images = dict[@"images"];
+        _statusDescription = dict[@"statusDescription"];
         _status = [UBCGoodDM statusFromString:dict[@"status"]];
         [self setupLocationWithDictionary:dict[@"location"]];
         

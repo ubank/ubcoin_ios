@@ -177,7 +177,7 @@
 
 + (NSURL *)dealsToBuy
 {
-    NSString *url = [SERVER_URL stringByAppendingFormat:@"items/to-buy"];
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"purchases/to-buy"];
     
     return [NSURL URLWithString:url];
 }

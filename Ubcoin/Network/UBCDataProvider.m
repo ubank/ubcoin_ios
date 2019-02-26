@@ -557,6 +557,7 @@
                  UBCGoodDM *good = [[UBCGoodDM alloc] initWithDictionary:item];
                  UBTableViewRowData *data = good.rowData;
                  data.className = NSStringFromClass(UBCDealCell.class);
+                 data.isSelected = YES;
                  return data;
              }];
              
@@ -602,18 +603,18 @@
          {
              NSArray *activeItems = [responseObject[@"active"] removeNulls];
              activeItems = [activeItems map:^id(id item) {
-                 UBCGoodDM *good = [[UBCGoodDM alloc] initWithDictionary:item];
-                 UBTableViewRowData *data = good.rowData;
+                 UBCDealDM *deal = [[UBCDealDM alloc] initWithDictionary:item];
+                 UBTableViewRowData *data = deal.rowData;
                  data.className = NSStringFromClass(UBCDealCell.class);
                  return data;
              }];
              
              NSArray *notActiveItems = [responseObject[@"waste"] removeNulls];
              notActiveItems = [notActiveItems map:^id(id item) {
-                 UBCGoodDM *good = [[UBCGoodDM alloc] initWithDictionary:item];
-                 UBTableViewRowData *data = good.rowData;
+                 UBCDealDM *deal = [[UBCDealDM alloc] initWithDictionary:item];
+                 UBTableViewRowData *data = deal.rowData;
                  data.className = NSStringFromClass(UBCDealCell.class);
-                 data.isDisabled = good.status != UBCItemStatusActive;
+                 data.isDisabled = deal.item.status != UBCItemStatusActive;
                  return data;
              }];
              

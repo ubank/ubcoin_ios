@@ -14,6 +14,7 @@
 @protocol UBCDealsViewDelegate <NSObject>
 
 @optional
+- (void)showDeal:(UBCDealDM *)deal;
 - (void)showItem:(UBCGoodDM *)item;
 
 @end

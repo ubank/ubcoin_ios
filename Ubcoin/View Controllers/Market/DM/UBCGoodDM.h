@@ -47,6 +47,7 @@ static NSString * const kNotificationItemChanged = @"kNotificationItemChanged";
 @property (readonly, nonatomic) NSString *locationText;
 @property (readonly, nonatomic) NSString *condition;
 @property (readonly, nonatomic) NSString *fileURL;
+@property (readonly, nonatomic) NSString *statusDescription;
 @property (readonly, nonatomic) UBCItemStatus status;
 @property (readonly, nonatomic) BOOL isFavorite;
 @property (readonly, nonatomic) BOOL isDigital;

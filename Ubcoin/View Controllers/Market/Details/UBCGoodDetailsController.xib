@@ -14,7 +14,6 @@
             <connections>
                 <outlet property="address" destination="zVb-IR-GvK" id="2c4-h5-fA9"/>
                 <outlet property="background" destination="Q6l-Bt-ygF" id="xsO-B8-B2H"/>
-                <outlet property="buyersView" destination="CcZ-Oj-MiV" id="k7O-48-nmV"/>
                 <outlet property="category" destination="sLA-ZZ-xSa" id="MlD-BK-rPb"/>
                 <outlet property="collectionView" destination="uA0-yc-f7K" id="pSi-qb-Rom"/>
                 <outlet property="connectToSellerView" destination="dYb-9Z-BGQ" id="4N0-AK-jd2"/>
@@ -410,16 +409,6 @@
                                                         <constraint firstAttribute="bottom" secondItem="b75-hG-Hyi" secondAttribute="bottom" constant="10" id="pzD-uZ-G4g"/>
                                                         <constraint firstAttribute="trailing" secondItem="b75-hG-Hyi" secondAttribute="trailing" id="u3z-qH-zxd"/>
                                                     </constraints>
-                                                </view>
-                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CcZ-Oj-MiV" customClass="UBCBuyersView" customModule="Ubcoin" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" id="qSu-rH-t4F"/>
-                                                    </constraints>
-                                                    <connections>
-                                                        <outlet property="delegate" destination="-1" id="Sox-tU-akF"/>
-                                                    </connections>
                                                 </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

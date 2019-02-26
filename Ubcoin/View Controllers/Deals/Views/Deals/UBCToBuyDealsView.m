@@ -10,6 +10,8 @@
 #import "UBCKeyChain.h"
 #import "UBCDealCell.h"
 
+#import "Ubcoin-Swift.h"
+
 @implementation UBCToBuyDealsView
 
 - (void)setupEmptyView
@@ -40,19 +42,30 @@
 
 - (void)layoutCell:(UBDefaultTableViewCell *)cell forData:(UBTableViewRowData *)data indexPath:(NSIndexPath *)indexPath
 {
-    UBCGoodDM *item = data.data;
-    
+    UBCDealDM *deal = data.data;
+
     UBCDealCell *dealCell = (UBCDealCell *)cell;
-    dealCell.info.attributedText = item.seller.info;
-    [dealCell setLocation:item.location];
+    dealCell.info.text = deal.currentStatus.title;
+    [dealCell setLocation:deal.item.location];
+    
+    if (data.isDisabled)
+    {
+        cell.title.textColor = UBColor.descColor;
+        cell.desc.textColor = UBColor.descColor;
+    }
+    else
+    {
+        cell.title.textColor = UBColor.titleColor;
+        cell.desc.textColor = UBColor.titleColor;
+    }
 }
 
 - (void)didSelectData:(UBTableViewRowData *)data indexPath:(NSIndexPath *)indexPath
 {
-    if ([self.delegate respondsToSelector:@selector(showItem:)])
+    if ([self.delegate respondsToSelector:@selector(showDeal:)])
     {
-        UBCGoodDM *item = data.data;
-        [self.delegate showItem:item];
+        UBCDealDM *deal = data.data;
+        [self.delegate showDeal:deal];
     }
 }
 

@@ -38,7 +38,6 @@
 
 @property (weak, nonatomic) IBOutlet UIView *sellerSectionView;
 @property (weak, nonatomic) IBOutlet UBCSellerView *sellerView;
-@property (weak, nonatomic) IBOutlet UBCBuyersView *buyersView;
 
 @property (weak, nonatomic) IBOutlet UIView *digitalGoodView;
 @property (weak, nonatomic) IBOutlet HUBLabel *digitalGoodDesc;
@@ -270,15 +269,11 @@
     {
         self.connectToSellerView.hidden = YES;
         self.sellerSectionView.hidden = YES;
-        self.buyersView.hidden = NO;
-        
-        [self.buyersView updateWithDeals:self.good.deals];
     }
     else
     {
         self.connectToSellerView.hidden = NO;
         self.sellerSectionView.hidden = NO;
-        self.buyersView.hidden = YES;
         
         [self.sellerView setupWithSeller:self.good.seller isSeller:YES];
     }
