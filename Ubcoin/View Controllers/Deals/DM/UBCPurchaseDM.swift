@@ -47,6 +47,21 @@ class UBCPurchaseDM: NSObject {
         return false
     }
     
+    var deliveryImage: UIImage? {
+        var imageName = "deliverBookedTime"
+        
+        if deal?.status == DEAL_STATUS_DELIVERY {
+            imageName = "deliverInProccess"
+        }
+        else if deal?.status == DEAL_PRICE_DEFINED  || deal?.status == DEAL_PRICE_CONFIRMED{
+            imageName = "deliverFroze"
+        }
+        else if deal?.status == DEAL_STATUS_CANCELLED {
+            imageName = ""
+        }
+        return UIImage(named: imageName)
+    }
+    
     var canCancelDeal: Bool {
         if let status = deal?.status,
             (status == DEAL_STATUS_DELIVERY || status == DEAL_STATUS_CONFIRMED) {

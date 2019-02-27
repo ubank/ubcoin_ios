@@ -54,13 +54,13 @@ class UBCSellerDeliveryCostView: UIView {
     
     func setupDeal(_ deal: UBCDealDM?) {
         
-        guard let deal = deal else {
+        guard let deal = deal, let locationText = deal.buyer.locationText, locationText.count != 0 else {
             isHidden = true
             return
         }
         self.deal = deal
         
-        buyerAddress.text = deal.buyer.locationText ?? ""
+        buyerAddress.text = locationText
         
         deliveryPriceLabel.text = "str_delivery_price".localizedString() + deal.currencyType
         deliveryPriceCostField.text = deal.deliveryPrice

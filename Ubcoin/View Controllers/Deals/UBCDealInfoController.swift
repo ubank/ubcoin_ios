@@ -21,14 +21,14 @@ class UBCDealInfoController: UBViewController {
     @IBOutlet weak var statusView: UIView!
     @IBOutlet weak var statusTitle: HUBLabel!
     @IBOutlet weak var statusDesc: HUBLabel!
-    @IBOutlet weak var confirmDigitalItemView: UIView!
+    @IBOutlet weak var statusImageView: UIImageView!
     
+    @IBOutlet weak var confirmDigitalItemView: UIView!
     @IBOutlet weak var confirmDigitalItemButton: HUBGeneralButton!
     @IBOutlet weak var sellerView: UBCSellerView!
     
     @IBOutlet weak var confirmDeliveryView: UIView!
     @IBOutlet weak var confirmDeliveryButton: HUBGeneralButton!
-    
     
     @IBOutlet weak var sellerDeliveryCostView: UBCSellerDeliveryCostView!
     @IBOutlet weak var buyerDeliveryCostView: UBCBuyerDeliveryCostView!
@@ -116,8 +116,6 @@ class UBCDealInfoController: UBViewController {
             deliveryView.setup(item: item)
             deliveryView.isHidden = item.isDigital || purchaseDM.isPurchase
             
-            let stat = purchaseDM.deal?.status
-    
             let person = item.isMyItem ? purchaseDM.deal?.buyer : purchaseDM.seller
             sellerView.setup(seller: person, isSeller: !item.isMyItem)
     
@@ -131,20 +129,12 @@ class UBCDealInfoController: UBViewController {
             let isPriceConfirmed = purchaseDM.deal?.status == DEAL_PRICE_CONFIRMED && item.isMyItem
             confirmDeliveryView.isHidden = !isPriceConfirmed
             
-            let needShowDeliverForSayller = item.isMyItem && item.status == UBCItemStatusReserved && purchaseDM.deal?.status != DEAL_PRICE_CONFIRMED && purchaseDM.deal?.status != DEAL_STATUS_DELIVERY
+            let needShowDeliverForSayller = item.isMyItem && item.status == UBCItemStatusReserved && purchaseDM.deal?.status != DEAL_PRICE_CONFIRMED && purchaseDM.deal?.status != DEAL_STATUS_DELIVERY && purchaseDM.deal?.status != DEAL_STATUS_CANCELLED
             sellerDeliveryCostView.isHidden =  !needShowDeliverForSayller
             sellerDeliveryCostView.setupDeal(purchaseDM.deal)
-
-            
-            
-           // let needShowBuyer = purchaseDM.isPurchase && !item.isMyItem
-        
-            
-//            if let bayer = purchaseDM.deal?.buyer, let locationSt = bayer.locationText  {
-//                sellerDeliveryCostView.buyerAddress.text = locationSt
-//            }
         }
         
+        statusImageView.image = purchaseDM.deliveryImage
         statusTitle.text = purchaseDM.longStatusTitle
         statusTitle.isHidden = statusTitle.text?.isEmpty == true
         statusDesc.text = purchaseDM.longStatusDesc

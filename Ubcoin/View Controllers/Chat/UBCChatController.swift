@@ -123,7 +123,8 @@ class UBCChatController: UBCMessagesViewController {
             return true
         } else if item.status == UBCItemStatusActive {
             return true
-        } else if let deal = item.deals.first,
+        } else if let dealArray = item.deals,
+                  let deal = dealArray.first,
         let me = UBCUserDM.loadProfile(),
             deal.buyer.id == me.id,
             item.status != UBCItemStatusDeactivated,
