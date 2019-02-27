@@ -200,6 +200,13 @@
     return [NSURL URLWithString:url];
 }
 
++ (NSURL *)subscribeAPNS
+{
+    NSString *url = [SERVER_URL stringByAppendingString:@"notify/push-subscribe"];
+    
+    return [NSURL URLWithString:url];
+}
+
 #pragma mark -
 
 + (NSString *)addUserLocationToURL:(NSString *)url

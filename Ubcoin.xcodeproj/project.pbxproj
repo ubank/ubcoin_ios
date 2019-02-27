@@ -448,6 +448,7 @@
 		89F16A6720F2C65D001AA440 /* UBCGoodCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBCGoodCell.h; sourceTree = "<group>"; };
 		89F16A6820F2C65D001AA440 /* UBCGoodsCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBCGoodsCollectionView.h; sourceTree = "<group>"; };
 		89F16A6920F2C65D001AA440 /* UBCMarketController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBCMarketController.m; sourceTree = "<group>"; };
+		89FE3F91222589E700AA5CCB /* Ubcoin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Ubcoin.entitlements; sourceTree = "<group>"; };
 		8F66F2801638A68DF9CA576B /* Pods-Ubcoin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ubcoin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ubcoin/Pods-Ubcoin.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1263,6 +1264,7 @@
 		899E217920E68D8A004D891B /* Ubcoin */ = {
 			isa = PBXGroup;
 			children = (
+				89FE3F91222589E700AA5CCB /* Ubcoin.entitlements */,
 				89BA58C521622AD800427A8E /* APNS */,
 				898750FA20EE119F00E2B615 /* Class */,
 				898751B420EE618B00E2B615 /* Network */,
@@ -1545,6 +1547,14 @@
 					899E217620E68D8A004D891B = {
 						CreatedOnToolsVersion = 9.4;
 						LastSwiftMigration = 1000;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -1989,6 +1999,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Ubcoin/Ubcoin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = SWEX2R635A;
@@ -2015,6 +2026,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Ubcoin/Ubcoin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SWEX2R635A;
 				GCC_PREFIX_HEADER = "Ubcoin/SupportingFiles/Ubcoin-Prefix.pch";

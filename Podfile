@@ -10,6 +10,7 @@ target 'Ubcoin' do
     pod 'TTTAttributedLabel'
     pod 'Crashlytics'
     pod 'DGActivityIndicatorView'
+    pod 'OneSignal'
     pod 'Fabric'
     pod 'GoogleMaps'
     pod 'FBSDKCoreKit'

@@ -17,8 +17,9 @@
 #import <Crashlytics/Crashlytics.h>
 #import <GoogleMaps/GoogleMaps.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <OneSignal/OneSignal.h>
 
-@interface UBCAppDelegate ()
+@interface UBCAppDelegate () <OSSubscriptionObserver>
 
 @property (strong, nonatomic) UBCTabBarController *tabBar;
 
@@ -29,6 +30,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [self subscribeAPNSWithOptions:launchOptions];
+    
     [Fabric with:@[[Crashlytics class]]];
 
     [UBCKeyChain checkForReset];
@@ -73,6 +76,20 @@
     [self.window makeKeyAndVisible];
 }
 
+- (void)subscribeAPNSWithOptions:(NSDictionary *)launchOptions
+{
+    [OneSignal initWithLaunchOptions:launchOptions
+                               appId:@"5415f455-83f2-4bd3-8b76-227a6dc5ae2c"
+            handleNotificationAction:nil
+                            settings:@{kOSSettingsKeyAutoPrompt: @false}];
+    OneSignal.inFocusDisplayType = OSNotificationDisplayTypeNotification;
+    [OneSignal addSubscriptionObserver:self];
+    [OneSignal promptForPushNotificationsWithUserResponse:^(BOOL accepted) {
+        NSLog(@"User accepted notifications: %d", accepted);
+    }];
+    [UBCDataProvider.sharedProvider subscribeAPNS];
+}
+
 - (void)setupColors
 {
     UBColor.backgroundColor = [UIColor colorWithHexString:@"F8F8F8"];
@@ -104,6 +121,13 @@
     [UBAlert removeAllAlerts];
     
     return (UBViewController *)[self.navigationController showControllers:controllers];
+}
+
+#pragma mark - OSSubscriptionObserver
+
+- (void)onOSSubscriptionChanged:(OSSubscriptionStateChanges *)stateChanges
+{
+    [UBCDataProvider.sharedProvider subscribeAPNS];
 }
 
 @end

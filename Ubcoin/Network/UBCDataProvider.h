@@ -61,4 +61,6 @@
 - (void)uploadImage:(UIImage *)image withCompletionBlock:(void (^)(BOOL success, NSString *url))completionBlock;
 - (void)sellItem:(NSDictionary *)dictionary withCompletionBlock:(void (^)(BOOL success, UBCGoodDM *item))completionBlock;
 
+- (void)subscribeAPNS;
+
 @end

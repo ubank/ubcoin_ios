@@ -49,4 +49,6 @@
 + (NSURL *)uploadImage;
 + (NSURL *)sellItem;
 
++ (NSURL *)subscribeAPNS;
+
 @end

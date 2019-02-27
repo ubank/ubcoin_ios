@@ -24,6 +24,7 @@
 #import "UBCDealCell.h"
 
 #import <AFNetworking/UIKit+AFNetworking.h>
+#import <OneSignal/OneSignal.h>
 
 #import "Ubcoin-Swift.h"
 
@@ -318,7 +319,7 @@
 
 - (void)logoutWithCompletionBlock:(void (^)(BOOL))completionBlock
 {
-    NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider logout] andParams:nil];
+    NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider logout] andParams:@{@"playerId" : [NSString notEmptyString:[OneSignal getPermissionSubscriptionState].subscriptionStatus.userId]}];
     [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
      {
          if (completionBlock)
@@ -684,6 +685,19 @@
              completionBlock(success, item);
          }
      }];
+}
+
+#pragma mark - APNS
+
+- (void)subscribeAPNS
+{
+    NSString *playerID = [OneSignal getPermissionSubscriptionState].subscriptionStatus.userId;
+    if ([playerID isNotEmpty])
+    {
+        NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider subscribeAPNS]
+                                                                    andParams:@{@"playerId": playerID}];
+        [self.connection sendRequest:request isBackground:NO withCompletionBlock:nil];
+    }
 }
 
 @end
