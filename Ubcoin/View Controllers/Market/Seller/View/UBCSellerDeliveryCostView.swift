@@ -22,11 +22,10 @@ class UBCSellerDeliveryCostView: UIView {
     @IBOutlet weak var buyerAddress: HUBLabel!
     @IBOutlet weak var deliveryPriceLabel: HUBLabel!
     @IBOutlet weak var deliveryPriceCostField: UITextField!
-    
     @IBOutlet weak var confirmNewDeliveryPriceButton: HUBGeneralButton!
     
-    @IBOutlet weak var heightDeliveryButton: NSLayoutConstraint!
     private var deal: UBCDealDM?
+    private var previousCost = ""
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -61,24 +60,25 @@ class UBCSellerDeliveryCostView: UIView {
         self.deal = deal
         
         buyerAddress.text = locationText
-        
+        confirmNewDeliveryPriceButton.isHidden = true
         deliveryPriceLabel.text = "str_delivery_price".localizedString() + deal.currencyType
         deliveryPriceCostField.text = deal.deliveryPrice
-    }
-    
-    func hideButton(_ isHide:Bool = false) {
-        confirmNewDeliveryPriceButton.isHidden = isHide
-        heightDeliveryButton.constant = isHide == false ? 36 : 0
-        updateConstraintsIfNeeded()
-    }
-    
-    @IBAction func changeDeliveryPriceTouch(_ sender: Any) {
+        previousCost = deal.deliveryPrice ?? ""
     }
     
     @IBAction func confirmNewDeliveryPrice(_ sender: Any) {
         if let deal = deal, let price = deliveryPriceCostField.text, let delegate = delegate {
             delegate.confirmNewDeliveryPrice(deal.id, price.replacingOccurrences(of: ",", with: "."))
         }
+    }
+    
+}
+
+extension UBCSellerDeliveryCostView : UITextFieldDelegate {
+    
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        confirmNewDeliveryPriceButton.isHidden = previousCost == textField.text
     }
     
 }
