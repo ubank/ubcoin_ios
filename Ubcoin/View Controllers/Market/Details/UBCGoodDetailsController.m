@@ -11,7 +11,6 @@
 #import "UBCPhotoCollectionViewCell.h"
 #import "UBCGoodsCollectionView.h"
 #import "HUBNavigationBarView.h"
-#import "UBCChatController.h"
 #import "UBCInfoLabel.h"
 #import "UBCGoodDM.h"
 #import "UBCKeyChain.h"
@@ -39,7 +38,6 @@
 
 @property (weak, nonatomic) IBOutlet UIView *sellerSectionView;
 @property (weak, nonatomic) IBOutlet UBCSellerView *sellerView;
-@property (weak, nonatomic) IBOutlet UBCBuyersView *buyersView;
 
 @property (weak, nonatomic) IBOutlet UIView *digitalGoodView;
 @property (weak, nonatomic) IBOutlet HUBLabel *digitalGoodDesc;
@@ -271,17 +269,13 @@
     {
         self.connectToSellerView.hidden = YES;
         self.sellerSectionView.hidden = YES;
-        self.buyersView.hidden = NO;
-        
-        [self.buyersView updateWithDeals:self.good.deals];
     }
     else
     {
         self.connectToSellerView.hidden = NO;
         self.sellerSectionView.hidden = NO;
-        self.buyersView.hidden = YES;
         
-        [self.sellerView setupWithSeller:self.good.seller];
+        [self.sellerView setupWithSeller:self.good.seller isSeller:YES];
     }
 }
 
@@ -315,7 +309,7 @@
 {
     if (UBCKeyChain.authorization)
     {
-        UBCChatController *controller = [[UBCChatController alloc] initWithItem:self.good];
+        UBCDealInfoController *controller = [[UBCDealInfoController alloc] initWithItem:self.good];
         [self.navigationController pushViewController:controller animated:YES];
     }
     else
@@ -521,7 +515,7 @@
 
 - (void)didSelectWithDeal:(UBCDealDM *)deal
 {
-    UBCChatController *controller = [[UBCChatController alloc] initWithDeal:deal];
+    UBCDealInfoController *controller = [[UBCDealInfoController alloc] initWithDeal:deal];
     [self.navigationController pushViewController:controller animated:YES];
 }
 
@@ -530,6 +524,12 @@
 - (void)showWithSeller:(UBCSellerDM *)seller
 {
     UBCSellerController *controller = [[UBCSellerController alloc] initWithSeller:seller];
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+- (void)chatWithSeller:(UBCSellerDM *)seller
+{
+    UBCChatController *controller = [[UBCChatController alloc] initWithItem:self.good];
     [self.navigationController pushViewController:controller animated:YES];
 }
 

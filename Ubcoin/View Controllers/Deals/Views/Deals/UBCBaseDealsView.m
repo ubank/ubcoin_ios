@@ -41,7 +41,6 @@
     {
         __weak typeof(self) weakSelf = self;
         [self.tableView setupRefreshControllWithActionBlock:^{
-            weakSelf.pageNumber = 0;
             [weakSelf updateInfo];
         }];
     }
@@ -63,27 +62,12 @@
     
 }
 
-- (void)handleResponse:(NSArray *)deals
+- (void)handleResponse:(NSArray *)itemsSections
 {
     [self.tableView.refreshControll endRefreshing];
-    if (deals)
-    {
-        if (self.pageNumber == 0)
-        {
-            self.items = [NSMutableArray array];
-        }
-        [self.items addObjectsFromArray:deals];
-        self.pageNumber++;
-    }
-    self.tableView.emptyView.hidden = self.items.count > 0;
-    [self.tableView updateWithRowsData:self.items];
-}
-
-#pragma mark - UBDefaultTableViewDelegate
-
-- (void)updatePagination
-{
-    [self updateInfo];
+    
+    self.tableView.emptyView.hidden = itemsSections.count > 0;
+    [self.tableView updateWithSectionsData:itemsSections];
 }
 
 @end

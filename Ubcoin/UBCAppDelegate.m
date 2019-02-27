@@ -52,7 +52,13 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     [FBSDKAppEvents activateApp];
+    [[UBCSocketIOManager sharedInstance] establishConnection];
     UIApplication.sharedApplication.applicationIconBadgeNumber = 0;
+}
+    
+- (void) applicationDidEnterBackground:(UIApplication *)application
+{
+    [[UBCSocketIOManager sharedInstance] closeConnection];
 }
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
@@ -75,6 +81,8 @@
     
     self.window.rootViewController = self.navigationController;
     [self.window makeKeyAndVisible];
+    
+    [[UBCSocketIOManager sharedInstance] reloadConnection];
 }
 
 - (void)subscribeAPNSWithOptions:(NSDictionary *)launchOptions

@@ -41,13 +41,27 @@
 + (NSURL *)favoriteWithID:(NSString *)favoriteID;
 + (NSURL *)favoritesListWithPageNumber:(NSUInteger)page;
 
-+ (NSURL *)dealsToSellListWithPageNumber:(NSUInteger)page;
-+ (NSURL *)dealsToBuyListWithPageNumber:(NSUInteger)page;
++ (NSURL *)dealsToSell;
++ (NSURL *)dealsToBuy;
 
-+ (NSURL *)chatURL;
++ (NSURL *)deal;
++ (NSURL *)dealsListWithPageNumber:(NSUInteger)page;
+    
++ (NSURL *) chartDealsList;
 
 + (NSURL *)uploadImage;
 + (NSURL *)sellItem;
+
++ (NSURL *)buyItem;
++ (NSURL *)cancelDeal:(NSString *)dealID;
++ (NSURL *)confirmDeal:(NSString *)dealID;
+
++ (NSURL *)checkStatusForDeal:(NSString *)dealID;
+
++ (NSURL *)changePersonalMeetingToDeliveryForDeal:(NSString *)dealID;
++ (NSURL *)setDeliveryPriceForDeal:(NSString *)dealID;
++ (NSURL *)confirmDeliveryPriceForDeal:(NSString *)dealID;
++ (NSURL *)startDeliveryForDeal:(NSString *)dealID;
 
 + (NSURL *)subscribeAPNS;
 

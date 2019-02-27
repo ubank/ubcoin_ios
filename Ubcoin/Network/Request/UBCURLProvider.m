@@ -168,21 +168,35 @@
     return [NSURL URLWithString:url];
 }
 
-+ (NSURL *)dealsToSellListWithPageNumber:(NSUInteger)page
++ (NSURL *)dealsToSell
 {
-    NSString *url = [SERVER_URL stringByAppendingFormat:@"purchases/seller?page=%d&size=%d", (int)page, ITEMS_PAGE_SIZE];
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"items/to-sell"];
+    
     return [NSURL URLWithString:url];
 }
 
-+ (NSURL *)dealsToBuyListWithPageNumber:(NSUInteger)page
++ (NSURL *)dealsToBuy
 {
-    NSString *url = [SERVER_URL stringByAppendingFormat:@"purchases/buyer?page=%d&size=%d", (int)page, ITEMS_PAGE_SIZE];
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"purchases/to-buy"];
+    
     return [NSURL URLWithString:url];
 }
 
-+ (NSURL *)chatURL
++ (NSURL *)deal
 {
-    NSString *url = [SERVER_URL stringByAppendingFormat:@"items/discuss"];
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"purchases/create"];
+    return [NSURL URLWithString:url];
+}
+
++ (NSURL *)dealsListWithPageNumber:(NSUInteger)page
+{
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"purchases/related?page=%d&size=%d", (int)page, ITEMS_PAGE_SIZE];
+    return [NSURL URLWithString:url];
+}
+    
++ (NSURL *)chartDealsList
+{
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"chats"];
     return [NSURL URLWithString:url];
 }
 
@@ -203,6 +217,66 @@
 + (NSURL *)subscribeAPNS
 {
     NSString *url = [SERVER_URL stringByAppendingString:@"notify/push-subscribe"];
+    
+    return [NSURL URLWithString:url];
+}
+
+#pragma mark -
+
++ (NSURL *)buyItem
+{
+    NSString *url = [SERVER_URL stringByAppendingString:@"items/buy"];
+    
+    return [NSURL URLWithString:url];
+}
+
++ (NSURL *)cancelDeal:(NSString *)dealID
+{
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"purchases/cancel/%@", dealID];
+    
+    return [NSURL URLWithString:url];
+}
+
++ (NSURL *)confirmDeal:(NSString *)dealID
+{
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"purchases/confirm/%@", dealID];
+    
+    return [NSURL URLWithString:url];
+}
+
++ (NSURL *)checkStatusForDeal:(NSString *)dealID
+{
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"purchases/status/%@", dealID];
+    
+    return [NSURL URLWithString:url];
+}
+
+#pragma mark -
+
++ (NSURL *)changePersonalMeetingToDeliveryForDeal:(NSString *)dealID
+{
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"purchases/with-delivery/%@", dealID];
+    
+    return [NSURL URLWithString:url];
+}
+
++ (NSURL *)setDeliveryPriceForDeal:(NSString *)dealID
+{
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"purchases/set-delivery-price/%@", dealID];
+    
+    return [NSURL URLWithString:url];
+}
+
++ (NSURL *)confirmDeliveryPriceForDeal:(NSString *)dealID
+{
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"purchases/confirm-delivery-price/%@", dealID];
+    
+    return [NSURL URLWithString:url];
+}
+
++ (NSURL *)startDeliveryForDeal:(NSString *)dealID
+{
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"purchases/start-delivery/%@", dealID];
     
     return [NSURL URLWithString:url];
 }

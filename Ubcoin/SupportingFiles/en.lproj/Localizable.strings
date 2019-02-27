@@ -156,6 +156,7 @@
 "str_the_listing_is_deactivated" = "The listing is deactivated";
 
 "str_item_status_active" = "Active";
+"str_item_status_not_active" = "Not active";
 "str_item_status_deactivated" = "Deactivated";
 "str_item_status_sold" = "Sold";
 "str_item_status_blocked" = "Blocked";
@@ -173,6 +174,7 @@
 "str_sort_by" = "Sort by";
 "str_placement_date" = "Placement Date";
 "str_item_price" = "Item Price";
+"str_item_price_up" = "ITEM PRICE";
 "str_distance_to_seller" = "Distance to seller";
 "str_clear_all" = "Clear all";
 "str_show_items" = "Show items";
@@ -209,3 +211,35 @@
 "str_paste_here_link_to_download_your_file_from_cloud_storage" = "Paste here link to download your file from cloud storage (Google Drive, Dropbox, etc.). Buyers will NOT see this link until escrow service freezes their payment.";
 "str_buyer_receive_the_link_by_email" = "Buyer will receive the link by e-mail after buyer's payment is frozen by escrow service.";
 
+"str_messages" = "Messages";
+"str_no_messages_title" = "No messages";
+"str_no_messages_desc" = "Seems like it’s a sign to start connecting with people";
+"str_purchase" = "Purchase";
+"str_purchase_process_desc" = "After you confirm purchase, Item price will be blocked on your Ubcoin wallet by Ubcoin escrow service. Then you will receive on your email link to download file. You will need to download file and check it. Seller will receive money only after you confirm that file is OK.";
+"str_buy_now" = "Buy now";
+"str_chat_with_seller" = "Chat with seller";
+"str_chat_with_buyer" = "Chat with buyer";
+"str_progress_up" = "PROGRESS";
+"str_currency_up" = "CURRENCY";
+"str_your_balance" = "Your balance";
+"str_purcahse_rules_description" = "We will block the ETH or UBC amount on your Ubcoin wallet. Seller will receive money only after you get the item in your hands.";
+"str_attention_commission" = "ATTENTION: We take commission 2% for buying in ETH.";
+"str_confirm_in" = "Confirm in";
+"str_seller_location" = "Seller location";
+"str_seller_location_up" = "SELLER LOCATION";
+"str_buyer_location" = "Buyer location";
+"str_buyer_address" = "BUYER ADDRESS";
+"str_delivery_price" = "DELIVERY PRICE IN ";
+"str_item_will_be_delivered_to_me" = "Item will be delivered to me";
+"str_by_courier_or_a_delivery_service" = "by courier or a delivery service";
+"str_i_will_meet_seller_in_person" = "I will meet seller in person";
+"str_for_a_handshake" = "for a handshake";
+"str_please_top_up_your_balance" = "Please top up your balance.";
+"str_you_don_have_enough_eth_on_your_wallet" = "You don’t have enough ETH on your wallet.";
+"str_you_don_have_enough_ubc_on_your_wallet" = "You don’t have enough UBC on your wallet.";
+"str_confirm_purchase" = "Confirm purchase?";
+"str_will_be_blocked_on_your_wallet" = "will be blocked on your wallet.";
+"str_cancel_the_deal" = "Cancel the deal";
+"str_confirm_file_ok" = "I confirm that file is OK";
+"str_received_item_ok" = "I received item";
+"str_report_problems" = "Report problems";

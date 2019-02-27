@@ -10,8 +10,9 @@
 #import "UBCollectionViewSwitch.h"
 #import "UBCToBuyDealsView.h"
 #import "UBCToSellDealsView.h"
-#import "UBCChatController.h"
 #import "UBCGoodDetailsController.h"
+
+#import "Ubcoin-Swift.h"
 
 @interface UBCDealsController () <UBCDealsViewDelegate>
 
@@ -71,14 +72,22 @@
 
 #pragma mark - UBCDealsViewDelegate
 
-- (void)openChatForItem:(UBCGoodDM *)item
+- (void)showDeal:(UBCDealDM *)deal
 {
-    UBCChatController *controller = [[UBCChatController alloc] initWithItem:item];
+    UBCDealInfoController *controller = [[UBCDealInfoController alloc] initWithDeal:deal];
     [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void)showItem:(UBCGoodDM *)item
 {
+   
+    if (item.status == UBCItemStatusReserved && item.deals.firstObject) {
+        UBCDealDM *deal = item.deals.firstObject;
+        [self showDeal:deal];
+        return;
+    }
+        
+        
     UBCGoodDetailsController *controller = [UBCGoodDetailsController.alloc initWithGood:item];
     [self.navigationController pushViewController:controller animated:YES];
 }

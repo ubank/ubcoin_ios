@@ -14,7 +14,6 @@
             <connections>
                 <outlet property="address" destination="zVb-IR-GvK" id="2c4-h5-fA9"/>
                 <outlet property="background" destination="Q6l-Bt-ygF" id="xsO-B8-B2H"/>
-                <outlet property="buyersView" destination="CcZ-Oj-MiV" id="k7O-48-nmV"/>
                 <outlet property="category" destination="sLA-ZZ-xSa" id="MlD-BK-rPb"/>
                 <outlet property="collectionView" destination="uA0-yc-f7K" id="pSi-qb-Rom"/>
                 <outlet property="connectToSellerView" destination="dYb-9Z-BGQ" id="4N0-AK-jd2"/>
@@ -47,7 +46,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qbR-7S-QUP">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="1135.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="1195.5"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9M1-bB-Yuh">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
@@ -107,7 +106,7 @@
                                     </constraints>
                                 </view>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="nHF-sb-mbC">
-                                    <rect key="frame" x="0.0" y="250" width="375" height="885.5"/>
+                                    <rect key="frame" x="0.0" y="250" width="375" height="945.5"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hyE-wl-XrB">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
@@ -362,13 +361,13 @@
                                             </constraints>
                                         </view>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="jjE-RS-vsJ">
-                                            <rect key="frame" x="0.0" y="660.5" width="375" height="135"/>
+                                            <rect key="frame" x="0.0" y="660.5" width="375" height="195"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5yE-UI-gCM">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="135"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="195"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b75-hG-Hyi" userLabel="Seller View">
-                                                            <rect key="frame" x="0.0" y="10" width="375" height="125"/>
+                                                            <rect key="frame" x="0.0" y="10" width="375" height="175"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="str_seller_up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="enc-FY-zqm" customClass="HUBLabel">
                                                                     <rect key="frame" x="15" y="15" width="345" height="20.5"/>
@@ -382,7 +381,7 @@
                                                                     </userDefinedRuntimeAttributes>
                                                                 </label>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TY4-vb-mN9" customClass="UBCSellerView" customModule="Ubcoin" customModuleProvider="target">
-                                                                    <rect key="frame" x="0.0" y="45.5" width="375" height="69.5"/>
+                                                                    <rect key="frame" x="0.0" y="45.5" width="375" height="119.5"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <viewLayoutGuide key="safeArea" id="em2-08-4OQ"/>
                                                                     <connections>
@@ -390,9 +389,9 @@
                                                                     </connections>
                                                                 </view>
                                                             </subviews>
-                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="125" id="0u0-aI-ILS"/>
+                                                                <constraint firstAttribute="height" constant="175" id="0u0-aI-ILS"/>
                                                                 <constraint firstItem="enc-FY-zqm" firstAttribute="leading" secondItem="b75-hG-Hyi" secondAttribute="leading" constant="15" id="4eh-Td-GZF"/>
                                                                 <constraint firstAttribute="bottom" secondItem="TY4-vb-mN9" secondAttribute="bottom" constant="10" id="9pT-m0-qz1"/>
                                                                 <constraint firstItem="TY4-vb-mN9" firstAttribute="top" secondItem="enc-FY-zqm" secondAttribute="bottom" constant="10" id="Hpw-aQ-vNp"/>
@@ -407,31 +406,22 @@
                                                     <constraints>
                                                         <constraint firstItem="b75-hG-Hyi" firstAttribute="top" secondItem="5yE-UI-gCM" secondAttribute="top" constant="10" id="4Ud-Eb-JfC"/>
                                                         <constraint firstItem="b75-hG-Hyi" firstAttribute="leading" secondItem="5yE-UI-gCM" secondAttribute="leading" id="pOM-ub-NEj"/>
-                                                        <constraint firstAttribute="bottom" secondItem="b75-hG-Hyi" secondAttribute="bottom" id="pzD-uZ-G4g"/>
+                                                        <constraint firstAttribute="bottom" secondItem="b75-hG-Hyi" secondAttribute="bottom" constant="10" id="pzD-uZ-G4g"/>
                                                         <constraint firstAttribute="trailing" secondItem="b75-hG-Hyi" secondAttribute="trailing" id="u3z-qH-zxd"/>
                                                     </constraints>
                                                 </view>
-                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CcZ-Oj-MiV" customClass="UBCBuyersView" customModule="Ubcoin" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" id="qSu-rH-t4F"/>
-                                                    </constraints>
-                                                    <connections>
-                                                        <outlet property="delegate" destination="-1" id="Sox-tU-akF"/>
-                                                    </connections>
-                                                </view>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </stackView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dYb-9Z-BGQ">
-                                            <rect key="frame" x="0.0" y="795.5" width="375" height="90"/>
+                                            <rect key="frame" x="0.0" y="855.5" width="375" height="90"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZW-YT-6xm" customClass="HUBGeneralButton">
                                                     <rect key="frame" x="15" y="15" width="345" height="60"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="60" id="AaG-Ed-xqv"/>
                                                     </constraints>
-                                                    <state key="normal" title="str_connect_to_seller"/>
+                                                    <state key="normal" title="str_buy_now"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="type">
                                                             <integer key="value" value="2"/>
@@ -451,6 +441,7 @@
                                             </constraints>
                                         </view>
                                     </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </stackView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

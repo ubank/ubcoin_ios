@@ -8,6 +8,7 @@
 
 #import "UBCProfileController.h"
 #import "UBCBalanceController.h"
+#import "UBCDealsController.h"
 #import "UBCAccountSettingsController.h"
 #import "UBCUserDM.h"
 #import "UBCBalanceDM.h"
@@ -15,6 +16,7 @@
 #define PROFILE_ACTIVITY @"profile"
 #define UBC_BALANCE_ACTIVITY @"ubc balance"
 #define ETH_BALANCE_ACTIVITY @"eth balance"
+#define DEALS_ACTIVITY @"deals"
 
 @interface UBCProfileController () <UBDefaultTableViewDelegate>
 
@@ -83,6 +85,17 @@
     balanceSection.rows = @[data2, data3];
     [sections addObject:balanceSection];
     
+    UBTableViewSectionData *dealsSection = UBTableViewSectionData.new;
+    dealsSection.headerHeight = SEPARATOR_HEIGHT;
+    
+    UBTableViewRowData *data4 = UBTableViewRowData.new;
+    data4.title = UBLocalizedString(@"str_deals", nil);
+    data4.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    data4.name = DEALS_ACTIVITY;
+    
+    dealsSection.rows = @[data4];
+    [sections addObject:dealsSection];
+    
     [self.tableView updateWithSectionsData:sections];
 }
 
@@ -111,6 +124,10 @@
         BOOL isETH = [data.name isEqualToString:ETH_BALANCE_ACTIVITY];
         UBCBalanceController *controller = [[UBCBalanceController alloc] initWithETH:isETH];
         [self.navigationController pushViewController:controller animated:YES];
+    }
+    else if ([data.name isEqualToString:DEALS_ACTIVITY])
+    {
+        [self.navigationController pushViewController:UBCDealsController.new animated:YES];
     }
 }
 

@@ -47,7 +47,7 @@
     viewController1.tabBarItem.title = UBLocalizedString(@"str_market", nil);
     viewController1.tabBarItem.image = [UIImage imageNamed:@"tab_bar_market"];
     
-    UBCFavouritesController *viewController2 = UBCFavouritesController.new;
+    UBCStartLoginController *viewController2 = UBCStartLoginController.new;
     viewController2.tabBarItem.title = UBLocalizedString(@"str_favorites", nil);
     viewController2.tabBarItem.image = [UIImage imageNamed:@"tab_bar_favorites"];
     
@@ -55,9 +55,9 @@
     viewController3.tabBarItem.title = UBLocalizedString(@"str_sell", nil);
     viewController3.tabBarItem.image = [[UIImage imageNamed:@"tab_bar_sell"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
-    UBCDealsController *viewController4 = UBCDealsController.new;
-    viewController4.tabBarItem.title = UBLocalizedString(@"str_deals", nil);
-    viewController4.tabBarItem.image = [UIImage imageNamed:@"tab_bar_deals"];
+    UBCStartLoginController *viewController4 = UBCStartLoginController.new;
+    viewController4.tabBarItem.title = UBLocalizedString(@"str_messages", nil);
+    viewController4.tabBarItem.image = [UIImage imageNamed:@"tab_bar_messages"];
     
     UBCStartLoginController *viewController5 = UBCStartLoginController.new;
     viewController5.tabBarItem.title = UBLocalizedString(@"str_sign_in", nil);
@@ -80,9 +80,9 @@
     viewController3.tabBarItem.title = UBLocalizedString(@"str_sell", nil);
     viewController3.tabBarItem.image = [[UIImage imageNamed:@"tab_bar_sell"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
-    UBCDealsController *viewController4 = UBCDealsController.new;
-    viewController4.tabBarItem.title = UBLocalizedString(@"str_deals", nil);
-    viewController4.tabBarItem.image = [UIImage imageNamed:@"tab_bar_deals"];
+    UBCMessagesListController *viewController4 = UBCMessagesListController.new;
+    viewController4.tabBarItem.title = UBLocalizedString(@"str_messages", nil);
+    viewController4.tabBarItem.image = [UIImage imageNamed:@"tab_bar_messages"];
     
     UBCProfileController *viewController5 = UBCProfileController.new;
     viewController5.tabBarItem.title = UBLocalizedString(@"str_profile", nil);

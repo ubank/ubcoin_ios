@@ -120,26 +120,6 @@ final class UBCSellController: UBViewController {
             return
         }
         
-        guard let user = UBCUserDM.loadProfile(),
-            user.authorizedInTg else {
-                self.startActivityIndicator()
-                UBCDataProvider.shared.registerInChat { [weak self] success, authorizedInTg, url, appURL in
-                    self?.stopActivityIndicator()
-
-                    if authorizedInTg {
-                        self?.sendItem(photoRow: photoRow, id: self?.item?.id)
-                    } else {
-                        UBAlert.show(withTitle: "",
-                                     andMessage: "str_ubcoin_is_going_to_open_telegram".localizedString(),
-                                     withCompletionBlock: {
-                                        self?.navigationController?.pushViewController(UBCChatController(url: url, appURL: appURL), animated: true)
-                        })
-                    }
-                }
-
-                return
-        }
-        
         self.sendItem(photoRow: photoRow, id: self.item?.id)
     }
     
