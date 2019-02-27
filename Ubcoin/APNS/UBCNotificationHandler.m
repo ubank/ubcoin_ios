@@ -137,7 +137,7 @@
     }
     else if ([activity isEqualToString:PURCHASE_ACTIVITY])
     {
-        return nil;
+        return [UBCDealInfoController.alloc initWithDealID:params[@"id"]];
     }
     
     return nil;

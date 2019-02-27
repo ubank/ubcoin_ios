@@ -41,6 +41,7 @@ class UBCDealInfoController: UBViewController {
     
     @IBOutlet weak var actionButton: HUBGeneralButton!
     
+    private var dealID: String?
     private var purchaseDM: UBCPurchaseDM?
     private var content = [UBTableViewRowData]()
     
@@ -58,13 +59,37 @@ class UBCDealInfoController: UBViewController {
         self.purchaseDM = UBCPurchaseDM(deal: deal)
     }
 
+    @objc convenience init?(dealID: String?) {
+        
+        guard let dealID = dealID else { return nil }
+        
+        self.init()
+        
+        self.dealID = dealID
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.title = "str_purchase"
         
         setupViews()
-        setupContent()
+        
+        if let dealID = dealID {
+            startActivityIndicatorImmediately()
+            UBCDataProvider.shared.checkStatus(forDeal: dealID) { [weak self] success, deal in
+                self?.stopActivityIndicator()
+                
+                if let deal = deal {
+                    self?.purchaseDM = UBCPurchaseDM(deal: deal)
+                    self?.setupContent()
+                } else {
+                    self?.navigationController?.popViewController(animated: true)
+                }
+            }
+        } else {
+            setupContent()
+        }
     }
     
     override func navigationButtonBackClick(_ sender: Any!) {
