@@ -8,6 +8,8 @@
 
 #define ITEM_ACTIVITY @"item"
 #define SELLER_ACTIVITY @"seller"
+#define CHAT_ACTIVITY @"chat"
+#define PURCHASE_ACTIVITY @"purchase"
 
 /* Push message example:
  {
@@ -48,8 +50,8 @@
 @interface UBCNotificationHandler : NSObject
 
 + (void)openURL:(NSURL *)url;
-+ (BOOL)isUbcoinURLScheme:(NSURL *)url;
 
-+ (UBViewController *)controllerForActivityName:(NSString *)activity withParams:(NSDictionary *)params;
++ (BOOL)needShowPushWithUserInfo:(NSDictionary *)userInfo;
++ (void)handlePushWithUserInfo:(NSDictionary *)userInfo;
 
 @end

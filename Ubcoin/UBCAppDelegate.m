@@ -19,7 +19,7 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <OneSignal/OneSignal.h>
 
-@interface UBCAppDelegate () <OSSubscriptionObserver>
+@interface UBCAppDelegate () <OSSubscriptionObserver, UNUserNotificationCenterDelegate>
 
 @property (strong, nonatomic) UBCTabBarController *tabBar;
 
@@ -52,6 +52,7 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     [FBSDKAppEvents activateApp];
+    UIApplication.sharedApplication.applicationIconBadgeNumber = 0;
 }
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
@@ -88,6 +89,8 @@
         NSLog(@"User accepted notifications: %d", accepted);
     }];
     [UBCDataProvider.sharedProvider subscribeAPNS];
+    
+    UNUserNotificationCenter.currentNotificationCenter.delegate = self;
 }
 
 - (void)setupColors
@@ -128,6 +131,29 @@
 - (void)onOSSubscriptionChanged:(OSSubscriptionStateChanges *)stateChanges
 {
     [UBCDataProvider.sharedProvider subscribeAPNS];
+}
+
+#pragma mark - UNUserNotificationCenterDelegate
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler
+{
+    NSDictionary *userInfo = notification.request.content.userInfo;
+    if ([UBCNotificationHandler needShowPushWithUserInfo:userInfo])
+    {
+        completionHandler(UNNotificationPresentationOptionAlert |
+                          UNNotificationPresentationOptionBadge |
+                          UNNotificationPresentationOptionSound);
+    }
+    else
+    {
+        completionHandler(UNNotificationPresentationOptionNone);
+    }
+}
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler
+{
+    NSDictionary *userInfo = response.notification.request.content.userInfo;
+    [UBCNotificationHandler handlePushWithUserInfo:userInfo];
 }
 
 @end

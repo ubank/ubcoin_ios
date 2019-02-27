@@ -14,8 +14,7 @@
 
 #import "Ubcoin-Swift.h"
 
-#define PUSH_ACTIVITY @"activity_name"
-#define PUSH_TYPE @"type"
+#define PUSH_ACTIVITY @"activityName"
 
 @implementation UBCNotificationHandler
 
@@ -30,7 +29,7 @@
     
     if ([self isUbcoinURLScheme:url])
     {
-        [self handleURL:url];
+        [self handleActivity:url.host withParams:[NSDictionary dictionaryParamsFromURL:url]];
     }
     else
     {
@@ -38,25 +37,20 @@
     }
 }
 
-+ (void)handleURL:(NSURL *)url
++ (void)handleActivity:(NSString *)activity withParams:(NSDictionary *)params
 {
-    if (![self needHandleURL:url])
+    if (![self needHandleActivity:activity withParams:params])
     {
         return;
     }
     
-    UBViewController *controller = [self controllerForURL:url];
+    UBViewController *controller = [self controllerForActivityName:activity withParams:params];
     if (controller)
     {
         UBViewController *shownController = [mainAppDelegate showControllers:@[controller]];
-        
-        if (shownController)
+        if (shownController && params)
         {
-            NSDictionary *params = [NSDictionary dictionaryParamsFromURL:url];
-            if (params)
-            {
-                [shownController updateInfoWithPushParams:params];
-            }
+            [shownController updateInfoWithPushParams:params];
         }
     }
 }
@@ -68,14 +62,11 @@
     return [[NSString stringWithFormat:@"%@://", url.scheme] isEqualToString:URL_SCHEME];
 }
 
-+ (BOOL)needHandleURL:(NSURL *)url
++ (BOOL)needHandleActivity:(NSString *)activity withParams:(NSDictionary *)params
 {
-    NSString *activity = url.host;
-    
     UBViewController *visibleViewController = (UBViewController *)mainAppDelegate.navigationController.currentController;
     if ([self.commonActivities containsObject:activity])
     {
-        NSDictionary *params = [NSDictionary dictionaryParamsFromURL:url];
         UBViewController *controller = [self controllerForActivityName:activity withParams:params];
         
         if (controller && [visibleViewController isKindOfClass:UBViewController.class])
@@ -99,43 +90,54 @@
 
 #pragma mark - Activities Handle
 
-+ (UBViewController *)controllerForURL:(NSURL *)url
++ (BOOL)needShowPushWithUserInfo:(NSDictionary *)userInfo
 {
-    NSString *activity = url.host;
-    
-    if (![activity isNotEmpty])
+    NSDictionary *data = userInfo[@"data"];
+    if (data)
     {
-        return nil;
+        return [self needHandleActivity:data[PUSH_ACTIVITY]
+                             withParams:data];
     }
     
-    NSDictionary *params = [NSDictionary dictionaryParamsFromURL:url];
-    
-    UBViewController *controller = [self controllerForActivityName:activity withParams:params];
-    if (controller)
+    return YES;
+}
+
++ (void)handlePushWithUserInfo:(NSDictionary *)userInfo
+{
+    NSDictionary *data = userInfo[@"data"];
+    if (data)
     {
-        if (!UBCKeyChain.authorization && [self.registrationActivities containsObject:activity])
-        {
-            return [UBCStartLoginController new];
-        }
-        else
-        {
-            return controller;
-        }
+        [UBCNotificationHandler handleActivity:data[PUSH_ACTIVITY] withParams:data];
     }
-    
-    return nil;
 }
 
 + (UBViewController *)controllerForActivityName:(NSString *)activity
                                      withParams:(NSDictionary *)params
 {
-    if ([activity isEqualToString:ITEM_ACTIVITY])
+    if (![activity isNotEmpty])
+    {
+        return nil;
+    }
+    
+    if (!UBCKeyChain.authorization && [self.registrationActivities containsObject:activity])
+    {
+        return [UBCStartLoginController new];
+    }
+    else if ([activity isEqualToString:ITEM_ACTIVITY])
     {
         return [UBCGoodDetailsController.alloc initWithGoodID:params[@"id"]];
     }
     else if ([activity isEqualToString:SELLER_ACTIVITY])
     {
         return [UBCSellerController.alloc initWithSellerID:params[@"id"]];
+    }
+    else if ([activity isEqualToString:CHAT_ACTIVITY])
+    {
+        return nil;
+    }
+    else if ([activity isEqualToString:PURCHASE_ACTIVITY])
+    {
+        return nil;
     }
     
     return nil;
@@ -179,13 +181,16 @@
 + (NSArray *)commonActivities
 {
     return @[ITEM_ACTIVITY,
-             SELLER_ACTIVITY
+             SELLER_ACTIVITY,
+             CHAT_ACTIVITY,
+             PURCHASE_ACTIVITY
              ];
 }
 
 + (NSArray *)registrationActivities
 {
-    return @[
+    return @[CHAT_ACTIVITY,
+             PURCHASE_ACTIVITY
              ];
 }
 
