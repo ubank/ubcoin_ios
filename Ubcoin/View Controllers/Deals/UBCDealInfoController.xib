@@ -162,7 +162,7 @@
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SqI-7E-Xii" customClass="HUBLabel">
-                                                            <rect key="frame" x="0.0" y="142.5" width="345" height="21"/>
+                                                            <rect key="frame" x="0.0" y="142.5" width="345" height="20.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" priority="250" constant="21" id="jjX-IR-hS2"/>
                                                             </constraints>
@@ -176,7 +176,7 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nej-Lb-meb">
-                                                            <rect key="frame" x="0.0" y="173.5" width="345" height="45"/>
+                                                            <rect key="frame" x="0.0" y="173" width="345" height="45"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bod-hW-Zzq" customClass="HUBGeneralButton">
                                                                     <rect key="frame" x="15" y="10" width="315" height="35"/>
@@ -205,7 +205,7 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gcG-r5-VmI">
-                                                            <rect key="frame" x="0.0" y="228.5" width="345" height="45"/>
+                                                            <rect key="frame" x="0.0" y="228" width="345" height="45"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Ze-cE-gbg" customClass="HUBGeneralButton">
                                                                     <rect key="frame" x="15" y="10" width="315" height="35"/>
@@ -231,10 +231,10 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p5Y-Sg-Snp" userLabel="BayerView" customClass="UBCSellerDeliveryCostView" customModule="Ubcoin" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="283.5" width="345" height="170"/>
+                                                            <rect key="frame" x="0.0" y="283" width="345" height="170.5"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" priority="750" constant="170" id="M0v-2T-X86"/>
+                                                                <constraint firstAttribute="height" priority="750" constant="110" id="M0v-2T-X86"/>
                                                             </constraints>
                                                             <connections>
                                                                 <outlet property="delegate" destination="-1" id="IsO-1d-fq6"/>
