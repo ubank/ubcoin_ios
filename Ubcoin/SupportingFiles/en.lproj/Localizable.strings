@@ -241,4 +241,5 @@
 "str_will_be_blocked_on_your_wallet" = "will be blocked on your wallet.";
 "str_cancel_the_deal" = "Cancel the deal";
 "str_confirm_file_ok" = "I confirm that file is OK";
+"str_received_item_ok" = "I received item";
 "str_report_problems" = "Report problems";

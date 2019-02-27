@@ -56,6 +56,9 @@ class UBCPurchaseDM: NSObject {
         else if deal?.status == DEAL_PRICE_DEFINED  || deal?.status == DEAL_PRICE_CONFIRMED{
             imageName = "deliverFroze"
         }
+        else if deal?.status == DEAL_STATUS_CONFIRMED {
+            imageName = "deliverIsConfirmed"
+        }
         else if deal?.status == DEAL_STATUS_CANCELLED {
             imageName = ""
         }

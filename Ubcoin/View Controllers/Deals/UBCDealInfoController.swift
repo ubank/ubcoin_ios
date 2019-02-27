@@ -118,9 +118,6 @@ class UBCDealInfoController: UBViewController {
             
             let person = item.isMyItem ? purchaseDM.deal?.buyer : purchaseDM.seller
             sellerView.setup(seller: person, isSeller: !item.isMyItem)
-    
-            let needShow = item.isDigital && purchaseDM.deal?.status == DEAL_STATUS_ACTIVE && !item.isMyItem
-            confirmDigitalItemView.isHidden = !needShow
             
             let isPriceDefined = purchaseDM.deal?.status == DEAL_PRICE_DEFINED && !item.isMyItem
             buyerDeliveryCostView.isHidden = !isPriceDefined
@@ -132,6 +129,16 @@ class UBCDealInfoController: UBViewController {
             let needShowDeliverForSayller = item.isMyItem && item.status == UBCItemStatusReserved && purchaseDM.deal?.status != DEAL_PRICE_CONFIRMED && purchaseDM.deal?.status != DEAL_STATUS_DELIVERY && purchaseDM.deal?.status != DEAL_STATUS_CANCELLED
             sellerDeliveryCostView.isHidden =  !needShowDeliverForSayller
             sellerDeliveryCostView.setupDeal(purchaseDM.deal)
+            
+            let needShow = item.isDigital && purchaseDM.deal?.status == DEAL_STATUS_ACTIVE && !item.isMyItem
+            confirmDigitalItemView.isHidden = !needShow
+            
+            if !needShow {
+                let isPriceIsDelivery = !item.isMyItem && purchaseDM.deal?.status == DEAL_STATUS_DELIVERY
+                confirmDigitalItemButton.title = isPriceIsDelivery ? "str_received_item_ok".localizedString() : "str_confirm_file_ok".localizedString()
+                confirmDigitalItemView.isHidden = !isPriceIsDelivery
+            }
+            
         }
         
         statusImageView.image = purchaseDM.deliveryImage
