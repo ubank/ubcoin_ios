@@ -47,7 +47,8 @@
 + (NSURL *)deal;
 + (NSURL *)dealsListWithPageNumber:(NSUInteger)page;
     
-+ (NSURL *) chartDealsList;
++ (NSURL *)chartDealsList;
++ (NSURL *)chatForUser:(NSString *)userID andItem:(NSString *)itemID;
 
 + (NSURL *)uploadImage;
 + (NSURL *)sellItem;

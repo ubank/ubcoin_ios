@@ -44,11 +44,11 @@
         return;
     }
     
-    UBViewController *controller = [self controllerForActivityName:activity withParams:params];
+    UIViewController *controller = [self controllerForActivityName:activity withParams:params];
     if (controller)
     {
         UBViewController *shownController = [mainAppDelegate showControllers:@[controller]];
-        if (shownController && params)
+        if (shownController && params && [shownController isKindOfClass:UBViewController.class])
         {
             [shownController updateInfoWithPushParams:params];
         }
@@ -67,11 +67,11 @@
     UBViewController *visibleViewController = (UBViewController *)mainAppDelegate.navigationController.currentController;
     if ([self.commonActivities containsObject:activity])
     {
-        UBViewController *controller = [self controllerForActivityName:activity withParams:params];
-        
-        if (controller && [visibleViewController isKindOfClass:UBViewController.class])
+        UIViewController *controller = [self controllerForActivityName:activity withParams:params];
+        if (controller)
         {
-            if ([visibleViewController isKindOfClass:controller.class])
+            if ([visibleViewController isKindOfClass:controller.class] &&
+                [visibleViewController isKindOfClass:UBViewController.class])
             {
                 [visibleViewController updateInfo];
                 
@@ -111,7 +111,7 @@
     }
 }
 
-+ (UBViewController *)controllerForActivityName:(NSString *)activity
++ (UIViewController *)controllerForActivityName:(NSString *)activity
                                      withParams:(NSDictionary *)params
 {
     if (![activity isNotEmpty])
@@ -133,7 +133,7 @@
     }
     else if ([activity isEqualToString:CHAT_ACTIVITY])
     {
-        return nil;
+        return [UBCChatController.alloc initWithItemID:params[@"itemId"] userID:params[@"userId"]];
     }
     else if ([activity isEqualToString:PURCHASE_ACTIVITY])
     {

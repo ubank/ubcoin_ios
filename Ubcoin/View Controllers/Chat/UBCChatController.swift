@@ -15,6 +15,8 @@ class UBCChatController: UBCMessagesViewController {
     
     private var isAppendHistory = false
     
+    private var itemID: String?
+    private var userID: String?
     private var item: UBCGoodDM?
     private var deal: UBCDealDM?
     private var chatDeal: UBCChatRoom?
@@ -46,9 +48,35 @@ class UBCChatController: UBCMessagesViewController {
         self.chatDeal = chatDeal
     }
     
+    @objc convenience init?(itemID: String?, userID: String?) {
+        
+        guard let itemID = itemID, let userID = userID else { return nil }
+        
+        self.init()
+        self.itemID = itemID
+        self.userID = userID
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let itemID = itemID, let userID = userID {
+            UBCDataProvider.shared.chat(forUser: userID, andItem: itemID) { [weak self] success, chatRoom in
+                
+                guard let chatRoom = chatRoom else {
+                    self?.navigationController?.popViewController(animated: true)
+                    return
+                }
+                
+                self?.chatDeal = chatRoom
+                self?.setupChat()
+            }
+        } else {
+            setupChat()
+        }
+    }
+    
+    private func setupChat() {
         
         if let item = item {
             self.navigationItem.setTitle(title: item.title ?? UBLocal.shared.localizedString(forKey: "str_chat", value: ""), subtitle: item.seller.name ?? "")
@@ -81,7 +109,6 @@ class UBCChatController: UBCMessagesViewController {
                     self?.refreshControl.endRefreshing()
                 }
             }
-
         }
     }
     

@@ -719,6 +719,27 @@
      }];
 }
 
+- (void)chatForUser:(NSString *)userID andItem:(NSString *)itemID withCompletionBlock:(void (^)(BOOL, UBCChatRoom *))completionBlock
+{
+    NSURL *url = [UBCURLProvider chatForUser:userID andItem:itemID];
+    NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:url];
+    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (success)
+         {
+             if (completionBlock)
+             {
+                 UBCChatRoom *chatRoom = [[UBCChatRoom alloc] initWithDictionary:[responseObject removeNulls]];
+                 completionBlock(YES, chatRoom);
+             }
+         }
+         else if (completionBlock)
+         {
+             completionBlock(NO, nil);
+         }
+     }];
+}
+
 #pragma mark - ITEM CREATION
 
 - (void)uploadImage:(UIImage *)image withCompletionBlock:(void (^)(BOOL, NSString *))completionBlock

@@ -11,6 +11,7 @@
 @class UBCGoodDM;
 @class UBCDealDM;
 @class UBCTopupDM;
+@class UBCChatRoom;
 @class UBCSellerDM;
 @class UBCPaymentDM;
 @interface UBCDataProvider : NSObject
@@ -59,6 +60,7 @@
 - (void)dealsListWithPageNumber:(NSUInteger)page withCompletionBlock:(void (^)(BOOL success, NSArray *deals, BOOL canLoadMore))completionBlock;
     
 - (void)chartDealsListWithCompletionBlock:(void (^)(BOOL, NSArray *, BOOL))completionBlock;
+- (void)chatForUser:(NSString *)userID andItem:(NSString *)itemID withCompletionBlock:(void (^)(BOOL success, UBCChatRoom *chatRoom))completionBlock;
 
 - (void)uploadImage:(UIImage *)image withCompletionBlock:(void (^)(BOOL success, NSString *url))completionBlock;
 - (void)sellItem:(NSDictionary *)dictionary withCompletionBlock:(void (^)(BOOL success, UBCGoodDM *item))completionBlock;

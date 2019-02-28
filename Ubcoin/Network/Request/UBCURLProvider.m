@@ -197,6 +197,14 @@
 + (NSURL *)chartDealsList
 {
     NSString *url = [SERVER_URL stringByAppendingFormat:@"chats"];
+    
+    return [NSURL URLWithString:url];
+}
+
++ (NSURL *)chatForUser:(NSString *)userID andItem:(NSString *)itemID
+{
+    NSString *url = [SERVER_URL stringByAppendingFormat:@"chats/%@/%@", itemID, userID];
+    
     return [NSURL URLWithString:url];
 }
 
