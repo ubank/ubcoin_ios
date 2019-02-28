@@ -118,7 +118,7 @@
     self.searchBar.layer.borderWidth = 1;
     self.searchBar.layer.borderColor = UIColor.whiteColor.CGColor;
     self.searchBar.placeholder = UBLocalizedString(@"str_market_search", nil);
-    self.searchBar.returnKeyType = UIReturnKeyDone;
+    self.searchBar.returnKeyType = UIReturnKeySearch;
     [self.searchBar sizeToFit];
     [self.stackView addArrangedSubview:self.searchBar];
     
@@ -160,7 +160,8 @@
     NSString *filtersValues = [self.filterDM filterValues];
     if ([self.searchBar.text isNotEmpty])
     {
-        filtersValues = [filtersValues stringByAppendingFormat:@"&searchLine=%@", self.searchBar.text];
+        NSString *searchTerm = self.searchBar.text.replaceNormalSpacesWithNonBreakingSpaces;
+        filtersValues = [filtersValues stringByAppendingFormat:@"&searchLine=%@", searchTerm.urlEncodeUTF8];
     }
     self.task = [UBCDataProvider.sharedProvider goodsListWithPageNumber:self.pageNumber
                                                              andFilters:filtersValues
@@ -250,6 +251,11 @@
     self.searchBar.text = @"";
     [searchBar resignFirstResponder];
     [self applyFilters];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [searchBar resignFirstResponder];
 }
 
 #pragma mark - UBCGoodsCollectionViewDelegate
