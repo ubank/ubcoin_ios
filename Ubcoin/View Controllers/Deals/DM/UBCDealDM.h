@@ -24,6 +24,7 @@ static NSString * const DEAL_PRICE_CONFIRMED = @"DELIVERY_PRICE_CONFIRMED";
 
 @property (readonly, nonatomic) NSString *ID;
 @property (readonly, nonatomic) NSString *status;
+@property (readonly, nonatomic) NSString *statusDescription;
 @property (readonly, nonatomic) NSString *deliveryPrice;
 @property (readonly, nonatomic) NSString *currencyType;
 @property (readonly, nonatomic) UBCGoodDM *item;

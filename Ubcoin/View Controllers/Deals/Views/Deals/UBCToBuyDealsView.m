@@ -45,7 +45,7 @@
     UBCDealDM *deal = data.data;
 
     UBCDealCell *dealCell = (UBCDealCell *)cell;
-    dealCell.info.text = deal.currentStatus.title;
+    dealCell.info.text = deal.statusDescription;
     [dealCell setLocation:deal.item.location];
     
     if (data.isDisabled)

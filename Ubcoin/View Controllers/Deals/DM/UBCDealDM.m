@@ -22,6 +22,7 @@
         _status = dict[@"status"];
         _deliveryPrice = [dict[@"deliveryPrice"] stringValue];
         _currencyType = dict[@"currencyType"];
+        _statusDescription = dict[@"statusDescription"];
         _item = [[UBCGoodDM alloc] initWithDictionary:dict[@"item"]];
         _buyer = [[UBCSellerDM alloc] initWithDictionary:dict[@"buyer"]];
         _seller = [[UBCSellerDM alloc] initWithDictionary:dict[@"seller"]];
