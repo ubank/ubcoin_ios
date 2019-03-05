@@ -208,3 +208,14 @@
 "str_link_placeholder" = "Tambahkan tautan Anda dari penyimpanan cloud";
 "str_paste_here_link_to_download_your_file_from_cloud_storage" = "Pastekan tautan di sini untuk mengunduh file Anda dari penyimpanan cloud (Google Drive, Dropbox, dll.). Pembeli TIDAK akan melihat tautan ini sampai layanan escrow membekukan pembayaran mereka.";
 "str_buyer_receive_the_link_by_email" = "Pembeli akan menerima tautan melalui email setelah pembayaran pembeli dibekukan oleh layanan escrow.";
+
+
+
+"str_seller_location" = "Seller location";
+"str_seller_location_up" = "SELLER LOCATION";
+"str_buyer_location" = "Buyer location";
+"str_buyer_address" = "BUYER ADDRESS";
+"str_delivery_price" = "DELIVERY PRICE IN ";
+"str_delivery_address" = "DELIVERY ADDRESS";
+"str_delivery_address_placeholder" = "enter address...";
+"str_delivery_notice" = "After you book item, seller will define price of delivery to your address. Delivery price can be 0. If you don't agree with delivery price, you will be able to cancel the deal and item price will return to your wallet.";

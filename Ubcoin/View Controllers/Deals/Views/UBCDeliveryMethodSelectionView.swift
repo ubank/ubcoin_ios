@@ -12,7 +12,15 @@ class UBCDeliveryMethodSelectionView: UIView {
 
     static let delivery = "delivery"
     
-    var isDelivery: Bool = true
+    private var changeDeliveryBlock: ((Bool) -> Void)?
+    
+    var isDelivery: Bool = true {
+        didSet {
+            if let changeBlock = changeDeliveryBlock {
+                changeBlock(isDelivery)
+            }
+        }
+    }
     private(set) lazy var tableView: UBDefaultTableView = {
         let tableView = UBDefaultTableView(frame: .zero, style: .grouped)
         
@@ -92,4 +100,9 @@ extension UBCDeliveryMethodSelectionView: UBDefaultTableViewDelegate {
             cell.borderColor = UBColor.separatorColor
         }
     }
+    
+    func changeDelivery(_ completion: ((Bool) -> Void)?) {
+        changeDeliveryBlock = completion
+    }
+    
 }

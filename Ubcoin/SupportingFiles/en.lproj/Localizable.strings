@@ -230,6 +230,9 @@
 "str_buyer_location" = "Buyer location";
 "str_buyer_address" = "BUYER ADDRESS";
 "str_delivery_price" = "DELIVERY PRICE IN ";
+"str_delivery_address" = "DELIVERY ADDRESS";
+"str_delivery_address_placeholder" = "enter address...";
+"str_delivery_notice" = "After you book item, seller will define price of delivery to your address. Delivery price can be 0. If you don't agree with delivery price, you will be able to cancel the deal and item price will return to your wallet.";
 "str_item_will_be_delivered_to_me" = "Item will be delivered to me";
 "str_by_courier_or_a_delivery_service" = "by courier or a delivery service";
 "str_i_will_meet_seller_in_person" = "I will meet seller in person";

@@ -65,7 +65,7 @@
 - (void)uploadImage:(UIImage *)image withCompletionBlock:(void (^)(BOOL success, NSString *url))completionBlock;
 - (void)sellItem:(NSDictionary *)dictionary withCompletionBlock:(void (^)(BOOL success, UBCGoodDM *item))completionBlock;
 
-- (void)buyItem:(NSString *)itemID isDelivery:(BOOL)isDelivery currency:(NSString *)currency withCompletionBlock:(void (^)(BOOL success, UBCDealDM *deal))completionBlock;
+- (void)buyItem:(NSString *)itemID isDelivery:(BOOL)isDelivery currency:(NSString *)currency comment:(NSString *) comment withCompletionBlock:(void (^)(BOOL success, UBCDealDM *deal))completionBlock;
 - (void)cancelDeal:(NSString *)dealID withCompletionBlock:(void (^)(BOOL success))completionBlock;
 - (void)confirmDeal:(NSString *)dealID withCompletionBlock:(void (^)(BOOL success, UBCDealDM *deal))completionBlock;
 

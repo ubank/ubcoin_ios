@@ -45,6 +45,8 @@
 		758D0F0D221D3F990034739B /* UBCMessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758D0F0C221D3F990034739B /* UBCMessagesViewController.swift */; };
 		758D0F0F221D88E90034739B /* UBCMediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758D0F0E221D88E90034739B /* UBCMediaItem.swift */; };
 		75C3B5EC221EC40C00A2E3CB /* ExtensionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C3B5EB221EC40C00A2E3CB /* ExtensionHelper.swift */; };
+		75D1162A222E5A1100C428C5 /* UBCBuyerDeliveryAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D11629222E5A1100C428C5 /* UBCBuyerDeliveryAddressView.swift */; };
+		75D1162C222E6A5400C428C5 /* UBCBuyerDeliveryAddressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75D1162B222E6A5400C428C5 /* UBCBuyerDeliveryAddressView.xib */; };
 		75E8D5DB22202C7D00C6D741 /* UBCChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E8D5DA22202C7D00C6D741 /* UBCChatRoom.swift */; };
 		890077412119A4E400B6C1C5 /* UBCVerifyEmailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8900773F2119A4E400B6C1C5 /* UBCVerifyEmailController.m */; };
 		890077422119A4E400B6C1C5 /* UBCVerifyEmailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 890077402119A4E400B6C1C5 /* UBCVerifyEmailController.xib */; };
@@ -239,6 +241,8 @@
 		758D0F0C221D3F990034739B /* UBCMessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCMessagesViewController.swift; sourceTree = "<group>"; };
 		758D0F0E221D88E90034739B /* UBCMediaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCMediaItem.swift; sourceTree = "<group>"; };
 		75C3B5EB221EC40C00A2E3CB /* ExtensionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionHelper.swift; sourceTree = "<group>"; };
+		75D11629222E5A1100C428C5 /* UBCBuyerDeliveryAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCBuyerDeliveryAddressView.swift; sourceTree = "<group>"; };
+		75D1162B222E6A5400C428C5 /* UBCBuyerDeliveryAddressView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCBuyerDeliveryAddressView.xib; sourceTree = "<group>"; };
 		75E8D5DA22202C7D00C6D741 /* UBCChatRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCChatRoom.swift; sourceTree = "<group>"; };
 		8133FFCED3512BADEB40D574 /* Pods-Ubcoin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ubcoin.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ubcoin/Pods-Ubcoin.release.xcconfig"; sourceTree = "<group>"; };
 		82DD3B2DB73F06ACB93DC3B9 /* libPods-Ubcoin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Ubcoin.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -577,6 +581,8 @@
 			children = (
 				755B5D7322250FA700AA5259 /* UBCBuyerDeliveryCostView.swift */,
 				755B5D7522250FB800AA5259 /* UBCBuyerDeliveryCostView.xib */,
+				75D11629222E5A1100C428C5 /* UBCBuyerDeliveryAddressView.swift */,
+				75D1162B222E6A5400C428C5 /* UBCBuyerDeliveryAddressView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1708,6 +1714,7 @@
 				89678DBD21108B5600EB715E /* UBCSignUpController.xib in Resources */,
 				8919AB542125BC4600D1B59C /* UBCChangeNameController.xib in Resources */,
 				8996A4402178C4EB00BCDEBD /* UBCFilterTitleCollectionViewCell.xib in Resources */,
+				75D1162C222E6A5400C428C5 /* UBCBuyerDeliveryAddressView.xib in Resources */,
 				89CB110E20EFCDA500729C95 /* HUBCollectionViewWaitCell.xib in Resources */,
 				89007765211DAB0C00B6C1C5 /* UBCResetPasswordController.xib in Resources */,
 				8980F24220F4954C0066CF99 /* UBCPhotoCollectionViewCell.xib in Resources */,
@@ -1823,6 +1830,7 @@
 				8915D05E21A307C0008D1BA2 /* UBCSellerCollectionReusableView.swift in Sources */,
 				8980F23B20F486990066CF99 /* UBCGoodDetailsController.m in Sources */,
 				8987519920EE23A100E2B615 /* UBWaitCell.m in Sources */,
+				75D1162A222E5A1100C428C5 /* UBCBuyerDeliveryAddressView.swift in Sources */,
 				890077412119A4E400B6C1C5 /* UBCVerifyEmailController.m in Sources */,
 				898751B320EE2C4100E2B615 /* UBCLoginController.m in Sources */,
 				8987517720EE119F00E2B615 /* UBTableHeaderView.m in Sources */,

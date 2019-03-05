@@ -786,12 +786,14 @@
 
 #pragma mark - PURCHASE
 
-- (void)buyItem:(NSString *)itemID isDelivery:(BOOL)isDelivery currency:(NSString *)currency withCompletionBlock:(void (^)(BOOL, UBCDealDM *))completionBlock
+- (void)buyItem:(NSString *)itemID isDelivery:(BOOL)isDelivery currency:(NSString *)currency comment:(NSString *) comment withCompletionBlock:(void (^)(BOOL, UBCDealDM *))completionBlock
 {
     NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider buyItem]
                                                                 andParams:@{@"itemId": itemID,
                                                                             @"withDelivery": @(isDelivery),
-                                                                            @"currencyType": currency}];
+                                                                            @"currencyType": currency,
+                                                                            @"comment" : comment
+                                                                            }];
     
     [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
      {

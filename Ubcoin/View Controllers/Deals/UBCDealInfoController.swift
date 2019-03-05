@@ -16,8 +16,11 @@ class UBCDealInfoController: UBViewController {
     @IBOutlet weak var itemTitle: HUBLabel!
     @IBOutlet weak var itemDesc: HUBLabel!
     
+ 
     @IBOutlet weak var deliveryView: UBCDeliverySelectionView!
+    @IBOutlet weak var buyerDeliveryAddressView: UBCBuyerDeliveryAddressView!
     
+    @IBOutlet weak var currencyConfirmButtonView: UIView!
     @IBOutlet weak var statusView: UIView!
     @IBOutlet weak var statusTitle: HUBLabel!
     @IBOutlet weak var statusDesc: HUBLabel!
@@ -46,6 +49,8 @@ class UBCDealInfoController: UBViewController {
     private var content = [UBTableViewRowData]()
     
     private var isNowBuy:Bool = false
+    
+    private var deliveryAddressText = ""
 
     @objc convenience init(item: UBCGoodDM) {
         self.init()
@@ -130,6 +135,9 @@ class UBCDealInfoController: UBViewController {
         
         if let item = purchaseDM.item {
             
+            let status = purchaseDM.deal?.status
+            
+            
             let itemIconURL = URL(string: item.imageURL ?? "")
             itemIcon.sd_setImage(with: itemIconURL, placeholderImage: UIImage(named: "item_default_image"), options: [], completed: nil)
             itemTitle.text = item.title
@@ -140,6 +148,11 @@ class UBCDealInfoController: UBViewController {
             
             deliveryView.setup(item: item)
             deliveryView.isHidden = item.isDigital || purchaseDM.isPurchase
+            
+            buyerDeliveryAddressView.isHidden = !deliveryView.isDelivery && !deliveryView.isHidden || purchaseDM.isPurchase
+            buyerDeliveryAddressView.deliveryTextView.text = deliveryAddressText
+            
+            currencyConfirmButtonView.isHidden = deliveryView.isDelivery && deliveryAddressText == ""
             
             let person = item.isMyItem ? purchaseDM.deal?.buyer : purchaseDM.seller
             sellerView.setup(seller: person, isSeller: !item.isMyItem)
@@ -261,7 +274,8 @@ class UBCDealInfoController: UBViewController {
         startActivityIndicator()
         UBCDataProvider.shared.buyItem(item.id,
                                        isDelivery: deliveryView.isDelivery,
-                                       currency: currency) { [weak self] success, deal in
+                                       currency: currency,
+                                       comment: deliveryAddressText) { [weak self] success, deal in
                                         self?.stopActivityIndicator()
                                         
                                         if let deal = deal {
@@ -382,6 +396,20 @@ extension UBCDealInfoController: UBCDeliverySelectionViewDelegate {
     func showSellerLocation() {
         let controller = UBCMapSelectController(title: "str_seller_location", location: purchaseDM?.item?.location)
         self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func changeDeliveryType(isDelivery: Bool) {
+        buyerDeliveryAddressView.isHidden = !isDelivery
+        currencyConfirmButtonView.isHidden = isDelivery && deliveryAddressText == ""
+    }
+}
+
+extension UBCDealInfoController : UBCBuyerDeliveryAddressViewDelegate {
+    
+    func buyerDeliveryAddress(_ address: String) {
+        deliveryAddressText = address
+        setupContent()
+        
     }
 }
 

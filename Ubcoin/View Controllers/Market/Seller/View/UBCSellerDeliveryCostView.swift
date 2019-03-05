@@ -53,7 +53,7 @@ class UBCSellerDeliveryCostView: UIView {
     
     func setupDeal(_ deal: UBCDealDM?) {
         
-        guard let deal = deal, let locationText = deal.buyer.locationText, locationText.count != 0 else {
+        guard let deal = deal, let locationText = deal.comment, locationText.count != 0 else {
             isHidden = true
             return
         }

@@ -11,6 +11,7 @@ import UIKit
 @objc
 protocol UBCDeliverySelectionViewDelegate {
     func showSellerLocation()
+    func changeDeliveryType(isDelivery : Bool)
 }
 
 class UBCDeliverySelectionView: UIView {
@@ -42,6 +43,10 @@ class UBCDeliverySelectionView: UIView {
         addConstraints(toFillSubview: tableView)
         
         tableView.tableFooterView = footerView
+        
+        footerView.changeDelivery { [weak self] isDelivery in
+            self?.delegate?.changeDeliveryType(isDelivery: isDelivery)
+        }
     }
     
     func setup(item: UBCGoodDM) {
