@@ -314,7 +314,7 @@
     }
     else
     {
-        [UBAlert showAlertWithTitle:nil andMessage:@"str_you_need_to_be_logged_in"];
+        [self goToLoginViewController];
     }
 }
 
@@ -529,8 +529,20 @@
 
 - (void)chatWithSeller:(UBCSellerDM *)seller
 {
-    UBCChatController *controller = [[UBCChatController alloc] initWithItem:self.good];
-    [self.navigationController pushViewController:controller animated:YES];
+    if (UBCKeyChain.authorization)
+    {
+        UBCChatController *controller = [[UBCChatController alloc] initWithItem:self.good];
+        [self.navigationController pushViewController:controller animated:YES];    }
+    else
+    {
+        [self goToLoginViewController];
+    }
+}
+
+- (void) goToLoginViewController
+{
+    [UBAlert showAlertWithTitle:nil andMessage:@"str_you_need_to_be_logged_in"];
+    [self.navigationController pushViewController:[UBCStartLoginController new] animated:YES];
 }
 
 @end
