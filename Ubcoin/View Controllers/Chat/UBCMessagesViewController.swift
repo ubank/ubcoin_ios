@@ -147,17 +147,36 @@ class UBCMessagesViewController: MessagesViewController {
     // MARK: - Actions
     
     @objc private func cameraButtonPressed() {
-        let picker = UIImagePickerController()
-        picker.delegate = self
         
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            picker.sourceType = .camera
-        } else {
-            picker.sourceType = .photoLibrary
+        let action1 = UIAlertAction(title: "str_sell_camera".localizedString(), style: .default) { [weak self] action in
+            self?.showImagePicker(sourceType: .camera)
         }
         
+        let action2 = UIAlertAction(title: "str_sell_library".localizedString(), style: .default) { [weak self] action in
+            self?.showImagePicker(sourceType: .photoLibrary)
+        }
+
+        UBAlert.showActionSheet(withTitle: "str_sell_choose".localizedString(), message: nil, actions: [action1, action2], sourceView: view)
+    }
+    
+    private func showImagePicker(sourceType: UIImagePickerControllerSourceType) {
+        if sourceType == .camera {
+            if !HUBPermissions.checkPermission(.camera) {
+                return
+            }
+        } else {
+            if PHPhotoLibrary.authorizationStatus() == .denied {
+                UBAlert.showToEnablePermissions(withMessage: "ui_alert_message_error_no_access".localizedString())
+                return
+            }
+        }
+        
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = sourceType
+       
         isImagePicker = true
-        present(picker, animated: true, completion: nil)
+        present(imagePicker, animated: true, completion: nil)
     }
         
     
@@ -379,7 +398,9 @@ extension UBCMessagesViewController: MessageInputBarDelegate {
         }
         
         func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-            picker.dismiss(animated: true, completion: nil)
+            picker.dismiss(animated: true, completion: { [weak self] in
+                self?.isImagePicker = false
+            })
         }
         
 }
