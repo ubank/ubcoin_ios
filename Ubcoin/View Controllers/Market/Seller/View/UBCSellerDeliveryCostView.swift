@@ -19,6 +19,7 @@ class UBCSellerDeliveryCostView: UIView {
     
     @IBOutlet var contentView: UIView!
     
+    @IBOutlet weak var buyerAddressLabel: HUBLabel!
     @IBOutlet weak var buyerAddress: HUBLabel!
     @IBOutlet weak var deliveryPriceLabel: HUBLabel!
     @IBOutlet weak var deliveryPriceCostField: UITextField!
@@ -49,10 +50,14 @@ class UBCSellerDeliveryCostView: UIView {
         deliveryPriceCostField.font = UBCFont.title
         deliveryPriceCostField.textColor = UBCColor.main
         deliveryPriceCostField.addDoneToolbar()
+        
+        buyerAddressLabel.text = "str_buyer_address".localizedString()
+        deliveryPriceLabel.text = "str_delivery_price".localizedString()
+        confirmNewDeliveryPriceButton.title = "str_delivery_new_price_confirm".localizedString()
     }
     
     func setupDeal(_ deal: UBCDealDM?) {
-        
+ 
         guard let deal = deal, let locationText = deal.comment, locationText.count != 0 else {
             isHidden = true
             return
@@ -61,9 +66,9 @@ class UBCSellerDeliveryCostView: UIView {
         
         buyerAddress.text = locationText
         confirmNewDeliveryPriceButton.isHidden = true
-        deliveryPriceLabel.text = "str_delivery_price".localizedString() + deal.currencyType
+        deliveryPriceCostField.placeholder = "IN " + deal.currencyType
         deliveryPriceCostField.text = deal.deliveryPrice
-        previousCost = deal.deliveryPrice ?? ""
+        previousCost = deal.deliveryPrice ?? "0"
     }
     
     @IBAction func confirmNewDeliveryPrice(_ sender: Any) {

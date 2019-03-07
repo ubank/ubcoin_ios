@@ -20,6 +20,25 @@ class UBCPurchaseDM: NSObject {
         return status.longTitle
     }
     
+    
+    var itemDisplayPrice : String {
+        guard let item = item else {
+            return ""
+        }
+        var itemPriceString = String(format: "%@ UBC / %@ ETH", item.price.priceString, item.priceInETH.coinsPriceString)
+        
+        if let deal = deal {
+            if deal.currencyType == "UBC" {
+                itemPriceString = item.price.priceString + " " + deal.currencyType
+            }
+            if deal.currencyType == "ETH" {
+                itemPriceString = item.priceInETH.coinsPriceString + " " + deal.currencyType
+            }
+        }
+        
+        return itemPriceString
+    }
+    
     var longStatusDesc: String? {
         if isPurchase {
             guard let status = deal?.currentStatus else { return "" }
@@ -50,18 +69,22 @@ class UBCPurchaseDM: NSObject {
     var deliveryImage: UIImage? {
         var imageName = "deliverBookedTime"
         
-        if deal?.status == DEAL_STATUS_DELIVERY {
-            imageName = "deliverInProccess"
+        if let deal = deal {
+            if deal.status == DEAL_STATUS_DELIVERY {
+                imageName = "deliverInProccess"
+            }
+            else if deal.status == DEAL_PRICE_CONFIRMED{
+                imageName = "deliverFroze"
+            }
+            else if deal.status == DEAL_STATUS_CONFIRMED {
+                imageName = "deliverIsConfirmed"
+            }
+            else if deal.status == DEAL_STATUS_CANCELLED {
+                imageName = ""
+            }
         }
-        else if deal?.status == DEAL_PRICE_DEFINED  || deal?.status == DEAL_PRICE_CONFIRMED{
-            imageName = "deliverFroze"
-        }
-        else if deal?.status == DEAL_STATUS_CONFIRMED {
-            imageName = "deliverIsConfirmed"
-        }
-        else if deal?.status == DEAL_STATUS_CANCELLED {
-            imageName = ""
-        }
+        
+
         return UIImage(named: imageName)
     }
     

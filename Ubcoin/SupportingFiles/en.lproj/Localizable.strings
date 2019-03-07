@@ -229,8 +229,19 @@
 "str_seller_location_up" = "SELLER LOCATION";
 "str_buyer_location" = "Buyer location";
 "str_buyer_address" = "BUYER ADDRESS";
-"str_delivery_price" = "DELIVERY PRICE IN ";
+"str_delivery_price" = "DELIVERY PRICE";
+"str_delivery_price_is_0" = "If delivery is FREE for buyer, put 0";
+"str_delivery_price_confirm" = "Confirm delivery price";
+"str_delivery_new_price_confirm" = "Confirm new delivery price";
 "str_delivery_address" = "DELIVERY ADDRESS";
+"str_delivery_price_buyer" = "PRICE OF DELIVERY TO YOUR ADDRESS";
+"str_confirm_simple" = "Confirm";
+"str_delivery_seller_change" = "If you cannot meet with buyer personally and want to organise delivery, please press the button below. You will define price of delivery and seller will be asked to pay it. You may put 0 as delivery price.";
+"str_delivery_buyer_change" = "If you cannot meet with seller personally and want him to organise delivery, please press the button below. Seller will define price of delivery and you will be asked to pay it. Delivery price can be 0.";
+
+"str_delivery_buyer_need" = "I need delivery";
+"str_delivery_seller_need" = "I will organize delivery";
+
 "str_delivery_address_placeholder" = "enter address...";
 "str_delivery_notice" = "After you book item, seller will define price of delivery to your address. Delivery price can be 0. If you don't agree with delivery price, you will be able to cancel the deal and item price will return to your wallet.";
 "str_item_will_be_delivered_to_me" = "Item will be delivered to me";
@@ -244,5 +255,6 @@
 "str_will_be_blocked_on_your_wallet" = "will be blocked on your wallet.";
 "str_cancel_the_deal" = "Cancel the deal";
 "str_confirm_file_ok" = "I confirm that file is OK";
+
 "str_received_item_ok" = "I received item";
 "str_report_problems" = "Report problems";

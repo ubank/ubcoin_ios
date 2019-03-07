@@ -20,9 +20,11 @@
     {
         _ID = dict[@"id"];
         _status = dict[@"status"];
-        _deliveryPrice = [dict[@"deliveryPrice"] stringValue];
+        _deliveryPrice = [dict[@"deliveryPrice"] deliveryPriceString];
         _currencyType = dict[@"currencyType"];
         _comment = dict[@"comment"];
+        _withDelivery = [dict[@"withDelivery"] boolValue];
+        //_updatedDate = [NSDate dateFromISO8601String: dict[@"updatedDate"]];
         _item = [[UBCGoodDM alloc] initWithDictionary:dict[@"item"]];
         _buyer = [[UBCSellerDM alloc] initWithDictionary:dict[@"buyer"]];
         _seller = [[UBCSellerDM alloc] initWithDictionary:dict[@"seller"]];

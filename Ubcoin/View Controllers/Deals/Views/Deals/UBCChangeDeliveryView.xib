@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UBCChangeDeliveryView" customModule="Ubcoin" customModuleProvider="target">
+            <connections>
+                <outlet property="changeButton" destination="pCd-9Y-Wvr" id="tdm-wF-H0m"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="MzH-ba-5s5"/>
+                <outlet property="descriptionLabel" destination="b5U-8U-oEw" id="Xwf-Yx-agj"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="216"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="0Gc-E5-Jun">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="216"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ggh-6J-1Ns">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="156"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b5U-8U-oEw" customClass="HUBLabel">
+                                    <rect key="frame" x="15" y="10" width="345" height="146"/>
+                                    <string key="text">If you cannot meet with buyer personally and want to organise delivery, please press the button below. You will define price of delivery and seller will be asked to pay it. You may put 0 as delivery price.</string>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="labelStyle">
+                                            <integer key="value" value="2"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="b5U-8U-oEw" secondAttribute="bottom" id="IAi-HV-c4l"/>
+                                <constraint firstItem="b5U-8U-oEw" firstAttribute="top" secondItem="ggh-6J-1Ns" secondAttribute="top" constant="10" id="Qzl-SN-ULa"/>
+                                <constraint firstAttribute="trailing" secondItem="b5U-8U-oEw" secondAttribute="trailing" constant="15" id="RKI-cS-wtW"/>
+                                <constraint firstItem="b5U-8U-oEw" firstAttribute="leading" secondItem="ggh-6J-1Ns" secondAttribute="leading" constant="15" id="RVI-O2-tms"/>
+                            </constraints>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pCd-9Y-Wvr" customClass="HUBGeneralButton">
+                            <rect key="frame" x="0.0" y="166" width="375" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="wdK-SD-gTK"/>
+                            </constraints>
+                            <state key="normal" title="str_chat_with_seller"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="roundCorners" value="NO"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="type">
+                                    <integer key="value" value="3"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="changeButtonTouch:" destination="-1" eventType="touchUpInside" id="fmD-N3-dR2"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="0Gc-E5-Jun" secondAttribute="trailing" id="I5Y-SE-eOM"/>
+                <constraint firstItem="0Gc-E5-Jun" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Swb-k7-INF"/>
+                <constraint firstItem="0Gc-E5-Jun" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="W2J-hS-e6d"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="0Gc-E5-Jun" secondAttribute="bottom" id="uzF-DL-QLq"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="-15.199999999999999" y="151.12443778110946"/>
+        </view>
+    </objects>
+</document>

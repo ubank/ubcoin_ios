@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UBCSellerDeliveryCostView" customModule="Ubcoin" customModuleProvider="target">
             <connections>
                 <outlet property="buyerAddress" destination="l1Q-CD-xqv" id="0QV-2o-1h8"/>
+                <outlet property="buyerAddressLabel" destination="fjJ-MU-H1F" id="rOz-OQ-0Kr"/>
                 <outlet property="confirmNewDeliveryPriceButton" destination="jzL-yj-FVW" id="j4C-8n-AmH"/>
                 <outlet property="contentView" destination="ZaH-b1-ZSb" id="Ble-Ke-sp4"/>
                 <outlet property="deliveryPriceCostField" destination="LX8-yP-7t7" id="MBO-nb-0QF"/>
@@ -63,7 +64,7 @@
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0RZ-uf-BvG">
                             <rect key="frame" x="0.0" y="56" width="375" height="54"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DELIVERY PRICE IN ETH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v1d-pa-Hoq" customClass="HUBLabel">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DELIVERY PRICE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v1d-pa-Hoq" customClass="HUBLabel">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="16"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="16" id="y6K-Py-hXD"/>
@@ -80,8 +81,8 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="h68-09-kdH">
                                     <rect key="frame" x="0.0" y="24" width="375" height="30"/>
                                     <subviews>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Cost" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LX8-yP-7t7">
-                                            <rect key="frame" x="0.0" y="0.0" width="40" height="30"/>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="IN PTH" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LX8-yP-7t7">
+                                            <rect key="frame" x="0.0" y="0.0" width="52.5" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" priority="750" constant="40" id="Uwc-qj-xG4"/>
                                                 <constraint firstAttribute="height" constant="30" id="gGE-PD-e0d"/>
@@ -94,7 +95,7 @@
                                             </connections>
                                         </textField>
                                         <imageView userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="changeDeliverPrice" translatesAutoresizingMaskIntoConstraints="NO" id="d05-Mr-BC9">
-                                            <rect key="frame" x="48" y="0.0" width="327" height="30"/>
+                                            <rect key="frame" x="60.5" y="0.0" width="314.5" height="30"/>
                                         </imageView>
                                     </subviews>
                                 </stackView>

@@ -317,7 +317,8 @@ extension UBCMessagesViewController: MessagesDisplayDelegate {
 extension UBCMessagesViewController: MessagesDataSource {
     
     func currentSender() -> Sender {
-        return UBCSocketIOManager.sharedInstance.currentSender
+        let user = UBCUserDM.loadProfile()
+        return Sender(id: user?.id ?? "0001", displayName: user?.email ?? "Me")
     }
     
     func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {

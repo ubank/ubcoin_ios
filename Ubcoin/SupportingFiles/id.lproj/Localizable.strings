@@ -211,11 +211,50 @@
 
 
 
+"str_messages" = "Messages";
+"str_no_messages_title" = "No messages";
+"str_no_messages_desc" = "Seems like it’s a sign to start connecting with people";
+"str_purchase" = "Purchase";
+"str_purchase_process_desc" = "After you confirm purchase, Item price will be blocked on your Ubcoin wallet by Ubcoin escrow service. Then you will receive on your email link to download file. You will need to download file and check it. Seller will receive money only after you confirm that file is OK.";
+"str_buy_now" = "Buy now";
+"str_chat_with_seller" = "Chat with seller";
+"str_chat_with_buyer" = "Chat with buyer";
+"str_progress_up" = "PROGRESS";
+"str_currency_up" = "CURRENCY";
+"str_your_balance" = "Your balance";
+"str_purcahse_rules_description" = "We will block the ETH or UBC amount on your Ubcoin wallet. Seller will receive money only after you get the item in your hands.";
+"str_attention_commission" = "ATTENTION: We take commission 2% for buying in ETH.";
+"str_confirm_in" = "Confirm in";
 "str_seller_location" = "Seller location";
 "str_seller_location_up" = "SELLER LOCATION";
 "str_buyer_location" = "Buyer location";
 "str_buyer_address" = "BUYER ADDRESS";
-"str_delivery_price" = "DELIVERY PRICE IN ";
+"str_delivery_price" = "DELIVERY PRICE";
+"str_delivery_price_is_0" = "If delivery is FREE for buyer, put 0";
+"str_delivery_price_confirm" = "Confirm delivery price";
+"str_delivery_new_price_confirm" = "Confirm new delivery price";
 "str_delivery_address" = "DELIVERY ADDRESS";
+"str_delivery_price_buyer" = "PRICE OF DELIVERY TO YOUR ADDRESS";
+"str_confirm_simple" = "Confirm";
+
+"str_delivery_seller_change" = "If you cannot meet with buyer personally and want to organise delivery, please press the button below. You will define price of delivery and seller will be asked to pay it. You may put 0 as delivery price.";
+"str_delivery_buyer_change" = "If you cannot meet with seller personally and want him to organise delivery, please press the button below. Seller will define price of delivery and you will be asked to pay it. Delivery price can be 0.";
+
+"str_delivery_buyer_need" = "I need delivery";
+"str_delivery_seller_need" = "I will organize delivery";
+
 "str_delivery_address_placeholder" = "enter address...";
 "str_delivery_notice" = "After you book item, seller will define price of delivery to your address. Delivery price can be 0. If you don't agree with delivery price, you will be able to cancel the deal and item price will return to your wallet.";
+"str_item_will_be_delivered_to_me" = "Item will be delivered to me";
+"str_by_courier_or_a_delivery_service" = "by courier or a delivery service";
+"str_i_will_meet_seller_in_person" = "I will meet seller in person";
+"str_for_a_handshake" = "for a handshake";
+"str_please_top_up_your_balance" = "Please top up your balance.";
+"str_you_don_have_enough_eth_on_your_wallet" = "You don’t have enough ETH on your wallet.";
+"str_you_don_have_enough_ubc_on_your_wallet" = "You don’t have enough UBC on your wallet.";
+"str_confirm_purchase" = "Confirm purchase?";
+"str_will_be_blocked_on_your_wallet" = "will be blocked on your wallet.";
+"str_cancel_the_deal" = "Cancel the deal";
+"str_confirm_file_ok" = "I confirm that file is OK";
+"str_received_item_ok" = "I received item";
+"str_report_problems" = "Report problems";

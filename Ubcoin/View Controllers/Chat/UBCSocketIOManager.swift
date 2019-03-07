@@ -22,13 +22,13 @@ class UBCSocketIOManager: NSObject {
     static let sPath = "https://qa.ubcoin.io"
     static let manager = SocketManager(socketURL: URL(string: sPath)!, config: [.log(false), .compress])
     static let socket = manager.defaultSocket
-    private static var user = UBCUserDM.loadProfile()
+    //private static var user = UBCUserDM.loadProfile()
     
     private let defaultDate = "2019-01-31T12:26:25.064Z"
     private var completionMessage: ((UBCMessageChat) -> Void)?
     private var completionHistory: (([UBCMessageChat]) -> Void)?
     
-    let currentSender = Sender(id: user?.id ?? "0001", displayName: user?.email ?? "Me")
+  //  private let currentSender = Sender(id: user?.id ?? "0001", displayName: user?.email ?? "Me")
     
     
     @objc class var sharedInstance: UBCSocketIOManager {
@@ -42,16 +42,11 @@ class UBCSocketIOManager: NSObject {
         super.init()
         listenMethods()
     }
-    
-    func realoadUser() {
-        UBCSocketIOManager.user = UBCUserDM.loadProfile()
-    }
 
-    func enterRoom(item:UBCGoodDM?) {
-        UBCSocketIOManager.user = UBCUserDM.loadProfile()
+    func enterRoom(_ item:UBCGoodDM?) {
         
         guard let item = item,
-            let user = UBCSocketIOManager.user else {
+            let user = UBCUserDM.loadProfile() else {
             return
         }
         
@@ -63,11 +58,9 @@ class UBCSocketIOManager: NSObject {
         UBCSocketIOManager.socket.emit("enterRoom", params)
     }
     
-    func enterRoom(chatRoom: UBCChatRoom?) {
-        UBCSocketIOManager.user = UBCUserDM.loadProfile()
-        
+    func enterRoom(_ chatRoom: UBCChatRoom?) {
         guard let chatRoom = chatRoom,
-            let user = UBCSocketIOManager.user else {
+            let user = UBCUserDM.loadProfile() else {
                 return
         }
         
@@ -75,6 +68,19 @@ class UBCSocketIOManager: NSObject {
         params["token"] = UBCKeyChain.authorization
         params["itemId"] = chatRoom.item.id
         params["users"] = [user.id, chatRoom.user.id]
+        
+        UBCSocketIOManager.socket.emit("enterRoom", params)
+    }
+    
+    func enterRoom(_ deal: UBCDealDM?) {
+        guard let deal = deal else {
+                return
+        }
+        
+        var params:[String:Any] = [:]
+        params["token"] = UBCKeyChain.authorization
+        params["itemId"] = deal.item.id
+        params["users"] = [deal.seller.id, deal.buyer.id]
         
         UBCSocketIOManager.socket.emit("enterRoom", params)
     }

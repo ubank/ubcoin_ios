@@ -14,7 +14,8 @@
             <connections>
                 <outlet property="actionButton" destination="A1P-qz-HXo" id="rrB-3c-djM"/>
                 <outlet property="buyerDeliveryAddressView" destination="a5R-nk-vDh" id="s4l-fX-Msx"/>
-                <outlet property="buyerDeliveryCostView" destination="ovn-1R-Lzm" id="mi3-R3-4M7"/>
+                <outlet property="buyerDeliveryConfirmView" destination="IMR-yI-hK5" id="TtW-eH-58x"/>
+                <outlet property="changeDeliveryView" destination="rrX-gz-IY1" id="1FO-ub-rgs"/>
                 <outlet property="confirmDeliveryButton" destination="7Ze-cE-gbg" id="1Yf-C2-f8K"/>
                 <outlet property="confirmDeliveryView" destination="gcG-r5-VmI" id="ymY-a5-yn1"/>
                 <outlet property="confirmDigitalItemButton" destination="Bod-hW-Zzq" id="n7q-7w-Ii0"/>
@@ -30,6 +31,7 @@
                 <outlet property="progressView" destination="R6Y-go-hTt" id="JdJ-QD-Exk"/>
                 <outlet property="scroll" destination="Ojn-2n-SN3" id="4Wm-of-7pp"/>
                 <outlet property="sellerDeliveryCostView" destination="p5Y-Sg-Snp" id="IcL-60-Sfs"/>
+                <outlet property="sellerFirstDeliveryCostView" destination="ovn-1R-Lzm" id="vsZ-lA-KTi"/>
                 <outlet property="sellerView" destination="M2Z-KJ-Zsr" id="Yqr-nE-vTN"/>
                 <outlet property="statusDesc" destination="SqI-7E-Xii" id="u72-kd-wXS"/>
                 <outlet property="statusImageView" destination="dbY-bk-bNq" id="jZD-dJ-ReE"/>
@@ -47,10 +49,10 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="2346"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fZe-5b-7Ff">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="2106.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="2471.5"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="GeS-75-6mf">
-                                    <rect key="frame" x="0.0" y="10" width="375" height="2096.5"/>
+                                    <rect key="frame" x="0.0" y="10" width="375" height="2461.5"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QX9-wY-2RY">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
@@ -266,8 +268,18 @@
                                                 <constraint firstAttribute="bottom" secondItem="xGG-jK-GDf" secondAttribute="bottom" constant="20" id="yUh-NT-xC1"/>
                                             </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ovn-1R-Lzm" customClass="UBCBuyerDeliveryCostView" customModule="Ubcoin" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="1026.5" width="375" height="295"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IMR-yI-hK5" customClass="UBCBuyerDeliveryConfirmedView" customModule="Ubcoin" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="1026.5" width="375" height="217"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" priority="750" constant="217" id="s0C-3I-wXW"/>
+                                            </constraints>
+                                            <connections>
+                                                <outlet property="delegate" destination="-1" id="hzT-e3-krp"/>
+                                            </connections>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ovn-1R-Lzm" customClass="UBCSellerFirstDeliveryCostView" customModule="Ubcoin" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="1253.5" width="375" height="295"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
@@ -278,15 +290,25 @@
                                             </connections>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M2Z-KJ-Zsr" customClass="UBCSellerView" customModule="Ubcoin" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="1331.5" width="375" height="130"/>
+                                            <rect key="frame" x="0.0" y="1558.5" width="375" height="130"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="130" id="dNX-so-vyG"/>
                                             </constraints>
                                             <viewLayoutGuide key="safeArea" id="H6b-6x-k66"/>
                                         </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rrX-gz-IY1" customClass="UBCChangeDeliveryView" customModule="Ubcoin" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="1698.5" width="375" height="128"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" priority="250" constant="128" id="lqx-bF-4eY"/>
+                                            </constraints>
+                                            <connections>
+                                                <outlet property="delegate" destination="-1" id="xsd-FY-4aF"/>
+                                            </connections>
+                                        </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Ec-6M-6bt" userLabel="Progress Container">
-                                            <rect key="frame" x="0.0" y="1471.5" width="375" height="55"/>
+                                            <rect key="frame" x="0.0" y="1836.5" width="375" height="55"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vMQ-Ke-yQk">
                                                     <rect key="frame" x="0.0" y="10" width="375" height="35"/>
@@ -315,7 +337,7 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ouI-pv-tGx">
-                                            <rect key="frame" x="0.0" y="1536.5" width="375" height="500"/>
+                                            <rect key="frame" x="0.0" y="1901.5" width="375" height="500"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xRc-SI-FJb" userLabel="Item Price">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="125.5"/>
@@ -372,7 +394,7 @@
                                                     <rect key="frame" x="0.0" y="125.5" width="375" height="374.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="str_currency_up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JZF-rW-X8f" customClass="HUBLabel">
-                                                            <rect key="frame" x="15" y="15" width="345" height="20.5"/>
+                                                            <rect key="frame" x="15" y="15" width="345" height="68.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -383,7 +405,7 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xx6-2U-dzI" customClass="UBCCurrencySelectionView" customModule="Ubcoin" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="45.5" width="375" height="329"/>
+                                                            <rect key="frame" x="0.0" y="93.5" width="375" height="281"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yRh-0I-Uk9">
                                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
@@ -421,7 +443,7 @@
                                                                     </constraints>
                                                                 </view>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6EI-EQ-Ze8">
-                                                                    <rect key="frame" x="0.0" y="70" width="375" height="119"/>
+                                                                    <rect key="frame" x="0.0" y="70" width="375" height="71"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="str_your_balance" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPK-nb-FaL" customClass="HUBLabel">
                                                                             <rect key="frame" x="15" y="10" width="345" height="20.5"/>
@@ -435,7 +457,7 @@
                                                                             </userDefinedRuntimeAttributes>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="str_purcahse_rules_description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rgZ-9S-lyl" customClass="HUBLabel">
-                                                                            <rect key="frame" x="15" y="40.5" width="345" height="68.5"/>
+                                                                            <rect key="frame" x="15" y="40.5" width="345" height="20.5"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
@@ -458,7 +480,7 @@
                                                                     </constraints>
                                                                 </view>
                                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="str_attention_commission" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QA7-WV-SyP" customClass="HUBLabel">
-                                                                    <rect key="frame" x="0.0" y="189" width="375" height="50"/>
+                                                                    <rect key="frame" x="0.0" y="141" width="375" height="50"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="50" id="Xrp-35-TAm"/>
                                                                     </constraints>
@@ -472,7 +494,7 @@
                                                                     </userDefinedRuntimeAttributes>
                                                                 </label>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fuv-iN-hCE">
-                                                                    <rect key="frame" x="0.0" y="239" width="375" height="90"/>
+                                                                    <rect key="frame" x="0.0" y="191" width="375" height="90"/>
                                                                     <subviews>
                                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gDP-80-v1A" customClass="HUBGeneralButton">
                                                                             <rect key="frame" x="15" y="15" width="345" height="60"/>
@@ -550,7 +572,7 @@
                                             </constraints>
                                         </view>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A1P-qz-HXo" customClass="HUBGeneralButton">
-                                            <rect key="frame" x="0.0" y="2046.5" width="375" height="50"/>
+                                            <rect key="frame" x="0.0" y="2411.5" width="375" height="50"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="50" id="Jb5-ii-7DV"/>
                                             </constraints>
@@ -570,12 +592,16 @@
                                         <constraint firstAttribute="trailing" secondItem="Rxk-hU-QQx" secondAttribute="trailing" id="2SV-wh-pVG"/>
                                         <constraint firstItem="a5R-nk-vDh" firstAttribute="top" secondItem="Rxk-hU-QQx" secondAttribute="bottom" constant="10" id="50Z-gX-O0f"/>
                                         <constraint firstItem="Rxk-hU-QQx" firstAttribute="top" secondItem="QX9-wY-2RY" secondAttribute="bottom" constant="10" id="9qw-g8-RMr"/>
+                                        <constraint firstItem="IMR-yI-hK5" firstAttribute="top" secondItem="CyS-dJ-OTC" secondAttribute="bottom" constant="10" id="Dlh-5I-Qt5"/>
                                         <constraint firstAttribute="trailing" secondItem="A1P-qz-HXo" secondAttribute="trailing" id="ElA-l0-CzE"/>
                                         <constraint firstItem="Rxk-hU-QQx" firstAttribute="leading" secondItem="GeS-75-6mf" secondAttribute="leading" id="IOo-e8-27J"/>
+                                        <constraint firstItem="ovn-1R-Lzm" firstAttribute="top" secondItem="IMR-yI-hK5" secondAttribute="bottom" constant="10" id="L0R-FM-Ov2"/>
                                         <constraint firstItem="A1P-qz-HXo" firstAttribute="top" secondItem="ouI-pv-tGx" secondAttribute="bottom" constant="10" id="SPf-9N-idl"/>
                                         <constraint firstItem="A1P-qz-HXo" firstAttribute="leading" secondItem="GeS-75-6mf" secondAttribute="leading" id="Uog-ev-NEh"/>
                                         <constraint firstItem="a5R-nk-vDh" firstAttribute="leading" secondItem="GeS-75-6mf" secondAttribute="leading" id="ZZd-pO-W2Q"/>
                                         <constraint firstAttribute="trailing" secondItem="a5R-nk-vDh" secondAttribute="trailing" id="cVJ-c9-kIC"/>
+                                        <constraint firstItem="IMR-yI-hK5" firstAttribute="leading" secondItem="GeS-75-6mf" secondAttribute="leading" id="ffQ-go-mMa"/>
+                                        <constraint firstAttribute="trailing" secondItem="IMR-yI-hK5" secondAttribute="trailing" id="gN6-cT-hCE"/>
                                         <constraint firstAttribute="bottom" secondItem="A1P-qz-HXo" secondAttribute="bottom" id="gxH-lZ-pd6"/>
                                         <constraint firstItem="CyS-dJ-OTC" firstAttribute="top" secondItem="a5R-nk-vDh" secondAttribute="bottom" constant="10" id="m58-Ex-L5Y"/>
                                     </constraints>

@@ -36,15 +36,19 @@
 		1CFFFE7D20F230A9003B5AD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CFFFE7920F230A9003B5AD9 /* Assets.xcassets */; };
 		1CFFFE7E20F230A9003B5AD9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFFFE7A20F230A9003B5AD9 /* main.m */; };
 		30A0668C891003DF59D2BECC /* libPods-Ubcoin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DD3B2DB73F06ACB93DC3B9 /* libPods-Ubcoin.a */; };
-		755B5D7422250FA700AA5259 /* UBCBuyerDeliveryCostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755B5D7322250FA700AA5259 /* UBCBuyerDeliveryCostView.swift */; };
-		755B5D7622250FB800AA5259 /* UBCBuyerDeliveryCostView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 755B5D7522250FB800AA5259 /* UBCBuyerDeliveryCostView.xib */; };
+		755B5D7422250FA700AA5259 /* UBCSellerFirstDeliveryCostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755B5D7322250FA700AA5259 /* UBCSellerFirstDeliveryCostView.swift */; };
+		755B5D7622250FB800AA5259 /* UBCSellerFirstDeliveryCostView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 755B5D7522250FB800AA5259 /* UBCSellerFirstDeliveryCostView.xib */; };
 		755B5D782225327E00AA5259 /* UBCSellerDeliveryCostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755B5D772225327E00AA5259 /* UBCSellerDeliveryCostView.swift */; };
 		755B5D7A222532AC00AA5259 /* UBCSellerDeliveryCostView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 755B5D79222532AC00AA5259 /* UBCSellerDeliveryCostView.xib */; };
+		7574EB23223129B20094389D /* UBCChangeDeliveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7574EB22223129B20094389D /* UBCChangeDeliveryView.swift */; };
+		7574EB25223129C40094389D /* UBCChangeDeliveryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7574EB24223129C40094389D /* UBCChangeDeliveryView.xib */; };
 		758D0F06221ADEAB0034739B /* UBCSocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758D0F05221ADEAB0034739B /* UBCSocketIOManager.swift */; };
 		758D0F0B221C20250034739B /* UBCMessageChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758D0F0A221C20250034739B /* UBCMessageChat.swift */; };
 		758D0F0D221D3F990034739B /* UBCMessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758D0F0C221D3F990034739B /* UBCMessagesViewController.swift */; };
 		758D0F0F221D88E90034739B /* UBCMediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758D0F0E221D88E90034739B /* UBCMediaItem.swift */; };
 		75C3B5EC221EC40C00A2E3CB /* ExtensionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C3B5EB221EC40C00A2E3CB /* ExtensionHelper.swift */; };
+		75C584422230151300FB0B9E /* UBCBuyerDeliveryConfirmedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C584412230151300FB0B9E /* UBCBuyerDeliveryConfirmedView.swift */; };
+		75C584442230152200FB0B9E /* UBCBuyerDeliveryConfirmedView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75C584432230152200FB0B9E /* UBCBuyerDeliveryConfirmedView.xib */; };
 		75D1162A222E5A1100C428C5 /* UBCBuyerDeliveryAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D11629222E5A1100C428C5 /* UBCBuyerDeliveryAddressView.swift */; };
 		75D1162C222E6A5400C428C5 /* UBCBuyerDeliveryAddressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75D1162B222E6A5400C428C5 /* UBCBuyerDeliveryAddressView.xib */; };
 		75E8D5DB22202C7D00C6D741 /* UBCChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E8D5DA22202C7D00C6D741 /* UBCChatRoom.swift */; };
@@ -232,15 +236,19 @@
 		1CFFFE7920F230A9003B5AD9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1CFFFE7A20F230A9003B5AD9 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1CFFFE7B20F230A9003B5AD9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		755B5D7322250FA700AA5259 /* UBCBuyerDeliveryCostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCBuyerDeliveryCostView.swift; sourceTree = "<group>"; };
-		755B5D7522250FB800AA5259 /* UBCBuyerDeliveryCostView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCBuyerDeliveryCostView.xib; sourceTree = "<group>"; };
+		755B5D7322250FA700AA5259 /* UBCSellerFirstDeliveryCostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCSellerFirstDeliveryCostView.swift; sourceTree = "<group>"; };
+		755B5D7522250FB800AA5259 /* UBCSellerFirstDeliveryCostView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCSellerFirstDeliveryCostView.xib; sourceTree = "<group>"; };
 		755B5D772225327E00AA5259 /* UBCSellerDeliveryCostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCSellerDeliveryCostView.swift; sourceTree = "<group>"; };
 		755B5D79222532AC00AA5259 /* UBCSellerDeliveryCostView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCSellerDeliveryCostView.xib; sourceTree = "<group>"; };
+		7574EB22223129B20094389D /* UBCChangeDeliveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCChangeDeliveryView.swift; sourceTree = "<group>"; };
+		7574EB24223129C40094389D /* UBCChangeDeliveryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCChangeDeliveryView.xib; sourceTree = "<group>"; };
 		758D0F05221ADEAB0034739B /* UBCSocketIOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCSocketIOManager.swift; sourceTree = "<group>"; };
 		758D0F0A221C20250034739B /* UBCMessageChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCMessageChat.swift; sourceTree = "<group>"; };
 		758D0F0C221D3F990034739B /* UBCMessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCMessagesViewController.swift; sourceTree = "<group>"; };
 		758D0F0E221D88E90034739B /* UBCMediaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCMediaItem.swift; sourceTree = "<group>"; };
 		75C3B5EB221EC40C00A2E3CB /* ExtensionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionHelper.swift; sourceTree = "<group>"; };
+		75C584412230151300FB0B9E /* UBCBuyerDeliveryConfirmedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCBuyerDeliveryConfirmedView.swift; sourceTree = "<group>"; };
+		75C584432230152200FB0B9E /* UBCBuyerDeliveryConfirmedView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCBuyerDeliveryConfirmedView.xib; sourceTree = "<group>"; };
 		75D11629222E5A1100C428C5 /* UBCBuyerDeliveryAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCBuyerDeliveryAddressView.swift; sourceTree = "<group>"; };
 		75D1162B222E6A5400C428C5 /* UBCBuyerDeliveryAddressView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCBuyerDeliveryAddressView.xib; sourceTree = "<group>"; };
 		75E8D5DA22202C7D00C6D741 /* UBCChatRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCChatRoom.swift; sourceTree = "<group>"; };
@@ -579,10 +587,10 @@
 		755B5D7222250F6900AA5259 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				755B5D7322250FA700AA5259 /* UBCBuyerDeliveryCostView.swift */,
-				755B5D7522250FB800AA5259 /* UBCBuyerDeliveryCostView.xib */,
 				75D11629222E5A1100C428C5 /* UBCBuyerDeliveryAddressView.swift */,
 				75D1162B222E6A5400C428C5 /* UBCBuyerDeliveryAddressView.xib */,
+				75C584412230151300FB0B9E /* UBCBuyerDeliveryConfirmedView.swift */,
+				75C584432230152200FB0B9E /* UBCBuyerDeliveryConfirmedView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -677,6 +685,8 @@
 		8917239C219C72B90060E719 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				755B5D7322250FA700AA5259 /* UBCSellerFirstDeliveryCostView.swift */,
+				755B5D7522250FB800AA5259 /* UBCSellerFirstDeliveryCostView.xib */,
 				755B5D772225327E00AA5259 /* UBCSellerDeliveryCostView.swift */,
 				755B5D79222532AC00AA5259 /* UBCSellerDeliveryCostView.xib */,
 				89172393219C60350060E719 /* UBCSellerView.swift */,
@@ -1506,6 +1516,8 @@
 				89BB382822087FB7007CE470 /* UBCToBuyDealsView.m */,
 				89BB382A22087FB7007CE470 /* UBCToSellDealsView.h */,
 				89BB382B22087FB7007CE470 /* UBCToSellDealsView.m */,
+				7574EB22223129B20094389D /* UBCChangeDeliveryView.swift */,
+				7574EB24223129C40094389D /* UBCChangeDeliveryView.xib */,
 			);
 			path = Deals;
 			sourceTree = "<group>";
@@ -1691,6 +1703,7 @@
 				8987518720EE119F00E2B615 /* UBAlertWindow.xib in Resources */,
 				89678DEE2112430300EB715E /* UBCPasswordView.xib in Resources */,
 				89BA58D721662CA300427A8E /* UBCFilterCollectionViewCell.xib in Resources */,
+				7574EB25223129C40094389D /* UBCChangeDeliveryView.xib in Resources */,
 				89B08E2D2127522500D8B68D /* UBCTransactionInfoController.xib in Resources */,
 				89678DBB21108A6C00EB715E /* UBCLoginController.xib in Resources */,
 				8980F23C20F486990066CF99 /* UBCGoodDetailsController.xib in Resources */,
@@ -1707,6 +1720,7 @@
 				89F16A6E20F2C65D001AA440 /* UBCDiscountsCollectionView.xib in Resources */,
 				89B08E332128397100D8B68D /* UBCSendCoinsController.xib in Resources */,
 				1CFFFE7D20F230A9003B5AD9 /* Assets.xcassets in Resources */,
+				75C584442230152200FB0B9E /* UBCBuyerDeliveryConfirmedView.xib in Resources */,
 				89172396219C60350060E719 /* UBCSellerView.xib in Resources */,
 				755B5D7A222532AC00AA5259 /* UBCSellerDeliveryCostView.xib in Resources */,
 				8987518A20EE119F00E2B615 /* HUBEmptyView.xib in Resources */,
@@ -1729,7 +1743,7 @@
 				89678DC42110C0AD00EB715E /* UBCForgotPasswordController.xib in Resources */,
 				8987517420EE119F00E2B615 /* UBSectionHeaderView.xib in Resources */,
 				89678DE62112424E00EB715E /* adjacency_graphs.json in Resources */,
-				755B5D7622250FB800AA5259 /* UBCBuyerDeliveryCostView.xib in Resources */,
+				755B5D7622250FB800AA5259 /* UBCSellerFirstDeliveryCostView.xib in Resources */,
 				89AE1A6E20F7B8F1000662E8 /* UBCFavouritesController.xib in Resources */,
 				8987517620EE119F00E2B615 /* UBExpandableTableViewSectionHeader.xib in Resources */,
 			);
@@ -1916,13 +1930,14 @@
 				8919AB4F2125B80700D1B59C /* UBCChangeLanguageController.m in Sources */,
 				89007747211AFE4E00B6C1C5 /* UBCAccountSettingsController.m in Sources */,
 				8987518F20EE119F00E2B615 /* UBLocationManager.m in Sources */,
-				755B5D7422250FA700AA5259 /* UBCBuyerDeliveryCostView.swift in Sources */,
+				755B5D7422250FA700AA5259 /* UBCSellerFirstDeliveryCostView.swift in Sources */,
 				1CFFFE6E20F0DD28003B5AD9 /* UBCSTextViewTableViewCell.swift in Sources */,
 				8987517220EE119F00E2B615 /* UBDefaultTableView.m in Sources */,
 				89CD68632174F18B003FBCB7 /* UBCPriceCell.swift in Sources */,
 				89678DE82112424E00EB715E /* DBScorer.m in Sources */,
 				899E217C20E68D8A004D891B /* UBCAppDelegate.m in Sources */,
 				89F16A6F20F2C65D001AA440 /* UBCDiscountCollectionViewCell.m in Sources */,
+				7574EB23223129B20094389D /* UBCChangeDeliveryView.swift in Sources */,
 				898751AA20EE2BDD00E2B615 /* UBCFavouritesController.m in Sources */,
 				895B2E9321FF5FBC003FD000 /* UBCDealInfoController.swift in Sources */,
 				898751C020EE618B00E2B615 /* UBConnectionProvider.m in Sources */,
@@ -1939,6 +1954,7 @@
 				89678DC72110C5F700EB715E /* UBFloatingPlaceholderTextField.m in Sources */,
 				898751C820EE65C000E2B615 /* UBCKeyChain.m in Sources */,
 				89678DD72112420300EB715E /* UBCPasswordView.m in Sources */,
+				75C584422230151300FB0B9E /* UBCBuyerDeliveryConfirmedView.swift in Sources */,
 				898751CE20EE6D7600E2B615 /* UBCDataProvider.m in Sources */,
 				89AD7CE8214829A20015A2D2 /* UBCTopUpController.swift in Sources */,
 				89F16A7420F2C65D001AA440 /* UBCGoodCell.m in Sources */,

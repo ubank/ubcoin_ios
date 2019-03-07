@@ -13,6 +13,9 @@ import UIKit
     var user: UBCSellerDM
     var item: UBCGoodDM
     
+    var lastMessage: String
+    var unreadCount: Int
+    
     init?(dictionary: [String: Any]) {
         
         guard let user = dictionary["user"] as? [String: Any],
@@ -20,6 +23,8 @@ import UIKit
         
         self.user = UBCSellerDM(dictionary: user)
         self.item = UBCGoodDM(dictionary: item)
+        self.unreadCount = dictionary["unreadCount"] as? Int ?? 0
+        self.lastMessage = dictionary["lastMessage"] as? String ?? ""
     }
     
     func rowData() -> UBTableViewRowData {

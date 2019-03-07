@@ -10,13 +10,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UBCBuyerDeliveryCostView" customModule="Ubcoin" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UBCSellerFirstDeliveryCostView" customModule="Ubcoin" customModuleProvider="target">
             <connections>
                 <outlet property="buyerAddress" destination="lGU-md-JT8" id="J0Q-gg-26b"/>
+                <outlet property="buyerAddressLabel" destination="3RV-MA-GDV" id="Soe-gW-Qzb"/>
                 <outlet property="confirmDeliveryButton" destination="teN-Dk-n6E" id="dRZ-cE-VHF"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="uZu-Qw-DWV"/>
                 <outlet property="deliveryInfo" destination="V2E-SD-VPK" id="qJe-dw-sF2"/>
-                <outlet property="deliveryPriceCostLabel" destination="gD2-Dh-ysr" id="Cj5-hm-l4w"/>
+                <outlet property="deliveryPiceTextField" destination="I5W-wR-b53" id="tDd-2o-MT1"/>
                 <outlet property="deliveryPriceLabel" destination="QQk-Oy-FeE" id="vzs-je-hNA"/>
             </connections>
         </placeholder>
@@ -45,11 +46,8 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Moscow, Red Square, 2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lGU-md-JT8" customClass="HUBLabel">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Moscow, Red Square, 2" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lGU-md-JT8" customClass="HUBLabel">
                                     <rect key="frame" x="15" y="40" width="290" height="25"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" priority="250" constant="17" id="OXq-fB-Vj2"/>
-                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -59,24 +57,14 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bgA-NM-kZv">
-                                    <rect key="frame" x="15" y="40" width="290" height="25"/>
-                                    <connections>
-                                        <action selector="changeAddressTouch:" destination="-1" eventType="touchUpInside" id="geP-nI-Ips"/>
-                                    </connections>
-                                </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstItem="bgA-NM-kZv" firstAttribute="top" secondItem="lGU-md-JT8" secondAttribute="top" id="3CW-jg-oLs"/>
                                 <constraint firstItem="3RV-MA-GDV" firstAttribute="leading" secondItem="MHc-4o-Orj" secondAttribute="leading" constant="15" id="8Q4-oL-aO7"/>
                                 <constraint firstItem="lGU-md-JT8" firstAttribute="leading" secondItem="MHc-4o-Orj" secondAttribute="leading" constant="15" id="Gel-IQ-Fvb"/>
                                 <constraint firstAttribute="trailing" secondItem="3RV-MA-GDV" secondAttribute="trailing" constant="15" id="L7k-Df-VAK"/>
                                 <constraint firstItem="3RV-MA-GDV" firstAttribute="top" secondItem="MHc-4o-Orj" secondAttribute="top" constant="15" id="SSy-3l-2PD"/>
-                                <constraint firstItem="bgA-NM-kZv" firstAttribute="bottom" secondItem="lGU-md-JT8" secondAttribute="bottom" id="Sqt-b5-0Ze"/>
-                                <constraint firstItem="bgA-NM-kZv" firstAttribute="leading" secondItem="lGU-md-JT8" secondAttribute="leading" id="aR8-Q1-vjV"/>
                                 <constraint firstAttribute="trailing" secondItem="lGU-md-JT8" secondAttribute="trailing" constant="15" id="bgP-fk-J6B"/>
-                                <constraint firstItem="bgA-NM-kZv" firstAttribute="trailing" secondItem="lGU-md-JT8" secondAttribute="trailing" id="cwX-iY-C8i"/>
                                 <constraint firstAttribute="bottom" secondItem="lGU-md-JT8" secondAttribute="bottom" constant="15" id="hiR-HZ-9U6"/>
                                 <constraint firstItem="lGU-md-JT8" firstAttribute="top" secondItem="3RV-MA-GDV" secondAttribute="bottom" constant="8" id="x7x-KU-iQe"/>
                             </constraints>
@@ -84,7 +72,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ax4-T9-RHC">
                             <rect key="frame" x="0.0" y="84" width="320" height="33"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DELIVERY PRICE IN ETH" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQk-Oy-FeE" customClass="HUBLabel">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DELIVERY PRICE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQk-Oy-FeE" customClass="HUBLabel">
                                     <rect key="frame" x="15" y="8" width="305" height="25"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="25" id="4xY-o0-pic"/>
@@ -110,27 +98,19 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e0t-6b-mJD">
                             <rect key="frame" x="0.0" y="121" width="320" height="71"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.45" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gD2-Dh-ysr" customClass="HUBLabel">
-                                    <rect key="frame" x="15" y="25" width="290" height="21"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="21" id="ZKC-7O-MR7"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="IN ETH" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I5W-wR-b53" customClass="UBTextField">
+                                    <rect key="frame" x="15" y="20" width="290" height="31"/>
                                     <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="labelStyle">
-                                            <integer key="value" value="1"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                </label>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                </textField>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="trailing" secondItem="gD2-Dh-ysr" secondAttribute="trailing" constant="15" id="100-a5-bOa"/>
-                                <constraint firstItem="gD2-Dh-ysr" firstAttribute="leading" secondItem="e0t-6b-mJD" secondAttribute="leading" constant="15" id="4pK-N4-lde"/>
-                                <constraint firstItem="gD2-Dh-ysr" firstAttribute="top" secondItem="e0t-6b-mJD" secondAttribute="top" constant="25" id="RL4-pd-xSh"/>
-                                <constraint firstAttribute="bottom" secondItem="gD2-Dh-ysr" secondAttribute="bottom" constant="25" id="jDz-oR-m8a"/>
+                                <constraint firstAttribute="trailing" secondItem="I5W-wR-b53" secondAttribute="trailing" constant="15" id="4d8-SO-J5d"/>
+                                <constraint firstAttribute="bottom" secondItem="I5W-wR-b53" secondAttribute="bottom" constant="20" id="QI4-sF-lHz"/>
+                                <constraint firstItem="I5W-wR-b53" firstAttribute="top" secondItem="e0t-6b-mJD" secondAttribute="top" constant="20" id="Yyh-Gf-zG0"/>
+                                <constraint firstItem="I5W-wR-b53" firstAttribute="leading" secondItem="e0t-6b-mJD" secondAttribute="leading" constant="15" id="mOb-Vg-xuV"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E5i-Aa-sLe">

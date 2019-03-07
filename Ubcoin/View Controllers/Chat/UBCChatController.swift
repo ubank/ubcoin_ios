@@ -79,11 +79,15 @@ class UBCChatController: UBCMessagesViewController {
     private func setupChat() {
         
         if let item = item {
-            self.navigationItem.setTitle(title: item.title ?? UBLocal.shared.localizedString(forKey: "str_chat", value: ""), subtitle: item.seller.name ?? "")
-            UBCSocketIOManager.sharedInstance.enterRoom(item: item)
-        } else if let deal = chatDeal {
-            self.navigationItem.setTitle(title: deal.item.title, subtitle: deal.user.name)
-            UBCSocketIOManager.sharedInstance.enterRoom(chatRoom: deal)
+            self.navigationItem.setTitle(title: item.title, subtitle: item.seller.name)
+            UBCSocketIOManager.sharedInstance.enterRoom(item)
+        } else if let chatDeal = chatDeal {
+            self.navigationItem.setTitle(title: chatDeal.item.title, subtitle: chatDeal.user.name)
+            UBCSocketIOManager.sharedInstance.enterRoom(chatDeal)
+        } else if let deal = deal {
+            
+            self.navigationItem.setTitle(title: deal.item.title, subtitle: deal.buyer.name)
+            UBCSocketIOManager.sharedInstance.enterRoom(deal)
         }
         
         self.navigationItem.rightBarButtonItem = itemNavButton()

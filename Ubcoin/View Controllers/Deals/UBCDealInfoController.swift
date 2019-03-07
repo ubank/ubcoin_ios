@@ -16,10 +16,11 @@ class UBCDealInfoController: UBViewController {
     @IBOutlet weak var itemTitle: HUBLabel!
     @IBOutlet weak var itemDesc: HUBLabel!
     
- 
     @IBOutlet weak var deliveryView: UBCDeliverySelectionView!
     @IBOutlet weak var buyerDeliveryAddressView: UBCBuyerDeliveryAddressView!
+    @IBOutlet weak var buyerDeliveryConfirmView: UBCBuyerDeliveryConfirmedView!
     
+    @IBOutlet weak var changeDeliveryView: UBCChangeDeliveryView!
     @IBOutlet weak var currencyConfirmButtonView: UIView!
     @IBOutlet weak var statusView: UIView!
     @IBOutlet weak var statusTitle: HUBLabel!
@@ -34,7 +35,7 @@ class UBCDealInfoController: UBViewController {
     @IBOutlet weak var confirmDeliveryButton: HUBGeneralButton!
     
     @IBOutlet weak var sellerDeliveryCostView: UBCSellerDeliveryCostView!
-    @IBOutlet weak var buyerDeliveryCostView: UBCBuyerDeliveryCostView!
+    @IBOutlet weak var sellerFirstDeliveryCostView: UBCSellerFirstDeliveryCostView!
     
     @IBOutlet weak var progressContainerView: UIView!
     @IBOutlet weak var progressView: StepProgressView!
@@ -135,16 +136,12 @@ class UBCDealInfoController: UBViewController {
         
         if let item = purchaseDM.item {
             
-            let status = purchaseDM.deal?.status
-            
-            
             let itemIconURL = URL(string: item.imageURL ?? "")
             itemIcon.sd_setImage(with: itemIconURL, placeholderImage: UIImage(named: "item_default_image"), options: [], completed: nil)
             itemTitle.text = item.title
             
-            let itemPriceString = String(format: "%@ UBC / %@ ETH", item.price.priceString, item.priceInETH.coinsPriceString)
-            itemDesc.text = itemPriceString
-            itemPrice.text = itemPriceString
+            itemDesc.text = purchaseDM.itemDisplayPrice
+            itemPrice.text = purchaseDM.itemDisplayPrice
             
             deliveryView.setup(item: item)
             deliveryView.isHidden = item.isDigital || purchaseDM.isPurchase
@@ -152,20 +149,32 @@ class UBCDealInfoController: UBViewController {
             buyerDeliveryAddressView.isHidden = !deliveryView.isDelivery && !deliveryView.isHidden || purchaseDM.isPurchase
             buyerDeliveryAddressView.deliveryTextView.text = deliveryAddressText
             
+            let isDeliveryPriceNeedApproveBuyer = purchaseDM.isPurchase && purchaseDM.deal?.status == DEAL_PRICE_DEFINED && !item.isMyItem
+            buyerDeliveryConfirmView.isHidden = !isDeliveryPriceNeedApproveBuyer
+            buyerDeliveryConfirmView.setup(purchaseDM.deal)
+            
             currencyConfirmButtonView.isHidden = deliveryView.isDelivery && deliveryAddressText == ""
             
             let person = item.isMyItem ? purchaseDM.deal?.buyer : purchaseDM.seller
             sellerView.setup(seller: person, isSeller: !item.isMyItem)
             
-            let isPriceDefined = purchaseDM.deal?.status == DEAL_PRICE_DEFINED && !item.isMyItem
-            buyerDeliveryCostView.isHidden = !isPriceDefined
-            buyerDeliveryCostView.setup(deal: purchaseDM.deal)
+//            let isPriceDefined = purchaseDM.deal?.status == DEAL_PRICE_DEFINED && !item.isMyItem
+//            buyerDeliveryCostView.isHidden = !isPriceDefined
+//            buyerDeliveryCostView.setup(deal: purchaseDM.deal)
             
             let isPriceConfirmed = purchaseDM.deal?.status == DEAL_PRICE_CONFIRMED && item.isMyItem
             confirmDeliveryView.isHidden = !isPriceConfirmed
             
-            let needShowDeliverForSayller = item.isMyItem && item.status == UBCItemStatusReserved && purchaseDM.deal?.status != DEAL_PRICE_CONFIRMED && purchaseDM.deal?.status != DEAL_STATUS_DELIVERY && purchaseDM.deal?.status != DEAL_STATUS_CANCELLED
-            sellerDeliveryCostView.isHidden =  !needShowDeliverForSayller
+            let firstSetPriceForDelivery = purchaseDM.isPurchase && purchaseDM.deal?.status == DEAL_STATUS_ACTIVE && item.isMyItem && purchaseDM.deal?.withDelivery == true
+            sellerFirstDeliveryCostView.isHidden = !firstSetPriceForDelivery
+            sellerFirstDeliveryCostView.setup(purchaseDM.deal)
+            
+            let showChangeDeliveryMethod = item.isDigital == false && purchaseDM.isPurchase && purchaseDM.deal?.status == DEAL_STATUS_ACTIVE && purchaseDM.deal?.withDelivery == false
+            changeDeliveryView.isHidden = !showChangeDeliveryMethod
+            changeDeliveryView.setup(purchaseDM.deal, isMyId: item.isMyItem)
+            
+            let secondSetPriceForDelivery = purchaseDM.isPurchase && purchaseDM.deal?.status == DEAL_PRICE_DEFINED && item.isMyItem
+            sellerDeliveryCostView.isHidden =  !secondSetPriceForDelivery
             sellerDeliveryCostView.setupDeal(purchaseDM.deal)
             
             let needShow = item.isDigital && purchaseDM.deal?.status == DEAL_STATUS_ACTIVE && !item.isMyItem
@@ -299,7 +308,22 @@ class UBCDealInfoController: UBViewController {
     }
 }
 
-extension UBCDealInfoController: UBCBuyerDeliveryCostViewDelegate {
+extension UBCDealInfoController: UBCBuyerDeliveryConfirmedDelegate {
+    
+    func confirmDeliveryPrice(_ dealId: String, _ price: String, _ needTopUpYourBalance: Bool, _ needTopBalanceText: String, _ alertMessageText: String) {
+        if needTopUpYourBalance == false {
+            UBAlert.show(withTitle: alertMessageText,
+                         andMessage: "str_confirm_purchase".localizedString(),
+                         titleButtonMain: "str_confirm",
+                         titleButtonCancel: "ui_button_cancel") { [weak self] index in
+                            if index != CANCEL_INDEX {
+                                self?.confirmDeliveryPrice(dealId, price)
+                            }
+            }
+        } else {
+            UBAlert.show(withTitle: "str_please_top_up_your_balance", andMessage: needTopBalanceText)
+        }
+    }
     
     func confirmDeliveryPrice(_ dealId: String, _ price: String) {
         startActivityIndicator()
@@ -337,6 +361,22 @@ extension UBCDealInfoController: UBCSellerDeliveryCostViewDelegate {
     
 }
 
+extension UBCDealInfoController: UBCChangeDeliveryViewDelegate {
+    
+    func changeDeliveryTouch(_ dealId: String) {
+        startActivityIndicator()
+        
+        UBCDataProvider.shared.changePersonalMeetingToDelivery(forDeal: dealId, withCompletionBlock: {[weak self] completion, deal in
+            self?.stopActivityIndicator()
+            
+            if let deal = deal {
+                self?.purchaseDM = UBCPurchaseDM(deal: deal)
+                self?.setupContent()
+            }
+        })
+    }
+}
+
 extension UBCDealInfoController: UBCSellerViewDelegate {
     
     func show(seller: UBCSellerDM) {
@@ -345,10 +385,20 @@ extension UBCDealInfoController: UBCSellerViewDelegate {
     }
     
     func chat(seller: UBCSellerDM) {
-        if let item = purchaseDM?.item {
-            let controller = UBCChatController(item: item)
-            self.navigationController?.pushViewController(controller, animated: true)
+        var controller: UBCChatController?
+        
+        if let item = purchaseDM?.item, item.isMyItem == false {
+            controller = UBCChatController(item: item)
         }
+        else if let deal = purchaseDM?.deal {
+            controller = UBCChatController(deal: deal)
+        }
+        
+        guard let _controller = controller else {
+            return
+        }
+        
+        self.navigationController?.pushViewController(_controller, animated: true)
     }
 }
 
