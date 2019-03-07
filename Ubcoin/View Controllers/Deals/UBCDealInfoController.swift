@@ -158,10 +158,6 @@ class UBCDealInfoController: UBViewController {
             let person = item.isMyItem ? purchaseDM.deal?.buyer : purchaseDM.seller
             sellerView.setup(seller: person, isSeller: !item.isMyItem)
             
-//            let isPriceDefined = purchaseDM.deal?.status == DEAL_PRICE_DEFINED && !item.isMyItem
-//            buyerDeliveryCostView.isHidden = !isPriceDefined
-//            buyerDeliveryCostView.setup(deal: purchaseDM.deal)
-            
             let isPriceConfirmed = purchaseDM.deal?.status == DEAL_PRICE_CONFIRMED && item.isMyItem
             confirmDeliveryView.isHidden = !isPriceConfirmed
             
