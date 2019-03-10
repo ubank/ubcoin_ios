@@ -51,6 +51,7 @@
 		75C584442230152200FB0B9E /* UBCBuyerDeliveryConfirmedView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75C584432230152200FB0B9E /* UBCBuyerDeliveryConfirmedView.xib */; };
 		75D1162A222E5A1100C428C5 /* UBCBuyerDeliveryAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D11629222E5A1100C428C5 /* UBCBuyerDeliveryAddressView.swift */; };
 		75D1162C222E6A5400C428C5 /* UBCBuyerDeliveryAddressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75D1162B222E6A5400C428C5 /* UBCBuyerDeliveryAddressView.xib */; };
+		75D395A42234DF7C0021997C /* UBCNotificationDM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D395A32234DF7C0021997C /* UBCNotificationDM.swift */; };
 		75E8D5DB22202C7D00C6D741 /* UBCChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E8D5DA22202C7D00C6D741 /* UBCChatRoom.swift */; };
 		890077412119A4E400B6C1C5 /* UBCVerifyEmailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8900773F2119A4E400B6C1C5 /* UBCVerifyEmailController.m */; };
 		890077422119A4E400B6C1C5 /* UBCVerifyEmailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 890077402119A4E400B6C1C5 /* UBCVerifyEmailController.xib */; };
@@ -251,6 +252,7 @@
 		75C584432230152200FB0B9E /* UBCBuyerDeliveryConfirmedView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCBuyerDeliveryConfirmedView.xib; sourceTree = "<group>"; };
 		75D11629222E5A1100C428C5 /* UBCBuyerDeliveryAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCBuyerDeliveryAddressView.swift; sourceTree = "<group>"; };
 		75D1162B222E6A5400C428C5 /* UBCBuyerDeliveryAddressView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCBuyerDeliveryAddressView.xib; sourceTree = "<group>"; };
+		75D395A32234DF7C0021997C /* UBCNotificationDM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCNotificationDM.swift; sourceTree = "<group>"; };
 		75E8D5DA22202C7D00C6D741 /* UBCChatRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCChatRoom.swift; sourceTree = "<group>"; };
 		8133FFCED3512BADEB40D574 /* Pods-Ubcoin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ubcoin.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ubcoin/Pods-Ubcoin.release.xcconfig"; sourceTree = "<group>"; };
 		82DD3B2DB73F06ACB93DC3B9 /* libPods-Ubcoin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Ubcoin.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -603,6 +605,14 @@
 				75E8D5DA22202C7D00C6D741 /* UBCChatRoom.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		75D395A22234DF500021997C /* DM */ = {
+			isa = PBXGroup;
+			children = (
+				75D395A32234DF7C0021997C /* UBCNotificationDM.swift */,
+			);
+			path = DM;
 			sourceTree = "<group>";
 		};
 		89007743211AFE1800B6C1C5 /* Account Settings */ = {
@@ -1466,6 +1476,7 @@
 		89BA58C521622AD800427A8E /* APNS */ = {
 			isa = PBXGroup;
 			children = (
+				75D395A22234DF500021997C /* DM */,
 				89BA58C82163821F00427A8E /* UBCNotificationHandler.h */,
 				89BA58C92163821F00427A8E /* UBCNotificationHandler.m */,
 			);
@@ -1888,6 +1899,7 @@
 				89BB382E22087FB8007CE470 /* UBCToSellDealsView.m in Sources */,
 				8979E81221134EEB004B2473 /* UBCDealsController.m in Sources */,
 				758D0F06221ADEAB0034739B /* UBCSocketIOManager.swift in Sources */,
+				75D395A42234DF7C0021997C /* UBCNotificationDM.swift in Sources */,
 				1CEFAA4520F3FCBE005719B3 /* UBCSTextFieldTableViewCell.swift in Sources */,
 				8919AB532125BC4600D1B59C /* UBCChangeNameController.m in Sources */,
 				89B08E322128397100D8B68D /* UBCSendCoinsController.m in Sources */,

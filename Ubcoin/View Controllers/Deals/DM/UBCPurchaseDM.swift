@@ -116,4 +116,12 @@ class UBCPurchaseDM: NSObject {
         self.item = deal.item
         self.isPurchase = true
     }
+    
+    @objc convenience init(item: UBCGoodDM, deal: UBCDealDM) {
+        self.init()
+        
+        self.deal = deal
+        self.item = item
+        self.isPurchase = true
+    }
 }

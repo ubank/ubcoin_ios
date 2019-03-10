@@ -165,4 +165,13 @@
     }
 }
 
+- (UBCDealDM *) currentDeal
+{
+    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(UBCDealDM *deal, NSDictionary *bindings) {
+        return ![deal.status isEqualToString:DEAL_STATUS_CANCELLED];
+    }];
+    
+    return [self.deals filteredArrayUsingPredicate:predicate].firstObject;
+}
+
 @end

@@ -35,12 +35,10 @@ class UBCMessageChat: MessageType {
     
     
     init?(_ document: [String:Any]) {
-        guard let sentDate = (document["date"] as? String)?.chatDate()  else {
-            return nil
-        }
-        guard let senderName = document["userName"] as? String else {
-            return nil
-        
+        guard let sentDate = (document["date"] as? String)?.chatDate(),
+            let senderName = document["userName"] as? String,
+            let messId = document["id"] as? String else {
+                return nil
         }
         
         guard let msgDict = document["msg"] as? [String:String],
@@ -50,9 +48,7 @@ class UBCMessageChat: MessageType {
             return nil
         }
         
-        self.id = nil
-        
-        
+        self.id = messId
         self.sentDate = sentDate
         sender = Sender(id:publiser, displayName: senderName)
         

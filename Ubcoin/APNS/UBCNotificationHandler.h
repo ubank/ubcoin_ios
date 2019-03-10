@@ -51,6 +51,7 @@
 
 + (void)openURL:(NSURL *)url;
 
++ (void) checkDeliveredNotifications;
 + (BOOL)needShowPushWithUserInfo:(NSDictionary *)userInfo;
 + (void)handlePushWithUserInfo:(NSDictionary *)userInfo;
 

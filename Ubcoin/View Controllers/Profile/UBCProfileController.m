@@ -12,6 +12,7 @@
 #import "UBCAccountSettingsController.h"
 #import "UBCUserDM.h"
 #import "UBCBalanceDM.h"
+#import "Ubcoin-Swift.h"
 
 #define PROFILE_ACTIVITY @"profile"
 #define UBC_BALANCE_ACTIVITY @"ubc balance"
@@ -112,6 +113,28 @@
 
 #pragma mark - UBDefaultTableViewDelegate
 
+//UBCNotificationDM.needShowDealItemBadge
+
+- (void) layoutCell:(UBDefaultTableViewCell *)cell forData:(UBTableViewRowData *)data indexPath:(NSIndexPath *)indexPath
+{
+    if ([data.name isEqualToString:DEALS_ACTIVITY])
+    {
+        cell.badgeView.hidden = !UBCNotificationDM.needShowDealItemBadge;
+    }
+}
+
+//func layoutCell(_ cell: UBDefaultTableViewCell!, for data: UBTableViewRowData!, indexPath: IndexPath!) {
+//    guard let chatDeal = data.data as? UBCChatRoom else {
+//        return
+//    }
+//
+//    let unreadCount = chatDeal.unreadCount
+//    unreadMessageCount += unreadCount
+//
+//    cell.badgeView.isHidden = unreadCount == 0
+//
+//}
+
 - (void)didSelectData:(UBTableViewRowData *)data indexPath:(NSIndexPath *)indexPath
 {
     if ([data.name isEqualToString:PROFILE_ACTIVITY])
@@ -127,6 +150,7 @@
     }
     else if ([data.name isEqualToString:DEALS_ACTIVITY])
     {
+        UBCNotificationDM.needShowDealItemBadge = NO;
         [self.navigationController pushViewController:UBCDealsController.new animated:YES];
     }
 }

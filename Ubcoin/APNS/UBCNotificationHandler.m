@@ -11,6 +11,8 @@
 #import "UBCKeyChain.h"
 
 #import "UBCGoodDetailsController.h"
+#import "UBCTabBarController.h"
+#import "UBCProfileController.h"
 
 #import "Ubcoin-Swift.h"
 
@@ -90,16 +92,59 @@
 
 #pragma mark - Activities Handle
 
++ (void) checkDeliveredNotifications {
+    
+    [UNUserNotificationCenter.currentNotificationCenter getDeliveredNotificationsWithCompletionHandler:^(NSArray<UNNotification *> *notifications) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            for (UNNotification *notif in notifications) {
+                NSDictionary *userInfo = notif.request.content.userInfo;
+                [UBCNotificationHandler needShowPushWithUserInfo:userInfo];
+            }
+            [UNUserNotificationCenter.currentNotificationCenter removeAllDeliveredNotifications];
+        });
+        
+    }];
+}
+
 + (BOOL)needShowPushWithUserInfo:(NSDictionary *)userInfo
 {
     NSDictionary *data = userInfo[@"data"];
+    NSDictionary *customData = userInfo[@"custom"][@"a"];
+  //  NSString *itemId = userInfo[@"custom"][@"i"];
+    
     if (data)
     {
         return [self needHandleActivity:data[PUSH_ACTIVITY]
                              withParams:data];
     }
+    else if (customData)
+    {
+        [UBCNotificationHandler handleCustomPushActivity:customData[@"activity"]  withParams:customData[@"data"] withId:customData[@"id"]];
+    }
     
     return YES;
+}
+
++ (void)handleCustomPushActivity:(NSString *) activity withParams:(NSDictionary *) params withId:(NSString *) dealId
+{
+    if ([activity isEqualToString:CHAT_ACTIVITY])
+    {
+        UBCNotificationDM.needShowChatBadge = YES;
+    }
+    else if ([activity isEqualToString:PURCHASE_ACTIVITY])
+    {
+        UBCNotificationDM.needShowDealItemBadge = YES;
+        [UBCNotificationDM saveDealStatusChange:dealId];
+    }
+
+    if ([mainAppDelegate.navigationController.currentController isKindOfClass:[UBCMessagesListController class]]) {
+       [mainAppDelegate.navigationController.currentController  updateInfoWithPushParams:params];
+    }
+    
+    if ([mainAppDelegate.navigationController.currentController isKindOfClass:[UBCProfileController class]]) {
+        [mainAppDelegate.navigationController.currentController updateInfo];
+    }
+    
 }
 
 + (void)handlePushWithUserInfo:(NSDictionary *)userInfo

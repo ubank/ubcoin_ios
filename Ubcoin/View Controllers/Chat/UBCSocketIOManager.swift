@@ -122,6 +122,13 @@ extension UBCSocketIOManager {
         let st = date.chatStringDate()
         UBCSocketIOManager.socket.emit("history", ["fromDate":st ?? defaultDate, "limit":limit])
     }
+    
+    func updatePushMessage(_ messageId: String?, _ senderId: String?) {
+        guard let messageId = messageId, let userDM = UBCUserDM.loadProfile(), senderId != userDM.id  else {
+            return
+        }
+        UBCSocketIOManager.socket.emit("messageRead", ["messageId" : messageId])
+    }
 }
 
 //MARK: Listener methods
@@ -160,6 +167,8 @@ extension UBCSocketIOManager {
                     sself.updateHistory(from: Date())
                     return
                 }
+                
+                sself.updatePushMessage(mess.messageId, mess.sender.id)
                 completion(mess)
             }
         }

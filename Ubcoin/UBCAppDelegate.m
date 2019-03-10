@@ -54,6 +54,8 @@
     [FBSDKAppEvents activateApp];
     [[UBCSocketIOManager sharedInstance] establishConnection];
     UIApplication.sharedApplication.applicationIconBadgeNumber = 0;
+    [UBCNotificationHandler checkDeliveredNotifications];
+    
 }
     
 - (void) applicationDidEnterBackground:(UIApplication *)application

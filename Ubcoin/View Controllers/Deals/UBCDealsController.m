@@ -72,19 +72,20 @@
 
 #pragma mark - UBCDealsViewDelegate
 
-- (void)showDeal:(UBCDealDM *)deal
+- (void)showItem:(UBCGoodDM *)item withDeal:(UBCDealDM *) deal
 {
-    UBCDealInfoController *controller = [[UBCDealInfoController alloc] initWithDeal:deal];
-    [self.navigationController pushViewController:controller animated:YES];
+    
 }
 
 - (void)showItem:(UBCGoodDM *)item
 {
-   
-    if (item.status == UBCItemStatusReserved && item.deals.firstObject) {
-        UBCDealDM *deal = item.deals.firstObject;
-        [self showDeal:deal];
-        return;
+    if (item.status == UBCItemStatusReserved) {
+        if (item.currentDeal)
+        {
+            UBCDealInfoController *controller = [[UBCDealInfoController alloc] initWithItem:item deal:item.currentDeal];
+            [self.navigationController pushViewController:controller animated:YES];
+            return;
+        }
     }
         
         

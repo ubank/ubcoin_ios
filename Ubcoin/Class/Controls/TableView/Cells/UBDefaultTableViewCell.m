@@ -60,6 +60,17 @@
 
 - (void)setupViews
 {
+    self.badgeView = UIView.new;
+    self.badgeView.backgroundColor = UIColor.redColor;
+    self.badgeView.layer.cornerRadius = default_horizontal_spacing / 2;
+    [self.badgeView setWidthConstraintWithValue:default_horizontal_spacing];
+    [self.badgeView setHeightConstraintWithValue:default_horizontal_spacing];
+    
+    [self.contentView addSubview:self.badgeView];
+    [self.contentView setTopConstraintToSubview:self.badgeView withValue:default_horizontal_spacing relatedBy:NSLayoutRelationGreaterThanOrEqual];
+    
+    [self.contentView setTrailingConstraintToSubview:self.badgeView withValue:default_horizontal_spacing + default_horizontal_spacing];
+    
     self.icon = UIImageView.new;
     self.icon.contentMode = UIViewContentModeCenter;
     
@@ -193,6 +204,7 @@
     self.rightDesc.hidden = !self.rightDesc.text.isNotEmpty;
     self.rightStackView.hidden = self.rightTitle.hidden && self.rightDesc.hidden;
     self.rightIcon.hidden = !self.rightIcon.image;
+    self.badgeView.hidden = true;
 }
 
 #pragma mark - Setter Methods

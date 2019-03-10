@@ -56,6 +56,7 @@ static NSString * const kNotificationItemChanged = @"kNotificationItemChanged";
 @property (readonly, nonatomic) UBCSellerDM *seller;
 @property (readonly, nonatomic) UBCCategoryDM *category;
 @property (readonly, nonatomic) NSArray <UBCDealDM *> *deals;
+@property (readonly, nonatomic) UBCDealDM *currentDeal;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
 - (void)toggleFavorite;

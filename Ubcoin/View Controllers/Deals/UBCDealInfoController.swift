@@ -52,6 +52,12 @@ class UBCDealInfoController: UBViewController {
     private var isNowBuy:Bool = false
     
     private var deliveryAddressText = ""
+    
+    @objc convenience init(item: UBCGoodDM, deal: UBCDealDM) {
+        self.init()
+        
+        self.purchaseDM =  UBCPurchaseDM(item: item, deal: deal)
+    }
 
     @objc convenience init(item: UBCGoodDM) {
         self.init()

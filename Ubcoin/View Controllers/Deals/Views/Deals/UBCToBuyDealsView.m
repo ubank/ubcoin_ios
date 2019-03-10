@@ -48,6 +48,8 @@
     dealCell.info.text = deal.statusDescription;
     [dealCell setLocation:deal.item.location];
     
+    dealCell.badgeView.hidden =  ![UBCNotificationDM isContainsDeal:deal.ID];
+    
     if (data.isDisabled)
     {
         cell.title.textColor = UBColor.descColor;
@@ -65,6 +67,8 @@
     if ([self.delegate respondsToSelector:@selector(showDeal:)])
     {
         UBCDealDM *deal = data.data;
+         [UBCNotificationDM removeSaveDeal:deal.ID];
+        
         [self.delegate showDeal:deal];
     }
 }

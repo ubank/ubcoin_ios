@@ -10,6 +10,8 @@
 #import "UBCKeyChain.h"
 #import "UBCDealCell.h"
 
+#import "Ubcoin-Swift.h"
+
 @implementation UBCToSellDealsView
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -80,6 +82,12 @@
     dealCell.info.attributedText = [self infoStringWithItem:item];
     [dealCell setLocation:item.location];
     
+    if (item.currentDeal) {
+       dealCell.badgeView.hidden =  ![UBCNotificationDM isContainsDeal:item.currentDeal.ID];
+    } else {
+        dealCell.badgeView.hidden = true;
+    }
+
     if (data.isSelected)
     {
         cell.title.textColor = UBColor.descColor;
@@ -97,6 +105,11 @@
     if ([self.delegate respondsToSelector:@selector(showItem:)])
     {    
         UBCGoodDM *item = data.data;
+        
+        if (item.currentDeal) {
+           [UBCNotificationDM removeSaveDeal:item.currentDeal.ID];
+        }
+        
         [self.delegate showItem:item];
     }
 }

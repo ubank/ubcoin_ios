@@ -23,6 +23,7 @@
 #import "UBCStarsView.h"
 #import "UBCGoodsCollectionView.h"
 #import "UBCGoodDetailsController.h"
+#import "UBCProfileController.h"
 
 #import <SDWebImage/UIView+WebCache.h>
 #import <SDWebImage/UIImageView+WebCache.h>
