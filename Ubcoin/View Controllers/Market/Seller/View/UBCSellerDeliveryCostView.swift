@@ -58,17 +58,20 @@ class UBCSellerDeliveryCostView: UIView {
     
     func setupDeal(_ deal: UBCDealDM?) {
  
-        guard let deal = deal, let locationText = deal.comment, locationText.count != 0 else {
+        guard let deal = deal else {
             isHidden = true
             return
         }
         self.deal = deal
         
-        buyerAddress.text = locationText
+        buyerAddress.text = deal.comment == nil || deal.comment.count == 0 ? "str_no_set_delivery_address".localizedString() : deal.comment
         confirmNewDeliveryPriceButton.isHidden = true
         deliveryPriceCostField.placeholder = "IN " + deal.currencyType
         deliveryPriceCostField.text = deal.deliveryPrice
         previousCost = deal.deliveryPrice ?? "0"
+    }
+    @IBAction func changeDeliveryPrice(_ sender: Any) {
+        deliveryPriceCostField.becomeFirstResponder()
     }
     
     @IBAction func confirmNewDeliveryPrice(_ sender: Any) {

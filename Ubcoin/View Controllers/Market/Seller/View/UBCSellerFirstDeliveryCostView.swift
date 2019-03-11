@@ -69,7 +69,7 @@ class UBCSellerFirstDeliveryCostView: UIView {
         }
         self.deal = deal
         
-        buyerAddress.text = deal.comment == nil ? "Please contact buyer via chat to get his delivery address" : deal.comment
+        buyerAddress.text = deal.comment == nil || deal.comment.count == 0 ? "str_no_set_delivery_address".localizedString() : deal.comment
         deliveryPiceTextField.placeholder = "IN " + deal.currencyType
     }
     

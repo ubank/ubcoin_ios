@@ -8,12 +8,6 @@
 
 #import "UBCDealCell.h"
 
-@interface UBCDealCell()
-
-//@property (strong, nonatomic) UIView *badgeView;
-
-@end
-
 @implementation UBCDealCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier

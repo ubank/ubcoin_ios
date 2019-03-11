@@ -242,6 +242,8 @@
 
 "str_delivery_buyer_need" = "I need delivery";
 "str_delivery_seller_need" = "I will organize delivery";
+"str_no_set_delivery_address" = "Please contact buyer via chat to get his delivery address";
+
 
 "str_delivery_address_placeholder" = "enter address...";
 "str_delivery_notice" = "After you book item, seller will define price of delivery to your address. Delivery price can be 0. If you don't agree with delivery price, you will be able to cancel the deal and item price will return to your wallet.";

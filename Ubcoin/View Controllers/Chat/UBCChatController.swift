@@ -69,7 +69,7 @@ class UBCChatController: UBCMessagesViewController {
     private func setupChat() {
         
         if let item = item {
-            self.navigationItem.setTitle(title: item.title, subtitle: item.isMyItem ? item.currentDeal.buyer.name : item.seller.name)
+            self.navigationItem.setTitle(title: item.title, subtitle: item.isMyItem ? item.activePurchase.buyer.name : item.seller.name)
             UBCSocketIOManager.sharedInstance.enterRoom(item)
         } else if let chatDeal = chatDeal {
             self.navigationItem.setTitle(title: chatDeal.item.title, subtitle: chatDeal.user.name)
@@ -140,8 +140,7 @@ class UBCChatController: UBCMessagesViewController {
             return true
         } else if item.status == UBCItemStatusActive {
             return true
-        } else if let dealArray = item.deals,
-                  let deal = dealArray.first,
+        } else if let deal = item.activePurchase,
         let me = UBCUserDM.loadProfile(),
             deal.buyer.id == me.id,
             item.status != UBCItemStatusDeactivated,

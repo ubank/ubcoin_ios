@@ -200,7 +200,8 @@ open class StepProgressView: UIView {
             if currentStep >= 0 {
                 let textColor: UIColor = currentTextColor ?? tintColor
                 let detailColor = currentDetailColor ?? textColor
-                stepViews[currentStep].color(text: textColor, detail: detailColor, stroke: currentStepColor, fill: currentStepFillColor, line: futureStepColor)
+                stepViews[currentStep].color(text: textColor, detail: detailColor, stroke: currentStepColor,
+                                             fill: stepViews.count == currentStep + 1 ? pastStepFillColor  :  currentStepFillColor, line: futureStepColor)
             }
         }
 

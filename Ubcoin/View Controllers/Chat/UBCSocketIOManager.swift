@@ -53,7 +53,7 @@ class UBCSocketIOManager: NSObject {
         var params:[String:Any] = [:]
         params["token"] = UBCKeyChain.authorization
         params["itemId"] = item.id
-        params["users"] = [user.id, item.isMyItem ? item.currentDeal.buyer.id : item.seller.id]
+        params["users"] = [user.id, item.isMyItem ? item.activePurchase.buyer.id : item.seller.id]
         
         UBCSocketIOManager.socket.emit("enterRoom", params)
     }

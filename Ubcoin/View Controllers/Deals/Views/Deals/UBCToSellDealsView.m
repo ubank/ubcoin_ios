@@ -82,8 +82,8 @@
     dealCell.info.attributedText = [self infoStringWithItem:item];
     [dealCell setLocation:item.location];
     
-    if (item.currentDeal) {
-       dealCell.badgeView.hidden =  ![UBCNotificationDM isContainsDeal:item.currentDeal.ID];
+    if (item.activePurchase) {
+       dealCell.badgeView.hidden =  ![UBCNotificationDM isContainsDeal:item.activePurchase.ID];
     } else {
         dealCell.badgeView.hidden = true;
     }
@@ -106,8 +106,8 @@
     {    
         UBCGoodDM *item = data.data;
         
-        if (item.currentDeal) {
-           [UBCNotificationDM removeSaveDeal:item.currentDeal.ID];
+        if (item.activePurchase) {
+           [UBCNotificationDM removeSaveDeal:item.activePurchase.ID];
         }
         
         [self.delegate showItem:item];

@@ -142,6 +142,8 @@ class UBCDealInfoController: UBViewController {
         
         if let item = purchaseDM.item {
             
+            let status = purchaseDM.deal?.id
+            
             let itemIconURL = URL(string: item.imageURL ?? "")
             itemIcon.sd_setImage(with: itemIconURL, placeholderImage: UIImage(named: "item_default_image"), options: [], completed: nil)
             itemTitle.text = item.title

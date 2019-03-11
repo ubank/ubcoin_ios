@@ -36,6 +36,7 @@
 		1CFFFE7D20F230A9003B5AD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CFFFE7920F230A9003B5AD9 /* Assets.xcassets */; };
 		1CFFFE7E20F230A9003B5AD9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFFFE7A20F230A9003B5AD9 /* main.m */; };
 		30A0668C891003DF59D2BECC /* libPods-Ubcoin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DD3B2DB73F06ACB93DC3B9 /* libPods-Ubcoin.a */; };
+		752CD880223671B000953033 /* UBCChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752CD87F223671B000953033 /* UBCChatCell.swift */; };
 		755B5D7422250FA700AA5259 /* UBCSellerFirstDeliveryCostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755B5D7322250FA700AA5259 /* UBCSellerFirstDeliveryCostView.swift */; };
 		755B5D7622250FB800AA5259 /* UBCSellerFirstDeliveryCostView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 755B5D7522250FB800AA5259 /* UBCSellerFirstDeliveryCostView.xib */; };
 		755B5D782225327E00AA5259 /* UBCSellerDeliveryCostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755B5D772225327E00AA5259 /* UBCSellerDeliveryCostView.swift */; };
@@ -237,6 +238,7 @@
 		1CFFFE7920F230A9003B5AD9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1CFFFE7A20F230A9003B5AD9 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1CFFFE7B20F230A9003B5AD9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		752CD87F223671B000953033 /* UBCChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCChatCell.swift; sourceTree = "<group>"; };
 		755B5D7322250FA700AA5259 /* UBCSellerFirstDeliveryCostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCSellerFirstDeliveryCostView.swift; sourceTree = "<group>"; };
 		755B5D7522250FB800AA5259 /* UBCSellerFirstDeliveryCostView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UBCSellerFirstDeliveryCostView.xib; sourceTree = "<group>"; };
 		755B5D772225327E00AA5259 /* UBCSellerDeliveryCostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBCSellerDeliveryCostView.swift; sourceTree = "<group>"; };
@@ -578,6 +580,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		752CD87E2236719000953033 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				752CD87F223671B000953033 /* UBCChatCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		755B5D7122250F5400AA5259 /* Buyer */ = {
 			isa = PBXGroup;
 			children = (
@@ -892,6 +902,7 @@
 		897FB0AE21218FC10060DED6 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				752CD87E2236719000953033 /* Cell */,
 				75C3B5EB221EC40C00A2E3CB /* ExtensionHelper.swift */,
 				758D0F09221C1FF90034739B /* Models */,
 				758D0F05221ADEAB0034739B /* UBCSocketIOManager.swift */,
@@ -1855,6 +1866,7 @@
 				8915D05E21A307C0008D1BA2 /* UBCSellerCollectionReusableView.swift in Sources */,
 				8980F23B20F486990066CF99 /* UBCGoodDetailsController.m in Sources */,
 				8987519920EE23A100E2B615 /* UBWaitCell.m in Sources */,
+				752CD880223671B000953033 /* UBCChatCell.swift in Sources */,
 				75D1162A222E5A1100C428C5 /* UBCBuyerDeliveryAddressView.swift in Sources */,
 				890077412119A4E400B6C1C5 /* UBCVerifyEmailController.m in Sources */,
 				898751B320EE2C4100E2B615 /* UBCLoginController.m in Sources */,

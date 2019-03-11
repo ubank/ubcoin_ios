@@ -104,14 +104,18 @@ class UBCMessagesListController: UBViewController {
 extension UBCMessagesListController: UBDefaultTableViewDelegate {
     
     func layoutCell(_ cell: UBDefaultTableViewCell!, for data: UBTableViewRowData!, indexPath: IndexPath!) {
-        guard let chatDeal = data.data as? UBCChatRoom else {
+       
+        guard let chatDeal = data.data as? UBCChatRoom, let chatCell = cell as? UBCChatCell else {
             return
         }
         
         let unreadCount = chatDeal.unreadCount
         unreadMessageCount += unreadCount
         
-        cell.badgeView.isHidden = unreadCount == 0
+        chatCell.badgeView.isHidden = unreadCount == 0
+        
+        chatCell.lastMessageLabel.text = chatDeal.lastMessage.message
+        chatCell.dateLabel.text = chatDeal.lastMessage.date.dateStringFormatMMMD()
 
     }
     

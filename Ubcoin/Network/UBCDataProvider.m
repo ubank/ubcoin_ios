@@ -615,7 +615,7 @@
                  UBCDealDM *deal = [[UBCDealDM alloc] initWithDictionary:item];
                  UBTableViewRowData *data = deal.rowData;
                  data.className = NSStringFromClass(UBCDealCell.class);
-                 data.isDisabled = deal.item.status != UBCItemStatusActive;
+                 //data.isDisabled = deal.item.status != UBCItemStatusActive;
                  return data;
              }];
              

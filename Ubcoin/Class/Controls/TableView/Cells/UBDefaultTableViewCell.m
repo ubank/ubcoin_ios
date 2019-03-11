@@ -16,7 +16,7 @@
 
 @interface UBDefaultTableViewCell ()
 
-@property (strong, nonatomic) UIStackView *horizontalStackView;
+@property (strong, nonatomic, readwrite) UIStackView *horizontalStackView;
 
 @property (strong, nonatomic, readwrite) UIImageView *icon;
 
@@ -66,11 +66,6 @@
     [self.badgeView setWidthConstraintWithValue:default_horizontal_spacing];
     [self.badgeView setHeightConstraintWithValue:default_horizontal_spacing];
     
-    [self.contentView addSubview:self.badgeView];
-    [self.contentView setTopConstraintToSubview:self.badgeView withValue:default_horizontal_spacing relatedBy:NSLayoutRelationGreaterThanOrEqual];
-    
-    [self.contentView setTrailingConstraintToSubview:self.badgeView withValue:default_horizontal_spacing + default_horizontal_spacing];
-    
     self.icon = UIImageView.new;
     self.icon.contentMode = UIViewContentModeCenter;
     
@@ -104,6 +99,9 @@
     self.horizontalStackView.spacing = default_horizontal_spacing;
     [self.contentView addSubview:self.horizontalStackView];
     [self.contentView setCenterYConstraintToSubview:self.horizontalStackView];
+    
+    [self.contentView addSubview:self.badgeView];
+    [self.contentView setTopConstraintToSubview:self.badgeView withValue:default_horizontal_spacing relatedBy:NSLayoutRelationGreaterThanOrEqual];
     
     [self.rightIcon setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
     [self.rightIcon setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
@@ -190,6 +188,12 @@
     self.accessoryType = rowData.accessoryType;
 //    self.separatorType = rowData.separatorType;
     self.showHighlighted = !rowData.disableHighlight;
+    
+    if (self.accessoryType == UITableViewCellAccessoryNone) {
+        [self.contentView setTrailingConstraintToSubview:self.badgeView withValue: -default_horizontal_spacing];
+    } else {
+        [self.contentView setTrailingConstraintToSubview:self.badgeView withValue:default_horizontal_spacing + default_horizontal_spacing];
+    }
     
     [self hideViews];
 }
