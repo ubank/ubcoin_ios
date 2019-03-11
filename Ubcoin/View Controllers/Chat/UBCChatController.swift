@@ -18,16 +18,12 @@ class UBCChatController: UBCMessagesViewController {
     private var itemID: String?
     private var userID: String?
     private var item: UBCGoodDM?
-    private var deal: UBCDealDM?
     private var chatDeal: UBCChatRoom?
     
     private var currentItem: UBCGoodDM? {
         if let item = item {
             return item
-        } else if let item = deal?.item {
-            return item
         }
-        
         return chatDeal?.item
     }
     
@@ -35,12 +31,6 @@ class UBCChatController: UBCMessagesViewController {
         self.init()
         
         self.item = item
-    }
-    
-    @objc convenience init(deal: UBCDealDM) {
-        self.init()
-        
-        self.deal = deal
     }
     
     @objc convenience init(chatDeal: UBCChatRoom) {
@@ -79,15 +69,11 @@ class UBCChatController: UBCMessagesViewController {
     private func setupChat() {
         
         if let item = item {
-            self.navigationItem.setTitle(title: item.title, subtitle: item.seller.name)
+            self.navigationItem.setTitle(title: item.title, subtitle: item.isMyItem ? item.currentDeal.buyer.name : item.seller.name)
             UBCSocketIOManager.sharedInstance.enterRoom(item)
         } else if let chatDeal = chatDeal {
             self.navigationItem.setTitle(title: chatDeal.item.title, subtitle: chatDeal.user.name)
             UBCSocketIOManager.sharedInstance.enterRoom(chatDeal)
-        } else if let deal = deal {
-            
-            self.navigationItem.setTitle(title: deal.item.title, subtitle: deal.buyer.name)
-            UBCSocketIOManager.sharedInstance.enterRoom(deal)
         }
         
         self.navigationItem.rightBarButtonItem = itemNavButton()

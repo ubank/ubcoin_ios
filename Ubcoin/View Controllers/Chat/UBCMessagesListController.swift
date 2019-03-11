@@ -116,9 +116,6 @@ extension UBCMessagesListController: UBDefaultTableViewDelegate {
     }
     
     func didSelect(_ data: UBTableViewRowData!, indexPath: IndexPath!) {
-        if let deal = data.data as? UBCDealDM {
-            navigationController?.pushViewController(UBCChatController(deal: deal), animated: true)
-        }
         
         if let chatDeal = data.data as? UBCChatRoom {
             navigationController?.pushViewController(UBCChatController(chatDeal: chatDeal), animated: true)

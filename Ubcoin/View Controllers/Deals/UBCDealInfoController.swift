@@ -389,11 +389,8 @@ extension UBCDealInfoController: UBCSellerViewDelegate {
     func chat(seller: UBCSellerDM) {
         var controller: UBCChatController?
         
-        if let item = purchaseDM?.item, item.isMyItem == false {
+        if let item = purchaseDM?.item{
             controller = UBCChatController(item: item)
-        }
-        else if let deal = purchaseDM?.deal {
-            controller = UBCChatController(deal: deal)
         }
         
         guard let _controller = controller else {

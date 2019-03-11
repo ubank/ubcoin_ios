@@ -53,7 +53,7 @@ class UBCSocketIOManager: NSObject {
         var params:[String:Any] = [:]
         params["token"] = UBCKeyChain.authorization
         params["itemId"] = item.id
-        params["users"] = [user.id, item.seller.id]
+        params["users"] = [user.id, item.isMyItem ? item.currentDeal.buyer.id : item.seller.id]
         
         UBCSocketIOManager.socket.emit("enterRoom", params)
     }
@@ -72,18 +72,6 @@ class UBCSocketIOManager: NSObject {
         UBCSocketIOManager.socket.emit("enterRoom", params)
     }
     
-    func enterRoom(_ deal: UBCDealDM?) {
-        guard let deal = deal else {
-                return
-        }
-        
-        var params:[String:Any] = [:]
-        params["token"] = UBCKeyChain.authorization
-        params["itemId"] = deal.item.id
-        params["users"] = [deal.seller.id, deal.buyer.id]
-        
-        UBCSocketIOManager.socket.emit("enterRoom", params)
-    }
 }
 
 //MARK: Sender methods
