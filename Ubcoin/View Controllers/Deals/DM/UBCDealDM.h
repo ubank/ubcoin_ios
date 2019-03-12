@@ -34,6 +34,8 @@ static NSString * const DEAL_PRICE_CONFIRMED = @"DELIVERY_PRICE_CONFIRMED";
 @property (readonly, nonatomic) UBCSellerDM *seller;
 @property (readonly, nonatomic) UBCDealStatusDM *currentStatus;
 @property (readonly, nonatomic) NSArray <UBCDealStatusDM *> *statusDescriptions;
+@property (readonly, nonatomic) NSDate *createdDate;
+@property (readonly, nonatomic) NSDate *updatedDate;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
 - (NSArray <UBTableViewSectionData *> *)sectionsData;

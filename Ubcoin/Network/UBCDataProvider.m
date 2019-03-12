@@ -703,8 +703,15 @@
          {
              NSArray *items = [responseObject removeNulls];
              items = [items map:^id(id item) {
-                 UBCChatRoom *chatRoom = [[UBCChatRoom alloc] initWithDictionary:item];
-                 return [chatRoom rowData];
+                 return [[UBCChatRoom alloc] initWithDictionary:item];
+             }];
+             
+             items = [items sortedArrayUsingComparator:^NSComparisonResult(UBCChatRoom *obj1, UBCChatRoom *obj2) {
+                 return [obj2.lastMessage.date compare:obj1.lastMessage.date];
+             }];
+             
+             items = [items map:^id(UBCChatRoom *item) {
+                 return item.rowData;
              }];
              
              if (completionBlock)

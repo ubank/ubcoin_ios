@@ -31,6 +31,9 @@
         _statusDescriptions = [dict[@"statusDescriptions"] map:^id(id item) {
             return [UBCDealStatusDM.alloc initWithDictionary:item];
         }];
+        
+        _createdDate = [NSDate dateFromString:dict[@"createdDate"] inFormat:@"yyyyMMdd'T'HHmmssZ"];
+        _updatedDate = [NSDate dateFromString:dict[@"updatedDate"] inFormat:@"yyyyMMdd'T'HHmmssZ"];
     }
     
     return self;
