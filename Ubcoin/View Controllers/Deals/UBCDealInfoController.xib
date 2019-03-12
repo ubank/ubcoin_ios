@@ -245,7 +245,7 @@
                                                             <rect key="frame" x="0.0" y="283" width="345" height="170.5"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" priority="750" constant="110" id="M0v-2T-X86"/>
+                                                                <constraint firstAttribute="height" priority="250" constant="110" id="M0v-2T-X86"/>
                                                             </constraints>
                                                             <connections>
                                                                 <outlet property="delegate" destination="-1" id="IsO-1d-fq6"/>
