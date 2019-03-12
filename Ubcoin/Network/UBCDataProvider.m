@@ -243,6 +243,7 @@
              responseObject = [responseObject removeNulls];
              UBCKeyChain.authorization = responseObject[@"accessToken"];
              [UBCUserDM saveUserDict:responseObject[@"user"]];
+             [UBCDataProvider.sharedProvider updateBalanceWithCompletionBlock:nil];
          }
          
          if (completionBlock)
@@ -278,6 +279,7 @@
              responseObject = [responseObject removeNulls];
              UBCKeyChain.authorization = responseObject[@"accessToken"];
              [UBCUserDM saveUserDict:responseObject[@"user"]];
+             [UBCDataProvider.sharedProvider updateBalanceWithCompletionBlock:nil];
          }
          
          if (completionBlock)
