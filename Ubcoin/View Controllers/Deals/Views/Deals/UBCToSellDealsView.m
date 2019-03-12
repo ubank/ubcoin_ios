@@ -53,6 +53,12 @@
     }
 }
 
+-(void) setIsNeedShowBadge:(BOOL)isNeedShowBadge {
+    [super setIsNeedShowBadge:isNeedShowBadge];
+    
+    UBCNotificationDM.needShowDealItemToSoldBadge = self.isNeedShowBadge;
+}
+
 #pragma mark -
 
 - (NSAttributedString *)infoStringWithItem:(UBCGoodDM *)item
@@ -83,10 +89,17 @@
     [dealCell setLocation:item.location];
     
     if (item.activePurchase) {
-       dealCell.badgeView.hidden =  ![UBCNotificationDM isContainsDeal:item.activePurchase.ID];
+        if (item.activePurchase.needAction == YES) {
+            self.isNeedShowBadge = YES;
+        }
+        
+       dealCell.badgeView.hidden =  !item.activePurchase.needAction;
     } else {
         dealCell.badgeView.hidden = true;
     }
+    
+    [dealCell.contentView setTopConstraintToSubview:dealCell.badgeView withValue:20 relatedBy:NSLayoutRelationGreaterThanOrEqual];
+    
 
     if (data.isSelected)
     {
@@ -105,11 +118,6 @@
     if ([self.delegate respondsToSelector:@selector(showItem:)])
     {    
         UBCGoodDM *item = data.data;
-        
-        if (item.activePurchase) {
-           [UBCNotificationDM removeSaveDeal:item.activePurchase.ID];
-        }
-        
         [self.delegate showItem:item];
     }
 }

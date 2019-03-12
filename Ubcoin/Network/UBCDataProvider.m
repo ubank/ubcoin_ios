@@ -541,26 +541,39 @@
 {
     NSURL *url = [UBCURLProvider dealsToSell];
     NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:url];
+    
+     __weak typeof(self) weakSelf = self;
     [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
      {
          if (success)
          {
              NSArray *activeItems = [responseObject[@"active"] removeNulls];
-             activeItems = [activeItems map:^id(id item) {
-                 UBCGoodDM *good = [[UBCGoodDM alloc] initWithDictionary:item];
-                 UBTableViewRowData *data = good.rowData;
+             activeItems = [weakSelf sortArray:activeItems isActive:YES];
+             
+             activeItems = [activeItems map:^id(UBCGoodDM *item) {
+                 UBTableViewRowData *data = item.rowData;
                  data.className = NSStringFromClass(UBCDealCell.class);
                  return data;
              }];
              
              NSArray *notActiveItems = [responseObject[@"waste"] removeNulls];
-             notActiveItems = [notActiveItems map:^id(id item) {
-                 UBCGoodDM *good = [[UBCGoodDM alloc] initWithDictionary:item];
-                 UBTableViewRowData *data = good.rowData;
+             notActiveItems = [weakSelf sortArray:notActiveItems isActive:NO];
+             
+             notActiveItems = [notActiveItems map:^id(UBCGoodDM *item) {
+                 UBTableViewRowData *data = item.rowData;
                  data.className = NSStringFromClass(UBCDealCell.class);
                  data.isSelected = YES;
                  return data;
              }];
+
+             
+//             notActiveItems = [notActiveItems map:^id(id item) {
+//                 UBCGoodDM *good = [[UBCGoodDM alloc] initWithDictionary:item];
+//                 UBTableViewRowData *data = good.rowData;
+//                 data.className = NSStringFromClass(UBCDealCell.class);
+//                 data.isSelected = YES;
+//                 return data;
+//             }];
              
              NSMutableArray *sections = [NSMutableArray array];
              
@@ -598,26 +611,16 @@
 {
     NSURL *url = [UBCURLProvider dealsToBuy];
     NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:url];
+    __weak typeof(self) weakSelf = self;
     [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
      {
          if (success)
          {
              NSArray *activeItems = [responseObject[@"active"] removeNulls];
-             activeItems = [activeItems map:^id(id item) {
-                 UBCDealDM *deal = [[UBCDealDM alloc] initWithDictionary:item];
-                 UBTableViewRowData *data = deal.rowData;
-                 data.className = NSStringFromClass(UBCDealCell.class);
-                 return data;
-             }];
+             activeItems = [weakSelf sortDealArray:activeItems isActive:YES];
              
              NSArray *notActiveItems = [responseObject[@"waste"] removeNulls];
-             notActiveItems = [notActiveItems map:^id(id item) {
-                 UBCDealDM *deal = [[UBCDealDM alloc] initWithDictionary:item];
-                 UBTableViewRowData *data = deal.rowData;
-                 data.className = NSStringFromClass(UBCDealCell.class);
-                 //data.isDisabled = deal.item.status != UBCItemStatusActive;
-                 return data;
-             }];
+             notActiveItems = [weakSelf sortDealArray:notActiveItems isActive:NO];
              
              NSMutableArray *sections = [NSMutableArray array];
              
@@ -649,6 +652,103 @@
              completionBlock(NO, nil);
          }
      }];
+}
+
+-(NSArray *) sortDealArray:(NSArray *) array isActive:(BOOL) isActive
+{
+
+    __block BOOL isNeedShowBadge = NO;
+    array = [array map:^id(id item) {
+        UBCDealDM *deal = [[UBCDealDM alloc] initWithDictionary:item];
+        if (deal.needAction) {
+            isNeedShowBadge = YES;
+        }
+        return deal;
+    }];
+    
+    if (isActive)
+    {
+        UBCNotificationDM.needShowDealItemToBuyBadge = isNeedShowBadge;
+    }
+    
+    
+    array = [array sortedArrayUsingComparator:^NSComparisonResult(UBCDealDM *deal1, UBCDealDM *deal2) {
+        if (deal1.updatedDate && deal2.updatedDate) {
+            return [deal2.updatedDate compare:deal1.updatedDate];
+        }
+        else if (deal1.updatedDate && !deal2.updatedDate) {
+            return [deal2.createdDate compare:deal1.updatedDate];
+        }
+        else if (!deal1.updatedDate && deal2.updatedDate) {
+            return [deal2.updatedDate compare:deal1.createdDate];
+        }
+        return [deal2.createdDate compare:deal1.createdDate];
+    }];
+    
+    array = [array map:^id(UBCDealDM *item) {
+        UBTableViewRowData *data = item.rowData;
+        data.className = NSStringFromClass(UBCDealCell.class);
+        return data;
+    }];
+    
+    return array;
+}
+
+- (NSArray *) sortArray:(NSArray *) array isActive:(BOOL) isActive
+{
+    
+    __block BOOL isNeedShowBadge = NO;
+    array = [array map:^id(id item) {
+        UBCGoodDM *goodDM = [[UBCGoodDM alloc] initWithDictionary:item];
+        UBCDealDM *goodDeal = goodDM.activePurchase;
+        if (goodDeal && goodDeal.needAction) {
+            isNeedShowBadge = YES;
+        }
+        return goodDM;
+    }];
+    
+    if (isActive)
+    {
+        UBCNotificationDM.needShowDealItemToSoldBadge = isNeedShowBadge;
+    }
+    
+   
+    
+    array = [array sortedArrayUsingComparator:^NSComparisonResult(UBCGoodDM *obj1, UBCGoodDM *obj2) {
+        UBCDealDM *deal1 = obj1.activePurchase;
+        UBCDealDM *deal2 = obj2.activePurchase;
+        
+        if (deal1 && deal2) {
+            if (deal1.updatedDate && deal2.updatedDate) {
+                return [deal2.updatedDate compare:deal1.updatedDate];
+            }
+            else if (deal1.updatedDate && !deal2.updatedDate) {
+                return [deal2.createdDate compare:deal1.updatedDate];
+            }
+            else if (!deal1.updatedDate && deal2.updatedDate) {
+                return [deal2.updatedDate compare:deal1.createdDate];
+            }
+            return [deal2.createdDate compare:deal1.createdDate];
+        }
+        else if (!deal1 && deal2) {
+            if (deal2.updatedDate) {
+                return [deal2.updatedDate compare:obj1.creationDate];
+            }
+            return [deal2.createdDate compare:obj1.creationDate];
+        }
+        else if (deal1 && !deal2) {
+            if (deal1.updatedDate) {
+                return [obj2.creationDate compare:deal1.updatedDate];
+            }
+            return [obj2.creationDate compare:deal1.createdDate];
+        }
+        
+        return [obj2.creationDate compare:obj1.creationDate];
+        
+
+    }];
+    
+    return array;
 }
 
 #pragma mark - CHAT

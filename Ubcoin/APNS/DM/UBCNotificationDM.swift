@@ -10,7 +10,8 @@ import UIKit
 
 public enum UBCNotificationConst {
     static let kChat = "kSaveChatEventNotification"
-    static let kDealItem = "kSaveDealItemEventNotification"
+    static let kDealBuyItem = "kSaveDealItemEventBuyNotification"
+    static let kDealSoldItem = "kSaveDealItemEventSoldNotification"
     static let kDealItemArray = "kSaveDealItemKeyEventNotification"
 }
 
@@ -30,61 +31,52 @@ public enum UBCNotificationConst {
         }
     }
     
-    @objc class var needShowDealItemBadge: Bool {
+    @objc class var needShowDealItemToBuyBadge: Bool {
         get {
-            return UserDefaults.standard.bool(forKey: UBCNotificationConst.kDealItem)
+            return UserDefaults.standard.bool(forKey: UBCNotificationConst.kDealBuyItem)
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: UBCNotificationConst.kDealItem)
+            UserDefaults.standard.set(newValue, forKey: UBCNotificationConst.kDealBuyItem)
             UserDefaults.standard.synchronize()
             
-            badgeForDealsController(newValue)
+            badgeForDealsController(UBCNotificationDM.profileStatusBadge())
         }
     }
     
-    class var arrayDeals: [String]? {
+    @objc class var needShowDealItemToSoldBadge: Bool {
         get {
-            return UserDefaults.standard.value(forKey: UBCNotificationConst.kDealItemArray) as? [String]
+            return UserDefaults.standard.bool(forKey: UBCNotificationConst.kDealSoldItem)
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: UBCNotificationConst.kDealItemArray)
+            UserDefaults.standard.set(newValue, forKey: UBCNotificationConst.kDealSoldItem)
             UserDefaults.standard.synchronize()
+            
+            badgeForDealsController(UBCNotificationDM.profileStatusBadge())
         }
     }
     
-    @objc static func saveDealStatusChange(_ deal: String?) {
+    @objc static func profileStatusBadge() -> Bool {
         
-        if isContainsDeal(deal) {
-            return
+        if needShowDealItemToBuyBadge {
+            return true
         }
         
-        var deals:[String] = []
-        if let saveDeals = arrayDeals {
-            deals.append(contentsOf: saveDeals)
+        if needShowDealItemToSoldBadge {
+            return true
         }
         
-        if let deal = deal, deal.count > 0 {
-            deals.append(deal)
-            arrayDeals = deals
-        }
+        return false
     }
     
-    @objc static func isContainsDeal(_ dealId: String?) -> Bool {
-        guard let array = arrayDeals, let dealId = dealId else {
-            return false
+    @objc static func checkStateDidBecomeActive() {
+        
+        if UBCNotificationDM.needShowChatBadge {
+            UBCNotificationDM.needShowChatBadge = true
         }
         
-        return array.contains(dealId)
-    }
-    
-    @objc static func removeSaveDeal(_ dealId: String?) {
-
-        guard var array = arrayDeals, let dealId = dealId, let index = array.index(of: dealId) else {
-            return
+        if UBCNotificationDM.profileStatusBadge() {
+           UBCNotificationDM.needShowDealItemToBuyBadge = true
         }
-
-        array.remove(at: index)
-        arrayDeals = array
     }
     
     private class func badgeForMessagesListController(_ isShow: Bool) {
@@ -92,10 +84,6 @@ public enum UBCNotificationConst {
         let tab = delegate.navigationController.viewControllers.first as? UITabBarController,
             let controll = tab.viewControllers?.filter({ $0 is UBCMessagesListController }).first as? UBViewController  {
             controll.tabBarItem.badgeValue = isShow ? "" : nil
-            
-//            if delegate.navigationController.currentController is UBCMessagesListController {
-//                delegate.navigationController.currentController .updateInfo()
-//            }
         }
     }
 

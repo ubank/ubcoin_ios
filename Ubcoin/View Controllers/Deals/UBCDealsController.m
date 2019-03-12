@@ -50,6 +50,18 @@
     [self.sellDealsView.tableView.refreshControll endRefreshing];
 }
 
+-(void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [_buyDealsView updateInfo];
+    [_sellDealsView updateInfo];
+}
+
+-(void) updateInfo {
+    [_buyDealsView updateInfo];
+    [_sellDealsView updateInfo];
+}
+
 #pragma mark -
 
 - (void)setupViews

@@ -142,7 +142,7 @@ class UBCDealInfoController: UBViewController {
         
         if let item = purchaseDM.item {
             
-            let status = purchaseDM.deal?.id
+            //let status = purchaseDM.deal?.id
             
             let itemIconURL = URL(string: item.imageURL ?? "")
             itemIcon.sd_setImage(with: itemIconURL, placeholderImage: UIImage(named: "item_default_image"), options: [], completed: nil)
@@ -154,32 +154,45 @@ class UBCDealInfoController: UBViewController {
             deliveryView.setup(item: item)
             deliveryView.isHidden = item.isDigital || purchaseDM.isPurchase
             
-            buyerDeliveryAddressView.isHidden = !deliveryView.isDelivery && !deliveryView.isHidden || purchaseDM.isPurchase
-            buyerDeliveryAddressView.deliveryTextView.text = deliveryAddressText
-            
-            let isDeliveryPriceNeedApproveBuyer = purchaseDM.isPurchase && purchaseDM.deal?.status == DEAL_PRICE_DEFINED && !item.isMyItem
-            buyerDeliveryConfirmView.isHidden = !isDeliveryPriceNeedApproveBuyer
-            buyerDeliveryConfirmView.setup(purchaseDM.deal)
-            
-            currencyConfirmButtonView.isHidden = deliveryView.isDelivery && deliveryAddressText == ""
-            
             let person = item.isMyItem ? purchaseDM.deal?.buyer : purchaseDM.seller
             sellerView.setup(seller: person, isSeller: !item.isMyItem)
             
-            let isPriceConfirmed = purchaseDM.deal?.status == DEAL_PRICE_CONFIRMED && item.isMyItem
-            confirmDeliveryView.isHidden = !isPriceConfirmed
-            
-            let firstSetPriceForDelivery = purchaseDM.isPurchase && purchaseDM.deal?.status == DEAL_STATUS_ACTIVE && item.isMyItem && purchaseDM.deal?.withDelivery == true
-            sellerFirstDeliveryCostView.isHidden = !firstSetPriceForDelivery
-            sellerFirstDeliveryCostView.setup(purchaseDM.deal)
-            
-            let showChangeDeliveryMethod = item.isDigital == false && purchaseDM.isPurchase && purchaseDM.deal?.status == DEAL_STATUS_ACTIVE && purchaseDM.deal?.withDelivery == false
-            changeDeliveryView.isHidden = !showChangeDeliveryMethod
-            changeDeliveryView.setup(purchaseDM.deal, isMyId: item.isMyItem)
-            
-            let secondSetPriceForDelivery = purchaseDM.isPurchase && purchaseDM.deal?.status == DEAL_PRICE_DEFINED && item.isMyItem
-            sellerDeliveryCostView.isHidden =  !secondSetPriceForDelivery
-            sellerDeliveryCostView.setupDeal(purchaseDM.deal)
+            if item.isDigital {
+                buyerDeliveryAddressView.isHidden = true
+                buyerDeliveryConfirmView.isHidden = true
+                currencyConfirmButtonView.isHidden = false
+                confirmDeliveryView.isHidden = true
+                sellerFirstDeliveryCostView.isHidden = true
+                changeDeliveryView.isHidden = true
+                sellerDeliveryCostView.isHidden = true
+                
+            } else {
+                
+                buyerDeliveryAddressView.isHidden = !deliveryView.isDelivery && !deliveryView.isHidden || purchaseDM.isPurchase
+                buyerDeliveryAddressView.deliveryTextView.text = deliveryAddressText
+                
+                let isDeliveryPriceNeedApproveBuyer = purchaseDM.isPurchase && purchaseDM.deal?.status == DEAL_PRICE_DEFINED && !item.isMyItem
+                buyerDeliveryConfirmView.isHidden = !isDeliveryPriceNeedApproveBuyer
+                buyerDeliveryConfirmView.setup(purchaseDM.deal)
+                
+                currencyConfirmButtonView.isHidden = deliveryView.isDelivery && deliveryAddressText == ""
+                
+                let isPriceConfirmed = purchaseDM.deal?.status == DEAL_PRICE_CONFIRMED && item.isMyItem
+                confirmDeliveryView.isHidden = !isPriceConfirmed
+                
+                let firstSetPriceForDelivery = purchaseDM.isPurchase && purchaseDM.deal?.status == DEAL_STATUS_ACTIVE && item.isMyItem && purchaseDM.deal?.withDelivery == true
+                sellerFirstDeliveryCostView.isHidden = !firstSetPriceForDelivery
+                sellerFirstDeliveryCostView.setup(purchaseDM.deal)
+                
+                let showChangeDeliveryMethod = purchaseDM.isPurchase && purchaseDM.deal?.status == DEAL_STATUS_ACTIVE && purchaseDM.deal?.withDelivery == false
+                changeDeliveryView.isHidden = !showChangeDeliveryMethod
+                changeDeliveryView.setup(purchaseDM.deal, isMyId: item.isMyItem)
+                
+                let secondSetPriceForDelivery = purchaseDM.isPurchase && purchaseDM.deal?.status == DEAL_PRICE_DEFINED && item.isMyItem
+                sellerDeliveryCostView.isHidden =  !secondSetPriceForDelivery
+                sellerDeliveryCostView.setupDeal(purchaseDM.deal)
+                
+            }
             
             let needShow = item.isDigital && purchaseDM.deal?.status == DEAL_STATUS_ACTIVE && !item.isMyItem
             confirmDigitalItemView.isHidden = !needShow
@@ -190,8 +203,10 @@ class UBCDealInfoController: UBViewController {
                 confirmDigitalItemView.isHidden = !isPriceIsDelivery
             }
             
+            statusImageView.isHidden = item.isDigital
+            
         }
-        
+    
         statusImageView.image = purchaseDM.deliveryImage
         statusTitle.text = purchaseDM.longStatusTitle
         statusTitle.isHidden = statusTitle.text?.isEmpty == true
@@ -228,8 +243,8 @@ class UBCDealInfoController: UBViewController {
     //MARK: - Actions
     
     @IBAction func showItem() {
-        if let controller = UBCGoodDetailsController(good: purchaseDM?.item) {        
-            self.navigationController?.pushViewController(controller, animated: true)
+        if let controller = UBCGoodDetailsController(good: purchaseDM?.item, andDeal: true) {
+             self.navigationController?.pushViewController(controller, animated: true)
         }
     }
     

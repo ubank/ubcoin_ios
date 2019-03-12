@@ -24,6 +24,8 @@
 @property (weak, nonatomic) id<UBCDealsViewDelegate> delegate;
 @property (strong, nonatomic) UBDefaultTableView *tableView;
 
+@property (nonatomic, assign) BOOL isNeedShowBadge;
+
 - (void)setupEmptyView;
 - (void)updateInfo;
 - (void)reloadData;

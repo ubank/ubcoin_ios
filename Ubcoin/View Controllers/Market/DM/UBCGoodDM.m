@@ -111,7 +111,17 @@
     UBTableViewRowData *data = UBTableViewRowData.new;
     data.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     data.data = self;
-    data.title = [NSString stringWithFormat:@"%@ UBC", self.price.priceString];
+  
+    
+    NSString * itemPriceString = [NSString stringWithFormat:@"%@ UBC", self.price.priceString];
+    
+    if (self.activePurchase) {
+        if ([self.activePurchase.currencyType isEqualToString:@"ETH"]) {
+            itemPriceString =  [NSString stringWithFormat:@"%@ ETH", self.priceInETH.coinsPriceString];
+        }
+    }
+    
+    data.title = itemPriceString;
     data.desc = self.title;
     data.iconURL = [self.images firstObject];
     data.icon = [UIImage imageNamed:@"item_default_image"];

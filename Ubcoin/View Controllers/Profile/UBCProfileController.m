@@ -119,21 +119,9 @@
 {
     if ([data.name isEqualToString:DEALS_ACTIVITY])
     {
-        cell.badgeView.hidden = !UBCNotificationDM.needShowDealItemBadge;
+        cell.badgeView.hidden = ![UBCNotificationDM profileStatusBadge];
     }
 }
-
-//func layoutCell(_ cell: UBDefaultTableViewCell!, for data: UBTableViewRowData!, indexPath: IndexPath!) {
-//    guard let chatDeal = data.data as? UBCChatRoom else {
-//        return
-//    }
-//
-//    let unreadCount = chatDeal.unreadCount
-//    unreadMessageCount += unreadCount
-//
-//    cell.badgeView.isHidden = unreadCount == 0
-//
-//}
 
 - (void)didSelectData:(UBTableViewRowData *)data indexPath:(NSIndexPath *)indexPath
 {
@@ -150,7 +138,6 @@
     }
     else if ([data.name isEqualToString:DEALS_ACTIVITY])
     {
-        UBCNotificationDM.needShowDealItemBadge = NO;
         [self.navigationController pushViewController:UBCDealsController.new animated:YES];
     }
 }

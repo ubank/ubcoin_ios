@@ -56,6 +56,7 @@
     UIApplication.sharedApplication.applicationIconBadgeNumber = 0;
     [UBCNotificationHandler checkDeliveredNotifications];
     
+    [UBCNotificationDM checkStateDidBecomeActive];
 }
     
 - (void) applicationDidEnterBackground:(UIApplication *)application

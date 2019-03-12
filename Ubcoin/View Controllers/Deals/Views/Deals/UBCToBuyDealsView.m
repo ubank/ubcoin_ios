@@ -38,6 +38,12 @@
     }
 }
 
+-(void) setIsNeedShowBadge:(BOOL)isNeedShowBadge {
+    [super setIsNeedShowBadge:isNeedShowBadge];
+    
+    UBCNotificationDM.needShowDealItemToBuyBadge = self.isNeedShowBadge;
+}
+
 #pragma mark - UBDefaultTableViewDelegate
 
 - (void)layoutCell:(UBDefaultTableViewCell *)cell forData:(UBTableViewRowData *)data indexPath:(NSIndexPath *)indexPath
@@ -48,7 +54,13 @@
     dealCell.info.text = deal.statusDescription;
     [dealCell setLocation:deal.item.location];
     
-    dealCell.badgeView.hidden =  ![UBCNotificationDM isContainsDeal:deal.ID];
+    if (deal.needAction == YES) {
+        self.isNeedShowBadge = YES;
+    }
+    
+    dealCell.badgeView.hidden = !deal.needAction;
+    
+    [dealCell.contentView setTopConstraintToSubview:dealCell.badgeView withValue:20 relatedBy:NSLayoutRelationGreaterThanOrEqual];
     
     if (data.isDisabled)
     {
@@ -67,7 +79,6 @@
     if ([self.delegate respondsToSelector:@selector(showDeal:)])
     {
         UBCDealDM *deal = data.data;
-         [UBCNotificationDM removeSaveDeal:deal.ID];
         
         [self.delegate showDeal:deal];
     }

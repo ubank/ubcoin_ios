@@ -13,5 +13,6 @@
 
 - (instancetype)initWithGood:(UBCGoodDM *)good;
 - (instancetype)initWithGoodID:(NSString *)goodID;
+- (instancetype)initWithGood:(UBCGoodDM *)good andDeal:(BOOL) isDeal;
 
 @end

@@ -59,7 +59,11 @@
 
 - (void)updateInfo
 {
-    
+   
+}
+
+- (void) setIsNeedShowBadge:(BOOL)isNeedShowBadge {
+    _isNeedShowBadge = isNeedShowBadge;
 }
 
 - (void)handleResponse:(NSArray *)itemsSections

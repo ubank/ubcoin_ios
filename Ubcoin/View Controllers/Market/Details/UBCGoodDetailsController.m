@@ -53,6 +53,7 @@
 
 @property (strong, nonatomic) UBCGoodDM *good;
 @property (strong, nonatomic) NSString *goodID;
+@property (nonatomic, assign) BOOL isDeal;
 
 @end
 
@@ -64,6 +65,17 @@
     if (self)
     {
         self.good = good;
+    }
+    return self;
+}
+
+- (instancetype)initWithGood:(UBCGoodDM *)good andDeal:(BOOL) isDeal
+{
+    self = [super init];
+    if (self)
+    {
+        self.good = good;
+        self.isDeal = isDeal;
     }
     return self;
 }
@@ -272,7 +284,7 @@
     }
     else
     {
-        self.connectToSellerView.hidden = NO;
+        self.connectToSellerView.hidden = _isDeal;
         self.sellerSectionView.hidden = NO;
         
         [self.sellerView setupWithSeller:self.good.seller isSeller:YES];

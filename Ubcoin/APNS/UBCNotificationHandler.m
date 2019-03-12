@@ -13,6 +13,7 @@
 #import "UBCGoodDetailsController.h"
 #import "UBCTabBarController.h"
 #import "UBCProfileController.h"
+#import "UBCDealsController.h"
 
 #import "Ubcoin-Swift.h"
 
@@ -130,20 +131,31 @@
     if ([activity isEqualToString:CHAT_ACTIVITY])
     {
         UBCNotificationDM.needShowChatBadge = YES;
-    }
-    else if ([activity isEqualToString:PURCHASE_ACTIVITY])
-    {
-        UBCNotificationDM.needShowDealItemBadge = YES;
-        [UBCNotificationDM saveDealStatusChange:dealId];
-    }
-
-    if ([mainAppDelegate.navigationController.currentController isKindOfClass:[UBCMessagesListController class]]) {
-       [mainAppDelegate.navigationController.currentController  updateInfoWithPushParams:params];
+        if ([mainAppDelegate.navigationController.currentController isKindOfClass:[UBCMessagesListController class]]) {
+            [mainAppDelegate.navigationController.currentController  updateInfoWithPushParams:params];
+        }
     }
     
-    if ([mainAppDelegate.navigationController.currentController isKindOfClass:[UBCProfileController class]]) {
-        [mainAppDelegate.navigationController.currentController updateInfo];
+    if ([activity isEqualToString:PURCHASE_ACTIVITY])
+    {
+        UBCNotificationDM.needShowDealItemToSoldBadge = YES;
+        UBCNotificationDM.needShowDealItemToBuyBadge = YES;
+        
+        if ([mainAppDelegate.navigationController.currentController isKindOfClass:[UBCProfileController class]]) {
+            [mainAppDelegate.navigationController.currentController updateInfo];
+        }
+    
+        if ([mainAppDelegate.navigationController.currentController isKindOfClass:[UBCDealsController class]]) {
+            [mainAppDelegate.navigationController.currentController updateInfo];
+        }
+        
+        
+        
     }
+
+
+    
+
     
 }
 

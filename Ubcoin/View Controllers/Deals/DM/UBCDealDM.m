@@ -24,6 +24,7 @@
         _currencyType = dict[@"currencyType"];
         _comment = dict[@"comment"];
         _withDelivery = [dict[@"withDelivery"] boolValue];
+        _needAction = [dict[@"needAction"] boolValue];
         _statusDescription = dict[@"statusDescription"];
         _item = [[UBCGoodDM alloc] initWithDictionary:dict[@"item"]];
         _buyer = [[UBCSellerDM alloc] initWithDictionary:dict[@"buyer"]];
@@ -47,9 +48,23 @@
 
 - (UBTableViewRowData *)rowData
 {
-    UBTableViewRowData *data = self.item.rowData;
+    UBTableViewRowData *data = UBTableViewRowData.new;
+    data.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     data.data = self;
     data.className = NSStringFromClass(UBCDealCell.class);
+    
+    NSString * itemPriceString = [NSString stringWithFormat:@"%@ UBC", self.item.price.priceString];
+    
+    if ([self.currencyType isEqualToString:@"ETH"]) {
+        itemPriceString =  [NSString stringWithFormat:@"%@ ETH", self.item.priceInETH.coinsPriceString];
+    }
+    
+    data.title = itemPriceString;
+    data.desc = self.item.title;
+    data.iconURL = [self.item.images firstObject];
+    data.icon = [UIImage imageNamed:@"item_default_image"];
+    data.height = 95;
+
     return data;
 }
 
