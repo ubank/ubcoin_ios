@@ -51,7 +51,11 @@ class UBCDealInfoController: UBViewController {
     
     private var completion: (() -> Void)?
     
-    private var isNowBuy:Bool = false
+    private var isNowBuy:Bool = false {
+        didSet {
+            navigationController?.interactivePopGestureRecognizer?.isEnabled = !isNowBuy
+        }
+    }
     
     private var deliveryAddressText = ""
     
@@ -104,6 +108,16 @@ class UBCDealInfoController: UBViewController {
         } else {
             setupContent()
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = !isNowBuy
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
     
     override func navigationButtonBackClick(_ sender: Any!) {
