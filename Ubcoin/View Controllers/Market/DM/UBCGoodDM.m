@@ -41,9 +41,6 @@
         
         _seller = [[UBCSellerDM alloc] initWithDictionary:dict[@"user"]];
         _category = [[UBCCategoryDM alloc] initWithDictionary:dict[@"category"]];
-//        _deals = [dict[@"purchases"] map:^id(id item) {
-//            return [[UBCDealDM alloc] initWithDictionary:item];
-//        }];
         
         if (dict[@"activePurchase"])
         {
@@ -99,12 +96,6 @@
         [UBAlert showAlertWithTitle:nil andMessage:@"str_you_need_to_be_logged_in"];
     }
 }
-
-//- (NSArray *)activeDeals
-//{
-//    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"status == %@", DEAL_STATUS_ACTIVE];
-//    return [self.deals filteredArrayUsingPredicate:predicate];
-//}
 
 - (UBTableViewRowData *)rowData
 {
@@ -180,13 +171,5 @@
     }
 }
 
-//- (UBCDealDM *) currentDeal
-//{
-//    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(UBCDealDM *deal, NSDictionary *bindings) {
-//        return ![deal.status isEqualToString:DEAL_STATUS_CANCELLED];
-//    }];
-//    
-//    return [self.deals filteredArrayUsingPredicate:predicate].firstObject;
-//}
 
 @end
