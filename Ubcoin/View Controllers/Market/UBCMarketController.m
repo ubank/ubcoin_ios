@@ -60,6 +60,11 @@
                                              selector:@selector(favoritesChanged:)
                                                  name:kNotificationFavoritesChanged
                                                object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applyFilters)
+                                                 name:kNotificationItemChanged
+                                               object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -150,6 +155,25 @@
     }
     
     [self updateInfo];
+}
+
+- (void) updateInfoIfBuy:(NSString *) itemId
+{
+    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(UBCGoodDM *item, NSDictionary *bindings) {
+        return [item.ID isEqualToString: itemId];
+    }];
+    
+    UBCGoodDM *item =  [self.items filteredArrayUsingPredicate:predicate].firstObject;
+    if (item)
+    {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:[self.items indexOfObject:item] inSection:0];
+        [self.collectionView performBatchUpdates:^{
+            [self.items removeObject:item];
+            [self.collectionView deleteItemsAtIndexPaths: @[indexPath]];
+        } completion:^(BOOL finished) {
+            [self.collectionView reloadData];
+        }];
+    }
 }
 
 - (void)updateInfo

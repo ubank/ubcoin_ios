@@ -50,13 +50,6 @@
     [self.sellDealsView.tableView.refreshControll endRefreshing];
 }
 
--(void) viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [_buyDealsView updateInfo];
-    [_sellDealsView updateInfo];
-}
-
 -(void) updateInfo {
     [_buyDealsView updateInfo];
     [_sellDealsView updateInfo];
@@ -86,7 +79,10 @@
 
 - (void)showDeal:(UBCDealDM *)deal
 {
-    UBCDealInfoController *controller = [[UBCDealInfoController alloc] initWithDeal:deal];
+    __weak typeof(self) weakSelf = self;
+    UBCDealInfoController *controller = [[UBCDealInfoController alloc] initWithDeal:deal completion:^{
+        [weakSelf updateInfo];
+    }];
     [self.navigationController pushViewController:controller animated:YES];
 }
 
@@ -94,7 +90,10 @@
 {
     if (item.activePurchase)
     {
-        UBCDealInfoController *controller = [[UBCDealInfoController alloc] initWithItem:item deal:item.activePurchase];
+        __weak typeof(self) weakSelf = self;
+        UBCDealInfoController *controller = [[UBCDealInfoController alloc] initWithItem:item deal:item.activePurchase completion:^{
+            [weakSelf updateInfo];
+        }];
         [self.navigationController pushViewController:controller animated:YES];
         return;
     }

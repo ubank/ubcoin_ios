@@ -527,7 +527,7 @@
 
 - (void)didSelectWithDeal:(UBCDealDM *)deal
 {
-    UBCDealInfoController *controller = [[UBCDealInfoController alloc] initWithDeal:deal];
+    UBCDealInfoController *controller = [[UBCDealInfoController alloc] initWithDeal:deal completion: nil];
     [self.navigationController pushViewController:controller animated:YES];
 }
 

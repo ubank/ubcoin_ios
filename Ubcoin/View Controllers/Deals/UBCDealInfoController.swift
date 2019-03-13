@@ -49,13 +49,15 @@ class UBCDealInfoController: UBViewController {
     private var purchaseDM: UBCPurchaseDM?
     private var content = [UBTableViewRowData]()
     
+    private var completion: (() -> Void)?
+    
     private var isNowBuy:Bool = false
     
     private var deliveryAddressText = ""
     
-    @objc convenience init(item: UBCGoodDM, deal: UBCDealDM) {
+    @objc convenience init(item: UBCGoodDM, deal: UBCDealDM, completion: (() -> Void)? = nil) {
         self.init()
-        
+        self.completion = completion
         self.purchaseDM =  UBCPurchaseDM(item: item, deal: deal)
     }
 
@@ -65,9 +67,9 @@ class UBCDealInfoController: UBViewController {
         self.purchaseDM = UBCPurchaseDM(item: item)
     }
 
-    @objc convenience init(deal: UBCDealDM) {
+    @objc convenience init(deal: UBCDealDM, completion: (() -> Void)? = nil) {
         self.init()
-        
+        self.completion = completion
         self.purchaseDM = UBCPurchaseDM(deal: deal)
     }
 
@@ -106,6 +108,10 @@ class UBCDealInfoController: UBViewController {
     
     override func navigationButtonBackClick(_ sender: Any!) {
         if isNowBuy == true {
+            if let tabBarController = navigationController?.viewControllers.first as? UITabBarController,
+                let marketController = tabBarController.selectedViewController as? UBCMarketController  {
+                marketController.updateInfoIfBuy(self.purchaseDM?.item?.id)
+            }
             navigationController?.popToRootViewController(animated: true)
         } else {
             navigationController?.popViewController(animated: true)
@@ -258,6 +264,9 @@ class UBCDealInfoController: UBViewController {
             if let deal = deal {
                 self?.purchaseDM = UBCPurchaseDM(deal: deal)
                 self?.setupContent()
+                if let _completion = self?.completion {
+                    _completion()
+                }
             }
         }
     }
@@ -272,6 +281,9 @@ class UBCDealInfoController: UBViewController {
             if let deal = deal {
                 self?.purchaseDM = UBCPurchaseDM(deal: deal)
                 self?.setupContent()
+                if let _completion = self?.completion {
+                    _completion()
+                }
             }
         })
         
@@ -288,6 +300,10 @@ class UBCDealInfoController: UBViewController {
                 self?.stopActivityIndicator()
                 
                 if success {
+                    if let _completion = self?.completion {
+                        _completion()
+                    }
+                    NotificationCenter.default.post(name: Notification.Name(rawValue: kNotificationItemChanged), object: nil)
                     self?.navigationController?.popViewController(animated: true)
                 }
             }
@@ -310,6 +326,9 @@ class UBCDealInfoController: UBViewController {
                                             self?.purchaseDM = UBCPurchaseDM(deal: deal)
                                             self?.setupContent()
                                             self?.isNowBuy = true
+                                            if let _completion = self?.completion {
+                                                _completion()
+                                            }
                                         }
         }
     }
@@ -352,6 +371,9 @@ extension UBCDealInfoController: UBCBuyerDeliveryConfirmedDelegate {
             if let deal = deal {
                 self?.purchaseDM = UBCPurchaseDM(deal: deal)
                 self?.setupContent()
+                if let _completion = self?.completion {
+                    _completion()
+                }
             }
             
         })
@@ -371,6 +393,9 @@ extension UBCDealInfoController: UBCSellerDeliveryCostViewDelegate {
             if let deal = deal {
                 self?.purchaseDM = UBCPurchaseDM(deal: deal)
                 self?.setupContent()
+                if let _completion = self?.completion {
+                    _completion()
+                }
             }
         })
     }
@@ -391,6 +416,9 @@ extension UBCDealInfoController: UBCChangeDeliveryViewDelegate {
             if let deal = deal {
                 self?.purchaseDM = UBCPurchaseDM(deal: deal)
                 self?.setupContent()
+                if let _completion = self?.completion {
+                    _completion()
+                }
             }
         })
     }
