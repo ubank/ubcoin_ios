@@ -115,15 +115,15 @@
     return YES;
 }
 
-+ (void) updateInfoCurrentDeal:(NSString *) dealId
++ (void)updateInfoCurrentDeal:(NSString *)dealId
 {
-    if ([mainAppDelegate.navigationController.currentController isKindOfClass:[UBCDealInfoController class]])
+    if ([mainAppDelegate.navigationController.currentController isKindOfClass:[UBCDealInfoController class]] && dealId)
     {
         [mainAppDelegate.navigationController.currentController  updateInfoWithPushParams:@{@"dealId" : dealId}];
     }
 }
 
-+ (void) updateInfoChats
++ (void)updateInfoChats
 {
     if ([mainAppDelegate.navigationController.currentController isKindOfClass:[UBCMessagesListController class]])
     {
@@ -131,22 +131,20 @@
     }
 }
 
-+ (void) updateInfoDeals
++ (void)updateInfoDeals
 {
-    if ([mainAppDelegate.navigationController.currentController isKindOfClass:[UBCProfileController class]])
+    UBViewController *currentController = mainAppDelegate.navigationController.currentController;
+    if ([currentController isKindOfClass:[UBCProfileController class]] ||
+        [currentController isKindOfClass:[UBCDealsController class]])
     {
-        [mainAppDelegate.navigationController.currentController updateInfo];
-    }
-    
-    if ([mainAppDelegate.navigationController.currentController isKindOfClass:[UBCDealsController class]])
-    {
-        [mainAppDelegate.navigationController.currentController updateInfo];
+        [currentController updateInfo];
     }
 }
 
-+ (void) checkDeliveredNotifications {
-    
-    [[UBCDataProvider sharedProvider] checkUnreadItems:^(BOOL isMessages, BOOL isDeals) {
++ (void)checkDeliveredNotifications
+{
+    [[UBCDataProvider sharedProvider] checkUnreadItems:^(BOOL isMessages, BOOL isDeals)
+    {
         UBCNotificationDM.needShowChatBadge = isMessages;
         UBCNotificationDM.needShowDealItemToSoldBadge = isDeals;
         UBCNotificationDM.needShowDealItemToBuyBadge = isDeals;
@@ -162,11 +160,9 @@
                 if (data)
                 {
                     [UNUserNotificationCenter.currentNotificationCenter removeDeliveredNotificationsWithIdentifiers:@[notification.request.identifier]];
-                    
                 }
             }
         });
-        
     }];
 }
 
