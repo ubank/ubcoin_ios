@@ -164,6 +164,8 @@ class UBCDealInfoController: UBViewController {
             
             //let status = purchaseDM.deal?.id
             
+            //MARK: Global Views
+            
             let itemIconURL = URL(string: item.imageURL ?? "")
             itemIcon.sd_setImage(with: itemIconURL, placeholderImage: UIImage(named: "item_default_image"), options: [], completed: nil)
             itemTitle.text = item.title
@@ -177,7 +179,10 @@ class UBCDealInfoController: UBViewController {
             let person = item.isMyItem ? purchaseDM.deal?.buyer : purchaseDM.seller
             sellerView.setup(seller: person, isSeller: !item.isMyItem)
             
+            statusImageView.isHidden = item.isDigital
+            
             if item.isDigital {
+                
                 buyerDeliveryAddressView.isHidden = true
                 buyerDeliveryConfirmView.isHidden = true
                 currencyConfirmButtonView.isHidden = false
@@ -187,6 +192,8 @@ class UBCDealInfoController: UBViewController {
                 sellerDeliveryCostView.isHidden = true
                 
             } else {
+                
+                //MARK: Delivery Views
                 
                 buyerDeliveryAddressView.isHidden = !deliveryView.isDelivery && !deliveryView.isHidden || purchaseDM.isPurchase
                 buyerDeliveryAddressView.deliveryTextView.text = deliveryAddressText
@@ -214,18 +221,23 @@ class UBCDealInfoController: UBViewController {
                 
             }
             
-            let needShow = item.isDigital && purchaseDM.deal?.status == DEAL_STATUS_ACTIVE && !item.isMyItem
-            confirmDigitalItemView.isHidden = !needShow
+            //MARK: Confirm button
             
-            if !needShow {
-                let isPriceIsDelivery = !item.isMyItem && purchaseDM.deal?.status == DEAL_STATUS_DELIVERY
-                confirmDigitalItemButton.title = isPriceIsDelivery ? "str_received_item_ok".localizedString() : "str_confirm_file_ok".localizedString()
-                confirmDigitalItemView.isHidden = !isPriceIsDelivery
+            confirmDigitalItemButton.title = purchaseDM.confirmButtonTitle
+            confirmDigitalItemView.isHidden = true
+            
+            if purchaseDM.isNeedShowForDigitalItem {
+                confirmDigitalItemView.isHidden = false
             }
-            
-            statusImageView.isHidden = item.isDigital
-            
+            else if purchaseDM.isNeedShowForMeetingItem {
+                confirmDigitalItemView.isHidden = false
+            }
+            else if purchaseDM.isNeedShowForDeliveryItem {
+                confirmDigitalItemView.isHidden = false
+            }
         }
+        
+        //MARK: Status
     
         statusImageView.image = purchaseDM.deliveryImage
         statusTitle.text = purchaseDM.longStatusTitle

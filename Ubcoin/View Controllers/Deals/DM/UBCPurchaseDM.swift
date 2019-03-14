@@ -39,6 +39,35 @@ class UBCPurchaseDM: NSObject {
         return itemPriceString
     }
     
+    var confirmButtonTitle : String {
+        return isNeedShowForMeetingItem || isNeedShowForDeliveryItem  ? "str_received_item_ok".localizedString() : "str_confirm_file_ok".localizedString()
+    }
+    
+    var isNeedShowForDigitalItem : Bool {
+        guard let item = item, let deal = deal else {
+            return false
+        }
+        
+        return item.isDigital && deal.status == DEAL_STATUS_ACTIVE && !item.isMyItem
+    }
+    
+    var isNeedShowForMeetingItem : Bool {
+        guard let item = item, let deal = deal, item.isDigital == false else {
+            return false
+        }
+        
+        return isPurchase && deal.status == DEAL_STATUS_ACTIVE && !item.isMyItem && deal.withDelivery == false
+    }
+    
+    var isNeedShowForDeliveryItem : Bool {
+        
+        guard let item = item, let deal = deal, item.isDigital == false else {
+            return false
+        }
+        
+        return isPurchase && deal.status == DEAL_STATUS_DELIVERY && !item.isMyItem && deal.withDelivery
+    }
+    
     var longStatusDesc: String? {
         if isPurchase {
             guard let status = deal?.currentStatus else { return "" }
