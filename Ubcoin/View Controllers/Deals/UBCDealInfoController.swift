@@ -120,6 +120,22 @@ class UBCDealInfoController: UBViewController {
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
     
+    override func updateInfo(withPushParams params: [AnyHashable : Any]!) {
+        guard let checkDealId = params["dealId"] as? String, let item = purchaseDM?.item else {
+            return
+        }
+        
+        UBCDataProvider.shared.checkStatus(forDeal: checkDealId, withCompletionBlock: { [weak self] success, deal in
+            guard let _deal = deal else {
+                return
+            }
+            self?.purchaseDM =  UBCPurchaseDM(item: item, deal: _deal)
+            self?.setupContent()
+
+        })
+        
+    }
+    
     override func navigationButtonBackClick(_ sender: Any!) {
         if isNowBuy == true {
             if let tabBarController = navigationController?.viewControllers.first as? UITabBarController,

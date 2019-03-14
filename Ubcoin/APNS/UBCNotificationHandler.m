@@ -106,9 +106,21 @@
     else if (customData)
     {
         [UBCNotificationHandler checkDeliveredNotifications];
+        if ([customData[@"activity"] isEqualToString:PURCHASE_ACTIVITY])
+        {
+            [self updateInfoCurrentDeal:customData[@"id"]];
+        }
     }
     
     return YES;
+}
+
++ (void) updateInfoCurrentDeal:(NSString *) dealId
+{
+    if ([mainAppDelegate.navigationController.currentController isKindOfClass:[UBCDealInfoController class]])
+    {
+        [mainAppDelegate.navigationController.currentController  updateInfoWithPushParams:@{@"dealId" : dealId}];
+    }
 }
 
 + (void) updateInfoChats
