@@ -65,5 +65,6 @@
 + (NSURL *)startDeliveryForDeal:(NSString *)dealID;
 
 + (NSURL *)subscribeAPNS;
++ (NSURL *) checkUnreadItem;
 
 @end

@@ -229,6 +229,12 @@
     return [NSURL URLWithString:url];
 }
 
++ (NSURL *) checkUnreadItem
+{
+    NSString * url = [SERVER_URL stringByAppendingString:@"items/updates"];
+    return [NSURL URLWithString:url];
+}
+
 #pragma mark -
 
 + (NSURL *)buyItem

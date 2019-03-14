@@ -1033,5 +1033,20 @@
     }
 }
 
+-(void)checkUnreadItems:(void (^)(BOOL isMessages, BOOL isDeals)) completionBlock
+{
+    NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:[UBCURLProvider checkUnreadItem]];
+    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (completionBlock && responseObject)
+         {
+             NSInteger changedDeals = [responseObject[@"statusUpdatesCount"] integerValue];
+             NSInteger unreadMessages = [responseObject[@"unreadCount"] integerValue];
+             
+             completionBlock(unreadMessages > 0, changedDeals > 0);
+         }
+     }];
+}
+
 @end
 

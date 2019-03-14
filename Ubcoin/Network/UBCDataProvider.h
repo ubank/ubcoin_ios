@@ -77,5 +77,6 @@
 - (void)startDeliveryForDeal:(NSString *)dealID withCompletionBlock:(void (^)(BOOL success, UBCDealDM *deal))completionBlock;
 
 - (void)subscribeAPNS;
+- (void)checkUnreadItems:(void (^)(BOOL isMessages, BOOL isDeals)) completionBlock;
 
 @end

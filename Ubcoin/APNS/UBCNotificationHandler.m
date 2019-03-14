@@ -93,25 +93,10 @@
 
 #pragma mark - Activities Handle
 
-+ (void) checkDeliveredNotifications {
-    
-    [UNUserNotificationCenter.currentNotificationCenter getDeliveredNotificationsWithCompletionHandler:^(NSArray<UNNotification *> *notifications) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            for (UNNotification *notif in notifications) {
-                NSDictionary *userInfo = notif.request.content.userInfo;
-                [UBCNotificationHandler needShowPushWithUserInfo:userInfo];
-            }
-            [UNUserNotificationCenter.currentNotificationCenter removeAllDeliveredNotifications];
-        });
-        
-    }];
-}
-
 + (BOOL)needShowPushWithUserInfo:(NSDictionary *)userInfo
 {
     NSDictionary *data = userInfo[@"data"];
     NSDictionary *customData = userInfo[@"custom"][@"a"];
-  //  NSString *itemId = userInfo[@"custom"][@"i"];
     
     if (data)
     {
@@ -120,43 +105,57 @@
     }
     else if (customData)
     {
-        [UBCNotificationHandler handleCustomPushActivity:customData[@"activity"]  withParams:customData[@"data"] withId:customData[@"id"]];
+        [UBCNotificationHandler checkDeliveredNotifications];
     }
     
     return YES;
 }
 
-+ (void)handleCustomPushActivity:(NSString *) activity withParams:(NSDictionary *) params withId:(NSString *) dealId
++ (void) updateInfoChats
 {
-    if ([activity isEqualToString:CHAT_ACTIVITY])
+    if ([mainAppDelegate.navigationController.currentController isKindOfClass:[UBCMessagesListController class]])
     {
-        UBCNotificationDM.needShowChatBadge = YES;
-        if ([mainAppDelegate.navigationController.currentController isKindOfClass:[UBCMessagesListController class]]) {
-            [mainAppDelegate.navigationController.currentController  updateInfoWithPushParams:params];
-        }
+        [mainAppDelegate.navigationController.currentController  updateInfoWithPushParams:@{}];
+    }
+}
+
++ (void) updateInfoDeals
+{
+    if ([mainAppDelegate.navigationController.currentController isKindOfClass:[UBCProfileController class]])
+    {
+        [mainAppDelegate.navigationController.currentController updateInfo];
     }
     
-    if ([activity isEqualToString:PURCHASE_ACTIVITY])
+    if ([mainAppDelegate.navigationController.currentController isKindOfClass:[UBCDealsController class]])
     {
-        UBCNotificationDM.needShowDealItemToSoldBadge = YES;
-        UBCNotificationDM.needShowDealItemToBuyBadge = YES;
-        
-        if ([mainAppDelegate.navigationController.currentController isKindOfClass:[UBCProfileController class]]) {
-            [mainAppDelegate.navigationController.currentController updateInfo];
-        }
-    
-        if ([mainAppDelegate.navigationController.currentController isKindOfClass:[UBCDealsController class]]) {
-            [mainAppDelegate.navigationController.currentController updateInfo];
-        }
-        
-        
-        
+        [mainAppDelegate.navigationController.currentController updateInfo];
     }
+}
 
-
++ (void) checkDeliveredNotifications {
     
-
+    [[UBCDataProvider sharedProvider] checkUnreadItems:^(BOOL isMessages, BOOL isDeals) {
+        UBCNotificationDM.needShowChatBadge = isMessages;
+        UBCNotificationDM.needShowDealItemToSoldBadge = isDeals;
+        UBCNotificationDM.needShowDealItemToBuyBadge = isDeals;
+        
+        [UBCNotificationHandler updateInfoChats];
+        [UBCNotificationHandler updateInfoDeals];
+    }];
     
+    [UNUserNotificationCenter.currentNotificationCenter getDeliveredNotificationsWithCompletionHandler:^(NSArray<UNNotification *> *notifications) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            for (UNNotification *notification in notifications) {
+                 NSDictionary *data = notification.request.content.userInfo[@"custom"][@"a"];
+                if (data)
+                {
+                    [UNUserNotificationCenter.currentNotificationCenter removeDeliveredNotificationsWithIdentifiers:@[notification.request.identifier]];
+                    
+                }
+            }
+        });
+        
+    }];
 }
 
 + (void)handlePushWithUserInfo:(NSDictionary *)userInfo
