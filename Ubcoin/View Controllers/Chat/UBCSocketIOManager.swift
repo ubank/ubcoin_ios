@@ -19,7 +19,7 @@ public enum UBTypeIOMessage : String{
 
 class UBCSocketIOManager: NSObject {
     
-    static let sPath = "https://qa.ubcoin.io"
+    static let sPath = "https://my.ubcoin.io"
     static let manager = SocketManager(socketURL: URL(string: sPath)!, config: [.log(false), .compress])
     static let socket = manager.defaultSocket
     //private static var user = UBCUserDM.loadProfile()
