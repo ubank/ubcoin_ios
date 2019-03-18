@@ -10,8 +10,9 @@
 #import "UBCollectionViewSwitch.h"
 #import "UBCToBuyDealsView.h"
 #import "UBCToSellDealsView.h"
-#import "UBCChatController.h"
 #import "UBCGoodDetailsController.h"
+
+#import "Ubcoin-Swift.h"
 
 @interface UBCDealsController () <UBCDealsViewDelegate>
 
@@ -49,6 +50,11 @@
     [self.sellDealsView.tableView.refreshControll endRefreshing];
 }
 
+-(void) updateInfo {
+    [_buyDealsView updateInfo];
+    [_sellDealsView updateInfo];
+}
+
 #pragma mark -
 
 - (void)setupViews
@@ -71,14 +77,28 @@
 
 #pragma mark - UBCDealsViewDelegate
 
-- (void)openChatForItem:(UBCGoodDM *)item
+- (void)showDeal:(UBCDealDM *)deal
 {
-    UBCChatController *controller = [[UBCChatController alloc] initWithItem:item];
+    __weak typeof(self) weakSelf = self;
+    UBCDealInfoController *controller = [[UBCDealInfoController alloc] initWithDeal:deal completion:^{
+        [weakSelf updateInfo];
+    }];
     [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void)showItem:(UBCGoodDM *)item
 {
+    if (item.activePurchase)
+    {
+        __weak typeof(self) weakSelf = self;
+        UBCDealInfoController *controller = [[UBCDealInfoController alloc] initWithItem:item deal:item.activePurchase completion:^{
+            [weakSelf updateInfo];
+        }];
+        [self.navigationController pushViewController:controller animated:YES];
+        return;
+    }
+        
+        
     UBCGoodDetailsController *controller = [UBCGoodDetailsController.alloc initWithGood:item];
     [self.navigationController pushViewController:controller animated:YES];
 }

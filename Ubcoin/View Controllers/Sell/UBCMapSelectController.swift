@@ -18,6 +18,7 @@ class UBCMapSelectController: UBViewController {
     private var geocode = CLGeocoder()
     private var currentLocation: CLLocation?
     private var selectLocation: CLLocation?
+    private var canSelectLocation: Bool = true
     
     private lazy var locationManager: CLLocationManager = { [unowned self] in
         let locationManager = CLLocationManager()
@@ -51,22 +52,34 @@ class UBCMapSelectController: UBViewController {
         return label
     }()
     
-    convenience init(title: String) {
+    convenience init(title: String, location: CLLocation? = nil) {
         self.init()
         
         self.title = title
+        
+        if let location = location {
+            self.selectLocation = location
+            self.canSelectLocation = false
+        }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationContainer.rightTitle = "ui_button_save".localizedString()
+        if self.canSelectLocation {
+            self.navigationContainer.rightTitle = "ui_button_save".localizedString()
+        }
         
         self.setupViews()
     
         if CLLocationManager.locationServicesEnabled() {
             self.locationManager.requestWhenInUseAuthorization()
             self.locationManager.startUpdatingLocation()
+        }
+        
+        if let selectLocation = self.selectLocation {
+            self.select(coordinate: selectLocation.coordinate)
+            self.mapView.camera(toCoord: selectLocation.coordinate, withZoomLevel: 15)
         }
     }
     
@@ -128,7 +141,9 @@ class UBCMapSelectController: UBViewController {
 extension UBCMapSelectController: GMSMapViewDelegate {
     
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
-        self.select(coordinate: coordinate)
+        if self.canSelectLocation {
+            self.select(coordinate: coordinate)
+        }
     }
 }
 
@@ -136,7 +151,7 @@ extension UBCMapSelectController: GMSMapViewDelegate {
 extension UBCMapSelectController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if self.currentLocation == nil, let userLocation = locations.last  {
+        if self.currentLocation == nil, self.canSelectLocation, let userLocation = locations.last  {
             self.mapView.camera(toCoord: userLocation.coordinate, withZoomLevel: 15)
             self.currentLocation = userLocation
             self.select(coordinate: self.currentLocation?.coordinate)

@@ -18,6 +18,7 @@
     [request setValue:[self userAgent] forHTTPHeaderField:@"User-Agent"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:UBLocal.shared.language forHTTPHeaderField:@"Accept-Language"];
     
     NSString *token = UBCKeyChain.authorization;
     if ([token isNotEmpty])

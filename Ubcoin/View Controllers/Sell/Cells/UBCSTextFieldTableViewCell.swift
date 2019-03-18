@@ -66,7 +66,7 @@ extension UBCSTextFieldTableViewCell: UITextFieldDelegate {
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if let text = textField.text as NSString? {
-            let newString = text.replacingCharacters(in: range, with: string)
+            let newString = text.replacingCharacters(in: range, with: string).replacingOccurrences(of: ",", with: ".")
             textField.text = newString
             
             if let delegate = self.delegate, var content = self.content {

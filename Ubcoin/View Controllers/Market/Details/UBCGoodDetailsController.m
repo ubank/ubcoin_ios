@@ -11,7 +11,6 @@
 #import "UBCPhotoCollectionViewCell.h"
 #import "UBCGoodsCollectionView.h"
 #import "HUBNavigationBarView.h"
-#import "UBCChatController.h"
 #import "UBCInfoLabel.h"
 #import "UBCGoodDM.h"
 #import "UBCKeyChain.h"
@@ -39,7 +38,6 @@
 
 @property (weak, nonatomic) IBOutlet UIView *sellerSectionView;
 @property (weak, nonatomic) IBOutlet UBCSellerView *sellerView;
-@property (weak, nonatomic) IBOutlet UBCBuyersView *buyersView;
 
 @property (weak, nonatomic) IBOutlet UIView *digitalGoodView;
 @property (weak, nonatomic) IBOutlet HUBLabel *digitalGoodDesc;
@@ -55,6 +53,7 @@
 
 @property (strong, nonatomic) UBCGoodDM *good;
 @property (strong, nonatomic) NSString *goodID;
+@property (nonatomic, assign) BOOL isDeal;
 
 @end
 
@@ -66,6 +65,17 @@
     if (self)
     {
         self.good = good;
+    }
+    return self;
+}
+
+- (instancetype)initWithGood:(UBCGoodDM *)good andDeal:(BOOL) isDeal
+{
+    self = [super init];
+    if (self)
+    {
+        self.good = good;
+        self.isDeal = isDeal;
     }
     return self;
 }
@@ -271,17 +281,13 @@
     {
         self.connectToSellerView.hidden = YES;
         self.sellerSectionView.hidden = YES;
-        self.buyersView.hidden = NO;
-        
-        [self.buyersView updateWithDeals:self.good.deals];
     }
     else
     {
-        self.connectToSellerView.hidden = NO;
+        self.connectToSellerView.hidden = _isDeal;
         self.sellerSectionView.hidden = NO;
-        self.buyersView.hidden = YES;
         
-        [self.sellerView setupWithSeller:self.good.seller];
+        [self.sellerView setupWithSeller:self.good.seller isSeller:YES];
     }
 }
 
@@ -315,12 +321,12 @@
 {
     if (UBCKeyChain.authorization)
     {
-        UBCChatController *controller = [[UBCChatController alloc] initWithItem:self.good];
+        UBCDealInfoController *controller = [[UBCDealInfoController alloc] initWithItem:self.good];
         [self.navigationController pushViewController:controller animated:YES];
     }
     else
     {
-        [UBAlert showAlertWithTitle:nil andMessage:@"str_you_need_to_be_logged_in"];
+        [self goToLoginViewController];
     }
 }
 
@@ -521,7 +527,7 @@
 
 - (void)didSelectWithDeal:(UBCDealDM *)deal
 {
-    UBCChatController *controller = [[UBCChatController alloc] initWithDeal:deal];
+    UBCDealInfoController *controller = [[UBCDealInfoController alloc] initWithDeal:deal completion: nil];
     [self.navigationController pushViewController:controller animated:YES];
 }
 
@@ -531,6 +537,24 @@
 {
     UBCSellerController *controller = [[UBCSellerController alloc] initWithSeller:seller];
     [self.navigationController pushViewController:controller animated:YES];
+}
+
+- (void)chatWithSeller:(UBCSellerDM *)seller
+{
+    if (UBCKeyChain.authorization)
+    {
+        UBCChatController *controller = [[UBCChatController alloc] initWithItem:self.good];
+        [self.navigationController pushViewController:controller animated:YES];    }
+    else
+    {
+        [self goToLoginViewController];
+    }
+}
+
+- (void) goToLoginViewController
+{
+    [UBAlert showAlertWithTitle:nil andMessage:@"str_you_need_to_be_logged_in"];
+    [self.navigationController pushViewController:[UBCStartLoginController new] animated:YES];
 }
 
 @end

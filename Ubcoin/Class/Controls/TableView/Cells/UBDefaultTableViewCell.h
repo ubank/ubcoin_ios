@@ -10,6 +10,10 @@
 
 @interface UBDefaultTableViewCell : UBTableViewCell
 
+@property (strong, nonatomic, readonly) UIStackView *horizontalStackView;
+
+@property (strong, nonatomic) UIView *badgeView;
+
 @property (strong, nonatomic, readonly) UIImageView *icon;
 
 @property (strong, nonatomic) UIStackView *leftStackView;

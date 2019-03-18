@@ -24,6 +24,7 @@
 #import "UBCDealCell.h"
 
 #import <AFNetworking/UIKit+AFNetworking.h>
+#import <OneSignal/OneSignal.h>
 
 #import "Ubcoin-Swift.h"
 
@@ -242,6 +243,7 @@
              responseObject = [responseObject removeNulls];
              UBCKeyChain.authorization = responseObject[@"accessToken"];
              [UBCUserDM saveUserDict:responseObject[@"user"]];
+             [UBCDataProvider.sharedProvider updateBalanceWithCompletionBlock:nil];
          }
          
          if (completionBlock)
@@ -277,6 +279,7 @@
              responseObject = [responseObject removeNulls];
              UBCKeyChain.authorization = responseObject[@"accessToken"];
              [UBCUserDM saveUserDict:responseObject[@"user"]];
+             [UBCDataProvider.sharedProvider updateBalanceWithCompletionBlock:nil];
          }
          
          if (completionBlock)
@@ -318,7 +321,7 @@
 
 - (void)logoutWithCompletionBlock:(void (^)(BOOL))completionBlock
 {
-    NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider logout] andParams:nil];
+    NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider logout] andParams:@{@"playerId" : [NSString notEmptyString:[OneSignal getPermissionSubscriptionState].subscriptionStatus.userId]}];
     [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
      {
          if (completionBlock)
@@ -536,44 +539,244 @@
 
 #pragma mark - DEALS
 
-- (void)dealsToSellListWithPageNumber:(NSUInteger)page withCompletionBlock:(void (^)(BOOL, NSArray *, BOOL))completionBlock
+- (void)dealsToSellWithCompletionBlock:(void (^)(BOOL, NSArray *))completionBlock
 {
-    NSURL *url = [UBCURLProvider dealsToSellListWithPageNumber:page];
+    NSURL *url = [UBCURLProvider dealsToSell];
     NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:url];
+    
+     __weak typeof(self) weakSelf = self;
     [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
      {
          if (success)
          {
-             NSArray *items = [responseObject[@"data"] removeNulls];
-             items = [items map:^id(id item) {
-                 UBCGoodDM *good = [[UBCGoodDM alloc] initWithDictionary:item];
-                 UBTableViewRowData *data = good.rowData;
+             NSArray *activeItems = [responseObject[@"active"] removeNulls];
+             activeItems = [weakSelf sortArray:activeItems isActive:YES];
+             
+             activeItems = [activeItems map:^id(UBCGoodDM *item) {
+                 UBTableViewRowData *data = item.rowData;
                  data.className = NSStringFromClass(UBCDealCell.class);
                  return data;
              }];
              
+             NSArray *notActiveItems = [responseObject[@"waste"] removeNulls];
+             notActiveItems = [weakSelf sortArray:notActiveItems isActive:NO];
+             
+             notActiveItems = [notActiveItems map:^id(UBCGoodDM *item) {
+                 UBTableViewRowData *data = item.rowData;
+                 data.className = NSStringFromClass(UBCDealCell.class);
+                 data.isSelected = YES;
+                 return data;
+             }];
+
+             
+//             notActiveItems = [notActiveItems map:^id(id item) {
+//                 UBCGoodDM *good = [[UBCGoodDM alloc] initWithDictionary:item];
+//                 UBTableViewRowData *data = good.rowData;
+//                 data.className = NSStringFromClass(UBCDealCell.class);
+//                 data.isSelected = YES;
+//                 return data;
+//             }];
+             
+             NSMutableArray *sections = [NSMutableArray array];
+             
+             if (activeItems.count > 0)
+             {
+                 UBTableViewSectionData *section = UBTableViewSectionData.new;
+                 section.headerTitle = UBLocalizedString(@"str_item_status_active", nil);
+                 section.rows = activeItems;
+                 
+                 [sections addObject:section];
+             }
+             
+             if (notActiveItems.count > 0)
+             {
+                 UBTableViewSectionData *section = UBTableViewSectionData.new;
+                 section.headerTitle = UBLocalizedString(@"str_item_status_not_active", nil);
+                 section.rows = notActiveItems;
+                 
+                 [sections addObject:section];
+             }
+             
              if (completionBlock)
              {
-                 NSNumber *totalPages = [responseObject valueForKeyPath:@"pageData.totalPages"];
-                 completionBlock(YES, items, totalPages.integerValue > page + 1);
+                 completionBlock(YES, sections);
              }
          }
          else if (completionBlock)
          {
-             completionBlock(NO, nil, YES);
+             completionBlock(NO, nil);
          }
      }];
 }
 
-- (void)dealsToBuyListWithPageNumber:(NSUInteger)page withCompletionBlock:(void (^)(BOOL, NSArray *, BOOL))completionBlock
+- (void)dealsToBuyWithCompletionBlock:(void (^)(BOOL, NSArray *))completionBlock
 {
-    NSURL *url = [UBCURLProvider dealsToBuyListWithPageNumber:page];
+    NSURL *url = [UBCURLProvider dealsToBuy];
+    NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:url];
+    __weak typeof(self) weakSelf = self;
+    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (success)
+         {
+             NSArray *activeItems = [responseObject[@"active"] removeNulls];
+             activeItems = [weakSelf sortDealArray:activeItems isActive:YES];
+             
+             NSArray *notActiveItems = [responseObject[@"waste"] removeNulls];
+             notActiveItems = [weakSelf sortDealArray:notActiveItems isActive:NO];
+             
+             NSMutableArray *sections = [NSMutableArray array];
+             
+             if (activeItems.count > 0)
+             {
+                 UBTableViewSectionData *section = UBTableViewSectionData.new;
+                 section.headerTitle = UBLocalizedString(@"str_item_status_active", nil);
+                 section.rows = activeItems;
+                 
+                 [sections addObject:section];
+             }
+             
+             if (notActiveItems.count > 0)
+             {
+                 UBTableViewSectionData *section = UBTableViewSectionData.new;
+                 section.headerTitle = UBLocalizedString(@"str_item_status_not_active", nil);
+                 section.rows = notActiveItems;
+                 
+                 [sections addObject:section];
+             }
+             
+             if (completionBlock)
+             {
+                 completionBlock(YES, sections);
+             }
+         }
+         else if (completionBlock)
+         {
+             completionBlock(NO, nil);
+         }
+     }];
+}
+
+-(NSArray *) sortDealArray:(NSArray *) array isActive:(BOOL) isActive
+{
+
+    __block BOOL isNeedShowBadge = NO;
+    array = [array map:^id(id item) {
+        UBCDealDM *deal = [[UBCDealDM alloc] initWithDictionary:item];
+        if (deal.needAction) {
+            isNeedShowBadge = YES;
+        }
+        return deal;
+    }];
+    
+    if (isActive)
+    {
+        UBCNotificationDM.needShowDealItemToBuyBadge = isNeedShowBadge;
+    }
+    
+    
+    array = [array sortedArrayUsingComparator:^NSComparisonResult(UBCDealDM *deal1, UBCDealDM *deal2) {
+        if (deal1.updatedDate && deal2.updatedDate) {
+            return [deal2.updatedDate compare:deal1.updatedDate];
+        }
+        else if (deal1.updatedDate && !deal2.updatedDate) {
+            return [deal2.createdDate compare:deal1.updatedDate];
+        }
+        else if (!deal1.updatedDate && deal2.updatedDate) {
+            return [deal2.updatedDate compare:deal1.createdDate];
+        }
+        return [deal2.createdDate compare:deal1.createdDate];
+    }];
+    
+    array = [array map:^id(UBCDealDM *item) {
+        UBTableViewRowData *data = item.rowData;
+        data.className = NSStringFromClass(UBCDealCell.class);
+        return data;
+    }];
+    
+    return array;
+}
+
+- (NSArray *) sortArray:(NSArray *) array isActive:(BOOL) isActive
+{
+    
+    __block BOOL isNeedShowBadge = NO;
+    array = [array map:^id(id item) {
+        UBCGoodDM *goodDM = [[UBCGoodDM alloc] initWithDictionary:item];
+        UBCDealDM *goodDeal = goodDM.activePurchase;
+        if (goodDeal && goodDeal.needAction) {
+            isNeedShowBadge = YES;
+        }
+        return goodDM;
+    }];
+    
+    if (isActive)
+    {
+        UBCNotificationDM.needShowDealItemToSoldBadge = isNeedShowBadge;
+    }
+    
+   
+    
+    array = [array sortedArrayUsingComparator:^NSComparisonResult(UBCGoodDM *obj1, UBCGoodDM *obj2) {
+        UBCDealDM *deal1 = obj1.activePurchase;
+        UBCDealDM *deal2 = obj2.activePurchase;
+        
+        if (deal1 && deal2) {
+            if (deal1.updatedDate && deal2.updatedDate) {
+                return [deal2.updatedDate compare:deal1.updatedDate];
+            }
+            else if (deal1.updatedDate && !deal2.updatedDate) {
+                return [deal2.createdDate compare:deal1.updatedDate];
+            }
+            else if (!deal1.updatedDate && deal2.updatedDate) {
+                return [deal2.updatedDate compare:deal1.createdDate];
+            }
+            return [deal2.createdDate compare:deal1.createdDate];
+        }
+        else if (!deal1 && deal2) {
+            if (deal2.updatedDate) {
+                return [deal2.updatedDate compare:obj1.creationDate];
+            }
+            return [deal2.createdDate compare:obj1.creationDate];
+        }
+        else if (deal1 && !deal2) {
+            if (deal1.updatedDate) {
+                return [obj2.creationDate compare:deal1.updatedDate];
+            }
+            return [obj2.creationDate compare:deal1.createdDate];
+        }
+        
+        return [obj2.creationDate compare:obj1.creationDate];
+        
+
+    }];
+    
+    return array;
+}
+
+#pragma mark - CHAT
+
+- (void)dealForItemID:(NSString *)itemID withCompletionBlock:(void (^)(BOOL, UBCDealDM *))completionBlock
+{
+    NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider deal]
+                                                                andParams:@{@"itemId": itemID}];
+    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (completionBlock)
+         {
+             completionBlock(success, [[UBCDealDM alloc] initWithDictionary:[responseObject removeNulls]]);
+         }
+     }];
+}
+
+- (void)dealsListWithPageNumber:(NSUInteger)page withCompletionBlock:(void (^)(BOOL, NSArray *, BOOL))completionBlock
+{
+    NSURL *url = [UBCURLProvider dealsListWithPageNumber:page];
     NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:url];
     [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
      {
          if (success)
          {
-             NSArray *items = [responseObject[@"data"] removeNulls];
+             NSArray *items = [responseObject[@"content"] removeNulls];
              items = [items map:^id(id item) {
                  UBCDealDM *deal = [[UBCDealDM alloc] initWithDictionary:item];
                  return deal.rowData;
@@ -581,7 +784,7 @@
              
              if (completionBlock)
              {
-                 NSNumber *totalPages = [responseObject valueForKeyPath:@"pageData.totalPages"];
+                 NSNumber *totalPages = responseObject[@"totalPages"];
                  completionBlock(YES, items, totalPages.integerValue > page + 1 );
              }
          }
@@ -591,53 +794,57 @@
          }
      }];
 }
-
-#pragma mark - CHAT
-
-- (void)chatURLForItemID:(NSString *)itemID withCompletionBlock:(void (^)(BOOL, NSURL *, NSURL *))completionBlock
+    
+- (void)chartDealsListWithCompletionBlock:(void (^)(BOOL, NSArray *, BOOL))completionBlock
 {
-    NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider chatURL]
-                                                                andParams:@{@"itemId": itemID}];
+    NSURL *url = [UBCURLProvider chartDealsList];
+    NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:url];
     [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
      {
-         if (completionBlock)
+         if (success && ((NSArray *)responseObject).count > 0)
          {
-             completionBlock(success, [NSURL URLWithString:responseObject[@"url"]], [NSURL URLWithString:responseObject[@"appUrl"]]);
+             NSArray *items = [responseObject removeNulls];
+             items = [items map:^id(id item) {
+                 return [[UBCChatRoom alloc] initWithDictionary:item];
+             }];
+             
+             items = [items sortedArrayUsingComparator:^NSComparisonResult(UBCChatRoom *obj1, UBCChatRoom *obj2) {
+                 return [obj2.lastMessage.date compare:obj1.lastMessage.date];
+             }];
+             
+             items = [items map:^id(UBCChatRoom *item) {
+                 return item.rowData;
+             }];
+             
+             if (completionBlock)
+             {
+                 completionBlock(YES, items, NO);
+             }
+         }
+         else if (completionBlock)
+         {
+             completionBlock(NO, nil, YES);
          }
      }];
 }
 
-- (void)chatURLForDealID:(NSString *)dealID withCompletionBlock:(void (^)(BOOL, NSURL *, NSURL *))completionBlock
+- (void)chatForUser:(NSString *)userID andItem:(NSString *)itemID withCompletionBlock:(void (^)(BOOL, UBCChatRoom *))completionBlock
 {
-    NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider chatURL]
-                                                                andParams:@{@"purchaseId": dealID}];
+    NSURL *url = [UBCURLProvider chatForUser:userID andItem:itemID];
+    NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:url];
     [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
      {
-         if (completionBlock)
-         {
-             completionBlock(success, [NSURL URLWithString:responseObject[@"url"]], [NSURL URLWithString:responseObject[@"appUrl"]]);
-         }
-     }];
-}
-
-- (void)registerInChatWithCompletionBlock:(void (^)(BOOL, BOOL, NSURL *, NSURL *))completionBlock
-{
-    NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:[UBCURLProvider registrationInChat]];
-    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
-     {
-         responseObject = [responseObject removeNulls];
          if (success)
          {
-             [UBCUserDM saveUserDict:responseObject[@"user"]];
+             if (completionBlock)
+             {
+                 UBCChatRoom *chatRoom = [[UBCChatRoom alloc] initWithDictionary:[responseObject removeNulls]];
+                 completionBlock(YES, chatRoom);
+             }
          }
-         
-         if (completionBlock)
+         else if (completionBlock)
          {
-             BOOL authorized = [[responseObject valueForKeyPath:@"user.authorizedInTg"] boolValue];
-             completionBlock(success,
-                             authorized,
-                             [NSURL URLWithString:responseObject[@"url"]],
-                             [NSURL URLWithString:responseObject[@"appUrl"]]);
+             completionBlock(NO, nil);
          }
      }];
 }
@@ -682,6 +889,161 @@
                  item = [UBCGoodDM.alloc initWithDictionary:[responseObject removeNulls]];
              }
              completionBlock(success, item);
+         }
+     }];
+}
+
+#pragma mark - PURCHASE
+
+- (void)buyItem:(NSString *)itemID isDelivery:(BOOL)isDelivery currency:(NSString *)currency comment:(NSString *) comment withCompletionBlock:(void (^)(BOOL, UBCDealDM *))completionBlock
+{
+    NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider buyItem]
+                                                                andParams:@{@"itemId": itemID,
+                                                                            @"withDelivery": @(isDelivery),
+                                                                            @"currencyType": currency,
+                                                                            @"comment" : comment
+                                                                            }];
+    
+    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (completionBlock)
+         {
+             UBCDealDM *deal = [UBCDealDM.alloc initWithDictionary:[responseObject removeNulls]];
+             completionBlock(success, deal);
+             
+             // need this for update purchase
+//
+//             [self checkStatusForDeal:deal.ID withCompletionBlock:^(BOOL success, id responseObject)
+//              {
+//                  completionBlock(success, responseObject);
+//              }];
+             
+             
+         }
+     }];
+}
+
+- (void)cancelDeal:(NSString *)dealID withCompletionBlock:(void (^)(BOOL))completionBlock
+{
+    NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider cancelDeal:dealID] andParams:@{}];
+    
+    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (completionBlock)
+         {
+             completionBlock(success);
+         }
+     }];
+}
+
+- (void)confirmDeal:(NSString *)dealID withCompletionBlock:(void (^)(BOOL, UBCDealDM *))completionBlock
+{
+    NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider confirmDeal:dealID] andParams:@{}];
+    
+    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (completionBlock)
+         {
+             UBCDealDM *deal = [UBCDealDM.alloc initWithDictionary:[responseObject removeNulls]];
+             completionBlock(success, deal);
+         }
+     }];
+}
+
+- (void)checkStatusForDeal:(NSString *)dealID withCompletionBlock:(void (^)(BOOL, UBCDealDM *))completionBlock
+{
+    NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:[UBCURLProvider checkStatusForDeal:dealID]];
+    
+    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (completionBlock)
+         {
+             UBCDealDM *deal = [UBCDealDM.alloc initWithDictionary:[responseObject removeNulls]];
+             completionBlock(success, deal);
+         }
+     }];
+}
+
+- (void)changePersonalMeetingToDeliveryForDeal:(NSString *)dealID withCompletionBlock:(void (^)(BOOL, UBCDealDM *))completionBlock
+{
+    NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider changePersonalMeetingToDeliveryForDeal:dealID] andParams:@{}];
+    
+    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (completionBlock)
+         {
+             UBCDealDM *deal = [UBCDealDM.alloc initWithDictionary:[responseObject removeNulls]];
+             completionBlock(success, deal);
+         }
+     }];
+}
+
+- (void)setDeliveryPriceForDeal:(NSString *)dealID price:(NSString *)price withCompletionBlock:(void (^)(BOOL, UBCDealDM *))completionBlock
+{
+    NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider setDeliveryPriceForDeal:dealID] andParams:@{@"amount": [NSString notEmptyString:price]}];
+    
+    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (completionBlock)
+         {
+             UBCDealDM *deal = [UBCDealDM.alloc initWithDictionary:[responseObject removeNulls]];
+             completionBlock(success, deal);
+         }
+     }];
+}
+
+- (void)confirmDeliveryPriceForDeal:(NSString *)dealID price:(NSString *)price withCompletionBlock:(void (^)(BOOL, UBCDealDM *))completionBlock
+{
+    NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider confirmDeliveryPriceForDeal:dealID] andParams:@{@"amount": [NSString notEmptyString:price]}];
+    
+    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (completionBlock)
+         {
+             UBCDealDM *deal = [UBCDealDM.alloc initWithDictionary:[responseObject removeNulls]];
+             completionBlock(success, deal);
+         }
+     }];
+}
+
+- (void)startDeliveryForDeal:(NSString *)dealID withCompletionBlock:(void (^)(BOOL, UBCDealDM *))completionBlock
+{
+    NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider startDeliveryForDeal:dealID] andParams:@{}];
+    
+    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (completionBlock)
+         {
+             UBCDealDM *deal = [UBCDealDM.alloc initWithDictionary:[responseObject removeNulls]];
+             completionBlock(success, deal);
+         }
+     }];
+}
+
+#pragma mark - APNS
+
+- (void)subscribeAPNS
+{
+    NSString *playerID = [OneSignal getPermissionSubscriptionState].subscriptionStatus.userId;
+    if ([playerID isNotEmpty])
+    {
+        NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider subscribeAPNS]
+                                                                    andParams:@{@"playerId": playerID}];
+        [self.connection sendRequest:request isBackground:NO withCompletionBlock:nil];
+    }
+}
+
+-(void)checkUnreadItems:(void (^)(BOOL isMessages, BOOL isDeals)) completionBlock
+{
+    NSMutableURLRequest *request = [UBCRequestProvider getRequestWithURL:[UBCURLProvider checkUnreadItem]];
+    [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
+     {
+         if (completionBlock && responseObject)
+         {
+             NSInteger changedDeals = [responseObject[@"statusUpdatesCount"] integerValue];
+             NSInteger unreadMessages = [responseObject[@"unreadCount"] integerValue];
+             
+             completionBlock(unreadMessages > 0, changedDeals > 0);
          }
      }];
 }

@@ -10,4 +10,6 @@
 
 @interface UBCMarketController : UBViewController
 
+- (void) updateInfoIfBuy:(NSString *) itemId;
+
 @end

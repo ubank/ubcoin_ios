@@ -11,5 +11,6 @@
 @interface NSNumber (UBC)
 
 @property (readonly, nonatomic) NSString *coinsPriceString;
+@property (readonly, nonatomic) NSString *deliveryPriceString;
 
 @end

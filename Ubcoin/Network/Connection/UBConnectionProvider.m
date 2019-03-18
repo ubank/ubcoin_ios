@@ -125,7 +125,7 @@
         }
         else if ([responseObject[@"status"] isEqual:@401])
         {
-            [UBAlert showAlertWithTitle:@"ui_alert_title_attention" andMessage:@"error_unauthorized"];
+            //[UBAlert showAlertWithTitle:@"ui_alert_title_attention" andMessage:@"error_unauthorized"];
             
             [UBCUserDM clearUserData];
             [UBCKeyChain removeAuthorization];

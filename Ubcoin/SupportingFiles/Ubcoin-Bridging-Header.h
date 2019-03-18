@@ -6,12 +6,12 @@
 
 #import "UBCUserDM.h"
 #import "UBCDealDM.h"
+#import "UBCBalanceDM.h"
 #import "UBCCategoryDM.h"
 
 #import "UBCLoginController.h"
 #import "UBCSignUpController.h"
 #import "UBCResetPasswordController.h"
-#import "UBCChatController.h"
 #import "UBCMapView.h"
 #import "HUBBaseMapView.h"
 #import "UBLocal.h"
@@ -23,6 +23,9 @@
 #import "UBCStarsView.h"
 #import "UBCGoodsCollectionView.h"
 #import "UBCGoodDetailsController.h"
+#import "UBCProfileController.h"
 
 #import <SDWebImage/UIView+WebCache.h>
 #import <SDWebImage/UIImageView+WebCache.h>
+
+#import "UBCKeyChain.h"

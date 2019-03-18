@@ -109,29 +109,15 @@ final class UBCSellController: UBViewController {
     private func buttonPressed() {
         guard self.model.isAllParamsNotEmpty(),
             let photoRow = self.model.row(type: .photo) else {
-            UBAlert.show(withTitle: "ui_alert_title_attention", andMessage: "error_all_fields_empty")
-            
-            return
+                UBAlert.show(withTitle: "ui_alert_title_attention", andMessage: "error_all_fields_empty")
+                
+                return
         }
         
-        guard let user = UBCUserDM.loadProfile(),
-            user.authorizedInTg else {
-                self.startActivityIndicator()
-                UBCDataProvider.shared.registerInChat { [weak self] success, authorizedInTg, url, appURL in
-                    self?.stopActivityIndicator()
-
-                    if authorizedInTg {
-                        self?.sendItem(photoRow: photoRow, id: self?.item?.id)
-                    } else {
-                        UBAlert.show(withTitle: "",
-                                     andMessage: "str_ubcoin_is_going_to_open_telegram".localizedString(),
-                                     withCompletionBlock: {
-                                        self?.navigationController?.pushViewController(UBCChatController(url: url, appURL: appURL), animated: true)
-                        })
-                    }
-                }
-
-                return
+        guard self.model.isValidURL() else {
+            UBAlert.show(withTitle: "ui_alert_title_attention", andMessage: "error_invalid_link")
+            
+            return
         }
         
         self.sendItem(photoRow: photoRow, id: self.item?.id)

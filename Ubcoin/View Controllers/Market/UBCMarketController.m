@@ -15,7 +15,7 @@
 @interface UBCMarketController () <UISearchControllerDelegate, UISearchBarDelegate, UBCGoodsCollectionViewDelegate>
 
 @property (strong, nonatomic) UIStackView *stackView;
-@property (strong, nonatomic) UISearchController *searchController;
+@property (strong, nonatomic) UISearchBar *searchBar;
 @property (strong, nonatomic) UBCGoodsCollectionView *collectionView;
 @property (strong, nonatomic) UBCFiltersView *filtersView;
 
@@ -60,6 +60,11 @@
                                              selector:@selector(favoritesChanged:)
                                                  name:kNotificationFavoritesChanged
                                                object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applyFilters)
+                                                 name:kNotificationItemChanged
+                                               object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -78,7 +83,7 @@
     [self.view addSubview:self.stackView];
     [self.view addConstraintsToFillSubview:self.stackView];
     
-    //    [self setupSearch];
+    [self setupSearch];
     [self setupFiltersView];
     [self setupCollectionView];
 }
@@ -110,27 +115,19 @@
 
 - (void)setupSearch
 {
-    self.searchController = [UISearchController.alloc initWithSearchResultsController:nil];
-    self.searchController.delegate = self;
-    self.searchController.dimsBackgroundDuringPresentation = NO;
-    self.searchController.searchBar.delegate = self;
-    self.searchController.searchBar.tintColor = UBColor.titleColor;
-    self.searchController.searchBar.barTintColor = UIColor.whiteColor;
-    self.searchController.searchBar.layer.borderWidth = 1;
-    self.searchController.searchBar.layer.borderColor = UIColor.whiteColor.CGColor;
-    self.searchController.searchBar.placeholder = UBLocalizedString(@"str_market_search", nil);
-    self.searchController.searchBar.returnKeyType = UIReturnKeyDone;
-    [self.view addSubview:self.searchController.searchBar];
+    self.searchBar = UISearchBar.new;
+    self.searchBar.delegate = self;
+    self.searchBar.showsCancelButton = YES;
+    self.searchBar.tintColor = UBColor.titleColor;
+    self.searchBar.barTintColor = UIColor.whiteColor;
+    self.searchBar.layer.borderWidth = 1;
+    self.searchBar.layer.borderColor = UIColor.whiteColor.CGColor;
+    self.searchBar.placeholder = UBLocalizedString(@"str_market_search", nil);
+    self.searchBar.returnKeyType = UIReturnKeySearch;
+    [self.searchBar sizeToFit];
+    [self.stackView addArrangedSubview:self.searchBar];
     
-    [self.searchController.searchBar sizeToFit];
-    [self.view setTopConstraintToSubview:self.collectionView withValue:self.searchController.searchBar.height];
-    
-    self.searchController.searchBar.showsBookmarkButton = YES;
-    [self.searchController.searchBar setImage:[UIImage imageNamed:@"market_voice"]
-                             forSearchBarIcon:UISearchBarIconBookmark
-                                        state:UIControlStateNormal];
-    
-    for (UIView *subView in self.searchController.searchBar.subviews)
+    for (UIView *subView in self.searchBar.subviews)
     {
         for (UIView *subSubView in subView.subviews)
         {
@@ -140,8 +137,6 @@
             }
         }
     }
-    
-    self.definesPresentationContext = !self.tabBarController;
 }
 
 #pragma mark -
@@ -154,30 +149,46 @@
     self.items = [NSMutableArray array];
     self.collectionView.canLoadMore = NO;
     
-    [self startActivityIndicator];
+    if (![self.searchBar.text isNotEmpty])
+    {
+        [self startActivityIndicator];
+    }
+    
     [self updateInfo];
+}
+
+- (void) updateInfoIfBuy:(NSString *) itemId
+{
+    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(UBCGoodDM *item, NSDictionary *bindings) {
+        return [item.ID isEqualToString: itemId];
+    }];
+    
+    UBCGoodDM *item =  [self.items filteredArrayUsingPredicate:predicate].firstObject;
+    if (item)
+    {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:[self.items indexOfObject:item] inSection:0];
+        [self.collectionView performBatchUpdates:^{
+            [self.items removeObject:item];
+            [self.collectionView deleteItemsAtIndexPaths: @[indexPath]];
+        } completion:^(BOOL finished) {
+            [self.collectionView reloadData];
+        }];
+    }
 }
 
 - (void)updateInfo
 {
-//    dispatch_group_t serviceGroup = dispatch_group_create();
-//
     __weak typeof(self) weakSelf = self;
-//
-//    dispatch_group_enter(serviceGroup);
-//    [UBCDataProvider.sharedProvider discountsWithCompletionBlock:^(BOOL success, NSArray *discounts) {
-//        if (discounts)
-//        {
-//            weakSelf.discounts = discounts;
-//        }
-//
-//        dispatch_group_leave(serviceGroup);
-//    }];
-//
-    //    dispatch_group_enter(serviceGroup);
     [self.task cancel];
+    
+    NSString *filtersValues = [self.filterDM filterValues];
+    if ([self.searchBar.text isNotEmpty])
+    {
+        NSString *searchTerm = self.searchBar.text.replaceNormalSpacesWithNonBreakingSpaces;
+        filtersValues = [filtersValues stringByAppendingFormat:@"&searchLine=%@", searchTerm.urlEncodeUTF8];
+    }
     self.task = [UBCDataProvider.sharedProvider goodsListWithPageNumber:self.pageNumber
-                                                             andFilters:[self.filterDM filterValues]
+                                                             andFilters:filtersValues
                                                     withCompletionBlock:^(BOOL success, NSArray *goods, BOOL canLoadMore)
                  {
                      if (success)
@@ -191,13 +202,7 @@
                          weakSelf.pageNumber++;
                      }
                      [weakSelf handleResponse];
-                     
-                     //        dispatch_group_leave(serviceGroup);
                  }];
-    
-    //    dispatch_group_notify(serviceGroup, dispatch_get_main_queue(), ^{
-//        [weakSelf handleResponse];
-//    });
 }
 
 - (void)handleResponse
@@ -262,41 +267,19 @@
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    [self searchWithText:searchBar.text];
+    [self applyFilters];
 }
 
-- (void)searchWithText:(NSString *)searchTerm
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
-    [self cancelAllTasks];
+    self.searchBar.text = @"";
+    [searchBar resignFirstResponder];
+    [self applyFilters];
 }
 
-#pragma mark - UISearchControllerDelegate
-
-- (void)willPresentSearchController:(UISearchController *)searchController
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
-}
-
-- (void)willDismissSearchController:(UISearchController *)searchController
-{
-    [self dismissSearchControllerAnimated:YES];
-}
-
-- (void)dismissSearchControllerAnimated:(BOOL)animated
-{
-    [self searchWithText:nil];
-    
-    self.navigationController.interactivePopGestureRecognizer.enabled = YES;
-}
-
-- (void)didDismissSearchController:(UISearchController *)searchController
-{
-    
-}
-
-- (void)searchBarBookmarkButtonClicked:(UISearchBar *)searchBar
-{
-    
+    [searchBar resignFirstResponder];
 }
 
 #pragma mark - UBCGoodsCollectionViewDelegate

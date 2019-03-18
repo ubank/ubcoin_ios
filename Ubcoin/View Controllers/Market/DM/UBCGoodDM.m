@@ -35,14 +35,17 @@
         _isFavorite = [dict[@"favorite"] boolValue];
         _creationDate = [NSDate dateFromString:dict[@"createdDate"] inFormat:@"yyyyMMdd'T'HHmmssZ"];
         _images = dict[@"images"];
+        _statusDescription = dict[@"statusDescription"];
         _status = [UBCGoodDM statusFromString:dict[@"status"]];
         [self setupLocationWithDictionary:dict[@"location"]];
         
         _seller = [[UBCSellerDM alloc] initWithDictionary:dict[@"user"]];
         _category = [[UBCCategoryDM alloc] initWithDictionary:dict[@"category"]];
-        _deals = [dict[@"purchases"] map:^id(id item) {
-            return [[UBCDealDM alloc] initWithDictionary:item];
-        }];
+        
+        if (dict[@"activePurchase"])
+        {
+            _activePurchase = [[UBCDealDM alloc] initWithDictionary:dict[@"activePurchase"]];
+        }
     }
     return self;
 }
@@ -61,6 +64,11 @@
 }
 
 #pragma mark -
+
+- (NSString *)imageURL
+{
+    return self.images.firstObject;
+}
 
 - (BOOL)isMyItem
 {
@@ -89,18 +97,22 @@
     }
 }
 
-- (NSArray *)activeDeals
-{
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"status == %@", DEAL_STATUS_ACTIVE];
-    return [self.deals filteredArrayUsingPredicate:predicate];
-}
-
 - (UBTableViewRowData *)rowData
 {
     UBTableViewRowData *data = UBTableViewRowData.new;
     data.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     data.data = self;
-    data.title = [NSString stringWithFormat:@"%@ UBC", self.price.priceString];
+  
+    
+    NSString * itemPriceString = [NSString stringWithFormat:@"%@ UBC", self.price.priceString];
+    
+    if (self.activePurchase) {
+        if ([self.activePurchase.currencyType isEqualToString:@"ETH"]) {
+            itemPriceString =  [NSString stringWithFormat:@"%@ ETH", self.priceInETH.coinsPriceString];
+        }
+    }
+    
+    data.title = itemPriceString;
     data.desc = self.title;
     data.iconURL = [self.images firstObject];
     data.icon = [UIImage imageNamed:@"item_default_image"];
@@ -158,5 +170,6 @@
             return UBLocalizedString(@"str_item_status_sold", nil);
     }
 }
+
 
 @end

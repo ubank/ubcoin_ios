@@ -11,11 +11,13 @@
 #import "UBCKeyChain.h"
 
 #import "UBCGoodDetailsController.h"
+#import "UBCTabBarController.h"
+#import "UBCProfileController.h"
+#import "UBCDealsController.h"
 
 #import "Ubcoin-Swift.h"
 
-#define PUSH_ACTIVITY @"activity_name"
-#define PUSH_TYPE @"type"
+#define PUSH_ACTIVITY @"activityName"
 
 @implementation UBCNotificationHandler
 
@@ -30,7 +32,7 @@
     
     if ([self isUbcoinURLScheme:url])
     {
-        [self handleURL:url];
+        [self handleActivity:url.host withParams:[NSDictionary dictionaryParamsFromURL:url]];
     }
     else
     {
@@ -38,25 +40,20 @@
     }
 }
 
-+ (void)handleURL:(NSURL *)url
++ (void)handleActivity:(NSString *)activity withParams:(NSDictionary *)params
 {
-    if (![self needHandleURL:url])
+    if (![self needHandleActivity:activity withParams:params])
     {
         return;
     }
     
-    UBViewController *controller = [self controllerForURL:url];
+    UIViewController *controller = [self controllerForActivityName:activity withParams:params];
     if (controller)
     {
         UBViewController *shownController = [mainAppDelegate showControllers:@[controller]];
-        
-        if (shownController)
+        if (shownController && params && [shownController isKindOfClass:UBViewController.class])
         {
-            NSDictionary *params = [NSDictionary dictionaryParamsFromURL:url];
-            if (params)
-            {
-                [shownController updateInfoWithPushParams:params];
-            }
+            [shownController updateInfoWithPushParams:params];
         }
     }
 }
@@ -68,19 +65,16 @@
     return [[NSString stringWithFormat:@"%@://", url.scheme] isEqualToString:URL_SCHEME];
 }
 
-+ (BOOL)needHandleURL:(NSURL *)url
++ (BOOL)needHandleActivity:(NSString *)activity withParams:(NSDictionary *)params
 {
-    NSString *activity = url.host;
-    
     UBViewController *visibleViewController = (UBViewController *)mainAppDelegate.navigationController.currentController;
     if ([self.commonActivities containsObject:activity])
     {
-        NSDictionary *params = [NSDictionary dictionaryParamsFromURL:url];
-        UBViewController *controller = [self controllerForActivityName:activity withParams:params];
-        
-        if (controller && [visibleViewController isKindOfClass:UBViewController.class])
+        UIViewController *controller = [self controllerForActivityName:activity withParams:params];
+        if (controller)
         {
-            if ([visibleViewController isKindOfClass:controller.class])
+            if ([visibleViewController isKindOfClass:controller.class] &&
+                [visibleViewController isKindOfClass:UBViewController.class])
             {
                 [visibleViewController updateInfo];
                 
@@ -99,43 +93,115 @@
 
 #pragma mark - Activities Handle
 
-+ (UBViewController *)controllerForURL:(NSURL *)url
++ (BOOL)needShowPushWithUserInfo:(NSDictionary *)userInfo
 {
-    NSString *activity = url.host;
+    NSDictionary *data = userInfo[@"data"];
+    NSDictionary *customData = userInfo[@"custom"][@"a"];
     
+    if (data)
+    {
+        return [self needHandleActivity:data[PUSH_ACTIVITY]
+                             withParams:data];
+    }
+    else if (customData)
+    {
+        [UBCNotificationHandler checkDeliveredNotifications];
+        if ([customData[@"activity"] isEqualToString:PURCHASE_ACTIVITY])
+        {
+            [self updateInfoCurrentDeal:customData[@"id"]];
+        }
+    }
+    
+    return YES;
+}
+
++ (void)updateInfoCurrentDeal:(NSString *)dealId
+{
+    if ([mainAppDelegate.navigationController.currentController isKindOfClass:[UBCDealInfoController class]] && dealId)
+    {
+        [mainAppDelegate.navigationController.currentController  updateInfoWithPushParams:@{@"dealId" : dealId}];
+    }
+}
+
++ (void)updateInfoChats
+{
+    if ([mainAppDelegate.navigationController.currentController isKindOfClass:[UBCMessagesListController class]])
+    {
+        [mainAppDelegate.navigationController.currentController  updateInfoWithPushParams:@{}];
+    }
+}
+
++ (void)updateInfoDeals
+{
+    UBViewController *currentController = mainAppDelegate.navigationController.currentController;
+    if ([currentController isKindOfClass:[UBCProfileController class]] ||
+        [currentController isKindOfClass:[UBCDealsController class]])
+    {
+        [currentController updateInfo];
+    }
+}
+
++ (void)checkDeliveredNotifications
+{
+    [[UBCDataProvider sharedProvider] checkUnreadItems:^(BOOL isMessages, BOOL isDeals)
+    {
+        UBCNotificationDM.needShowChatBadge = isMessages;
+        UBCNotificationDM.needShowDealItemToSoldBadge = isDeals;
+        UBCNotificationDM.needShowDealItemToBuyBadge = isDeals;
+        
+        [UBCNotificationHandler updateInfoChats];
+        [UBCNotificationHandler updateInfoDeals];
+    }];
+    
+    [UNUserNotificationCenter.currentNotificationCenter getDeliveredNotificationsWithCompletionHandler:^(NSArray<UNNotification *> *notifications) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            for (UNNotification *notification in notifications) {
+                 NSDictionary *data = notification.request.content.userInfo[@"custom"][@"a"];
+                if (data)
+                {
+                    [UNUserNotificationCenter.currentNotificationCenter removeDeliveredNotificationsWithIdentifiers:@[notification.request.identifier]];
+                }
+            }
+        });
+    }];
+}
+
++ (void)handlePushWithUserInfo:(NSDictionary *)userInfo
+{
+    NSDictionary *data = userInfo[@"data"];
+    if (data)
+    {
+        [UBCNotificationHandler handleActivity:data[PUSH_ACTIVITY] withParams:data];
+    }
+}
+
++ (UIViewController *)controllerForActivityName:(NSString *)activity
+                                     withParams:(NSDictionary *)params
+{
     if (![activity isNotEmpty])
     {
         return nil;
     }
     
-    NSDictionary *params = [NSDictionary dictionaryParamsFromURL:url];
-    
-    UBViewController *controller = [self controllerForActivityName:activity withParams:params];
-    if (controller)
+    if (!UBCKeyChain.authorization && [self.registrationActivities containsObject:activity])
     {
-        if (!UBCKeyChain.authorization && [self.registrationActivities containsObject:activity])
-        {
-            return [UBCStartLoginController new];
-        }
-        else
-        {
-            return controller;
-        }
+        return [UBCStartLoginController new];
     }
-    
-    return nil;
-}
-
-+ (UBViewController *)controllerForActivityName:(NSString *)activity
-                                     withParams:(NSDictionary *)params
-{
-    if ([activity isEqualToString:ITEM_ACTIVITY])
+    else if ([activity isEqualToString:ITEM_ACTIVITY])
     {
         return [UBCGoodDetailsController.alloc initWithGoodID:params[@"id"]];
     }
     else if ([activity isEqualToString:SELLER_ACTIVITY])
     {
         return [UBCSellerController.alloc initWithSellerID:params[@"id"]];
+    }
+    else if ([activity isEqualToString:CHAT_ACTIVITY])
+    {
+        return [UBCChatController.alloc initWithItemID:params[@"itemId"] userID:params[@"userId"]];
+    }
+    else if ([activity isEqualToString:PURCHASE_ACTIVITY])
+    {
+        return [UBCDealInfoController.alloc initWithDealID:params[@"id"]];
     }
     
     return nil;
@@ -179,13 +245,16 @@
 + (NSArray *)commonActivities
 {
     return @[ITEM_ACTIVITY,
-             SELLER_ACTIVITY
+             SELLER_ACTIVITY,
+             CHAT_ACTIVITY,
+             PURCHASE_ACTIVITY
              ];
 }
 
 + (NSArray *)registrationActivities
 {
-    return @[
+    return @[CHAT_ACTIVITY,
+             PURCHASE_ACTIVITY
              ];
 }
 

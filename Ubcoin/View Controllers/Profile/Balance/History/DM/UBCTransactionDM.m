@@ -40,7 +40,7 @@
 
 - (NSAttributedString *)amountString
 {
-    UIColor *textColor = self.amount.doubleValue > 0 ? UBCColor.green : UBColor.titleColor;
+    UIColor *textColor = [self amountColor];
     NSString *string = [NSString stringWithFormat:@"  %@", self.priceWithCurrency];
     NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:string attributes:@{NSForegroundColorAttributeName: textColor}];
     
@@ -53,8 +53,27 @@
         NSAttributedString *attrStringWithImage = [NSAttributedString attributedStringWithAttachment:textAttachment];
         [text insertAttributedString:attrStringWithImage atIndex:0];
     }
+    else if ([self.status isEqualToString:@"REJECTED"])
+    {
+        NSTextAttachment *textAttachment = NSTextAttachment.new;
+        textAttachment.image = [UIImage imageNamed:@"history_fail"];
+        textAttachment.bounds = CGRectMake(0, (UBFont.descFont.pointSize - textAttachment.image.size.height), textAttachment.image.size.width, textAttachment.image.size.height);
+        
+        NSAttributedString *attrStringWithImage = [NSAttributedString attributedStringWithAttachment:textAttachment];
+        [text insertAttributedString:attrStringWithImage atIndex:0];
+    }
     
     return text;
+}
+
+- (UIColor *)amountColor
+{
+    if ([self.status isEqualToString:@"REJECTED"])
+    {
+        return RED_COLOR;
+    }
+    
+    return self.amount.doubleValue > 0 ? UBCColor.green : UBColor.titleColor;
 }
 
 - (NSString *)currency
@@ -64,7 +83,9 @@
 
 - (NSString *)priceWithCurrency
 {
-    return [NSString stringWithFormat:@"%@ %@", self.isETH ? self.amount.coinsPriceString : self.amount.priceString, self.currency];
+    NSString *amount = self.isETH ? self.amount.coinsPriceString : self.amount.priceString;
+    NSString *amountString = self.amount.doubleValue > 0 ? [NSString stringWithFormat:@"+ %@", amount] : amount;
+    return [NSString stringWithFormat:@"%@ %@", amountString, self.currency];
 }
 
 - (NSArray<UBTableViewRowData *> *)rowsData

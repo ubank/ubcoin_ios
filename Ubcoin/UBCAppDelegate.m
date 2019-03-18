@@ -17,8 +17,9 @@
 #import <Crashlytics/Crashlytics.h>
 #import <GoogleMaps/GoogleMaps.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <OneSignal/OneSignal.h>
 
-@interface UBCAppDelegate ()
+@interface UBCAppDelegate () <OSSubscriptionObserver, UNUserNotificationCenterDelegate>
 
 @property (strong, nonatomic) UBCTabBarController *tabBar;
 
@@ -29,6 +30,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [self subscribeAPNSWithOptions:launchOptions];
+    
     [Fabric with:@[[Crashlytics class]]];
 
     [UBCKeyChain checkForReset];
@@ -49,6 +52,16 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     [FBSDKAppEvents activateApp];
+    [[UBCSocketIOManager sharedInstance] establishConnection];
+    UIApplication.sharedApplication.applicationIconBadgeNumber = 0;
+    [UBCNotificationHandler checkDeliveredNotifications];
+    
+    [UBCNotificationDM checkStateDidBecomeActive];
+}
+    
+- (void) applicationDidEnterBackground:(UIApplication *)application
+{
+    [[UBCSocketIOManager sharedInstance] closeConnection];
 }
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
@@ -71,6 +84,24 @@
     
     self.window.rootViewController = self.navigationController;
     [self.window makeKeyAndVisible];
+    
+    [[UBCSocketIOManager sharedInstance] reloadConnection];
+}
+
+- (void)subscribeAPNSWithOptions:(NSDictionary *)launchOptions
+{
+    [OneSignal initWithLaunchOptions:launchOptions
+                               appId:@"5415f455-83f2-4bd3-8b76-227a6dc5ae2c"
+            handleNotificationAction:nil
+                            settings:@{kOSSettingsKeyAutoPrompt: @false}];
+    OneSignal.inFocusDisplayType = OSNotificationDisplayTypeNotification;
+    [OneSignal addSubscriptionObserver:self];
+    [OneSignal promptForPushNotificationsWithUserResponse:^(BOOL accepted) {
+        NSLog(@"User accepted notifications: %d", accepted);
+    }];
+    [UBCDataProvider.sharedProvider subscribeAPNS];
+    
+    UNUserNotificationCenter.currentNotificationCenter.delegate = self;
 }
 
 - (void)setupColors
@@ -81,6 +112,8 @@
     UBColor.titleColor = [UIColor colorWithRed:32 / 255.0 green:32 / 255.0 blue:32 / 255.0 alpha:1];
     UBColor.descColor = [UIColor colorWithRed:142 / 255.0 green:142 / 255.0 blue:142 / 255.0 alpha:1];
     UBColor.separatorColor = [UIColor colorWithRed:195 / 255.0 green:208 / 255.0 blue:212 / 255.0 alpha:1];
+    
+    [[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UISearchBar class]]] setTintColor:UBColor.navigationTitleColor];
 }
 
 - (void)setupFonts
@@ -102,6 +135,36 @@
     [UBAlert removeAllAlerts];
     
     return (UBViewController *)[self.navigationController showControllers:controllers];
+}
+
+#pragma mark - OSSubscriptionObserver
+
+- (void)onOSSubscriptionChanged:(OSSubscriptionStateChanges *)stateChanges
+{
+    [UBCDataProvider.sharedProvider subscribeAPNS];
+}
+
+#pragma mark - UNUserNotificationCenterDelegate
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler
+{
+    NSDictionary *userInfo = notification.request.content.userInfo;
+    if ([UBCNotificationHandler needShowPushWithUserInfo:userInfo])
+    {
+        completionHandler(UNNotificationPresentationOptionAlert |
+                          UNNotificationPresentationOptionBadge |
+                          UNNotificationPresentationOptionSound);
+    }
+    else
+    {
+        completionHandler(UNNotificationPresentationOptionNone);
+    }
+}
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler
+{
+    NSDictionary *userInfo = response.notification.request.content.userInfo;
+    [UBCNotificationHandler handlePushWithUserInfo:userInfo];
 }
 
 @end
