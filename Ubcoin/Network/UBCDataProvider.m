@@ -994,14 +994,22 @@
 
 - (void)confirmDeliveryPriceForDeal:(NSString *)dealID price:(NSString *)price withCompletionBlock:(void (^)(BOOL, UBCDealDM *))completionBlock
 {
-    NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider confirmDeliveryPriceForDeal:dealID] andParams:@{@"amount": [NSString notEmptyString:price]}];
+    NSNumber *amount = price.correctNumberValue ?: @0;
+    NSMutableURLRequest *request = [UBCRequestProvider postRequestWithURL:[UBCURLProvider confirmDeliveryPriceForDeal:dealID] andParams:@{@"amount": amount}];
     
     [self.connection sendRequest:request isBackground:NO withCompletionBlock:^(BOOL success, id responseObject)
      {
          if (completionBlock)
          {
-             UBCDealDM *deal = [UBCDealDM.alloc initWithDictionary:[responseObject removeNulls]];
-             completionBlock(success, deal);
+             if (success)
+             {
+                 UBCDealDM *deal = [UBCDealDM.alloc initWithDictionary:[responseObject removeNulls]];
+                 completionBlock(success, deal);
+             }
+             else
+             {
+                 completionBlock(success, nil);
+             }
          }
      }];
 }
